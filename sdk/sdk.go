@@ -38,7 +38,7 @@ func NewFormalSDK(apiKey string) *FormalSDK {
 		apiKey:              apiKey,
 		underlyingTransport: http.DefaultTransport,
 	}}
-	sdk := &FormalSDK{
+	return &FormalSDK{
 		AppServiceClient:                    adminv1connect.NewAppServiceClient(httpClient, FORMAL_HOST_URL),
 		AuditLogsServiceClient:              adminv1connect.NewAuditLogsServiceClient(httpClient, FORMAL_HOST_URL),
 		CloudServiceClient:                  adminv1connect.NewCloudServiceClient(httpClient, FORMAL_HOST_URL),
@@ -61,7 +61,6 @@ func NewFormalSDK(apiKey string) *FormalSDK {
 		SlackServiceClient:                  adminv1connect.NewSlackServiceClient(httpClient, FORMAL_HOST_URL),
 		SsoServiceClient:                    adminv1connect.NewSsoServiceClient(httpClient, FORMAL_HOST_URL),
 	}
-	return sdk
 }
 
 type transport struct {

@@ -124,15 +124,14 @@ func main() {
 				jen.Id("apiKey"):              jen.Id("apiKey"),
 			}),
 		}),
-		jen.Id("sdk").Op(":=").Id("&FormalSDK").Values(jen.DictFunc(func(d jen.Dict) {
+		jen.Return(jen.Id("&FormalSDK").Values(jen.DictFunc(func(d jen.Dict) {
 			for _, field := range fieldstwo {
 				d[jen.Id(field)] = jen.Qual(packageName+path, "New"+field).Params(
 					jen.Id("httpClient"),
 					jen.Id("FORMAL_HOST_URL"),
 				)
 			}
-		})),
-		jen.Return(jen.Id("sdk")),
+		}))),
 	}
 
 	f.Func().Id("NewFormalSDK").Params(jen.Id("apiKey").String()).Op("*").Id("FormalSDK").Block(sdkBody...)
