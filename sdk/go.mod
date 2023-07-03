@@ -2,10 +2,10 @@ module github.com/formalco/go-sdk/sdk
 
 go 1.20
 
-require buf.build/gen/go/formal/admin/bufbuild/connect-go v1.7.0-20230518165131-f1037834d4a0.1
+require buf.build/gen/go/formal/admin/bufbuild/connect-go v1.9.0-20230626140508-550959b7bbdd.1
 
 require (
-	buf.build/gen/go/formal/admin/protocolbuffers/go v1.30.0-20230518165131-f1037834d4a0.1 // indirect
-	github.com/bufbuild/connect-go v1.7.0 // indirect
-	google.golang.org/protobuf v1.30.0 // indirect
+	buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20230626140508-550959b7bbdd.1 // indirect
+	github.com/bufbuild/connect-go v1.9.0 // indirect
+	google.golang.org/protobuf v1.31.0 // indirect
 )

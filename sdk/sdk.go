@@ -13,7 +13,7 @@ type FormalSDK struct {
 	DevServiceClient                    adminv1connect.DevServiceClient
 	AuditLogsServiceClient              adminv1connect.AuditLogsServiceClient
 	EncryptionServiceClient             adminv1connect.EncryptionServiceClient
-	RoleServiceClient                   adminv1connect.RoleServiceClient
+	UserServiceClient                   adminv1connect.UserServiceClient
 	GroupServiceClient                  adminv1connect.GroupServiceClient
 	SlackServiceClient                  adminv1connect.SlackServiceClient
 	CloudServiceClient                  adminv1connect.CloudServiceClient
@@ -30,6 +30,7 @@ type FormalSDK struct {
 	PolicyServiceClient                 adminv1connect.PolicyServiceClient
 	RegistryServiceClient               adminv1connect.RegistryServiceClient
 	SidecarServiceClient                adminv1connect.SidecarServiceClient
+	DataStoreServiceClient              adminv1connect.DataStoreServiceClient
 	DSyncClient                         adminv1connect.DSyncClient
 }
 
@@ -44,6 +45,7 @@ func NewFormalSDK(apiKey string) *FormalSDK {
 		CloudServiceClient:                  adminv1connect.NewCloudServiceClient(httpClient, FORMAL_HOST_URL),
 		CodeRepositoryServiceClient:         adminv1connect.NewCodeRepositoryServiceClient(httpClient, FORMAL_HOST_URL),
 		DSyncClient:                         adminv1connect.NewDSyncClient(httpClient, FORMAL_HOST_URL),
+		DataStoreServiceClient:              adminv1connect.NewDataStoreServiceClient(httpClient, FORMAL_HOST_URL),
 		DevServiceClient:                    adminv1connect.NewDevServiceClient(httpClient, FORMAL_HOST_URL),
 		EncryptionServiceClient:             adminv1connect.NewEncryptionServiceClient(httpClient, FORMAL_HOST_URL),
 		GithubServiceClient:                 adminv1connect.NewGithubServiceClient(httpClient, FORMAL_HOST_URL),
@@ -56,10 +58,10 @@ func NewFormalSDK(apiKey string) *FormalSDK {
 		MetricsServiceClient:                adminv1connect.NewMetricsServiceClient(httpClient, FORMAL_HOST_URL),
 		PolicyServiceClient:                 adminv1connect.NewPolicyServiceClient(httpClient, FORMAL_HOST_URL),
 		RegistryServiceClient:               adminv1connect.NewRegistryServiceClient(httpClient, FORMAL_HOST_URL),
-		RoleServiceClient:                   adminv1connect.NewRoleServiceClient(httpClient, FORMAL_HOST_URL),
 		SidecarServiceClient:                adminv1connect.NewSidecarServiceClient(httpClient, FORMAL_HOST_URL),
 		SlackServiceClient:                  adminv1connect.NewSlackServiceClient(httpClient, FORMAL_HOST_URL),
 		SsoServiceClient:                    adminv1connect.NewSsoServiceClient(httpClient, FORMAL_HOST_URL),
+		UserServiceClient:                   adminv1connect.NewUserServiceClient(httpClient, FORMAL_HOST_URL),
 	}
 }
 
