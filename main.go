@@ -134,7 +134,7 @@ func main() {
 		}))),
 	}
 
-	f.Func().Id("New").Params(jen.Id("apiKey").String()).Op("*").Id("FormalSDK").Block(sdkBody...)
+	f.Func().Id("New").Params(jen.Id("apiKey").String()).Op("*").Id("FormalSDK").Block(sdkBody...).Line()
 
 	sdkWithUrlBody := []jen.Code{
 		jen.Id("httpClient").Op(":=").Op("&").Qual("net/http", "Client").Values(jen.Dict{
@@ -153,7 +153,7 @@ func main() {
 		}))),
 	}
 
-	f.Func().Id("NewWithUrl").Params(jen.Id("apiKey").String(), jen.Id("url").String()).Op("*").Id("FormalSDK").Block(sdkWithUrlBody...)
+	f.Func().Id("NewWithUrl").Params(jen.Id("apiKey").String(), jen.Id("url").String()).Op("*").Id("FormalSDK").Block(sdkWithUrlBody...).Line()
 
 	generateRoundTrip(f)
 	fmt.Println("Saving file!")

@@ -72,6 +72,7 @@ func New(apiKey string) *FormalSDK {
 		UserServiceClient:                  adminv1connect.NewUserServiceClient(httpClient, FORMAL_HOST_URL),
 	}
 }
+
 func NewWithUrl(apiKey string, url string) *FormalSDK {
 	httpClient := &http.Client{Transport: &transport{
 		apiKey:              apiKey,
