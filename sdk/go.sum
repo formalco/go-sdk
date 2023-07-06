@@ -2,10 +2,14 @@ buf.build/gen/go/formal/admin/bufbuild/connect-go v1.7.0-20230518165131-f1037834
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.7.0-20230518165131-f1037834d4a0.1/go.mod h1:x4avF1TaGw5FWgzYMgm9tPOg8NujqlOGAWuK7OFHmQw=
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.9.0-20230626140508-550959b7bbdd.1 h1:oqjMepC9Z34uD0HIUnZfi1iIPESpnAtrEyl8Vs2UkXI=
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.9.0-20230626140508-550959b7bbdd.1/go.mod h1:iGeTG3FYxmLCVFj82nFVsOeaI8FuCUHtLNIxTQwKSFc=
+buf.build/gen/go/formal/admin/bufbuild/connect-go v1.9.0-20230706003847-b8461d7f37ba.1 h1:qQR+qLNiaktaJQ8rqmYeO4WBXsS5AWwb1r06gAz3Ldo=
+buf.build/gen/go/formal/admin/bufbuild/connect-go v1.9.0-20230706003847-b8461d7f37ba.1/go.mod h1:E8QDaJTFaq4j1xo37JandEr4niBDBeYxzrwLsY7ZczA=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.30.0-20230518165131-f1037834d4a0.1 h1:IxUEGRdRgDRs5wkzQimHMGk7MFLw1lRaVhjLFhlstj4=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.30.0-20230518165131-f1037834d4a0.1/go.mod h1:Sa5SUoh2vKkTD+YPzChjBN/HzogkOjfUHfqP0cMReHE=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20230626140508-550959b7bbdd.1 h1:8a2/SDy1IktrILiKArNEUO+tZNsoQqnGLSzfP0nqLNQ=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20230626140508-550959b7bbdd.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
+buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20230706003847-b8461d7f37ba.1 h1:fsybkkf/t8pOkQPUNlbtRqYuyzNQhbrN+RMT17Lugs8=
+buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20230706003847-b8461d7f37ba.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
 github.com/bufbuild/connect-go v1.7.0 h1:MGp82v7SCza+3RhsVhV7aMikwxvI3ZfD72YiGt8FYJo=
 github.com/bufbuild/connect-go v1.7.0/go.mod h1:GmMJYR6orFqD0Y6ZgX8pwQ8j9baizDrIQMm1/a6LnHk=
 github.com/bufbuild/connect-go v1.9.0 h1:JIgAeNuFpo+SUPfU19Yt5TcWlznsN5Bv10/gI/6Pjoc=

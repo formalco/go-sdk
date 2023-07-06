@@ -4,4 +4,4 @@ go 1.20
 
 require github.com/dave/jennifer v1.6.1
 
-require buf.build/gen/go/formal/admin/bufbuild/connect-go v1.9.0-20230626140508-550959b7bbdd.1 // indirect
+require buf.build/gen/go/formal/admin/bufbuild/connect-go v1.9.0-20230706003847-b8461d7f37ba.1 // indirect
