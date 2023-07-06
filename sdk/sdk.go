@@ -38,7 +38,7 @@ type FormalSDK struct {
 	DSyncClient                        adminv1connect.DSyncClient
 }
 
-func NewFormalSDK(apiKey string) *FormalSDK {
+func New(apiKey string) *FormalSDK {
 	httpClient := &http.Client{Transport: &transport{
 		apiKey:              apiKey,
 		underlyingTransport: http.DefaultTransport,
@@ -70,6 +70,40 @@ func NewFormalSDK(apiKey string) *FormalSDK {
 		SlackServiceClient:                 adminv1connect.NewSlackServiceClient(httpClient, FORMAL_HOST_URL),
 		SsoServiceClient:                   adminv1connect.NewSsoServiceClient(httpClient, FORMAL_HOST_URL),
 		UserServiceClient:                  adminv1connect.NewUserServiceClient(httpClient, FORMAL_HOST_URL),
+	}
+}
+func NewWithUrl(apiKey string, url string) *FormalSDK {
+	httpClient := &http.Client{Transport: &transport{
+		apiKey:              apiKey,
+		underlyingTransport: http.DefaultTransport,
+	}}
+	return &FormalSDK{
+		AppServiceClient:                   adminv1connect.NewAppServiceClient(httpClient, url),
+		AuditLogsServiceClient:             adminv1connect.NewAuditLogsServiceClient(httpClient, url),
+		CloudServiceClient:                 adminv1connect.NewCloudServiceClient(httpClient, url),
+		CodeRepositoryServiceClient:        adminv1connect.NewCodeRepositoryServiceClient(httpClient, url),
+		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, url),
+		DSyncClient:                        adminv1connect.NewDSyncClient(httpClient, url),
+		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, url),
+		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, url),
+		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, url),
+		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, url),
+		FieldEncryptionServiceClient:       adminv1connect.NewFieldEncryptionServiceClient(httpClient, url),
+		GithubServiceClient:                adminv1connect.NewGithubServiceClient(httpClient, url),
+		GroupServiceClient:                 adminv1connect.NewGroupServiceClient(httpClient, url),
+		IncidentServiceClient:              adminv1connect.NewIncidentServiceClient(httpClient, url),
+		InventoryServiceClient:             adminv1connect.NewInventoryServiceClient(httpClient, url),
+		KmsServiceClient:                   adminv1connect.NewKmsServiceClient(httpClient, url),
+		LogsServiceClient:                  adminv1connect.NewLogsServiceClient(httpClient, url),
+		MetricsServiceClient:               adminv1connect.NewMetricsServiceClient(httpClient, url),
+		NativeUserServiceClient:            adminv1connect.NewNativeUserServiceClient(httpClient, url),
+		OutputsServiceClient:               adminv1connect.NewOutputsServiceClient(httpClient, url),
+		PolicyServiceClient:                adminv1connect.NewPolicyServiceClient(httpClient, url),
+		RegistryServiceClient:              adminv1connect.NewRegistryServiceClient(httpClient, url),
+		SidecarServiceClient:               adminv1connect.NewSidecarServiceClient(httpClient, url),
+		SlackServiceClient:                 adminv1connect.NewSlackServiceClient(httpClient, url),
+		SsoServiceClient:                   adminv1connect.NewSsoServiceClient(httpClient, url),
+		UserServiceClient:                  adminv1connect.NewUserServiceClient(httpClient, url),
 	}
 }
 

@@ -134,7 +134,26 @@ func main() {
 		}))),
 	}
 
-	f.Func().Id("NewFormalSDK").Params(jen.Id("apiKey").String()).Op("*").Id("FormalSDK").Block(sdkBody...)
+	f.Func().Id("New").Params(jen.Id("apiKey").String()).Op("*").Id("FormalSDK").Block(sdkBody...)
+
+	sdkWithUrlBody := []jen.Code{
+		jen.Id("httpClient").Op(":=").Op("&").Qual("net/http", "Client").Values(jen.Dict{
+			jen.Id("Transport"): jen.Op("&").Id("transport").Values(jen.Dict{
+				jen.Id("underlyingTransport"): jen.Qual("net/http", "DefaultTransport"),
+				jen.Id("apiKey"):              jen.Id("apiKey"),
+			}),
+		}),
+		jen.Return(jen.Id("&FormalSDK").Values(jen.DictFunc(func(d jen.Dict) {
+			for _, field := range fieldstwo {
+				d[jen.Id(field)] = jen.Qual(packageName+path, "New"+field).Params(
+					jen.Id("httpClient"),
+					jen.Id("url"),
+				)
+			}
+		}))),
+	}
+
+	f.Func().Id("NewWithUrl").Params(jen.Id("apiKey").String(), jen.Id("url").String()).Op("*").Id("FormalSDK").Block(sdkWithUrlBody...)
 
 	generateRoundTrip(f)
 	fmt.Println("Saving file!")
