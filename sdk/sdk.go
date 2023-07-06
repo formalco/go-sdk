@@ -35,7 +35,6 @@ type FormalSDK struct {
 	PolicyServiceClient                adminv1connect.PolicyServiceClient
 	RegistryServiceClient              adminv1connect.RegistryServiceClient
 	SidecarServiceClient               adminv1connect.SidecarServiceClient
-	DSyncClient                        adminv1connect.DSyncClient
 }
 
 func New(apiKey string) *FormalSDK {
@@ -49,7 +48,6 @@ func New(apiKey string) *FormalSDK {
 		CloudServiceClient:                 adminv1connect.NewCloudServiceClient(httpClient, FORMAL_HOST_URL),
 		CodeRepositoryServiceClient:        adminv1connect.NewCodeRepositoryServiceClient(httpClient, FORMAL_HOST_URL),
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, FORMAL_HOST_URL),
-		DSyncClient:                        adminv1connect.NewDSyncClient(httpClient, FORMAL_HOST_URL),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, FORMAL_HOST_URL),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, FORMAL_HOST_URL),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, FORMAL_HOST_URL),
@@ -84,7 +82,6 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		CloudServiceClient:                 adminv1connect.NewCloudServiceClient(httpClient, url),
 		CodeRepositoryServiceClient:        adminv1connect.NewCodeRepositoryServiceClient(httpClient, url),
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, url),
-		DSyncClient:                        adminv1connect.NewDSyncClient(httpClient, url),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, url),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, url),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, url),
