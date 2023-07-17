@@ -28,7 +28,6 @@ type FormalSDK struct {
 	AppServiceClient                   adminv1connect.AppServiceClient
 	LogsServiceClient                  adminv1connect.LogsServiceClient
 	ExternalApiServiceClient           adminv1connect.ExternalApiServiceClient
-	DatahubServiceClient               adminv1connect.DatahubServiceClient
 	InventoryServiceClient             adminv1connect.InventoryServiceClient
 	MetricsServiceClient               adminv1connect.MetricsServiceClient
 	NativeUserServiceClient            adminv1connect.NativeUserServiceClient
@@ -36,7 +35,6 @@ type FormalSDK struct {
 	PolicyServiceClient                adminv1connect.PolicyServiceClient
 	RegistryServiceClient              adminv1connect.RegistryServiceClient
 	SidecarServiceClient               adminv1connect.SidecarServiceClient
-	DSyncServiceClient                 adminv1connect.DSyncServiceClient
 }
 
 func New(apiKey string) *FormalSDK {
@@ -50,9 +48,7 @@ func New(apiKey string) *FormalSDK {
 		CloudServiceClient:                 adminv1connect.NewCloudServiceClient(httpClient, FORMAL_HOST_URL),
 		CodeRepositoryServiceClient:        adminv1connect.NewCodeRepositoryServiceClient(httpClient, FORMAL_HOST_URL),
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, FORMAL_HOST_URL),
-		DSyncServiceClient:                 adminv1connect.NewDSyncServiceClient(httpClient, FORMAL_HOST_URL),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, FORMAL_HOST_URL),
-		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, FORMAL_HOST_URL),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, FORMAL_HOST_URL),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, FORMAL_HOST_URL),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, FORMAL_HOST_URL),
@@ -86,9 +82,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		CloudServiceClient:                 adminv1connect.NewCloudServiceClient(httpClient, url),
 		CodeRepositoryServiceClient:        adminv1connect.NewCodeRepositoryServiceClient(httpClient, url),
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, url),
-		DSyncServiceClient:                 adminv1connect.NewDSyncServiceClient(httpClient, url),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, url),
-		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, url),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, url),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, url),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, url),
