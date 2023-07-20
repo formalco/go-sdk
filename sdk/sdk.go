@@ -18,23 +18,23 @@ type FormalSDK struct {
 	FieldEncryptionServiceClient       adminv1connect.FieldEncryptionServiceClient
 	UserServiceClient                  adminv1connect.UserServiceClient
 	GroupServiceClient                 adminv1connect.GroupServiceClient
-	SlackServiceClient                 adminv1connect.SlackServiceClient
-	CloudServiceClient                 adminv1connect.CloudServiceClient
-	KmsServiceClient                   adminv1connect.KmsServiceClient
-	GithubServiceClient                adminv1connect.GithubServiceClient
-	CodeRepositoryServiceClient        adminv1connect.CodeRepositoryServiceClient
-	IncidentServiceClient              adminv1connect.IncidentServiceClient
-	SsoServiceClient                   adminv1connect.SsoServiceClient
 	AppServiceClient                   adminv1connect.AppServiceClient
-	LogsServiceClient                  adminv1connect.LogsServiceClient
+	CloudServiceClient                 adminv1connect.CloudServiceClient
+	CodeRepositoryServiceClient        adminv1connect.CodeRepositoryServiceClient
 	ExternalApiServiceClient           adminv1connect.ExternalApiServiceClient
-	DatahubServiceClient               adminv1connect.DatahubServiceClient
+	GithubServiceClient                adminv1connect.GithubServiceClient
+	IncidentServiceClient              adminv1connect.IncidentServiceClient
+	KmsServiceClient                   adminv1connect.KmsServiceClient
+	LogsServiceClient                  adminv1connect.LogsServiceClient
+	SlackServiceClient                 adminv1connect.SlackServiceClient
+	SsoServiceClient                   adminv1connect.SsoServiceClient
 	InventoryServiceClient             adminv1connect.InventoryServiceClient
 	MetricsServiceClient               adminv1connect.MetricsServiceClient
 	NativeUserServiceClient            adminv1connect.NativeUserServiceClient
 	OutputsServiceClient               adminv1connect.OutputsServiceClient
 	PolicyServiceClient                adminv1connect.PolicyServiceClient
 	RegistryServiceClient              adminv1connect.RegistryServiceClient
+	SearchServiceClient                adminv1connect.SearchServiceClient
 	SidecarServiceClient               adminv1connect.SidecarServiceClient
 	DSyncServiceClient                 adminv1connect.DSyncServiceClient
 }
@@ -52,7 +52,6 @@ func New(apiKey string) *FormalSDK {
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, FORMAL_HOST_URL),
 		DSyncServiceClient:                 adminv1connect.NewDSyncServiceClient(httpClient, FORMAL_HOST_URL),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, FORMAL_HOST_URL),
-		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, FORMAL_HOST_URL),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, FORMAL_HOST_URL),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, FORMAL_HOST_URL),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, FORMAL_HOST_URL),
@@ -68,6 +67,7 @@ func New(apiKey string) *FormalSDK {
 		OutputsServiceClient:               adminv1connect.NewOutputsServiceClient(httpClient, FORMAL_HOST_URL),
 		PolicyServiceClient:                adminv1connect.NewPolicyServiceClient(httpClient, FORMAL_HOST_URL),
 		RegistryServiceClient:              adminv1connect.NewRegistryServiceClient(httpClient, FORMAL_HOST_URL),
+		SearchServiceClient:                adminv1connect.NewSearchServiceClient(httpClient, FORMAL_HOST_URL),
 		SidecarServiceClient:               adminv1connect.NewSidecarServiceClient(httpClient, FORMAL_HOST_URL),
 		SlackServiceClient:                 adminv1connect.NewSlackServiceClient(httpClient, FORMAL_HOST_URL),
 		SsoServiceClient:                   adminv1connect.NewSsoServiceClient(httpClient, FORMAL_HOST_URL),
@@ -88,7 +88,6 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, url),
 		DSyncServiceClient:                 adminv1connect.NewDSyncServiceClient(httpClient, url),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, url),
-		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, url),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, url),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, url),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, url),
@@ -104,6 +103,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		OutputsServiceClient:               adminv1connect.NewOutputsServiceClient(httpClient, url),
 		PolicyServiceClient:                adminv1connect.NewPolicyServiceClient(httpClient, url),
 		RegistryServiceClient:              adminv1connect.NewRegistryServiceClient(httpClient, url),
+		SearchServiceClient:                adminv1connect.NewSearchServiceClient(httpClient, url),
 		SidecarServiceClient:               adminv1connect.NewSidecarServiceClient(httpClient, url),
 		SlackServiceClient:                 adminv1connect.NewSlackServiceClient(httpClient, url),
 		SsoServiceClient:                   adminv1connect.NewSsoServiceClient(httpClient, url),
