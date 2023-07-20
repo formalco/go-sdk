@@ -21,6 +21,7 @@ type FormalSDK struct {
 	AppServiceClient                   adminv1connect.AppServiceClient
 	CloudServiceClient                 adminv1connect.CloudServiceClient
 	CodeRepositoryServiceClient        adminv1connect.CodeRepositoryServiceClient
+	DatahubServiceClient               adminv1connect.DatahubServiceClient
 	ExternalApiServiceClient           adminv1connect.ExternalApiServiceClient
 	GithubServiceClient                adminv1connect.GithubServiceClient
 	IncidentServiceClient              adminv1connect.IncidentServiceClient
@@ -52,6 +53,7 @@ func New(apiKey string) *FormalSDK {
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, FORMAL_HOST_URL),
 		DSyncServiceClient:                 adminv1connect.NewDSyncServiceClient(httpClient, FORMAL_HOST_URL),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, FORMAL_HOST_URL),
+		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, FORMAL_HOST_URL),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, FORMAL_HOST_URL),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, FORMAL_HOST_URL),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, FORMAL_HOST_URL),
@@ -88,6 +90,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		CordServiceClient:                  adminv1connect.NewCordServiceClient(httpClient, url),
 		DSyncServiceClient:                 adminv1connect.NewDSyncServiceClient(httpClient, url),
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, url),
+		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, url),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, url),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, url),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, url),
