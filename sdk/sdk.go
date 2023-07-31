@@ -35,6 +35,7 @@ type FormalSDK struct {
 	OutputsServiceClient               adminv1connect.OutputsServiceClient
 	PolicyServiceClient                adminv1connect.PolicyServiceClient
 	RegistryServiceClient              adminv1connect.RegistryServiceClient
+	SatelliteServiceClient             adminv1connect.SatelliteServiceClient
 	SearchServiceClient                adminv1connect.SearchServiceClient
 	SidecarServiceClient               adminv1connect.SidecarServiceClient
 	DSyncServiceClient                 adminv1connect.DSyncServiceClient
@@ -69,6 +70,7 @@ func New(apiKey string) *FormalSDK {
 		OutputsServiceClient:               adminv1connect.NewOutputsServiceClient(httpClient, FORMAL_HOST_URL),
 		PolicyServiceClient:                adminv1connect.NewPolicyServiceClient(httpClient, FORMAL_HOST_URL),
 		RegistryServiceClient:              adminv1connect.NewRegistryServiceClient(httpClient, FORMAL_HOST_URL),
+		SatelliteServiceClient:             adminv1connect.NewSatelliteServiceClient(httpClient, FORMAL_HOST_URL),
 		SearchServiceClient:                adminv1connect.NewSearchServiceClient(httpClient, FORMAL_HOST_URL),
 		SidecarServiceClient:               adminv1connect.NewSidecarServiceClient(httpClient, FORMAL_HOST_URL),
 		SlackServiceClient:                 adminv1connect.NewSlackServiceClient(httpClient, FORMAL_HOST_URL),
@@ -106,6 +108,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		OutputsServiceClient:               adminv1connect.NewOutputsServiceClient(httpClient, url),
 		PolicyServiceClient:                adminv1connect.NewPolicyServiceClient(httpClient, url),
 		RegistryServiceClient:              adminv1connect.NewRegistryServiceClient(httpClient, url),
+		SatelliteServiceClient:             adminv1connect.NewSatelliteServiceClient(httpClient, url),
 		SearchServiceClient:                adminv1connect.NewSearchServiceClient(httpClient, url),
 		SidecarServiceClient:               adminv1connect.NewSidecarServiceClient(httpClient, url),
 		SlackServiceClient:                 adminv1connect.NewSlackServiceClient(httpClient, url),
