@@ -16,6 +16,7 @@ type FormalSDK struct {
 	DataStoreServiceClient             adminv1connect.DataStoreServiceClient
 	FieldEncryptionPolicyServiceClient adminv1connect.FieldEncryptionPolicyServiceClient
 	FieldEncryptionServiceClient       adminv1connect.FieldEncryptionServiceClient
+	ETLServiceClient                   adminv1connect.ETLServiceClient
 	UserServiceClient                  adminv1connect.UserServiceClient
 	GroupServiceClient                 adminv1connect.GroupServiceClient
 	AppServiceClient                   adminv1connect.AppServiceClient
@@ -24,7 +25,6 @@ type FormalSDK struct {
 	DatahubServiceClient               adminv1connect.DatahubServiceClient
 	ExternalApiServiceClient           adminv1connect.ExternalApiServiceClient
 	GithubServiceClient                adminv1connect.GithubServiceClient
-	IncidentServiceClient              adminv1connect.IncidentServiceClient
 	KmsServiceClient                   adminv1connect.KmsServiceClient
 	LogsServiceClient                  adminv1connect.LogsServiceClient
 	SlackServiceClient                 adminv1connect.SlackServiceClient
@@ -32,7 +32,7 @@ type FormalSDK struct {
 	InventoryServiceClient             adminv1connect.InventoryServiceClient
 	MetricsServiceClient               adminv1connect.MetricsServiceClient
 	NativeUserServiceClient            adminv1connect.NativeUserServiceClient
-	OutputsServiceClient               adminv1connect.OutputsServiceClient
+	PermissionServiceClient            adminv1connect.PermissionServiceClient
 	PolicyServiceClient                adminv1connect.PolicyServiceClient
 	RegistryServiceClient              adminv1connect.RegistryServiceClient
 	SatelliteServiceClient             adminv1connect.SatelliteServiceClient
@@ -56,18 +56,18 @@ func New(apiKey string) *FormalSDK {
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, FORMAL_HOST_URL),
 		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, FORMAL_HOST_URL),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, FORMAL_HOST_URL),
+		ETLServiceClient:                   adminv1connect.NewETLServiceClient(httpClient, FORMAL_HOST_URL),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, FORMAL_HOST_URL),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, FORMAL_HOST_URL),
 		FieldEncryptionServiceClient:       adminv1connect.NewFieldEncryptionServiceClient(httpClient, FORMAL_HOST_URL),
 		GithubServiceClient:                adminv1connect.NewGithubServiceClient(httpClient, FORMAL_HOST_URL),
 		GroupServiceClient:                 adminv1connect.NewGroupServiceClient(httpClient, FORMAL_HOST_URL),
-		IncidentServiceClient:              adminv1connect.NewIncidentServiceClient(httpClient, FORMAL_HOST_URL),
 		InventoryServiceClient:             adminv1connect.NewInventoryServiceClient(httpClient, FORMAL_HOST_URL),
 		KmsServiceClient:                   adminv1connect.NewKmsServiceClient(httpClient, FORMAL_HOST_URL),
 		LogsServiceClient:                  adminv1connect.NewLogsServiceClient(httpClient, FORMAL_HOST_URL),
 		MetricsServiceClient:               adminv1connect.NewMetricsServiceClient(httpClient, FORMAL_HOST_URL),
 		NativeUserServiceClient:            adminv1connect.NewNativeUserServiceClient(httpClient, FORMAL_HOST_URL),
-		OutputsServiceClient:               adminv1connect.NewOutputsServiceClient(httpClient, FORMAL_HOST_URL),
+		PermissionServiceClient:            adminv1connect.NewPermissionServiceClient(httpClient, FORMAL_HOST_URL),
 		PolicyServiceClient:                adminv1connect.NewPolicyServiceClient(httpClient, FORMAL_HOST_URL),
 		RegistryServiceClient:              adminv1connect.NewRegistryServiceClient(httpClient, FORMAL_HOST_URL),
 		SatelliteServiceClient:             adminv1connect.NewSatelliteServiceClient(httpClient, FORMAL_HOST_URL),
@@ -94,18 +94,18 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		DataStoreServiceClient:             adminv1connect.NewDataStoreServiceClient(httpClient, url),
 		DatahubServiceClient:               adminv1connect.NewDatahubServiceClient(httpClient, url),
 		DevServiceClient:                   adminv1connect.NewDevServiceClient(httpClient, url),
+		ETLServiceClient:                   adminv1connect.NewETLServiceClient(httpClient, url),
 		ExternalApiServiceClient:           adminv1connect.NewExternalApiServiceClient(httpClient, url),
 		FieldEncryptionPolicyServiceClient: adminv1connect.NewFieldEncryptionPolicyServiceClient(httpClient, url),
 		FieldEncryptionServiceClient:       adminv1connect.NewFieldEncryptionServiceClient(httpClient, url),
 		GithubServiceClient:                adminv1connect.NewGithubServiceClient(httpClient, url),
 		GroupServiceClient:                 adminv1connect.NewGroupServiceClient(httpClient, url),
-		IncidentServiceClient:              adminv1connect.NewIncidentServiceClient(httpClient, url),
 		InventoryServiceClient:             adminv1connect.NewInventoryServiceClient(httpClient, url),
 		KmsServiceClient:                   adminv1connect.NewKmsServiceClient(httpClient, url),
 		LogsServiceClient:                  adminv1connect.NewLogsServiceClient(httpClient, url),
 		MetricsServiceClient:               adminv1connect.NewMetricsServiceClient(httpClient, url),
 		NativeUserServiceClient:            adminv1connect.NewNativeUserServiceClient(httpClient, url),
-		OutputsServiceClient:               adminv1connect.NewOutputsServiceClient(httpClient, url),
+		PermissionServiceClient:            adminv1connect.NewPermissionServiceClient(httpClient, url),
 		PolicyServiceClient:                adminv1connect.NewPolicyServiceClient(httpClient, url),
 		RegistryServiceClient:              adminv1connect.NewRegistryServiceClient(httpClient, url),
 		SatelliteServiceClient:             adminv1connect.NewSatelliteServiceClient(httpClient, url),
