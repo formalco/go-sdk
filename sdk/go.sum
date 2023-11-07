@@ -44,6 +44,8 @@ buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20231019002441-3c2c5d0
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20231019002441-3c2c5d027b0d.1/go.mod h1:qCPNlm3DNnxPRQW6vSZN7iGUWQJApMC+aevNEJqAppw=
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20231019203834-04d42e2868d2.1 h1:HQhwzXAa/vHKy0djkda3i3buH+NiCC5/l9EO2pCx5hA=
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20231019203834-04d42e2868d2.1/go.mod h1:Pix1yuOUEFfnyOjbL/GweBerrmQK2cTt8P0uRazsZkQ=
+buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20231105134549-07bf535e12c8.1 h1:nqNYjaVFAXlGJKhXIA4j0woJzrGHvvZd5MEnCmhvbyM=
+buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20231105134549-07bf535e12c8.1/go.mod h1:7mFqqNZXOra+KeMjFxdoLSuoku8emYgwKGmXsubhDTU=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.30.0-20230518165131-f1037834d4a0.1 h1:IxUEGRdRgDRs5wkzQimHMGk7MFLw1lRaVhjLFhlstj4=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.30.0-20230518165131-f1037834d4a0.1/go.mod h1:Sa5SUoh2vKkTD+YPzChjBN/HzogkOjfUHfqP0cMReHE=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20230626140508-550959b7bbdd.1 h1:8a2/SDy1IktrILiKArNEUO+tZNsoQqnGLSzfP0nqLNQ=
@@ -89,6 +91,7 @@ buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231002174734-de8b2533
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231019002441-3c2c5d027b0d.1 h1:0c+EHqg4mHn62m6Sq8dMGYkDBSH+3n4ocCfitqW+chY=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231019002441-3c2c5d027b0d.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231019203834-04d42e2868d2.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
+buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231105134549-07bf535e12c8.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
 github.com/bufbuild/connect-go v1.7.0 h1:MGp82v7SCza+3RhsVhV7aMikwxvI3ZfD72YiGt8FYJo=
 github.com/bufbuild/connect-go v1.7.0/go.mod h1:GmMJYR6orFqD0Y6ZgX8pwQ8j9baizDrIQMm1/a6LnHk=
 github.com/bufbuild/connect-go v1.9.0 h1:JIgAeNuFpo+SUPfU19Yt5TcWlznsN5Bv10/gI/6Pjoc=
