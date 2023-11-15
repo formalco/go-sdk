@@ -1,7 +1,11 @@
 # name: Update buf
 # on:
-#   pull_request:
-#   # workflow_dispatch:
+#   # pull_request:
+#   workflow_dispatch:
+#     inputs:
+#       buf_version:
+#         description: 'version'
+#         required: true
     
 # jobs:
 #   update-buf-dependency:
