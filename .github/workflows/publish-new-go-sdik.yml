@@ -19,8 +19,8 @@ jobs:
       - name: Latest Go SDK version
         id: get_version
         run: |
-          echo "version=$(cat VERSION | tr -s '\n' '')" >> $GITHUB_OUTPUT
-          echo "$(cat VERSION | tr -s '\n' '')"
+          echo "version=$(cat VERSION | tr -d '\n')" >> $GITHUB_OUTPUT
+          echo "$(cat VERSION | tr -d '\n')"
     #   - name: Push new version tag
     #     uses: mathieudutour/github-tag-action@v6.1
     #     with:
