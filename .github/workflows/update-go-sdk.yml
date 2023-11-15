@@ -26,7 +26,7 @@ jobs:
             go get -u buf.build/gen/go/formal/admin/protocolbuffers/go
       - name: Bump Up Version
         run: |
-          ./bump_version.sh
+          echo "Y" | ./bump_version.sh -r patch
       - uses: tibdex/github-app-token@v2
         id: generate-token
         with:
