@@ -32,10 +32,10 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v5
-      #   with:
-      #     base: master
-      #     token: ${{ steps.generate-token.outputs.token }}
-      #     title: "Bump Up Go SDK"
-      #     body: "Bump up Go SDK version. New tag will be created automatically after merge." 
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          base: master
+          token: ${{ steps.generate-token.outputs.token }}
+          title: "Bump Up Go SDK"
+          body: "Bump up Go SDK version. New tag will be created automatically after merge." 
