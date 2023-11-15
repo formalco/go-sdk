@@ -1,11 +1,11 @@
-name: Create go-sdk version tag
+name: Publish Go SDK version tag
 on:
-    pull_request:
-#   push:
-#     branches:
-#       - master
-#     paths:
-#       - 'sdk/**'
+  push:
+    branches:
+      - master
+    paths:
+      - 'sdk/**'
+      
 jobs:
   build:
     runs-on: ubuntu-latest
