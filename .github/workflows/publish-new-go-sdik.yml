@@ -1,0 +1,30 @@
+name: Create go-sdk version tag
+on:
+    pull_request:
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - 'sdk/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tibdex/github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Get Python SDK version
+        id: get_version
+        run: |
+          cd sdk/python
+          echo "version=$(git tag --sort=committerdate | grep -E '[0-9]' | tail -1)" >> $GITHUB_OUTPUT
+          echo "$(git tag --sort=committerdate | grep -E '[0-9]' | tail -1)"
+    #   - name: Push new version tag
+    #     uses: mathieudutour/github-tag-action@v6.1
+    #     with:
+    #       github_token: ${{ steps.generate-token.outputs.token }}
+    #       custom_tag: ${{ steps.get_version.outputs.version }}
+    #       tag_prefix: "sdk/v"
