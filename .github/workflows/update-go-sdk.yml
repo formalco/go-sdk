@@ -1,5 +1,8 @@
 name: Generate Updated Go SDK
 on:
+  repository_dispatch:
+    types: [go-sdk-update-version]
+
   workflow_dispatch:
     inputs:
       go-sdk-update-version-method:
@@ -33,7 +36,14 @@ jobs:
             go get -u buf.build/gen/go/formal/admin/protocolbuffers/go
       - name: Bump Up Version
         run: |
-          echo "y" | ./bump_version.sh -r ${{ github.event.inputs.go-sdk-update-version-method }}
+          VERSION_METHOD=""
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION_METHOD="${{ github.event.inputs.go-sdk-update-version-method }}"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            VERSION_METHOD="${{ github.event.client_payload.version_method }}"
+          fi
+          echo "Selected version method: $VERSION_METHOD"
+          echo "y" | ./bump_version.sh -r $VERSION_METHOD
       - uses: tibdex/github-app-token@v2
         id: generate-token
         with:
