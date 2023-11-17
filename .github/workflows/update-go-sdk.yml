@@ -45,12 +45,10 @@ jobs:
         run: |
           echo "version=$(cat VERSION | tr -d '\n')" >> $GITHUB_OUTPUT
           echo "$(cat VERSION | tr -d '\n')"
-      - run: |
-          echo "Version: ${{ steps.get-version-sdk-version.outputs.version }}"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          # base: master
+          base: farid/add-update-version-workflow
           token: ${{ steps.generate-token.outputs.token }}
           title: "Bump Up Go SDK to ${{ steps.get-version-sdk-version.outputs.version }}"
           body: "Bump up Go SDK version to${{ steps.get-version-sdk-version.outputs.version }}. New tag will be created automatically after merge." 
