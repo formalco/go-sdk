@@ -98,6 +98,8 @@ buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231019203834-04d42e28
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231101234842-06acc9c3973a.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231105134549-07bf535e12c8.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231114152905-5cd92ed5619c.1/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
+buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231114152905-5cd92ed5619c.2 h1:s4oVnfd1vSph7NNdeKJwstIhNN/xDIFt/k6vkPmfPjc=
+buf.build/gen/go/formal/admin/protocolbuffers/go v1.31.0-20231114152905-5cd92ed5619c.2/go.mod h1:tT2ehgfLh5ummBwlcRRUHwLr5Xh7Sy1lYZTjZwCDoWo=
 github.com/bufbuild/connect-go v1.7.0 h1:MGp82v7SCza+3RhsVhV7aMikwxvI3ZfD72YiGt8FYJo=
 github.com/bufbuild/connect-go v1.7.0/go.mod h1:GmMJYR6orFqD0Y6ZgX8pwQ8j9baizDrIQMm1/a6LnHk=
 github.com/bufbuild/connect-go v1.9.0 h1:JIgAeNuFpo+SUPfU19Yt5TcWlznsN5Bv10/gI/6Pjoc=
