@@ -46,8 +46,6 @@ jobs:
           echo "version=$(cat VERSION | tr -d '\n')" >> $GITHUB_OUTPUT
           echo "$(cat VERSION | tr -d '\n')"
       - run: |
-          echo "Token: ${{ steps.generate-token.outputs.token }}"
-      - run: |
           echo "Version: ${{ steps.get-version-sdk-version.outputs.version }}"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
