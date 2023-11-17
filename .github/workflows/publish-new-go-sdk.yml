@@ -17,13 +17,13 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Latest Go SDK version
-        id: get_version
+        id: get-go-sdk-version
         run: |
           echo "version=$(cat VERSION | tr -d '\n')" >> $GITHUB_OUTPUT
           echo "$(cat VERSION | tr -d '\n')"
-    #   - name: Push new version tag
-    #     uses: mathieudutour/github-tag-action@v6.1
-    #     with:
-    #       github_token: ${{ steps.generate-token.outputs.token }}
-    #       custom_tag: ${{ steps.get_version.outputs.version }}
-    #       tag_prefix: "sdk/v"
+      - name: Push new version tag
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ steps.generate-token.outputs.token }}
+          custom_tag: ${{ steps.get-go-sdk-version.outputs.version }}
+          tag_prefix: "sdk/v"

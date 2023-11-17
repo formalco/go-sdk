@@ -1,17 +1,16 @@
-name: Update Go SDK
+name: Generate Updated Go SDK
 on:
-  pull_request:
-  # workflow_dispatch:
-  #   inputs:
-  #     go-sdk-update-version-method:
-  #       description: 'version to be updated'
-  #       required: true
-  #       default: 'patch'
-  #       type: choice
-  #       options:
-  #         - patch
-  #         - minor
-  #         - major
+  workflow_dispatch:
+    inputs:
+      go-sdk-update-version-method:
+        description: 'version to be updated'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   update-buf-dependency:
@@ -34,7 +33,7 @@ jobs:
             go get -u buf.build/gen/go/formal/admin/protocolbuffers/go
       - name: Bump Up Version
         run: |
-          echo "y" | ./bump_version.sh -r patch # ${{ github.event.inputs.go-sdk-update-version-method }}
+          echo "y" | ./bump_version.sh -r ${{ github.event.inputs.go-sdk-update-version-method }}
       - uses: tibdex/github-app-token@v2
         id: generate-token
         with:
@@ -48,7 +47,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          base: farid/add-update-version-workflow
+          base: master
           token: ${{ steps.generate-token.outputs.token }}
           title: "Bump Up Go SDK to ${{ steps.get-version-sdk-version.outputs.version }}"
-          body: "Bump up Go SDK version to${{ steps.get-version-sdk-version.outputs.version }}. New tag will be created automatically after merge." 
+          body: "Bump up Go SDK version to ${{ steps.get-version-sdk-version.outputs.version }}. New tag will be created automatically after merge." 
