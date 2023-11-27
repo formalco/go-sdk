@@ -1,0 +1,29 @@
+name: Publish Go SDK version tag
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'sdk/**'
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tibdex/github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Latest Go SDK version
+        id: get-go-sdk-version
+        run: |
+          echo "version=$(cat VERSION | tr -d '\n')" >> $GITHUB_OUTPUT
+          echo "$(cat VERSION | tr -d '\n')"
+      - name: Push new version tag
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ steps.generate-token.outputs.token }}
+          custom_tag: ${{ steps.get-go-sdk-version.outputs.version }}
+          tag_prefix: "sdk/v"

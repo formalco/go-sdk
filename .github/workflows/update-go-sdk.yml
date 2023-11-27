@@ -1,0 +1,63 @@
+name: Generate Updated Go SDK
+on:
+  repository_dispatch:
+    types: [go-sdk-update-version]
+
+  workflow_dispatch:
+    inputs:
+      go-sdk-update-version-method:
+        description: 'version to be updated'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  update-buf-dependency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: 'sdk/go.mod'
+      - name: Update buf
+        run: |
+            go get -u buf.build/gen/go/formal/admin/bufbuild/connect-go
+            go run main.go
+            mv sdk.go sdk/sdk.go
+            cd sdk
+            go get -u buf.build/gen/go/formal/admin/bufbuild/connect-go
+            go get -u buf.build/gen/go/formal/admin/protocolbuffers/go
+      - name: Bump Up Version
+        run: |
+          VERSION_METHOD=""
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION_METHOD="${{ github.event.inputs.go-sdk-update-version-method }}"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            VERSION_METHOD="${{ github.event.client_payload.version_method }}"
+          fi
+          echo "Selected version method: $VERSION_METHOD"
+          echo "y" | ./bump_version.sh -r $VERSION_METHOD
+      - uses: tibdex/github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Latest Go SDK version
+        id: get-version-sdk-version
+        run: |
+          echo "version=$(cat VERSION | tr -d '\n')" >> $GITHUB_OUTPUT
+          echo "$(cat VERSION | tr -d '\n')"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          base: master
+          token: ${{ steps.generate-token.outputs.token }}
+          title: "Bump Up Go SDK to ${{ steps.get-version-sdk-version.outputs.version }}"
+          body: "Bump up Go SDK version to ${{ steps.get-version-sdk-version.outputs.version }}. New tag will be created automatically after merge." 
