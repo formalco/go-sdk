@@ -2,7 +2,7 @@ name: Publish Go SDK version tag
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'sdk/**'
       
