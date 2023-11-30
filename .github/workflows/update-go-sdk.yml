@@ -57,7 +57,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          base: master
+          base: main
           token: ${{ steps.generate-token.outputs.token }}
           title: "Bump Up Go SDK to ${{ steps.get-version-sdk-version.outputs.version }}"
           body: "Bump up Go SDK version to ${{ steps.get-version-sdk-version.outputs.version }}. New tag will be created automatically after merge." 
