@@ -53,6 +53,8 @@ buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20240123203521-6594c73
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20240123203521-6594c73c1ee4.1/go.mod h1:FxSIFQqqZebTpX2dRgwcf0szkwMns6musM6XXlNrkWE=
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20240124135442-efa077594e6c.1 h1:71wHqgJLfIATj8WBhlOdHRBkxKbgYq7gGg8T3sHmWBs=
 buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20240124135442-efa077594e6c.1/go.mod h1:SVmzv0UCSCVmB8fy6XrX6Ma65MKXk7MtL54g8Ib8b+o=
+buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20240128111555-79594517675a.1 h1:eW4bYDeIi+5GJIQqe3ysZiwXH/tLbG0row+IjYYjSe0=
+buf.build/gen/go/formal/admin/bufbuild/connect-go v1.10.0-20240128111555-79594517675a.1/go.mod h1:9bPt7vLuYLt0qvokhNoGrDDqr29uFHMUHDaIG5iT9sI=
 github.com/dave/jennifer v1.6.1 h1:T4T/67t6RAA5AIV6+NP8Uk/BIsXgDoqEowgycdQQLuk=
 github.com/dave/jennifer v1.6.1/go.mod h1:nXbxhEmQfOZhWml3D1cDK5M1FLnMSozpbFN/m3RmGZc=
 github.com/dave/jennifer v1.7.0 h1:uRbSBH9UTS64yXbh4FrMHfgfY762RD+C7bUPKODpSJE=
