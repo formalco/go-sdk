@@ -27,6 +27,7 @@ type FormalSDK struct {
 	GithubServiceClient                adminv1connect.GithubServiceClient
 	KmsServiceClient                   adminv1connect.KmsServiceClient
 	LogsServiceClient                  adminv1connect.LogsServiceClient
+	IntegrationMfaServiceClient        adminv1connect.IntegrationMfaServiceClient
 	SlackServiceClient                 adminv1connect.SlackServiceClient
 	SsoServiceClient                   adminv1connect.SsoServiceClient
 	InventoryServiceClient             adminv1connect.InventoryServiceClient
@@ -62,6 +63,7 @@ func New(apiKey string) *FormalSDK {
 		FieldEncryptionServiceClient:       adminv1connect.NewFieldEncryptionServiceClient(httpClient, FORMAL_HOST_URL),
 		GithubServiceClient:                adminv1connect.NewGithubServiceClient(httpClient, FORMAL_HOST_URL),
 		GroupServiceClient:                 adminv1connect.NewGroupServiceClient(httpClient, FORMAL_HOST_URL),
+		IntegrationMfaServiceClient:        adminv1connect.NewIntegrationMfaServiceClient(httpClient, FORMAL_HOST_URL),
 		InventoryServiceClient:             adminv1connect.NewInventoryServiceClient(httpClient, FORMAL_HOST_URL),
 		KmsServiceClient:                   adminv1connect.NewKmsServiceClient(httpClient, FORMAL_HOST_URL),
 		LogsServiceClient:                  adminv1connect.NewLogsServiceClient(httpClient, FORMAL_HOST_URL),
@@ -100,6 +102,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		FieldEncryptionServiceClient:       adminv1connect.NewFieldEncryptionServiceClient(httpClient, url),
 		GithubServiceClient:                adminv1connect.NewGithubServiceClient(httpClient, url),
 		GroupServiceClient:                 adminv1connect.NewGroupServiceClient(httpClient, url),
+		IntegrationMfaServiceClient:        adminv1connect.NewIntegrationMfaServiceClient(httpClient, url),
 		InventoryServiceClient:             adminv1connect.NewInventoryServiceClient(httpClient, url),
 		KmsServiceClient:                   adminv1connect.NewKmsServiceClient(httpClient, url),
 		LogsServiceClient:                  adminv1connect.NewLogsServiceClient(httpClient, url),
