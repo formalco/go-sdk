@@ -28,11 +28,11 @@ jobs:
           go-version-file: 'sdk/go.mod'
       - name: Update buf
         run: |
-            go get -u buf.build/gen/go/formal/admin/bufbuild/connect-go
+            go get -u buf.build/gen/go/formal/admin/connectrpc/go
             go run main.go
             mv sdk.go sdk/sdk.go
             cd sdk
-            go get -u buf.build/gen/go/formal/admin/bufbuild/connect-go
+            go get -u buf.build/gen/go/formal/admin/connectrpc/go
             go get -u buf.build/gen/go/formal/admin/protocolbuffers/go
       - name: Bump Up Version
         run: |

@@ -1,7 +1,7 @@
 package sdk
 
 import (
-	adminv1connect "buf.build/gen/go/formal/admin/bufbuild/connect-go/admin/v1/adminv1connect"
+	adminv1connect "buf.build/gen/go/formal/admin/connectrpc/go/admin/v1/adminv1connect"
 	"net/http"
 )
 
