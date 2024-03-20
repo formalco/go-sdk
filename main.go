@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/dave/jennifer/jen"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -12,9 +11,11 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	"github.com/dave/jennifer/jen"
 )
 
-const packageName = "buf.build/gen/go/formal/admin/bufbuild/connect-go"
+const packageName = "buf.build/gen/go/formal/admin/connectrpc/go"
 const path = "/admin/v1/adminv1connect"
 const url = "https://adminv2.api.formalcloud.net"
 
