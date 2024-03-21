@@ -1,9 +1,13 @@
 buf.build/gen/go/formal/admin/connectrpc/go v1.15.0-20240208053541-2fc559d58b20.1 h1:2djDnFp/w0YEeoZRORppOWTNinK9K2Z8qyQk6nYm2Dk=
 buf.build/gen/go/formal/admin/connectrpc/go v1.15.0-20240208053541-2fc559d58b20.1/go.mod h1:DLz/UIAtZLOsFlSvwT361+8qetTIU2c4Hn9ESdRYEd8=
+buf.build/gen/go/formal/admin/connectrpc/go v1.16.0-20240208053541-2fc559d58b20.1 h1:KNm/E0DlqQiWlgoMGdcgbBv7H35OH0dfxAqoJqgHv2o=
+buf.build/gen/go/formal/admin/connectrpc/go v1.16.0-20240208053541-2fc559d58b20.1/go.mod h1:3KXboyaT+VUvRWOwIRWMYDtKLCEB39OL1UkOr6snStA=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.33.0-20240208053541-2fc559d58b20.1 h1:JkhG+WX/GerB7Wx4pnRVOxZS7DJjki4xg19camwE8Ok=
 buf.build/gen/go/formal/admin/protocolbuffers/go v1.33.0-20240208053541-2fc559d58b20.1/go.mod h1:7DqNXrYUjKlLcpIaTwUUNLxS2SSNBCyQY/rZ+PE7sQE=
 connectrpc.com/connect v1.15.0 h1:lFdeCbZrVVDydAqwr4xGV2y+ULn+0Z73s5JBj2LikWo=
 connectrpc.com/connect v1.15.0/go.mod h1:bQmjpDY8xItMnttnurVgOkHUBMRT9cpsNi2O4AjKhmA=
+connectrpc.com/connect v1.16.0 h1:rdtfQjZ0OyFkWPTegBNcH7cwquGAN1WzyJy80oFNibg=
+connectrpc.com/connect v1.16.0/go.mod h1:XpZAduBQUySsb4/KO5JffORVkDI4B6/EYPi7N8xpNZw=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
