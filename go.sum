@@ -1,16 +1,2 @@
-buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20240212200630-3014d81c3a48.1 h1:UjheaNIfUTAHw6dGb+LZGw4VcEX3/kb93FLsRrhSCx4=
-buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.33.0-20240212200630-3014d81c3a48.1/go.mod h1:Tgn5bgL220vkFOI0KPStlcClPeOJzAv4uT+V8JXGUnw=
-buf.build/gen/go/formal/core/connectrpc/go v1.16.0-20240325021114-a12d8b513eb0.1 h1:sckW8MR1wxyfyWg9W3ZJBR6x87dUKG7gkfddiwsXrBE=
-buf.build/gen/go/formal/core/connectrpc/go v1.16.0-20240325021114-a12d8b513eb0.1/go.mod h1:CHbIr91JyPOfugJw0cwkd3kcttGxuFYJYMS8Vp2m7AE=
-buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240325021114-a12d8b513eb0.1 h1:FF7w18PdpRGAJ0oOMrJysrLLDhHyQv4j84aMGEFgtxA=
-buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240325021114-a12d8b513eb0.1/go.mod h1:KtxCb4xltxpHkSj5t5HRYHuGIeeQqUxixGOL6r47WeQ=
-connectrpc.com/connect v1.16.0 h1:rdtfQjZ0OyFkWPTegBNcH7cwquGAN1WzyJy80oFNibg=
-connectrpc.com/connect v1.16.0/go.mod h1:XpZAduBQUySsb4/KO5JffORVkDI4B6/EYPi7N8xpNZw=
 github.com/dave/jennifer v1.7.0 h1:uRbSBH9UTS64yXbh4FrMHfgfY762RD+C7bUPKODpSJE=
 github.com/dave/jennifer v1.7.0/go.mod h1:nXbxhEmQfOZhWml3D1cDK5M1FLnMSozpbFN/m3RmGZc=
-github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
-github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
-golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
-google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
-google.golang.org/protobuf v1.33.0 h1:uNO2rsAINq/JlFpSdYEKIZ0uKD/R9cpdv0T+yoGwGmI=
-google.golang.org/protobuf v1.33.0/go.mod h1:c6P6GXX6sHbq/GpV6MGZEdwhWPcYBgnhAHhKbcUYpos=
