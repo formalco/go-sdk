@@ -15,9 +15,9 @@ import (
 	"github.com/dave/jennifer/jen"
 )
 
-const packageName = "buf.build/gen/go/formal/admin/connectrpc/go"
-const path = "/admin/v1/adminv1connect"
-const url = "https://adminv2.api.formalcloud.net"
+const packageName = "buf.build/gen/go/formal/core/connectrpc/go"
+const path = "/core/v1/corev1connect"
+const url = "https://v2api.formalcloud.net"
 
 var directoryPath = os.Getenv("DIRECTORY_PATH")
 
