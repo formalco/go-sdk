@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	FORMAL_HOST_URL string = "https://adminv2.api.formalcloud.net"
+	FORMAL_HOST_URL string = "https://v2api.formalcloud.net"
 )
 
 type FormalSDK struct {
