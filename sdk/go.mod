@@ -1,4 +1,4 @@
-module github.com/formalco/go-sdk/sdk
+module github.com/formalco/go-sdk/sdk/v2
 
 go 1.22.0
 
