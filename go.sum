@@ -1,2 +1,4 @@
+buf.build/gen/go/formal/admin/connectrpc/go v1.15.0-20240208053541-2fc559d58b20.1 h1:2djDnFp/w0YEeoZRORppOWTNinK9K2Z8qyQk6nYm2Dk=
+buf.build/gen/go/formal/admin/connectrpc/go v1.15.0-20240208053541-2fc559d58b20.1/go.mod h1:DLz/UIAtZLOsFlSvwT361+8qetTIU2c4Hn9ESdRYEd8=
 github.com/dave/jennifer v1.7.0 h1:uRbSBH9UTS64yXbh4FrMHfgfY762RD+C7bUPKODpSJE=
 github.com/dave/jennifer v1.7.0/go.mod h1:nXbxhEmQfOZhWml3D1cDK5M1FLnMSozpbFN/m3RmGZc=
