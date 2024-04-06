@@ -1,9 +1,8 @@
 package sdk
 
 import (
-	"net/http"
-
 	corev1connect "buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
+	"net/http"
 )
 
 const (
