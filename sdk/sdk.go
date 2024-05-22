@@ -22,7 +22,7 @@ type FormalSDK struct {
 	PoliciesServiceClient               corev1connect.PoliciesServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
 	SatelliteServiceClient              corev1connect.SatelliteServiceClient
-	SessionServiceClient                corev1connect.SessionServiceClient
+	SessionServiceClient                corev1connect.SessionsServiceClient
 	SidecarServiceClient                corev1connect.SidecarServiceClient
 	TrackersServiceClient               corev1connect.TrackersServiceClient
 	UserServiceClient                   corev1connect.UserServiceClient
@@ -46,7 +46,7 @@ func New(apiKey string) *FormalSDK {
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FORMAL_HOST_URL),
 		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, FORMAL_HOST_URL),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, FORMAL_HOST_URL),
-		SessionServiceClient:                corev1connect.NewSessionServiceClient(httpClient, FORMAL_HOST_URL),
+		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, FORMAL_HOST_URL),
 		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, FORMAL_HOST_URL),
 		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, FORMAL_HOST_URL),
 	}
@@ -70,7 +70,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
 		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, url),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, url),
-		SessionServiceClient:                corev1connect.NewSessionServiceClient(httpClient, url),
+		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, url),
 		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, url),
 		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, url),
 	}
