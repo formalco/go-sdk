@@ -5,32 +5,47 @@ formalco/go-sdk supports 2 last Go versions and requires support for
 [Go modules](https://github.com/golang/go/wiki/Modules). So make sure to initialize a Go module:
 
 ```shell
-go mod init github.com/my/repo
+go mod init github.com/myorg/formal
 ```
 
-And then install formalco/go-sdk/sdk@v1:
+And then install formalco/go-sdk/sdk@v2:
 
 ```shell
-go get github.com/formalco/go-sdk/sdk
+go get github.com/formalco/go-sdk/sdk/v2
 ```
 
 ## Quickstart
 
+### Code
+
 ```go
-import "github.com/formalco/go-sdk/sdk"
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	corev1 "buf.build/gen/go/formal/core/protocolbuffers/go/core/v1"
+	"connectrpc.com/connect"
+	"github.com/formalco/go-sdk/sdk/v2"
+)
 
 func main() {
-    client := sdk.New("my-api-key")
-	
-	client.UserServiceClient.CreateUser(ctx, connect.NewRequest(&adminv1.CreateUserRequest{
-            User: &types.User{
-            FirstName: "Foo",
-            LastName:  "Bar",
-            Type:     "user",
-            Name:      "foo",
-            Email:     "foo@bar.com",
-            Admin:    false,
-        },
-    }))
+	client := sdk.New("my-api-key")
+
+	request := connect.NewRequest(&corev1.ListUsersRequest{
+		Limit: 100,
+	})
+
+	response, err := client.UserServiceClient.ListUsers(context.Background(), request)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "failed to list users: %s\n", err.Error())
+		os.Exit(1)
+	}
+
+	for _, user := range response.Msg.Users {
+		fmt.Println(user.GetId())
+	}
 }
 ```
