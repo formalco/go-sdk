@@ -3,7 +3,7 @@ package sdk
 import (
 	"net/http"
 
-	corev1connect "buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
+	"buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
 )
 
 const (
@@ -18,6 +18,7 @@ type FormalSDK struct {
 	IntegrationDataCatalogServiceClient corev1connect.IntegrationDataCatalogServiceClient
 	IntegrationsLogServiceClient        corev1connect.IntegrationsLogServiceClient
 	IntegrationMfaServiceClient         corev1connect.IntegrationMfaServiceClient
+	IntegrationMDMServiceClient         corev1connect.IntegrationMDMServiceClient
 	InventoryServiceClient              corev1connect.InventoryServiceClient
 	PoliciesServiceClient               corev1connect.PoliciesServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
@@ -41,6 +42,7 @@ func New(apiKey string) *FormalSDK {
 		IntegrationDataCatalogServiceClient: corev1connect.NewIntegrationDataCatalogServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationMfaServiceClient:         corev1connect.NewIntegrationMfaServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, FORMAL_HOST_URL),
+		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, FORMAL_HOST_URL),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, FORMAL_HOST_URL),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, FORMAL_HOST_URL),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FORMAL_HOST_URL),
@@ -65,6 +67,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		IntegrationDataCatalogServiceClient: corev1connect.NewIntegrationDataCatalogServiceClient(httpClient, url),
 		IntegrationMfaServiceClient:         corev1connect.NewIntegrationMfaServiceClient(httpClient, url),
 		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, url),
+		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, url),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
