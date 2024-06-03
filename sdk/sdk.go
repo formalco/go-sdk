@@ -30,10 +30,13 @@ type FormalSDK struct {
 }
 
 func New(apiKey string) *FormalSDK {
-	httpClient := &http.Client{Transport: &transport{
-		apiKey:              apiKey,
-		underlyingTransport: http.DefaultTransport,
-	}}
+	httpClient := &http.Client{
+		Transport: &transport{
+			apiKey:              apiKey,
+			underlyingTransport: http.DefaultTransport,
+		},
+	}
+
 	return &FormalSDK{
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FORMAL_HOST_URL),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FORMAL_HOST_URL),
@@ -55,10 +58,13 @@ func New(apiKey string) *FormalSDK {
 }
 
 func NewWithUrl(apiKey string, url string) *FormalSDK {
-	httpClient := &http.Client{Transport: &transport{
-		apiKey:              apiKey,
-		underlyingTransport: http.DefaultTransport,
-	}}
+	httpClient := &http.Client{
+		Transport: &transport{
+			apiKey:              apiKey,
+			underlyingTransport: http.DefaultTransport,
+		},
+	}
+
 	return &FormalSDK{
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, url),
