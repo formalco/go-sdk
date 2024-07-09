@@ -6,12 +6,9 @@ import (
 	"buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
 )
 
-const (
-	FormalHostUrl string = "https://v2api.formalcloud.net"
-)
+const FormalHostUrl string = "https://v2api.formalcloud.net"
 
 type FormalSDK struct {
-	LogsServiceClient                   corev1connect.LogsServiceClient
 	GroupServiceClient                  corev1connect.GroupServiceClient
 	IntegrationBIServiceClient          corev1connect.IntegrationBIServiceClient
 	IntegrationCloudServiceClient       corev1connect.IntegrationCloudServiceClient
@@ -21,6 +18,7 @@ type FormalSDK struct {
 	IntegrationMDMServiceClient         corev1connect.IntegrationMDMServiceClient
 	InventoryServiceClient              corev1connect.InventoryServiceClient
 	ListenersServiceClient              corev1connect.ListenerServiceClient
+	LogsServiceClient                   corev1connect.LogsServiceClient
 	PoliciesServiceClient               corev1connect.PoliciesServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
 	SatelliteServiceClient              corev1connect.SatelliteServiceClient
@@ -40,7 +38,6 @@ func New(apiKey string) *FormalSDK {
 	}
 
 	return &FormalSDK{
-		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FormalHostUrl),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FormalHostUrl),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, FormalHostUrl),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, FormalHostUrl),
@@ -50,12 +47,13 @@ func New(apiKey string) *FormalSDK {
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, FormalHostUrl),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, FormalHostUrl),
 		ListenersServiceClient:              corev1connect.NewListenerServiceClient(httpClient, FormalHostUrl),
+		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FormalHostUrl),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, FormalHostUrl),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FormalHostUrl),
-		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, FormalHostUrl),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, FormalHostUrl),
 		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, FormalHostUrl),
 		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, FormalHostUrl),
+		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, FormalHostUrl),
 		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, FormalHostUrl),
 	}
 }
@@ -70,7 +68,6 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 	}
 
 	return &FormalSDK{
-		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, url),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, url),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, url),
@@ -80,12 +77,13 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
 		ListenersServiceClient:              corev1connect.NewListenerServiceClient(httpClient, url),
+		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, url),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
-		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, url),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, url),
 		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, url),
 		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, url),
+		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, url),
 		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, url),
 	}
 }
