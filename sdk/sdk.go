@@ -9,6 +9,7 @@ import (
 const FormalHostUrl string = "https://v2api.formalcloud.net"
 
 type FormalSDK struct {
+	ConnectorServiceClient              corev1connect.ConnectorServiceClient
 	GroupServiceClient                  corev1connect.GroupServiceClient
 	IntegrationBIServiceClient          corev1connect.IntegrationBIServiceClient
 	IntegrationCloudServiceClient       corev1connect.IntegrationCloudServiceClient
@@ -17,7 +18,6 @@ type FormalSDK struct {
 	IntegrationMfaServiceClient         corev1connect.IntegrationMfaServiceClient
 	IntegrationMDMServiceClient         corev1connect.IntegrationMDMServiceClient
 	InventoryServiceClient              corev1connect.InventoryServiceClient
-	ListenersServiceClient              corev1connect.ListenerServiceClient
 	LogsServiceClient                   corev1connect.LogsServiceClient
 	PoliciesServiceClient               corev1connect.PoliciesServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
@@ -38,6 +38,7 @@ func New(apiKey string) *FormalSDK {
 	}
 
 	return &FormalSDK{
+		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, FormalHostUrl),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FormalHostUrl),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, FormalHostUrl),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, FormalHostUrl),
@@ -46,7 +47,6 @@ func New(apiKey string) *FormalSDK {
 		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, FormalHostUrl),
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, FormalHostUrl),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, FormalHostUrl),
-		ListenersServiceClient:              corev1connect.NewListenerServiceClient(httpClient, FormalHostUrl),
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FormalHostUrl),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, FormalHostUrl),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FormalHostUrl),
@@ -68,6 +68,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 	}
 
 	return &FormalSDK{
+		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, url),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, url),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, url),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, url),
@@ -76,7 +77,6 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, url),
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
-		ListenersServiceClient:              corev1connect.NewListenerServiceClient(httpClient, url),
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, url),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
