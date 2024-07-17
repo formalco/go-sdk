@@ -1,8 +1,6 @@
 package sdk
 
 import (
-	"net/http"
-
 	"buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
 )
 
@@ -30,12 +28,7 @@ type FormalSDK struct {
 
 // New creates a new FormalSDK instance
 func New(apiKey string) *FormalSDK {
-	httpClient := &http.Client{
-		Transport: &transport{
-			apiKey:              apiKey,
-			underlyingTransport: http.DefaultTransport,
-		},
-	}
+	httpClient := NewClient(apiKey)
 
 	return &FormalSDK{
 		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, FormalHostUrl),
@@ -60,12 +53,7 @@ func New(apiKey string) *FormalSDK {
 
 // NewWithUrl creates a new FormalSDK instance with a custom URL
 func NewWithUrl(apiKey string, url string) *FormalSDK {
-	httpClient := &http.Client{
-		Transport: &transport{
-			apiKey:              apiKey,
-			underlyingTransport: http.DefaultTransport,
-		},
-	}
+	httpClient := NewClient(apiKey)
 
 	return &FormalSDK{
 		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, url),
@@ -86,14 +74,4 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, url),
 		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, url),
 	}
-}
-
-type transport struct {
-	underlyingTransport http.RoundTripper
-	apiKey              string
-}
-
-func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
-	req.Header.Add("X-Api-Key", t.apiKey)
-	return t.underlyingTransport.RoundTrip(req)
 }
