@@ -26,11 +26,8 @@ buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240415104927-e011f0228
 buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240415104927-e011f022840f.1/go.mod h1:KtxCb4xltxpHkSj5t5HRYHuGIeeQqUxixGOL6r47WeQ=
 buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240415234248-6e140f7286cc.1 h1:a6u9Z50LXWepSsYUJOug8fxemT5FhOE56iMpsb1KkRA=
 buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240415234248-6e140f7286cc.1/go.mod h1:KtxCb4xltxpHkSj5t5HRYHuGIeeQqUxixGOL6r47WeQ=
-<<<<<<< HEAD
-=======
 buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240424031542-92b286ad7f8b.1 h1:9fxCjCU3wnhNrXIQC9WSQ21AAeBmPoaqLUFSI4f5T7Q=
 buf.build/gen/go/formal/core/protocolbuffers/go v1.33.0-20240424031542-92b286ad7f8b.1/go.mod h1:KtxCb4xltxpHkSj5t5HRYHuGIeeQqUxixGOL6r47WeQ=
->>>>>>> e2c97d17ead64c46b41078d852b6637166c7fd91
 connectrpc.com/connect v1.16.0 h1:rdtfQjZ0OyFkWPTegBNcH7cwquGAN1WzyJy80oFNibg=
 connectrpc.com/connect v1.16.0/go.mod h1:XpZAduBQUySsb4/KO5JffORVkDI4B6/EYPi7N8xpNZw=
 connectrpc.com/connect v1.16.1 h1:rOdrK/RTI/7TVnn3JsVxt3n028MlTRwmK5Q4heSpjis=
