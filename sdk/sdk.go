@@ -18,6 +18,7 @@ type FormalSDK struct {
 	InventoryServiceClient              corev1connect.InventoryServiceClient
 	LogsServiceClient                   corev1connect.LogsServiceClient
 	PoliciesServiceClient               corev1connect.PoliciesServiceClient
+	PolicyDataLoaderServiceClient       corev1connect.PolicyDataLoaderServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
 	SatelliteServiceClient              corev1connect.SatelliteServiceClient
 	SessionServiceClient                corev1connect.SessionsServiceClient
@@ -42,6 +43,7 @@ func New(apiKey string) *FormalSDK {
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, FormalHostUrl),
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FormalHostUrl),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, FormalHostUrl),
+		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, FormalHostUrl),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FormalHostUrl),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, FormalHostUrl),
 		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, FormalHostUrl),
@@ -67,6 +69,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, url),
+		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, url),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, url),
 		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, url),
