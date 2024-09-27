@@ -23,6 +23,7 @@ type FormalSDK struct {
 	SatelliteServiceClient              corev1connect.SatelliteServiceClient
 	SessionServiceClient                corev1connect.SessionsServiceClient
 	SidecarServiceClient                corev1connect.SidecarServiceClient
+	SpaceServiceClient                  corev1connect.SpaceServiceClient
 	TrackersServiceClient               corev1connect.TrackersServiceClient
 	UserServiceClient                   corev1connect.UserServiceClient
 }
@@ -48,6 +49,7 @@ func New(apiKey string) *FormalSDK {
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, FormalHostUrl),
 		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, FormalHostUrl),
 		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, FormalHostUrl),
+		SpaceServiceClient:                  corev1connect.NewSpaceServiceClient(httpClient, FormalHostUrl),
 		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, FormalHostUrl),
 		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, FormalHostUrl),
 	}
@@ -74,6 +76,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, url),
 		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, url),
 		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, url),
+		SpaceServiceClient:                  corev1connect.NewSpaceServiceClient(httpClient, url),
 		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, url),
 		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, url),
 	}
