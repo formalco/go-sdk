@@ -17,6 +17,7 @@ type FormalSDK struct {
 	IntegrationMDMServiceClient         corev1connect.IntegrationMDMServiceClient
 	InventoryServiceClient              corev1connect.InventoryServiceClient
 	LogsServiceClient                   corev1connect.LogsServiceClient
+	MonitorsServiceClient               corev1connect.MonitorsServiceClient
 	PoliciesServiceClient               corev1connect.PoliciesServiceClient
 	PolicyDataLoaderServiceClient       corev1connect.PolicyDataLoaderServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
@@ -45,6 +46,7 @@ func New(apiKey string) *FormalSDK {
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FormalHostUrl),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, FormalHostUrl),
 		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, FormalHostUrl),
+		MonitorsServiceClient:               corev1connect.NewMonitorsServiceClient(httpClient, FormalHostUrl),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FormalHostUrl),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, FormalHostUrl),
 		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, FormalHostUrl),
@@ -70,6 +72,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
+		MonitorsServiceClient:               corev1connect.NewMonitorsServiceClient(httpClient, url),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, url),
 		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, url),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
