@@ -31,30 +31,7 @@ type FormalSDK struct {
 
 // New creates a new FormalSDK instance
 func New(apiKey string) *FormalSDK {
-	httpClient := NewClient(apiKey)
-
-	return &FormalSDK{
-		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, FormalHostUrl),
-		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FormalHostUrl),
-		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, FormalHostUrl),
-		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, FormalHostUrl),
-		IntegrationDataCatalogServiceClient: corev1connect.NewIntegrationDataCatalogServiceClient(httpClient, FormalHostUrl),
-		IntegrationMfaServiceClient:         corev1connect.NewIntegrationMfaServiceClient(httpClient, FormalHostUrl),
-		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, FormalHostUrl),
-		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, FormalHostUrl),
-		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, FormalHostUrl),
-		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FormalHostUrl),
-		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, FormalHostUrl),
-		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, FormalHostUrl),
-		MonitorsServiceClient:               corev1connect.NewMonitorsServiceClient(httpClient, FormalHostUrl),
-		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FormalHostUrl),
-		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, FormalHostUrl),
-		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, FormalHostUrl),
-		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, FormalHostUrl),
-		SpaceServiceClient:                  corev1connect.NewSpaceServiceClient(httpClient, FormalHostUrl),
-		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, FormalHostUrl),
-		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, FormalHostUrl),
-	}
+	return NewWithUrl(apiKey, FormalHostUrl)
 }
 
 // NewWithUrl creates a new FormalSDK instance with a custom URL
