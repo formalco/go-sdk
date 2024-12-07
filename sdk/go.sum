@@ -4,10 +4,14 @@ buf.build/gen/go/formal/core/connectrpc/go v1.17.0-20241205031422-4024bf7e9c24.1
 buf.build/gen/go/formal/core/connectrpc/go v1.17.0-20241205031422-4024bf7e9c24.1/go.mod h1:yeAXxBam+Qdg8oc7oUObSwr5UEQgTcmkG6yAVaisRic=
 buf.build/gen/go/formal/core/connectrpc/go v1.17.0-20241207013800-94f9e19e06b2.1 h1:gEbvc13HFr5LA5vUk3x+ILaWu2ditL6RLw/Xtgzm9Ic=
 buf.build/gen/go/formal/core/connectrpc/go v1.17.0-20241207013800-94f9e19e06b2.1/go.mod h1:gkGhJurpBdnG07jwVJYN7UA/OIJGrnk0nuN5wDAsB7g=
+buf.build/gen/go/formal/core/connectrpc/go v1.17.0-20241207024844-382ecefa636e.1 h1:i+0KLdSFdFs5+Vjwl9+G3kmbvdrgRGyvIhZ0JmOtCec=
+buf.build/gen/go/formal/core/connectrpc/go v1.17.0-20241207024844-382ecefa636e.1/go.mod h1:DTmVu7HY1l4reAAJ04xwhrlYJ4YIjp644GF3+QWon8k=
 buf.build/gen/go/formal/core/protocolbuffers/go v1.35.2-20241205031422-4024bf7e9c24.1 h1:Nd5r0irHj8ycXbZ3PSsdaf96qwbNHtly91xC1uq5Vl0=
 buf.build/gen/go/formal/core/protocolbuffers/go v1.35.2-20241205031422-4024bf7e9c24.1/go.mod h1:7uKO+Cyoorblesv1zOvGSiibycM3BdPQSAu6QADQtrQ=
 buf.build/gen/go/formal/core/protocolbuffers/go v1.35.2-20241207013800-94f9e19e06b2.1 h1:bbfnM2NQ9lFoXTjlEQotkFdD56D6AKFxUjAP3ywJ3oc=
 buf.build/gen/go/formal/core/protocolbuffers/go v1.35.2-20241207013800-94f9e19e06b2.1/go.mod h1:7uKO+Cyoorblesv1zOvGSiibycM3BdPQSAu6QADQtrQ=
+buf.build/gen/go/formal/core/protocolbuffers/go v1.35.2-20241207024844-382ecefa636e.1 h1:+L8UTMRDvBvvow3UiXlHnYuWvrr4VR8EGP+wbutIVbM=
+buf.build/gen/go/formal/core/protocolbuffers/go v1.35.2-20241207024844-382ecefa636e.1/go.mod h1:7uKO+Cyoorblesv1zOvGSiibycM3BdPQSAu6QADQtrQ=
 connectrpc.com/connect v1.17.0 h1:W0ZqMhtVzn9Zhn2yATuUokDLO5N+gIuBWMOnsQrfmZk=
 connectrpc.com/connect v1.17.0/go.mod h1:0292hj1rnx8oFrStN7cB4jjVBeqs+Yx5yDIC2prWDO8=
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
