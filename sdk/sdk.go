@@ -4,7 +4,7 @@ import (
 	"buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
 )
 
-const FormalHostUrl string = "https://v2api.formalcloud.net"
+const FormalHostUrl string = "https://api.joinformal.com"
 
 type FormalSDK struct {
 	ConnectorServiceClient              corev1connect.ConnectorServiceClient
