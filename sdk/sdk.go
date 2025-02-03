@@ -18,6 +18,7 @@ type FormalSDK struct {
 	InventoryServiceClient              corev1connect.InventoryServiceClient
 	LogsServiceClient                   corev1connect.LogsServiceClient
 	MonitorsServiceClient               corev1connect.MonitorsServiceClient
+	PermissionsServiceClient            corev1connect.PermissionsServiceClient
 	PoliciesServiceClient               corev1connect.PoliciesServiceClient
 	PolicyDataLoaderServiceClient       corev1connect.PolicyDataLoaderServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
