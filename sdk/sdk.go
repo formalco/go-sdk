@@ -36,8 +36,13 @@ func New(apiKey string) *FormalSDK {
 }
 
 // NewWithUrl creates a new FormalSDK instance with a custom URL
-func NewWithUrl(apiKey string, url string) *FormalSDK {
-	httpClient := NewClient(apiKey)
+func NewWithUrl(apiKey, url string) *FormalSDK {
+	return NewWithParams(apiKey, "2025-02-24", url)
+}
+
+// NewWithParams creates a new FormalSDK instance with all custom params
+func NewWithParams(apiKey, apiVersion, url string) *FormalSDK {
+	httpClient := NewClient(apiKey, apiVersion)
 
 	return &FormalSDK{
 		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, url),
