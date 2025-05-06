@@ -56,6 +56,7 @@ func NewWithParams(apiKey, apiVersion, url string) *FormalSDK {
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
 		MonitorsServiceClient:               corev1connect.NewMonitorsServiceClient(httpClient, url),
+		PermissionsServiceClient:            corev1connect.NewPermissionsServiceClient(httpClient, url),
 		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, url),
 		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, url),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
