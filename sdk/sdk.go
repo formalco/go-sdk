@@ -35,33 +35,7 @@ type FormalSDK struct {
 }
 
 func New(apiKey string) *FormalSDK {
-	httpClient := &http.Client{Transport: &transport{
-		apiKey:              apiKey,
-		underlyingTransport: http.DefaultTransport,
-	}}
-	return &FormalSDK{
-		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, FORMAL_HOST_URL),
-		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FORMAL_HOST_URL),
-		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, FORMAL_HOST_URL),
-		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, FORMAL_HOST_URL),
-		IntegrationDataCatalogServiceClient: corev1connect.NewIntegrationDataCatalogServiceClient(httpClient, FORMAL_HOST_URL),
-		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, FORMAL_HOST_URL),
-		IntegrationMfaServiceClient:         corev1connect.NewIntegrationMfaServiceClient(httpClient, FORMAL_HOST_URL),
-		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, FORMAL_HOST_URL),
-		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, FORMAL_HOST_URL),
-		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, FORMAL_HOST_URL),
-		MonitorsServiceClient:               corev1connect.NewMonitorsServiceClient(httpClient, FORMAL_HOST_URL),
-		PermissionsServiceClient:            corev1connect.NewPermissionsServiceClient(httpClient, FORMAL_HOST_URL),
-		PoliciesServiceClient:               corev1connect.NewPoliciesServiceClient(httpClient, FORMAL_HOST_URL),
-		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, FORMAL_HOST_URL),
-		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, FORMAL_HOST_URL),
-		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, FORMAL_HOST_URL),
-		SessionsServiceClient:               corev1connect.NewSessionsServiceClient(httpClient, FORMAL_HOST_URL),
-		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, FORMAL_HOST_URL),
-		SpaceServiceClient:                  corev1connect.NewSpaceServiceClient(httpClient, FORMAL_HOST_URL),
-		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, FORMAL_HOST_URL),
-		UserServiceClient:                   corev1connect.NewUserServiceClient(httpClient, FORMAL_HOST_URL),
-	}
+	return NewWithUrl(apiKey, FORMAL_HOST_URL)
 }
 
 func NewWithUrl(apiKey string, url string) *FormalSDK {

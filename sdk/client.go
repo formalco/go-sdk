@@ -13,13 +13,3 @@ func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	req.Header.Add("X-Formal-API-Version", t.apiVersion)
 	return t.underlyingTransport.RoundTrip(req)
 }
-
-func NewClient(apiKey, apiVersion string) *http.Client {
-	return &http.Client{
-		Transport: &transport{
-			apiKey:              apiKey,
-			apiVersion:          apiVersion,
-			underlyingTransport: http.DefaultTransport,
-		},
-	}
-}
