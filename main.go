@@ -17,7 +17,7 @@ import (
 
 const packageName = "buf.build/gen/go/formal/core/connectrpc/go"
 const path = "/core/v1/corev1connect"
-const url = "https://v2api.formalcloud.net"
+const url = "https://api.joinformal.com"
 
 var directoryPath = os.Getenv("DIRECTORY_PATH")
 
