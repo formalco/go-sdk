@@ -1,10 +1,14 @@
 package sdk
 
 import (
-	"buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
+	"net/http"
+
+	corev1connect "buf.build/gen/go/formal/core/connectrpc/go/core/v1/corev1connect"
 )
 
-const FormalHostUrl string = "https://api.joinformal.com"
+const (
+	FORMAL_HOST_URL string = "https://api.joinformal.com"
+)
 
 type FormalSDK struct {
 	ConnectorServiceClient              corev1connect.ConnectorServiceClient
@@ -13,8 +17,8 @@ type FormalSDK struct {
 	IntegrationCloudServiceClient       corev1connect.IntegrationCloudServiceClient
 	IntegrationDataCatalogServiceClient corev1connect.IntegrationDataCatalogServiceClient
 	IntegrationsLogServiceClient        corev1connect.IntegrationsLogServiceClient
-	IntegrationMfaServiceClient         corev1connect.IntegrationMfaServiceClient
 	IntegrationMDMServiceClient         corev1connect.IntegrationMDMServiceClient
+	IntegrationMfaServiceClient         corev1connect.IntegrationMfaServiceClient
 	InventoryServiceClient              corev1connect.InventoryServiceClient
 	LogsServiceClient                   corev1connect.LogsServiceClient
 	MonitorsServiceClient               corev1connect.MonitorsServiceClient
@@ -23,36 +27,32 @@ type FormalSDK struct {
 	PolicyDataLoaderServiceClient       corev1connect.PolicyDataLoaderServiceClient
 	ResourceServiceClient               corev1connect.ResourceServiceClient
 	SatelliteServiceClient              corev1connect.SatelliteServiceClient
-	SessionServiceClient                corev1connect.SessionsServiceClient
+	SessionsServiceClient               corev1connect.SessionsServiceClient
 	SidecarServiceClient                corev1connect.SidecarServiceClient
 	SpaceServiceClient                  corev1connect.SpaceServiceClient
 	TrackersServiceClient               corev1connect.TrackersServiceClient
 	UserServiceClient                   corev1connect.UserServiceClient
 }
 
-// New creates a new FormalSDK instance
 func New(apiKey string) *FormalSDK {
-	return NewWithUrl(apiKey, FormalHostUrl)
+	return NewWithUrl(apiKey, FORMAL_HOST_URL)
 }
 
-// NewWithUrl creates a new FormalSDK instance with a custom URL
-func NewWithUrl(apiKey, url string) *FormalSDK {
-	return NewWithParams(apiKey, "2025-02-24", url)
-}
-
-// NewWithParams creates a new FormalSDK instance with all custom params
-func NewWithParams(apiKey, apiVersion, url string) *FormalSDK {
-	httpClient := NewClient(apiKey, apiVersion)
-
+func NewWithUrl(apiKey string, url string) *FormalSDK {
+	httpClient := &http.Client{Transport: &transport{
+		apiKey:              apiKey,
+		apiVersion:          "2025-02-24",
+		underlyingTransport: http.DefaultTransport,
+	}}
 	return &FormalSDK{
 		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, url),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, url),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, url),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, url),
 		IntegrationDataCatalogServiceClient: corev1connect.NewIntegrationDataCatalogServiceClient(httpClient, url),
+		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
 		IntegrationMfaServiceClient:         corev1connect.NewIntegrationMfaServiceClient(httpClient, url),
 		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, url),
-		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
 		LogsServiceClient:                   corev1connect.NewLogsServiceClient(httpClient, url),
 		MonitorsServiceClient:               corev1connect.NewMonitorsServiceClient(httpClient, url),
@@ -61,7 +61,7 @@ func NewWithParams(apiKey, apiVersion, url string) *FormalSDK {
 		PolicyDataLoaderServiceClient:       corev1connect.NewPolicyDataLoaderServiceClient(httpClient, url),
 		ResourceServiceClient:               corev1connect.NewResourceServiceClient(httpClient, url),
 		SatelliteServiceClient:              corev1connect.NewSatelliteServiceClient(httpClient, url),
-		SessionServiceClient:                corev1connect.NewSessionsServiceClient(httpClient, url),
+		SessionsServiceClient:               corev1connect.NewSessionsServiceClient(httpClient, url),
 		SidecarServiceClient:                corev1connect.NewSidecarServiceClient(httpClient, url),
 		SpaceServiceClient:                  corev1connect.NewSpaceServiceClient(httpClient, url),
 		TrackersServiceClient:               corev1connect.NewTrackersServiceClient(httpClient, url),
