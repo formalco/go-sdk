@@ -37,6 +37,7 @@ type FormalSDK struct {
 func New(apiKey string) *FormalSDK {
 	httpClient := &http.Client{Transport: &transport{
 		apiKey:              apiKey,
+		apiVersion:          "2025-02-24",
 		underlyingTransport: http.DefaultTransport,
 	}}
 	return &FormalSDK{
@@ -67,6 +68,7 @@ func New(apiKey string) *FormalSDK {
 func NewWithUrl(apiKey string, url string) *FormalSDK {
 	httpClient := &http.Client{Transport: &transport{
 		apiKey:              apiKey,
+		apiVersion:          "2025-02-24",
 		underlyingTransport: http.DefaultTransport,
 	}}
 	return &FormalSDK{
@@ -96,10 +98,12 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 
 type transport struct {
 	underlyingTransport http.RoundTripper
+	apiVersion          string
 	apiKey              string
 }
 
 func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	req.Header.Add("X-Api-Key", t.apiKey)
+	req.Header.Add("X-Formal-API-Version", t.apiVersion)
 	return t.underlyingTransport.RoundTrip(req)
 }
