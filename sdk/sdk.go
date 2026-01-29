@@ -37,7 +37,7 @@ type FormalSDK struct {
 func New(apiKey string) *FormalSDK {
 	httpClient := &http.Client{Transport: &transport{
 		apiKey:              apiKey,
-		apiVersion:          "2025-02-24",
+		apiVersion:          "2026-01-29",
 		underlyingTransport: http.DefaultTransport,
 	}}
 	return &FormalSDK{
@@ -68,7 +68,7 @@ func New(apiKey string) *FormalSDK {
 func NewWithUrl(apiKey string, url string) *FormalSDK {
 	httpClient := &http.Client{Transport: &transport{
 		apiKey:              apiKey,
-		apiVersion:          "2025-02-24",
+		apiVersion:          "2026-01-29",
 		underlyingTransport: http.DefaultTransport,
 	}}
 	return &FormalSDK{
