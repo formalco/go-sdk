@@ -16,7 +16,6 @@ type FormalSDK struct {
 	GroupServiceClient                  corev1connect.GroupServiceClient
 	IntegrationBIServiceClient          corev1connect.IntegrationBIServiceClient
 	IntegrationCloudServiceClient       corev1connect.IntegrationCloudServiceClient
-	IntegrationDataCatalogServiceClient corev1connect.IntegrationDataCatalogServiceClient
 	IntegrationsLogServiceClient        corev1connect.IntegrationsLogServiceClient
 	IntegrationMDMServiceClient         corev1connect.IntegrationMDMServiceClient
 	InventoryServiceClient              corev1connect.InventoryServiceClient
@@ -46,7 +45,6 @@ func New(apiKey string) *FormalSDK {
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, FORMAL_HOST_URL),
-		IntegrationDataCatalogServiceClient: corev1connect.NewIntegrationDataCatalogServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, FORMAL_HOST_URL),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, FORMAL_HOST_URL),
@@ -77,7 +75,6 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, url),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, url),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, url),
-		IntegrationDataCatalogServiceClient: corev1connect.NewIntegrationDataCatalogServiceClient(httpClient, url),
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
 		IntegrationsLogServiceClient:        corev1connect.NewIntegrationsLogServiceClient(httpClient, url),
 		InventoryServiceClient:              corev1connect.NewInventoryServiceClient(httpClient, url),
