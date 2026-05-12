@@ -19,11 +19,11 @@ jobs:
   update-buf-dependency:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           fetch-depth: 0
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@7b8cf10d4e4a01d4992d18a89f4d7dc5a3e6d6f4 # v4.3.0
         with:
           go-version-file: 'sdk/go.mod'
       - name: Update buf
@@ -44,7 +44,7 @@ jobs:
           fi
           echo "Selected version method: $VERSION_METHOD"
           echo "y" | ./bump_version.sh -r $VERSION_METHOD
-      - uses: tibdex/github-app-token@v2
+      - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
         id: generate-token
         with:
           app_id: ${{ secrets.APP_ID }}
@@ -55,7 +55,7 @@ jobs:
           echo "version=$(cat VERSION | tr -d '\n')" >> $GITHUB_OUTPUT
           echo "$(cat VERSION | tr -d '\n')"
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@4e1beaa7521e8b457b572c090b25bd3db56bf1c5 # v5.0.3
         with:
           base: main
           token: ${{ steps.generate-token.outputs.token }}
