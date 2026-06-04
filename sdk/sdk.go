@@ -12,6 +12,7 @@ const (
 
 type FormalSDK struct {
 	ConnectorServiceClient              corev1connect.ConnectorServiceClient
+	DesktopServiceClient                corev1connect.DesktopServiceClient
 	GraphServiceClient                  corev1connect.GraphServiceClient
 	GroupServiceClient                  corev1connect.GroupServiceClient
 	IntegrationBIServiceClient          corev1connect.IntegrationBIServiceClient
@@ -41,6 +42,7 @@ func New(apiKey string) *FormalSDK {
 	}}
 	return &FormalSDK{
 		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, FORMAL_HOST_URL),
+		DesktopServiceClient:                corev1connect.NewDesktopServiceClient(httpClient, FORMAL_HOST_URL),
 		GraphServiceClient:                  corev1connect.NewGraphServiceClient(httpClient, FORMAL_HOST_URL),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, FORMAL_HOST_URL),
@@ -71,6 +73,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 	}}
 	return &FormalSDK{
 		ConnectorServiceClient:              corev1connect.NewConnectorServiceClient(httpClient, url),
+		DesktopServiceClient:                corev1connect.NewDesktopServiceClient(httpClient, url),
 		GraphServiceClient:                  corev1connect.NewGraphServiceClient(httpClient, url),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, url),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, url),
