@@ -2,13 +2,13 @@ module github.com/formalco/go-sdk/sdk/v2
 
 go 1.24.0
 
-require buf.build/gen/go/formal/core/connectrpc/go v1.19.1-20251210011536-5930ff8d805c.2
+require buf.build/gen/go/formal/core/connectrpc/go v1.19.2-20260601161219-5333a9a51b27.1
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.10-20240920164238-5a7b106cbb87.1 // indirect
-	buf.build/gen/go/formal/core/protocolbuffers/go v1.36.10-20251210011536-5930ff8d805c.1 // indirect
-	buf.build/gen/go/grpc-ecosystem/grpc-gateway/protocolbuffers/go v1.36.10-20240617172850-a48fcebcf8f1.1 // indirect
-	connectrpc.com/connect v1.19.1 // indirect
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20240920164238-5a7b106cbb87.1 // indirect
+	buf.build/gen/go/formal/core/protocolbuffers/go v1.36.11-20260601161219-5333a9a51b27.1 // indirect
+	buf.build/gen/go/grpc-ecosystem/grpc-gateway/protocolbuffers/go v1.36.11-20240617172850-a48fcebcf8f1.1 // indirect
+	connectrpc.com/connect v1.19.2 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20250127172529-29210b9bc287 // indirect
-	google.golang.org/protobuf v1.36.10 // indirect
+	google.golang.org/protobuf v1.36.11 // indirect
 )
