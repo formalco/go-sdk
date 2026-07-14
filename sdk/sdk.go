@@ -15,6 +15,7 @@ type FormalSDK struct {
 	DesktopServiceClient                corev1connect.DesktopServiceClient
 	GraphServiceClient                  corev1connect.GraphServiceClient
 	GroupServiceClient                  corev1connect.GroupServiceClient
+	HookServiceClient                   corev1connect.HookServiceClient
 	IntegrationBIServiceClient          corev1connect.IntegrationBIServiceClient
 	IntegrationCloudServiceClient       corev1connect.IntegrationCloudServiceClient
 	IntegrationsLogServiceClient        corev1connect.IntegrationsLogServiceClient
@@ -45,6 +46,7 @@ func New(apiKey string) *FormalSDK {
 		DesktopServiceClient:                corev1connect.NewDesktopServiceClient(httpClient, FORMAL_HOST_URL),
 		GraphServiceClient:                  corev1connect.NewGraphServiceClient(httpClient, FORMAL_HOST_URL),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, FORMAL_HOST_URL),
+		HookServiceClient:                   corev1connect.NewHookServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, FORMAL_HOST_URL),
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, FORMAL_HOST_URL),
@@ -76,6 +78,7 @@ func NewWithUrl(apiKey string, url string) *FormalSDK {
 		DesktopServiceClient:                corev1connect.NewDesktopServiceClient(httpClient, url),
 		GraphServiceClient:                  corev1connect.NewGraphServiceClient(httpClient, url),
 		GroupServiceClient:                  corev1connect.NewGroupServiceClient(httpClient, url),
+		HookServiceClient:                   corev1connect.NewHookServiceClient(httpClient, url),
 		IntegrationBIServiceClient:          corev1connect.NewIntegrationBIServiceClient(httpClient, url),
 		IntegrationCloudServiceClient:       corev1connect.NewIntegrationCloudServiceClient(httpClient, url),
 		IntegrationMDMServiceClient:         corev1connect.NewIntegrationMDMServiceClient(httpClient, url),
