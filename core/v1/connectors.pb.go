@@ -5348,12 +5348,12 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x1eDeleteConnectorListenerRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\":\n" +
 	"\x1fDeleteConnectorListenerResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xa0\x03\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xa9\x03\n" +
 	"\"CreateConnectorListenerRuleRequest\x12;\n" +
 	"\x15connector_listener_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x13connectorListenerId\x124\n" +
 	"\x04type\x18\x02 \x01(\tB \xbaH\x1dr\x1bR\n" +
-	"technologyR\x03anyR\bresourceR\x04type\x12\xcf\x01\n" +
-	"\x04rule\x18\x03 \x01(\tB\xba\x01\xbaH\xb6\x01r\xb3\x012\xb0\x01^(any|resource_.*|datastore_.*|athena|bigquery|clickhouse|dynamodb|elastic|http|kafka|kubernetes|llm|mariadb|mcp|mongodb|mssqlserver|mysql|postgres|rdp|redis|s3|snowflake|ssh)$R\x04rule\x125\n" +
+	"technologyR\x03anyR\bresourceR\x04type\x12\xd8\x01\n" +
+	"\x04rule\x18\x03 \x01(\tB\xc3\x01\xbaH\xbf\x01r\xbc\x012\xb9\x01^(any|resource_.*|datastore_.*|athena|bigquery|clickhouse|dynamodb|elastic|http|kafka|kubernetes|llm|mariadb|mcp|mongodb|mssqlserver|mysql|postgres|rdp|redis|redshift|s3|snowflake|ssh)$R\x04rule\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\"}\n" +
 	"#CreateConnectorListenerRuleResponse\x12V\n" +
 	"\x17connector_listener_rule\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerRuleR\x15connectorListenerRule\":\n" +
