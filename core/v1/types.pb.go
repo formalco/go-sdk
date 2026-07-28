@@ -1412,6 +1412,82 @@ func (x *ResourceTlsConfiguration) GetTlsClientKeyIsEnv() bool {
 	return false
 }
 
+type ResourceSshHostKey struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ResourceId    string                 `protobuf:"bytes,2,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	PublicKey     string                 `protobuf:"bytes,3,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResourceSshHostKey) Reset() {
+	*x = ResourceSshHostKey{}
+	mi := &file_core_v1_types_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResourceSshHostKey) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResourceSshHostKey) ProtoMessage() {}
+
+func (x *ResourceSshHostKey) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_types_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResourceSshHostKey.ProtoReflect.Descriptor instead.
+func (*ResourceSshHostKey) Descriptor() ([]byte, []int) {
+	return file_core_v1_types_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ResourceSshHostKey) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *ResourceSshHostKey) GetResourceId() string {
+	if x != nil {
+		return x.ResourceId
+	}
+	return ""
+}
+
+func (x *ResourceSshHostKey) GetPublicKey() string {
+	if x != nil {
+		return x.PublicKey
+	}
+	return ""
+}
+
+func (x *ResourceSshHostKey) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *ResourceSshHostKey) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
 type ResourceDialConfiguration struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1426,7 +1502,7 @@ type ResourceDialConfiguration struct {
 
 func (x *ResourceDialConfiguration) Reset() {
 	*x = ResourceDialConfiguration{}
-	mi := &file_core_v1_types_proto_msgTypes[15]
+	mi := &file_core_v1_types_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1438,7 +1514,7 @@ func (x *ResourceDialConfiguration) String() string {
 func (*ResourceDialConfiguration) ProtoMessage() {}
 
 func (x *ResourceDialConfiguration) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[15]
+	mi := &file_core_v1_types_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1451,7 +1527,7 @@ func (x *ResourceDialConfiguration) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResourceDialConfiguration.ProtoReflect.Descriptor instead.
 func (*ResourceDialConfiguration) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ResourceDialConfiguration) GetId() string {
@@ -1518,7 +1594,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_core_v1_types_proto_msgTypes[16]
+	mi := &file_core_v1_types_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1530,7 +1606,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[16]
+	mi := &file_core_v1_types_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1543,7 +1619,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *User) GetId() string {
@@ -1665,7 +1741,7 @@ type Group struct {
 
 func (x *Group) Reset() {
 	*x = Group{}
-	mi := &file_core_v1_types_proto_msgTypes[17]
+	mi := &file_core_v1_types_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1677,7 +1753,7 @@ func (x *Group) String() string {
 func (*Group) ProtoMessage() {}
 
 func (x *Group) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[17]
+	mi := &file_core_v1_types_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1690,7 +1766,7 @@ func (x *Group) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Group.ProtoReflect.Descriptor instead.
 func (*Group) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *Group) GetId() string {
@@ -1756,7 +1832,7 @@ type UserGroupLink struct {
 
 func (x *UserGroupLink) Reset() {
 	*x = UserGroupLink{}
-	mi := &file_core_v1_types_proto_msgTypes[18]
+	mi := &file_core_v1_types_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1768,7 +1844,7 @@ func (x *UserGroupLink) String() string {
 func (*UserGroupLink) ProtoMessage() {}
 
 func (x *UserGroupLink) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[18]
+	mi := &file_core_v1_types_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1781,7 +1857,7 @@ func (x *UserGroupLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserGroupLink.ProtoReflect.Descriptor instead.
 func (*UserGroupLink) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UserGroupLink) GetId() string {
@@ -1842,7 +1918,7 @@ type Satellite struct {
 
 func (x *Satellite) Reset() {
 	*x = Satellite{}
-	mi := &file_core_v1_types_proto_msgTypes[19]
+	mi := &file_core_v1_types_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1854,7 +1930,7 @@ func (x *Satellite) String() string {
 func (*Satellite) ProtoMessage() {}
 
 func (x *Satellite) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[19]
+	mi := &file_core_v1_types_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1867,7 +1943,7 @@ func (x *Satellite) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Satellite.ProtoReflect.Descriptor instead.
 func (*Satellite) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *Satellite) GetId() string {
@@ -1938,7 +2014,7 @@ type SatelliteInstance struct {
 
 func (x *SatelliteInstance) Reset() {
 	*x = SatelliteInstance{}
-	mi := &file_core_v1_types_proto_msgTypes[20]
+	mi := &file_core_v1_types_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1950,7 +2026,7 @@ func (x *SatelliteInstance) String() string {
 func (*SatelliteInstance) ProtoMessage() {}
 
 func (x *SatelliteInstance) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[20]
+	mi := &file_core_v1_types_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1963,7 +2039,7 @@ func (x *SatelliteInstance) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SatelliteInstance.ProtoReflect.Descriptor instead.
 func (*SatelliteInstance) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *SatelliteInstance) GetInstanceId() string {
@@ -2009,7 +2085,7 @@ type ResourceHostname struct {
 
 func (x *ResourceHostname) Reset() {
 	*x = ResourceHostname{}
-	mi := &file_core_v1_types_proto_msgTypes[21]
+	mi := &file_core_v1_types_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2021,7 +2097,7 @@ func (x *ResourceHostname) String() string {
 func (*ResourceHostname) ProtoMessage() {}
 
 func (x *ResourceHostname) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[21]
+	mi := &file_core_v1_types_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2034,7 +2110,7 @@ func (x *ResourceHostname) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResourceHostname.ProtoReflect.Descriptor instead.
 func (*ResourceHostname) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{21}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ResourceHostname) GetId() string {
@@ -2096,7 +2172,7 @@ type ErrorObject struct {
 
 func (x *ErrorObject) Reset() {
 	*x = ErrorObject{}
-	mi := &file_core_v1_types_proto_msgTypes[22]
+	mi := &file_core_v1_types_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2108,7 +2184,7 @@ func (x *ErrorObject) String() string {
 func (*ErrorObject) ProtoMessage() {}
 
 func (x *ErrorObject) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[22]
+	mi := &file_core_v1_types_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2121,7 +2197,7 @@ func (x *ErrorObject) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ErrorObject.ProtoReflect.Descriptor instead.
 func (*ErrorObject) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{22}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ErrorObject) GetMessage() string {
@@ -2149,7 +2225,7 @@ type SessionShutdown struct {
 
 func (x *SessionShutdown) Reset() {
 	*x = SessionShutdown{}
-	mi := &file_core_v1_types_proto_msgTypes[23]
+	mi := &file_core_v1_types_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2161,7 +2237,7 @@ func (x *SessionShutdown) String() string {
 func (*SessionShutdown) ProtoMessage() {}
 
 func (x *SessionShutdown) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[23]
+	mi := &file_core_v1_types_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2174,7 +2250,7 @@ func (x *SessionShutdown) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SessionShutdown.ProtoReflect.Descriptor instead.
 func (*SessionShutdown) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{23}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SessionShutdown) GetSessionId() string {
@@ -2214,7 +2290,7 @@ type ConnectorConfiguration struct {
 
 func (x *ConnectorConfiguration) Reset() {
 	*x = ConnectorConfiguration{}
-	mi := &file_core_v1_types_proto_msgTypes[24]
+	mi := &file_core_v1_types_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2226,7 +2302,7 @@ func (x *ConnectorConfiguration) String() string {
 func (*ConnectorConfiguration) ProtoMessage() {}
 
 func (x *ConnectorConfiguration) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[24]
+	mi := &file_core_v1_types_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2239,7 +2315,7 @@ func (x *ConnectorConfiguration) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConnectorConfiguration.ProtoReflect.Descriptor instead.
 func (*ConnectorConfiguration) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{24}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ConnectorConfiguration) GetId() string {
@@ -2314,7 +2390,7 @@ type ResourceClassifierConfiguration struct {
 
 func (x *ResourceClassifierConfiguration) Reset() {
 	*x = ResourceClassifierConfiguration{}
-	mi := &file_core_v1_types_proto_msgTypes[25]
+	mi := &file_core_v1_types_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2326,7 +2402,7 @@ func (x *ResourceClassifierConfiguration) String() string {
 func (*ResourceClassifierConfiguration) ProtoMessage() {}
 
 func (x *ResourceClassifierConfiguration) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[25]
+	mi := &file_core_v1_types_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2339,7 +2415,7 @@ func (x *ResourceClassifierConfiguration) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResourceClassifierConfiguration.ProtoReflect.Descriptor instead.
 func (*ResourceClassifierConfiguration) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{25}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ResourceClassifierConfiguration) GetId() string {
@@ -2409,7 +2485,7 @@ type ResourceConnectorAccess struct {
 
 func (x *ResourceConnectorAccess) Reset() {
 	*x = ResourceConnectorAccess{}
-	mi := &file_core_v1_types_proto_msgTypes[26]
+	mi := &file_core_v1_types_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2421,7 +2497,7 @@ func (x *ResourceConnectorAccess) String() string {
 func (*ResourceConnectorAccess) ProtoMessage() {}
 
 func (x *ResourceConnectorAccess) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[26]
+	mi := &file_core_v1_types_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2434,7 +2510,7 @@ func (x *ResourceConnectorAccess) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResourceConnectorAccess.ProtoReflect.Descriptor instead.
 func (*ResourceConnectorAccess) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{26}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ResourceConnectorAccess) GetConnector() *Connector {
@@ -2466,7 +2542,7 @@ type FormalAiSatelliteConfig struct {
 
 func (x *FormalAiSatelliteConfig) Reset() {
 	*x = FormalAiSatelliteConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[27]
+	mi := &file_core_v1_types_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2478,7 +2554,7 @@ func (x *FormalAiSatelliteConfig) String() string {
 func (*FormalAiSatelliteConfig) ProtoMessage() {}
 
 func (x *FormalAiSatelliteConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[27]
+	mi := &file_core_v1_types_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2491,7 +2567,7 @@ func (x *FormalAiSatelliteConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FormalAiSatelliteConfig.ProtoReflect.Descriptor instead.
 func (*FormalAiSatelliteConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{27}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{28}
 }
 
 type GeminiConfig struct {
@@ -2503,7 +2579,7 @@ type GeminiConfig struct {
 
 func (x *GeminiConfig) Reset() {
 	*x = GeminiConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[28]
+	mi := &file_core_v1_types_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2515,7 +2591,7 @@ func (x *GeminiConfig) String() string {
 func (*GeminiConfig) ProtoMessage() {}
 
 func (x *GeminiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[28]
+	mi := &file_core_v1_types_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2528,7 +2604,7 @@ func (x *GeminiConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GeminiConfig.ProtoReflect.Descriptor instead.
 func (*GeminiConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{28}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GeminiConfig) GetApiKey() string {
@@ -2548,7 +2624,7 @@ type GoogleVertexAiConfig struct {
 
 func (x *GoogleVertexAiConfig) Reset() {
 	*x = GoogleVertexAiConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[29]
+	mi := &file_core_v1_types_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2560,7 +2636,7 @@ func (x *GoogleVertexAiConfig) String() string {
 func (*GoogleVertexAiConfig) ProtoMessage() {}
 
 func (x *GoogleVertexAiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[29]
+	mi := &file_core_v1_types_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2573,7 +2649,7 @@ func (x *GoogleVertexAiConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GoogleVertexAiConfig.ProtoReflect.Descriptor instead.
 func (*GoogleVertexAiConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{29}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GoogleVertexAiConfig) GetGcpProjectId() string {
@@ -2599,7 +2675,7 @@ type AnthropicConfig struct {
 
 func (x *AnthropicConfig) Reset() {
 	*x = AnthropicConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[30]
+	mi := &file_core_v1_types_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2611,7 +2687,7 @@ func (x *AnthropicConfig) String() string {
 func (*AnthropicConfig) ProtoMessage() {}
 
 func (x *AnthropicConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[30]
+	mi := &file_core_v1_types_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2624,7 +2700,7 @@ func (x *AnthropicConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnthropicConfig.ProtoReflect.Descriptor instead.
 func (*AnthropicConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{30}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *AnthropicConfig) GetApiKey() string {
@@ -2643,7 +2719,7 @@ type AwsBedrockConfig struct {
 
 func (x *AwsBedrockConfig) Reset() {
 	*x = AwsBedrockConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[31]
+	mi := &file_core_v1_types_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2655,7 +2731,7 @@ func (x *AwsBedrockConfig) String() string {
 func (*AwsBedrockConfig) ProtoMessage() {}
 
 func (x *AwsBedrockConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[31]
+	mi := &file_core_v1_types_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2668,7 +2744,7 @@ func (x *AwsBedrockConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AwsBedrockConfig.ProtoReflect.Descriptor instead.
 func (*AwsBedrockConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{31}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *AwsBedrockConfig) GetRegion() string {
@@ -2687,7 +2763,7 @@ type OpenAiConfig struct {
 
 func (x *OpenAiConfig) Reset() {
 	*x = OpenAiConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[32]
+	mi := &file_core_v1_types_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2699,7 +2775,7 @@ func (x *OpenAiConfig) String() string {
 func (*OpenAiConfig) ProtoMessage() {}
 
 func (x *OpenAiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[32]
+	mi := &file_core_v1_types_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2712,7 +2788,7 @@ func (x *OpenAiConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OpenAiConfig.ProtoReflect.Descriptor instead.
 func (*OpenAiConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{32}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *OpenAiConfig) GetApiKey() string {
@@ -2732,7 +2808,7 @@ type AzureAiConfig struct {
 
 func (x *AzureAiConfig) Reset() {
 	*x = AzureAiConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[33]
+	mi := &file_core_v1_types_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2744,7 +2820,7 @@ func (x *AzureAiConfig) String() string {
 func (*AzureAiConfig) ProtoMessage() {}
 
 func (x *AzureAiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[33]
+	mi := &file_core_v1_types_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2757,7 +2833,7 @@ func (x *AzureAiConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AzureAiConfig.ProtoReflect.Descriptor instead.
 func (*AzureAiConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{33}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *AzureAiConfig) GetApiKey() string {
@@ -2792,7 +2868,7 @@ type ConnectorAiProviderConfig struct {
 
 func (x *ConnectorAiProviderConfig) Reset() {
 	*x = ConnectorAiProviderConfig{}
-	mi := &file_core_v1_types_proto_msgTypes[34]
+	mi := &file_core_v1_types_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2804,7 +2880,7 @@ func (x *ConnectorAiProviderConfig) String() string {
 func (*ConnectorAiProviderConfig) ProtoMessage() {}
 
 func (x *ConnectorAiProviderConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[34]
+	mi := &file_core_v1_types_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2817,7 +2893,7 @@ func (x *ConnectorAiProviderConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConnectorAiProviderConfig.ProtoReflect.Descriptor instead.
 func (*ConnectorAiProviderConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{34}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ConnectorAiProviderConfig) GetProvider() isConnectorAiProviderConfig_Provider {
@@ -2950,7 +3026,7 @@ type ConnectorAiProvider struct {
 
 func (x *ConnectorAiProvider) Reset() {
 	*x = ConnectorAiProvider{}
-	mi := &file_core_v1_types_proto_msgTypes[35]
+	mi := &file_core_v1_types_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2962,7 +3038,7 @@ func (x *ConnectorAiProvider) String() string {
 func (*ConnectorAiProvider) ProtoMessage() {}
 
 func (x *ConnectorAiProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[35]
+	mi := &file_core_v1_types_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2975,7 +3051,7 @@ func (x *ConnectorAiProvider) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConnectorAiProvider.ProtoReflect.Descriptor instead.
 func (*ConnectorAiProvider) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{35}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ConnectorAiProvider) GetId() string {
@@ -3024,7 +3100,7 @@ type User_Human struct {
 
 func (x *User_Human) Reset() {
 	*x = User_Human{}
-	mi := &file_core_v1_types_proto_msgTypes[36]
+	mi := &file_core_v1_types_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3036,7 +3112,7 @@ func (x *User_Human) String() string {
 func (*User_Human) ProtoMessage() {}
 
 func (x *User_Human) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[36]
+	mi := &file_core_v1_types_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3049,7 +3125,7 @@ func (x *User_Human) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User_Human.ProtoReflect.Descriptor instead.
 func (*User_Human) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{16, 0}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{17, 0}
 }
 
 func (x *User_Human) GetFirstName() string {
@@ -3082,7 +3158,7 @@ type User_Machine struct {
 
 func (x *User_Machine) Reset() {
 	*x = User_Machine{}
-	mi := &file_core_v1_types_proto_msgTypes[37]
+	mi := &file_core_v1_types_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3094,7 +3170,7 @@ func (x *User_Machine) String() string {
 func (*User_Machine) ProtoMessage() {}
 
 func (x *User_Machine) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[37]
+	mi := &file_core_v1_types_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3107,7 +3183,7 @@ func (x *User_Machine) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User_Machine.ProtoReflect.Descriptor instead.
 func (*User_Machine) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{16, 1}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{17, 1}
 }
 
 func (x *User_Machine) GetName() string {
@@ -3280,7 +3356,17 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\x0etls_client_key\x18\t \x01(\tR\ftlsClientKey\x122\n" +
 	"\x16tls_client_cert_is_env\x18\n" +
 	" \x01(\bR\x12tlsClientCertIsEnv\x120\n" +
-	"\x15tls_client_key_is_env\x18\v \x01(\bR\x11tlsClientKeyIsEnv\"\xb9\x02\n" +
+	"\x15tls_client_key_is_env\x18\v \x01(\bR\x11tlsClientKeyIsEnv\"\xf5\x01\n" +
+	"\x12ResourceSshHostKey\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
+	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"resourceId\x12&\n" +
+	"\n" +
+	"public_key\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tpublicKey\x129\n" +
+	"\n" +
+	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xb9\x02\n" +
 	"\x19ResourceDialConfiguration\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
 	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
@@ -3452,7 +3538,7 @@ func file_core_v1_types_proto_rawDescGZIP() []byte {
 	return file_core_v1_types_proto_rawDescData
 }
 
-var file_core_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
+var file_core_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 39)
 var file_core_v1_types_proto_goTypes = []any{
 	(*ResourceHealthCheck)(nil),             // 0: core.v1.ResourceHealthCheck
 	(*Space)(nil),                           // 1: core.v1.Space
@@ -3469,111 +3555,114 @@ var file_core_v1_types_proto_goTypes = []any{
 	(*Owner)(nil),                           // 12: core.v1.Owner
 	(*DataDiscoveryConfiguration)(nil),      // 13: core.v1.DataDiscoveryConfiguration
 	(*ResourceTlsConfiguration)(nil),        // 14: core.v1.ResourceTlsConfiguration
-	(*ResourceDialConfiguration)(nil),       // 15: core.v1.ResourceDialConfiguration
-	(*User)(nil),                            // 16: core.v1.User
-	(*Group)(nil),                           // 17: core.v1.Group
-	(*UserGroupLink)(nil),                   // 18: core.v1.UserGroupLink
-	(*Satellite)(nil),                       // 19: core.v1.Satellite
-	(*SatelliteInstance)(nil),               // 20: core.v1.SatelliteInstance
-	(*ResourceHostname)(nil),                // 21: core.v1.ResourceHostname
-	(*ErrorObject)(nil),                     // 22: core.v1.ErrorObject
-	(*SessionShutdown)(nil),                 // 23: core.v1.SessionShutdown
-	(*ConnectorConfiguration)(nil),          // 24: core.v1.ConnectorConfiguration
-	(*ResourceClassifierConfiguration)(nil), // 25: core.v1.ResourceClassifierConfiguration
-	(*ResourceConnectorAccess)(nil),         // 26: core.v1.ResourceConnectorAccess
-	(*FormalAiSatelliteConfig)(nil),         // 27: core.v1.FormalAiSatelliteConfig
-	(*GeminiConfig)(nil),                    // 28: core.v1.GeminiConfig
-	(*GoogleVertexAiConfig)(nil),            // 29: core.v1.GoogleVertexAiConfig
-	(*AnthropicConfig)(nil),                 // 30: core.v1.AnthropicConfig
-	(*AwsBedrockConfig)(nil),                // 31: core.v1.AwsBedrockConfig
-	(*OpenAiConfig)(nil),                    // 32: core.v1.OpenAiConfig
-	(*AzureAiConfig)(nil),                   // 33: core.v1.AzureAiConfig
-	(*ConnectorAiProviderConfig)(nil),       // 34: core.v1.ConnectorAiProviderConfig
-	(*ConnectorAiProvider)(nil),             // 35: core.v1.ConnectorAiProvider
-	(*User_Human)(nil),                      // 36: core.v1.User.Human
-	(*User_Machine)(nil),                    // 37: core.v1.User.Machine
-	(*timestamppb.Timestamp)(nil),           // 38: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),             // 39: google.protobuf.Duration
+	(*ResourceSshHostKey)(nil),              // 15: core.v1.ResourceSshHostKey
+	(*ResourceDialConfiguration)(nil),       // 16: core.v1.ResourceDialConfiguration
+	(*User)(nil),                            // 17: core.v1.User
+	(*Group)(nil),                           // 18: core.v1.Group
+	(*UserGroupLink)(nil),                   // 19: core.v1.UserGroupLink
+	(*Satellite)(nil),                       // 20: core.v1.Satellite
+	(*SatelliteInstance)(nil),               // 21: core.v1.SatelliteInstance
+	(*ResourceHostname)(nil),                // 22: core.v1.ResourceHostname
+	(*ErrorObject)(nil),                     // 23: core.v1.ErrorObject
+	(*SessionShutdown)(nil),                 // 24: core.v1.SessionShutdown
+	(*ConnectorConfiguration)(nil),          // 25: core.v1.ConnectorConfiguration
+	(*ResourceClassifierConfiguration)(nil), // 26: core.v1.ResourceClassifierConfiguration
+	(*ResourceConnectorAccess)(nil),         // 27: core.v1.ResourceConnectorAccess
+	(*FormalAiSatelliteConfig)(nil),         // 28: core.v1.FormalAiSatelliteConfig
+	(*GeminiConfig)(nil),                    // 29: core.v1.GeminiConfig
+	(*GoogleVertexAiConfig)(nil),            // 30: core.v1.GoogleVertexAiConfig
+	(*AnthropicConfig)(nil),                 // 31: core.v1.AnthropicConfig
+	(*AwsBedrockConfig)(nil),                // 32: core.v1.AwsBedrockConfig
+	(*OpenAiConfig)(nil),                    // 33: core.v1.OpenAiConfig
+	(*AzureAiConfig)(nil),                   // 34: core.v1.AzureAiConfig
+	(*ConnectorAiProviderConfig)(nil),       // 35: core.v1.ConnectorAiProviderConfig
+	(*ConnectorAiProvider)(nil),             // 36: core.v1.ConnectorAiProvider
+	(*User_Human)(nil),                      // 37: core.v1.User.Human
+	(*User_Machine)(nil),                    // 38: core.v1.User.Machine
+	(*timestamppb.Timestamp)(nil),           // 39: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),             // 40: google.protobuf.Duration
 }
 var file_core_v1_types_proto_depIdxs = []int32{
-	38, // 0: core.v1.ResourceHealthCheck.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 1: core.v1.ResourceHealthCheck.created_at:type_name -> google.protobuf.Timestamp
-	38, // 2: core.v1.Space.created_at:type_name -> google.protobuf.Timestamp
-	38, // 3: core.v1.Space.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 0: core.v1.ResourceHealthCheck.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 1: core.v1.ResourceHealthCheck.created_at:type_name -> google.protobuf.Timestamp
+	39, // 2: core.v1.Space.created_at:type_name -> google.protobuf.Timestamp
+	39, // 3: core.v1.Space.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 4: core.v1.Resource.space:type_name -> core.v1.Space
-	38, // 5: core.v1.Resource.created_at:type_name -> google.protobuf.Timestamp
-	38, // 6: core.v1.Resource.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 5: core.v1.Resource.created_at:type_name -> google.protobuf.Timestamp
+	39, // 6: core.v1.Resource.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 7: core.v1.Resource.tags:type_name -> core.v1.ResourceTag
 	1,  // 8: core.v1.Connector.space:type_name -> core.v1.Space
-	38, // 9: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
-	38, // 10: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 11: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
-	38, // 12: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 9: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
+	39, // 10: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 11: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
+	39, // 12: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 13: core.v1.ConnectorListener.connector:type_name -> core.v1.Connector
 	5,  // 14: core.v1.ConnectorListenerRule.listener:type_name -> core.v1.ConnectorListener
-	38, // 15: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
-	38, // 16: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 15: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
+	39, // 16: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
 	5,  // 17: core.v1.ConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
 	4,  // 18: core.v1.ConnectorListenerLink.connector:type_name -> core.v1.Connector
-	38, // 19: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
-	38, // 20: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 19: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
+	39, // 20: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 21: core.v1.ConnectorHostname.connector:type_name -> core.v1.Connector
-	38, // 22: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
-	38, // 23: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 22: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
+	39, // 23: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 24: core.v1.ListConnectorListenerLink.connector:type_name -> core.v1.Connector
 	5,  // 25: core.v1.ListConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
-	38, // 26: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
-	38, // 27: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
-	38, // 28: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
-	16, // 29: core.v1.Owner.user:type_name -> core.v1.User
-	17, // 30: core.v1.Owner.group:type_name -> core.v1.Group
-	38, // 31: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	38, // 32: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 33: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 34: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	38, // 35: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 36: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	36, // 37: core.v1.User.human:type_name -> core.v1.User.Human
-	37, // 38: core.v1.User.machine:type_name -> core.v1.User.Machine
-	38, // 39: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
-	38, // 40: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	38, // 41: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 42: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
-	38, // 43: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
-	17, // 44: core.v1.UserGroupLink.group:type_name -> core.v1.Group
-	16, // 45: core.v1.UserGroupLink.user:type_name -> core.v1.User
-	38, // 46: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
-	38, // 47: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
-	1,  // 48: core.v1.Satellite.space:type_name -> core.v1.Space
-	38, // 49: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
-	38, // 50: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 51: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
-	38, // 52: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
-	3,  // 53: core.v1.ResourceHostname.resource:type_name -> core.v1.Resource
-	38, // 54: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
-	38, // 55: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 56: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
-	38, // 57: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	38, // 58: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	39, // 59: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
-	38, // 60: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	38, // 61: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 62: core.v1.ResourceConnectorAccess.connector:type_name -> core.v1.Connector
-	27, // 63: core.v1.ConnectorAiProviderConfig.formal_ai_satellite:type_name -> core.v1.FormalAiSatelliteConfig
-	28, // 64: core.v1.ConnectorAiProviderConfig.gemini:type_name -> core.v1.GeminiConfig
-	29, // 65: core.v1.ConnectorAiProviderConfig.google_vertex_ai:type_name -> core.v1.GoogleVertexAiConfig
-	30, // 66: core.v1.ConnectorAiProviderConfig.anthropic:type_name -> core.v1.AnthropicConfig
-	31, // 67: core.v1.ConnectorAiProviderConfig.aws_bedrock:type_name -> core.v1.AwsBedrockConfig
-	32, // 68: core.v1.ConnectorAiProviderConfig.openai:type_name -> core.v1.OpenAiConfig
-	33, // 69: core.v1.ConnectorAiProviderConfig.azure_ai:type_name -> core.v1.AzureAiConfig
-	34, // 70: core.v1.ConnectorAiProvider.config:type_name -> core.v1.ConnectorAiProviderConfig
-	38, // 71: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
-	38, // 72: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
-	73, // [73:73] is the sub-list for method output_type
-	73, // [73:73] is the sub-list for method input_type
-	73, // [73:73] is the sub-list for extension type_name
-	73, // [73:73] is the sub-list for extension extendee
-	0,  // [0:73] is the sub-list for field type_name
+	39, // 26: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
+	39, // 27: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
+	39, // 28: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
+	17, // 29: core.v1.Owner.user:type_name -> core.v1.User
+	18, // 30: core.v1.Owner.group:type_name -> core.v1.Group
+	39, // 31: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	39, // 32: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 33: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 34: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	39, // 35: core.v1.ResourceSshHostKey.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 36: core.v1.ResourceSshHostKey.created_at:type_name -> google.protobuf.Timestamp
+	39, // 37: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 38: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	37, // 39: core.v1.User.human:type_name -> core.v1.User.Human
+	38, // 40: core.v1.User.machine:type_name -> core.v1.User.Machine
+	39, // 41: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
+	39, // 42: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	39, // 43: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 44: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
+	39, // 45: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
+	18, // 46: core.v1.UserGroupLink.group:type_name -> core.v1.Group
+	17, // 47: core.v1.UserGroupLink.user:type_name -> core.v1.User
+	39, // 48: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
+	39, // 49: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
+	1,  // 50: core.v1.Satellite.space:type_name -> core.v1.Space
+	39, // 51: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
+	39, // 52: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 53: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
+	39, // 54: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
+	3,  // 55: core.v1.ResourceHostname.resource:type_name -> core.v1.Resource
+	39, // 56: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
+	39, // 57: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 58: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
+	39, // 59: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	39, // 60: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 61: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
+	39, // 62: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	39, // 63: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	4,  // 64: core.v1.ResourceConnectorAccess.connector:type_name -> core.v1.Connector
+	28, // 65: core.v1.ConnectorAiProviderConfig.formal_ai_satellite:type_name -> core.v1.FormalAiSatelliteConfig
+	29, // 66: core.v1.ConnectorAiProviderConfig.gemini:type_name -> core.v1.GeminiConfig
+	30, // 67: core.v1.ConnectorAiProviderConfig.google_vertex_ai:type_name -> core.v1.GoogleVertexAiConfig
+	31, // 68: core.v1.ConnectorAiProviderConfig.anthropic:type_name -> core.v1.AnthropicConfig
+	32, // 69: core.v1.ConnectorAiProviderConfig.aws_bedrock:type_name -> core.v1.AwsBedrockConfig
+	33, // 70: core.v1.ConnectorAiProviderConfig.openai:type_name -> core.v1.OpenAiConfig
+	34, // 71: core.v1.ConnectorAiProviderConfig.azure_ai:type_name -> core.v1.AzureAiConfig
+	35, // 72: core.v1.ConnectorAiProvider.config:type_name -> core.v1.ConnectorAiProviderConfig
+	39, // 73: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
+	39, // 74: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
+	75, // [75:75] is the sub-list for method output_type
+	75, // [75:75] is the sub-list for method input_type
+	75, // [75:75] is the sub-list for extension type_name
+	75, // [75:75] is the sub-list for extension extendee
+	0,  // [0:75] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_types_proto_init() }
@@ -3587,11 +3676,11 @@ func file_core_v1_types_proto_init() {
 		(*Owner_Group)(nil),
 	}
 	file_core_v1_types_proto_msgTypes[13].OneofWrappers = []any{}
-	file_core_v1_types_proto_msgTypes[16].OneofWrappers = []any{
+	file_core_v1_types_proto_msgTypes[17].OneofWrappers = []any{
 		(*User_Human_)(nil),
 		(*User_Machine_)(nil),
 	}
-	file_core_v1_types_proto_msgTypes[34].OneofWrappers = []any{
+	file_core_v1_types_proto_msgTypes[35].OneofWrappers = []any{
 		(*ConnectorAiProviderConfig_FormalAiSatellite)(nil),
 		(*ConnectorAiProviderConfig_Gemini)(nil),
 		(*ConnectorAiProviderConfig_GoogleVertexAi)(nil),
@@ -3606,7 +3695,7 @@ func file_core_v1_types_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_types_proto_rawDesc), len(file_core_v1_types_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   38,
+			NumMessages:   39,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

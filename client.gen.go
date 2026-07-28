@@ -2305,6 +2305,17 @@ func (c *ResourceServiceClient) CreateResourceHostname(ctx context.Context, req 
 	return res.Msg, nil
 }
 
+// Create resource SSH host key
+//
+// Pin an upstream SSH host public key for a resource
+func (c *ResourceServiceClient) CreateResourceSshHostKey(ctx context.Context, req *corev1.CreateResourceSshHostKeyRequest) (*corev1.CreateResourceSshHostKeyResponse, error) {
+	res, err := c.inner.CreateResourceSshHostKey(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Create resource tag
 //
 // Create a new tag for a resource
@@ -2423,6 +2434,17 @@ func (c *ResourceServiceClient) DeleteResourceHostname(ctx context.Context, req 
 	return res.Msg, nil
 }
 
+// Delete resource SSH host key
+//
+// Delete a pinned upstream SSH host public key
+func (c *ResourceServiceClient) DeleteResourceSshHostKey(ctx context.Context, req *corev1.DeleteResourceSshHostKeyRequest) (*corev1.DeleteResourceSshHostKeyResponse, error) {
+	res, err := c.inner.DeleteResourceSshHostKey(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete resource tag
 //
 // Delete a tag from a resource by key
@@ -2530,6 +2552,17 @@ func (c *ResourceServiceClient) GetResourceHostname(ctx context.Context, req *co
 	return res.Msg, nil
 }
 
+// Get resource SSH host key
+//
+// Get a pinned upstream SSH host public key by ID
+func (c *ResourceServiceClient) GetResourceSshHostKey(ctx context.Context, req *corev1.GetResourceSshHostKeyRequest) (*corev1.GetResourceSshHostKeyResponse, error) {
+	res, err := c.inner.GetResourceSshHostKey(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Get resource tls configuration
 //
 // Get a resource tls configuration
@@ -2595,6 +2628,17 @@ func (c *ResourceServiceClient) ListResourceConnectorAccess(ctx context.Context,
 // List all resource hostnames
 func (c *ResourceServiceClient) ListResourceHostnames(ctx context.Context, req *corev1.ListResourceHostnamesRequest) (*corev1.ListResourceHostnamesResponse, error) {
 	res, err := c.inner.ListResourceHostnames(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List resource SSH host keys
+//
+// List pinned upstream SSH host public keys for a resource
+func (c *ResourceServiceClient) ListResourceSshHostKeys(ctx context.Context, req *corev1.ListResourceSshHostKeysRequest) (*corev1.ListResourceSshHostKeysResponse, error) {
+	res, err := c.inner.ListResourceSshHostKeys(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -2768,6 +2812,17 @@ func (c *ResourceServiceClient) UpdateResourceHostname(ctx context.Context, req 
 // Update a resource hostname by sending the full object. All mutable fields are replaced.
 func (c *ResourceServiceClient) UpdateResourceHostnameV2(ctx context.Context, req *corev1.UpdateResourceHostnameV2Request) (*corev1.UpdateResourceHostnameV2Response, error) {
 	res, err := c.inner.UpdateResourceHostnameV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update resource SSH host key
+//
+// Update a pinned upstream SSH host public key
+func (c *ResourceServiceClient) UpdateResourceSshHostKey(ctx context.Context, req *corev1.UpdateResourceSshHostKeyRequest) (*corev1.UpdateResourceSshHostKeyResponse, error) {
+	res, err := c.inner.UpdateResourceSshHostKey(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -3376,6 +3431,17 @@ func (c *UserServiceClient) ListUsers(ctx context.Context, req *corev1.ListUsers
 // Update a user
 func (c *UserServiceClient) UpdateUser(ctx context.Context, req *corev1.UpdateUserRequest) (*corev1.UpdateUserResponse, error) {
 	res, err := c.inner.UpdateUser(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update user expiry
+//
+// Update a user's expiry without changing the user identity.
+func (c *UserServiceClient) UpdateUserExpiry(ctx context.Context, req *corev1.UpdateUserExpiryRequest) (*corev1.UpdateUserExpiryResponse, error) {
+	res, err := c.inner.UpdateUserExpiry(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

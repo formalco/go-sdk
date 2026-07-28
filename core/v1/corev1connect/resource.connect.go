@@ -138,6 +138,21 @@ const (
 	// ResourceServiceDeleteResourceTlsConfigurationProcedure is the fully-qualified name of the
 	// ResourceService's DeleteResourceTlsConfiguration RPC.
 	ResourceServiceDeleteResourceTlsConfigurationProcedure = "/core.v1.ResourceService/DeleteResourceTlsConfiguration"
+	// ResourceServiceCreateResourceSshHostKeyProcedure is the fully-qualified name of the
+	// ResourceService's CreateResourceSshHostKey RPC.
+	ResourceServiceCreateResourceSshHostKeyProcedure = "/core.v1.ResourceService/CreateResourceSshHostKey"
+	// ResourceServiceGetResourceSshHostKeyProcedure is the fully-qualified name of the
+	// ResourceService's GetResourceSshHostKey RPC.
+	ResourceServiceGetResourceSshHostKeyProcedure = "/core.v1.ResourceService/GetResourceSshHostKey"
+	// ResourceServiceListResourceSshHostKeysProcedure is the fully-qualified name of the
+	// ResourceService's ListResourceSshHostKeys RPC.
+	ResourceServiceListResourceSshHostKeysProcedure = "/core.v1.ResourceService/ListResourceSshHostKeys"
+	// ResourceServiceUpdateResourceSshHostKeyProcedure is the fully-qualified name of the
+	// ResourceService's UpdateResourceSshHostKey RPC.
+	ResourceServiceUpdateResourceSshHostKeyProcedure = "/core.v1.ResourceService/UpdateResourceSshHostKey"
+	// ResourceServiceDeleteResourceSshHostKeyProcedure is the fully-qualified name of the
+	// ResourceService's DeleteResourceSshHostKey RPC.
+	ResourceServiceDeleteResourceSshHostKeyProcedure = "/core.v1.ResourceService/DeleteResourceSshHostKey"
 	// ResourceServiceCreateResourceDialConfigurationProcedure is the fully-qualified name of the
 	// ResourceService's CreateResourceDialConfiguration RPC.
 	ResourceServiceCreateResourceDialConfigurationProcedure = "/core.v1.ResourceService/CreateResourceDialConfiguration"
@@ -351,6 +366,26 @@ type ResourceServiceClient interface {
 	//
 	// Delete a resource tls configuration
 	DeleteResourceTlsConfiguration(context.Context, *connect.Request[v1.DeleteResourceTlsConfigurationRequest]) (*connect.Response[v1.DeleteResourceTlsConfigurationResponse], error)
+	// Create resource SSH host key
+	//
+	// Pin an upstream SSH host public key for a resource
+	CreateResourceSshHostKey(context.Context, *connect.Request[v1.CreateResourceSshHostKeyRequest]) (*connect.Response[v1.CreateResourceSshHostKeyResponse], error)
+	// Get resource SSH host key
+	//
+	// Get a pinned upstream SSH host public key by ID
+	GetResourceSshHostKey(context.Context, *connect.Request[v1.GetResourceSshHostKeyRequest]) (*connect.Response[v1.GetResourceSshHostKeyResponse], error)
+	// List resource SSH host keys
+	//
+	// List pinned upstream SSH host public keys for a resource
+	ListResourceSshHostKeys(context.Context, *connect.Request[v1.ListResourceSshHostKeysRequest]) (*connect.Response[v1.ListResourceSshHostKeysResponse], error)
+	// Update resource SSH host key
+	//
+	// Update a pinned upstream SSH host public key
+	UpdateResourceSshHostKey(context.Context, *connect.Request[v1.UpdateResourceSshHostKeyRequest]) (*connect.Response[v1.UpdateResourceSshHostKeyResponse], error)
+	// Delete resource SSH host key
+	//
+	// Delete a pinned upstream SSH host public key
+	DeleteResourceSshHostKey(context.Context, *connect.Request[v1.DeleteResourceSshHostKeyRequest]) (*connect.Response[v1.DeleteResourceSshHostKeyResponse], error)
 	// Create resource dial configuration
 	//
 	// Create a resource dial configuration
@@ -658,6 +693,38 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(resourceServiceMethods.ByName("DeleteResourceTlsConfiguration")),
 			connect.WithClientOptions(opts...),
 		),
+		createResourceSshHostKey: connect.NewClient[v1.CreateResourceSshHostKeyRequest, v1.CreateResourceSshHostKeyResponse](
+			httpClient,
+			baseURL+ResourceServiceCreateResourceSshHostKeyProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("CreateResourceSshHostKey")),
+			connect.WithClientOptions(opts...),
+		),
+		getResourceSshHostKey: connect.NewClient[v1.GetResourceSshHostKeyRequest, v1.GetResourceSshHostKeyResponse](
+			httpClient,
+			baseURL+ResourceServiceGetResourceSshHostKeyProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("GetResourceSshHostKey")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		listResourceSshHostKeys: connect.NewClient[v1.ListResourceSshHostKeysRequest, v1.ListResourceSshHostKeysResponse](
+			httpClient,
+			baseURL+ResourceServiceListResourceSshHostKeysProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("ListResourceSshHostKeys")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		updateResourceSshHostKey: connect.NewClient[v1.UpdateResourceSshHostKeyRequest, v1.UpdateResourceSshHostKeyResponse](
+			httpClient,
+			baseURL+ResourceServiceUpdateResourceSshHostKeyProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceSshHostKey")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteResourceSshHostKey: connect.NewClient[v1.DeleteResourceSshHostKeyRequest, v1.DeleteResourceSshHostKeyResponse](
+			httpClient,
+			baseURL+ResourceServiceDeleteResourceSshHostKeyProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("DeleteResourceSshHostKey")),
+			connect.WithClientOptions(opts...),
+		),
 		createResourceDialConfiguration: connect.NewClient[v1.CreateResourceDialConfigurationRequest, v1.CreateResourceDialConfigurationResponse](
 			httpClient,
 			baseURL+ResourceServiceCreateResourceDialConfigurationProcedure,
@@ -839,6 +906,11 @@ type resourceServiceClient struct {
 	updateResourceTlsConfiguration          *connect.Client[v1.UpdateResourceTlsConfigurationRequest, v1.UpdateResourceTlsConfigurationResponse]
 	updateResourceTlsConfigurationV2        *connect.Client[v1.UpdateResourceTlsConfigurationV2Request, v1.UpdateResourceTlsConfigurationV2Response]
 	deleteResourceTlsConfiguration          *connect.Client[v1.DeleteResourceTlsConfigurationRequest, v1.DeleteResourceTlsConfigurationResponse]
+	createResourceSshHostKey                *connect.Client[v1.CreateResourceSshHostKeyRequest, v1.CreateResourceSshHostKeyResponse]
+	getResourceSshHostKey                   *connect.Client[v1.GetResourceSshHostKeyRequest, v1.GetResourceSshHostKeyResponse]
+	listResourceSshHostKeys                 *connect.Client[v1.ListResourceSshHostKeysRequest, v1.ListResourceSshHostKeysResponse]
+	updateResourceSshHostKey                *connect.Client[v1.UpdateResourceSshHostKeyRequest, v1.UpdateResourceSshHostKeyResponse]
+	deleteResourceSshHostKey                *connect.Client[v1.DeleteResourceSshHostKeyRequest, v1.DeleteResourceSshHostKeyResponse]
 	createResourceDialConfiguration         *connect.Client[v1.CreateResourceDialConfigurationRequest, v1.CreateResourceDialConfigurationResponse]
 	getResourceDialConfiguration            *connect.Client[v1.GetResourceDialConfigurationRequest, v1.GetResourceDialConfigurationResponse]
 	updateResourceDialConfiguration         *connect.Client[v1.UpdateResourceDialConfigurationRequest, v1.UpdateResourceDialConfigurationResponse]
@@ -1038,6 +1110,31 @@ func (c *resourceServiceClient) UpdateResourceTlsConfigurationV2(ctx context.Con
 // DeleteResourceTlsConfiguration calls core.v1.ResourceService.DeleteResourceTlsConfiguration.
 func (c *resourceServiceClient) DeleteResourceTlsConfiguration(ctx context.Context, req *connect.Request[v1.DeleteResourceTlsConfigurationRequest]) (*connect.Response[v1.DeleteResourceTlsConfigurationResponse], error) {
 	return c.deleteResourceTlsConfiguration.CallUnary(ctx, req)
+}
+
+// CreateResourceSshHostKey calls core.v1.ResourceService.CreateResourceSshHostKey.
+func (c *resourceServiceClient) CreateResourceSshHostKey(ctx context.Context, req *connect.Request[v1.CreateResourceSshHostKeyRequest]) (*connect.Response[v1.CreateResourceSshHostKeyResponse], error) {
+	return c.createResourceSshHostKey.CallUnary(ctx, req)
+}
+
+// GetResourceSshHostKey calls core.v1.ResourceService.GetResourceSshHostKey.
+func (c *resourceServiceClient) GetResourceSshHostKey(ctx context.Context, req *connect.Request[v1.GetResourceSshHostKeyRequest]) (*connect.Response[v1.GetResourceSshHostKeyResponse], error) {
+	return c.getResourceSshHostKey.CallUnary(ctx, req)
+}
+
+// ListResourceSshHostKeys calls core.v1.ResourceService.ListResourceSshHostKeys.
+func (c *resourceServiceClient) ListResourceSshHostKeys(ctx context.Context, req *connect.Request[v1.ListResourceSshHostKeysRequest]) (*connect.Response[v1.ListResourceSshHostKeysResponse], error) {
+	return c.listResourceSshHostKeys.CallUnary(ctx, req)
+}
+
+// UpdateResourceSshHostKey calls core.v1.ResourceService.UpdateResourceSshHostKey.
+func (c *resourceServiceClient) UpdateResourceSshHostKey(ctx context.Context, req *connect.Request[v1.UpdateResourceSshHostKeyRequest]) (*connect.Response[v1.UpdateResourceSshHostKeyResponse], error) {
+	return c.updateResourceSshHostKey.CallUnary(ctx, req)
+}
+
+// DeleteResourceSshHostKey calls core.v1.ResourceService.DeleteResourceSshHostKey.
+func (c *resourceServiceClient) DeleteResourceSshHostKey(ctx context.Context, req *connect.Request[v1.DeleteResourceSshHostKeyRequest]) (*connect.Response[v1.DeleteResourceSshHostKeyResponse], error) {
+	return c.deleteResourceSshHostKey.CallUnary(ctx, req)
 }
 
 // CreateResourceDialConfiguration calls core.v1.ResourceService.CreateResourceDialConfiguration.
@@ -1303,6 +1400,26 @@ type ResourceServiceHandler interface {
 	//
 	// Delete a resource tls configuration
 	DeleteResourceTlsConfiguration(context.Context, *connect.Request[v1.DeleteResourceTlsConfigurationRequest]) (*connect.Response[v1.DeleteResourceTlsConfigurationResponse], error)
+	// Create resource SSH host key
+	//
+	// Pin an upstream SSH host public key for a resource
+	CreateResourceSshHostKey(context.Context, *connect.Request[v1.CreateResourceSshHostKeyRequest]) (*connect.Response[v1.CreateResourceSshHostKeyResponse], error)
+	// Get resource SSH host key
+	//
+	// Get a pinned upstream SSH host public key by ID
+	GetResourceSshHostKey(context.Context, *connect.Request[v1.GetResourceSshHostKeyRequest]) (*connect.Response[v1.GetResourceSshHostKeyResponse], error)
+	// List resource SSH host keys
+	//
+	// List pinned upstream SSH host public keys for a resource
+	ListResourceSshHostKeys(context.Context, *connect.Request[v1.ListResourceSshHostKeysRequest]) (*connect.Response[v1.ListResourceSshHostKeysResponse], error)
+	// Update resource SSH host key
+	//
+	// Update a pinned upstream SSH host public key
+	UpdateResourceSshHostKey(context.Context, *connect.Request[v1.UpdateResourceSshHostKeyRequest]) (*connect.Response[v1.UpdateResourceSshHostKeyResponse], error)
+	// Delete resource SSH host key
+	//
+	// Delete a pinned upstream SSH host public key
+	DeleteResourceSshHostKey(context.Context, *connect.Request[v1.DeleteResourceSshHostKeyRequest]) (*connect.Response[v1.DeleteResourceSshHostKeyResponse], error)
 	// Create resource dial configuration
 	//
 	// Create a resource dial configuration
@@ -1606,6 +1723,38 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 		connect.WithSchema(resourceServiceMethods.ByName("DeleteResourceTlsConfiguration")),
 		connect.WithHandlerOptions(opts...),
 	)
+	resourceServiceCreateResourceSshHostKeyHandler := connect.NewUnaryHandler(
+		ResourceServiceCreateResourceSshHostKeyProcedure,
+		svc.CreateResourceSshHostKey,
+		connect.WithSchema(resourceServiceMethods.ByName("CreateResourceSshHostKey")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceGetResourceSshHostKeyHandler := connect.NewUnaryHandler(
+		ResourceServiceGetResourceSshHostKeyProcedure,
+		svc.GetResourceSshHostKey,
+		connect.WithSchema(resourceServiceMethods.ByName("GetResourceSshHostKey")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceListResourceSshHostKeysHandler := connect.NewUnaryHandler(
+		ResourceServiceListResourceSshHostKeysProcedure,
+		svc.ListResourceSshHostKeys,
+		connect.WithSchema(resourceServiceMethods.ByName("ListResourceSshHostKeys")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceUpdateResourceSshHostKeyHandler := connect.NewUnaryHandler(
+		ResourceServiceUpdateResourceSshHostKeyProcedure,
+		svc.UpdateResourceSshHostKey,
+		connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceSshHostKey")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceDeleteResourceSshHostKeyHandler := connect.NewUnaryHandler(
+		ResourceServiceDeleteResourceSshHostKeyProcedure,
+		svc.DeleteResourceSshHostKey,
+		connect.WithSchema(resourceServiceMethods.ByName("DeleteResourceSshHostKey")),
+		connect.WithHandlerOptions(opts...),
+	)
 	resourceServiceCreateResourceDialConfigurationHandler := connect.NewUnaryHandler(
 		ResourceServiceCreateResourceDialConfigurationProcedure,
 		svc.CreateResourceDialConfiguration,
@@ -1819,6 +1968,16 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 			resourceServiceUpdateResourceTlsConfigurationV2Handler.ServeHTTP(w, r)
 		case ResourceServiceDeleteResourceTlsConfigurationProcedure:
 			resourceServiceDeleteResourceTlsConfigurationHandler.ServeHTTP(w, r)
+		case ResourceServiceCreateResourceSshHostKeyProcedure:
+			resourceServiceCreateResourceSshHostKeyHandler.ServeHTTP(w, r)
+		case ResourceServiceGetResourceSshHostKeyProcedure:
+			resourceServiceGetResourceSshHostKeyHandler.ServeHTTP(w, r)
+		case ResourceServiceListResourceSshHostKeysProcedure:
+			resourceServiceListResourceSshHostKeysHandler.ServeHTTP(w, r)
+		case ResourceServiceUpdateResourceSshHostKeyProcedure:
+			resourceServiceUpdateResourceSshHostKeyHandler.ServeHTTP(w, r)
+		case ResourceServiceDeleteResourceSshHostKeyProcedure:
+			resourceServiceDeleteResourceSshHostKeyHandler.ServeHTTP(w, r)
 		case ResourceServiceCreateResourceDialConfigurationProcedure:
 			resourceServiceCreateResourceDialConfigurationHandler.ServeHTTP(w, r)
 		case ResourceServiceGetResourceDialConfigurationProcedure:
@@ -2012,6 +2171,26 @@ func (UnimplementedResourceServiceHandler) UpdateResourceTlsConfigurationV2(cont
 
 func (UnimplementedResourceServiceHandler) DeleteResourceTlsConfiguration(context.Context, *connect.Request[v1.DeleteResourceTlsConfigurationRequest]) (*connect.Response[v1.DeleteResourceTlsConfigurationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.DeleteResourceTlsConfiguration is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) CreateResourceSshHostKey(context.Context, *connect.Request[v1.CreateResourceSshHostKeyRequest]) (*connect.Response[v1.CreateResourceSshHostKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.CreateResourceSshHostKey is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) GetResourceSshHostKey(context.Context, *connect.Request[v1.GetResourceSshHostKeyRequest]) (*connect.Response[v1.GetResourceSshHostKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.GetResourceSshHostKey is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) ListResourceSshHostKeys(context.Context, *connect.Request[v1.ListResourceSshHostKeysRequest]) (*connect.Response[v1.ListResourceSshHostKeysResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.ListResourceSshHostKeys is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) UpdateResourceSshHostKey(context.Context, *connect.Request[v1.UpdateResourceSshHostKeyRequest]) (*connect.Response[v1.UpdateResourceSshHostKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.UpdateResourceSshHostKey is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) DeleteResourceSshHostKey(context.Context, *connect.Request[v1.DeleteResourceSshHostKeyRequest]) (*connect.Response[v1.DeleteResourceSshHostKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.DeleteResourceSshHostKey is not implemented"))
 }
 
 func (UnimplementedResourceServiceHandler) CreateResourceDialConfiguration(context.Context, *connect.Request[v1.CreateResourceDialConfigurationRequest]) (*connect.Response[v1.CreateResourceDialConfigurationResponse], error) {

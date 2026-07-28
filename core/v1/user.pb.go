@@ -701,6 +701,95 @@ func (x *UpdateUserResponse) GetUser() *User {
 	return nil
 }
 
+type UpdateUserExpiryRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Set to the Unix epoch to make the user permanent.
+	ExpireAt      *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=expire_at,json=expireAt,proto3" json:"expire_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserExpiryRequest) Reset() {
+	*x = UpdateUserExpiryRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUserExpiryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserExpiryRequest) ProtoMessage() {}
+
+func (x *UpdateUserExpiryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserExpiryRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUserExpiryRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateUserExpiryRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateUserExpiryRequest) GetExpireAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpireAt
+	}
+	return nil
+}
+
+type UpdateUserExpiryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserExpiryResponse) Reset() {
+	*x = UpdateUserExpiryResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUserExpiryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserExpiryResponse) ProtoMessage() {}
+
+func (x *UpdateUserExpiryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserExpiryResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserExpiryResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{12}
+}
+
 type UpdateUserV2Request struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
@@ -710,7 +799,7 @@ type UpdateUserV2Request struct {
 
 func (x *UpdateUserV2Request) Reset() {
 	*x = UpdateUserV2Request{}
-	mi := &file_core_v1_user_proto_msgTypes[11]
+	mi := &file_core_v1_user_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -722,7 +811,7 @@ func (x *UpdateUserV2Request) String() string {
 func (*UpdateUserV2Request) ProtoMessage() {}
 
 func (x *UpdateUserV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[11]
+	mi := &file_core_v1_user_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -735,7 +824,7 @@ func (x *UpdateUserV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateUserV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{11}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UpdateUserV2Request) GetUser() *User {
@@ -754,7 +843,7 @@ type UpdateUserV2Response struct {
 
 func (x *UpdateUserV2Response) Reset() {
 	*x = UpdateUserV2Response{}
-	mi := &file_core_v1_user_proto_msgTypes[12]
+	mi := &file_core_v1_user_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -766,7 +855,7 @@ func (x *UpdateUserV2Response) String() string {
 func (*UpdateUserV2Response) ProtoMessage() {}
 
 func (x *UpdateUserV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[12]
+	mi := &file_core_v1_user_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +868,7 @@ func (x *UpdateUserV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateUserV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{12}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateUserV2Response) GetUser() *User {
@@ -798,7 +887,7 @@ type GetMachineUserCredentialsRequest struct {
 
 func (x *GetMachineUserCredentialsRequest) Reset() {
 	*x = GetMachineUserCredentialsRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[13]
+	mi := &file_core_v1_user_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -810,7 +899,7 @@ func (x *GetMachineUserCredentialsRequest) String() string {
 func (*GetMachineUserCredentialsRequest) ProtoMessage() {}
 
 func (x *GetMachineUserCredentialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[13]
+	mi := &file_core_v1_user_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -823,7 +912,7 @@ func (x *GetMachineUserCredentialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMachineUserCredentialsRequest.ProtoReflect.Descriptor instead.
 func (*GetMachineUserCredentialsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetMachineUserCredentialsRequest) GetId() string {
@@ -843,7 +932,7 @@ type GetMachineUserCredentialsResponse struct {
 
 func (x *GetMachineUserCredentialsResponse) Reset() {
 	*x = GetMachineUserCredentialsResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[14]
+	mi := &file_core_v1_user_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -855,7 +944,7 @@ func (x *GetMachineUserCredentialsResponse) String() string {
 func (*GetMachineUserCredentialsResponse) ProtoMessage() {}
 
 func (x *GetMachineUserCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[14]
+	mi := &file_core_v1_user_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -868,7 +957,7 @@ func (x *GetMachineUserCredentialsResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetMachineUserCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*GetMachineUserCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetMachineUserCredentialsResponse) GetPassword() string {
@@ -899,7 +988,7 @@ type CreateHumanUserPasswordRequest struct {
 
 func (x *CreateHumanUserPasswordRequest) Reset() {
 	*x = CreateHumanUserPasswordRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[15]
+	mi := &file_core_v1_user_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -911,7 +1000,7 @@ func (x *CreateHumanUserPasswordRequest) String() string {
 func (*CreateHumanUserPasswordRequest) ProtoMessage() {}
 
 func (x *CreateHumanUserPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[15]
+	mi := &file_core_v1_user_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -924,7 +1013,7 @@ func (x *CreateHumanUserPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateHumanUserPasswordRequest.ProtoReflect.Descriptor instead.
 func (*CreateHumanUserPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CreateHumanUserPasswordRequest) GetIdentifier() isCreateHumanUserPasswordRequest_Identifier {
@@ -996,7 +1085,7 @@ type CreateHumanUserPasswordResponse struct {
 
 func (x *CreateHumanUserPasswordResponse) Reset() {
 	*x = CreateHumanUserPasswordResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[16]
+	mi := &file_core_v1_user_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1008,7 +1097,7 @@ func (x *CreateHumanUserPasswordResponse) String() string {
 func (*CreateHumanUserPasswordResponse) ProtoMessage() {}
 
 func (x *CreateHumanUserPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[16]
+	mi := &file_core_v1_user_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1021,7 +1110,7 @@ func (x *CreateHumanUserPasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateHumanUserPasswordResponse.ProtoReflect.Descriptor instead.
 func (*CreateHumanUserPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CreateHumanUserPasswordResponse) GetPassword() string {
@@ -1068,7 +1157,7 @@ type CreateMachineUserPasswordRequest struct {
 
 func (x *CreateMachineUserPasswordRequest) Reset() {
 	*x = CreateMachineUserPasswordRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[17]
+	mi := &file_core_v1_user_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1080,7 +1169,7 @@ func (x *CreateMachineUserPasswordRequest) String() string {
 func (*CreateMachineUserPasswordRequest) ProtoMessage() {}
 
 func (x *CreateMachineUserPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[17]
+	mi := &file_core_v1_user_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1093,7 +1182,7 @@ func (x *CreateMachineUserPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMachineUserPasswordRequest.ProtoReflect.Descriptor instead.
 func (*CreateMachineUserPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *CreateMachineUserPasswordRequest) GetId() string {
@@ -1114,7 +1203,7 @@ type CreateMachineUserPasswordResponse struct {
 
 func (x *CreateMachineUserPasswordResponse) Reset() {
 	*x = CreateMachineUserPasswordResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[18]
+	mi := &file_core_v1_user_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1126,7 +1215,7 @@ func (x *CreateMachineUserPasswordResponse) String() string {
 func (*CreateMachineUserPasswordResponse) ProtoMessage() {}
 
 func (x *CreateMachineUserPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[18]
+	mi := &file_core_v1_user_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1139,7 +1228,7 @@ func (x *CreateMachineUserPasswordResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CreateMachineUserPasswordResponse.ProtoReflect.Descriptor instead.
 func (*CreateMachineUserPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreateMachineUserPasswordResponse) GetPassword() string {
@@ -1175,7 +1264,7 @@ type ListUserExternalIdsRequest struct {
 
 func (x *ListUserExternalIdsRequest) Reset() {
 	*x = ListUserExternalIdsRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[19]
+	mi := &file_core_v1_user_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1187,7 +1276,7 @@ func (x *ListUserExternalIdsRequest) String() string {
 func (*ListUserExternalIdsRequest) ProtoMessage() {}
 
 func (x *ListUserExternalIdsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[19]
+	mi := &file_core_v1_user_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1200,7 +1289,7 @@ func (x *ListUserExternalIdsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserExternalIdsRequest.ProtoReflect.Descriptor instead.
 func (*ListUserExternalIdsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ListUserExternalIdsRequest) GetId() string {
@@ -1241,7 +1330,7 @@ type ListUserExternalIdsResponse struct {
 
 func (x *ListUserExternalIdsResponse) Reset() {
 	*x = ListUserExternalIdsResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[20]
+	mi := &file_core_v1_user_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1253,7 +1342,7 @@ func (x *ListUserExternalIdsResponse) String() string {
 func (*ListUserExternalIdsResponse) ProtoMessage() {}
 
 func (x *ListUserExternalIdsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[20]
+	mi := &file_core_v1_user_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1266,7 +1355,7 @@ func (x *ListUserExternalIdsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserExternalIdsResponse.ProtoReflect.Descriptor instead.
 func (*ListUserExternalIdsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListUserExternalIdsResponse) GetExternalIds() []*ExternalId {
@@ -1295,7 +1384,7 @@ type CreateUserExternalIdRequest struct {
 
 func (x *CreateUserExternalIdRequest) Reset() {
 	*x = CreateUserExternalIdRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[21]
+	mi := &file_core_v1_user_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1307,7 +1396,7 @@ func (x *CreateUserExternalIdRequest) String() string {
 func (*CreateUserExternalIdRequest) ProtoMessage() {}
 
 func (x *CreateUserExternalIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[21]
+	mi := &file_core_v1_user_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1320,7 +1409,7 @@ func (x *CreateUserExternalIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserExternalIdRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserExternalIdRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{21}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CreateUserExternalIdRequest) GetUserId() string {
@@ -1360,7 +1449,7 @@ type CreateUserExternalIdResponse struct {
 
 func (x *CreateUserExternalIdResponse) Reset() {
 	*x = CreateUserExternalIdResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[22]
+	mi := &file_core_v1_user_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1372,7 +1461,7 @@ func (x *CreateUserExternalIdResponse) String() string {
 func (*CreateUserExternalIdResponse) ProtoMessage() {}
 
 func (x *CreateUserExternalIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[22]
+	mi := &file_core_v1_user_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1385,7 +1474,7 @@ func (x *CreateUserExternalIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserExternalIdResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserExternalIdResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{22}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CreateUserExternalIdResponse) GetExternalId() *ExternalId {
@@ -1404,7 +1493,7 @@ type DeleteUserExternalIdRequest struct {
 
 func (x *DeleteUserExternalIdRequest) Reset() {
 	*x = DeleteUserExternalIdRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[23]
+	mi := &file_core_v1_user_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1416,7 +1505,7 @@ func (x *DeleteUserExternalIdRequest) String() string {
 func (*DeleteUserExternalIdRequest) ProtoMessage() {}
 
 func (x *DeleteUserExternalIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[23]
+	mi := &file_core_v1_user_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1429,7 +1518,7 @@ func (x *DeleteUserExternalIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserExternalIdRequest.ProtoReflect.Descriptor instead.
 func (*DeleteUserExternalIdRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{23}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *DeleteUserExternalIdRequest) GetId() string {
@@ -1448,7 +1537,7 @@ type DeleteUserExternalIdResponse struct {
 
 func (x *DeleteUserExternalIdResponse) Reset() {
 	*x = DeleteUserExternalIdResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[24]
+	mi := &file_core_v1_user_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1460,7 +1549,7 @@ func (x *DeleteUserExternalIdResponse) String() string {
 func (*DeleteUserExternalIdResponse) ProtoMessage() {}
 
 func (x *DeleteUserExternalIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[24]
+	mi := &file_core_v1_user_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1473,7 +1562,7 @@ func (x *DeleteUserExternalIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserExternalIdResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUserExternalIdResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{24}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *DeleteUserExternalIdResponse) GetId() string {
@@ -1493,7 +1582,7 @@ type DeleteBlockedUserRequest struct {
 
 func (x *DeleteBlockedUserRequest) Reset() {
 	*x = DeleteBlockedUserRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[25]
+	mi := &file_core_v1_user_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1505,7 +1594,7 @@ func (x *DeleteBlockedUserRequest) String() string {
 func (*DeleteBlockedUserRequest) ProtoMessage() {}
 
 func (x *DeleteBlockedUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[25]
+	mi := &file_core_v1_user_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1518,7 +1607,7 @@ func (x *DeleteBlockedUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBlockedUserRequest.ProtoReflect.Descriptor instead.
 func (*DeleteBlockedUserRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{25}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *DeleteBlockedUserRequest) GetId() string {
@@ -1544,7 +1633,7 @@ type DeleteBlockedUserResponse struct {
 
 func (x *DeleteBlockedUserResponse) Reset() {
 	*x = DeleteBlockedUserResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[26]
+	mi := &file_core_v1_user_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1556,7 +1645,7 @@ func (x *DeleteBlockedUserResponse) String() string {
 func (*DeleteBlockedUserResponse) ProtoMessage() {}
 
 func (x *DeleteBlockedUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[26]
+	mi := &file_core_v1_user_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1569,7 +1658,7 @@ func (x *DeleteBlockedUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBlockedUserResponse.ProtoReflect.Descriptor instead.
 func (*DeleteBlockedUserResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{26}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *DeleteBlockedUserResponse) GetId() string {
@@ -1588,7 +1677,7 @@ type CreateBlockedUserRequest struct {
 
 func (x *CreateBlockedUserRequest) Reset() {
 	*x = CreateBlockedUserRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[27]
+	mi := &file_core_v1_user_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1600,7 +1689,7 @@ func (x *CreateBlockedUserRequest) String() string {
 func (*CreateBlockedUserRequest) ProtoMessage() {}
 
 func (x *CreateBlockedUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[27]
+	mi := &file_core_v1_user_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1613,7 +1702,7 @@ func (x *CreateBlockedUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBlockedUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateBlockedUserRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{27}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CreateBlockedUserRequest) GetId() string {
@@ -1632,7 +1721,7 @@ type CreateBlockedUserResponse struct {
 
 func (x *CreateBlockedUserResponse) Reset() {
 	*x = CreateBlockedUserResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[28]
+	mi := &file_core_v1_user_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1644,7 +1733,7 @@ func (x *CreateBlockedUserResponse) String() string {
 func (*CreateBlockedUserResponse) ProtoMessage() {}
 
 func (x *CreateBlockedUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[28]
+	mi := &file_core_v1_user_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1657,7 +1746,7 @@ func (x *CreateBlockedUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBlockedUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateBlockedUserResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{28}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CreateBlockedUserResponse) GetId() string {
@@ -1676,7 +1765,7 @@ type GetBlockedUserRequest struct {
 
 func (x *GetBlockedUserRequest) Reset() {
 	*x = GetBlockedUserRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[29]
+	mi := &file_core_v1_user_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1688,7 +1777,7 @@ func (x *GetBlockedUserRequest) String() string {
 func (*GetBlockedUserRequest) ProtoMessage() {}
 
 func (x *GetBlockedUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[29]
+	mi := &file_core_v1_user_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1701,7 +1790,7 @@ func (x *GetBlockedUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBlockedUserRequest.ProtoReflect.Descriptor instead.
 func (*GetBlockedUserRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{29}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetBlockedUserRequest) GetId() string {
@@ -1721,7 +1810,7 @@ type GetBlockedUserResponse struct {
 
 func (x *GetBlockedUserResponse) Reset() {
 	*x = GetBlockedUserResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[30]
+	mi := &file_core_v1_user_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1733,7 +1822,7 @@ func (x *GetBlockedUserResponse) String() string {
 func (*GetBlockedUserResponse) ProtoMessage() {}
 
 func (x *GetBlockedUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[30]
+	mi := &file_core_v1_user_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1746,7 +1835,7 @@ func (x *GetBlockedUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBlockedUserResponse.ProtoReflect.Descriptor instead.
 func (*GetBlockedUserResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{30}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetBlockedUserResponse) GetId() string {
@@ -1772,7 +1861,7 @@ type CreateUserKeyRequest struct {
 
 func (x *CreateUserKeyRequest) Reset() {
 	*x = CreateUserKeyRequest{}
-	mi := &file_core_v1_user_proto_msgTypes[31]
+	mi := &file_core_v1_user_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1784,7 +1873,7 @@ func (x *CreateUserKeyRequest) String() string {
 func (*CreateUserKeyRequest) ProtoMessage() {}
 
 func (x *CreateUserKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[31]
+	mi := &file_core_v1_user_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1797,7 +1886,7 @@ func (x *CreateUserKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserKeyRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{31}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CreateUserKeyRequest) GetUserId() string {
@@ -1818,7 +1907,7 @@ type CreateUserKeyResponse struct {
 
 func (x *CreateUserKeyResponse) Reset() {
 	*x = CreateUserKeyResponse{}
-	mi := &file_core_v1_user_proto_msgTypes[32]
+	mi := &file_core_v1_user_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1830,7 +1919,7 @@ func (x *CreateUserKeyResponse) String() string {
 func (*CreateUserKeyResponse) ProtoMessage() {}
 
 func (x *CreateUserKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_user_proto_msgTypes[32]
+	mi := &file_core_v1_user_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1843,7 +1932,7 @@ func (x *CreateUserKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserKeyResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_user_proto_rawDescGZIP(), []int{32}
+	return file_core_v1_user_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CreateUserKeyResponse) GetPrivateKey() string {
@@ -1924,7 +2013,11 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"_last_nameJ\x04\b\x05\x10\x06\"7\n" +
 	"\x12UpdateUserResponse\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.core.v1.UserR\x04user\"@\n" +
+	"\x04user\x18\x01 \x01(\v2\r.core.v1.UserR\x04user\"k\n" +
+	"\x17UpdateUserExpiryRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x127\n" +
+	"\texpire_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\bexpireAt\"\x1a\n" +
+	"\x18UpdateUserExpiryResponse\"@\n" +
 	"\x13UpdateUserV2Request\x12)\n" +
 	"\x04user\x18\x01 \x01(\v2\r.core.v1.UserB\x06\xbaH\x03\xc8\x01\x01R\x04user\"9\n" +
 	"\x14UpdateUserV2Response\x12!\n" +
@@ -2002,14 +2095,15 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"public_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tpublicKey\x12C\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt2\xbe\x11\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt2\xca\x12\n" +
 	"\vUserService\x12q\n" +
 	"\n" +
 	"CreateUser\x12\x1a.core.v1.CreateUserRequest\x1a\x1b.core.v1.CreateUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/CreateUser\x12q\n" +
 	"\n" +
 	"DeleteUser\x12\x1a.core.v1.DeleteUserRequest\x1a\x1b.core.v1.DeleteUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/DeleteUser\x12q\n" +
 	"\n" +
-	"UpdateUser\x12\x1a.core.v1.UpdateUserRequest\x1a\x1b.core.v1.UpdateUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/UpdateUser\x12y\n" +
+	"UpdateUser\x12\x1a.core.v1.UpdateUserRequest\x1a\x1b.core.v1.UpdateUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/UpdateUser\x12\x89\x01\n" +
+	"\x10UpdateUserExpiry\x12 .core.v1.UpdateUserExpiryRequest\x1a!.core.v1.UpdateUserExpiryResponse\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.UserService/UpdateUserExpiry\x12y\n" +
 	"\fUpdateUserV2\x12\x1c.core.v1.UpdateUserV2Request\x1a\x1d.core.v1.UpdateUserV2Response\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.UserService/UpdateUserV2\x12p\n" +
 	"\tListUsers\x12\x19.core.v1.ListUsersRequest\x1a\x1a.core.v1.ListUsersResponse\",\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/core.v1.UserService/ListUsers\x90\x02\x01\x12h\n" +
 	"\aGetUser\x12\x17.core.v1.GetUserRequest\x1a\x18.core.v1.GetUserResponse\"*\x82\xd3\xe4\x93\x02!:\x01*\"\x1c/core.v1.UserService/GetUser\x90\x02\x01\x12\x8d\x01\n" +
@@ -2037,7 +2131,7 @@ func file_core_v1_user_proto_rawDescGZIP() []byte {
 	return file_core_v1_user_proto_rawDescData
 }
 
-var file_core_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_core_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
 var file_core_v1_user_proto_goTypes = []any{
 	(*ExternalId)(nil),                        // 0: core.v1.ExternalId
 	(*CreateUserRequest)(nil),                 // 1: core.v1.CreateUserRequest
@@ -2050,95 +2144,100 @@ var file_core_v1_user_proto_goTypes = []any{
 	(*DeleteUserResponse)(nil),                // 8: core.v1.DeleteUserResponse
 	(*UpdateUserRequest)(nil),                 // 9: core.v1.UpdateUserRequest
 	(*UpdateUserResponse)(nil),                // 10: core.v1.UpdateUserResponse
-	(*UpdateUserV2Request)(nil),               // 11: core.v1.UpdateUserV2Request
-	(*UpdateUserV2Response)(nil),              // 12: core.v1.UpdateUserV2Response
-	(*GetMachineUserCredentialsRequest)(nil),  // 13: core.v1.GetMachineUserCredentialsRequest
-	(*GetMachineUserCredentialsResponse)(nil), // 14: core.v1.GetMachineUserCredentialsResponse
-	(*CreateHumanUserPasswordRequest)(nil),    // 15: core.v1.CreateHumanUserPasswordRequest
-	(*CreateHumanUserPasswordResponse)(nil),   // 16: core.v1.CreateHumanUserPasswordResponse
-	(*CreateMachineUserPasswordRequest)(nil),  // 17: core.v1.CreateMachineUserPasswordRequest
-	(*CreateMachineUserPasswordResponse)(nil), // 18: core.v1.CreateMachineUserPasswordResponse
-	(*ListUserExternalIdsRequest)(nil),        // 19: core.v1.ListUserExternalIdsRequest
-	(*ListUserExternalIdsResponse)(nil),       // 20: core.v1.ListUserExternalIdsResponse
-	(*CreateUserExternalIdRequest)(nil),       // 21: core.v1.CreateUserExternalIdRequest
-	(*CreateUserExternalIdResponse)(nil),      // 22: core.v1.CreateUserExternalIdResponse
-	(*DeleteUserExternalIdRequest)(nil),       // 23: core.v1.DeleteUserExternalIdRequest
-	(*DeleteUserExternalIdResponse)(nil),      // 24: core.v1.DeleteUserExternalIdResponse
-	(*DeleteBlockedUserRequest)(nil),          // 25: core.v1.DeleteBlockedUserRequest
-	(*DeleteBlockedUserResponse)(nil),         // 26: core.v1.DeleteBlockedUserResponse
-	(*CreateBlockedUserRequest)(nil),          // 27: core.v1.CreateBlockedUserRequest
-	(*CreateBlockedUserResponse)(nil),         // 28: core.v1.CreateBlockedUserResponse
-	(*GetBlockedUserRequest)(nil),             // 29: core.v1.GetBlockedUserRequest
-	(*GetBlockedUserResponse)(nil),            // 30: core.v1.GetBlockedUserResponse
-	(*CreateUserKeyRequest)(nil),              // 31: core.v1.CreateUserKeyRequest
-	(*CreateUserKeyResponse)(nil),             // 32: core.v1.CreateUserKeyResponse
-	(*timestamppb.Timestamp)(nil),             // 33: google.protobuf.Timestamp
-	(*User_Human)(nil),                        // 34: core.v1.User.Human
-	(*User_Machine)(nil),                      // 35: core.v1.User.Machine
-	(*User)(nil),                              // 36: core.v1.User
-	(*Filter)(nil),                            // 37: core.v1.Filter
-	(*ListMetadata)(nil),                      // 38: core.v1.ListMetadata
-	(*Group)(nil),                             // 39: core.v1.Group
+	(*UpdateUserExpiryRequest)(nil),           // 11: core.v1.UpdateUserExpiryRequest
+	(*UpdateUserExpiryResponse)(nil),          // 12: core.v1.UpdateUserExpiryResponse
+	(*UpdateUserV2Request)(nil),               // 13: core.v1.UpdateUserV2Request
+	(*UpdateUserV2Response)(nil),              // 14: core.v1.UpdateUserV2Response
+	(*GetMachineUserCredentialsRequest)(nil),  // 15: core.v1.GetMachineUserCredentialsRequest
+	(*GetMachineUserCredentialsResponse)(nil), // 16: core.v1.GetMachineUserCredentialsResponse
+	(*CreateHumanUserPasswordRequest)(nil),    // 17: core.v1.CreateHumanUserPasswordRequest
+	(*CreateHumanUserPasswordResponse)(nil),   // 18: core.v1.CreateHumanUserPasswordResponse
+	(*CreateMachineUserPasswordRequest)(nil),  // 19: core.v1.CreateMachineUserPasswordRequest
+	(*CreateMachineUserPasswordResponse)(nil), // 20: core.v1.CreateMachineUserPasswordResponse
+	(*ListUserExternalIdsRequest)(nil),        // 21: core.v1.ListUserExternalIdsRequest
+	(*ListUserExternalIdsResponse)(nil),       // 22: core.v1.ListUserExternalIdsResponse
+	(*CreateUserExternalIdRequest)(nil),       // 23: core.v1.CreateUserExternalIdRequest
+	(*CreateUserExternalIdResponse)(nil),      // 24: core.v1.CreateUserExternalIdResponse
+	(*DeleteUserExternalIdRequest)(nil),       // 25: core.v1.DeleteUserExternalIdRequest
+	(*DeleteUserExternalIdResponse)(nil),      // 26: core.v1.DeleteUserExternalIdResponse
+	(*DeleteBlockedUserRequest)(nil),          // 27: core.v1.DeleteBlockedUserRequest
+	(*DeleteBlockedUserResponse)(nil),         // 28: core.v1.DeleteBlockedUserResponse
+	(*CreateBlockedUserRequest)(nil),          // 29: core.v1.CreateBlockedUserRequest
+	(*CreateBlockedUserResponse)(nil),         // 30: core.v1.CreateBlockedUserResponse
+	(*GetBlockedUserRequest)(nil),             // 31: core.v1.GetBlockedUserRequest
+	(*GetBlockedUserResponse)(nil),            // 32: core.v1.GetBlockedUserResponse
+	(*CreateUserKeyRequest)(nil),              // 33: core.v1.CreateUserKeyRequest
+	(*CreateUserKeyResponse)(nil),             // 34: core.v1.CreateUserKeyResponse
+	(*timestamppb.Timestamp)(nil),             // 35: google.protobuf.Timestamp
+	(*User_Human)(nil),                        // 36: core.v1.User.Human
+	(*User_Machine)(nil),                      // 37: core.v1.User.Machine
+	(*User)(nil),                              // 38: core.v1.User
+	(*Filter)(nil),                            // 39: core.v1.Filter
+	(*ListMetadata)(nil),                      // 40: core.v1.ListMetadata
+	(*Group)(nil),                             // 41: core.v1.Group
 }
 var file_core_v1_user_proto_depIdxs = []int32{
-	33, // 0: core.v1.ExternalId.created_at:type_name -> google.protobuf.Timestamp
-	33, // 1: core.v1.ExternalId.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 2: core.v1.CreateUserRequest.human:type_name -> core.v1.User.Human
-	35, // 3: core.v1.CreateUserRequest.machine:type_name -> core.v1.User.Machine
-	33, // 4: core.v1.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
-	36, // 5: core.v1.CreateUserResponse.user:type_name -> core.v1.User
-	37, // 6: core.v1.ListUsersRequest.filter:type_name -> core.v1.Filter
-	36, // 7: core.v1.ListUsersResponse.users:type_name -> core.v1.User
-	38, // 8: core.v1.ListUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
-	36, // 9: core.v1.GetUserResponse.user:type_name -> core.v1.User
-	36, // 10: core.v1.UpdateUserResponse.user:type_name -> core.v1.User
-	36, // 11: core.v1.UpdateUserV2Request.user:type_name -> core.v1.User
-	36, // 12: core.v1.UpdateUserV2Response.user:type_name -> core.v1.User
-	39, // 13: core.v1.CreateHumanUserPasswordResponse.groups:type_name -> core.v1.Group
-	33, // 14: core.v1.CreateHumanUserPasswordResponse.expires_at:type_name -> google.protobuf.Timestamp
-	33, // 15: core.v1.CreateHumanUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
-	33, // 16: core.v1.CreateMachineUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
-	0,  // 17: core.v1.ListUserExternalIdsResponse.external_ids:type_name -> core.v1.ExternalId
-	38, // 18: core.v1.ListUserExternalIdsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	0,  // 19: core.v1.CreateUserExternalIdResponse.external_id:type_name -> core.v1.ExternalId
-	33, // 20: core.v1.CreateUserKeyResponse.created_at:type_name -> google.protobuf.Timestamp
-	1,  // 21: core.v1.UserService.CreateUser:input_type -> core.v1.CreateUserRequest
-	7,  // 22: core.v1.UserService.DeleteUser:input_type -> core.v1.DeleteUserRequest
-	9,  // 23: core.v1.UserService.UpdateUser:input_type -> core.v1.UpdateUserRequest
-	11, // 24: core.v1.UserService.UpdateUserV2:input_type -> core.v1.UpdateUserV2Request
-	3,  // 25: core.v1.UserService.ListUsers:input_type -> core.v1.ListUsersRequest
-	5,  // 26: core.v1.UserService.GetUser:input_type -> core.v1.GetUserRequest
-	25, // 27: core.v1.UserService.DeleteBlockedUser:input_type -> core.v1.DeleteBlockedUserRequest
-	27, // 28: core.v1.UserService.CreateBlockedUser:input_type -> core.v1.CreateBlockedUserRequest
-	29, // 29: core.v1.UserService.GetBlockedUser:input_type -> core.v1.GetBlockedUserRequest
-	13, // 30: core.v1.UserService.GetMachineUserCredentials:input_type -> core.v1.GetMachineUserCredentialsRequest
-	17, // 31: core.v1.UserService.CreateMachineUserPassword:input_type -> core.v1.CreateMachineUserPasswordRequest
-	31, // 32: core.v1.UserService.CreateUserKey:input_type -> core.v1.CreateUserKeyRequest
-	15, // 33: core.v1.UserService.CreateHumanUserPassword:input_type -> core.v1.CreateHumanUserPasswordRequest
-	19, // 34: core.v1.UserService.ListUserExternalIds:input_type -> core.v1.ListUserExternalIdsRequest
-	21, // 35: core.v1.UserService.CreateUserExternalId:input_type -> core.v1.CreateUserExternalIdRequest
-	23, // 36: core.v1.UserService.DeleteUserExternalId:input_type -> core.v1.DeleteUserExternalIdRequest
-	2,  // 37: core.v1.UserService.CreateUser:output_type -> core.v1.CreateUserResponse
-	8,  // 38: core.v1.UserService.DeleteUser:output_type -> core.v1.DeleteUserResponse
-	10, // 39: core.v1.UserService.UpdateUser:output_type -> core.v1.UpdateUserResponse
-	12, // 40: core.v1.UserService.UpdateUserV2:output_type -> core.v1.UpdateUserV2Response
-	4,  // 41: core.v1.UserService.ListUsers:output_type -> core.v1.ListUsersResponse
-	6,  // 42: core.v1.UserService.GetUser:output_type -> core.v1.GetUserResponse
-	26, // 43: core.v1.UserService.DeleteBlockedUser:output_type -> core.v1.DeleteBlockedUserResponse
-	28, // 44: core.v1.UserService.CreateBlockedUser:output_type -> core.v1.CreateBlockedUserResponse
-	30, // 45: core.v1.UserService.GetBlockedUser:output_type -> core.v1.GetBlockedUserResponse
-	14, // 46: core.v1.UserService.GetMachineUserCredentials:output_type -> core.v1.GetMachineUserCredentialsResponse
-	18, // 47: core.v1.UserService.CreateMachineUserPassword:output_type -> core.v1.CreateMachineUserPasswordResponse
-	32, // 48: core.v1.UserService.CreateUserKey:output_type -> core.v1.CreateUserKeyResponse
-	16, // 49: core.v1.UserService.CreateHumanUserPassword:output_type -> core.v1.CreateHumanUserPasswordResponse
-	20, // 50: core.v1.UserService.ListUserExternalIds:output_type -> core.v1.ListUserExternalIdsResponse
-	22, // 51: core.v1.UserService.CreateUserExternalId:output_type -> core.v1.CreateUserExternalIdResponse
-	24, // 52: core.v1.UserService.DeleteUserExternalId:output_type -> core.v1.DeleteUserExternalIdResponse
-	37, // [37:53] is the sub-list for method output_type
-	21, // [21:37] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+	35, // 0: core.v1.ExternalId.created_at:type_name -> google.protobuf.Timestamp
+	35, // 1: core.v1.ExternalId.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 2: core.v1.CreateUserRequest.human:type_name -> core.v1.User.Human
+	37, // 3: core.v1.CreateUserRequest.machine:type_name -> core.v1.User.Machine
+	35, // 4: core.v1.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
+	38, // 5: core.v1.CreateUserResponse.user:type_name -> core.v1.User
+	39, // 6: core.v1.ListUsersRequest.filter:type_name -> core.v1.Filter
+	38, // 7: core.v1.ListUsersResponse.users:type_name -> core.v1.User
+	40, // 8: core.v1.ListUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	38, // 9: core.v1.GetUserResponse.user:type_name -> core.v1.User
+	38, // 10: core.v1.UpdateUserResponse.user:type_name -> core.v1.User
+	35, // 11: core.v1.UpdateUserExpiryRequest.expire_at:type_name -> google.protobuf.Timestamp
+	38, // 12: core.v1.UpdateUserV2Request.user:type_name -> core.v1.User
+	38, // 13: core.v1.UpdateUserV2Response.user:type_name -> core.v1.User
+	41, // 14: core.v1.CreateHumanUserPasswordResponse.groups:type_name -> core.v1.Group
+	35, // 15: core.v1.CreateHumanUserPasswordResponse.expires_at:type_name -> google.protobuf.Timestamp
+	35, // 16: core.v1.CreateHumanUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
+	35, // 17: core.v1.CreateMachineUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
+	0,  // 18: core.v1.ListUserExternalIdsResponse.external_ids:type_name -> core.v1.ExternalId
+	40, // 19: core.v1.ListUserExternalIdsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	0,  // 20: core.v1.CreateUserExternalIdResponse.external_id:type_name -> core.v1.ExternalId
+	35, // 21: core.v1.CreateUserKeyResponse.created_at:type_name -> google.protobuf.Timestamp
+	1,  // 22: core.v1.UserService.CreateUser:input_type -> core.v1.CreateUserRequest
+	7,  // 23: core.v1.UserService.DeleteUser:input_type -> core.v1.DeleteUserRequest
+	9,  // 24: core.v1.UserService.UpdateUser:input_type -> core.v1.UpdateUserRequest
+	11, // 25: core.v1.UserService.UpdateUserExpiry:input_type -> core.v1.UpdateUserExpiryRequest
+	13, // 26: core.v1.UserService.UpdateUserV2:input_type -> core.v1.UpdateUserV2Request
+	3,  // 27: core.v1.UserService.ListUsers:input_type -> core.v1.ListUsersRequest
+	5,  // 28: core.v1.UserService.GetUser:input_type -> core.v1.GetUserRequest
+	27, // 29: core.v1.UserService.DeleteBlockedUser:input_type -> core.v1.DeleteBlockedUserRequest
+	29, // 30: core.v1.UserService.CreateBlockedUser:input_type -> core.v1.CreateBlockedUserRequest
+	31, // 31: core.v1.UserService.GetBlockedUser:input_type -> core.v1.GetBlockedUserRequest
+	15, // 32: core.v1.UserService.GetMachineUserCredentials:input_type -> core.v1.GetMachineUserCredentialsRequest
+	19, // 33: core.v1.UserService.CreateMachineUserPassword:input_type -> core.v1.CreateMachineUserPasswordRequest
+	33, // 34: core.v1.UserService.CreateUserKey:input_type -> core.v1.CreateUserKeyRequest
+	17, // 35: core.v1.UserService.CreateHumanUserPassword:input_type -> core.v1.CreateHumanUserPasswordRequest
+	21, // 36: core.v1.UserService.ListUserExternalIds:input_type -> core.v1.ListUserExternalIdsRequest
+	23, // 37: core.v1.UserService.CreateUserExternalId:input_type -> core.v1.CreateUserExternalIdRequest
+	25, // 38: core.v1.UserService.DeleteUserExternalId:input_type -> core.v1.DeleteUserExternalIdRequest
+	2,  // 39: core.v1.UserService.CreateUser:output_type -> core.v1.CreateUserResponse
+	8,  // 40: core.v1.UserService.DeleteUser:output_type -> core.v1.DeleteUserResponse
+	10, // 41: core.v1.UserService.UpdateUser:output_type -> core.v1.UpdateUserResponse
+	12, // 42: core.v1.UserService.UpdateUserExpiry:output_type -> core.v1.UpdateUserExpiryResponse
+	14, // 43: core.v1.UserService.UpdateUserV2:output_type -> core.v1.UpdateUserV2Response
+	4,  // 44: core.v1.UserService.ListUsers:output_type -> core.v1.ListUsersResponse
+	6,  // 45: core.v1.UserService.GetUser:output_type -> core.v1.GetUserResponse
+	28, // 46: core.v1.UserService.DeleteBlockedUser:output_type -> core.v1.DeleteBlockedUserResponse
+	30, // 47: core.v1.UserService.CreateBlockedUser:output_type -> core.v1.CreateBlockedUserResponse
+	32, // 48: core.v1.UserService.GetBlockedUser:output_type -> core.v1.GetBlockedUserResponse
+	16, // 49: core.v1.UserService.GetMachineUserCredentials:output_type -> core.v1.GetMachineUserCredentialsResponse
+	20, // 50: core.v1.UserService.CreateMachineUserPassword:output_type -> core.v1.CreateMachineUserPasswordResponse
+	34, // 51: core.v1.UserService.CreateUserKey:output_type -> core.v1.CreateUserKeyResponse
+	18, // 52: core.v1.UserService.CreateHumanUserPassword:output_type -> core.v1.CreateHumanUserPasswordResponse
+	22, // 53: core.v1.UserService.ListUserExternalIds:output_type -> core.v1.ListUserExternalIdsResponse
+	24, // 54: core.v1.UserService.CreateUserExternalId:output_type -> core.v1.CreateUserExternalIdResponse
+	26, // 55: core.v1.UserService.DeleteUserExternalId:output_type -> core.v1.DeleteUserExternalIdResponse
+	39, // [39:56] is the sub-list for method output_type
+	22, // [22:39] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_user_proto_init() }
@@ -2155,7 +2254,7 @@ func file_core_v1_user_proto_init() {
 	}
 	file_core_v1_user_proto_msgTypes[3].OneofWrappers = []any{}
 	file_core_v1_user_proto_msgTypes[9].OneofWrappers = []any{}
-	file_core_v1_user_proto_msgTypes[15].OneofWrappers = []any{
+	file_core_v1_user_proto_msgTypes[17].OneofWrappers = []any{
 		(*CreateHumanUserPasswordRequest_Username)(nil),
 		(*CreateHumanUserPasswordRequest_Email)(nil),
 		(*CreateHumanUserPasswordRequest_Id)(nil),
@@ -2166,7 +2265,7 @@ func file_core_v1_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_user_proto_rawDesc), len(file_core_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   33,
+			NumMessages:   35,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

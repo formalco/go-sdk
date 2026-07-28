@@ -4711,6 +4711,462 @@ func (x *DeleteResourceTlsConfigurationResponse) GetId() string {
 	return ""
 }
 
+type CreateResourceSshHostKeyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ResourceId    string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	PublicKey     string                 `protobuf:"bytes,2,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateResourceSshHostKeyRequest) Reset() {
+	*x = CreateResourceSshHostKeyRequest{}
+	mi := &file_core_v1_resource_proto_msgTypes[72]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateResourceSshHostKeyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateResourceSshHostKeyRequest) ProtoMessage() {}
+
+func (x *CreateResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[72]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
+func (*CreateResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{72}
+}
+
+func (x *CreateResourceSshHostKeyRequest) GetResourceId() string {
+	if x != nil {
+		return x.ResourceId
+	}
+	return ""
+}
+
+func (x *CreateResourceSshHostKeyRequest) GetPublicKey() string {
+	if x != nil {
+		return x.PublicKey
+	}
+	return ""
+}
+
+type CreateResourceSshHostKeyResponse struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	ResourceSshHostKey *ResourceSshHostKey    `protobuf:"bytes,1,opt,name=resource_ssh_host_key,json=resourceSshHostKey,proto3" json:"resource_ssh_host_key,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *CreateResourceSshHostKeyResponse) Reset() {
+	*x = CreateResourceSshHostKeyResponse{}
+	mi := &file_core_v1_resource_proto_msgTypes[73]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateResourceSshHostKeyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateResourceSshHostKeyResponse) ProtoMessage() {}
+
+func (x *CreateResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[73]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
+func (*CreateResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{73}
+}
+
+func (x *CreateResourceSshHostKeyResponse) GetResourceSshHostKey() *ResourceSshHostKey {
+	if x != nil {
+		return x.ResourceSshHostKey
+	}
+	return nil
+}
+
+type GetResourceSshHostKeyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetResourceSshHostKeyRequest) Reset() {
+	*x = GetResourceSshHostKeyRequest{}
+	mi := &file_core_v1_resource_proto_msgTypes[74]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetResourceSshHostKeyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetResourceSshHostKeyRequest) ProtoMessage() {}
+
+func (x *GetResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[74]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
+func (*GetResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{74}
+}
+
+func (x *GetResourceSshHostKeyRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetResourceSshHostKeyResponse struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	ResourceSshHostKey *ResourceSshHostKey    `protobuf:"bytes,1,opt,name=resource_ssh_host_key,json=resourceSshHostKey,proto3" json:"resource_ssh_host_key,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *GetResourceSshHostKeyResponse) Reset() {
+	*x = GetResourceSshHostKeyResponse{}
+	mi := &file_core_v1_resource_proto_msgTypes[75]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetResourceSshHostKeyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetResourceSshHostKeyResponse) ProtoMessage() {}
+
+func (x *GetResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[75]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
+func (*GetResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{75}
+}
+
+func (x *GetResourceSshHostKeyResponse) GetResourceSshHostKey() *ResourceSshHostKey {
+	if x != nil {
+		return x.ResourceSshHostKey
+	}
+	return nil
+}
+
+type ListResourceSshHostKeysRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ResourceId    string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListResourceSshHostKeysRequest) Reset() {
+	*x = ListResourceSshHostKeysRequest{}
+	mi := &file_core_v1_resource_proto_msgTypes[76]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListResourceSshHostKeysRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListResourceSshHostKeysRequest) ProtoMessage() {}
+
+func (x *ListResourceSshHostKeysRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[76]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListResourceSshHostKeysRequest.ProtoReflect.Descriptor instead.
+func (*ListResourceSshHostKeysRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{76}
+}
+
+func (x *ListResourceSshHostKeysRequest) GetResourceId() string {
+	if x != nil {
+		return x.ResourceId
+	}
+	return ""
+}
+
+type ListResourceSshHostKeysResponse struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	ResourceSshHostKeys []*ResourceSshHostKey  `protobuf:"bytes,1,rep,name=resource_ssh_host_keys,json=resourceSshHostKeys,proto3" json:"resource_ssh_host_keys,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *ListResourceSshHostKeysResponse) Reset() {
+	*x = ListResourceSshHostKeysResponse{}
+	mi := &file_core_v1_resource_proto_msgTypes[77]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListResourceSshHostKeysResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListResourceSshHostKeysResponse) ProtoMessage() {}
+
+func (x *ListResourceSshHostKeysResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[77]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListResourceSshHostKeysResponse.ProtoReflect.Descriptor instead.
+func (*ListResourceSshHostKeysResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{77}
+}
+
+func (x *ListResourceSshHostKeysResponse) GetResourceSshHostKeys() []*ResourceSshHostKey {
+	if x != nil {
+		return x.ResourceSshHostKeys
+	}
+	return nil
+}
+
+type UpdateResourceSshHostKeyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	PublicKey     string                 `protobuf:"bytes,2,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateResourceSshHostKeyRequest) Reset() {
+	*x = UpdateResourceSshHostKeyRequest{}
+	mi := &file_core_v1_resource_proto_msgTypes[78]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateResourceSshHostKeyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateResourceSshHostKeyRequest) ProtoMessage() {}
+
+func (x *UpdateResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[78]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
+func (*UpdateResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{78}
+}
+
+func (x *UpdateResourceSshHostKeyRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateResourceSshHostKeyRequest) GetPublicKey() string {
+	if x != nil {
+		return x.PublicKey
+	}
+	return ""
+}
+
+type UpdateResourceSshHostKeyResponse struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	ResourceSshHostKey *ResourceSshHostKey    `protobuf:"bytes,1,opt,name=resource_ssh_host_key,json=resourceSshHostKey,proto3" json:"resource_ssh_host_key,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *UpdateResourceSshHostKeyResponse) Reset() {
+	*x = UpdateResourceSshHostKeyResponse{}
+	mi := &file_core_v1_resource_proto_msgTypes[79]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateResourceSshHostKeyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateResourceSshHostKeyResponse) ProtoMessage() {}
+
+func (x *UpdateResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[79]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
+func (*UpdateResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{79}
+}
+
+func (x *UpdateResourceSshHostKeyResponse) GetResourceSshHostKey() *ResourceSshHostKey {
+	if x != nil {
+		return x.ResourceSshHostKey
+	}
+	return nil
+}
+
+type DeleteResourceSshHostKeyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteResourceSshHostKeyRequest) Reset() {
+	*x = DeleteResourceSshHostKeyRequest{}
+	mi := &file_core_v1_resource_proto_msgTypes[80]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteResourceSshHostKeyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteResourceSshHostKeyRequest) ProtoMessage() {}
+
+func (x *DeleteResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[80]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
+func (*DeleteResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{80}
+}
+
+func (x *DeleteResourceSshHostKeyRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type DeleteResourceSshHostKeyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteResourceSshHostKeyResponse) Reset() {
+	*x = DeleteResourceSshHostKeyResponse{}
+	mi := &file_core_v1_resource_proto_msgTypes[81]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteResourceSshHostKeyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteResourceSshHostKeyResponse) ProtoMessage() {}
+
+func (x *DeleteResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[81]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
+func (*DeleteResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{81}
+}
+
+func (x *DeleteResourceSshHostKeyResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 type CreateResourceDialConfigurationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ResourceId    string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
@@ -4722,7 +5178,7 @@ type CreateResourceDialConfigurationRequest struct {
 
 func (x *CreateResourceDialConfigurationRequest) Reset() {
 	*x = CreateResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[72]
+	mi := &file_core_v1_resource_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4734,7 +5190,7 @@ func (x *CreateResourceDialConfigurationRequest) String() string {
 func (*CreateResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *CreateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[72]
+	mi := &file_core_v1_resource_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4747,7 +5203,7 @@ func (x *CreateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CreateResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{72}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{82}
 }
 
 func (x *CreateResourceDialConfigurationRequest) GetResourceId() string {
@@ -4780,7 +5236,7 @@ type CreateResourceDialConfigurationResponse struct {
 
 func (x *CreateResourceDialConfigurationResponse) Reset() {
 	*x = CreateResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[73]
+	mi := &file_core_v1_resource_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4792,7 +5248,7 @@ func (x *CreateResourceDialConfigurationResponse) String() string {
 func (*CreateResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *CreateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[73]
+	mi := &file_core_v1_resource_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4805,7 +5261,7 @@ func (x *CreateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CreateResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{73}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{83}
 }
 
 func (x *CreateResourceDialConfigurationResponse) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -4828,7 +5284,7 @@ type GetResourceDialConfigurationRequest struct {
 
 func (x *GetResourceDialConfigurationRequest) Reset() {
 	*x = GetResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[74]
+	mi := &file_core_v1_resource_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4840,7 +5296,7 @@ func (x *GetResourceDialConfigurationRequest) String() string {
 func (*GetResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *GetResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[74]
+	mi := &file_core_v1_resource_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4853,7 +5309,7 @@ func (x *GetResourceDialConfigurationRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{74}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *GetResourceDialConfigurationRequest) GetId() isGetResourceDialConfigurationRequest_Id {
@@ -4907,7 +5363,7 @@ type GetResourceDialConfigurationResponse struct {
 
 func (x *GetResourceDialConfigurationResponse) Reset() {
 	*x = GetResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[75]
+	mi := &file_core_v1_resource_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4919,7 +5375,7 @@ func (x *GetResourceDialConfigurationResponse) String() string {
 func (*GetResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *GetResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[75]
+	mi := &file_core_v1_resource_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4932,7 +5388,7 @@ func (x *GetResourceDialConfigurationResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{75}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{85}
 }
 
 func (x *GetResourceDialConfigurationResponse) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -4951,7 +5407,7 @@ type UpdateResourceDialConfigurationRequest struct {
 
 func (x *UpdateResourceDialConfigurationRequest) Reset() {
 	*x = UpdateResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[76]
+	mi := &file_core_v1_resource_proto_msgTypes[86]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4963,7 +5419,7 @@ func (x *UpdateResourceDialConfigurationRequest) String() string {
 func (*UpdateResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[76]
+	mi := &file_core_v1_resource_proto_msgTypes[86]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4976,7 +5432,7 @@ func (x *UpdateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use UpdateResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{76}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{86}
 }
 
 func (x *UpdateResourceDialConfigurationRequest) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -4995,7 +5451,7 @@ type UpdateResourceDialConfigurationResponse struct {
 
 func (x *UpdateResourceDialConfigurationResponse) Reset() {
 	*x = UpdateResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[77]
+	mi := &file_core_v1_resource_proto_msgTypes[87]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5007,7 +5463,7 @@ func (x *UpdateResourceDialConfigurationResponse) String() string {
 func (*UpdateResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[77]
+	mi := &file_core_v1_resource_proto_msgTypes[87]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5020,7 +5476,7 @@ func (x *UpdateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use UpdateResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{77}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{87}
 }
 
 func (x *UpdateResourceDialConfigurationResponse) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -5039,7 +5495,7 @@ type DeleteResourceDialConfigurationRequest struct {
 
 func (x *DeleteResourceDialConfigurationRequest) Reset() {
 	*x = DeleteResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[78]
+	mi := &file_core_v1_resource_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5051,7 +5507,7 @@ func (x *DeleteResourceDialConfigurationRequest) String() string {
 func (*DeleteResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *DeleteResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[78]
+	mi := &file_core_v1_resource_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5064,7 +5520,7 @@ func (x *DeleteResourceDialConfigurationRequest) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use DeleteResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{78}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *DeleteResourceDialConfigurationRequest) GetId() string {
@@ -5083,7 +5539,7 @@ type DeleteResourceDialConfigurationResponse struct {
 
 func (x *DeleteResourceDialConfigurationResponse) Reset() {
 	*x = DeleteResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[79]
+	mi := &file_core_v1_resource_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5095,7 +5551,7 @@ func (x *DeleteResourceDialConfigurationResponse) String() string {
 func (*DeleteResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *DeleteResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[79]
+	mi := &file_core_v1_resource_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5108,7 +5564,7 @@ func (x *DeleteResourceDialConfigurationResponse) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use DeleteResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{79}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *DeleteResourceDialConfigurationResponse) GetId() string {
@@ -5130,7 +5586,7 @@ type CreateResourceHostnameRequest struct {
 
 func (x *CreateResourceHostnameRequest) Reset() {
 	*x = CreateResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[80]
+	mi := &file_core_v1_resource_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5142,7 +5598,7 @@ func (x *CreateResourceHostnameRequest) String() string {
 func (*CreateResourceHostnameRequest) ProtoMessage() {}
 
 func (x *CreateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[80]
+	mi := &file_core_v1_resource_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5155,7 +5611,7 @@ func (x *CreateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{80}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *CreateResourceHostnameRequest) GetHostname() string {
@@ -5195,7 +5651,7 @@ type CreateResourceHostnameResponse struct {
 
 func (x *CreateResourceHostnameResponse) Reset() {
 	*x = CreateResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[81]
+	mi := &file_core_v1_resource_proto_msgTypes[91]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5207,7 +5663,7 @@ func (x *CreateResourceHostnameResponse) String() string {
 func (*CreateResourceHostnameResponse) ProtoMessage() {}
 
 func (x *CreateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[81]
+	mi := &file_core_v1_resource_proto_msgTypes[91]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5220,7 +5676,7 @@ func (x *CreateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{81}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{91}
 }
 
 func (x *CreateResourceHostnameResponse) GetResourceHostname() *ResourceHostname {
@@ -5239,7 +5695,7 @@ type GetResourceHostnameRequest struct {
 
 func (x *GetResourceHostnameRequest) Reset() {
 	*x = GetResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[82]
+	mi := &file_core_v1_resource_proto_msgTypes[92]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5251,7 +5707,7 @@ func (x *GetResourceHostnameRequest) String() string {
 func (*GetResourceHostnameRequest) ProtoMessage() {}
 
 func (x *GetResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[82]
+	mi := &file_core_v1_resource_proto_msgTypes[92]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5264,7 +5720,7 @@ func (x *GetResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{82}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{92}
 }
 
 func (x *GetResourceHostnameRequest) GetId() string {
@@ -5283,7 +5739,7 @@ type GetResourceHostnameResponse struct {
 
 func (x *GetResourceHostnameResponse) Reset() {
 	*x = GetResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[83]
+	mi := &file_core_v1_resource_proto_msgTypes[93]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5295,7 +5751,7 @@ func (x *GetResourceHostnameResponse) String() string {
 func (*GetResourceHostnameResponse) ProtoMessage() {}
 
 func (x *GetResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[83]
+	mi := &file_core_v1_resource_proto_msgTypes[93]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5308,7 +5764,7 @@ func (x *GetResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{83}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{93}
 }
 
 func (x *GetResourceHostnameResponse) GetResourceHostname() *ResourceHostname {
@@ -5327,7 +5783,7 @@ type ListResourceHostnamesRequest struct {
 
 func (x *ListResourceHostnamesRequest) Reset() {
 	*x = ListResourceHostnamesRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[84]
+	mi := &file_core_v1_resource_proto_msgTypes[94]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5339,7 +5795,7 @@ func (x *ListResourceHostnamesRequest) String() string {
 func (*ListResourceHostnamesRequest) ProtoMessage() {}
 
 func (x *ListResourceHostnamesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[84]
+	mi := &file_core_v1_resource_proto_msgTypes[94]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5352,7 +5808,7 @@ func (x *ListResourceHostnamesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceHostnamesRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceHostnamesRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{84}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *ListResourceHostnamesRequest) GetResourceId() string {
@@ -5371,7 +5827,7 @@ type ListResourceHostnamesResponse struct {
 
 func (x *ListResourceHostnamesResponse) Reset() {
 	*x = ListResourceHostnamesResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[85]
+	mi := &file_core_v1_resource_proto_msgTypes[95]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5383,7 +5839,7 @@ func (x *ListResourceHostnamesResponse) String() string {
 func (*ListResourceHostnamesResponse) ProtoMessage() {}
 
 func (x *ListResourceHostnamesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[85]
+	mi := &file_core_v1_resource_proto_msgTypes[95]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5396,7 +5852,7 @@ func (x *ListResourceHostnamesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceHostnamesResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceHostnamesResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{85}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *ListResourceHostnamesResponse) GetResourceHostnames() []*ResourceHostname {
@@ -5418,7 +5874,7 @@ type UpdateResourceHostnameRequest struct {
 
 func (x *UpdateResourceHostnameRequest) Reset() {
 	*x = UpdateResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[86]
+	mi := &file_core_v1_resource_proto_msgTypes[96]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5430,7 +5886,7 @@ func (x *UpdateResourceHostnameRequest) String() string {
 func (*UpdateResourceHostnameRequest) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[86]
+	mi := &file_core_v1_resource_proto_msgTypes[96]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5443,7 +5899,7 @@ func (x *UpdateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{86}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *UpdateResourceHostnameRequest) GetId() string {
@@ -5483,7 +5939,7 @@ type UpdateResourceHostnameResponse struct {
 
 func (x *UpdateResourceHostnameResponse) Reset() {
 	*x = UpdateResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[87]
+	mi := &file_core_v1_resource_proto_msgTypes[97]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5495,7 +5951,7 @@ func (x *UpdateResourceHostnameResponse) String() string {
 func (*UpdateResourceHostnameResponse) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[87]
+	mi := &file_core_v1_resource_proto_msgTypes[97]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5508,7 +5964,7 @@ func (x *UpdateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{87}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *UpdateResourceHostnameResponse) GetResourceHostname() *ResourceHostname {
@@ -5527,7 +5983,7 @@ type DeleteResourceHostnameRequest struct {
 
 func (x *DeleteResourceHostnameRequest) Reset() {
 	*x = DeleteResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[88]
+	mi := &file_core_v1_resource_proto_msgTypes[98]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5539,7 +5995,7 @@ func (x *DeleteResourceHostnameRequest) String() string {
 func (*DeleteResourceHostnameRequest) ProtoMessage() {}
 
 func (x *DeleteResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[88]
+	mi := &file_core_v1_resource_proto_msgTypes[98]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5552,7 +6008,7 @@ func (x *DeleteResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{88}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *DeleteResourceHostnameRequest) GetId() string {
@@ -5571,7 +6027,7 @@ type DeleteResourceHostnameResponse struct {
 
 func (x *DeleteResourceHostnameResponse) Reset() {
 	*x = DeleteResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[89]
+	mi := &file_core_v1_resource_proto_msgTypes[99]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5583,7 +6039,7 @@ func (x *DeleteResourceHostnameResponse) String() string {
 func (*DeleteResourceHostnameResponse) ProtoMessage() {}
 
 func (x *DeleteResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[89]
+	mi := &file_core_v1_resource_proto_msgTypes[99]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5596,7 +6052,7 @@ func (x *DeleteResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{89}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{99}
 }
 
 func (x *DeleteResourceHostnameResponse) GetId() string {
@@ -5619,7 +6075,7 @@ type CreateResourceClassifierConfigurationRequest struct {
 
 func (x *CreateResourceClassifierConfigurationRequest) Reset() {
 	*x = CreateResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[90]
+	mi := &file_core_v1_resource_proto_msgTypes[100]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5631,7 +6087,7 @@ func (x *CreateResourceClassifierConfigurationRequest) String() string {
 func (*CreateResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *CreateResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[90]
+	mi := &file_core_v1_resource_proto_msgTypes[100]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5644,7 +6100,7 @@ func (x *CreateResourceClassifierConfigurationRequest) ProtoReflect() protorefle
 
 // Deprecated: Use CreateResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{90}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{100}
 }
 
 func (x *CreateResourceClassifierConfigurationRequest) GetResourceId() string {
@@ -5691,7 +6147,7 @@ type CreateResourceClassifierConfigurationResponse struct {
 
 func (x *CreateResourceClassifierConfigurationResponse) Reset() {
 	*x = CreateResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[91]
+	mi := &file_core_v1_resource_proto_msgTypes[101]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5703,7 +6159,7 @@ func (x *CreateResourceClassifierConfigurationResponse) String() string {
 func (*CreateResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *CreateResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[91]
+	mi := &file_core_v1_resource_proto_msgTypes[101]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5716,7 +6172,7 @@ func (x *CreateResourceClassifierConfigurationResponse) ProtoReflect() protorefl
 
 // Deprecated: Use CreateResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{91}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{101}
 }
 
 func (x *CreateResourceClassifierConfigurationResponse) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -5737,7 +6193,7 @@ type ListResourceClassifierConfigurationsRequest struct {
 
 func (x *ListResourceClassifierConfigurationsRequest) Reset() {
 	*x = ListResourceClassifierConfigurationsRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[92]
+	mi := &file_core_v1_resource_proto_msgTypes[102]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5749,7 +6205,7 @@ func (x *ListResourceClassifierConfigurationsRequest) String() string {
 func (*ListResourceClassifierConfigurationsRequest) ProtoMessage() {}
 
 func (x *ListResourceClassifierConfigurationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[92]
+	mi := &file_core_v1_resource_proto_msgTypes[102]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5762,7 +6218,7 @@ func (x *ListResourceClassifierConfigurationsRequest) ProtoReflect() protoreflec
 
 // Deprecated: Use ListResourceClassifierConfigurationsRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceClassifierConfigurationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{92}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{102}
 }
 
 func (x *ListResourceClassifierConfigurationsRequest) GetLimit() int32 {
@@ -5796,7 +6252,7 @@ type ListResourceClassifierConfigurationsResponse struct {
 
 func (x *ListResourceClassifierConfigurationsResponse) Reset() {
 	*x = ListResourceClassifierConfigurationsResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[93]
+	mi := &file_core_v1_resource_proto_msgTypes[103]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5808,7 +6264,7 @@ func (x *ListResourceClassifierConfigurationsResponse) String() string {
 func (*ListResourceClassifierConfigurationsResponse) ProtoMessage() {}
 
 func (x *ListResourceClassifierConfigurationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[93]
+	mi := &file_core_v1_resource_proto_msgTypes[103]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5821,7 +6277,7 @@ func (x *ListResourceClassifierConfigurationsResponse) ProtoReflect() protorefle
 
 // Deprecated: Use ListResourceClassifierConfigurationsResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceClassifierConfigurationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{93}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{103}
 }
 
 func (x *ListResourceClassifierConfigurationsResponse) GetResourceClassifierConfigurations() []*ResourceClassifierConfiguration {
@@ -5847,7 +6303,7 @@ type GetResourceClassifierConfigurationRequest struct {
 
 func (x *GetResourceClassifierConfigurationRequest) Reset() {
 	*x = GetResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[94]
+	mi := &file_core_v1_resource_proto_msgTypes[104]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5859,7 +6315,7 @@ func (x *GetResourceClassifierConfigurationRequest) String() string {
 func (*GetResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *GetResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[94]
+	mi := &file_core_v1_resource_proto_msgTypes[104]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5872,7 +6328,7 @@ func (x *GetResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.
 
 // Deprecated: Use GetResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{94}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{104}
 }
 
 func (x *GetResourceClassifierConfigurationRequest) GetResourceId() string {
@@ -5891,7 +6347,7 @@ type GetResourceClassifierConfigurationResponse struct {
 
 func (x *GetResourceClassifierConfigurationResponse) Reset() {
 	*x = GetResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[95]
+	mi := &file_core_v1_resource_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5903,7 +6359,7 @@ func (x *GetResourceClassifierConfigurationResponse) String() string {
 func (*GetResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *GetResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[95]
+	mi := &file_core_v1_resource_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5916,7 +6372,7 @@ func (x *GetResourceClassifierConfigurationResponse) ProtoReflect() protoreflect
 
 // Deprecated: Use GetResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{95}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{105}
 }
 
 func (x *GetResourceClassifierConfigurationResponse) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -5939,7 +6395,7 @@ type UpdateResourceClassifierConfigurationRequest struct {
 
 func (x *UpdateResourceClassifierConfigurationRequest) Reset() {
 	*x = UpdateResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[96]
+	mi := &file_core_v1_resource_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5951,7 +6407,7 @@ func (x *UpdateResourceClassifierConfigurationRequest) String() string {
 func (*UpdateResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[96]
+	mi := &file_core_v1_resource_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5964,7 +6420,7 @@ func (x *UpdateResourceClassifierConfigurationRequest) ProtoReflect() protorefle
 
 // Deprecated: Use UpdateResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{96}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{106}
 }
 
 func (x *UpdateResourceClassifierConfigurationRequest) GetId() string {
@@ -6011,7 +6467,7 @@ type UpdateResourceClassifierConfigurationResponse struct {
 
 func (x *UpdateResourceClassifierConfigurationResponse) Reset() {
 	*x = UpdateResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[97]
+	mi := &file_core_v1_resource_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6023,7 +6479,7 @@ func (x *UpdateResourceClassifierConfigurationResponse) String() string {
 func (*UpdateResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[97]
+	mi := &file_core_v1_resource_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6036,7 +6492,7 @@ func (x *UpdateResourceClassifierConfigurationResponse) ProtoReflect() protorefl
 
 // Deprecated: Use UpdateResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{97}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{107}
 }
 
 func (x *UpdateResourceClassifierConfigurationResponse) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -6055,7 +6511,7 @@ type DeleteResourceClassifierConfigurationRequest struct {
 
 func (x *DeleteResourceClassifierConfigurationRequest) Reset() {
 	*x = DeleteResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[98]
+	mi := &file_core_v1_resource_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6067,7 +6523,7 @@ func (x *DeleteResourceClassifierConfigurationRequest) String() string {
 func (*DeleteResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *DeleteResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[98]
+	mi := &file_core_v1_resource_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6080,7 +6536,7 @@ func (x *DeleteResourceClassifierConfigurationRequest) ProtoReflect() protorefle
 
 // Deprecated: Use DeleteResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{98}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{108}
 }
 
 func (x *DeleteResourceClassifierConfigurationRequest) GetId() string {
@@ -6099,7 +6555,7 @@ type DeleteResourceClassifierConfigurationResponse struct {
 
 func (x *DeleteResourceClassifierConfigurationResponse) Reset() {
 	*x = DeleteResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[99]
+	mi := &file_core_v1_resource_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6111,7 +6567,7 @@ func (x *DeleteResourceClassifierConfigurationResponse) String() string {
 func (*DeleteResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *DeleteResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[99]
+	mi := &file_core_v1_resource_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6124,7 +6580,7 @@ func (x *DeleteResourceClassifierConfigurationResponse) ProtoReflect() protorefl
 
 // Deprecated: Use DeleteResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{99}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{109}
 }
 
 func (x *DeleteResourceClassifierConfigurationResponse) GetId() string {
@@ -6143,7 +6599,7 @@ type ListResourceConnectorAccessRequest struct {
 
 func (x *ListResourceConnectorAccessRequest) Reset() {
 	*x = ListResourceConnectorAccessRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[100]
+	mi := &file_core_v1_resource_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6155,7 +6611,7 @@ func (x *ListResourceConnectorAccessRequest) String() string {
 func (*ListResourceConnectorAccessRequest) ProtoMessage() {}
 
 func (x *ListResourceConnectorAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[100]
+	mi := &file_core_v1_resource_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6168,7 +6624,7 @@ func (x *ListResourceConnectorAccessRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListResourceConnectorAccessRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceConnectorAccessRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{100}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{110}
 }
 
 func (x *ListResourceConnectorAccessRequest) GetResourceId() string {
@@ -6187,7 +6643,7 @@ type ListResourceConnectorAccessResponse struct {
 
 func (x *ListResourceConnectorAccessResponse) Reset() {
 	*x = ListResourceConnectorAccessResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[101]
+	mi := &file_core_v1_resource_proto_msgTypes[111]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6199,7 +6655,7 @@ func (x *ListResourceConnectorAccessResponse) String() string {
 func (*ListResourceConnectorAccessResponse) ProtoMessage() {}
 
 func (x *ListResourceConnectorAccessResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[101]
+	mi := &file_core_v1_resource_proto_msgTypes[111]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6212,7 +6668,7 @@ func (x *ListResourceConnectorAccessResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use ListResourceConnectorAccessResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceConnectorAccessResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{101}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{111}
 }
 
 func (x *ListResourceConnectorAccessResponse) GetResourceConnectorAccess() []*ResourceConnectorAccess {
@@ -6233,7 +6689,7 @@ type CreateResourceTagRequest struct {
 
 func (x *CreateResourceTagRequest) Reset() {
 	*x = CreateResourceTagRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[102]
+	mi := &file_core_v1_resource_proto_msgTypes[112]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6245,7 +6701,7 @@ func (x *CreateResourceTagRequest) String() string {
 func (*CreateResourceTagRequest) ProtoMessage() {}
 
 func (x *CreateResourceTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[102]
+	mi := &file_core_v1_resource_proto_msgTypes[112]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6258,7 +6714,7 @@ func (x *CreateResourceTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceTagRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceTagRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{102}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{112}
 }
 
 func (x *CreateResourceTagRequest) GetResourceId() string {
@@ -6291,7 +6747,7 @@ type CreateResourceTagResponse struct {
 
 func (x *CreateResourceTagResponse) Reset() {
 	*x = CreateResourceTagResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[103]
+	mi := &file_core_v1_resource_proto_msgTypes[113]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6303,7 +6759,7 @@ func (x *CreateResourceTagResponse) String() string {
 func (*CreateResourceTagResponse) ProtoMessage() {}
 
 func (x *CreateResourceTagResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[103]
+	mi := &file_core_v1_resource_proto_msgTypes[113]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6316,7 +6772,7 @@ func (x *CreateResourceTagResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceTagResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceTagResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{103}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{113}
 }
 
 func (x *CreateResourceTagResponse) GetTag() *ResourceTag {
@@ -6335,7 +6791,7 @@ type DeleteResourceTagRequest struct {
 
 func (x *DeleteResourceTagRequest) Reset() {
 	*x = DeleteResourceTagRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[104]
+	mi := &file_core_v1_resource_proto_msgTypes[114]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6347,7 +6803,7 @@ func (x *DeleteResourceTagRequest) String() string {
 func (*DeleteResourceTagRequest) ProtoMessage() {}
 
 func (x *DeleteResourceTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[104]
+	mi := &file_core_v1_resource_proto_msgTypes[114]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6360,7 +6816,7 @@ func (x *DeleteResourceTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceTagRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceTagRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{104}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *DeleteResourceTagRequest) GetId() string {
@@ -6378,7 +6834,7 @@ type DeleteResourceTagResponse struct {
 
 func (x *DeleteResourceTagResponse) Reset() {
 	*x = DeleteResourceTagResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[105]
+	mi := &file_core_v1_resource_proto_msgTypes[115]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6390,7 +6846,7 @@ func (x *DeleteResourceTagResponse) String() string {
 func (*DeleteResourceTagResponse) ProtoMessage() {}
 
 func (x *DeleteResourceTagResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[105]
+	mi := &file_core_v1_resource_proto_msgTypes[115]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6403,7 +6859,7 @@ func (x *DeleteResourceTagResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceTagResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceTagResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{105}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{115}
 }
 
 type UpdateResourceTagRequest struct {
@@ -6417,7 +6873,7 @@ type UpdateResourceTagRequest struct {
 
 func (x *UpdateResourceTagRequest) Reset() {
 	*x = UpdateResourceTagRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[106]
+	mi := &file_core_v1_resource_proto_msgTypes[116]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6429,7 +6885,7 @@ func (x *UpdateResourceTagRequest) String() string {
 func (*UpdateResourceTagRequest) ProtoMessage() {}
 
 func (x *UpdateResourceTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[106]
+	mi := &file_core_v1_resource_proto_msgTypes[116]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6442,7 +6898,7 @@ func (x *UpdateResourceTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceTagRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTagRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{106}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{116}
 }
 
 func (x *UpdateResourceTagRequest) GetResourceId() string {
@@ -6475,7 +6931,7 @@ type UpdateResourceTagResponse struct {
 
 func (x *UpdateResourceTagResponse) Reset() {
 	*x = UpdateResourceTagResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[107]
+	mi := &file_core_v1_resource_proto_msgTypes[117]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6487,7 +6943,7 @@ func (x *UpdateResourceTagResponse) String() string {
 func (*UpdateResourceTagResponse) ProtoMessage() {}
 
 func (x *UpdateResourceTagResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[107]
+	mi := &file_core_v1_resource_proto_msgTypes[117]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6500,7 +6956,7 @@ func (x *UpdateResourceTagResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceTagResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTagResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{107}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{117}
 }
 
 func (x *UpdateResourceTagResponse) GetTag() *ResourceTag {
@@ -6519,7 +6975,7 @@ type UpdateNativeUserIdentityLinkV2Request struct {
 
 func (x *UpdateNativeUserIdentityLinkV2Request) Reset() {
 	*x = UpdateNativeUserIdentityLinkV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[108]
+	mi := &file_core_v1_resource_proto_msgTypes[118]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6531,7 +6987,7 @@ func (x *UpdateNativeUserIdentityLinkV2Request) String() string {
 func (*UpdateNativeUserIdentityLinkV2Request) ProtoMessage() {}
 
 func (x *UpdateNativeUserIdentityLinkV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[108]
+	mi := &file_core_v1_resource_proto_msgTypes[118]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6544,7 +7000,7 @@ func (x *UpdateNativeUserIdentityLinkV2Request) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use UpdateNativeUserIdentityLinkV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserIdentityLinkV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{108}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{118}
 }
 
 func (x *UpdateNativeUserIdentityLinkV2Request) GetLink() *NativeUserLink {
@@ -6563,7 +7019,7 @@ type UpdateNativeUserIdentityLinkV2Response struct {
 
 func (x *UpdateNativeUserIdentityLinkV2Response) Reset() {
 	*x = UpdateNativeUserIdentityLinkV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[109]
+	mi := &file_core_v1_resource_proto_msgTypes[119]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6575,7 +7031,7 @@ func (x *UpdateNativeUserIdentityLinkV2Response) String() string {
 func (*UpdateNativeUserIdentityLinkV2Response) ProtoMessage() {}
 
 func (x *UpdateNativeUserIdentityLinkV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[109]
+	mi := &file_core_v1_resource_proto_msgTypes[119]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6588,7 +7044,7 @@ func (x *UpdateNativeUserIdentityLinkV2Response) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use UpdateNativeUserIdentityLinkV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserIdentityLinkV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{109}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{119}
 }
 
 func (x *UpdateNativeUserIdentityLinkV2Response) GetLink() *NativeUserLink {
@@ -6607,7 +7063,7 @@ type UpdateDataDiscoveryConfigurationV2Request struct {
 
 func (x *UpdateDataDiscoveryConfigurationV2Request) Reset() {
 	*x = UpdateDataDiscoveryConfigurationV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[110]
+	mi := &file_core_v1_resource_proto_msgTypes[120]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6619,7 +7075,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Request) String() string {
 func (*UpdateDataDiscoveryConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateDataDiscoveryConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[110]
+	mi := &file_core_v1_resource_proto_msgTypes[120]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6632,7 +7088,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Request) ProtoReflect() protoreflect.
 
 // Deprecated: Use UpdateDataDiscoveryConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateDataDiscoveryConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{110}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{120}
 }
 
 func (x *UpdateDataDiscoveryConfigurationV2Request) GetDataDiscoveryConfiguration() *DataDiscoveryConfiguration {
@@ -6651,7 +7107,7 @@ type UpdateDataDiscoveryConfigurationV2Response struct {
 
 func (x *UpdateDataDiscoveryConfigurationV2Response) Reset() {
 	*x = UpdateDataDiscoveryConfigurationV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[111]
+	mi := &file_core_v1_resource_proto_msgTypes[121]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6663,7 +7119,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Response) String() string {
 func (*UpdateDataDiscoveryConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateDataDiscoveryConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[111]
+	mi := &file_core_v1_resource_proto_msgTypes[121]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6676,7 +7132,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Response) ProtoReflect() protoreflect
 
 // Deprecated: Use UpdateDataDiscoveryConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateDataDiscoveryConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{111}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{121}
 }
 
 func (x *UpdateDataDiscoveryConfigurationV2Response) GetDataDiscoveryConfiguration() *DataDiscoveryConfiguration {
@@ -6695,7 +7151,7 @@ type UpdateResourceHealthCheckV2Request struct {
 
 func (x *UpdateResourceHealthCheckV2Request) Reset() {
 	*x = UpdateResourceHealthCheckV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[112]
+	mi := &file_core_v1_resource_proto_msgTypes[122]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6707,7 +7163,7 @@ func (x *UpdateResourceHealthCheckV2Request) String() string {
 func (*UpdateResourceHealthCheckV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceHealthCheckV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[112]
+	mi := &file_core_v1_resource_proto_msgTypes[122]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6720,7 +7176,7 @@ func (x *UpdateResourceHealthCheckV2Request) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use UpdateResourceHealthCheckV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHealthCheckV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{112}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{122}
 }
 
 func (x *UpdateResourceHealthCheckV2Request) GetResourceHealthCheck() *ResourceHealthCheck {
@@ -6739,7 +7195,7 @@ type UpdateResourceHealthCheckV2Response struct {
 
 func (x *UpdateResourceHealthCheckV2Response) Reset() {
 	*x = UpdateResourceHealthCheckV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[113]
+	mi := &file_core_v1_resource_proto_msgTypes[123]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6751,7 +7207,7 @@ func (x *UpdateResourceHealthCheckV2Response) String() string {
 func (*UpdateResourceHealthCheckV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceHealthCheckV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[113]
+	mi := &file_core_v1_resource_proto_msgTypes[123]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6764,7 +7220,7 @@ func (x *UpdateResourceHealthCheckV2Response) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use UpdateResourceHealthCheckV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHealthCheckV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{113}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{123}
 }
 
 func (x *UpdateResourceHealthCheckV2Response) GetResourceHealthCheck() *ResourceHealthCheck {
@@ -6783,7 +7239,7 @@ type UpdateResourceTlsConfigurationV2Request struct {
 
 func (x *UpdateResourceTlsConfigurationV2Request) Reset() {
 	*x = UpdateResourceTlsConfigurationV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[114]
+	mi := &file_core_v1_resource_proto_msgTypes[124]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6795,7 +7251,7 @@ func (x *UpdateResourceTlsConfigurationV2Request) String() string {
 func (*UpdateResourceTlsConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceTlsConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[114]
+	mi := &file_core_v1_resource_proto_msgTypes[124]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6808,7 +7264,7 @@ func (x *UpdateResourceTlsConfigurationV2Request) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use UpdateResourceTlsConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTlsConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{114}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{124}
 }
 
 func (x *UpdateResourceTlsConfigurationV2Request) GetResourceTlsConfiguration() *ResourceTlsConfiguration {
@@ -6827,7 +7283,7 @@ type UpdateResourceTlsConfigurationV2Response struct {
 
 func (x *UpdateResourceTlsConfigurationV2Response) Reset() {
 	*x = UpdateResourceTlsConfigurationV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[115]
+	mi := &file_core_v1_resource_proto_msgTypes[125]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6839,7 +7295,7 @@ func (x *UpdateResourceTlsConfigurationV2Response) String() string {
 func (*UpdateResourceTlsConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceTlsConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[115]
+	mi := &file_core_v1_resource_proto_msgTypes[125]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6852,7 +7308,7 @@ func (x *UpdateResourceTlsConfigurationV2Response) ProtoReflect() protoreflect.M
 
 // Deprecated: Use UpdateResourceTlsConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTlsConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{115}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{125}
 }
 
 func (x *UpdateResourceTlsConfigurationV2Response) GetResourceTlsConfiguration() *ResourceTlsConfiguration {
@@ -6871,7 +7327,7 @@ type UpdateResourceHostnameV2Request struct {
 
 func (x *UpdateResourceHostnameV2Request) Reset() {
 	*x = UpdateResourceHostnameV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[116]
+	mi := &file_core_v1_resource_proto_msgTypes[126]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6883,7 +7339,7 @@ func (x *UpdateResourceHostnameV2Request) String() string {
 func (*UpdateResourceHostnameV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[116]
+	mi := &file_core_v1_resource_proto_msgTypes[126]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6896,7 +7352,7 @@ func (x *UpdateResourceHostnameV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{116}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{126}
 }
 
 func (x *UpdateResourceHostnameV2Request) GetResourceHostname() *ResourceHostname {
@@ -6915,7 +7371,7 @@ type UpdateResourceHostnameV2Response struct {
 
 func (x *UpdateResourceHostnameV2Response) Reset() {
 	*x = UpdateResourceHostnameV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[117]
+	mi := &file_core_v1_resource_proto_msgTypes[127]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6927,7 +7383,7 @@ func (x *UpdateResourceHostnameV2Response) String() string {
 func (*UpdateResourceHostnameV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[117]
+	mi := &file_core_v1_resource_proto_msgTypes[127]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6940,7 +7396,7 @@ func (x *UpdateResourceHostnameV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{117}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{127}
 }
 
 func (x *UpdateResourceHostnameV2Response) GetResourceHostname() *ResourceHostname {
@@ -6959,7 +7415,7 @@ type UpdateResourceClassifierConfigurationV2Request struct {
 
 func (x *UpdateResourceClassifierConfigurationV2Request) Reset() {
 	*x = UpdateResourceClassifierConfigurationV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[118]
+	mi := &file_core_v1_resource_proto_msgTypes[128]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6971,7 +7427,7 @@ func (x *UpdateResourceClassifierConfigurationV2Request) String() string {
 func (*UpdateResourceClassifierConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[118]
+	mi := &file_core_v1_resource_proto_msgTypes[128]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6984,7 +7440,7 @@ func (x *UpdateResourceClassifierConfigurationV2Request) ProtoReflect() protoref
 
 // Deprecated: Use UpdateResourceClassifierConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{118}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{128}
 }
 
 func (x *UpdateResourceClassifierConfigurationV2Request) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -7003,7 +7459,7 @@ type UpdateResourceClassifierConfigurationV2Response struct {
 
 func (x *UpdateResourceClassifierConfigurationV2Response) Reset() {
 	*x = UpdateResourceClassifierConfigurationV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[119]
+	mi := &file_core_v1_resource_proto_msgTypes[129]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7015,7 +7471,7 @@ func (x *UpdateResourceClassifierConfigurationV2Response) String() string {
 func (*UpdateResourceClassifierConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[119]
+	mi := &file_core_v1_resource_proto_msgTypes[129]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7028,7 +7484,7 @@ func (x *UpdateResourceClassifierConfigurationV2Response) ProtoReflect() protore
 
 // Deprecated: Use UpdateResourceClassifierConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{119}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{129}
 }
 
 func (x *UpdateResourceClassifierConfigurationV2Response) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -7048,7 +7504,7 @@ type UpdateResourceAliasRequest struct {
 
 func (x *UpdateResourceAliasRequest) Reset() {
 	*x = UpdateResourceAliasRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[120]
+	mi := &file_core_v1_resource_proto_msgTypes[130]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7060,7 +7516,7 @@ func (x *UpdateResourceAliasRequest) String() string {
 func (*UpdateResourceAliasRequest) ProtoMessage() {}
 
 func (x *UpdateResourceAliasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[120]
+	mi := &file_core_v1_resource_proto_msgTypes[130]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7073,7 +7529,7 @@ func (x *UpdateResourceAliasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceAliasRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceAliasRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{120}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{130}
 }
 
 func (x *UpdateResourceAliasRequest) GetId() string {
@@ -7100,7 +7556,7 @@ type UpdateResourceAliasResponse struct {
 
 func (x *UpdateResourceAliasResponse) Reset() {
 	*x = UpdateResourceAliasResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[121]
+	mi := &file_core_v1_resource_proto_msgTypes[131]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7112,7 +7568,7 @@ func (x *UpdateResourceAliasResponse) String() string {
 func (*UpdateResourceAliasResponse) ProtoMessage() {}
 
 func (x *UpdateResourceAliasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[121]
+	mi := &file_core_v1_resource_proto_msgTypes[131]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7125,7 +7581,7 @@ func (x *UpdateResourceAliasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceAliasResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceAliasResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{121}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{131}
 }
 
 func (x *UpdateResourceAliasResponse) GetId() string {
@@ -7152,7 +7608,7 @@ type CreateResourceAliasRequest struct {
 
 func (x *CreateResourceAliasRequest) Reset() {
 	*x = CreateResourceAliasRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[122]
+	mi := &file_core_v1_resource_proto_msgTypes[132]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7164,7 +7620,7 @@ func (x *CreateResourceAliasRequest) String() string {
 func (*CreateResourceAliasRequest) ProtoMessage() {}
 
 func (x *CreateResourceAliasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[122]
+	mi := &file_core_v1_resource_proto_msgTypes[132]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7177,7 +7633,7 @@ func (x *CreateResourceAliasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceAliasRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceAliasRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{122}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{132}
 }
 
 func (x *CreateResourceAliasRequest) GetResourceId() string {
@@ -7204,7 +7660,7 @@ type CreateResourceAliasResponse struct {
 
 func (x *CreateResourceAliasResponse) Reset() {
 	*x = CreateResourceAliasResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[123]
+	mi := &file_core_v1_resource_proto_msgTypes[133]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7216,7 +7672,7 @@ func (x *CreateResourceAliasResponse) String() string {
 func (*CreateResourceAliasResponse) ProtoMessage() {}
 
 func (x *CreateResourceAliasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[123]
+	mi := &file_core_v1_resource_proto_msgTypes[133]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7229,7 +7685,7 @@ func (x *CreateResourceAliasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceAliasResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceAliasResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{123}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{133}
 }
 
 func (x *CreateResourceAliasResponse) GetId() string {
@@ -7255,7 +7711,7 @@ type DeleteResourceAliasRequest struct {
 
 func (x *DeleteResourceAliasRequest) Reset() {
 	*x = DeleteResourceAliasRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[124]
+	mi := &file_core_v1_resource_proto_msgTypes[134]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7267,7 +7723,7 @@ func (x *DeleteResourceAliasRequest) String() string {
 func (*DeleteResourceAliasRequest) ProtoMessage() {}
 
 func (x *DeleteResourceAliasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[124]
+	mi := &file_core_v1_resource_proto_msgTypes[134]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7280,7 +7736,7 @@ func (x *DeleteResourceAliasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceAliasRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceAliasRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{124}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{134}
 }
 
 func (x *DeleteResourceAliasRequest) GetId() string {
@@ -7298,7 +7754,7 @@ type DeleteResourceAliasResponse struct {
 
 func (x *DeleteResourceAliasResponse) Reset() {
 	*x = DeleteResourceAliasResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[125]
+	mi := &file_core_v1_resource_proto_msgTypes[135]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7310,7 +7766,7 @@ func (x *DeleteResourceAliasResponse) String() string {
 func (*DeleteResourceAliasResponse) ProtoMessage() {}
 
 func (x *DeleteResourceAliasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[125]
+	mi := &file_core_v1_resource_proto_msgTypes[135]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7323,7 +7779,7 @@ func (x *DeleteResourceAliasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceAliasResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceAliasResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{125}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{135}
 }
 
 type UpdateResourceRequest_UpdateResourceTag struct {
@@ -7335,7 +7791,7 @@ type UpdateResourceRequest_UpdateResourceTag struct {
 
 func (x *UpdateResourceRequest_UpdateResourceTag) Reset() {
 	*x = UpdateResourceRequest_UpdateResourceTag{}
-	mi := &file_core_v1_resource_proto_msgTypes[126]
+	mi := &file_core_v1_resource_proto_msgTypes[136]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7347,7 +7803,7 @@ func (x *UpdateResourceRequest_UpdateResourceTag) String() string {
 func (*UpdateResourceRequest_UpdateResourceTag) ProtoMessage() {}
 
 func (x *UpdateResourceRequest_UpdateResourceTag) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[126]
+	mi := &file_core_v1_resource_proto_msgTypes[136]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7379,7 +7835,7 @@ type UpdateResourceRequest_UpdateResourceAlias struct {
 
 func (x *UpdateResourceRequest_UpdateResourceAlias) Reset() {
 	*x = UpdateResourceRequest_UpdateResourceAlias{}
-	mi := &file_core_v1_resource_proto_msgTypes[127]
+	mi := &file_core_v1_resource_proto_msgTypes[137]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7391,7 +7847,7 @@ func (x *UpdateResourceRequest_UpdateResourceAlias) String() string {
 func (*UpdateResourceRequest_UpdateResourceAlias) ProtoMessage() {}
 
 func (x *UpdateResourceRequest_UpdateResourceAlias) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[127]
+	mi := &file_core_v1_resource_proto_msgTypes[137]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7788,6 +8244,32 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"%DeleteResourceTlsConfigurationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"A\n" +
 	"&DeleteResourceTlsConfigurationResponse\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"s\n" +
+	"\x1fCreateResourceSshHostKeyRequest\x12(\n" +
+	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"resourceId\x12&\n" +
+	"\n" +
+	"public_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tpublicKey\"r\n" +
+	" CreateResourceSshHostKeyResponse\x12N\n" +
+	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\"7\n" +
+	"\x1cGetResourceSshHostKeyRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"o\n" +
+	"\x1dGetResourceSshHostKeyResponse\x12N\n" +
+	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\"J\n" +
+	"\x1eListResourceSshHostKeysRequest\x12(\n" +
+	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"resourceId\"s\n" +
+	"\x1fListResourceSshHostKeysResponse\x12P\n" +
+	"\x16resource_ssh_host_keys\x18\x01 \x03(\v2\x1b.core.v1.ResourceSshHostKeyR\x13resourceSshHostKeys\"b\n" +
+	"\x1fUpdateResourceSshHostKeyRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12&\n" +
+	"\n" +
+	"public_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tpublicKey\"r\n" +
+	" UpdateResourceSshHostKeyResponse\x12N\n" +
+	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\":\n" +
+	"\x1fDeleteResourceSshHostKeyRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\";\n" +
+	" DeleteResourceSshHostKeyResponse\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xb7\x01\n" +
 	"&CreateResourceDialConfigurationRequest\x12(\n" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
@@ -7956,7 +8438,7 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1aIAM_NATIVE_USER_TYPE_AZURE\x10\x02*a\n" +
 	"\x12HTTPAPIKeyLocation\x12 \n" +
 	"\x1cHTTP_API_KEY_LOCATION_HEADER\x10\x00\x12)\n" +
-	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xabQ\n" +
+	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\x91X\n" +
 	"\x0fResourceService\x12|\n" +
 	"\vGetResource\x12\x1b.core.v1.GetResourceRequest\x1a\x1c.core.v1.GetResourceResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.ResourceService/GetResource\x90\x02\x01\x12\x84\x01\n" +
 	"\rListResources\x12\x1d.core.v1.ListResourcesRequest\x1a\x1e.core.v1.ListResourcesResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/ListResources\x90\x02\x01\x12\x85\x01\n" +
@@ -7992,7 +8474,12 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1bGetResourceTlsConfiguration\x12+.core.v1.GetResourceTlsConfigurationRequest\x1a,.core.v1.GetResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/GetResourceTlsConfiguration\x90\x02\x01\x12\xc5\x01\n" +
 	"\x1eUpdateResourceTlsConfiguration\x12..core.v1.UpdateResourceTlsConfigurationRequest\x1a/.core.v1.UpdateResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/UpdateResourceTlsConfiguration\x12\xcd\x01\n" +
 	" UpdateResourceTlsConfigurationV2\x120.core.v1.UpdateResourceTlsConfigurationV2Request\x1a1.core.v1.UpdateResourceTlsConfigurationV2Response\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.ResourceService/UpdateResourceTlsConfigurationV2\x12\xc5\x01\n" +
-	"\x1eDeleteResourceTlsConfiguration\x12..core.v1.DeleteResourceTlsConfigurationRequest\x1a/.core.v1.DeleteResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/DeleteResourceTlsConfiguration\x12\xc9\x01\n" +
+	"\x1eDeleteResourceTlsConfiguration\x12..core.v1.DeleteResourceTlsConfigurationRequest\x1a/.core.v1.DeleteResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/DeleteResourceTlsConfiguration\x12\xad\x01\n" +
+	"\x18CreateResourceSshHostKey\x12(.core.v1.CreateResourceSshHostKeyRequest\x1a).core.v1.CreateResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/CreateResourceSshHostKey\x12\xa4\x01\n" +
+	"\x15GetResourceSshHostKey\x12%.core.v1.GetResourceSshHostKeyRequest\x1a&.core.v1.GetResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ResourceService/GetResourceSshHostKey\x90\x02\x01\x12\xac\x01\n" +
+	"\x17ListResourceSshHostKeys\x12'.core.v1.ListResourceSshHostKeysRequest\x1a(.core.v1.ListResourceSshHostKeysResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ResourceService/ListResourceSshHostKeys\x90\x02\x01\x12\xad\x01\n" +
+	"\x18UpdateResourceSshHostKey\x12(.core.v1.UpdateResourceSshHostKeyRequest\x1a).core.v1.UpdateResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/UpdateResourceSshHostKey\x12\xad\x01\n" +
+	"\x18DeleteResourceSshHostKey\x12(.core.v1.DeleteResourceSshHostKeyRequest\x1a).core.v1.DeleteResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/DeleteResourceSshHostKey\x12\xc9\x01\n" +
 	"\x1fCreateResourceDialConfiguration\x12/.core.v1.CreateResourceDialConfigurationRequest\x1a0.core.v1.CreateResourceDialConfigurationResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ResourceService/CreateResourceDialConfiguration\x12\xc0\x01\n" +
 	"\x1cGetResourceDialConfiguration\x12,.core.v1.GetResourceDialConfigurationRequest\x1a-.core.v1.GetResourceDialConfigurationResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/GetResourceDialConfiguration\x90\x02\x01\x12\xc9\x01\n" +
 	"\x1fUpdateResourceDialConfiguration\x12/.core.v1.UpdateResourceDialConfigurationRequest\x1a0.core.v1.UpdateResourceDialConfigurationResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ResourceService/UpdateResourceDialConfiguration\x12\xc9\x01\n" +
@@ -8031,7 +8518,7 @@ func file_core_v1_resource_proto_rawDescGZIP() []byte {
 }
 
 var file_core_v1_resource_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_core_v1_resource_proto_msgTypes = make([]protoimpl.MessageInfo, 128)
+var file_core_v1_resource_proto_msgTypes = make([]protoimpl.MessageInfo, 138)
 var file_core_v1_resource_proto_goTypes = []any{
 	(IAMNativeUserType)(0),                                  // 0: core.v1.IAMNativeUserType
 	(HTTPAPIKeyLocation)(0),                                 // 1: core.v1.HTTPAPIKeyLocation
@@ -8107,91 +8594,102 @@ var file_core_v1_resource_proto_goTypes = []any{
 	(*UpdateResourceTlsConfigurationResponse)(nil),          // 71: core.v1.UpdateResourceTlsConfigurationResponse
 	(*DeleteResourceTlsConfigurationRequest)(nil),           // 72: core.v1.DeleteResourceTlsConfigurationRequest
 	(*DeleteResourceTlsConfigurationResponse)(nil),          // 73: core.v1.DeleteResourceTlsConfigurationResponse
-	(*CreateResourceDialConfigurationRequest)(nil),          // 74: core.v1.CreateResourceDialConfigurationRequest
-	(*CreateResourceDialConfigurationResponse)(nil),         // 75: core.v1.CreateResourceDialConfigurationResponse
-	(*GetResourceDialConfigurationRequest)(nil),             // 76: core.v1.GetResourceDialConfigurationRequest
-	(*GetResourceDialConfigurationResponse)(nil),            // 77: core.v1.GetResourceDialConfigurationResponse
-	(*UpdateResourceDialConfigurationRequest)(nil),          // 78: core.v1.UpdateResourceDialConfigurationRequest
-	(*UpdateResourceDialConfigurationResponse)(nil),         // 79: core.v1.UpdateResourceDialConfigurationResponse
-	(*DeleteResourceDialConfigurationRequest)(nil),          // 80: core.v1.DeleteResourceDialConfigurationRequest
-	(*DeleteResourceDialConfigurationResponse)(nil),         // 81: core.v1.DeleteResourceDialConfigurationResponse
-	(*CreateResourceHostnameRequest)(nil),                   // 82: core.v1.CreateResourceHostnameRequest
-	(*CreateResourceHostnameResponse)(nil),                  // 83: core.v1.CreateResourceHostnameResponse
-	(*GetResourceHostnameRequest)(nil),                      // 84: core.v1.GetResourceHostnameRequest
-	(*GetResourceHostnameResponse)(nil),                     // 85: core.v1.GetResourceHostnameResponse
-	(*ListResourceHostnamesRequest)(nil),                    // 86: core.v1.ListResourceHostnamesRequest
-	(*ListResourceHostnamesResponse)(nil),                   // 87: core.v1.ListResourceHostnamesResponse
-	(*UpdateResourceHostnameRequest)(nil),                   // 88: core.v1.UpdateResourceHostnameRequest
-	(*UpdateResourceHostnameResponse)(nil),                  // 89: core.v1.UpdateResourceHostnameResponse
-	(*DeleteResourceHostnameRequest)(nil),                   // 90: core.v1.DeleteResourceHostnameRequest
-	(*DeleteResourceHostnameResponse)(nil),                  // 91: core.v1.DeleteResourceHostnameResponse
-	(*CreateResourceClassifierConfigurationRequest)(nil),    // 92: core.v1.CreateResourceClassifierConfigurationRequest
-	(*CreateResourceClassifierConfigurationResponse)(nil),   // 93: core.v1.CreateResourceClassifierConfigurationResponse
-	(*ListResourceClassifierConfigurationsRequest)(nil),     // 94: core.v1.ListResourceClassifierConfigurationsRequest
-	(*ListResourceClassifierConfigurationsResponse)(nil),    // 95: core.v1.ListResourceClassifierConfigurationsResponse
-	(*GetResourceClassifierConfigurationRequest)(nil),       // 96: core.v1.GetResourceClassifierConfigurationRequest
-	(*GetResourceClassifierConfigurationResponse)(nil),      // 97: core.v1.GetResourceClassifierConfigurationResponse
-	(*UpdateResourceClassifierConfigurationRequest)(nil),    // 98: core.v1.UpdateResourceClassifierConfigurationRequest
-	(*UpdateResourceClassifierConfigurationResponse)(nil),   // 99: core.v1.UpdateResourceClassifierConfigurationResponse
-	(*DeleteResourceClassifierConfigurationRequest)(nil),    // 100: core.v1.DeleteResourceClassifierConfigurationRequest
-	(*DeleteResourceClassifierConfigurationResponse)(nil),   // 101: core.v1.DeleteResourceClassifierConfigurationResponse
-	(*ListResourceConnectorAccessRequest)(nil),              // 102: core.v1.ListResourceConnectorAccessRequest
-	(*ListResourceConnectorAccessResponse)(nil),             // 103: core.v1.ListResourceConnectorAccessResponse
-	(*CreateResourceTagRequest)(nil),                        // 104: core.v1.CreateResourceTagRequest
-	(*CreateResourceTagResponse)(nil),                       // 105: core.v1.CreateResourceTagResponse
-	(*DeleteResourceTagRequest)(nil),                        // 106: core.v1.DeleteResourceTagRequest
-	(*DeleteResourceTagResponse)(nil),                       // 107: core.v1.DeleteResourceTagResponse
-	(*UpdateResourceTagRequest)(nil),                        // 108: core.v1.UpdateResourceTagRequest
-	(*UpdateResourceTagResponse)(nil),                       // 109: core.v1.UpdateResourceTagResponse
-	(*UpdateNativeUserIdentityLinkV2Request)(nil),           // 110: core.v1.UpdateNativeUserIdentityLinkV2Request
-	(*UpdateNativeUserIdentityLinkV2Response)(nil),          // 111: core.v1.UpdateNativeUserIdentityLinkV2Response
-	(*UpdateDataDiscoveryConfigurationV2Request)(nil),       // 112: core.v1.UpdateDataDiscoveryConfigurationV2Request
-	(*UpdateDataDiscoveryConfigurationV2Response)(nil),      // 113: core.v1.UpdateDataDiscoveryConfigurationV2Response
-	(*UpdateResourceHealthCheckV2Request)(nil),              // 114: core.v1.UpdateResourceHealthCheckV2Request
-	(*UpdateResourceHealthCheckV2Response)(nil),             // 115: core.v1.UpdateResourceHealthCheckV2Response
-	(*UpdateResourceTlsConfigurationV2Request)(nil),         // 116: core.v1.UpdateResourceTlsConfigurationV2Request
-	(*UpdateResourceTlsConfigurationV2Response)(nil),        // 117: core.v1.UpdateResourceTlsConfigurationV2Response
-	(*UpdateResourceHostnameV2Request)(nil),                 // 118: core.v1.UpdateResourceHostnameV2Request
-	(*UpdateResourceHostnameV2Response)(nil),                // 119: core.v1.UpdateResourceHostnameV2Response
-	(*UpdateResourceClassifierConfigurationV2Request)(nil),  // 120: core.v1.UpdateResourceClassifierConfigurationV2Request
-	(*UpdateResourceClassifierConfigurationV2Response)(nil), // 121: core.v1.UpdateResourceClassifierConfigurationV2Response
-	(*UpdateResourceAliasRequest)(nil),                      // 122: core.v1.UpdateResourceAliasRequest
-	(*UpdateResourceAliasResponse)(nil),                     // 123: core.v1.UpdateResourceAliasResponse
-	(*CreateResourceAliasRequest)(nil),                      // 124: core.v1.CreateResourceAliasRequest
-	(*CreateResourceAliasResponse)(nil),                     // 125: core.v1.CreateResourceAliasResponse
-	(*DeleteResourceAliasRequest)(nil),                      // 126: core.v1.DeleteResourceAliasRequest
-	(*DeleteResourceAliasResponse)(nil),                     // 127: core.v1.DeleteResourceAliasResponse
-	(*UpdateResourceRequest_UpdateResourceTag)(nil),         // 128: core.v1.UpdateResourceRequest.UpdateResourceTag
-	(*UpdateResourceRequest_UpdateResourceAlias)(nil),       // 129: core.v1.UpdateResourceRequest.UpdateResourceAlias
-	(*ResourceHealthCheck)(nil),                             // 130: core.v1.ResourceHealthCheck
-	(*ResourceTag)(nil),                                     // 131: core.v1.ResourceTag
-	(*Resource)(nil),                                        // 132: core.v1.Resource
-	(*Filter)(nil),                                          // 133: core.v1.Filter
-	(*ListMetadata)(nil),                                    // 134: core.v1.ListMetadata
-	(*timestamppb.Timestamp)(nil),                           // 135: google.protobuf.Timestamp
-	(*User)(nil),                                            // 136: core.v1.User
-	(*Group)(nil),                                           // 137: core.v1.Group
-	(*ResourceHostname)(nil),                                // 138: core.v1.ResourceHostname
-	(*DataDiscoveryConfiguration)(nil),                      // 139: core.v1.DataDiscoveryConfiguration
-	(*ResourceTlsConfiguration)(nil),                        // 140: core.v1.ResourceTlsConfiguration
-	(*ResourceDialConfiguration)(nil),                       // 141: core.v1.ResourceDialConfiguration
-	(*ResourceClassifierConfiguration)(nil),                 // 142: core.v1.ResourceClassifierConfiguration
-	(*ResourceConnectorAccess)(nil),                         // 143: core.v1.ResourceConnectorAccess
+	(*CreateResourceSshHostKeyRequest)(nil),                 // 74: core.v1.CreateResourceSshHostKeyRequest
+	(*CreateResourceSshHostKeyResponse)(nil),                // 75: core.v1.CreateResourceSshHostKeyResponse
+	(*GetResourceSshHostKeyRequest)(nil),                    // 76: core.v1.GetResourceSshHostKeyRequest
+	(*GetResourceSshHostKeyResponse)(nil),                   // 77: core.v1.GetResourceSshHostKeyResponse
+	(*ListResourceSshHostKeysRequest)(nil),                  // 78: core.v1.ListResourceSshHostKeysRequest
+	(*ListResourceSshHostKeysResponse)(nil),                 // 79: core.v1.ListResourceSshHostKeysResponse
+	(*UpdateResourceSshHostKeyRequest)(nil),                 // 80: core.v1.UpdateResourceSshHostKeyRequest
+	(*UpdateResourceSshHostKeyResponse)(nil),                // 81: core.v1.UpdateResourceSshHostKeyResponse
+	(*DeleteResourceSshHostKeyRequest)(nil),                 // 82: core.v1.DeleteResourceSshHostKeyRequest
+	(*DeleteResourceSshHostKeyResponse)(nil),                // 83: core.v1.DeleteResourceSshHostKeyResponse
+	(*CreateResourceDialConfigurationRequest)(nil),          // 84: core.v1.CreateResourceDialConfigurationRequest
+	(*CreateResourceDialConfigurationResponse)(nil),         // 85: core.v1.CreateResourceDialConfigurationResponse
+	(*GetResourceDialConfigurationRequest)(nil),             // 86: core.v1.GetResourceDialConfigurationRequest
+	(*GetResourceDialConfigurationResponse)(nil),            // 87: core.v1.GetResourceDialConfigurationResponse
+	(*UpdateResourceDialConfigurationRequest)(nil),          // 88: core.v1.UpdateResourceDialConfigurationRequest
+	(*UpdateResourceDialConfigurationResponse)(nil),         // 89: core.v1.UpdateResourceDialConfigurationResponse
+	(*DeleteResourceDialConfigurationRequest)(nil),          // 90: core.v1.DeleteResourceDialConfigurationRequest
+	(*DeleteResourceDialConfigurationResponse)(nil),         // 91: core.v1.DeleteResourceDialConfigurationResponse
+	(*CreateResourceHostnameRequest)(nil),                   // 92: core.v1.CreateResourceHostnameRequest
+	(*CreateResourceHostnameResponse)(nil),                  // 93: core.v1.CreateResourceHostnameResponse
+	(*GetResourceHostnameRequest)(nil),                      // 94: core.v1.GetResourceHostnameRequest
+	(*GetResourceHostnameResponse)(nil),                     // 95: core.v1.GetResourceHostnameResponse
+	(*ListResourceHostnamesRequest)(nil),                    // 96: core.v1.ListResourceHostnamesRequest
+	(*ListResourceHostnamesResponse)(nil),                   // 97: core.v1.ListResourceHostnamesResponse
+	(*UpdateResourceHostnameRequest)(nil),                   // 98: core.v1.UpdateResourceHostnameRequest
+	(*UpdateResourceHostnameResponse)(nil),                  // 99: core.v1.UpdateResourceHostnameResponse
+	(*DeleteResourceHostnameRequest)(nil),                   // 100: core.v1.DeleteResourceHostnameRequest
+	(*DeleteResourceHostnameResponse)(nil),                  // 101: core.v1.DeleteResourceHostnameResponse
+	(*CreateResourceClassifierConfigurationRequest)(nil),    // 102: core.v1.CreateResourceClassifierConfigurationRequest
+	(*CreateResourceClassifierConfigurationResponse)(nil),   // 103: core.v1.CreateResourceClassifierConfigurationResponse
+	(*ListResourceClassifierConfigurationsRequest)(nil),     // 104: core.v1.ListResourceClassifierConfigurationsRequest
+	(*ListResourceClassifierConfigurationsResponse)(nil),    // 105: core.v1.ListResourceClassifierConfigurationsResponse
+	(*GetResourceClassifierConfigurationRequest)(nil),       // 106: core.v1.GetResourceClassifierConfigurationRequest
+	(*GetResourceClassifierConfigurationResponse)(nil),      // 107: core.v1.GetResourceClassifierConfigurationResponse
+	(*UpdateResourceClassifierConfigurationRequest)(nil),    // 108: core.v1.UpdateResourceClassifierConfigurationRequest
+	(*UpdateResourceClassifierConfigurationResponse)(nil),   // 109: core.v1.UpdateResourceClassifierConfigurationResponse
+	(*DeleteResourceClassifierConfigurationRequest)(nil),    // 110: core.v1.DeleteResourceClassifierConfigurationRequest
+	(*DeleteResourceClassifierConfigurationResponse)(nil),   // 111: core.v1.DeleteResourceClassifierConfigurationResponse
+	(*ListResourceConnectorAccessRequest)(nil),              // 112: core.v1.ListResourceConnectorAccessRequest
+	(*ListResourceConnectorAccessResponse)(nil),             // 113: core.v1.ListResourceConnectorAccessResponse
+	(*CreateResourceTagRequest)(nil),                        // 114: core.v1.CreateResourceTagRequest
+	(*CreateResourceTagResponse)(nil),                       // 115: core.v1.CreateResourceTagResponse
+	(*DeleteResourceTagRequest)(nil),                        // 116: core.v1.DeleteResourceTagRequest
+	(*DeleteResourceTagResponse)(nil),                       // 117: core.v1.DeleteResourceTagResponse
+	(*UpdateResourceTagRequest)(nil),                        // 118: core.v1.UpdateResourceTagRequest
+	(*UpdateResourceTagResponse)(nil),                       // 119: core.v1.UpdateResourceTagResponse
+	(*UpdateNativeUserIdentityLinkV2Request)(nil),           // 120: core.v1.UpdateNativeUserIdentityLinkV2Request
+	(*UpdateNativeUserIdentityLinkV2Response)(nil),          // 121: core.v1.UpdateNativeUserIdentityLinkV2Response
+	(*UpdateDataDiscoveryConfigurationV2Request)(nil),       // 122: core.v1.UpdateDataDiscoveryConfigurationV2Request
+	(*UpdateDataDiscoveryConfigurationV2Response)(nil),      // 123: core.v1.UpdateDataDiscoveryConfigurationV2Response
+	(*UpdateResourceHealthCheckV2Request)(nil),              // 124: core.v1.UpdateResourceHealthCheckV2Request
+	(*UpdateResourceHealthCheckV2Response)(nil),             // 125: core.v1.UpdateResourceHealthCheckV2Response
+	(*UpdateResourceTlsConfigurationV2Request)(nil),         // 126: core.v1.UpdateResourceTlsConfigurationV2Request
+	(*UpdateResourceTlsConfigurationV2Response)(nil),        // 127: core.v1.UpdateResourceTlsConfigurationV2Response
+	(*UpdateResourceHostnameV2Request)(nil),                 // 128: core.v1.UpdateResourceHostnameV2Request
+	(*UpdateResourceHostnameV2Response)(nil),                // 129: core.v1.UpdateResourceHostnameV2Response
+	(*UpdateResourceClassifierConfigurationV2Request)(nil),  // 130: core.v1.UpdateResourceClassifierConfigurationV2Request
+	(*UpdateResourceClassifierConfigurationV2Response)(nil), // 131: core.v1.UpdateResourceClassifierConfigurationV2Response
+	(*UpdateResourceAliasRequest)(nil),                      // 132: core.v1.UpdateResourceAliasRequest
+	(*UpdateResourceAliasResponse)(nil),                     // 133: core.v1.UpdateResourceAliasResponse
+	(*CreateResourceAliasRequest)(nil),                      // 134: core.v1.CreateResourceAliasRequest
+	(*CreateResourceAliasResponse)(nil),                     // 135: core.v1.CreateResourceAliasResponse
+	(*DeleteResourceAliasRequest)(nil),                      // 136: core.v1.DeleteResourceAliasRequest
+	(*DeleteResourceAliasResponse)(nil),                     // 137: core.v1.DeleteResourceAliasResponse
+	(*UpdateResourceRequest_UpdateResourceTag)(nil),         // 138: core.v1.UpdateResourceRequest.UpdateResourceTag
+	(*UpdateResourceRequest_UpdateResourceAlias)(nil),       // 139: core.v1.UpdateResourceRequest.UpdateResourceAlias
+	(*ResourceHealthCheck)(nil),                             // 140: core.v1.ResourceHealthCheck
+	(*ResourceTag)(nil),                                     // 141: core.v1.ResourceTag
+	(*Resource)(nil),                                        // 142: core.v1.Resource
+	(*Filter)(nil),                                          // 143: core.v1.Filter
+	(*ListMetadata)(nil),                                    // 144: core.v1.ListMetadata
+	(*timestamppb.Timestamp)(nil),                           // 145: google.protobuf.Timestamp
+	(*User)(nil),                                            // 146: core.v1.User
+	(*Group)(nil),                                           // 147: core.v1.Group
+	(*ResourceHostname)(nil),                                // 148: core.v1.ResourceHostname
+	(*DataDiscoveryConfiguration)(nil),                      // 149: core.v1.DataDiscoveryConfiguration
+	(*ResourceTlsConfiguration)(nil),                        // 150: core.v1.ResourceTlsConfiguration
+	(*ResourceSshHostKey)(nil),                              // 151: core.v1.ResourceSshHostKey
+	(*ResourceDialConfiguration)(nil),                       // 152: core.v1.ResourceDialConfiguration
+	(*ResourceClassifierConfiguration)(nil),                 // 153: core.v1.ResourceClassifierConfiguration
+	(*ResourceConnectorAccess)(nil),                         // 154: core.v1.ResourceConnectorAccess
 }
 var file_core_v1_resource_proto_depIdxs = []int32{
-	130, // 0: core.v1.CreateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	130, // 1: core.v1.GetResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	130, // 2: core.v1.UpdateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	131, // 3: core.v1.CreateResourceRequest.tags:type_name -> core.v1.ResourceTag
-	132, // 4: core.v1.CreateResourceResponse.resource:type_name -> core.v1.Resource
-	132, // 5: core.v1.GetResourceResponse.resource:type_name -> core.v1.Resource
-	133, // 6: core.v1.ListResourcesRequest.filter:type_name -> core.v1.Filter
-	132, // 7: core.v1.ListResourcesResponse.resources:type_name -> core.v1.Resource
-	134, // 8: core.v1.ListResourcesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	128, // 9: core.v1.UpdateResourceRequest.tags:type_name -> core.v1.UpdateResourceRequest.UpdateResourceTag
-	129, // 10: core.v1.UpdateResourceRequest.aliases:type_name -> core.v1.UpdateResourceRequest.UpdateResourceAlias
-	132, // 11: core.v1.UpdateResourceV2Request.resource:type_name -> core.v1.Resource
-	132, // 12: core.v1.UpdateResourceV2Response.resource:type_name -> core.v1.Resource
+	140, // 0: core.v1.CreateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	140, // 1: core.v1.GetResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	140, // 2: core.v1.UpdateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	141, // 3: core.v1.CreateResourceRequest.tags:type_name -> core.v1.ResourceTag
+	142, // 4: core.v1.CreateResourceResponse.resource:type_name -> core.v1.Resource
+	142, // 5: core.v1.GetResourceResponse.resource:type_name -> core.v1.Resource
+	143, // 6: core.v1.ListResourcesRequest.filter:type_name -> core.v1.Filter
+	142, // 7: core.v1.ListResourcesResponse.resources:type_name -> core.v1.Resource
+	144, // 8: core.v1.ListResourcesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	138, // 9: core.v1.UpdateResourceRequest.tags:type_name -> core.v1.UpdateResourceRequest.UpdateResourceTag
+	139, // 10: core.v1.UpdateResourceRequest.aliases:type_name -> core.v1.UpdateResourceRequest.UpdateResourceAlias
+	142, // 11: core.v1.UpdateResourceV2Request.resource:type_name -> core.v1.Resource
+	142, // 12: core.v1.UpdateResourceV2Response.resource:type_name -> core.v1.Resource
 	0,   // 13: core.v1.IAMNativeUser.type:type_name -> core.v1.IAMNativeUserType
 	1,   // 14: core.v1.HTTPAPIKeyNativeUser.location:type_name -> core.v1.HTTPAPIKeyLocation
 	22,  // 15: core.v1.NativeUser.basic:type_name -> core.v1.BasicNativeUser
@@ -8202,14 +8700,14 @@ var file_core_v1_resource_proto_depIdxs = []int32{
 	27,  // 20: core.v1.NativeUser.http_basic:type_name -> core.v1.HTTPBasicNativeUser
 	28,  // 21: core.v1.NativeUser.http_bearer:type_name -> core.v1.HTTPBearerNativeUser
 	29,  // 22: core.v1.NativeUser.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
-	135, // 23: core.v1.NativeUser.created_at:type_name -> google.protobuf.Timestamp
-	135, // 24: core.v1.NativeUser.updated_at:type_name -> google.protobuf.Timestamp
-	136, // 25: core.v1.NativeUserLink.user:type_name -> core.v1.User
-	137, // 26: core.v1.NativeUserLink.group:type_name -> core.v1.Group
-	138, // 27: core.v1.NativeUserLink.resource_hostname:type_name -> core.v1.ResourceHostname
+	145, // 23: core.v1.NativeUser.created_at:type_name -> google.protobuf.Timestamp
+	145, // 24: core.v1.NativeUser.updated_at:type_name -> google.protobuf.Timestamp
+	146, // 25: core.v1.NativeUserLink.user:type_name -> core.v1.User
+	147, // 26: core.v1.NativeUserLink.group:type_name -> core.v1.Group
+	148, // 27: core.v1.NativeUserLink.resource_hostname:type_name -> core.v1.ResourceHostname
 	30,  // 28: core.v1.NativeUserLink.native_user:type_name -> core.v1.NativeUser
-	135, // 29: core.v1.NativeUserLink.created_at:type_name -> google.protobuf.Timestamp
-	135, // 30: core.v1.NativeUserLink.updated_at:type_name -> google.protobuf.Timestamp
+	145, // 29: core.v1.NativeUserLink.created_at:type_name -> google.protobuf.Timestamp
+	145, // 30: core.v1.NativeUserLink.updated_at:type_name -> google.protobuf.Timestamp
 	30,  // 31: core.v1.CreateNativeUserResponse.native_user:type_name -> core.v1.NativeUser
 	22,  // 32: core.v1.CreateNativeUserV2Request.basic:type_name -> core.v1.BasicNativeUser
 	23,  // 33: core.v1.CreateNativeUserV2Request.iam:type_name -> core.v1.IAMNativeUser
@@ -8221,7 +8719,7 @@ var file_core_v1_resource_proto_depIdxs = []int32{
 	29,  // 39: core.v1.CreateNativeUserV2Request.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
 	30,  // 40: core.v1.CreateNativeUserV2Response.native_user:type_name -> core.v1.NativeUser
 	30,  // 41: core.v1.ListNativeUsersResponse.native_users:type_name -> core.v1.NativeUser
-	134, // 42: core.v1.ListNativeUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	144, // 42: core.v1.ListNativeUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
 	30,  // 43: core.v1.GetNativeUserResponse.native_user:type_name -> core.v1.NativeUser
 	22,  // 44: core.v1.UpdateNativeUserV2Request.basic:type_name -> core.v1.BasicNativeUser
 	23,  // 45: core.v1.UpdateNativeUserV2Request.iam:type_name -> core.v1.IAMNativeUser
@@ -8234,164 +8732,178 @@ var file_core_v1_resource_proto_depIdxs = []int32{
 	31,  // 52: core.v1.CreateNativeUserIdentityLinkResponse.link:type_name -> core.v1.NativeUserLink
 	31,  // 53: core.v1.GetNativeUserIdentityLinkResponse.link:type_name -> core.v1.NativeUserLink
 	31,  // 54: core.v1.ListNativeUserIdentityLinksResponse.links:type_name -> core.v1.NativeUserLink
-	134, // 55: core.v1.ListNativeUserIdentityLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
-	139, // 56: core.v1.GetDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	139, // 57: core.v1.ListDataDiscoveryConfigurationsResponse.data_discovery_configurations:type_name -> core.v1.DataDiscoveryConfiguration
-	134, // 58: core.v1.ListDataDiscoveryConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	139, // 59: core.v1.CreateDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	140, // 60: core.v1.CreateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	140, // 61: core.v1.GetResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	140, // 62: core.v1.UpdateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	141, // 63: core.v1.CreateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	141, // 64: core.v1.GetResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	141, // 65: core.v1.UpdateResourceDialConfigurationRequest.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	141, // 66: core.v1.UpdateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	138, // 67: core.v1.CreateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
-	138, // 68: core.v1.GetResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
-	138, // 69: core.v1.ListResourceHostnamesResponse.resource_hostnames:type_name -> core.v1.ResourceHostname
-	138, // 70: core.v1.UpdateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
-	142, // 71: core.v1.CreateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	142, // 72: core.v1.ListResourceClassifierConfigurationsResponse.resource_classifier_configurations:type_name -> core.v1.ResourceClassifierConfiguration
-	134, // 73: core.v1.ListResourceClassifierConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	142, // 74: core.v1.GetResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	142, // 75: core.v1.UpdateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	143, // 76: core.v1.ListResourceConnectorAccessResponse.resource_connector_access:type_name -> core.v1.ResourceConnectorAccess
-	131, // 77: core.v1.CreateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
-	131, // 78: core.v1.UpdateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
-	31,  // 79: core.v1.UpdateNativeUserIdentityLinkV2Request.link:type_name -> core.v1.NativeUserLink
-	31,  // 80: core.v1.UpdateNativeUserIdentityLinkV2Response.link:type_name -> core.v1.NativeUserLink
-	139, // 81: core.v1.UpdateDataDiscoveryConfigurationV2Request.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	139, // 82: core.v1.UpdateDataDiscoveryConfigurationV2Response.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	130, // 83: core.v1.UpdateResourceHealthCheckV2Request.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	130, // 84: core.v1.UpdateResourceHealthCheckV2Response.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	140, // 85: core.v1.UpdateResourceTlsConfigurationV2Request.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	140, // 86: core.v1.UpdateResourceTlsConfigurationV2Response.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	138, // 87: core.v1.UpdateResourceHostnameV2Request.resource_hostname:type_name -> core.v1.ResourceHostname
-	138, // 88: core.v1.UpdateResourceHostnameV2Response.resource_hostname:type_name -> core.v1.ResourceHostname
-	142, // 89: core.v1.UpdateResourceClassifierConfigurationV2Request.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	142, // 90: core.v1.UpdateResourceClassifierConfigurationV2Response.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	131, // 91: core.v1.UpdateResourceRequest.UpdateResourceTag.tags:type_name -> core.v1.ResourceTag
-	12,  // 92: core.v1.ResourceService.GetResource:input_type -> core.v1.GetResourceRequest
-	14,  // 93: core.v1.ResourceService.ListResources:input_type -> core.v1.ListResourcesRequest
-	10,  // 94: core.v1.ResourceService.CreateResource:input_type -> core.v1.CreateResourceRequest
-	18,  // 95: core.v1.ResourceService.UpdateResource:input_type -> core.v1.UpdateResourceRequest
-	20,  // 96: core.v1.ResourceService.UpdateResourceV2:input_type -> core.v1.UpdateResourceV2Request
-	16,  // 97: core.v1.ResourceService.DeleteResource:input_type -> core.v1.DeleteResourceRequest
-	32,  // 98: core.v1.ResourceService.CreateNativeUser:input_type -> core.v1.CreateNativeUserRequest
-	34,  // 99: core.v1.ResourceService.CreateNativeUserV2:input_type -> core.v1.CreateNativeUserV2Request
-	38,  // 100: core.v1.ResourceService.GetNativeUser:input_type -> core.v1.GetNativeUserRequest
-	36,  // 101: core.v1.ResourceService.ListNativeUsers:input_type -> core.v1.ListNativeUsersRequest
-	40,  // 102: core.v1.ResourceService.DeleteNativeUser:input_type -> core.v1.DeleteNativeUserRequest
-	42,  // 103: core.v1.ResourceService.UpdateNativeUser:input_type -> core.v1.UpdateNativeUserRequest
-	44,  // 104: core.v1.ResourceService.UpdateNativeUserV2:input_type -> core.v1.UpdateNativeUserV2Request
-	46,  // 105: core.v1.ResourceService.CreateNativeUserIdentityLink:input_type -> core.v1.CreateNativeUserIdentityLinkRequest
-	48,  // 106: core.v1.ResourceService.GetNativeUserIdentityLink:input_type -> core.v1.GetNativeUserIdentityLinkRequest
-	50,  // 107: core.v1.ResourceService.ListNativeUserIdentityLinks:input_type -> core.v1.ListNativeUserIdentityLinksRequest
-	54,  // 108: core.v1.ResourceService.UpdateNativeUserIdentityLink:input_type -> core.v1.UpdateNativeUserIdentityLinkRequest
-	110, // 109: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:input_type -> core.v1.UpdateNativeUserIdentityLinkV2Request
-	52,  // 110: core.v1.ResourceService.DeleteNativeUserIdentityLink:input_type -> core.v1.DeleteNativeUserIdentityLinkRequest
-	56,  // 111: core.v1.ResourceService.GetDataDiscoveryConfiguration:input_type -> core.v1.GetDataDiscoveryConfigurationRequest
-	58,  // 112: core.v1.ResourceService.ListDataDiscoveryConfigurations:input_type -> core.v1.ListDataDiscoveryConfigurationsRequest
-	60,  // 113: core.v1.ResourceService.CreateDataDiscoveryConfiguration:input_type -> core.v1.CreateDataDiscoveryConfigurationRequest
-	62,  // 114: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:input_type -> core.v1.UpdateDataDiscoveryConfigurationRequest
-	112, // 115: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:input_type -> core.v1.UpdateDataDiscoveryConfigurationV2Request
-	64,  // 116: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:input_type -> core.v1.DeleteDataDiscoveryConfigurationRequest
-	2,   // 117: core.v1.ResourceService.CreateResourceHealthCheck:input_type -> core.v1.CreateResourceHealthCheckRequest
-	4,   // 118: core.v1.ResourceService.GetResourceHealthCheck:input_type -> core.v1.GetResourceHealthCheckRequest
-	6,   // 119: core.v1.ResourceService.UpdateResourceHealthCheck:input_type -> core.v1.UpdateResourceHealthCheckRequest
-	114, // 120: core.v1.ResourceService.UpdateResourceHealthCheckV2:input_type -> core.v1.UpdateResourceHealthCheckV2Request
-	8,   // 121: core.v1.ResourceService.DeleteResourceHealthCheck:input_type -> core.v1.DeleteResourceHealthCheckRequest
-	66,  // 122: core.v1.ResourceService.CreateResourceTlsConfiguration:input_type -> core.v1.CreateResourceTlsConfigurationRequest
-	68,  // 123: core.v1.ResourceService.GetResourceTlsConfiguration:input_type -> core.v1.GetResourceTlsConfigurationRequest
-	70,  // 124: core.v1.ResourceService.UpdateResourceTlsConfiguration:input_type -> core.v1.UpdateResourceTlsConfigurationRequest
-	116, // 125: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:input_type -> core.v1.UpdateResourceTlsConfigurationV2Request
-	72,  // 126: core.v1.ResourceService.DeleteResourceTlsConfiguration:input_type -> core.v1.DeleteResourceTlsConfigurationRequest
-	74,  // 127: core.v1.ResourceService.CreateResourceDialConfiguration:input_type -> core.v1.CreateResourceDialConfigurationRequest
-	76,  // 128: core.v1.ResourceService.GetResourceDialConfiguration:input_type -> core.v1.GetResourceDialConfigurationRequest
-	78,  // 129: core.v1.ResourceService.UpdateResourceDialConfiguration:input_type -> core.v1.UpdateResourceDialConfigurationRequest
-	80,  // 130: core.v1.ResourceService.DeleteResourceDialConfiguration:input_type -> core.v1.DeleteResourceDialConfigurationRequest
-	82,  // 131: core.v1.ResourceService.CreateResourceHostname:input_type -> core.v1.CreateResourceHostnameRequest
-	84,  // 132: core.v1.ResourceService.GetResourceHostname:input_type -> core.v1.GetResourceHostnameRequest
-	86,  // 133: core.v1.ResourceService.ListResourceHostnames:input_type -> core.v1.ListResourceHostnamesRequest
-	88,  // 134: core.v1.ResourceService.UpdateResourceHostname:input_type -> core.v1.UpdateResourceHostnameRequest
-	118, // 135: core.v1.ResourceService.UpdateResourceHostnameV2:input_type -> core.v1.UpdateResourceHostnameV2Request
-	90,  // 136: core.v1.ResourceService.DeleteResourceHostname:input_type -> core.v1.DeleteResourceHostnameRequest
-	92,  // 137: core.v1.ResourceService.CreateResourceClassifierConfiguration:input_type -> core.v1.CreateResourceClassifierConfigurationRequest
-	94,  // 138: core.v1.ResourceService.ListResourceClassifierConfigurations:input_type -> core.v1.ListResourceClassifierConfigurationsRequest
-	96,  // 139: core.v1.ResourceService.GetResourceClassifierConfiguration:input_type -> core.v1.GetResourceClassifierConfigurationRequest
-	98,  // 140: core.v1.ResourceService.UpdateResourceClassifierConfiguration:input_type -> core.v1.UpdateResourceClassifierConfigurationRequest
-	120, // 141: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:input_type -> core.v1.UpdateResourceClassifierConfigurationV2Request
-	100, // 142: core.v1.ResourceService.DeleteResourceClassifierConfiguration:input_type -> core.v1.DeleteResourceClassifierConfigurationRequest
-	104, // 143: core.v1.ResourceService.CreateResourceTag:input_type -> core.v1.CreateResourceTagRequest
-	106, // 144: core.v1.ResourceService.DeleteResourceTag:input_type -> core.v1.DeleteResourceTagRequest
-	108, // 145: core.v1.ResourceService.UpdateResourceTag:input_type -> core.v1.UpdateResourceTagRequest
-	124, // 146: core.v1.ResourceService.CreateResourceAlias:input_type -> core.v1.CreateResourceAliasRequest
-	126, // 147: core.v1.ResourceService.DeleteResourceAlias:input_type -> core.v1.DeleteResourceAliasRequest
-	122, // 148: core.v1.ResourceService.UpdateResourceAlias:input_type -> core.v1.UpdateResourceAliasRequest
-	102, // 149: core.v1.ResourceService.ListResourceConnectorAccess:input_type -> core.v1.ListResourceConnectorAccessRequest
-	13,  // 150: core.v1.ResourceService.GetResource:output_type -> core.v1.GetResourceResponse
-	15,  // 151: core.v1.ResourceService.ListResources:output_type -> core.v1.ListResourcesResponse
-	11,  // 152: core.v1.ResourceService.CreateResource:output_type -> core.v1.CreateResourceResponse
-	19,  // 153: core.v1.ResourceService.UpdateResource:output_type -> core.v1.UpdateResourceResponse
-	21,  // 154: core.v1.ResourceService.UpdateResourceV2:output_type -> core.v1.UpdateResourceV2Response
-	17,  // 155: core.v1.ResourceService.DeleteResource:output_type -> core.v1.DeleteResourceResponse
-	33,  // 156: core.v1.ResourceService.CreateNativeUser:output_type -> core.v1.CreateNativeUserResponse
-	35,  // 157: core.v1.ResourceService.CreateNativeUserV2:output_type -> core.v1.CreateNativeUserV2Response
-	39,  // 158: core.v1.ResourceService.GetNativeUser:output_type -> core.v1.GetNativeUserResponse
-	37,  // 159: core.v1.ResourceService.ListNativeUsers:output_type -> core.v1.ListNativeUsersResponse
-	41,  // 160: core.v1.ResourceService.DeleteNativeUser:output_type -> core.v1.DeleteNativeUserResponse
-	43,  // 161: core.v1.ResourceService.UpdateNativeUser:output_type -> core.v1.UpdateNativeUserResponse
-	45,  // 162: core.v1.ResourceService.UpdateNativeUserV2:output_type -> core.v1.UpdateNativeUserV2Response
-	47,  // 163: core.v1.ResourceService.CreateNativeUserIdentityLink:output_type -> core.v1.CreateNativeUserIdentityLinkResponse
-	49,  // 164: core.v1.ResourceService.GetNativeUserIdentityLink:output_type -> core.v1.GetNativeUserIdentityLinkResponse
-	51,  // 165: core.v1.ResourceService.ListNativeUserIdentityLinks:output_type -> core.v1.ListNativeUserIdentityLinksResponse
-	55,  // 166: core.v1.ResourceService.UpdateNativeUserIdentityLink:output_type -> core.v1.UpdateNativeUserIdentityLinkResponse
-	111, // 167: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:output_type -> core.v1.UpdateNativeUserIdentityLinkV2Response
-	53,  // 168: core.v1.ResourceService.DeleteNativeUserIdentityLink:output_type -> core.v1.DeleteNativeUserIdentityLinkResponse
-	57,  // 169: core.v1.ResourceService.GetDataDiscoveryConfiguration:output_type -> core.v1.GetDataDiscoveryConfigurationResponse
-	59,  // 170: core.v1.ResourceService.ListDataDiscoveryConfigurations:output_type -> core.v1.ListDataDiscoveryConfigurationsResponse
-	61,  // 171: core.v1.ResourceService.CreateDataDiscoveryConfiguration:output_type -> core.v1.CreateDataDiscoveryConfigurationResponse
-	63,  // 172: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:output_type -> core.v1.UpdateDataDiscoveryConfigurationResponse
-	113, // 173: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:output_type -> core.v1.UpdateDataDiscoveryConfigurationV2Response
-	65,  // 174: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:output_type -> core.v1.DeleteDataDiscoveryConfigurationResponse
-	3,   // 175: core.v1.ResourceService.CreateResourceHealthCheck:output_type -> core.v1.CreateResourceHealthCheckResponse
-	5,   // 176: core.v1.ResourceService.GetResourceHealthCheck:output_type -> core.v1.GetResourceHealthCheckResponse
-	7,   // 177: core.v1.ResourceService.UpdateResourceHealthCheck:output_type -> core.v1.UpdateResourceHealthCheckResponse
-	115, // 178: core.v1.ResourceService.UpdateResourceHealthCheckV2:output_type -> core.v1.UpdateResourceHealthCheckV2Response
-	9,   // 179: core.v1.ResourceService.DeleteResourceHealthCheck:output_type -> core.v1.DeleteResourceHealthCheckResponse
-	67,  // 180: core.v1.ResourceService.CreateResourceTlsConfiguration:output_type -> core.v1.CreateResourceTlsConfigurationResponse
-	69,  // 181: core.v1.ResourceService.GetResourceTlsConfiguration:output_type -> core.v1.GetResourceTlsConfigurationResponse
-	71,  // 182: core.v1.ResourceService.UpdateResourceTlsConfiguration:output_type -> core.v1.UpdateResourceTlsConfigurationResponse
-	117, // 183: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:output_type -> core.v1.UpdateResourceTlsConfigurationV2Response
-	73,  // 184: core.v1.ResourceService.DeleteResourceTlsConfiguration:output_type -> core.v1.DeleteResourceTlsConfigurationResponse
-	75,  // 185: core.v1.ResourceService.CreateResourceDialConfiguration:output_type -> core.v1.CreateResourceDialConfigurationResponse
-	77,  // 186: core.v1.ResourceService.GetResourceDialConfiguration:output_type -> core.v1.GetResourceDialConfigurationResponse
-	79,  // 187: core.v1.ResourceService.UpdateResourceDialConfiguration:output_type -> core.v1.UpdateResourceDialConfigurationResponse
-	81,  // 188: core.v1.ResourceService.DeleteResourceDialConfiguration:output_type -> core.v1.DeleteResourceDialConfigurationResponse
-	83,  // 189: core.v1.ResourceService.CreateResourceHostname:output_type -> core.v1.CreateResourceHostnameResponse
-	85,  // 190: core.v1.ResourceService.GetResourceHostname:output_type -> core.v1.GetResourceHostnameResponse
-	87,  // 191: core.v1.ResourceService.ListResourceHostnames:output_type -> core.v1.ListResourceHostnamesResponse
-	89,  // 192: core.v1.ResourceService.UpdateResourceHostname:output_type -> core.v1.UpdateResourceHostnameResponse
-	119, // 193: core.v1.ResourceService.UpdateResourceHostnameV2:output_type -> core.v1.UpdateResourceHostnameV2Response
-	91,  // 194: core.v1.ResourceService.DeleteResourceHostname:output_type -> core.v1.DeleteResourceHostnameResponse
-	93,  // 195: core.v1.ResourceService.CreateResourceClassifierConfiguration:output_type -> core.v1.CreateResourceClassifierConfigurationResponse
-	95,  // 196: core.v1.ResourceService.ListResourceClassifierConfigurations:output_type -> core.v1.ListResourceClassifierConfigurationsResponse
-	97,  // 197: core.v1.ResourceService.GetResourceClassifierConfiguration:output_type -> core.v1.GetResourceClassifierConfigurationResponse
-	99,  // 198: core.v1.ResourceService.UpdateResourceClassifierConfiguration:output_type -> core.v1.UpdateResourceClassifierConfigurationResponse
-	121, // 199: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:output_type -> core.v1.UpdateResourceClassifierConfigurationV2Response
-	101, // 200: core.v1.ResourceService.DeleteResourceClassifierConfiguration:output_type -> core.v1.DeleteResourceClassifierConfigurationResponse
-	105, // 201: core.v1.ResourceService.CreateResourceTag:output_type -> core.v1.CreateResourceTagResponse
-	107, // 202: core.v1.ResourceService.DeleteResourceTag:output_type -> core.v1.DeleteResourceTagResponse
-	109, // 203: core.v1.ResourceService.UpdateResourceTag:output_type -> core.v1.UpdateResourceTagResponse
-	125, // 204: core.v1.ResourceService.CreateResourceAlias:output_type -> core.v1.CreateResourceAliasResponse
-	127, // 205: core.v1.ResourceService.DeleteResourceAlias:output_type -> core.v1.DeleteResourceAliasResponse
-	123, // 206: core.v1.ResourceService.UpdateResourceAlias:output_type -> core.v1.UpdateResourceAliasResponse
-	103, // 207: core.v1.ResourceService.ListResourceConnectorAccess:output_type -> core.v1.ListResourceConnectorAccessResponse
-	150, // [150:208] is the sub-list for method output_type
-	92,  // [92:150] is the sub-list for method input_type
-	92,  // [92:92] is the sub-list for extension type_name
-	92,  // [92:92] is the sub-list for extension extendee
-	0,   // [0:92] is the sub-list for field type_name
+	144, // 55: core.v1.ListNativeUserIdentityLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
+	149, // 56: core.v1.GetDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	149, // 57: core.v1.ListDataDiscoveryConfigurationsResponse.data_discovery_configurations:type_name -> core.v1.DataDiscoveryConfiguration
+	144, // 58: core.v1.ListDataDiscoveryConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	149, // 59: core.v1.CreateDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	150, // 60: core.v1.CreateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	150, // 61: core.v1.GetResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	150, // 62: core.v1.UpdateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	151, // 63: core.v1.CreateResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
+	151, // 64: core.v1.GetResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
+	151, // 65: core.v1.ListResourceSshHostKeysResponse.resource_ssh_host_keys:type_name -> core.v1.ResourceSshHostKey
+	151, // 66: core.v1.UpdateResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
+	152, // 67: core.v1.CreateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	152, // 68: core.v1.GetResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	152, // 69: core.v1.UpdateResourceDialConfigurationRequest.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	152, // 70: core.v1.UpdateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	148, // 71: core.v1.CreateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
+	148, // 72: core.v1.GetResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
+	148, // 73: core.v1.ListResourceHostnamesResponse.resource_hostnames:type_name -> core.v1.ResourceHostname
+	148, // 74: core.v1.UpdateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
+	153, // 75: core.v1.CreateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	153, // 76: core.v1.ListResourceClassifierConfigurationsResponse.resource_classifier_configurations:type_name -> core.v1.ResourceClassifierConfiguration
+	144, // 77: core.v1.ListResourceClassifierConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	153, // 78: core.v1.GetResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	153, // 79: core.v1.UpdateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	154, // 80: core.v1.ListResourceConnectorAccessResponse.resource_connector_access:type_name -> core.v1.ResourceConnectorAccess
+	141, // 81: core.v1.CreateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
+	141, // 82: core.v1.UpdateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
+	31,  // 83: core.v1.UpdateNativeUserIdentityLinkV2Request.link:type_name -> core.v1.NativeUserLink
+	31,  // 84: core.v1.UpdateNativeUserIdentityLinkV2Response.link:type_name -> core.v1.NativeUserLink
+	149, // 85: core.v1.UpdateDataDiscoveryConfigurationV2Request.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	149, // 86: core.v1.UpdateDataDiscoveryConfigurationV2Response.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	140, // 87: core.v1.UpdateResourceHealthCheckV2Request.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	140, // 88: core.v1.UpdateResourceHealthCheckV2Response.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	150, // 89: core.v1.UpdateResourceTlsConfigurationV2Request.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	150, // 90: core.v1.UpdateResourceTlsConfigurationV2Response.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	148, // 91: core.v1.UpdateResourceHostnameV2Request.resource_hostname:type_name -> core.v1.ResourceHostname
+	148, // 92: core.v1.UpdateResourceHostnameV2Response.resource_hostname:type_name -> core.v1.ResourceHostname
+	153, // 93: core.v1.UpdateResourceClassifierConfigurationV2Request.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	153, // 94: core.v1.UpdateResourceClassifierConfigurationV2Response.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	141, // 95: core.v1.UpdateResourceRequest.UpdateResourceTag.tags:type_name -> core.v1.ResourceTag
+	12,  // 96: core.v1.ResourceService.GetResource:input_type -> core.v1.GetResourceRequest
+	14,  // 97: core.v1.ResourceService.ListResources:input_type -> core.v1.ListResourcesRequest
+	10,  // 98: core.v1.ResourceService.CreateResource:input_type -> core.v1.CreateResourceRequest
+	18,  // 99: core.v1.ResourceService.UpdateResource:input_type -> core.v1.UpdateResourceRequest
+	20,  // 100: core.v1.ResourceService.UpdateResourceV2:input_type -> core.v1.UpdateResourceV2Request
+	16,  // 101: core.v1.ResourceService.DeleteResource:input_type -> core.v1.DeleteResourceRequest
+	32,  // 102: core.v1.ResourceService.CreateNativeUser:input_type -> core.v1.CreateNativeUserRequest
+	34,  // 103: core.v1.ResourceService.CreateNativeUserV2:input_type -> core.v1.CreateNativeUserV2Request
+	38,  // 104: core.v1.ResourceService.GetNativeUser:input_type -> core.v1.GetNativeUserRequest
+	36,  // 105: core.v1.ResourceService.ListNativeUsers:input_type -> core.v1.ListNativeUsersRequest
+	40,  // 106: core.v1.ResourceService.DeleteNativeUser:input_type -> core.v1.DeleteNativeUserRequest
+	42,  // 107: core.v1.ResourceService.UpdateNativeUser:input_type -> core.v1.UpdateNativeUserRequest
+	44,  // 108: core.v1.ResourceService.UpdateNativeUserV2:input_type -> core.v1.UpdateNativeUserV2Request
+	46,  // 109: core.v1.ResourceService.CreateNativeUserIdentityLink:input_type -> core.v1.CreateNativeUserIdentityLinkRequest
+	48,  // 110: core.v1.ResourceService.GetNativeUserIdentityLink:input_type -> core.v1.GetNativeUserIdentityLinkRequest
+	50,  // 111: core.v1.ResourceService.ListNativeUserIdentityLinks:input_type -> core.v1.ListNativeUserIdentityLinksRequest
+	54,  // 112: core.v1.ResourceService.UpdateNativeUserIdentityLink:input_type -> core.v1.UpdateNativeUserIdentityLinkRequest
+	120, // 113: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:input_type -> core.v1.UpdateNativeUserIdentityLinkV2Request
+	52,  // 114: core.v1.ResourceService.DeleteNativeUserIdentityLink:input_type -> core.v1.DeleteNativeUserIdentityLinkRequest
+	56,  // 115: core.v1.ResourceService.GetDataDiscoveryConfiguration:input_type -> core.v1.GetDataDiscoveryConfigurationRequest
+	58,  // 116: core.v1.ResourceService.ListDataDiscoveryConfigurations:input_type -> core.v1.ListDataDiscoveryConfigurationsRequest
+	60,  // 117: core.v1.ResourceService.CreateDataDiscoveryConfiguration:input_type -> core.v1.CreateDataDiscoveryConfigurationRequest
+	62,  // 118: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:input_type -> core.v1.UpdateDataDiscoveryConfigurationRequest
+	122, // 119: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:input_type -> core.v1.UpdateDataDiscoveryConfigurationV2Request
+	64,  // 120: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:input_type -> core.v1.DeleteDataDiscoveryConfigurationRequest
+	2,   // 121: core.v1.ResourceService.CreateResourceHealthCheck:input_type -> core.v1.CreateResourceHealthCheckRequest
+	4,   // 122: core.v1.ResourceService.GetResourceHealthCheck:input_type -> core.v1.GetResourceHealthCheckRequest
+	6,   // 123: core.v1.ResourceService.UpdateResourceHealthCheck:input_type -> core.v1.UpdateResourceHealthCheckRequest
+	124, // 124: core.v1.ResourceService.UpdateResourceHealthCheckV2:input_type -> core.v1.UpdateResourceHealthCheckV2Request
+	8,   // 125: core.v1.ResourceService.DeleteResourceHealthCheck:input_type -> core.v1.DeleteResourceHealthCheckRequest
+	66,  // 126: core.v1.ResourceService.CreateResourceTlsConfiguration:input_type -> core.v1.CreateResourceTlsConfigurationRequest
+	68,  // 127: core.v1.ResourceService.GetResourceTlsConfiguration:input_type -> core.v1.GetResourceTlsConfigurationRequest
+	70,  // 128: core.v1.ResourceService.UpdateResourceTlsConfiguration:input_type -> core.v1.UpdateResourceTlsConfigurationRequest
+	126, // 129: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:input_type -> core.v1.UpdateResourceTlsConfigurationV2Request
+	72,  // 130: core.v1.ResourceService.DeleteResourceTlsConfiguration:input_type -> core.v1.DeleteResourceTlsConfigurationRequest
+	74,  // 131: core.v1.ResourceService.CreateResourceSshHostKey:input_type -> core.v1.CreateResourceSshHostKeyRequest
+	76,  // 132: core.v1.ResourceService.GetResourceSshHostKey:input_type -> core.v1.GetResourceSshHostKeyRequest
+	78,  // 133: core.v1.ResourceService.ListResourceSshHostKeys:input_type -> core.v1.ListResourceSshHostKeysRequest
+	80,  // 134: core.v1.ResourceService.UpdateResourceSshHostKey:input_type -> core.v1.UpdateResourceSshHostKeyRequest
+	82,  // 135: core.v1.ResourceService.DeleteResourceSshHostKey:input_type -> core.v1.DeleteResourceSshHostKeyRequest
+	84,  // 136: core.v1.ResourceService.CreateResourceDialConfiguration:input_type -> core.v1.CreateResourceDialConfigurationRequest
+	86,  // 137: core.v1.ResourceService.GetResourceDialConfiguration:input_type -> core.v1.GetResourceDialConfigurationRequest
+	88,  // 138: core.v1.ResourceService.UpdateResourceDialConfiguration:input_type -> core.v1.UpdateResourceDialConfigurationRequest
+	90,  // 139: core.v1.ResourceService.DeleteResourceDialConfiguration:input_type -> core.v1.DeleteResourceDialConfigurationRequest
+	92,  // 140: core.v1.ResourceService.CreateResourceHostname:input_type -> core.v1.CreateResourceHostnameRequest
+	94,  // 141: core.v1.ResourceService.GetResourceHostname:input_type -> core.v1.GetResourceHostnameRequest
+	96,  // 142: core.v1.ResourceService.ListResourceHostnames:input_type -> core.v1.ListResourceHostnamesRequest
+	98,  // 143: core.v1.ResourceService.UpdateResourceHostname:input_type -> core.v1.UpdateResourceHostnameRequest
+	128, // 144: core.v1.ResourceService.UpdateResourceHostnameV2:input_type -> core.v1.UpdateResourceHostnameV2Request
+	100, // 145: core.v1.ResourceService.DeleteResourceHostname:input_type -> core.v1.DeleteResourceHostnameRequest
+	102, // 146: core.v1.ResourceService.CreateResourceClassifierConfiguration:input_type -> core.v1.CreateResourceClassifierConfigurationRequest
+	104, // 147: core.v1.ResourceService.ListResourceClassifierConfigurations:input_type -> core.v1.ListResourceClassifierConfigurationsRequest
+	106, // 148: core.v1.ResourceService.GetResourceClassifierConfiguration:input_type -> core.v1.GetResourceClassifierConfigurationRequest
+	108, // 149: core.v1.ResourceService.UpdateResourceClassifierConfiguration:input_type -> core.v1.UpdateResourceClassifierConfigurationRequest
+	130, // 150: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:input_type -> core.v1.UpdateResourceClassifierConfigurationV2Request
+	110, // 151: core.v1.ResourceService.DeleteResourceClassifierConfiguration:input_type -> core.v1.DeleteResourceClassifierConfigurationRequest
+	114, // 152: core.v1.ResourceService.CreateResourceTag:input_type -> core.v1.CreateResourceTagRequest
+	116, // 153: core.v1.ResourceService.DeleteResourceTag:input_type -> core.v1.DeleteResourceTagRequest
+	118, // 154: core.v1.ResourceService.UpdateResourceTag:input_type -> core.v1.UpdateResourceTagRequest
+	134, // 155: core.v1.ResourceService.CreateResourceAlias:input_type -> core.v1.CreateResourceAliasRequest
+	136, // 156: core.v1.ResourceService.DeleteResourceAlias:input_type -> core.v1.DeleteResourceAliasRequest
+	132, // 157: core.v1.ResourceService.UpdateResourceAlias:input_type -> core.v1.UpdateResourceAliasRequest
+	112, // 158: core.v1.ResourceService.ListResourceConnectorAccess:input_type -> core.v1.ListResourceConnectorAccessRequest
+	13,  // 159: core.v1.ResourceService.GetResource:output_type -> core.v1.GetResourceResponse
+	15,  // 160: core.v1.ResourceService.ListResources:output_type -> core.v1.ListResourcesResponse
+	11,  // 161: core.v1.ResourceService.CreateResource:output_type -> core.v1.CreateResourceResponse
+	19,  // 162: core.v1.ResourceService.UpdateResource:output_type -> core.v1.UpdateResourceResponse
+	21,  // 163: core.v1.ResourceService.UpdateResourceV2:output_type -> core.v1.UpdateResourceV2Response
+	17,  // 164: core.v1.ResourceService.DeleteResource:output_type -> core.v1.DeleteResourceResponse
+	33,  // 165: core.v1.ResourceService.CreateNativeUser:output_type -> core.v1.CreateNativeUserResponse
+	35,  // 166: core.v1.ResourceService.CreateNativeUserV2:output_type -> core.v1.CreateNativeUserV2Response
+	39,  // 167: core.v1.ResourceService.GetNativeUser:output_type -> core.v1.GetNativeUserResponse
+	37,  // 168: core.v1.ResourceService.ListNativeUsers:output_type -> core.v1.ListNativeUsersResponse
+	41,  // 169: core.v1.ResourceService.DeleteNativeUser:output_type -> core.v1.DeleteNativeUserResponse
+	43,  // 170: core.v1.ResourceService.UpdateNativeUser:output_type -> core.v1.UpdateNativeUserResponse
+	45,  // 171: core.v1.ResourceService.UpdateNativeUserV2:output_type -> core.v1.UpdateNativeUserV2Response
+	47,  // 172: core.v1.ResourceService.CreateNativeUserIdentityLink:output_type -> core.v1.CreateNativeUserIdentityLinkResponse
+	49,  // 173: core.v1.ResourceService.GetNativeUserIdentityLink:output_type -> core.v1.GetNativeUserIdentityLinkResponse
+	51,  // 174: core.v1.ResourceService.ListNativeUserIdentityLinks:output_type -> core.v1.ListNativeUserIdentityLinksResponse
+	55,  // 175: core.v1.ResourceService.UpdateNativeUserIdentityLink:output_type -> core.v1.UpdateNativeUserIdentityLinkResponse
+	121, // 176: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:output_type -> core.v1.UpdateNativeUserIdentityLinkV2Response
+	53,  // 177: core.v1.ResourceService.DeleteNativeUserIdentityLink:output_type -> core.v1.DeleteNativeUserIdentityLinkResponse
+	57,  // 178: core.v1.ResourceService.GetDataDiscoveryConfiguration:output_type -> core.v1.GetDataDiscoveryConfigurationResponse
+	59,  // 179: core.v1.ResourceService.ListDataDiscoveryConfigurations:output_type -> core.v1.ListDataDiscoveryConfigurationsResponse
+	61,  // 180: core.v1.ResourceService.CreateDataDiscoveryConfiguration:output_type -> core.v1.CreateDataDiscoveryConfigurationResponse
+	63,  // 181: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:output_type -> core.v1.UpdateDataDiscoveryConfigurationResponse
+	123, // 182: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:output_type -> core.v1.UpdateDataDiscoveryConfigurationV2Response
+	65,  // 183: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:output_type -> core.v1.DeleteDataDiscoveryConfigurationResponse
+	3,   // 184: core.v1.ResourceService.CreateResourceHealthCheck:output_type -> core.v1.CreateResourceHealthCheckResponse
+	5,   // 185: core.v1.ResourceService.GetResourceHealthCheck:output_type -> core.v1.GetResourceHealthCheckResponse
+	7,   // 186: core.v1.ResourceService.UpdateResourceHealthCheck:output_type -> core.v1.UpdateResourceHealthCheckResponse
+	125, // 187: core.v1.ResourceService.UpdateResourceHealthCheckV2:output_type -> core.v1.UpdateResourceHealthCheckV2Response
+	9,   // 188: core.v1.ResourceService.DeleteResourceHealthCheck:output_type -> core.v1.DeleteResourceHealthCheckResponse
+	67,  // 189: core.v1.ResourceService.CreateResourceTlsConfiguration:output_type -> core.v1.CreateResourceTlsConfigurationResponse
+	69,  // 190: core.v1.ResourceService.GetResourceTlsConfiguration:output_type -> core.v1.GetResourceTlsConfigurationResponse
+	71,  // 191: core.v1.ResourceService.UpdateResourceTlsConfiguration:output_type -> core.v1.UpdateResourceTlsConfigurationResponse
+	127, // 192: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:output_type -> core.v1.UpdateResourceTlsConfigurationV2Response
+	73,  // 193: core.v1.ResourceService.DeleteResourceTlsConfiguration:output_type -> core.v1.DeleteResourceTlsConfigurationResponse
+	75,  // 194: core.v1.ResourceService.CreateResourceSshHostKey:output_type -> core.v1.CreateResourceSshHostKeyResponse
+	77,  // 195: core.v1.ResourceService.GetResourceSshHostKey:output_type -> core.v1.GetResourceSshHostKeyResponse
+	79,  // 196: core.v1.ResourceService.ListResourceSshHostKeys:output_type -> core.v1.ListResourceSshHostKeysResponse
+	81,  // 197: core.v1.ResourceService.UpdateResourceSshHostKey:output_type -> core.v1.UpdateResourceSshHostKeyResponse
+	83,  // 198: core.v1.ResourceService.DeleteResourceSshHostKey:output_type -> core.v1.DeleteResourceSshHostKeyResponse
+	85,  // 199: core.v1.ResourceService.CreateResourceDialConfiguration:output_type -> core.v1.CreateResourceDialConfigurationResponse
+	87,  // 200: core.v1.ResourceService.GetResourceDialConfiguration:output_type -> core.v1.GetResourceDialConfigurationResponse
+	89,  // 201: core.v1.ResourceService.UpdateResourceDialConfiguration:output_type -> core.v1.UpdateResourceDialConfigurationResponse
+	91,  // 202: core.v1.ResourceService.DeleteResourceDialConfiguration:output_type -> core.v1.DeleteResourceDialConfigurationResponse
+	93,  // 203: core.v1.ResourceService.CreateResourceHostname:output_type -> core.v1.CreateResourceHostnameResponse
+	95,  // 204: core.v1.ResourceService.GetResourceHostname:output_type -> core.v1.GetResourceHostnameResponse
+	97,  // 205: core.v1.ResourceService.ListResourceHostnames:output_type -> core.v1.ListResourceHostnamesResponse
+	99,  // 206: core.v1.ResourceService.UpdateResourceHostname:output_type -> core.v1.UpdateResourceHostnameResponse
+	129, // 207: core.v1.ResourceService.UpdateResourceHostnameV2:output_type -> core.v1.UpdateResourceHostnameV2Response
+	101, // 208: core.v1.ResourceService.DeleteResourceHostname:output_type -> core.v1.DeleteResourceHostnameResponse
+	103, // 209: core.v1.ResourceService.CreateResourceClassifierConfiguration:output_type -> core.v1.CreateResourceClassifierConfigurationResponse
+	105, // 210: core.v1.ResourceService.ListResourceClassifierConfigurations:output_type -> core.v1.ListResourceClassifierConfigurationsResponse
+	107, // 211: core.v1.ResourceService.GetResourceClassifierConfiguration:output_type -> core.v1.GetResourceClassifierConfigurationResponse
+	109, // 212: core.v1.ResourceService.UpdateResourceClassifierConfiguration:output_type -> core.v1.UpdateResourceClassifierConfigurationResponse
+	131, // 213: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:output_type -> core.v1.UpdateResourceClassifierConfigurationV2Response
+	111, // 214: core.v1.ResourceService.DeleteResourceClassifierConfiguration:output_type -> core.v1.DeleteResourceClassifierConfigurationResponse
+	115, // 215: core.v1.ResourceService.CreateResourceTag:output_type -> core.v1.CreateResourceTagResponse
+	117, // 216: core.v1.ResourceService.DeleteResourceTag:output_type -> core.v1.DeleteResourceTagResponse
+	119, // 217: core.v1.ResourceService.UpdateResourceTag:output_type -> core.v1.UpdateResourceTagResponse
+	135, // 218: core.v1.ResourceService.CreateResourceAlias:output_type -> core.v1.CreateResourceAliasResponse
+	137, // 219: core.v1.ResourceService.DeleteResourceAlias:output_type -> core.v1.DeleteResourceAliasResponse
+	133, // 220: core.v1.ResourceService.UpdateResourceAlias:output_type -> core.v1.UpdateResourceAliasResponse
+	113, // 221: core.v1.ResourceService.ListResourceConnectorAccess:output_type -> core.v1.ListResourceConnectorAccessResponse
+	159, // [159:222] is the sub-list for method output_type
+	96,  // [96:159] is the sub-list for method input_type
+	96,  // [96:96] is the sub-list for extension type_name
+	96,  // [96:96] is the sub-list for extension extendee
+	0,   // [0:96] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_resource_proto_init() }
@@ -8461,20 +8973,20 @@ func file_core_v1_resource_proto_init() {
 		(*GetResourceTlsConfigurationRequest_ResourceId)(nil),
 	}
 	file_core_v1_resource_proto_msgTypes[68].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[74].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[84].OneofWrappers = []any{
 		(*GetResourceDialConfigurationRequest_ResourceDialConfigurationId)(nil),
 		(*GetResourceDialConfigurationRequest_ResourceId)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[86].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[90].OneofWrappers = []any{}
 	file_core_v1_resource_proto_msgTypes[96].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[100].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[106].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_resource_proto_rawDesc), len(file_core_v1_resource_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   128,
+			NumMessages:   138,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

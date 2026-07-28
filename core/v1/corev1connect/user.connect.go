@@ -39,6 +39,9 @@ const (
 	UserServiceDeleteUserProcedure = "/core.v1.UserService/DeleteUser"
 	// UserServiceUpdateUserProcedure is the fully-qualified name of the UserService's UpdateUser RPC.
 	UserServiceUpdateUserProcedure = "/core.v1.UserService/UpdateUser"
+	// UserServiceUpdateUserExpiryProcedure is the fully-qualified name of the UserService's
+	// UpdateUserExpiry RPC.
+	UserServiceUpdateUserExpiryProcedure = "/core.v1.UserService/UpdateUserExpiry"
 	// UserServiceUpdateUserV2Procedure is the fully-qualified name of the UserService's UpdateUserV2
 	// RPC.
 	UserServiceUpdateUserV2Procedure = "/core.v1.UserService/UpdateUserV2"
@@ -92,6 +95,10 @@ type UserServiceClient interface {
 	//
 	// Update a user
 	UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error)
+	// Update user expiry
+	//
+	// Update a user's expiry without changing the user identity.
+	UpdateUserExpiry(context.Context, *connect.Request[v1.UpdateUserExpiryRequest]) (*connect.Response[v1.UpdateUserExpiryResponse], error)
 	// Update user (full object replacement)
 	//
 	// Update a user by sending the full object. All mutable fields are replaced.
@@ -173,6 +180,12 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			httpClient,
 			baseURL+UserServiceUpdateUserProcedure,
 			connect.WithSchema(userServiceMethods.ByName("UpdateUser")),
+			connect.WithClientOptions(opts...),
+		),
+		updateUserExpiry: connect.NewClient[v1.UpdateUserExpiryRequest, v1.UpdateUserExpiryResponse](
+			httpClient,
+			baseURL+UserServiceUpdateUserExpiryProcedure,
+			connect.WithSchema(userServiceMethods.ByName("UpdateUserExpiry")),
 			connect.WithClientOptions(opts...),
 		),
 		updateUserV2: connect.NewClient[v1.UpdateUserV2Request, v1.UpdateUserV2Response](
@@ -265,6 +278,7 @@ type userServiceClient struct {
 	createUser                *connect.Client[v1.CreateUserRequest, v1.CreateUserResponse]
 	deleteUser                *connect.Client[v1.DeleteUserRequest, v1.DeleteUserResponse]
 	updateUser                *connect.Client[v1.UpdateUserRequest, v1.UpdateUserResponse]
+	updateUserExpiry          *connect.Client[v1.UpdateUserExpiryRequest, v1.UpdateUserExpiryResponse]
 	updateUserV2              *connect.Client[v1.UpdateUserV2Request, v1.UpdateUserV2Response]
 	listUsers                 *connect.Client[v1.ListUsersRequest, v1.ListUsersResponse]
 	getUser                   *connect.Client[v1.GetUserRequest, v1.GetUserResponse]
@@ -293,6 +307,11 @@ func (c *userServiceClient) DeleteUser(ctx context.Context, req *connect.Request
 // UpdateUser calls core.v1.UserService.UpdateUser.
 func (c *userServiceClient) UpdateUser(ctx context.Context, req *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error) {
 	return c.updateUser.CallUnary(ctx, req)
+}
+
+// UpdateUserExpiry calls core.v1.UserService.UpdateUserExpiry.
+func (c *userServiceClient) UpdateUserExpiry(ctx context.Context, req *connect.Request[v1.UpdateUserExpiryRequest]) (*connect.Response[v1.UpdateUserExpiryResponse], error) {
+	return c.updateUserExpiry.CallUnary(ctx, req)
 }
 
 // UpdateUserV2 calls core.v1.UserService.UpdateUserV2.
@@ -374,6 +393,10 @@ type UserServiceHandler interface {
 	//
 	// Update a user
 	UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error)
+	// Update user expiry
+	//
+	// Update a user's expiry without changing the user identity.
+	UpdateUserExpiry(context.Context, *connect.Request[v1.UpdateUserExpiryRequest]) (*connect.Response[v1.UpdateUserExpiryResponse], error)
 	// Update user (full object replacement)
 	//
 	// Update a user by sending the full object. All mutable fields are replaced.
@@ -451,6 +474,12 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		UserServiceUpdateUserProcedure,
 		svc.UpdateUser,
 		connect.WithSchema(userServiceMethods.ByName("UpdateUser")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceUpdateUserExpiryHandler := connect.NewUnaryHandler(
+		UserServiceUpdateUserExpiryProcedure,
+		svc.UpdateUserExpiry,
+		connect.WithSchema(userServiceMethods.ByName("UpdateUserExpiry")),
 		connect.WithHandlerOptions(opts...),
 	)
 	userServiceUpdateUserV2Handler := connect.NewUnaryHandler(
@@ -543,6 +572,8 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceDeleteUserHandler.ServeHTTP(w, r)
 		case UserServiceUpdateUserProcedure:
 			userServiceUpdateUserHandler.ServeHTTP(w, r)
+		case UserServiceUpdateUserExpiryProcedure:
+			userServiceUpdateUserExpiryHandler.ServeHTTP(w, r)
 		case UserServiceUpdateUserV2Procedure:
 			userServiceUpdateUserV2Handler.ServeHTTP(w, r)
 		case UserServiceListUsersProcedure:
@@ -588,6 +619,10 @@ func (UnimplementedUserServiceHandler) DeleteUser(context.Context, *connect.Requ
 
 func (UnimplementedUserServiceHandler) UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateUser is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) UpdateUserExpiry(context.Context, *connect.Request[v1.UpdateUserExpiryRequest]) (*connect.Response[v1.UpdateUserExpiryResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateUserExpiry is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) UpdateUserV2(context.Context, *connect.Request[v1.UpdateUserV2Request]) (*connect.Response[v1.UpdateUserV2Response], error) {
