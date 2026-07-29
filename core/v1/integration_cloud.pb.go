@@ -359,18 +359,20 @@ func (x *AWS) GetAwsAutodiscoveryRegions() []string {
 }
 
 type GCP struct {
-	state                                   protoimpl.MessageState `protogen:"open.v1"`
-	GcpProjectId                            string                 `protobuf:"bytes,2,opt,name=gcp_project_id,json=gcpProjectId,proto3" json:"gcp_project_id,omitempty"`
-	GcpServiceAccountEmail                  string                 `protobuf:"bytes,3,opt,name=gcp_service_account_email,json=gcpServiceAccountEmail,proto3" json:"gcp_service_account_email,omitempty"`
-	GcpWorkloadIdentityPoolProvider         string                 `protobuf:"bytes,4,opt,name=gcp_workload_identity_pool_provider,json=gcpWorkloadIdentityPoolProvider,proto3" json:"gcp_workload_identity_pool_provider,omitempty"`
-	AwsFormalRoleArn                        string                 `protobuf:"bytes,5,opt,name=aws_formal_role_arn,json=awsFormalRoleArn,proto3" json:"aws_formal_role_arn,omitempty"`
-	SecurityKey                             string                 `protobuf:"bytes,6,opt,name=security_key,json=securityKey,proto3" json:"security_key,omitempty"`
-	GcpRoles                                []string               `protobuf:"bytes,7,rep,name=gcp_roles,json=gcpRoles,proto3" json:"gcp_roles,omitempty"`
-	GcpAllowGcsAccess                       bool                   `protobuf:"varint,8,opt,name=gcp_allow_gcs_access,json=gcpAllowGcsAccess,proto3" json:"gcp_allow_gcs_access,omitempty"`
-	GcpGcsBuckets                           []string               `protobuf:"bytes,9,rep,name=gcp_gcs_buckets,json=gcpGcsBuckets,proto3" json:"gcp_gcs_buckets,omitempty"`
-	GcpEnableComputeInstancesAutodiscovery  bool                   `protobuf:"varint,10,opt,name=gcp_enable_compute_instances_autodiscovery,json=gcpEnableComputeInstancesAutodiscovery,proto3" json:"gcp_enable_compute_instances_autodiscovery,omitempty"`
-	GcpEnableGkeClustersAutodiscovery       bool                   `protobuf:"varint,11,opt,name=gcp_enable_gke_clusters_autodiscovery,json=gcpEnableGkeClustersAutodiscovery,proto3" json:"gcp_enable_gke_clusters_autodiscovery,omitempty"`
-	GcpEnableCloudsqlInstancesAutodiscovery bool                   `protobuf:"varint,12,opt,name=gcp_enable_cloudsql_instances_autodiscovery,json=gcpEnableCloudsqlInstancesAutodiscovery,proto3" json:"gcp_enable_cloudsql_instances_autodiscovery,omitempty"`
+	state                           protoimpl.MessageState `protogen:"open.v1"`
+	GcpProjectId                    string                 `protobuf:"bytes,2,opt,name=gcp_project_id,json=gcpProjectId,proto3" json:"gcp_project_id,omitempty"`
+	GcpServiceAccountEmail          string                 `protobuf:"bytes,3,opt,name=gcp_service_account_email,json=gcpServiceAccountEmail,proto3" json:"gcp_service_account_email,omitempty"`
+	GcpWorkloadIdentityPoolProvider string                 `protobuf:"bytes,4,opt,name=gcp_workload_identity_pool_provider,json=gcpWorkloadIdentityPoolProvider,proto3" json:"gcp_workload_identity_pool_provider,omitempty"`
+	AwsFormalRoleArn                string                 `protobuf:"bytes,5,opt,name=aws_formal_role_arn,json=awsFormalRoleArn,proto3" json:"aws_formal_role_arn,omitempty"`
+	SecurityKey                     string                 `protobuf:"bytes,6,opt,name=security_key,json=securityKey,proto3" json:"security_key,omitempty"`
+	// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
+	GcpRoles                                []string `protobuf:"bytes,7,rep,name=gcp_roles,json=gcpRoles,proto3" json:"gcp_roles,omitempty"` // superseded by gcp_permissions
+	GcpAllowGcsAccess                       bool     `protobuf:"varint,8,opt,name=gcp_allow_gcs_access,json=gcpAllowGcsAccess,proto3" json:"gcp_allow_gcs_access,omitempty"`
+	GcpGcsBuckets                           []string `protobuf:"bytes,9,rep,name=gcp_gcs_buckets,json=gcpGcsBuckets,proto3" json:"gcp_gcs_buckets,omitempty"`
+	GcpEnableComputeInstancesAutodiscovery  bool     `protobuf:"varint,10,opt,name=gcp_enable_compute_instances_autodiscovery,json=gcpEnableComputeInstancesAutodiscovery,proto3" json:"gcp_enable_compute_instances_autodiscovery,omitempty"`
+	GcpEnableGkeClustersAutodiscovery       bool     `protobuf:"varint,11,opt,name=gcp_enable_gke_clusters_autodiscovery,json=gcpEnableGkeClustersAutodiscovery,proto3" json:"gcp_enable_gke_clusters_autodiscovery,omitempty"`
+	GcpEnableCloudsqlInstancesAutodiscovery bool     `protobuf:"varint,12,opt,name=gcp_enable_cloudsql_instances_autodiscovery,json=gcpEnableCloudsqlInstancesAutodiscovery,proto3" json:"gcp_enable_cloudsql_instances_autodiscovery,omitempty"`
+	GcpPermissions                          []string `protobuf:"bytes,13,rep,name=gcp_permissions,json=gcpPermissions,proto3" json:"gcp_permissions,omitempty"`
 	unknownFields                           protoimpl.UnknownFields
 	sizeCache                               protoimpl.SizeCache
 }
@@ -440,6 +442,7 @@ func (x *GCP) GetSecurityKey() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
 func (x *GCP) GetGcpRoles() []string {
 	if x != nil {
 		return x.GcpRoles
@@ -480,6 +483,13 @@ func (x *GCP) GetGcpEnableCloudsqlInstancesAutodiscovery() bool {
 		return x.GcpEnableCloudsqlInstancesAutodiscovery
 	}
 	return false
+}
+
+func (x *GCP) GetGcpPermissions() []string {
+	if x != nil {
+		return x.GcpPermissions
+	}
+	return nil
 }
 
 type CreateCloudIntegrationRequest struct {
@@ -1342,8 +1352,10 @@ type GetGCPCloudIntegrationSetupResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProjectId     string                 `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	FormalRoleArn string                 `protobuf:"bytes,2,opt,name=formal_role_arn,json=formalRoleArn,proto3" json:"formal_role_arn,omitempty"`
-	Roles         []string               `protobuf:"bytes,3,rep,name=roles,proto3" json:"roles,omitempty"`
-	GcsBuckets    []string               `protobuf:"bytes,4,rep,name=gcs_buckets,json=gcsBuckets,proto3" json:"gcs_buckets,omitempty"`
+	// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
+	Roles         []string `protobuf:"bytes,3,rep,name=roles,proto3" json:"roles,omitempty"` // superseded by permissions
+	GcsBuckets    []string `protobuf:"bytes,4,rep,name=gcs_buckets,json=gcsBuckets,proto3" json:"gcs_buckets,omitempty"`
+	Permissions   []string `protobuf:"bytes,5,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1392,6 +1404,7 @@ func (x *GetGCPCloudIntegrationSetupResponse) GetFormalRoleArn() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
 func (x *GetGCPCloudIntegrationSetupResponse) GetRoles() []string {
 	if x != nil {
 		return x.Roles
@@ -1402,6 +1415,13 @@ func (x *GetGCPCloudIntegrationSetupResponse) GetRoles() []string {
 func (x *GetGCPCloudIntegrationSetupResponse) GetGcsBuckets() []string {
 	if x != nil {
 		return x.GcsBuckets
+	}
+	return nil
+}
+
+func (x *GetGCPCloudIntegrationSetupResponse) GetPermissions() []string {
+	if x != nil {
+		return x.Permissions
 	}
 	return nil
 }
@@ -1869,20 +1889,21 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x15aws_customer_role_arn\x18\x14 \x01(\tR\x12awsCustomerRoleArn\x12=\n" +
 	"\x1baws_enable_s3_autodiscovery\x18\x15 \x01(\bR\x18awsEnableS3Autodiscovery\x124\n" +
 	"\x17aws_formal_iam_role_arn\x18\x16 \x01(\tR\x13awsFormalIamRoleArn\x12:\n" +
-	"\x19aws_autodiscovery_regions\x18\x17 \x03(\tR\x17awsAutodiscoveryRegions\"\x88\x05\n" +
+	"\x19aws_autodiscovery_regions\x18\x17 \x03(\tR\x17awsAutodiscoveryRegions\"\xb5\x05\n" +
 	"\x03GCP\x12$\n" +
 	"\x0egcp_project_id\x18\x02 \x01(\tR\fgcpProjectId\x129\n" +
 	"\x19gcp_service_account_email\x18\x03 \x01(\tR\x16gcpServiceAccountEmail\x12L\n" +
 	"#gcp_workload_identity_pool_provider\x18\x04 \x01(\tR\x1fgcpWorkloadIdentityPoolProvider\x12-\n" +
 	"\x13aws_formal_role_arn\x18\x05 \x01(\tR\x10awsFormalRoleArn\x12!\n" +
-	"\fsecurity_key\x18\x06 \x01(\tR\vsecurityKey\x12\x1b\n" +
-	"\tgcp_roles\x18\a \x03(\tR\bgcpRoles\x12/\n" +
+	"\fsecurity_key\x18\x06 \x01(\tR\vsecurityKey\x12\x1f\n" +
+	"\tgcp_roles\x18\a \x03(\tB\x02\x18\x01R\bgcpRoles\x12/\n" +
 	"\x14gcp_allow_gcs_access\x18\b \x01(\bR\x11gcpAllowGcsAccess\x12&\n" +
 	"\x0fgcp_gcs_buckets\x18\t \x03(\tR\rgcpGcsBuckets\x12Z\n" +
 	"*gcp_enable_compute_instances_autodiscovery\x18\n" +
 	" \x01(\bR&gcpEnableComputeInstancesAutodiscovery\x12P\n" +
 	"%gcp_enable_gke_clusters_autodiscovery\x18\v \x01(\bR!gcpEnableGkeClustersAutodiscovery\x12\\\n" +
-	"+gcp_enable_cloudsql_instances_autodiscovery\x18\f \x01(\bR'gcpEnableCloudsqlInstancesAutodiscovery\"\xc2\f\n" +
+	"+gcp_enable_cloudsql_instances_autodiscovery\x18\f \x01(\bR'gcpEnableCloudsqlInstancesAutodiscovery\x12'\n" +
+	"\x0fgcp_permissions\x18\r \x03(\tR\x0egcpPermissions\"\xc2\f\n" +
 	"\x1dCreateCloudIntegrationRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12!\n" +
 	"\fcloud_region\x18\x02 \x01(\tR\vcloudRegion\x12\x12\n" +
@@ -2002,14 +2023,15 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"(SetGCPCloudIntegrationActivationResponse\"i\n" +
 	"\"GetGCPCloudIntegrationSetupRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12*\n" +
-	"\fsecurity_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsecurityKey\"\xa3\x01\n" +
+	"\fsecurity_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsecurityKey\"\xc9\x01\n" +
 	"#GetGCPCloudIntegrationSetupResponse\x12\x1d\n" +
 	"\n" +
 	"project_id\x18\x01 \x01(\tR\tprojectId\x12&\n" +
-	"\x0fformal_role_arn\x18\x02 \x01(\tR\rformalRoleArn\x12\x14\n" +
-	"\x05roles\x18\x03 \x03(\tR\x05roles\x12\x1f\n" +
+	"\x0fformal_role_arn\x18\x02 \x01(\tR\rformalRoleArn\x12\x18\n" +
+	"\x05roles\x18\x03 \x03(\tB\x02\x18\x01R\x05roles\x12\x1f\n" +
 	"\vgcs_buckets\x18\x04 \x03(\tR\n" +
-	"gcsBuckets2\xd6\v\n" +
+	"gcsBuckets\x12 \n" +
+	"\vpermissions\x18\x05 \x03(\tR\vpermissions2\xd6\v\n" +
 	"\x17IntegrationCloudService\x12\xa4\x01\n" +
 	"\x13GetIntegrationCloud\x12#.core.v1.GetIntegrationCloudRequest\x1a$.core.v1.GetIntegrationCloudResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.IntegrationCloudService/GetIntegrationCloud\x90\x02\x01\x12\xac\x01\n" +
 	"\x15ListIntegrationClouds\x12%.core.v1.ListIntegrationCloudsRequest\x1a&.core.v1.ListIntegrationCloudsResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.IntegrationCloudService/ListIntegrationClouds\x90\x02\x01\x12\xad\x01\n" +
