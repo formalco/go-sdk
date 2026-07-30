@@ -165,6 +165,15 @@ const (
 	// ConnectorServiceDeleteConnectorAiProviderProcedure is the fully-qualified name of the
 	// ConnectorService's DeleteConnectorAiProvider RPC.
 	ConnectorServiceDeleteConnectorAiProviderProcedure = "/core.v1.ConnectorService/DeleteConnectorAiProvider"
+	// ConnectorServiceCreateConnectorTokenEncryptionKeyProcedure is the fully-qualified name of the
+	// ConnectorService's CreateConnectorTokenEncryptionKey RPC.
+	ConnectorServiceCreateConnectorTokenEncryptionKeyProcedure = "/core.v1.ConnectorService/CreateConnectorTokenEncryptionKey"
+	// ConnectorServiceGetConnectorTokenEncryptionKeyProcedure is the fully-qualified name of the
+	// ConnectorService's GetConnectorTokenEncryptionKey RPC.
+	ConnectorServiceGetConnectorTokenEncryptionKeyProcedure = "/core.v1.ConnectorService/GetConnectorTokenEncryptionKey"
+	// ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure is the fully-qualified name of the
+	// ConnectorService's DeleteConnectorTokenEncryptionKey RPC.
+	ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure = "/core.v1.ConnectorService/DeleteConnectorTokenEncryptionKey"
 	// ConnectorServiceUpdateConnectorListenerV2Procedure is the fully-qualified name of the
 	// ConnectorService's UpdateConnectorListenerV2 RPC.
 	ConnectorServiceUpdateConnectorListenerV2Procedure = "/core.v1.ConnectorService/UpdateConnectorListenerV2"
@@ -363,6 +372,18 @@ type ConnectorServiceClient interface {
 	//
 	// Delete an AI provider configuration
 	DeleteConnectorAiProvider(context.Context, *connect.Request[v1.DeleteConnectorAiProviderRequest]) (*connect.Response[v1.DeleteConnectorAiProviderResponse], error)
+	// Create connector token encryption key
+	//
+	// Register a KMS KEK for HTTP policy token encryption on a connector.
+	CreateConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.CreateConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.CreateConnectorTokenEncryptionKeyResponse], error)
+	// Get connector token encryption key
+	//
+	// Get the token encryption key for a connector (at most one per connector).
+	GetConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.GetConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.GetConnectorTokenEncryptionKeyResponse], error)
+	// Delete connector token encryption key
+	//
+	// Delete a connector token encryption key by ID.
+	DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error)
 	// Update connector listener (full object replacement)
 	//
 	// Update a connector listener by sending the full object. All mutable fields are replaced.
@@ -679,6 +700,25 @@ func NewConnectorServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorAiProvider")),
 			connect.WithClientOptions(opts...),
 		),
+		createConnectorTokenEncryptionKey: connect.NewClient[v1.CreateConnectorTokenEncryptionKeyRequest, v1.CreateConnectorTokenEncryptionKeyResponse](
+			httpClient,
+			baseURL+ConnectorServiceCreateConnectorTokenEncryptionKeyProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("CreateConnectorTokenEncryptionKey")),
+			connect.WithClientOptions(opts...),
+		),
+		getConnectorTokenEncryptionKey: connect.NewClient[v1.GetConnectorTokenEncryptionKeyRequest, v1.GetConnectorTokenEncryptionKeyResponse](
+			httpClient,
+			baseURL+ConnectorServiceGetConnectorTokenEncryptionKeyProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("GetConnectorTokenEncryptionKey")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		deleteConnectorTokenEncryptionKey: connect.NewClient[v1.DeleteConnectorTokenEncryptionKeyRequest, v1.DeleteConnectorTokenEncryptionKeyResponse](
+			httpClient,
+			baseURL+ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorTokenEncryptionKey")),
+			connect.WithClientOptions(opts...),
+		),
 		updateConnectorListenerV2: connect.NewClient[v1.UpdateConnectorListenerV2Request, v1.UpdateConnectorListenerV2Response](
 			httpClient,
 			baseURL+ConnectorServiceUpdateConnectorListenerV2Procedure,
@@ -764,6 +804,9 @@ type connectorServiceClient struct {
 	getConnectorAiProvider                 *connect.Client[v1.GetConnectorAiProviderRequest, v1.GetConnectorAiProviderResponse]
 	updateConnectorAiProvider              *connect.Client[v1.UpdateConnectorAiProviderRequest, v1.UpdateConnectorAiProviderResponse]
 	deleteConnectorAiProvider              *connect.Client[v1.DeleteConnectorAiProviderRequest, v1.DeleteConnectorAiProviderResponse]
+	createConnectorTokenEncryptionKey      *connect.Client[v1.CreateConnectorTokenEncryptionKeyRequest, v1.CreateConnectorTokenEncryptionKeyResponse]
+	getConnectorTokenEncryptionKey         *connect.Client[v1.GetConnectorTokenEncryptionKeyRequest, v1.GetConnectorTokenEncryptionKeyResponse]
+	deleteConnectorTokenEncryptionKey      *connect.Client[v1.DeleteConnectorTokenEncryptionKeyRequest, v1.DeleteConnectorTokenEncryptionKeyResponse]
 	updateConnectorListenerV2              *connect.Client[v1.UpdateConnectorListenerV2Request, v1.UpdateConnectorListenerV2Response]
 	updateConnectorListenerRuleV2          *connect.Client[v1.UpdateConnectorListenerRuleV2Request, v1.UpdateConnectorListenerRuleV2Response]
 	updateConnectorListenerLinkV2          *connect.Client[v1.UpdateConnectorListenerLinkV2Request, v1.UpdateConnectorListenerLinkV2Response]
@@ -995,6 +1038,23 @@ func (c *connectorServiceClient) DeleteConnectorAiProvider(ctx context.Context, 
 	return c.deleteConnectorAiProvider.CallUnary(ctx, req)
 }
 
+// CreateConnectorTokenEncryptionKey calls
+// core.v1.ConnectorService.CreateConnectorTokenEncryptionKey.
+func (c *connectorServiceClient) CreateConnectorTokenEncryptionKey(ctx context.Context, req *connect.Request[v1.CreateConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.CreateConnectorTokenEncryptionKeyResponse], error) {
+	return c.createConnectorTokenEncryptionKey.CallUnary(ctx, req)
+}
+
+// GetConnectorTokenEncryptionKey calls core.v1.ConnectorService.GetConnectorTokenEncryptionKey.
+func (c *connectorServiceClient) GetConnectorTokenEncryptionKey(ctx context.Context, req *connect.Request[v1.GetConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.GetConnectorTokenEncryptionKeyResponse], error) {
+	return c.getConnectorTokenEncryptionKey.CallUnary(ctx, req)
+}
+
+// DeleteConnectorTokenEncryptionKey calls
+// core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey.
+func (c *connectorServiceClient) DeleteConnectorTokenEncryptionKey(ctx context.Context, req *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error) {
+	return c.deleteConnectorTokenEncryptionKey.CallUnary(ctx, req)
+}
+
 // UpdateConnectorListenerV2 calls core.v1.ConnectorService.UpdateConnectorListenerV2.
 func (c *connectorServiceClient) UpdateConnectorListenerV2(ctx context.Context, req *connect.Request[v1.UpdateConnectorListenerV2Request]) (*connect.Response[v1.UpdateConnectorListenerV2Response], error) {
 	return c.updateConnectorListenerV2.CallUnary(ctx, req)
@@ -1203,6 +1263,18 @@ type ConnectorServiceHandler interface {
 	//
 	// Delete an AI provider configuration
 	DeleteConnectorAiProvider(context.Context, *connect.Request[v1.DeleteConnectorAiProviderRequest]) (*connect.Response[v1.DeleteConnectorAiProviderResponse], error)
+	// Create connector token encryption key
+	//
+	// Register a KMS KEK for HTTP policy token encryption on a connector.
+	CreateConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.CreateConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.CreateConnectorTokenEncryptionKeyResponse], error)
+	// Get connector token encryption key
+	//
+	// Get the token encryption key for a connector (at most one per connector).
+	GetConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.GetConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.GetConnectorTokenEncryptionKeyResponse], error)
+	// Delete connector token encryption key
+	//
+	// Delete a connector token encryption key by ID.
+	DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error)
 	// Update connector listener (full object replacement)
 	//
 	// Update a connector listener by sending the full object. All mutable fields are replaced.
@@ -1515,6 +1587,25 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 		connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorAiProvider")),
 		connect.WithHandlerOptions(opts...),
 	)
+	connectorServiceCreateConnectorTokenEncryptionKeyHandler := connect.NewUnaryHandler(
+		ConnectorServiceCreateConnectorTokenEncryptionKeyProcedure,
+		svc.CreateConnectorTokenEncryptionKey,
+		connect.WithSchema(connectorServiceMethods.ByName("CreateConnectorTokenEncryptionKey")),
+		connect.WithHandlerOptions(opts...),
+	)
+	connectorServiceGetConnectorTokenEncryptionKeyHandler := connect.NewUnaryHandler(
+		ConnectorServiceGetConnectorTokenEncryptionKeyProcedure,
+		svc.GetConnectorTokenEncryptionKey,
+		connect.WithSchema(connectorServiceMethods.ByName("GetConnectorTokenEncryptionKey")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	connectorServiceDeleteConnectorTokenEncryptionKeyHandler := connect.NewUnaryHandler(
+		ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure,
+		svc.DeleteConnectorTokenEncryptionKey,
+		connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorTokenEncryptionKey")),
+		connect.WithHandlerOptions(opts...),
+	)
 	connectorServiceUpdateConnectorListenerV2Handler := connect.NewUnaryHandler(
 		ConnectorServiceUpdateConnectorListenerV2Procedure,
 		svc.UpdateConnectorListenerV2,
@@ -1641,6 +1732,12 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 			connectorServiceUpdateConnectorAiProviderHandler.ServeHTTP(w, r)
 		case ConnectorServiceDeleteConnectorAiProviderProcedure:
 			connectorServiceDeleteConnectorAiProviderHandler.ServeHTTP(w, r)
+		case ConnectorServiceCreateConnectorTokenEncryptionKeyProcedure:
+			connectorServiceCreateConnectorTokenEncryptionKeyHandler.ServeHTTP(w, r)
+		case ConnectorServiceGetConnectorTokenEncryptionKeyProcedure:
+			connectorServiceGetConnectorTokenEncryptionKeyHandler.ServeHTTP(w, r)
+		case ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure:
+			connectorServiceDeleteConnectorTokenEncryptionKeyHandler.ServeHTTP(w, r)
 		case ConnectorServiceUpdateConnectorListenerV2Procedure:
 			connectorServiceUpdateConnectorListenerV2Handler.ServeHTTP(w, r)
 		case ConnectorServiceUpdateConnectorListenerRuleV2Procedure:
@@ -1836,6 +1933,18 @@ func (UnimplementedConnectorServiceHandler) UpdateConnectorAiProvider(context.Co
 
 func (UnimplementedConnectorServiceHandler) DeleteConnectorAiProvider(context.Context, *connect.Request[v1.DeleteConnectorAiProviderRequest]) (*connect.Response[v1.DeleteConnectorAiProviderResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.DeleteConnectorAiProvider is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) CreateConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.CreateConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.CreateConnectorTokenEncryptionKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.CreateConnectorTokenEncryptionKey is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) GetConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.GetConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.GetConnectorTokenEncryptionKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.GetConnectorTokenEncryptionKey is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey is not implemented"))
 }
 
 func (UnimplementedConnectorServiceHandler) UpdateConnectorListenerV2(context.Context, *connect.Request[v1.UpdateConnectorListenerV2Request]) (*connect.Response[v1.UpdateConnectorListenerV2Response], error) {

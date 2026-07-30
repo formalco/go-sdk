@@ -253,6 +253,17 @@ func (c *ConnectorServiceClient) CreateConnectorSatelliteLink(ctx context.Contex
 	return res.Msg, nil
 }
 
+// Create connector token encryption key
+//
+// Register a KMS KEK for HTTP policy token encryption on a connector.
+func (c *ConnectorServiceClient) CreateConnectorTokenEncryptionKey(ctx context.Context, req *corev1.CreateConnectorTokenEncryptionKeyRequest) (*corev1.CreateConnectorTokenEncryptionKeyResponse, error) {
+	res, err := c.inner.CreateConnectorTokenEncryptionKey(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete connector
 //
 // Delete a connector
@@ -335,6 +346,17 @@ func (c *ConnectorServiceClient) DeleteConnectorListenerRule(ctx context.Context
 // Delete a connector satellite link
 func (c *ConnectorServiceClient) DeleteConnectorSatelliteLink(ctx context.Context, req *corev1.DeleteConnectorSatelliteLinkRequest) (*corev1.DeleteConnectorSatelliteLinkResponse, error) {
 	res, err := c.inner.DeleteConnectorSatelliteLink(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete connector token encryption key
+//
+// Delete a connector token encryption key by ID.
+func (c *ConnectorServiceClient) DeleteConnectorTokenEncryptionKey(ctx context.Context, req *corev1.DeleteConnectorTokenEncryptionKeyRequest) (*corev1.DeleteConnectorTokenEncryptionKeyResponse, error) {
+	res, err := c.inner.DeleteConnectorTokenEncryptionKey(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -456,6 +478,17 @@ func (c *ConnectorServiceClient) GetConnectorSSHHostKey(ctx context.Context, req
 // Get a connector satellite link
 func (c *ConnectorServiceClient) GetConnectorSatelliteLink(ctx context.Context, req *corev1.GetConnectorSatelliteLinkRequest) (*corev1.GetConnectorSatelliteLinkResponse, error) {
 	res, err := c.inner.GetConnectorSatelliteLink(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get connector token encryption key
+//
+// Get the token encryption key for a connector (at most one per connector).
+func (c *ConnectorServiceClient) GetConnectorTokenEncryptionKey(ctx context.Context, req *corev1.GetConnectorTokenEncryptionKeyRequest) (*corev1.GetConnectorTokenEncryptionKeyResponse, error) {
+	res, err := c.inner.GetConnectorTokenEncryptionKey(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
