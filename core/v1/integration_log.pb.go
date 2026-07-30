@@ -24,6 +24,55 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type LogCompression int32
+
+const (
+	LogCompression_LOG_COMPRESSION_NONE LogCompression = 0
+	LogCompression_LOG_COMPRESSION_GZIP LogCompression = 1
+	LogCompression_LOG_COMPRESSION_ZSTD LogCompression = 2
+)
+
+// Enum value maps for LogCompression.
+var (
+	LogCompression_name = map[int32]string{
+		0: "LOG_COMPRESSION_NONE",
+		1: "LOG_COMPRESSION_GZIP",
+		2: "LOG_COMPRESSION_ZSTD",
+	}
+	LogCompression_value = map[string]int32{
+		"LOG_COMPRESSION_NONE": 0,
+		"LOG_COMPRESSION_GZIP": 1,
+		"LOG_COMPRESSION_ZSTD": 2,
+	}
+)
+
+func (x LogCompression) Enum() *LogCompression {
+	p := new(LogCompression)
+	*p = x
+	return p
+}
+
+func (x LogCompression) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (LogCompression) Descriptor() protoreflect.EnumDescriptor {
+	return file_core_v1_integration_log_proto_enumTypes[0].Descriptor()
+}
+
+func (LogCompression) Type() protoreflect.EnumType {
+	return &file_core_v1_integration_log_proto_enumTypes[0]
+}
+
+func (x LogCompression) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use LogCompression.Descriptor instead.
+func (LogCompression) EnumDescriptor() ([]byte, []int) {
+	return file_core_v1_integration_log_proto_rawDescGZIP(), []int{0}
+}
+
 type IntegrationLog struct {
 	state                 protoimpl.MessageState `protogen:"open.v1"`
 	Id                    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -766,6 +815,7 @@ type IntegrationLog_AwsS3 struct {
 	Region             string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
 	CloudIntegrationId string                 `protobuf:"bytes,3,opt,name=cloud_integration_id,json=cloudIntegrationId,proto3" json:"cloud_integration_id,omitempty"`
 	BucketPrefix       string                 `protobuf:"bytes,4,opt,name=bucket_prefix,json=bucketPrefix,proto3" json:"bucket_prefix,omitempty"`
+	Compression        LogCompression         `protobuf:"varint,5,opt,name=compression,proto3,enum=core.v1.LogCompression" json:"compression,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -828,11 +878,19 @@ func (x *IntegrationLog_AwsS3) GetBucketPrefix() string {
 	return ""
 }
 
+func (x *IntegrationLog_AwsS3) GetCompression() LogCompression {
+	if x != nil {
+		return x.Compression
+	}
+	return LogCompression_LOG_COMPRESSION_NONE
+}
+
 type IntegrationLog_Gcs struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	BucketName         string                 `protobuf:"bytes,1,opt,name=bucket_name,json=bucketName,proto3" json:"bucket_name,omitempty"`
 	CloudIntegrationId string                 `protobuf:"bytes,2,opt,name=cloud_integration_id,json=cloudIntegrationId,proto3" json:"cloud_integration_id,omitempty"`
 	BucketPrefix       string                 `protobuf:"bytes,3,opt,name=bucket_prefix,json=bucketPrefix,proto3" json:"bucket_prefix,omitempty"`
+	Compression        LogCompression         `protobuf:"varint,4,opt,name=compression,proto3,enum=core.v1.LogCompression" json:"compression,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -886,6 +944,13 @@ func (x *IntegrationLog_Gcs) GetBucketPrefix() string {
 		return x.BucketPrefix
 	}
 	return ""
+}
+
+func (x *IntegrationLog_Gcs) GetCompression() LogCompression {
+	if x != nil {
+		return x.Compression
+	}
+	return LogCompression_LOG_COMPRESSION_NONE
 }
 
 type CreateIntegrationLogRequest_Splunk struct {
@@ -1013,6 +1078,7 @@ type CreateIntegrationLogRequest_AwsS3 struct {
 	BucketName         string                 `protobuf:"bytes,4,opt,name=bucket_name,json=bucketName,proto3" json:"bucket_name,omitempty"`
 	CloudIntegrationId string                 `protobuf:"bytes,5,opt,name=cloud_integration_id,json=cloudIntegrationId,proto3" json:"cloud_integration_id,omitempty"`
 	BucketPrefix       string                 `protobuf:"bytes,6,opt,name=bucket_prefix,json=bucketPrefix,proto3" json:"bucket_prefix,omitempty"`
+	Compression        LogCompression         `protobuf:"varint,7,opt,name=compression,proto3,enum=core.v1.LogCompression" json:"compression,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -1068,11 +1134,19 @@ func (x *CreateIntegrationLogRequest_AwsS3) GetBucketPrefix() string {
 	return ""
 }
 
+func (x *CreateIntegrationLogRequest_AwsS3) GetCompression() LogCompression {
+	if x != nil {
+		return x.Compression
+	}
+	return LogCompression_LOG_COMPRESSION_NONE
+}
+
 type CreateIntegrationLogRequest_Gcs struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	CloudIntegrationId string                 `protobuf:"bytes,1,opt,name=cloud_integration_id,json=cloudIntegrationId,proto3" json:"cloud_integration_id,omitempty"`
 	BucketName         string                 `protobuf:"bytes,2,opt,name=bucket_name,json=bucketName,proto3" json:"bucket_name,omitempty"`
 	BucketPrefix       string                 `protobuf:"bytes,3,opt,name=bucket_prefix,json=bucketPrefix,proto3" json:"bucket_prefix,omitempty"`
+	Compression        LogCompression         `protobuf:"varint,4,opt,name=compression,proto3,enum=core.v1.LogCompression" json:"compression,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -1128,11 +1202,18 @@ func (x *CreateIntegrationLogRequest_Gcs) GetBucketPrefix() string {
 	return ""
 }
 
+func (x *CreateIntegrationLogRequest_Gcs) GetCompression() LogCompression {
+	if x != nil {
+		return x.Compression
+	}
+	return LogCompression_LOG_COMPRESSION_NONE
+}
+
 var File_core_v1_integration_log_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_log_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcore/v1/integration_log.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb0\a\n" +
+	"\x1dcore/v1/integration_log.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbb\b\n" +
 	"\x0eIntegrationLog\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x125\n" +
@@ -1151,19 +1232,21 @@ const file_core_v1_integration_log_proto_rawDesc = "" +
 	"\aDatadog\x12\x1b\n" +
 	"\x04site\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04site\x12&\n" +
 	"\n" +
-	"account_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\taccountId\x1a\xa0\x01\n" +
+	"account_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\taccountId\x1a\xe5\x01\n" +
 	"\x05AwsS3\x12(\n" +
 	"\vbucket_name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"bucketName\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x120\n" +
 	"\x14cloud_integration_id\x18\x03 \x01(\tR\x12cloudIntegrationId\x12#\n" +
-	"\rbucket_prefix\x18\x04 \x01(\tR\fbucketPrefix\x1a}\n" +
+	"\rbucket_prefix\x18\x04 \x01(\tR\fbucketPrefix\x12C\n" +
+	"\vcompression\x18\x05 \x01(\x0e2\x17.core.v1.LogCompressionB\b\xbaH\x05\x82\x01\x02\x10\x01R\vcompression\x1a\xc2\x01\n" +
 	"\x03Gcs\x12\x1f\n" +
 	"\vbucket_name\x18\x01 \x01(\tR\n" +
 	"bucketName\x120\n" +
 	"\x14cloud_integration_id\x18\x02 \x01(\tR\x12cloudIntegrationId\x12#\n" +
-	"\rbucket_prefix\x18\x03 \x01(\tR\fbucketPrefixB\r\n" +
-	"\vintegration\"\xe6\x06\n" +
+	"\rbucket_prefix\x18\x03 \x01(\tR\fbucketPrefix\x12C\n" +
+	"\vcompression\x18\x04 \x01(\x0e2\x17.core.v1.LogCompressionB\b\xbaH\x05\x82\x01\x02\x10\x01R\vcompressionB\r\n" +
+	"\vintegration\"\xf0\a\n" +
 	"\x1bCreateIntegrationLogRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12E\n" +
 	"\x06splunk\x18\x06 \x01(\v2+.core.v1.CreateIntegrationLogRequest.SplunkH\x00R\x06splunk\x12H\n" +
@@ -1180,17 +1263,19 @@ const file_core_v1_integration_log_proto_rawDesc = "" +
 	"\aapi_key\x18\x02 \x01(\tB\n" +
 	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\x12&\n" +
 	"\n" +
-	"account_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\taccountId\x1a\x88\x01\n" +
+	"account_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\taccountId\x1a\xcd\x01\n" +
 	"\x05AwsS3\x12(\n" +
 	"\vbucket_name\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"bucketName\x120\n" +
 	"\x14cloud_integration_id\x18\x05 \x01(\tR\x12cloudIntegrationId\x12#\n" +
-	"\rbucket_prefix\x18\x06 \x01(\tR\fbucketPrefix\x1a\x8f\x01\n" +
+	"\rbucket_prefix\x18\x06 \x01(\tR\fbucketPrefix\x12C\n" +
+	"\vcompression\x18\a \x01(\x0e2\x17.core.v1.LogCompressionB\b\xbaH\x05\x82\x01\x02\x10\x01R\vcompression\x1a\xd4\x01\n" +
 	"\x03Gcs\x129\n" +
 	"\x14cloud_integration_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x12cloudIntegrationId\x12(\n" +
 	"\vbucket_name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"bucketName\x12#\n" +
-	"\rbucket_prefix\x18\x03 \x01(\tR\fbucketPrefixB\r\n" +
+	"\rbucket_prefix\x18\x03 \x01(\tR\fbucketPrefix\x12C\n" +
+	"\vcompression\x18\x04 \x01(\x0e2\x17.core.v1.LogCompressionB\b\xbaH\x05\x82\x01\x02\x10\x01R\vcompressionB\r\n" +
 	"\vintegration\"Y\n" +
 	"\x1cCreateIntegrationLogResponse\x129\n" +
 	"\vintegration\x18\x01 \x01(\v2\x17.core.v1.IntegrationLogR\vintegration\"\xf8\x01\n" +
@@ -1214,7 +1299,11 @@ const file_core_v1_integration_log_proto_rawDesc = "" +
 	"\x1bDeleteIntegrationLogRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"7\n" +
 	"\x1cDeleteIntegrationLogResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xaa\x05\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id*^\n" +
+	"\x0eLogCompression\x12\x18\n" +
+	"\x14LOG_COMPRESSION_NONE\x10\x00\x12\x18\n" +
+	"\x14LOG_COMPRESSION_GZIP\x10\x01\x12\x18\n" +
+	"\x14LOG_COMPRESSION_ZSTD\x10\x022\xaa\x05\n" +
 	"\x16IntegrationsLogService\x12\xa3\x01\n" +
 	"\x13ListIntegrationLogs\x12#.core.v1.ListIntegrationLogsRequest\x1a$.core.v1.ListIntegrationLogsResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.IntegrationsLogService/ListIntegrationLogs\x90\x02\x01\x12\x9b\x01\n" +
 	"\x11GetIntegrationLog\x12!.core.v1.GetIntegrationLogRequest\x1a\".core.v1.GetIntegrationLogResponse\"?\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.IntegrationsLogService/GetIntegrationLog\x90\x02\x01\x12\xa4\x01\n" +
@@ -1234,58 +1323,64 @@ func file_core_v1_integration_log_proto_rawDescGZIP() []byte {
 	return file_core_v1_integration_log_proto_rawDescData
 }
 
+var file_core_v1_integration_log_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_core_v1_integration_log_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_core_v1_integration_log_proto_goTypes = []any{
-	(*IntegrationLog)(nil),                      // 0: core.v1.IntegrationLog
-	(*CreateIntegrationLogRequest)(nil),         // 1: core.v1.CreateIntegrationLogRequest
-	(*CreateIntegrationLogResponse)(nil),        // 2: core.v1.CreateIntegrationLogResponse
-	(*ListIntegrationLogsRequest)(nil),          // 3: core.v1.ListIntegrationLogsRequest
-	(*ListIntegrationLogsResponse)(nil),         // 4: core.v1.ListIntegrationLogsResponse
-	(*GetIntegrationLogRequest)(nil),            // 5: core.v1.GetIntegrationLogRequest
-	(*GetIntegrationLogResponse)(nil),           // 6: core.v1.GetIntegrationLogResponse
-	(*DeleteIntegrationLogRequest)(nil),         // 7: core.v1.DeleteIntegrationLogRequest
-	(*DeleteIntegrationLogResponse)(nil),        // 8: core.v1.DeleteIntegrationLogResponse
-	(*IntegrationLog_Splunk)(nil),               // 9: core.v1.IntegrationLog.Splunk
-	(*IntegrationLog_Datadog)(nil),              // 10: core.v1.IntegrationLog.Datadog
-	(*IntegrationLog_AwsS3)(nil),                // 11: core.v1.IntegrationLog.AwsS3
-	(*IntegrationLog_Gcs)(nil),                  // 12: core.v1.IntegrationLog.Gcs
-	(*CreateIntegrationLogRequest_Splunk)(nil),  // 13: core.v1.CreateIntegrationLogRequest.Splunk
-	(*CreateIntegrationLogRequest_Datadog)(nil), // 14: core.v1.CreateIntegrationLogRequest.Datadog
-	(*CreateIntegrationLogRequest_AwsS3)(nil),   // 15: core.v1.CreateIntegrationLogRequest.AwsS3
-	(*CreateIntegrationLogRequest_Gcs)(nil),     // 16: core.v1.CreateIntegrationLogRequest.Gcs
-	(*timestamppb.Timestamp)(nil),               // 17: google.protobuf.Timestamp
-	(*Filter)(nil),                              // 18: core.v1.Filter
-	(*ListMetadata)(nil),                        // 19: core.v1.ListMetadata
+	(LogCompression)(0),                         // 0: core.v1.LogCompression
+	(*IntegrationLog)(nil),                      // 1: core.v1.IntegrationLog
+	(*CreateIntegrationLogRequest)(nil),         // 2: core.v1.CreateIntegrationLogRequest
+	(*CreateIntegrationLogResponse)(nil),        // 3: core.v1.CreateIntegrationLogResponse
+	(*ListIntegrationLogsRequest)(nil),          // 4: core.v1.ListIntegrationLogsRequest
+	(*ListIntegrationLogsResponse)(nil),         // 5: core.v1.ListIntegrationLogsResponse
+	(*GetIntegrationLogRequest)(nil),            // 6: core.v1.GetIntegrationLogRequest
+	(*GetIntegrationLogResponse)(nil),           // 7: core.v1.GetIntegrationLogResponse
+	(*DeleteIntegrationLogRequest)(nil),         // 8: core.v1.DeleteIntegrationLogRequest
+	(*DeleteIntegrationLogResponse)(nil),        // 9: core.v1.DeleteIntegrationLogResponse
+	(*IntegrationLog_Splunk)(nil),               // 10: core.v1.IntegrationLog.Splunk
+	(*IntegrationLog_Datadog)(nil),              // 11: core.v1.IntegrationLog.Datadog
+	(*IntegrationLog_AwsS3)(nil),                // 12: core.v1.IntegrationLog.AwsS3
+	(*IntegrationLog_Gcs)(nil),                  // 13: core.v1.IntegrationLog.Gcs
+	(*CreateIntegrationLogRequest_Splunk)(nil),  // 14: core.v1.CreateIntegrationLogRequest.Splunk
+	(*CreateIntegrationLogRequest_Datadog)(nil), // 15: core.v1.CreateIntegrationLogRequest.Datadog
+	(*CreateIntegrationLogRequest_AwsS3)(nil),   // 16: core.v1.CreateIntegrationLogRequest.AwsS3
+	(*CreateIntegrationLogRequest_Gcs)(nil),     // 17: core.v1.CreateIntegrationLogRequest.Gcs
+	(*timestamppb.Timestamp)(nil),               // 18: google.protobuf.Timestamp
+	(*Filter)(nil),                              // 19: core.v1.Filter
+	(*ListMetadata)(nil),                        // 20: core.v1.ListMetadata
 }
 var file_core_v1_integration_log_proto_depIdxs = []int32{
-	17, // 0: core.v1.IntegrationLog.created_at:type_name -> google.protobuf.Timestamp
-	17, // 1: core.v1.IntegrationLog.updated_at:type_name -> google.protobuf.Timestamp
-	9,  // 2: core.v1.IntegrationLog.splunk:type_name -> core.v1.IntegrationLog.Splunk
-	10, // 3: core.v1.IntegrationLog.datadog:type_name -> core.v1.IntegrationLog.Datadog
-	11, // 4: core.v1.IntegrationLog.aws_s3:type_name -> core.v1.IntegrationLog.AwsS3
-	12, // 5: core.v1.IntegrationLog.gcs:type_name -> core.v1.IntegrationLog.Gcs
-	13, // 6: core.v1.CreateIntegrationLogRequest.splunk:type_name -> core.v1.CreateIntegrationLogRequest.Splunk
-	14, // 7: core.v1.CreateIntegrationLogRequest.datadog:type_name -> core.v1.CreateIntegrationLogRequest.Datadog
-	15, // 8: core.v1.CreateIntegrationLogRequest.aws_s3:type_name -> core.v1.CreateIntegrationLogRequest.AwsS3
-	16, // 9: core.v1.CreateIntegrationLogRequest.gcs:type_name -> core.v1.CreateIntegrationLogRequest.Gcs
-	0,  // 10: core.v1.CreateIntegrationLogResponse.integration:type_name -> core.v1.IntegrationLog
-	18, // 11: core.v1.ListIntegrationLogsRequest.filter:type_name -> core.v1.Filter
-	0,  // 12: core.v1.ListIntegrationLogsResponse.integrations:type_name -> core.v1.IntegrationLog
-	19, // 13: core.v1.ListIntegrationLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	0,  // 14: core.v1.GetIntegrationLogResponse.integration:type_name -> core.v1.IntegrationLog
-	3,  // 15: core.v1.IntegrationsLogService.ListIntegrationLogs:input_type -> core.v1.ListIntegrationLogsRequest
-	5,  // 16: core.v1.IntegrationsLogService.GetIntegrationLog:input_type -> core.v1.GetIntegrationLogRequest
-	1,  // 17: core.v1.IntegrationsLogService.CreateIntegrationLog:input_type -> core.v1.CreateIntegrationLogRequest
-	7,  // 18: core.v1.IntegrationsLogService.DeleteIntegrationLog:input_type -> core.v1.DeleteIntegrationLogRequest
-	4,  // 19: core.v1.IntegrationsLogService.ListIntegrationLogs:output_type -> core.v1.ListIntegrationLogsResponse
-	6,  // 20: core.v1.IntegrationsLogService.GetIntegrationLog:output_type -> core.v1.GetIntegrationLogResponse
-	2,  // 21: core.v1.IntegrationsLogService.CreateIntegrationLog:output_type -> core.v1.CreateIntegrationLogResponse
-	8,  // 22: core.v1.IntegrationsLogService.DeleteIntegrationLog:output_type -> core.v1.DeleteIntegrationLogResponse
-	19, // [19:23] is the sub-list for method output_type
-	15, // [15:19] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	18, // 0: core.v1.IntegrationLog.created_at:type_name -> google.protobuf.Timestamp
+	18, // 1: core.v1.IntegrationLog.updated_at:type_name -> google.protobuf.Timestamp
+	10, // 2: core.v1.IntegrationLog.splunk:type_name -> core.v1.IntegrationLog.Splunk
+	11, // 3: core.v1.IntegrationLog.datadog:type_name -> core.v1.IntegrationLog.Datadog
+	12, // 4: core.v1.IntegrationLog.aws_s3:type_name -> core.v1.IntegrationLog.AwsS3
+	13, // 5: core.v1.IntegrationLog.gcs:type_name -> core.v1.IntegrationLog.Gcs
+	14, // 6: core.v1.CreateIntegrationLogRequest.splunk:type_name -> core.v1.CreateIntegrationLogRequest.Splunk
+	15, // 7: core.v1.CreateIntegrationLogRequest.datadog:type_name -> core.v1.CreateIntegrationLogRequest.Datadog
+	16, // 8: core.v1.CreateIntegrationLogRequest.aws_s3:type_name -> core.v1.CreateIntegrationLogRequest.AwsS3
+	17, // 9: core.v1.CreateIntegrationLogRequest.gcs:type_name -> core.v1.CreateIntegrationLogRequest.Gcs
+	1,  // 10: core.v1.CreateIntegrationLogResponse.integration:type_name -> core.v1.IntegrationLog
+	19, // 11: core.v1.ListIntegrationLogsRequest.filter:type_name -> core.v1.Filter
+	1,  // 12: core.v1.ListIntegrationLogsResponse.integrations:type_name -> core.v1.IntegrationLog
+	20, // 13: core.v1.ListIntegrationLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	1,  // 14: core.v1.GetIntegrationLogResponse.integration:type_name -> core.v1.IntegrationLog
+	0,  // 15: core.v1.IntegrationLog.AwsS3.compression:type_name -> core.v1.LogCompression
+	0,  // 16: core.v1.IntegrationLog.Gcs.compression:type_name -> core.v1.LogCompression
+	0,  // 17: core.v1.CreateIntegrationLogRequest.AwsS3.compression:type_name -> core.v1.LogCompression
+	0,  // 18: core.v1.CreateIntegrationLogRequest.Gcs.compression:type_name -> core.v1.LogCompression
+	4,  // 19: core.v1.IntegrationsLogService.ListIntegrationLogs:input_type -> core.v1.ListIntegrationLogsRequest
+	6,  // 20: core.v1.IntegrationsLogService.GetIntegrationLog:input_type -> core.v1.GetIntegrationLogRequest
+	2,  // 21: core.v1.IntegrationsLogService.CreateIntegrationLog:input_type -> core.v1.CreateIntegrationLogRequest
+	8,  // 22: core.v1.IntegrationsLogService.DeleteIntegrationLog:input_type -> core.v1.DeleteIntegrationLogRequest
+	5,  // 23: core.v1.IntegrationsLogService.ListIntegrationLogs:output_type -> core.v1.ListIntegrationLogsResponse
+	7,  // 24: core.v1.IntegrationsLogService.GetIntegrationLog:output_type -> core.v1.GetIntegrationLogResponse
+	3,  // 25: core.v1.IntegrationsLogService.CreateIntegrationLog:output_type -> core.v1.CreateIntegrationLogResponse
+	9,  // 26: core.v1.IntegrationsLogService.DeleteIntegrationLog:output_type -> core.v1.DeleteIntegrationLogResponse
+	23, // [23:27] is the sub-list for method output_type
+	19, // [19:23] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_integration_log_proto_init() }
@@ -1313,13 +1408,14 @@ func file_core_v1_integration_log_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_integration_log_proto_rawDesc), len(file_core_v1_integration_log_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_core_v1_integration_log_proto_goTypes,
 		DependencyIndexes: file_core_v1_integration_log_proto_depIdxs,
+		EnumInfos:         file_core_v1_integration_log_proto_enumTypes,
 		MessageInfos:      file_core_v1_integration_log_proto_msgTypes,
 	}.Build()
 	File_core_v1_integration_log_proto = out.File
