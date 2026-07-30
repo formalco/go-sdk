@@ -25,6 +25,7 @@ type Client struct {
 	IntegrationsLogServiceClient     *IntegrationsLogServiceClient
 	InventoryServiceClient           *InventoryServiceClient
 	LogsServiceClient                *LogsServiceClient
+	NativeUserServiceClient          *NativeUserServiceClient
 	PermissionsServiceClient         *PermissionsServiceClient
 	PoliciesServiceClient            *PoliciesServiceClient
 	PolicyDataLoaderServiceClient    *PolicyDataLoaderServiceClient
@@ -54,6 +55,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		IntegrationsLogServiceClient:     &IntegrationsLogServiceClient{inner: corev1connect.NewIntegrationsLogServiceClient(httpClient, baseURL)},
 		InventoryServiceClient:           &InventoryServiceClient{inner: corev1connect.NewInventoryServiceClient(httpClient, baseURL)},
 		LogsServiceClient:                &LogsServiceClient{inner: corev1connect.NewLogsServiceClient(httpClient, baseURL)},
+		NativeUserServiceClient:          &NativeUserServiceClient{inner: corev1connect.NewNativeUserServiceClient(httpClient, baseURL)},
 		PermissionsServiceClient:         &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
 		PoliciesServiceClient:            &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
 		PolicyDataLoaderServiceClient:    &PolicyDataLoaderServiceClient{inner: corev1connect.NewPolicyDataLoaderServiceClient(httpClient, baseURL)},
@@ -1836,6 +1838,67 @@ func (c *LogsServiceClient) UpdateLogQuery(ctx context.Context, req *corev1.Upda
 // Update a log query by sending the full object. All mutable fields are replaced.
 func (c *LogsServiceClient) UpdateLogQueryV2(ctx context.Context, req *corev1.UpdateLogQueryV2Request) (*corev1.UpdateLogQueryV2Response, error) {
 	res, err := c.inner.UpdateLogQueryV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// NativeUserServiceClient is a client for the core.v1.NativeUserService service.
+type NativeUserServiceClient struct {
+	inner corev1connect.NativeUserServiceClient
+}
+
+// Create native user
+//
+// Creates a native user for a resource.
+func (c *NativeUserServiceClient) CreateNativeUserV3(ctx context.Context, req *corev1.CreateNativeUserV3Request) (*corev1.CreateNativeUserV3Response, error) {
+	res, err := c.inner.CreateNativeUserV3(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete native user
+//
+// Deletes a native user.
+func (c *NativeUserServiceClient) DeleteNativeUserV3(ctx context.Context, req *corev1.DeleteNativeUserV3Request) (*corev1.DeleteNativeUserV3Response, error) {
+	res, err := c.inner.DeleteNativeUserV3(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get native user
+//
+// Gets a native user. Secret values are not returned.
+func (c *NativeUserServiceClient) GetNativeUserV3(ctx context.Context, req *corev1.GetNativeUserV3Request) (*corev1.GetNativeUserV3Response, error) {
+	res, err := c.inner.GetNativeUserV3(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List native users
+//
+// Lists native users for a resource. Secret values are not returned.
+func (c *NativeUserServiceClient) ListNativeUsersV3(ctx context.Context, req *corev1.ListNativeUsersV3Request) (*corev1.ListNativeUsersV3Response, error) {
+	res, err := c.inner.ListNativeUsersV3(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update native user
+//
+// Updates a native user. Leave credentials unset to keep existing
+// credentials. The credential type cannot be changed.
+func (c *NativeUserServiceClient) UpdateNativeUserV3(ctx context.Context, req *corev1.UpdateNativeUserV3Request) (*corev1.UpdateNativeUserV3Response, error) {
+	res, err := c.inner.UpdateNativeUserV3(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
