@@ -271,23 +271,24 @@ func (x *ResourceTag) GetId() string {
 }
 
 type Resource struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	Id                    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name                  string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Technology            string                 `protobuf:"bytes,3,opt,name=technology,proto3" json:"technology,omitempty"`
-	Hostname              string                 `protobuf:"bytes,4,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	Port                  int32                  `protobuf:"varint,5,opt,name=port,proto3" json:"port,omitempty"`
-	Environment           string                 `protobuf:"bytes,6,opt,name=environment,proto3" json:"environment,omitempty"`
-	TerminationProtection bool                   `protobuf:"varint,7,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
-	SpaceId               string                 `protobuf:"bytes,10,opt,name=space_id,json=spaceId,proto3" json:"space_id,omitempty"`
-	Space                 *Space                 `protobuf:"bytes,11,opt,name=space,proto3" json:"space,omitempty"`
-	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt             *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Provider              string                 `protobuf:"bytes,12,opt,name=provider,proto3" json:"provider,omitempty"`
-	Tags                  []*ResourceTag         `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags,omitempty"`
-	Aliases               []string               `protobuf:"bytes,14,rep,name=aliases,proto3" json:"aliases,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	Id                     string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name                   string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Technology             string                 `protobuf:"bytes,3,opt,name=technology,proto3" json:"technology,omitempty"`
+	Hostname               string                 `protobuf:"bytes,4,opt,name=hostname,proto3" json:"hostname,omitempty"`
+	Port                   int32                  `protobuf:"varint,5,opt,name=port,proto3" json:"port,omitempty"`
+	Environment            string                 `protobuf:"bytes,6,opt,name=environment,proto3" json:"environment,omitempty"`
+	TerminationProtection  bool                   `protobuf:"varint,7,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
+	SpaceId                string                 `protobuf:"bytes,10,opt,name=space_id,json=spaceId,proto3" json:"space_id,omitempty"`
+	Space                  *Space                 `protobuf:"bytes,11,opt,name=space,proto3" json:"space,omitempty"`
+	CreatedAt              *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt              *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Provider               string                 `protobuf:"bytes,12,opt,name=provider,proto3" json:"provider,omitempty"`
+	Tags                   []*ResourceTag         `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags,omitempty"`
+	Aliases                []string               `protobuf:"bytes,14,rep,name=aliases,proto3" json:"aliases,omitempty"`
+	NativeUserSelectionCel *string                `protobuf:"bytes,15,opt,name=native_user_selection_cel,json=nativeUserSelectionCel,proto3,oneof" json:"native_user_selection_cel,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *Resource) Reset() {
@@ -416,6 +417,13 @@ func (x *Resource) GetAliases() []string {
 		return x.Aliases
 	}
 	return nil
+}
+
+func (x *Resource) GetNativeUserSelectionCel() string {
+	if x != nil && x.NativeUserSelectionCel != nil {
+		return *x.NativeUserSelectionCel
+	}
+	return ""
 }
 
 type Connector struct {
@@ -3222,7 +3230,7 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\vResourceTag\x12\x19\n" +
 	"\x03key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12\x1d\n" +
 	"\x05value\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05value\x12\x0e\n" +
-	"\x02id\x18\x03 \x01(\tR\x02id\"\xec\x05\n" +
+	"\x02id\x18\x03 \x01(\tR\x02id\"\xca\x06\n" +
 	"\bResource\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\xc4\x01\n" +
@@ -3244,7 +3252,9 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x125\n" +
 	"\bprovider\x18\f \x01(\tB\x19\xbaH\x16r\x14R\x00R\aaws-ec2R\aaws-ecsR\bprovider\x12(\n" +
 	"\x04tags\x18\r \x03(\v2\x14.core.v1.ResourceTagR\x04tags\x12\x18\n" +
-	"\aaliases\x18\x0e \x03(\tR\aaliases\"\xc3\x02\n" +
+	"\aaliases\x18\x0e \x03(\tR\aaliases\x12>\n" +
+	"\x19native_user_selection_cel\x18\x0f \x01(\tH\x00R\x16nativeUserSelectionCel\x88\x01\x01B\x1c\n" +
+	"\x1a_native_user_selection_cel\"\xc3\x02\n" +
 	"\tConnector\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x125\n" +
@@ -3670,6 +3680,7 @@ func file_core_v1_types_proto_init() {
 	if File_core_v1_types_proto != nil {
 		return
 	}
+	file_core_v1_types_proto_msgTypes[3].OneofWrappers = []any{}
 	file_core_v1_types_proto_msgTypes[5].OneofWrappers = []any{}
 	file_core_v1_types_proto_msgTypes[12].OneofWrappers = []any{
 		(*Owner_User)(nil),

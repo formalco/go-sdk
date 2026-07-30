@@ -542,18 +542,19 @@ func (x *DeleteResourceHealthCheckResponse) GetId() string {
 }
 
 type CreateResourceRequest struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	Name                  string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Hostname              string                 `protobuf:"bytes,2,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	Port                  int32                  `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
-	Technology            string                 `protobuf:"bytes,4,opt,name=technology,proto3" json:"technology,omitempty"`
-	Environment           string                 `protobuf:"bytes,5,opt,name=environment,proto3" json:"environment,omitempty"`
-	TerminationProtection bool                   `protobuf:"varint,6,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
-	SpaceId               *string                `protobuf:"bytes,7,opt,name=space_id,json=spaceId,proto3,oneof" json:"space_id,omitempty"`
-	Tags                  []*ResourceTag         `protobuf:"bytes,8,rep,name=tags,proto3" json:"tags,omitempty"`
-	Aliases               []string               `protobuf:"bytes,9,rep,name=aliases,proto3" json:"aliases,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	Name                   string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Hostname               string                 `protobuf:"bytes,2,opt,name=hostname,proto3" json:"hostname,omitempty"`
+	Port                   int32                  `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
+	Technology             string                 `protobuf:"bytes,4,opt,name=technology,proto3" json:"technology,omitempty"`
+	Environment            string                 `protobuf:"bytes,5,opt,name=environment,proto3" json:"environment,omitempty"`
+	TerminationProtection  bool                   `protobuf:"varint,6,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
+	SpaceId                *string                `protobuf:"bytes,7,opt,name=space_id,json=spaceId,proto3,oneof" json:"space_id,omitempty"`
+	Tags                   []*ResourceTag         `protobuf:"bytes,8,rep,name=tags,proto3" json:"tags,omitempty"`
+	Aliases                []string               `protobuf:"bytes,9,rep,name=aliases,proto3" json:"aliases,omitempty"`
+	NativeUserSelectionCel *string                `protobuf:"bytes,10,opt,name=native_user_selection_cel,json=nativeUserSelectionCel,proto3,oneof" json:"native_user_selection_cel,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *CreateResourceRequest) Reset() {
@@ -647,6 +648,13 @@ func (x *CreateResourceRequest) GetAliases() []string {
 		return x.Aliases
 	}
 	return nil
+}
+
+func (x *CreateResourceRequest) GetNativeUserSelectionCel() string {
+	if x != nil && x.NativeUserSelectionCel != nil {
+		return *x.NativeUserSelectionCel
+	}
+	return ""
 }
 
 type CreateResourceResponse struct {
@@ -1014,17 +1022,18 @@ func (x *DeleteResourceResponse) GetId() string {
 }
 
 type UpdateResourceRequest struct {
-	state                 protoimpl.MessageState                     `protogen:"open.v1"`
-	Id                    string                                     `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name                  *string                                    `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	TerminationProtection *bool                                      `protobuf:"varint,3,opt,name=termination_protection,json=terminationProtection,proto3,oneof" json:"termination_protection,omitempty"`
-	SpaceId               *string                                    `protobuf:"bytes,4,opt,name=space_id,json=spaceId,proto3,oneof" json:"space_id,omitempty"`
-	Hostname              *string                                    `protobuf:"bytes,5,opt,name=hostname,proto3,oneof" json:"hostname,omitempty"`
-	Port                  *int32                                     `protobuf:"varint,6,opt,name=port,proto3,oneof" json:"port,omitempty"`
-	Tags                  *UpdateResourceRequest_UpdateResourceTag   `protobuf:"bytes,7,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
-	Aliases               *UpdateResourceRequest_UpdateResourceAlias `protobuf:"bytes,8,opt,name=aliases,proto3,oneof" json:"aliases,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	state                  protoimpl.MessageState                     `protogen:"open.v1"`
+	Id                     string                                     `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name                   *string                                    `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	TerminationProtection  *bool                                      `protobuf:"varint,3,opt,name=termination_protection,json=terminationProtection,proto3,oneof" json:"termination_protection,omitempty"`
+	SpaceId                *string                                    `protobuf:"bytes,4,opt,name=space_id,json=spaceId,proto3,oneof" json:"space_id,omitempty"`
+	Hostname               *string                                    `protobuf:"bytes,5,opt,name=hostname,proto3,oneof" json:"hostname,omitempty"`
+	Port                   *int32                                     `protobuf:"varint,6,opt,name=port,proto3,oneof" json:"port,omitempty"`
+	Tags                   *UpdateResourceRequest_UpdateResourceTag   `protobuf:"bytes,7,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
+	Aliases                *UpdateResourceRequest_UpdateResourceAlias `protobuf:"bytes,8,opt,name=aliases,proto3,oneof" json:"aliases,omitempty"`
+	NativeUserSelectionCel *string                                    `protobuf:"bytes,9,opt,name=native_user_selection_cel,json=nativeUserSelectionCel,proto3,oneof" json:"native_user_selection_cel,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *UpdateResourceRequest) Reset() {
@@ -1111,6 +1120,13 @@ func (x *UpdateResourceRequest) GetAliases() *UpdateResourceRequest_UpdateResour
 		return x.Aliases
 	}
 	return nil
+}
+
+func (x *UpdateResourceRequest) GetNativeUserSelectionCel() string {
+	if x != nil && x.NativeUserSelectionCel != nil {
+		return *x.NativeUserSelectionCel
+	}
+	return ""
 }
 
 type UpdateResourceResponse struct {
@@ -7900,7 +7916,7 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	" DeleteResourceHealthCheckRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"<\n" +
 	"!DeleteResourceHealthCheckResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x9f\x04\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xfd\x04\n" +
 	"\x15CreateResourceRequest\x12-\n" +
 	"\x04name\x18\x01 \x01(\tB\x19\xbaH\x16r\x14\x10\x03\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x12#\n" +
 	"\bhostname\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12\x1f\n" +
@@ -7914,8 +7930,11 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x16termination_protection\x18\x06 \x01(\bR\x15terminationProtection\x12\x1e\n" +
 	"\bspace_id\x18\a \x01(\tH\x00R\aspaceId\x88\x01\x01\x12(\n" +
 	"\x04tags\x18\b \x03(\v2\x14.core.v1.ResourceTagR\x04tags\x12\x18\n" +
-	"\aaliases\x18\t \x03(\tR\aaliasesB\v\n" +
-	"\t_space_id\"G\n" +
+	"\aaliases\x18\t \x03(\tR\aaliases\x12>\n" +
+	"\x19native_user_selection_cel\x18\n" +
+	" \x01(\tH\x01R\x16nativeUserSelectionCel\x88\x01\x01B\v\n" +
+	"\t_space_idB\x1c\n" +
+	"\x1a_native_user_selection_cel\"G\n" +
 	"\x16CreateResourceResponse\x12-\n" +
 	"\bresource\x18\x01 \x01(\v2\x11.core.v1.ResourceR\bresource\"-\n" +
 	"\x12GetResourceRequest\x12\x17\n" +
@@ -7940,7 +7959,7 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x15DeleteResourceRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"1\n" +
 	"\x16DeleteResourceResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xf1\x04\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xcf\x05\n" +
 	"\x15UpdateResourceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x122\n" +
 	"\x04name\x18\x02 \x01(\tB\x19\xbaH\x16r\x14\x10\x03\x18\x80\x022\r^[0-9a-z\\-]+$H\x00R\x04name\x88\x01\x01\x12:\n" +
@@ -7949,7 +7968,8 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\bhostname\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x03R\bhostname\x88\x01\x01\x12$\n" +
 	"\x04port\x18\x06 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00H\x04R\x04port\x88\x01\x01\x12I\n" +
 	"\x04tags\x18\a \x01(\v20.core.v1.UpdateResourceRequest.UpdateResourceTagH\x05R\x04tags\x88\x01\x01\x12Q\n" +
-	"\aaliases\x18\b \x01(\v22.core.v1.UpdateResourceRequest.UpdateResourceAliasH\x06R\aaliases\x88\x01\x01\x1a=\n" +
+	"\aaliases\x18\b \x01(\v22.core.v1.UpdateResourceRequest.UpdateResourceAliasH\x06R\aaliases\x88\x01\x01\x12>\n" +
+	"\x19native_user_selection_cel\x18\t \x01(\tH\aR\x16nativeUserSelectionCel\x88\x01\x01\x1a=\n" +
 	"\x11UpdateResourceTag\x12(\n" +
 	"\x04tags\x18\x01 \x03(\v2\x14.core.v1.ResourceTagR\x04tags\x1a/\n" +
 	"\x13UpdateResourceAlias\x12\x18\n" +
@@ -7961,7 +7981,8 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x05_portB\a\n" +
 	"\x05_tagsB\n" +
 	"\n" +
-	"\b_aliases\"1\n" +
+	"\b_aliasesB\x1c\n" +
+	"\x1a_native_user_selection_cel\"1\n" +
 	"\x16UpdateResourceResponse\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"P\n" +
 	"\x17UpdateResourceV2Request\x125\n" +
