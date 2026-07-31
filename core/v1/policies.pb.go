@@ -40,6 +40,7 @@ type Policy struct {
 	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt             *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	Version               int32                  `protobuf:"varint,12,opt,name=version,proto3" json:"version,omitempty"`
+	Managed               bool                   `protobuf:"varint,13,opt,name=managed,proto3" json:"managed,omitempty"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -156,6 +157,13 @@ func (x *Policy) GetVersion() int32 {
 		return x.Version
 	}
 	return 0
+}
+
+func (x *Policy) GetManaged() bool {
+	if x != nil {
+		return x.Managed
+	}
+	return false
 }
 
 type Auth struct {
@@ -3495,7 +3503,7 @@ var File_core_v1_policies_proto protoreflect.FileDescriptor
 
 const file_core_v1_policies_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9a\x04\n" +
+	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb4\x04\n" +
 	"\x06Policy\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12)\n" +
@@ -3511,7 +3519,8 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	" \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
 	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12!\n" +
-	"\aversion\x18\f \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\aversion\"\xa1\x01\n" +
+	"\aversion\x18\f \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\aversion\x12\x18\n" +
+	"\amanaged\x18\r \x01(\bR\amanaged\"\xa1\x01\n" +
 	"\x04Auth\x12(\n" +
 	"\x04type\x18\x01 \x01(\tB\x14\xbaH\x11r\x0fR\x05basicR\x06oauth2R\x04type\x12)\n" +
 	"\x05basic\x18\x02 \x01(\v2\x13.core.v1.Auth.BasicR\x05basic\x1aD\n" +
