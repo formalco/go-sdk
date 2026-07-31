@@ -2530,6 +2530,19 @@ func (c *ResourceServiceClient) DeleteResourceHostname(ctx context.Context, req 
 	return res.Msg, nil
 }
 
+// Delete resource native user selection
+//
+// Clear a resource's native user selection expression, moving it back to
+// legacy native user authentication. Native users already created for the
+// resource are kept, so the selection expression can be set again later.
+func (c *ResourceServiceClient) DeleteResourceNativeUserSelection(ctx context.Context, req *corev1.DeleteResourceNativeUserSelectionRequest) (*corev1.DeleteResourceNativeUserSelectionResponse, error) {
+	res, err := c.inner.DeleteResourceNativeUserSelection(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete resource SSH host key
 //
 // Delete a pinned upstream SSH host public key
