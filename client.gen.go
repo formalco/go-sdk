@@ -22,6 +22,7 @@ type Client struct {
 	IntegrationBIServiceClient       *IntegrationBIServiceClient
 	IntegrationCloudServiceClient    *IntegrationCloudServiceClient
 	IntegrationMDMServiceClient      *IntegrationMDMServiceClient
+	IntegrationOIDCServiceClient     *IntegrationOIDCServiceClient
 	IntegrationsLogServiceClient     *IntegrationsLogServiceClient
 	InventoryServiceClient           *InventoryServiceClient
 	LogsServiceClient                *LogsServiceClient
@@ -52,6 +53,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		IntegrationBIServiceClient:       &IntegrationBIServiceClient{inner: corev1connect.NewIntegrationBIServiceClient(httpClient, baseURL)},
 		IntegrationCloudServiceClient:    &IntegrationCloudServiceClient{inner: corev1connect.NewIntegrationCloudServiceClient(httpClient, baseURL)},
 		IntegrationMDMServiceClient:      &IntegrationMDMServiceClient{inner: corev1connect.NewIntegrationMDMServiceClient(httpClient, baseURL)},
+		IntegrationOIDCServiceClient:     &IntegrationOIDCServiceClient{inner: corev1connect.NewIntegrationOIDCServiceClient(httpClient, baseURL)},
 		IntegrationsLogServiceClient:     &IntegrationsLogServiceClient{inner: corev1connect.NewIntegrationsLogServiceClient(httpClient, baseURL)},
 		InventoryServiceClient:           &InventoryServiceClient{inner: corev1connect.NewInventoryServiceClient(httpClient, baseURL)},
 		LogsServiceClient:                &LogsServiceClient{inner: corev1connect.NewLogsServiceClient(httpClient, baseURL)},
@@ -1306,6 +1308,66 @@ func (c *IntegrationMDMServiceClient) ListIntegrationMDMDevices(ctx context.Cont
 // List all integrations MDM
 func (c *IntegrationMDMServiceClient) ListIntegrationsMDM(ctx context.Context, req *corev1.ListIntegrationsMDMRequest) (*corev1.ListIntegrationsMDMResponse, error) {
 	res, err := c.inner.ListIntegrationsMDM(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// IntegrationOIDCServiceClient is a client for the core.v1.IntegrationOIDCService service.
+type IntegrationOIDCServiceClient struct {
+	inner corev1connect.IntegrationOIDCServiceClient
+}
+
+// Create OIDC integration
+//
+// Create an OIDC trust configuration for control-plane authentication
+func (c *IntegrationOIDCServiceClient) CreateIntegrationOIDC(ctx context.Context, req *corev1.CreateIntegrationOIDCRequest) (*corev1.CreateIntegrationOIDCResponse, error) {
+	res, err := c.inner.CreateIntegrationOIDC(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete OIDC integration
+//
+// Delete an OIDC trust configuration
+func (c *IntegrationOIDCServiceClient) DeleteIntegrationOIDC(ctx context.Context, req *corev1.DeleteIntegrationOIDCRequest) (*corev1.DeleteIntegrationOIDCResponse, error) {
+	res, err := c.inner.DeleteIntegrationOIDC(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get OIDC integration
+//
+// Get an OIDC trust configuration
+func (c *IntegrationOIDCServiceClient) GetIntegrationOIDC(ctx context.Context, req *corev1.GetIntegrationOIDCRequest) (*corev1.GetIntegrationOIDCResponse, error) {
+	res, err := c.inner.GetIntegrationOIDC(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List OIDC integrations
+//
+// List OIDC trust configurations
+func (c *IntegrationOIDCServiceClient) ListIntegrationsOIDC(ctx context.Context, req *corev1.ListIntegrationsOIDCRequest) (*corev1.ListIntegrationsOIDCResponse, error) {
+	res, err := c.inner.ListIntegrationsOIDC(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update OIDC integration
+//
+// Update an OIDC trust configuration by sending the full object. All mutable fields are replaced.
+func (c *IntegrationOIDCServiceClient) UpdateIntegrationOIDC(ctx context.Context, req *corev1.UpdateIntegrationOIDCRequest) (*corev1.UpdateIntegrationOIDCResponse, error) {
+	res, err := c.inner.UpdateIntegrationOIDC(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
