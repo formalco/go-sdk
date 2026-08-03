@@ -35,8 +35,11 @@ type IntegrationOIDC struct {
 	Status         string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
 	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	// Optional CEL expression over claims that must evaluate to a string email.
+	// Unset/empty means machine-only (no end-user attachment).
+	EndUserEmailExpression *string `protobuf:"bytes,10,opt,name=end_user_email_expression,json=endUserEmailExpression,proto3,oneof" json:"end_user_email_expression,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *IntegrationOIDC) Reset() {
@@ -132,6 +135,13 @@ func (x *IntegrationOIDC) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *IntegrationOIDC) GetEndUserEmailExpression() string {
+	if x != nil && x.EndUserEmailExpression != nil {
+		return *x.EndUserEmailExpression
+	}
+	return ""
+}
+
 type CreateIntegrationOIDCRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -140,8 +150,11 @@ type CreateIntegrationOIDCRequest struct {
 	MachineUserId  string                 `protobuf:"bytes,4,opt,name=machine_user_id,json=machineUserId,proto3" json:"machine_user_id,omitempty"`
 	ClaimCondition string                 `protobuf:"bytes,5,opt,name=claim_condition,json=claimCondition,proto3" json:"claim_condition,omitempty"`
 	Status         string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	// Optional CEL expression over claims that must evaluate to a string email.
+	// Unset/empty means machine-only (no end-user attachment).
+	EndUserEmailExpression *string `protobuf:"bytes,7,opt,name=end_user_email_expression,json=endUserEmailExpression,proto3,oneof" json:"end_user_email_expression,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *CreateIntegrationOIDCRequest) Reset() {
@@ -212,6 +225,13 @@ func (x *CreateIntegrationOIDCRequest) GetClaimCondition() string {
 func (x *CreateIntegrationOIDCRequest) GetStatus() string {
 	if x != nil {
 		return x.Status
+	}
+	return ""
+}
+
+func (x *CreateIntegrationOIDCRequest) GetEndUserEmailExpression() string {
+	if x != nil && x.EndUserEmailExpression != nil {
+		return *x.EndUserEmailExpression
 	}
 	return ""
 }
@@ -664,7 +684,7 @@ var File_core_v1_integration_oidc_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_oidc_proto_rawDesc = "" +
 	"\n" +
-	"\x1ecore/v1/integration_oidc.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb3\x03\n" +
+	"\x1ecore/v1/integration_oidc.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x91\x04\n" +
 	"\x0fIntegrationOIDC\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -677,8 +697,11 @@ const file_core_v1_integration_oidc_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAtB\v\n" +
-	"\t_jwks_uri\"\x9d\x02\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12>\n" +
+	"\x19end_user_email_expression\x18\n" +
+	" \x01(\tH\x01R\x16endUserEmailExpression\x88\x01\x01B\v\n" +
+	"\t_jwks_uriB\x1c\n" +
+	"\x1a_end_user_email_expression\"\xfb\x02\n" +
 	"\x1cCreateIntegrationOIDCRequest\x12\x1e\n" +
 	"\x04name\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x01R\x04name\x12\x1f\n" +
@@ -686,8 +709,10 @@ const file_core_v1_integration_oidc_proto_rawDesc = "" +
 	"\bjwks_uri\x18\x03 \x01(\tH\x00R\ajwksUri\x88\x01\x01\x12/\n" +
 	"\x0fmachine_user_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\rmachineUserId\x120\n" +
 	"\x0fclaim_condition\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0eclaimCondition\x12,\n" +
-	"\x06status\x18\x06 \x01(\tB\x14\xbaH\x11r\x0fR\x06activeR\x05draftR\x06statusB\v\n" +
-	"\t_jwks_uri\"[\n" +
+	"\x06status\x18\x06 \x01(\tB\x14\xbaH\x11r\x0fR\x06activeR\x05draftR\x06status\x12>\n" +
+	"\x19end_user_email_expression\x18\a \x01(\tH\x01R\x16endUserEmailExpression\x88\x01\x01B\v\n" +
+	"\t_jwks_uriB\x1c\n" +
+	"\x1a_end_user_email_expression\"[\n" +
 	"\x1dCreateIntegrationOIDCResponse\x12:\n" +
 	"\vintegration\x18\x01 \x01(\v2\x18.core.v1.IntegrationOIDCR\vintegration\"4\n" +
 	"\x19GetIntegrationOIDCRequest\x12\x17\n" +
