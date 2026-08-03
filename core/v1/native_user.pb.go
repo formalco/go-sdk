@@ -24,82 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type NativeUserV3Type int32
-
-const (
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_UNSPECIFIED         NativeUserV3Type = 0
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_BASIC               NativeUserV3Type = 1
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_AWS_IAM             NativeUserV3Type = 2
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_GCP_IAM             NativeUserV3Type = 3
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_KUBERNETES_PATH     NativeUserV3Type = 4
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_KUBERNETES_INLINE   NativeUserV3Type = 5
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_SSH_KEY             NativeUserV3Type = 6
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_SNOWFLAKE_KEY       NativeUserV3Type = 7
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_HTTP_BASIC          NativeUserV3Type = 8
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_HTTP_BEARER         NativeUserV3Type = 9
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_HTTP_API_KEY_HEADER NativeUserV3Type = 10
-	NativeUserV3Type_NATIVE_USER_V3_TYPE_HTTP_API_KEY_QUERY  NativeUserV3Type = 11
-)
-
-// Enum value maps for NativeUserV3Type.
-var (
-	NativeUserV3Type_name = map[int32]string{
-		0:  "NATIVE_USER_V3_TYPE_UNSPECIFIED",
-		1:  "NATIVE_USER_V3_TYPE_BASIC",
-		2:  "NATIVE_USER_V3_TYPE_AWS_IAM",
-		3:  "NATIVE_USER_V3_TYPE_GCP_IAM",
-		4:  "NATIVE_USER_V3_TYPE_KUBERNETES_PATH",
-		5:  "NATIVE_USER_V3_TYPE_KUBERNETES_INLINE",
-		6:  "NATIVE_USER_V3_TYPE_SSH_KEY",
-		7:  "NATIVE_USER_V3_TYPE_SNOWFLAKE_KEY",
-		8:  "NATIVE_USER_V3_TYPE_HTTP_BASIC",
-		9:  "NATIVE_USER_V3_TYPE_HTTP_BEARER",
-		10: "NATIVE_USER_V3_TYPE_HTTP_API_KEY_HEADER",
-		11: "NATIVE_USER_V3_TYPE_HTTP_API_KEY_QUERY",
-	}
-	NativeUserV3Type_value = map[string]int32{
-		"NATIVE_USER_V3_TYPE_UNSPECIFIED":         0,
-		"NATIVE_USER_V3_TYPE_BASIC":               1,
-		"NATIVE_USER_V3_TYPE_AWS_IAM":             2,
-		"NATIVE_USER_V3_TYPE_GCP_IAM":             3,
-		"NATIVE_USER_V3_TYPE_KUBERNETES_PATH":     4,
-		"NATIVE_USER_V3_TYPE_KUBERNETES_INLINE":   5,
-		"NATIVE_USER_V3_TYPE_SSH_KEY":             6,
-		"NATIVE_USER_V3_TYPE_SNOWFLAKE_KEY":       7,
-		"NATIVE_USER_V3_TYPE_HTTP_BASIC":          8,
-		"NATIVE_USER_V3_TYPE_HTTP_BEARER":         9,
-		"NATIVE_USER_V3_TYPE_HTTP_API_KEY_HEADER": 10,
-		"NATIVE_USER_V3_TYPE_HTTP_API_KEY_QUERY":  11,
-	}
-)
-
-func (x NativeUserV3Type) Enum() *NativeUserV3Type {
-	p := new(NativeUserV3Type)
-	*p = x
-	return p
-}
-
-func (x NativeUserV3Type) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (NativeUserV3Type) Descriptor() protoreflect.EnumDescriptor {
-	return file_core_v1_native_user_proto_enumTypes[0].Descriptor()
-}
-
-func (NativeUserV3Type) Type() protoreflect.EnumType {
-	return &file_core_v1_native_user_proto_enumTypes[0]
-}
-
-func (x NativeUserV3Type) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use NativeUserV3Type.Descriptor instead.
-func (NativeUserV3Type) EnumDescriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{0}
-}
-
 // SecretValue is either a literal value or the name of an environment variable.
 // In core API responses, literal values are redacted; environment variable names are not.
 type SecretValue struct {
@@ -758,7 +682,7 @@ func (x *HTTPAPIKeyQueryNativeUserV3) GetValue() *SecretValue {
 type HookNativeUserV3 struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
 	Hook                    string                 `protobuf:"bytes,1,opt,name=hook,proto3" json:"hook,omitempty"`
-	OutputType              NativeUserV3Type       `protobuf:"varint,2,opt,name=output_type,json=outputType,proto3,enum=core.v1.NativeUserV3Type" json:"output_type,omitempty"`
+	OutputType              string                 `protobuf:"bytes,2,opt,name=output_type,json=outputType,proto3" json:"output_type,omitempty"`
 	AllowlistedEnvVariables []string               `protobuf:"bytes,3,rep,name=allowlisted_env_variables,json=allowlistedEnvVariables,proto3" json:"allowlisted_env_variables,omitempty"`
 	AllowlistedNetworkHosts []string               `protobuf:"bytes,4,rep,name=allowlisted_network_hosts,json=allowlistedNetworkHosts,proto3" json:"allowlisted_network_hosts,omitempty"`
 	unknownFields           protoimpl.UnknownFields
@@ -802,11 +726,11 @@ func (x *HookNativeUserV3) GetHook() string {
 	return ""
 }
 
-func (x *HookNativeUserV3) GetOutputType() NativeUserV3Type {
+func (x *HookNativeUserV3) GetOutputType() string {
 	if x != nil {
 		return x.OutputType
 	}
-	return NativeUserV3Type_NATIVE_USER_V3_TYPE_UNSPECIFIED
+	return ""
 }
 
 func (x *HookNativeUserV3) GetAllowlistedEnvVariables() []string {
@@ -1728,11 +1652,11 @@ const file_core_v1_native_user_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"l\n" +
 	"\x1bHTTPAPIKeyQueryNativeUserV3\x12\x19\n" +
 	"\x03key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x122\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"\xa5\x02\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"\xa0\x03\n" +
 	"\x10HookNativeUserV3\x12\x1b\n" +
-	"\x04hook\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04hook\x12F\n" +
-	"\voutput_type\x18\x02 \x01(\x0e2\x19.core.v1.NativeUserV3TypeB\n" +
-	"\xbaH\a\x82\x01\x04\x10\x01 \x00R\n" +
+	"\x04hook\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04hook\x12\xc0\x01\n" +
+	"\voutput_type\x18\x02 \x01(\tB\x9e\x01\xbaH\x9a\x01r\x97\x01R\x05basicR\aaws_iamR\agcp_iamR\x0fkubernetes_pathR\x11kubernetes_inlineR\assh_keyR\rsnowflake_keyR\n" +
+	"http_basicR\vhttp_bearerR\x13http_api_key_headerR\x12http_api_key_queryR\n" +
 	"outputType\x12b\n" +
 	"\x19allowlisted_env_variables\x18\x03 \x03(\tB&\xbaH#\x92\x01 \"\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x17allowlistedEnvVariables\x12H\n" +
 	"\x19allowlisted_network_hosts\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\"\xd8\x06\n" +
@@ -1801,21 +1725,7 @@ const file_core_v1_native_user_proto_rawDesc = "" +
 	"\x19DeleteNativeUserV3Request\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"5\n" +
 	"\x1aDeleteNativeUserV3Response\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id*\xd6\x03\n" +
-	"\x10NativeUserV3Type\x12#\n" +
-	"\x1fNATIVE_USER_V3_TYPE_UNSPECIFIED\x10\x00\x12\x1d\n" +
-	"\x19NATIVE_USER_V3_TYPE_BASIC\x10\x01\x12\x1f\n" +
-	"\x1bNATIVE_USER_V3_TYPE_AWS_IAM\x10\x02\x12\x1f\n" +
-	"\x1bNATIVE_USER_V3_TYPE_GCP_IAM\x10\x03\x12'\n" +
-	"#NATIVE_USER_V3_TYPE_KUBERNETES_PATH\x10\x04\x12)\n" +
-	"%NATIVE_USER_V3_TYPE_KUBERNETES_INLINE\x10\x05\x12\x1f\n" +
-	"\x1bNATIVE_USER_V3_TYPE_SSH_KEY\x10\x06\x12%\n" +
-	"!NATIVE_USER_V3_TYPE_SNOWFLAKE_KEY\x10\a\x12\"\n" +
-	"\x1eNATIVE_USER_V3_TYPE_HTTP_BASIC\x10\b\x12#\n" +
-	"\x1fNATIVE_USER_V3_TYPE_HTTP_BEARER\x10\t\x12+\n" +
-	"'NATIVE_USER_V3_TYPE_HTTP_API_KEY_HEADER\x10\n" +
-	"\x12*\n" +
-	"&NATIVE_USER_V3_TYPE_HTTP_API_KEY_QUERY\x10\v2\x8b\x06\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x8b\x06\n" +
 	"\x11NativeUserService\x12\x97\x01\n" +
 	"\x12CreateNativeUserV3\x12\".core.v1.CreateNativeUserV3Request\x1a#.core.v1.CreateNativeUserV3Response\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.NativeUserService/CreateNativeUserV3\x12\x96\x01\n" +
 	"\x11ListNativeUsersV3\x12!.core.v1.ListNativeUsersV3Request\x1a\".core.v1.ListNativeUsersV3Response\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.NativeUserService/ListNativeUsersV3\x90\x02\x01\x12\x8e\x01\n" +
@@ -1836,86 +1746,83 @@ func file_core_v1_native_user_proto_rawDescGZIP() []byte {
 	return file_core_v1_native_user_proto_rawDescData
 }
 
-var file_core_v1_native_user_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_core_v1_native_user_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_core_v1_native_user_proto_goTypes = []any{
-	(NativeUserV3Type)(0),                // 0: core.v1.NativeUserV3Type
-	(*SecretValue)(nil),                  // 1: core.v1.SecretValue
-	(*BasicNativeUserV3)(nil),            // 2: core.v1.BasicNativeUserV3
-	(*AWSIAMNativeUserV3)(nil),           // 3: core.v1.AWSIAMNativeUserV3
-	(*GCPIAMNativeUserV3)(nil),           // 4: core.v1.GCPIAMNativeUserV3
-	(*KubernetesPathNativeUserV3)(nil),   // 5: core.v1.KubernetesPathNativeUserV3
-	(*KubernetesInlineNativeUserV3)(nil), // 6: core.v1.KubernetesInlineNativeUserV3
-	(*SSHKeyNativeUserV3)(nil),           // 7: core.v1.SSHKeyNativeUserV3
-	(*SnowflakeKeyNativeUserV3)(nil),     // 8: core.v1.SnowflakeKeyNativeUserV3
-	(*HTTPBasicNativeUserV3)(nil),        // 9: core.v1.HTTPBasicNativeUserV3
-	(*HTTPBearerNativeUserV3)(nil),       // 10: core.v1.HTTPBearerNativeUserV3
-	(*HTTPAPIKeyHeaderNativeUserV3)(nil), // 11: core.v1.HTTPAPIKeyHeaderNativeUserV3
-	(*HTTPAPIKeyQueryNativeUserV3)(nil),  // 12: core.v1.HTTPAPIKeyQueryNativeUserV3
-	(*HookNativeUserV3)(nil),             // 13: core.v1.HookNativeUserV3
-	(*NativeUserV3Credentials)(nil),      // 14: core.v1.NativeUserV3Credentials
-	(*NativeUserV3)(nil),                 // 15: core.v1.NativeUserV3
-	(*CreateNativeUserV3Request)(nil),    // 16: core.v1.CreateNativeUserV3Request
-	(*CreateNativeUserV3Response)(nil),   // 17: core.v1.CreateNativeUserV3Response
-	(*UpdateNativeUserV3Request)(nil),    // 18: core.v1.UpdateNativeUserV3Request
-	(*UpdateNativeUserV3Response)(nil),   // 19: core.v1.UpdateNativeUserV3Response
-	(*GetNativeUserV3Request)(nil),       // 20: core.v1.GetNativeUserV3Request
-	(*GetNativeUserV3Response)(nil),      // 21: core.v1.GetNativeUserV3Response
-	(*ListNativeUsersV3Request)(nil),     // 22: core.v1.ListNativeUsersV3Request
-	(*ListNativeUsersV3Response)(nil),    // 23: core.v1.ListNativeUsersV3Response
-	(*DeleteNativeUserV3Request)(nil),    // 24: core.v1.DeleteNativeUserV3Request
-	(*DeleteNativeUserV3Response)(nil),   // 25: core.v1.DeleteNativeUserV3Response
-	(*timestamppb.Timestamp)(nil),        // 26: google.protobuf.Timestamp
-	(*ListMetadata)(nil),                 // 27: core.v1.ListMetadata
+	(*SecretValue)(nil),                  // 0: core.v1.SecretValue
+	(*BasicNativeUserV3)(nil),            // 1: core.v1.BasicNativeUserV3
+	(*AWSIAMNativeUserV3)(nil),           // 2: core.v1.AWSIAMNativeUserV3
+	(*GCPIAMNativeUserV3)(nil),           // 3: core.v1.GCPIAMNativeUserV3
+	(*KubernetesPathNativeUserV3)(nil),   // 4: core.v1.KubernetesPathNativeUserV3
+	(*KubernetesInlineNativeUserV3)(nil), // 5: core.v1.KubernetesInlineNativeUserV3
+	(*SSHKeyNativeUserV3)(nil),           // 6: core.v1.SSHKeyNativeUserV3
+	(*SnowflakeKeyNativeUserV3)(nil),     // 7: core.v1.SnowflakeKeyNativeUserV3
+	(*HTTPBasicNativeUserV3)(nil),        // 8: core.v1.HTTPBasicNativeUserV3
+	(*HTTPBearerNativeUserV3)(nil),       // 9: core.v1.HTTPBearerNativeUserV3
+	(*HTTPAPIKeyHeaderNativeUserV3)(nil), // 10: core.v1.HTTPAPIKeyHeaderNativeUserV3
+	(*HTTPAPIKeyQueryNativeUserV3)(nil),  // 11: core.v1.HTTPAPIKeyQueryNativeUserV3
+	(*HookNativeUserV3)(nil),             // 12: core.v1.HookNativeUserV3
+	(*NativeUserV3Credentials)(nil),      // 13: core.v1.NativeUserV3Credentials
+	(*NativeUserV3)(nil),                 // 14: core.v1.NativeUserV3
+	(*CreateNativeUserV3Request)(nil),    // 15: core.v1.CreateNativeUserV3Request
+	(*CreateNativeUserV3Response)(nil),   // 16: core.v1.CreateNativeUserV3Response
+	(*UpdateNativeUserV3Request)(nil),    // 17: core.v1.UpdateNativeUserV3Request
+	(*UpdateNativeUserV3Response)(nil),   // 18: core.v1.UpdateNativeUserV3Response
+	(*GetNativeUserV3Request)(nil),       // 19: core.v1.GetNativeUserV3Request
+	(*GetNativeUserV3Response)(nil),      // 20: core.v1.GetNativeUserV3Response
+	(*ListNativeUsersV3Request)(nil),     // 21: core.v1.ListNativeUsersV3Request
+	(*ListNativeUsersV3Response)(nil),    // 22: core.v1.ListNativeUsersV3Response
+	(*DeleteNativeUserV3Request)(nil),    // 23: core.v1.DeleteNativeUserV3Request
+	(*DeleteNativeUserV3Response)(nil),   // 24: core.v1.DeleteNativeUserV3Response
+	(*timestamppb.Timestamp)(nil),        // 25: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                 // 26: core.v1.ListMetadata
 }
 var file_core_v1_native_user_proto_depIdxs = []int32{
-	1,  // 0: core.v1.BasicNativeUserV3.password:type_name -> core.v1.SecretValue
-	1,  // 1: core.v1.KubernetesPathNativeUserV3.kubeconfig_path:type_name -> core.v1.SecretValue
-	1,  // 2: core.v1.KubernetesInlineNativeUserV3.kubeconfig:type_name -> core.v1.SecretValue
-	1,  // 3: core.v1.SSHKeyNativeUserV3.key:type_name -> core.v1.SecretValue
-	1,  // 4: core.v1.SnowflakeKeyNativeUserV3.key:type_name -> core.v1.SecretValue
-	1,  // 5: core.v1.HTTPBasicNativeUserV3.password:type_name -> core.v1.SecretValue
-	1,  // 6: core.v1.HTTPBearerNativeUserV3.token:type_name -> core.v1.SecretValue
-	1,  // 7: core.v1.HTTPAPIKeyHeaderNativeUserV3.value:type_name -> core.v1.SecretValue
-	1,  // 8: core.v1.HTTPAPIKeyQueryNativeUserV3.value:type_name -> core.v1.SecretValue
-	0,  // 9: core.v1.HookNativeUserV3.output_type:type_name -> core.v1.NativeUserV3Type
-	2,  // 10: core.v1.NativeUserV3Credentials.basic:type_name -> core.v1.BasicNativeUserV3
-	3,  // 11: core.v1.NativeUserV3Credentials.aws_iam:type_name -> core.v1.AWSIAMNativeUserV3
-	4,  // 12: core.v1.NativeUserV3Credentials.gcp_iam:type_name -> core.v1.GCPIAMNativeUserV3
-	5,  // 13: core.v1.NativeUserV3Credentials.kubernetes_path:type_name -> core.v1.KubernetesPathNativeUserV3
-	6,  // 14: core.v1.NativeUserV3Credentials.kubernetes_inline:type_name -> core.v1.KubernetesInlineNativeUserV3
-	7,  // 15: core.v1.NativeUserV3Credentials.ssh_key:type_name -> core.v1.SSHKeyNativeUserV3
-	8,  // 16: core.v1.NativeUserV3Credentials.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUserV3
-	9,  // 17: core.v1.NativeUserV3Credentials.http_basic:type_name -> core.v1.HTTPBasicNativeUserV3
-	10, // 18: core.v1.NativeUserV3Credentials.http_bearer:type_name -> core.v1.HTTPBearerNativeUserV3
-	11, // 19: core.v1.NativeUserV3Credentials.http_api_key_header:type_name -> core.v1.HTTPAPIKeyHeaderNativeUserV3
-	12, // 20: core.v1.NativeUserV3Credentials.http_api_key_query:type_name -> core.v1.HTTPAPIKeyQueryNativeUserV3
-	13, // 21: core.v1.NativeUserV3Credentials.hook:type_name -> core.v1.HookNativeUserV3
-	14, // 22: core.v1.NativeUserV3.credentials:type_name -> core.v1.NativeUserV3Credentials
-	26, // 23: core.v1.NativeUserV3.created_at:type_name -> google.protobuf.Timestamp
-	26, // 24: core.v1.NativeUserV3.updated_at:type_name -> google.protobuf.Timestamp
-	14, // 25: core.v1.CreateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
-	15, // 26: core.v1.CreateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
-	14, // 27: core.v1.UpdateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
-	15, // 28: core.v1.UpdateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
-	15, // 29: core.v1.GetNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
-	15, // 30: core.v1.ListNativeUsersV3Response.native_users:type_name -> core.v1.NativeUserV3
-	27, // 31: core.v1.ListNativeUsersV3Response.list_metadata:type_name -> core.v1.ListMetadata
-	16, // 32: core.v1.NativeUserService.CreateNativeUserV3:input_type -> core.v1.CreateNativeUserV3Request
-	22, // 33: core.v1.NativeUserService.ListNativeUsersV3:input_type -> core.v1.ListNativeUsersV3Request
-	20, // 34: core.v1.NativeUserService.GetNativeUserV3:input_type -> core.v1.GetNativeUserV3Request
-	18, // 35: core.v1.NativeUserService.UpdateNativeUserV3:input_type -> core.v1.UpdateNativeUserV3Request
-	24, // 36: core.v1.NativeUserService.DeleteNativeUserV3:input_type -> core.v1.DeleteNativeUserV3Request
-	17, // 37: core.v1.NativeUserService.CreateNativeUserV3:output_type -> core.v1.CreateNativeUserV3Response
-	23, // 38: core.v1.NativeUserService.ListNativeUsersV3:output_type -> core.v1.ListNativeUsersV3Response
-	21, // 39: core.v1.NativeUserService.GetNativeUserV3:output_type -> core.v1.GetNativeUserV3Response
-	19, // 40: core.v1.NativeUserService.UpdateNativeUserV3:output_type -> core.v1.UpdateNativeUserV3Response
-	25, // 41: core.v1.NativeUserService.DeleteNativeUserV3:output_type -> core.v1.DeleteNativeUserV3Response
-	37, // [37:42] is the sub-list for method output_type
-	32, // [32:37] is the sub-list for method input_type
-	32, // [32:32] is the sub-list for extension type_name
-	32, // [32:32] is the sub-list for extension extendee
-	0,  // [0:32] is the sub-list for field type_name
+	0,  // 0: core.v1.BasicNativeUserV3.password:type_name -> core.v1.SecretValue
+	0,  // 1: core.v1.KubernetesPathNativeUserV3.kubeconfig_path:type_name -> core.v1.SecretValue
+	0,  // 2: core.v1.KubernetesInlineNativeUserV3.kubeconfig:type_name -> core.v1.SecretValue
+	0,  // 3: core.v1.SSHKeyNativeUserV3.key:type_name -> core.v1.SecretValue
+	0,  // 4: core.v1.SnowflakeKeyNativeUserV3.key:type_name -> core.v1.SecretValue
+	0,  // 5: core.v1.HTTPBasicNativeUserV3.password:type_name -> core.v1.SecretValue
+	0,  // 6: core.v1.HTTPBearerNativeUserV3.token:type_name -> core.v1.SecretValue
+	0,  // 7: core.v1.HTTPAPIKeyHeaderNativeUserV3.value:type_name -> core.v1.SecretValue
+	0,  // 8: core.v1.HTTPAPIKeyQueryNativeUserV3.value:type_name -> core.v1.SecretValue
+	1,  // 9: core.v1.NativeUserV3Credentials.basic:type_name -> core.v1.BasicNativeUserV3
+	2,  // 10: core.v1.NativeUserV3Credentials.aws_iam:type_name -> core.v1.AWSIAMNativeUserV3
+	3,  // 11: core.v1.NativeUserV3Credentials.gcp_iam:type_name -> core.v1.GCPIAMNativeUserV3
+	4,  // 12: core.v1.NativeUserV3Credentials.kubernetes_path:type_name -> core.v1.KubernetesPathNativeUserV3
+	5,  // 13: core.v1.NativeUserV3Credentials.kubernetes_inline:type_name -> core.v1.KubernetesInlineNativeUserV3
+	6,  // 14: core.v1.NativeUserV3Credentials.ssh_key:type_name -> core.v1.SSHKeyNativeUserV3
+	7,  // 15: core.v1.NativeUserV3Credentials.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUserV3
+	8,  // 16: core.v1.NativeUserV3Credentials.http_basic:type_name -> core.v1.HTTPBasicNativeUserV3
+	9,  // 17: core.v1.NativeUserV3Credentials.http_bearer:type_name -> core.v1.HTTPBearerNativeUserV3
+	10, // 18: core.v1.NativeUserV3Credentials.http_api_key_header:type_name -> core.v1.HTTPAPIKeyHeaderNativeUserV3
+	11, // 19: core.v1.NativeUserV3Credentials.http_api_key_query:type_name -> core.v1.HTTPAPIKeyQueryNativeUserV3
+	12, // 20: core.v1.NativeUserV3Credentials.hook:type_name -> core.v1.HookNativeUserV3
+	13, // 21: core.v1.NativeUserV3.credentials:type_name -> core.v1.NativeUserV3Credentials
+	25, // 22: core.v1.NativeUserV3.created_at:type_name -> google.protobuf.Timestamp
+	25, // 23: core.v1.NativeUserV3.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 24: core.v1.CreateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
+	14, // 25: core.v1.CreateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
+	13, // 26: core.v1.UpdateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
+	14, // 27: core.v1.UpdateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
+	14, // 28: core.v1.GetNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
+	14, // 29: core.v1.ListNativeUsersV3Response.native_users:type_name -> core.v1.NativeUserV3
+	26, // 30: core.v1.ListNativeUsersV3Response.list_metadata:type_name -> core.v1.ListMetadata
+	15, // 31: core.v1.NativeUserService.CreateNativeUserV3:input_type -> core.v1.CreateNativeUserV3Request
+	21, // 32: core.v1.NativeUserService.ListNativeUsersV3:input_type -> core.v1.ListNativeUsersV3Request
+	19, // 33: core.v1.NativeUserService.GetNativeUserV3:input_type -> core.v1.GetNativeUserV3Request
+	17, // 34: core.v1.NativeUserService.UpdateNativeUserV3:input_type -> core.v1.UpdateNativeUserV3Request
+	23, // 35: core.v1.NativeUserService.DeleteNativeUserV3:input_type -> core.v1.DeleteNativeUserV3Request
+	16, // 36: core.v1.NativeUserService.CreateNativeUserV3:output_type -> core.v1.CreateNativeUserV3Response
+	22, // 37: core.v1.NativeUserService.ListNativeUsersV3:output_type -> core.v1.ListNativeUsersV3Response
+	20, // 38: core.v1.NativeUserService.GetNativeUserV3:output_type -> core.v1.GetNativeUserV3Response
+	18, // 39: core.v1.NativeUserService.UpdateNativeUserV3:output_type -> core.v1.UpdateNativeUserV3Response
+	24, // 40: core.v1.NativeUserService.DeleteNativeUserV3:output_type -> core.v1.DeleteNativeUserV3Response
+	36, // [36:41] is the sub-list for method output_type
+	31, // [31:36] is the sub-list for method input_type
+	31, // [31:31] is the sub-list for extension type_name
+	31, // [31:31] is the sub-list for extension extendee
+	0,  // [0:31] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_native_user_proto_init() }
@@ -1949,14 +1856,13 @@ func file_core_v1_native_user_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_native_user_proto_rawDesc), len(file_core_v1_native_user_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      0,
 			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_core_v1_native_user_proto_goTypes,
 		DependencyIndexes: file_core_v1_native_user_proto_depIdxs,
-		EnumInfos:         file_core_v1_native_user_proto_enumTypes,
 		MessageInfos:      file_core_v1_native_user_proto_msgTypes,
 	}.Build()
 	File_core_v1_native_user_proto = out.File
