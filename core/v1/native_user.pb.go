@@ -756,11 +756,13 @@ func (x *HTTPAPIKeyQueryNativeUserV3) GetValue() *SecretValue {
 // TypeScript/JavaScript source (same shape as hooks.code). output_type declares
 // the shape the hook must return so the connector can validate its result.
 type HookNativeUserV3 struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Hook          string                 `protobuf:"bytes,1,opt,name=hook,proto3" json:"hook,omitempty"`
-	OutputType    NativeUserV3Type       `protobuf:"varint,2,opt,name=output_type,json=outputType,proto3,enum=core.v1.NativeUserV3Type" json:"output_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	Hook                    string                 `protobuf:"bytes,1,opt,name=hook,proto3" json:"hook,omitempty"`
+	OutputType              NativeUserV3Type       `protobuf:"varint,2,opt,name=output_type,json=outputType,proto3,enum=core.v1.NativeUserV3Type" json:"output_type,omitempty"`
+	AllowlistedEnvVariables []string               `protobuf:"bytes,3,rep,name=allowlisted_env_variables,json=allowlistedEnvVariables,proto3" json:"allowlisted_env_variables,omitempty"`
+	AllowlistedNetworkHosts []string               `protobuf:"bytes,4,rep,name=allowlisted_network_hosts,json=allowlistedNetworkHosts,proto3" json:"allowlisted_network_hosts,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *HookNativeUserV3) Reset() {
@@ -805,6 +807,20 @@ func (x *HookNativeUserV3) GetOutputType() NativeUserV3Type {
 		return x.OutputType
 	}
 	return NativeUserV3Type_NATIVE_USER_V3_TYPE_UNSPECIFIED
+}
+
+func (x *HookNativeUserV3) GetAllowlistedEnvVariables() []string {
+	if x != nil {
+		return x.AllowlistedEnvVariables
+	}
+	return nil
+}
+
+func (x *HookNativeUserV3) GetAllowlistedNetworkHosts() []string {
+	if x != nil {
+		return x.AllowlistedNetworkHosts
+	}
+	return nil
 }
 
 // Static or hook-backed credentials for a native user.
@@ -1712,12 +1728,14 @@ const file_core_v1_native_user_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"l\n" +
 	"\x1bHTTPAPIKeyQueryNativeUserV3\x12\x19\n" +
 	"\x03key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x122\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"w\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"\xa5\x02\n" +
 	"\x10HookNativeUserV3\x12\x1b\n" +
 	"\x04hook\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04hook\x12F\n" +
 	"\voutput_type\x18\x02 \x01(\x0e2\x19.core.v1.NativeUserV3TypeB\n" +
 	"\xbaH\a\x82\x01\x04\x10\x01 \x00R\n" +
-	"outputType\"\xd8\x06\n" +
+	"outputType\x12b\n" +
+	"\x19allowlisted_env_variables\x18\x03 \x03(\tB&\xbaH#\x92\x01 \"\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x17allowlistedEnvVariables\x12H\n" +
+	"\x19allowlisted_network_hosts\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\"\xd8\x06\n" +
 	"\x17NativeUserV3Credentials\x122\n" +
 	"\x05basic\x18\x01 \x01(\v2\x1a.core.v1.BasicNativeUserV3H\x00R\x05basic\x126\n" +
 	"\aaws_iam\x18\x02 \x01(\v2\x1b.core.v1.AWSIAMNativeUserV3H\x00R\x06awsIam\x126\n" +
