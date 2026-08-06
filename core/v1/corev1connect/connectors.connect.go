@@ -174,6 +174,9 @@ const (
 	// ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure is the fully-qualified name of the
 	// ConnectorService's DeleteConnectorTokenEncryptionKey RPC.
 	ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure = "/core.v1.ConnectorService/DeleteConnectorTokenEncryptionKey"
+	// ConnectorServiceCreateFederationTokenProcedure is the fully-qualified name of the
+	// ConnectorService's CreateFederationToken RPC.
+	ConnectorServiceCreateFederationTokenProcedure = "/core.v1.ConnectorService/CreateFederationToken"
 	// ConnectorServiceUpdateConnectorListenerV2Procedure is the fully-qualified name of the
 	// ConnectorService's UpdateConnectorListenerV2 RPC.
 	ConnectorServiceUpdateConnectorListenerV2Procedure = "/core.v1.ConnectorService/UpdateConnectorListenerV2"
@@ -384,6 +387,10 @@ type ConnectorServiceClient interface {
 	//
 	// Delete a connector token encryption key by ID.
 	DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error)
+	// Create federation token
+	//
+	// Mint a short-lived federated connector credential for an OIDC-authenticated machine user.
+	CreateFederationToken(context.Context, *connect.Request[v1.CreateFederationTokenRequest]) (*connect.Response[v1.CreateFederationTokenResponse], error)
 	// Update connector listener (full object replacement)
 	//
 	// Update a connector listener by sending the full object. All mutable fields are replaced.
@@ -719,6 +726,12 @@ func NewConnectorServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorTokenEncryptionKey")),
 			connect.WithClientOptions(opts...),
 		),
+		createFederationToken: connect.NewClient[v1.CreateFederationTokenRequest, v1.CreateFederationTokenResponse](
+			httpClient,
+			baseURL+ConnectorServiceCreateFederationTokenProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("CreateFederationToken")),
+			connect.WithClientOptions(opts...),
+		),
 		updateConnectorListenerV2: connect.NewClient[v1.UpdateConnectorListenerV2Request, v1.UpdateConnectorListenerV2Response](
 			httpClient,
 			baseURL+ConnectorServiceUpdateConnectorListenerV2Procedure,
@@ -807,6 +820,7 @@ type connectorServiceClient struct {
 	createConnectorTokenEncryptionKey      *connect.Client[v1.CreateConnectorTokenEncryptionKeyRequest, v1.CreateConnectorTokenEncryptionKeyResponse]
 	getConnectorTokenEncryptionKey         *connect.Client[v1.GetConnectorTokenEncryptionKeyRequest, v1.GetConnectorTokenEncryptionKeyResponse]
 	deleteConnectorTokenEncryptionKey      *connect.Client[v1.DeleteConnectorTokenEncryptionKeyRequest, v1.DeleteConnectorTokenEncryptionKeyResponse]
+	createFederationToken                  *connect.Client[v1.CreateFederationTokenRequest, v1.CreateFederationTokenResponse]
 	updateConnectorListenerV2              *connect.Client[v1.UpdateConnectorListenerV2Request, v1.UpdateConnectorListenerV2Response]
 	updateConnectorListenerRuleV2          *connect.Client[v1.UpdateConnectorListenerRuleV2Request, v1.UpdateConnectorListenerRuleV2Response]
 	updateConnectorListenerLinkV2          *connect.Client[v1.UpdateConnectorListenerLinkV2Request, v1.UpdateConnectorListenerLinkV2Response]
@@ -1055,6 +1069,11 @@ func (c *connectorServiceClient) DeleteConnectorTokenEncryptionKey(ctx context.C
 	return c.deleteConnectorTokenEncryptionKey.CallUnary(ctx, req)
 }
 
+// CreateFederationToken calls core.v1.ConnectorService.CreateFederationToken.
+func (c *connectorServiceClient) CreateFederationToken(ctx context.Context, req *connect.Request[v1.CreateFederationTokenRequest]) (*connect.Response[v1.CreateFederationTokenResponse], error) {
+	return c.createFederationToken.CallUnary(ctx, req)
+}
+
 // UpdateConnectorListenerV2 calls core.v1.ConnectorService.UpdateConnectorListenerV2.
 func (c *connectorServiceClient) UpdateConnectorListenerV2(ctx context.Context, req *connect.Request[v1.UpdateConnectorListenerV2Request]) (*connect.Response[v1.UpdateConnectorListenerV2Response], error) {
 	return c.updateConnectorListenerV2.CallUnary(ctx, req)
@@ -1275,6 +1294,10 @@ type ConnectorServiceHandler interface {
 	//
 	// Delete a connector token encryption key by ID.
 	DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error)
+	// Create federation token
+	//
+	// Mint a short-lived federated connector credential for an OIDC-authenticated machine user.
+	CreateFederationToken(context.Context, *connect.Request[v1.CreateFederationTokenRequest]) (*connect.Response[v1.CreateFederationTokenResponse], error)
 	// Update connector listener (full object replacement)
 	//
 	// Update a connector listener by sending the full object. All mutable fields are replaced.
@@ -1606,6 +1629,12 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 		connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorTokenEncryptionKey")),
 		connect.WithHandlerOptions(opts...),
 	)
+	connectorServiceCreateFederationTokenHandler := connect.NewUnaryHandler(
+		ConnectorServiceCreateFederationTokenProcedure,
+		svc.CreateFederationToken,
+		connect.WithSchema(connectorServiceMethods.ByName("CreateFederationToken")),
+		connect.WithHandlerOptions(opts...),
+	)
 	connectorServiceUpdateConnectorListenerV2Handler := connect.NewUnaryHandler(
 		ConnectorServiceUpdateConnectorListenerV2Procedure,
 		svc.UpdateConnectorListenerV2,
@@ -1738,6 +1767,8 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 			connectorServiceGetConnectorTokenEncryptionKeyHandler.ServeHTTP(w, r)
 		case ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure:
 			connectorServiceDeleteConnectorTokenEncryptionKeyHandler.ServeHTTP(w, r)
+		case ConnectorServiceCreateFederationTokenProcedure:
+			connectorServiceCreateFederationTokenHandler.ServeHTTP(w, r)
 		case ConnectorServiceUpdateConnectorListenerV2Procedure:
 			connectorServiceUpdateConnectorListenerV2Handler.ServeHTTP(w, r)
 		case ConnectorServiceUpdateConnectorListenerRuleV2Procedure:
@@ -1945,6 +1976,10 @@ func (UnimplementedConnectorServiceHandler) GetConnectorTokenEncryptionKey(conte
 
 func (UnimplementedConnectorServiceHandler) DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) CreateFederationToken(context.Context, *connect.Request[v1.CreateFederationTokenRequest]) (*connect.Response[v1.CreateFederationTokenResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.CreateFederationToken is not implemented"))
 }
 
 func (UnimplementedConnectorServiceHandler) UpdateConnectorListenerV2(context.Context, *connect.Request[v1.UpdateConnectorListenerV2Request]) (*connect.Response[v1.UpdateConnectorListenerV2Response], error) {

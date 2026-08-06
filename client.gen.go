@@ -268,6 +268,17 @@ func (c *ConnectorServiceClient) CreateConnectorTokenEncryptionKey(ctx context.C
 	return res.Msg, nil
 }
 
+// Create federation token
+//
+// Mint a short-lived federated connector credential for an OIDC-authenticated machine user.
+func (c *ConnectorServiceClient) CreateFederationToken(ctx context.Context, req *corev1.CreateFederationTokenRequest) (*corev1.CreateFederationTokenResponse, error) {
+	res, err := c.inner.CreateFederationToken(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete connector
 //
 // Delete a connector
