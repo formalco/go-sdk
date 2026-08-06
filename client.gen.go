@@ -12,62 +12,64 @@ import (
 
 // Client is the Formal core API client.
 type Client struct {
-	ChangeAuthorizationServiceClient *ChangeAuthorizationServiceClient
-	ConnectorServiceClient           *ConnectorServiceClient
-	DesktopServiceClient             *DesktopServiceClient
-	GraphServiceClient               *GraphServiceClient
-	GroupServiceClient               *GroupServiceClient
-	HookServiceClient                *HookServiceClient
-	InsightsServiceClient            *InsightsServiceClient
-	IntegrationBIServiceClient       *IntegrationBIServiceClient
-	IntegrationCloudServiceClient    *IntegrationCloudServiceClient
-	IntegrationMDMServiceClient      *IntegrationMDMServiceClient
-	IntegrationOIDCServiceClient     *IntegrationOIDCServiceClient
-	IntegrationsLogServiceClient     *IntegrationsLogServiceClient
-	InventoryServiceClient           *InventoryServiceClient
-	LogsServiceClient                *LogsServiceClient
-	NativeUserServiceClient          *NativeUserServiceClient
-	PermissionsServiceClient         *PermissionsServiceClient
-	PoliciesServiceClient            *PoliciesServiceClient
-	PolicyDataLoaderServiceClient    *PolicyDataLoaderServiceClient
-	ResourceServiceClient            *ResourceServiceClient
-	SatelliteServiceClient           *SatelliteServiceClient
-	ScenarioMonitoringServiceClient  *ScenarioMonitoringServiceClient
-	SessionsServiceClient            *SessionsServiceClient
-	SpaceServiceClient               *SpaceServiceClient
-	UserServiceClient                *UserServiceClient
-	WorkflowServiceClient            *WorkflowServiceClient
+	ChangeAuthorizationServiceClient   *ChangeAuthorizationServiceClient
+	ConnectorServiceClient             *ConnectorServiceClient
+	DesktopServiceClient               *DesktopServiceClient
+	GraphServiceClient                 *GraphServiceClient
+	GroupServiceClient                 *GroupServiceClient
+	HookServiceClient                  *HookServiceClient
+	InsightsServiceClient              *InsightsServiceClient
+	IntegrationAIProviderServiceClient *IntegrationAIProviderServiceClient
+	IntegrationBIServiceClient         *IntegrationBIServiceClient
+	IntegrationCloudServiceClient      *IntegrationCloudServiceClient
+	IntegrationMDMServiceClient        *IntegrationMDMServiceClient
+	IntegrationOIDCServiceClient       *IntegrationOIDCServiceClient
+	IntegrationsLogServiceClient       *IntegrationsLogServiceClient
+	InventoryServiceClient             *InventoryServiceClient
+	LogsServiceClient                  *LogsServiceClient
+	NativeUserServiceClient            *NativeUserServiceClient
+	PermissionsServiceClient           *PermissionsServiceClient
+	PoliciesServiceClient              *PoliciesServiceClient
+	PolicyDataLoaderServiceClient      *PolicyDataLoaderServiceClient
+	ResourceServiceClient              *ResourceServiceClient
+	SatelliteServiceClient             *SatelliteServiceClient
+	ScenarioMonitoringServiceClient    *ScenarioMonitoringServiceClient
+	SessionsServiceClient              *SessionsServiceClient
+	SpaceServiceClient                 *SpaceServiceClient
+	UserServiceClient                  *UserServiceClient
+	WorkflowServiceClient              *WorkflowServiceClient
 }
 
 // newClient wires service clients against httpClient and baseURL.
 // Construction and auth live in New / Option helpers (hand-written).
 func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 	return &Client{
-		ChangeAuthorizationServiceClient: &ChangeAuthorizationServiceClient{inner: corev1connect.NewChangeAuthorizationServiceClient(httpClient, baseURL)},
-		ConnectorServiceClient:           &ConnectorServiceClient{inner: corev1connect.NewConnectorServiceClient(httpClient, baseURL)},
-		DesktopServiceClient:             &DesktopServiceClient{inner: corev1connect.NewDesktopServiceClient(httpClient, baseURL)},
-		GraphServiceClient:               &GraphServiceClient{inner: corev1connect.NewGraphServiceClient(httpClient, baseURL)},
-		GroupServiceClient:               &GroupServiceClient{inner: corev1connect.NewGroupServiceClient(httpClient, baseURL)},
-		HookServiceClient:                &HookServiceClient{inner: corev1connect.NewHookServiceClient(httpClient, baseURL)},
-		InsightsServiceClient:            &InsightsServiceClient{inner: corev1connect.NewInsightsServiceClient(httpClient, baseURL)},
-		IntegrationBIServiceClient:       &IntegrationBIServiceClient{inner: corev1connect.NewIntegrationBIServiceClient(httpClient, baseURL)},
-		IntegrationCloudServiceClient:    &IntegrationCloudServiceClient{inner: corev1connect.NewIntegrationCloudServiceClient(httpClient, baseURL)},
-		IntegrationMDMServiceClient:      &IntegrationMDMServiceClient{inner: corev1connect.NewIntegrationMDMServiceClient(httpClient, baseURL)},
-		IntegrationOIDCServiceClient:     &IntegrationOIDCServiceClient{inner: corev1connect.NewIntegrationOIDCServiceClient(httpClient, baseURL)},
-		IntegrationsLogServiceClient:     &IntegrationsLogServiceClient{inner: corev1connect.NewIntegrationsLogServiceClient(httpClient, baseURL)},
-		InventoryServiceClient:           &InventoryServiceClient{inner: corev1connect.NewInventoryServiceClient(httpClient, baseURL)},
-		LogsServiceClient:                &LogsServiceClient{inner: corev1connect.NewLogsServiceClient(httpClient, baseURL)},
-		NativeUserServiceClient:          &NativeUserServiceClient{inner: corev1connect.NewNativeUserServiceClient(httpClient, baseURL)},
-		PermissionsServiceClient:         &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
-		PoliciesServiceClient:            &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
-		PolicyDataLoaderServiceClient:    &PolicyDataLoaderServiceClient{inner: corev1connect.NewPolicyDataLoaderServiceClient(httpClient, baseURL)},
-		ResourceServiceClient:            &ResourceServiceClient{inner: corev1connect.NewResourceServiceClient(httpClient, baseURL)},
-		SatelliteServiceClient:           &SatelliteServiceClient{inner: corev1connect.NewSatelliteServiceClient(httpClient, baseURL)},
-		ScenarioMonitoringServiceClient:  &ScenarioMonitoringServiceClient{inner: corev1connect.NewScenarioMonitoringServiceClient(httpClient, baseURL)},
-		SessionsServiceClient:            &SessionsServiceClient{inner: corev1connect.NewSessionsServiceClient(httpClient, baseURL)},
-		SpaceServiceClient:               &SpaceServiceClient{inner: corev1connect.NewSpaceServiceClient(httpClient, baseURL)},
-		UserServiceClient:                &UserServiceClient{inner: corev1connect.NewUserServiceClient(httpClient, baseURL)},
-		WorkflowServiceClient:            &WorkflowServiceClient{inner: corev1connect.NewWorkflowServiceClient(httpClient, baseURL)},
+		ChangeAuthorizationServiceClient:   &ChangeAuthorizationServiceClient{inner: corev1connect.NewChangeAuthorizationServiceClient(httpClient, baseURL)},
+		ConnectorServiceClient:             &ConnectorServiceClient{inner: corev1connect.NewConnectorServiceClient(httpClient, baseURL)},
+		DesktopServiceClient:               &DesktopServiceClient{inner: corev1connect.NewDesktopServiceClient(httpClient, baseURL)},
+		GraphServiceClient:                 &GraphServiceClient{inner: corev1connect.NewGraphServiceClient(httpClient, baseURL)},
+		GroupServiceClient:                 &GroupServiceClient{inner: corev1connect.NewGroupServiceClient(httpClient, baseURL)},
+		HookServiceClient:                  &HookServiceClient{inner: corev1connect.NewHookServiceClient(httpClient, baseURL)},
+		InsightsServiceClient:              &InsightsServiceClient{inner: corev1connect.NewInsightsServiceClient(httpClient, baseURL)},
+		IntegrationAIProviderServiceClient: &IntegrationAIProviderServiceClient{inner: corev1connect.NewIntegrationAIProviderServiceClient(httpClient, baseURL)},
+		IntegrationBIServiceClient:         &IntegrationBIServiceClient{inner: corev1connect.NewIntegrationBIServiceClient(httpClient, baseURL)},
+		IntegrationCloudServiceClient:      &IntegrationCloudServiceClient{inner: corev1connect.NewIntegrationCloudServiceClient(httpClient, baseURL)},
+		IntegrationMDMServiceClient:        &IntegrationMDMServiceClient{inner: corev1connect.NewIntegrationMDMServiceClient(httpClient, baseURL)},
+		IntegrationOIDCServiceClient:       &IntegrationOIDCServiceClient{inner: corev1connect.NewIntegrationOIDCServiceClient(httpClient, baseURL)},
+		IntegrationsLogServiceClient:       &IntegrationsLogServiceClient{inner: corev1connect.NewIntegrationsLogServiceClient(httpClient, baseURL)},
+		InventoryServiceClient:             &InventoryServiceClient{inner: corev1connect.NewInventoryServiceClient(httpClient, baseURL)},
+		LogsServiceClient:                  &LogsServiceClient{inner: corev1connect.NewLogsServiceClient(httpClient, baseURL)},
+		NativeUserServiceClient:            &NativeUserServiceClient{inner: corev1connect.NewNativeUserServiceClient(httpClient, baseURL)},
+		PermissionsServiceClient:           &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
+		PoliciesServiceClient:              &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
+		PolicyDataLoaderServiceClient:      &PolicyDataLoaderServiceClient{inner: corev1connect.NewPolicyDataLoaderServiceClient(httpClient, baseURL)},
+		ResourceServiceClient:              &ResourceServiceClient{inner: corev1connect.NewResourceServiceClient(httpClient, baseURL)},
+		SatelliteServiceClient:             &SatelliteServiceClient{inner: corev1connect.NewSatelliteServiceClient(httpClient, baseURL)},
+		ScenarioMonitoringServiceClient:    &ScenarioMonitoringServiceClient{inner: corev1connect.NewScenarioMonitoringServiceClient(httpClient, baseURL)},
+		SessionsServiceClient:              &SessionsServiceClient{inner: corev1connect.NewSessionsServiceClient(httpClient, baseURL)},
+		SpaceServiceClient:                 &SpaceServiceClient{inner: corev1connect.NewSpaceServiceClient(httpClient, baseURL)},
+		UserServiceClient:                  &UserServiceClient{inner: corev1connect.NewUserServiceClient(httpClient, baseURL)},
+		WorkflowServiceClient:              &WorkflowServiceClient{inner: corev1connect.NewWorkflowServiceClient(httpClient, baseURL)},
 	}
 }
 
@@ -1106,6 +1108,44 @@ func (c *InsightsServiceClient) UpdateInsightStatus(ctx context.Context, req *co
 // Enables Insights for the caller's org so scheduled cron evaluations run.
 func (c *InsightsServiceClient) UpdateInsightsEngineEnabled(ctx context.Context, req *corev1.UpdateInsightsEngineEnabledRequest) (*corev1.UpdateInsightsEngineEnabledResponse, error) {
 	res, err := c.inner.UpdateInsightsEngineEnabled(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// IntegrationAIProviderServiceClient is a client for the core.v1.IntegrationAIProviderService
+// service.
+type IntegrationAIProviderServiceClient struct {
+	inner corev1connect.IntegrationAIProviderServiceClient
+}
+
+func (c *IntegrationAIProviderServiceClient) CreateIntegrationAIProvider(ctx context.Context, req *corev1.CreateIntegrationAIProviderRequest) (*corev1.CreateIntegrationAIProviderResponse, error) {
+	res, err := c.inner.CreateIntegrationAIProvider(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *IntegrationAIProviderServiceClient) DeleteIntegrationAIProvider(ctx context.Context, req *corev1.DeleteIntegrationAIProviderRequest) (*corev1.DeleteIntegrationAIProviderResponse, error) {
+	res, err := c.inner.DeleteIntegrationAIProvider(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *IntegrationAIProviderServiceClient) GetIntegrationAIProvider(ctx context.Context, req *corev1.GetIntegrationAIProviderRequest) (*corev1.GetIntegrationAIProviderResponse, error) {
+	res, err := c.inner.GetIntegrationAIProvider(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *IntegrationAIProviderServiceClient) ListIntegrationsAIProvider(ctx context.Context, req *corev1.ListIntegrationsAIProviderRequest) (*corev1.ListIntegrationsAIProviderResponse, error) {
+	res, err := c.inner.ListIntegrationsAIProvider(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
