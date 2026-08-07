@@ -111,6 +111,9 @@ const (
 	// ConnectorServiceGetConnectorHostnameProcedure is the fully-qualified name of the
 	// ConnectorService's GetConnectorHostname RPC.
 	ConnectorServiceGetConnectorHostnameProcedure = "/core.v1.ConnectorService/GetConnectorHostname"
+	// ConnectorServiceGetConnectorTLSCertificateProcedure is the fully-qualified name of the
+	// ConnectorService's GetConnectorTLSCertificate RPC.
+	ConnectorServiceGetConnectorTLSCertificateProcedure = "/core.v1.ConnectorService/GetConnectorTLSCertificate"
 	// ConnectorServiceUpdateConnectorHostnameProcedure is the fully-qualified name of the
 	// ConnectorService's UpdateConnectorHostname RPC.
 	ConnectorServiceUpdateConnectorHostnameProcedure = "/core.v1.ConnectorService/UpdateConnectorHostname"
@@ -303,6 +306,10 @@ type ConnectorServiceClient interface {
 	//
 	// Get a connector hostname
 	GetConnectorHostname(context.Context, *connect.Request[v1.GetConnectorHostnameRequest]) (*connect.Response[v1.GetConnectorHostnameResponse], error)
+	// Get connector TLS certificate
+	//
+	// Get the PEM-encoded TLS certificate full chain for a connector hostname
+	GetConnectorTLSCertificate(context.Context, *connect.Request[v1.GetConnectorTLSCertificateRequest]) (*connect.Response[v1.GetConnectorTLSCertificateResponse], error)
 	// Update connector hostname
 	//
 	// Update a connector hostname
@@ -595,6 +602,13 @@ func NewConnectorServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
+		getConnectorTLSCertificate: connect.NewClient[v1.GetConnectorTLSCertificateRequest, v1.GetConnectorTLSCertificateResponse](
+			httpClient,
+			baseURL+ConnectorServiceGetConnectorTLSCertificateProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("GetConnectorTLSCertificate")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
 		updateConnectorHostname: connect.NewClient[v1.UpdateConnectorHostnameRequest, v1.UpdateConnectorHostnameResponse](
 			httpClient,
 			baseURL+ConnectorServiceUpdateConnectorHostnameProcedure,
@@ -799,6 +813,7 @@ type connectorServiceClient struct {
 	deleteConnectorListenerLink            *connect.Client[v1.DeleteConnectorListenerLinkRequest, v1.DeleteConnectorListenerLinkResponse]
 	createConnectorHostname                *connect.Client[v1.CreateConnectorHostnameRequest, v1.CreateConnectorHostnameResponse]
 	getConnectorHostname                   *connect.Client[v1.GetConnectorHostnameRequest, v1.GetConnectorHostnameResponse]
+	getConnectorTLSCertificate             *connect.Client[v1.GetConnectorTLSCertificateRequest, v1.GetConnectorTLSCertificateResponse]
 	updateConnectorHostname                *connect.Client[v1.UpdateConnectorHostnameRequest, v1.UpdateConnectorHostnameResponse]
 	deleteConnectorHostname                *connect.Client[v1.DeleteConnectorHostnameRequest, v1.DeleteConnectorHostnameResponse]
 	createConnectorConfiguration           *connect.Client[v1.CreateConnectorConfigurationRequest, v1.CreateConnectorConfigurationResponse]
@@ -958,6 +973,11 @@ func (c *connectorServiceClient) CreateConnectorHostname(ctx context.Context, re
 // GetConnectorHostname calls core.v1.ConnectorService.GetConnectorHostname.
 func (c *connectorServiceClient) GetConnectorHostname(ctx context.Context, req *connect.Request[v1.GetConnectorHostnameRequest]) (*connect.Response[v1.GetConnectorHostnameResponse], error) {
 	return c.getConnectorHostname.CallUnary(ctx, req)
+}
+
+// GetConnectorTLSCertificate calls core.v1.ConnectorService.GetConnectorTLSCertificate.
+func (c *connectorServiceClient) GetConnectorTLSCertificate(ctx context.Context, req *connect.Request[v1.GetConnectorTLSCertificateRequest]) (*connect.Response[v1.GetConnectorTLSCertificateResponse], error) {
+	return c.getConnectorTLSCertificate.CallUnary(ctx, req)
 }
 
 // UpdateConnectorHostname calls core.v1.ConnectorService.UpdateConnectorHostname.
@@ -1210,6 +1230,10 @@ type ConnectorServiceHandler interface {
 	//
 	// Get a connector hostname
 	GetConnectorHostname(context.Context, *connect.Request[v1.GetConnectorHostnameRequest]) (*connect.Response[v1.GetConnectorHostnameResponse], error)
+	// Get connector TLS certificate
+	//
+	// Get the PEM-encoded TLS certificate full chain for a connector hostname
+	GetConnectorTLSCertificate(context.Context, *connect.Request[v1.GetConnectorTLSCertificateRequest]) (*connect.Response[v1.GetConnectorTLSCertificateResponse], error)
 	// Update connector hostname
 	//
 	// Update a connector hostname
@@ -1498,6 +1522,13 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
+	connectorServiceGetConnectorTLSCertificateHandler := connect.NewUnaryHandler(
+		ConnectorServiceGetConnectorTLSCertificateProcedure,
+		svc.GetConnectorTLSCertificate,
+		connect.WithSchema(connectorServiceMethods.ByName("GetConnectorTLSCertificate")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
 	connectorServiceUpdateConnectorHostnameHandler := connect.NewUnaryHandler(
 		ConnectorServiceUpdateConnectorHostnameProcedure,
 		svc.UpdateConnectorHostname,
@@ -1725,6 +1756,8 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 			connectorServiceCreateConnectorHostnameHandler.ServeHTTP(w, r)
 		case ConnectorServiceGetConnectorHostnameProcedure:
 			connectorServiceGetConnectorHostnameHandler.ServeHTTP(w, r)
+		case ConnectorServiceGetConnectorTLSCertificateProcedure:
+			connectorServiceGetConnectorTLSCertificateHandler.ServeHTTP(w, r)
 		case ConnectorServiceUpdateConnectorHostnameProcedure:
 			connectorServiceUpdateConnectorHostnameHandler.ServeHTTP(w, r)
 		case ConnectorServiceDeleteConnectorHostnameProcedure:
@@ -1892,6 +1925,10 @@ func (UnimplementedConnectorServiceHandler) CreateConnectorHostname(context.Cont
 
 func (UnimplementedConnectorServiceHandler) GetConnectorHostname(context.Context, *connect.Request[v1.GetConnectorHostnameRequest]) (*connect.Response[v1.GetConnectorHostnameResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.GetConnectorHostname is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) GetConnectorTLSCertificate(context.Context, *connect.Request[v1.GetConnectorTLSCertificateRequest]) (*connect.Response[v1.GetConnectorTLSCertificateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.GetConnectorTLSCertificate is not implemented"))
 }
 
 func (UnimplementedConnectorServiceHandler) UpdateConnectorHostname(context.Context, *connect.Request[v1.UpdateConnectorHostnameRequest]) (*connect.Response[v1.UpdateConnectorHostnameResponse], error) {

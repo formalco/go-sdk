@@ -501,6 +501,17 @@ func (c *ConnectorServiceClient) GetConnectorSatelliteLink(ctx context.Context, 
 	return res.Msg, nil
 }
 
+// Get connector TLS certificate
+//
+// Get the PEM-encoded TLS certificate full chain for a connector hostname
+func (c *ConnectorServiceClient) GetConnectorTLSCertificate(ctx context.Context, req *corev1.GetConnectorTLSCertificateRequest) (*corev1.GetConnectorTLSCertificateResponse, error) {
+	res, err := c.inner.GetConnectorTLSCertificate(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Get connector token encryption key
 //
 // Get the token encryption key for a connector (at most one per connector).
