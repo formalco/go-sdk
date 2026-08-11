@@ -2186,12 +2186,14 @@ func (*NativeUserLink_Group) isNativeUserLink_Identity() {}
 func (*NativeUserLink_ResourceHostname) isNativeUserLink_Identity() {}
 
 type CreateNativeUserRequest struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	ResourceId            string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
-	Username              string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
-	Secret                string                 `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty"`
-	UseAsDefault          bool                   `protobuf:"varint,4,opt,name=use_as_default,json=useAsDefault,proto3" json:"use_as_default,omitempty"`
-	TerminationProtection bool                   `protobuf:"varint,5,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	ResourceId string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	Username   string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	Secret     string                 `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty"`
+	// Whether the connector uses this native user when a connection does not
+	// name one. At most one native user per resource can be the default.
+	UseAsDefault          bool `protobuf:"varint,4,opt,name=use_as_default,json=useAsDefault,proto3" json:"use_as_default,omitempty"`
+	TerminationProtection bool `protobuf:"varint,5,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -2306,10 +2308,12 @@ func (x *CreateNativeUserResponse) GetNativeUser() *NativeUser {
 }
 
 type CreateNativeUserV2Request struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	ResourceId            string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
-	UseAsDefault          bool                   `protobuf:"varint,2,opt,name=use_as_default,json=useAsDefault,proto3" json:"use_as_default,omitempty"`
-	TerminationProtection bool                   `protobuf:"varint,3,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	ResourceId string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	// Whether the connector uses this native user when a connection does not
+	// name one. At most one native user per resource can be the default.
+	UseAsDefault          bool `protobuf:"varint,2,opt,name=use_as_default,json=useAsDefault,proto3" json:"use_as_default,omitempty"`
+	TerminationProtection bool `protobuf:"varint,3,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
 	// Types that are valid to be assigned to Type:
 	//
 	//	*CreateNativeUserV2Request_Basic
