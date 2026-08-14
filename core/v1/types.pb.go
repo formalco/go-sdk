@@ -287,6 +287,7 @@ type Resource struct {
 	Tags                   []*ResourceTag         `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags,omitempty"`
 	Aliases                []string               `protobuf:"bytes,14,rep,name=aliases,proto3" json:"aliases,omitempty"`
 	NativeUserSelectionCel *string                `protobuf:"bytes,15,opt,name=native_user_selection_cel,json=nativeUserSelectionCel,proto3,oneof" json:"native_user_selection_cel,omitempty"`
+	NativeUsersV3EnabledAt *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=native_users_v3_enabled_at,json=nativeUsersV3EnabledAt,proto3" json:"native_users_v3_enabled_at,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -424,6 +425,13 @@ func (x *Resource) GetNativeUserSelectionCel() string {
 		return *x.NativeUserSelectionCel
 	}
 	return ""
+}
+
+func (x *Resource) GetNativeUsersV3EnabledAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.NativeUsersV3EnabledAt
+	}
+	return nil
 }
 
 type Connector struct {
@@ -3315,7 +3323,7 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\vResourceTag\x12\x19\n" +
 	"\x03key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12\x1d\n" +
 	"\x05value\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05value\x12\x0e\n" +
-	"\x02id\x18\x03 \x01(\tR\x02id\"\xca\x06\n" +
+	"\x02id\x18\x03 \x01(\tR\x02id\"\xa2\a\n" +
 	"\bResource\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\xc4\x01\n" +
@@ -3338,7 +3346,8 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\bprovider\x18\f \x01(\tB\x19\xbaH\x16r\x14R\x00R\aaws-ec2R\aaws-ecsR\bprovider\x12(\n" +
 	"\x04tags\x18\r \x03(\v2\x14.core.v1.ResourceTagR\x04tags\x12\x18\n" +
 	"\aaliases\x18\x0e \x03(\tR\aaliases\x12>\n" +
-	"\x19native_user_selection_cel\x18\x0f \x01(\tH\x00R\x16nativeUserSelectionCel\x88\x01\x01B\x1c\n" +
+	"\x19native_user_selection_cel\x18\x0f \x01(\tH\x00R\x16nativeUserSelectionCel\x88\x01\x01\x12V\n" +
+	"\x1anative_users_v3_enabled_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\x16nativeUsersV3EnabledAtB\x1c\n" +
 	"\x1a_native_user_selection_cel\"\xc3\x02\n" +
 	"\tConnector\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
@@ -3696,80 +3705,81 @@ var file_core_v1_types_proto_depIdxs = []int32{
 	40, // 5: core.v1.Resource.created_at:type_name -> google.protobuf.Timestamp
 	40, // 6: core.v1.Resource.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 7: core.v1.Resource.tags:type_name -> core.v1.ResourceTag
-	1,  // 8: core.v1.Connector.space:type_name -> core.v1.Space
-	40, // 9: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
-	40, // 10: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 11: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
-	40, // 12: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 13: core.v1.ConnectorListener.connector:type_name -> core.v1.Connector
-	5,  // 14: core.v1.ConnectorListenerRule.listener:type_name -> core.v1.ConnectorListener
-	40, // 15: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
-	40, // 16: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
-	5,  // 17: core.v1.ConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
-	4,  // 18: core.v1.ConnectorListenerLink.connector:type_name -> core.v1.Connector
-	40, // 19: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
-	40, // 20: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 21: core.v1.ConnectorHostname.connector:type_name -> core.v1.Connector
-	40, // 22: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
-	40, // 23: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 24: core.v1.ListConnectorListenerLink.connector:type_name -> core.v1.Connector
-	5,  // 25: core.v1.ListConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
-	40, // 26: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
-	40, // 27: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
-	40, // 28: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
-	17, // 29: core.v1.Owner.user:type_name -> core.v1.User
-	18, // 30: core.v1.Owner.group:type_name -> core.v1.Group
-	40, // 31: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 32: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 33: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 34: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 35: core.v1.ResourceSshHostKey.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 36: core.v1.ResourceSshHostKey.created_at:type_name -> google.protobuf.Timestamp
-	40, // 37: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 38: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	38, // 39: core.v1.User.human:type_name -> core.v1.User.Human
-	39, // 40: core.v1.User.machine:type_name -> core.v1.User.Machine
-	40, // 41: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
-	40, // 42: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	40, // 43: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 44: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
-	40, // 45: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
-	18, // 46: core.v1.UserGroupLink.group:type_name -> core.v1.Group
-	17, // 47: core.v1.UserGroupLink.user:type_name -> core.v1.User
-	40, // 48: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
-	40, // 49: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
-	1,  // 50: core.v1.Satellite.space:type_name -> core.v1.Space
-	40, // 51: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
-	40, // 52: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 53: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
-	40, // 54: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
-	3,  // 55: core.v1.ResourceHostname.resource:type_name -> core.v1.Resource
-	40, // 56: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
-	40, // 57: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 58: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
-	40, // 59: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 60: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	41, // 61: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
-	40, // 62: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 63: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 64: core.v1.ResourceConnectorAccess.connector:type_name -> core.v1.Connector
-	28, // 65: core.v1.ConnectorAiProviderConfig.formal_ai_satellite:type_name -> core.v1.FormalAiSatelliteConfig
-	29, // 66: core.v1.ConnectorAiProviderConfig.gemini:type_name -> core.v1.GeminiConfig
-	30, // 67: core.v1.ConnectorAiProviderConfig.google_vertex_ai:type_name -> core.v1.GoogleVertexAiConfig
-	31, // 68: core.v1.ConnectorAiProviderConfig.anthropic:type_name -> core.v1.AnthropicConfig
-	32, // 69: core.v1.ConnectorAiProviderConfig.aws_bedrock:type_name -> core.v1.AwsBedrockConfig
-	33, // 70: core.v1.ConnectorAiProviderConfig.openai:type_name -> core.v1.OpenAiConfig
-	34, // 71: core.v1.ConnectorAiProviderConfig.azure_ai:type_name -> core.v1.AzureAiConfig
-	35, // 72: core.v1.ConnectorAiProvider.config:type_name -> core.v1.ConnectorAiProviderConfig
-	40, // 73: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
-	40, // 74: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 75: core.v1.ConnectorTokenEncryptionKey.created_at:type_name -> google.protobuf.Timestamp
-	40, // 76: core.v1.ConnectorTokenEncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
-	77, // [77:77] is the sub-list for method output_type
-	77, // [77:77] is the sub-list for method input_type
-	77, // [77:77] is the sub-list for extension type_name
-	77, // [77:77] is the sub-list for extension extendee
-	0,  // [0:77] is the sub-list for field type_name
+	40, // 8: core.v1.Resource.native_users_v3_enabled_at:type_name -> google.protobuf.Timestamp
+	1,  // 9: core.v1.Connector.space:type_name -> core.v1.Space
+	40, // 10: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
+	40, // 11: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 12: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
+	40, // 13: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
+	4,  // 14: core.v1.ConnectorListener.connector:type_name -> core.v1.Connector
+	5,  // 15: core.v1.ConnectorListenerRule.listener:type_name -> core.v1.ConnectorListener
+	40, // 16: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
+	40, // 17: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
+	5,  // 18: core.v1.ConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
+	4,  // 19: core.v1.ConnectorListenerLink.connector:type_name -> core.v1.Connector
+	40, // 20: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
+	40, // 21: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
+	4,  // 22: core.v1.ConnectorHostname.connector:type_name -> core.v1.Connector
+	40, // 23: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
+	40, // 24: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
+	4,  // 25: core.v1.ListConnectorListenerLink.connector:type_name -> core.v1.Connector
+	5,  // 26: core.v1.ListConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
+	40, // 27: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
+	40, // 28: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
+	40, // 29: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
+	17, // 30: core.v1.Owner.user:type_name -> core.v1.User
+	18, // 31: core.v1.Owner.group:type_name -> core.v1.Group
+	40, // 32: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	40, // 33: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 34: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 35: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	40, // 36: core.v1.ResourceSshHostKey.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 37: core.v1.ResourceSshHostKey.created_at:type_name -> google.protobuf.Timestamp
+	40, // 38: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 39: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	38, // 40: core.v1.User.human:type_name -> core.v1.User.Human
+	39, // 41: core.v1.User.machine:type_name -> core.v1.User.Machine
+	40, // 42: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
+	40, // 43: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	40, // 44: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 45: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
+	40, // 46: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
+	18, // 47: core.v1.UserGroupLink.group:type_name -> core.v1.Group
+	17, // 48: core.v1.UserGroupLink.user:type_name -> core.v1.User
+	40, // 49: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
+	40, // 50: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
+	1,  // 51: core.v1.Satellite.space:type_name -> core.v1.Space
+	40, // 52: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
+	40, // 53: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 54: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
+	40, // 55: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
+	3,  // 56: core.v1.ResourceHostname.resource:type_name -> core.v1.Resource
+	40, // 57: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
+	40, // 58: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 59: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
+	40, // 60: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	40, // 61: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	41, // 62: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
+	40, // 63: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	40, // 64: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	4,  // 65: core.v1.ResourceConnectorAccess.connector:type_name -> core.v1.Connector
+	28, // 66: core.v1.ConnectorAiProviderConfig.formal_ai_satellite:type_name -> core.v1.FormalAiSatelliteConfig
+	29, // 67: core.v1.ConnectorAiProviderConfig.gemini:type_name -> core.v1.GeminiConfig
+	30, // 68: core.v1.ConnectorAiProviderConfig.google_vertex_ai:type_name -> core.v1.GoogleVertexAiConfig
+	31, // 69: core.v1.ConnectorAiProviderConfig.anthropic:type_name -> core.v1.AnthropicConfig
+	32, // 70: core.v1.ConnectorAiProviderConfig.aws_bedrock:type_name -> core.v1.AwsBedrockConfig
+	33, // 71: core.v1.ConnectorAiProviderConfig.openai:type_name -> core.v1.OpenAiConfig
+	34, // 72: core.v1.ConnectorAiProviderConfig.azure_ai:type_name -> core.v1.AzureAiConfig
+	35, // 73: core.v1.ConnectorAiProvider.config:type_name -> core.v1.ConnectorAiProviderConfig
+	40, // 74: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
+	40, // 75: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
+	40, // 76: core.v1.ConnectorTokenEncryptionKey.created_at:type_name -> google.protobuf.Timestamp
+	40, // 77: core.v1.ConnectorTokenEncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
+	78, // [78:78] is the sub-list for method output_type
+	78, // [78:78] is the sub-list for method input_type
+	78, // [78:78] is the sub-list for extension type_name
+	78, // [78:78] is the sub-list for extension extendee
+	0,  // [0:78] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_types_proto_init() }

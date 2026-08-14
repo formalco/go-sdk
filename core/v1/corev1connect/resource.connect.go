@@ -51,6 +51,9 @@ const (
 	// ResourceServiceDeleteResourceProcedure is the fully-qualified name of the ResourceService's
 	// DeleteResource RPC.
 	ResourceServiceDeleteResourceProcedure = "/core.v1.ResourceService/DeleteResource"
+	// ResourceServiceUpdateResourceNativeUsersV3EnabledProcedure is the fully-qualified name of the
+	// ResourceService's UpdateResourceNativeUsersV3Enabled RPC.
+	ResourceServiceUpdateResourceNativeUsersV3EnabledProcedure = "/core.v1.ResourceService/UpdateResourceNativeUsersV3Enabled"
 	// ResourceServiceDeleteResourceNativeUserSelectionProcedure is the fully-qualified name of the
 	// ResourceService's DeleteResourceNativeUserSelection RPC.
 	ResourceServiceDeleteResourceNativeUserSelectionProcedure = "/core.v1.ResourceService/DeleteResourceNativeUserSelection"
@@ -253,11 +256,14 @@ type ResourceServiceClient interface {
 	//
 	// Delete a resource
 	DeleteResource(context.Context, *connect.Request[v1.DeleteResourceRequest]) (*connect.Response[v1.DeleteResourceResponse], error)
+	// Update Native Users V3 enabled
+	//
+	// Enable or disable Native Users V3 for a resource.
+	UpdateResourceNativeUsersV3Enabled(context.Context, *connect.Request[v1.UpdateResourceNativeUsersV3EnabledRequest]) (*connect.Response[v1.UpdateResourceNativeUsersV3EnabledResponse], error)
 	// Delete resource native user selection
 	//
-	// Clear a resource's native user selection expression, moving it back to
-	// legacy native user authentication. Native users already created for the
-	// resource are kept, so the selection expression can be set again later.
+	// Clear a resource's optional native user selection expression. This does
+	// not disable Native Users V3 or delete its native users.
 	DeleteResourceNativeUserSelection(context.Context, *connect.Request[v1.DeleteResourceNativeUserSelectionRequest]) (*connect.Response[v1.DeleteResourceNativeUserSelectionResponse], error)
 	// DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
 	//
@@ -518,6 +524,12 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			httpClient,
 			baseURL+ResourceServiceDeleteResourceProcedure,
 			connect.WithSchema(resourceServiceMethods.ByName("DeleteResource")),
+			connect.WithClientOptions(opts...),
+		),
+		updateResourceNativeUsersV3Enabled: connect.NewClient[v1.UpdateResourceNativeUsersV3EnabledRequest, v1.UpdateResourceNativeUsersV3EnabledResponse](
+			httpClient,
+			baseURL+ResourceServiceUpdateResourceNativeUsersV3EnabledProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceNativeUsersV3Enabled")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteResourceNativeUserSelection: connect.NewClient[v1.DeleteResourceNativeUserSelectionRequest, v1.DeleteResourceNativeUserSelectionResponse](
@@ -892,6 +904,7 @@ type resourceServiceClient struct {
 	updateResource                          *connect.Client[v1.UpdateResourceRequest, v1.UpdateResourceResponse]
 	updateResourceV2                        *connect.Client[v1.UpdateResourceV2Request, v1.UpdateResourceV2Response]
 	deleteResource                          *connect.Client[v1.DeleteResourceRequest, v1.DeleteResourceResponse]
+	updateResourceNativeUsersV3Enabled      *connect.Client[v1.UpdateResourceNativeUsersV3EnabledRequest, v1.UpdateResourceNativeUsersV3EnabledResponse]
 	deleteResourceNativeUserSelection       *connect.Client[v1.DeleteResourceNativeUserSelectionRequest, v1.DeleteResourceNativeUserSelectionResponse]
 	createNativeUser                        *connect.Client[v1.CreateNativeUserRequest, v1.CreateNativeUserResponse]
 	createNativeUserV2                      *connect.Client[v1.CreateNativeUserV2Request, v1.CreateNativeUserV2Response]
@@ -980,6 +993,12 @@ func (c *resourceServiceClient) UpdateResourceV2(ctx context.Context, req *conne
 // DeleteResource calls core.v1.ResourceService.DeleteResource.
 func (c *resourceServiceClient) DeleteResource(ctx context.Context, req *connect.Request[v1.DeleteResourceRequest]) (*connect.Response[v1.DeleteResourceResponse], error) {
 	return c.deleteResource.CallUnary(ctx, req)
+}
+
+// UpdateResourceNativeUsersV3Enabled calls
+// core.v1.ResourceService.UpdateResourceNativeUsersV3Enabled.
+func (c *resourceServiceClient) UpdateResourceNativeUsersV3Enabled(ctx context.Context, req *connect.Request[v1.UpdateResourceNativeUsersV3EnabledRequest]) (*connect.Response[v1.UpdateResourceNativeUsersV3EnabledResponse], error) {
+	return c.updateResourceNativeUsersV3Enabled.CallUnary(ctx, req)
 }
 
 // DeleteResourceNativeUserSelection calls
@@ -1306,11 +1325,14 @@ type ResourceServiceHandler interface {
 	//
 	// Delete a resource
 	DeleteResource(context.Context, *connect.Request[v1.DeleteResourceRequest]) (*connect.Response[v1.DeleteResourceResponse], error)
+	// Update Native Users V3 enabled
+	//
+	// Enable or disable Native Users V3 for a resource.
+	UpdateResourceNativeUsersV3Enabled(context.Context, *connect.Request[v1.UpdateResourceNativeUsersV3EnabledRequest]) (*connect.Response[v1.UpdateResourceNativeUsersV3EnabledResponse], error)
 	// Delete resource native user selection
 	//
-	// Clear a resource's native user selection expression, moving it back to
-	// legacy native user authentication. Native users already created for the
-	// resource are kept, so the selection expression can be set again later.
+	// Clear a resource's optional native user selection expression. This does
+	// not disable Native Users V3 or delete its native users.
 	DeleteResourceNativeUserSelection(context.Context, *connect.Request[v1.DeleteResourceNativeUserSelectionRequest]) (*connect.Response[v1.DeleteResourceNativeUserSelectionResponse], error)
 	// DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
 	//
@@ -1567,6 +1589,12 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 		ResourceServiceDeleteResourceProcedure,
 		svc.DeleteResource,
 		connect.WithSchema(resourceServiceMethods.ByName("DeleteResource")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceUpdateResourceNativeUsersV3EnabledHandler := connect.NewUnaryHandler(
+		ResourceServiceUpdateResourceNativeUsersV3EnabledProcedure,
+		svc.UpdateResourceNativeUsersV3Enabled,
+		connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceNativeUsersV3Enabled")),
 		connect.WithHandlerOptions(opts...),
 	)
 	resourceServiceDeleteResourceNativeUserSelectionHandler := connect.NewUnaryHandler(
@@ -1944,6 +1972,8 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 			resourceServiceUpdateResourceV2Handler.ServeHTTP(w, r)
 		case ResourceServiceDeleteResourceProcedure:
 			resourceServiceDeleteResourceHandler.ServeHTTP(w, r)
+		case ResourceServiceUpdateResourceNativeUsersV3EnabledProcedure:
+			resourceServiceUpdateResourceNativeUsersV3EnabledHandler.ServeHTTP(w, r)
 		case ResourceServiceDeleteResourceNativeUserSelectionProcedure:
 			resourceServiceDeleteResourceNativeUserSelectionHandler.ServeHTTP(w, r)
 		case ResourceServiceCreateNativeUserProcedure:
@@ -2091,6 +2121,10 @@ func (UnimplementedResourceServiceHandler) UpdateResourceV2(context.Context, *co
 
 func (UnimplementedResourceServiceHandler) DeleteResource(context.Context, *connect.Request[v1.DeleteResourceRequest]) (*connect.Response[v1.DeleteResourceResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.DeleteResource is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) UpdateResourceNativeUsersV3Enabled(context.Context, *connect.Request[v1.UpdateResourceNativeUsersV3EnabledRequest]) (*connect.Response[v1.UpdateResourceNativeUsersV3EnabledResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.UpdateResourceNativeUsersV3Enabled is not implemented"))
 }
 
 func (UnimplementedResourceServiceHandler) DeleteResourceNativeUserSelection(context.Context, *connect.Request[v1.DeleteResourceNativeUserSelectionRequest]) (*connect.Response[v1.DeleteResourceNativeUserSelectionResponse], error) {

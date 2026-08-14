@@ -1021,9 +1021,105 @@ func (x *DeleteResourceResponse) GetId() string {
 	return ""
 }
 
+type UpdateResourceNativeUsersV3EnabledRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Enabled       *bool                  `protobuf:"varint,2,opt,name=enabled,proto3,oneof" json:"enabled,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateResourceNativeUsersV3EnabledRequest) Reset() {
+	*x = UpdateResourceNativeUsersV3EnabledRequest{}
+	mi := &file_core_v1_resource_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateResourceNativeUsersV3EnabledRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateResourceNativeUsersV3EnabledRequest) ProtoMessage() {}
+
+func (x *UpdateResourceNativeUsersV3EnabledRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateResourceNativeUsersV3EnabledRequest.ProtoReflect.Descriptor instead.
+func (*UpdateResourceNativeUsersV3EnabledRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdateResourceNativeUsersV3EnabledRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateResourceNativeUsersV3EnabledRequest) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+type UpdateResourceNativeUsersV3EnabledResponse struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	NativeUsersV3EnabledAt *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=native_users_v3_enabled_at,json=nativeUsersV3EnabledAt,proto3" json:"native_users_v3_enabled_at,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *UpdateResourceNativeUsersV3EnabledResponse) Reset() {
+	*x = UpdateResourceNativeUsersV3EnabledResponse{}
+	mi := &file_core_v1_resource_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateResourceNativeUsersV3EnabledResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateResourceNativeUsersV3EnabledResponse) ProtoMessage() {}
+
+func (x *UpdateResourceNativeUsersV3EnabledResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_resource_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateResourceNativeUsersV3EnabledResponse.ProtoReflect.Descriptor instead.
+func (*UpdateResourceNativeUsersV3EnabledResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateResourceNativeUsersV3EnabledResponse) GetNativeUsersV3EnabledAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.NativeUsersV3EnabledAt
+	}
+	return nil
+}
+
 type DeleteResourceNativeUserSelectionRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Resource id whose native_user_selection_cel is cleared.
+	// Resource ID whose native_user_selection_cel is cleared.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1031,7 +1127,7 @@ type DeleteResourceNativeUserSelectionRequest struct {
 
 func (x *DeleteResourceNativeUserSelectionRequest) Reset() {
 	*x = DeleteResourceNativeUserSelectionRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[16]
+	mi := &file_core_v1_resource_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1043,7 +1139,7 @@ func (x *DeleteResourceNativeUserSelectionRequest) String() string {
 func (*DeleteResourceNativeUserSelectionRequest) ProtoMessage() {}
 
 func (x *DeleteResourceNativeUserSelectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[16]
+	mi := &file_core_v1_resource_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1056,7 +1152,7 @@ func (x *DeleteResourceNativeUserSelectionRequest) ProtoReflect() protoreflect.M
 
 // Deprecated: Use DeleteResourceNativeUserSelectionRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceNativeUserSelectionRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DeleteResourceNativeUserSelectionRequest) GetId() string {
@@ -1075,7 +1171,7 @@ type DeleteResourceNativeUserSelectionResponse struct {
 
 func (x *DeleteResourceNativeUserSelectionResponse) Reset() {
 	*x = DeleteResourceNativeUserSelectionResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[17]
+	mi := &file_core_v1_resource_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1087,7 +1183,7 @@ func (x *DeleteResourceNativeUserSelectionResponse) String() string {
 func (*DeleteResourceNativeUserSelectionResponse) ProtoMessage() {}
 
 func (x *DeleteResourceNativeUserSelectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[17]
+	mi := &file_core_v1_resource_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1100,7 +1196,7 @@ func (x *DeleteResourceNativeUserSelectionResponse) ProtoReflect() protoreflect.
 
 // Deprecated: Use DeleteResourceNativeUserSelectionResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceNativeUserSelectionResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DeleteResourceNativeUserSelectionResponse) GetId() string {
@@ -1127,7 +1223,7 @@ type UpdateResourceRequest struct {
 
 func (x *UpdateResourceRequest) Reset() {
 	*x = UpdateResourceRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[18]
+	mi := &file_core_v1_resource_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1139,7 +1235,7 @@ func (x *UpdateResourceRequest) String() string {
 func (*UpdateResourceRequest) ProtoMessage() {}
 
 func (x *UpdateResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[18]
+	mi := &file_core_v1_resource_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1152,7 +1248,7 @@ func (x *UpdateResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *UpdateResourceRequest) GetId() string {
@@ -1227,7 +1323,7 @@ type UpdateResourceResponse struct {
 
 func (x *UpdateResourceResponse) Reset() {
 	*x = UpdateResourceResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[19]
+	mi := &file_core_v1_resource_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1239,7 +1335,7 @@ func (x *UpdateResourceResponse) String() string {
 func (*UpdateResourceResponse) ProtoMessage() {}
 
 func (x *UpdateResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[19]
+	mi := &file_core_v1_resource_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1252,7 +1348,7 @@ func (x *UpdateResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *UpdateResourceResponse) GetId() string {
@@ -1271,7 +1367,7 @@ type UpdateResourceV2Request struct {
 
 func (x *UpdateResourceV2Request) Reset() {
 	*x = UpdateResourceV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[20]
+	mi := &file_core_v1_resource_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1283,7 +1379,7 @@ func (x *UpdateResourceV2Request) String() string {
 func (*UpdateResourceV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[20]
+	mi := &file_core_v1_resource_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1296,7 +1392,7 @@ func (x *UpdateResourceV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdateResourceV2Request) GetResource() *Resource {
@@ -1315,7 +1411,7 @@ type UpdateResourceV2Response struct {
 
 func (x *UpdateResourceV2Response) Reset() {
 	*x = UpdateResourceV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[21]
+	mi := &file_core_v1_resource_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1327,7 +1423,7 @@ func (x *UpdateResourceV2Response) String() string {
 func (*UpdateResourceV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[21]
+	mi := &file_core_v1_resource_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1340,7 +1436,7 @@ func (x *UpdateResourceV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{21}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UpdateResourceV2Response) GetResource() *Resource {
@@ -1362,7 +1458,7 @@ type BasicNativeUser struct {
 
 func (x *BasicNativeUser) Reset() {
 	*x = BasicNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[22]
+	mi := &file_core_v1_resource_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1374,7 +1470,7 @@ func (x *BasicNativeUser) String() string {
 func (*BasicNativeUser) ProtoMessage() {}
 
 func (x *BasicNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[22]
+	mi := &file_core_v1_resource_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1387,7 +1483,7 @@ func (x *BasicNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BasicNativeUser.ProtoReflect.Descriptor instead.
 func (*BasicNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{22}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *BasicNativeUser) GetUsername() string {
@@ -1430,7 +1526,7 @@ type IAMNativeUser struct {
 
 func (x *IAMNativeUser) Reset() {
 	*x = IAMNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[23]
+	mi := &file_core_v1_resource_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1442,7 +1538,7 @@ func (x *IAMNativeUser) String() string {
 func (*IAMNativeUser) ProtoMessage() {}
 
 func (x *IAMNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[23]
+	mi := &file_core_v1_resource_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1455,7 +1551,7 @@ func (x *IAMNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IAMNativeUser.ProtoReflect.Descriptor instead.
 func (*IAMNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{23}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *IAMNativeUser) GetType() IAMNativeUserType {
@@ -1489,7 +1585,7 @@ type KubernetesNativeUser struct {
 
 func (x *KubernetesNativeUser) Reset() {
 	*x = KubernetesNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[24]
+	mi := &file_core_v1_resource_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1501,7 +1597,7 @@ func (x *KubernetesNativeUser) String() string {
 func (*KubernetesNativeUser) ProtoMessage() {}
 
 func (x *KubernetesNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[24]
+	mi := &file_core_v1_resource_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1514,7 +1610,7 @@ func (x *KubernetesNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KubernetesNativeUser.ProtoReflect.Descriptor instead.
 func (*KubernetesNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{24}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *KubernetesNativeUser) GetKubeconfigEnv() string {
@@ -1534,7 +1630,7 @@ type SSHKeyNativeUser struct {
 
 func (x *SSHKeyNativeUser) Reset() {
 	*x = SSHKeyNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[25]
+	mi := &file_core_v1_resource_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1546,7 +1642,7 @@ func (x *SSHKeyNativeUser) String() string {
 func (*SSHKeyNativeUser) ProtoMessage() {}
 
 func (x *SSHKeyNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[25]
+	mi := &file_core_v1_resource_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1559,7 +1655,7 @@ func (x *SSHKeyNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SSHKeyNativeUser.ProtoReflect.Descriptor instead.
 func (*SSHKeyNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{25}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *SSHKeyNativeUser) GetUsername() string {
@@ -1586,7 +1682,7 @@ type SnowflakeKeyNativeUser struct {
 
 func (x *SnowflakeKeyNativeUser) Reset() {
 	*x = SnowflakeKeyNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[26]
+	mi := &file_core_v1_resource_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1598,7 +1694,7 @@ func (x *SnowflakeKeyNativeUser) String() string {
 func (*SnowflakeKeyNativeUser) ProtoMessage() {}
 
 func (x *SnowflakeKeyNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[26]
+	mi := &file_core_v1_resource_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1611,7 +1707,7 @@ func (x *SnowflakeKeyNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SnowflakeKeyNativeUser.ProtoReflect.Descriptor instead.
 func (*SnowflakeKeyNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{26}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *SnowflakeKeyNativeUser) GetUsername() string {
@@ -1639,7 +1735,7 @@ type HTTPBasicNativeUser struct {
 
 func (x *HTTPBasicNativeUser) Reset() {
 	*x = HTTPBasicNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[27]
+	mi := &file_core_v1_resource_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1651,7 +1747,7 @@ func (x *HTTPBasicNativeUser) String() string {
 func (*HTTPBasicNativeUser) ProtoMessage() {}
 
 func (x *HTTPBasicNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[27]
+	mi := &file_core_v1_resource_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1664,7 +1760,7 @@ func (x *HTTPBasicNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTTPBasicNativeUser.ProtoReflect.Descriptor instead.
 func (*HTTPBasicNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{27}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *HTTPBasicNativeUser) GetHeader() string {
@@ -1698,7 +1794,7 @@ type HTTPBearerNativeUser struct {
 
 func (x *HTTPBearerNativeUser) Reset() {
 	*x = HTTPBearerNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[28]
+	mi := &file_core_v1_resource_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1710,7 +1806,7 @@ func (x *HTTPBearerNativeUser) String() string {
 func (*HTTPBearerNativeUser) ProtoMessage() {}
 
 func (x *HTTPBearerNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[28]
+	mi := &file_core_v1_resource_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1723,7 +1819,7 @@ func (x *HTTPBearerNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTTPBearerNativeUser.ProtoReflect.Descriptor instead.
 func (*HTTPBearerNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{28}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *HTTPBearerNativeUser) GetHeader() string {
@@ -1753,7 +1849,7 @@ type HTTPAPIKeyNativeUser struct {
 
 func (x *HTTPAPIKeyNativeUser) Reset() {
 	*x = HTTPAPIKeyNativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[29]
+	mi := &file_core_v1_resource_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1765,7 +1861,7 @@ func (x *HTTPAPIKeyNativeUser) String() string {
 func (*HTTPAPIKeyNativeUser) ProtoMessage() {}
 
 func (x *HTTPAPIKeyNativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[29]
+	mi := &file_core_v1_resource_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1778,7 +1874,7 @@ func (x *HTTPAPIKeyNativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTTPAPIKeyNativeUser.ProtoReflect.Descriptor instead.
 func (*HTTPAPIKeyNativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{29}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *HTTPAPIKeyNativeUser) GetLocation() HTTPAPIKeyLocation {
@@ -1832,7 +1928,7 @@ type NativeUser struct {
 
 func (x *NativeUser) Reset() {
 	*x = NativeUser{}
-	mi := &file_core_v1_resource_proto_msgTypes[30]
+	mi := &file_core_v1_resource_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1844,7 +1940,7 @@ func (x *NativeUser) String() string {
 func (*NativeUser) ProtoMessage() {}
 
 func (x *NativeUser) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[30]
+	mi := &file_core_v1_resource_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1857,7 +1953,7 @@ func (x *NativeUser) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NativeUser.ProtoReflect.Descriptor instead.
 func (*NativeUser) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{30}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *NativeUser) GetId() string {
@@ -2066,7 +2162,7 @@ type NativeUserLink struct {
 
 func (x *NativeUserLink) Reset() {
 	*x = NativeUserLink{}
-	mi := &file_core_v1_resource_proto_msgTypes[31]
+	mi := &file_core_v1_resource_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2078,7 +2174,7 @@ func (x *NativeUserLink) String() string {
 func (*NativeUserLink) ProtoMessage() {}
 
 func (x *NativeUserLink) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[31]
+	mi := &file_core_v1_resource_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2091,7 +2187,7 @@ func (x *NativeUserLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NativeUserLink.ProtoReflect.Descriptor instead.
 func (*NativeUserLink) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{31}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *NativeUserLink) GetId() string {
@@ -2200,7 +2296,7 @@ type CreateNativeUserRequest struct {
 
 func (x *CreateNativeUserRequest) Reset() {
 	*x = CreateNativeUserRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[32]
+	mi := &file_core_v1_resource_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2212,7 +2308,7 @@ func (x *CreateNativeUserRequest) String() string {
 func (*CreateNativeUserRequest) ProtoMessage() {}
 
 func (x *CreateNativeUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[32]
+	mi := &file_core_v1_resource_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2225,7 +2321,7 @@ func (x *CreateNativeUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNativeUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{32}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CreateNativeUserRequest) GetResourceId() string {
@@ -2272,7 +2368,7 @@ type CreateNativeUserResponse struct {
 
 func (x *CreateNativeUserResponse) Reset() {
 	*x = CreateNativeUserResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[33]
+	mi := &file_core_v1_resource_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2284,7 +2380,7 @@ func (x *CreateNativeUserResponse) String() string {
 func (*CreateNativeUserResponse) ProtoMessage() {}
 
 func (x *CreateNativeUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[33]
+	mi := &file_core_v1_resource_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2297,7 +2393,7 @@ func (x *CreateNativeUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNativeUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{33}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *CreateNativeUserResponse) GetNativeUser() *NativeUser {
@@ -2331,7 +2427,7 @@ type CreateNativeUserV2Request struct {
 
 func (x *CreateNativeUserV2Request) Reset() {
 	*x = CreateNativeUserV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[34]
+	mi := &file_core_v1_resource_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2343,7 +2439,7 @@ func (x *CreateNativeUserV2Request) String() string {
 func (*CreateNativeUserV2Request) ProtoMessage() {}
 
 func (x *CreateNativeUserV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[34]
+	mi := &file_core_v1_resource_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2356,7 +2452,7 @@ func (x *CreateNativeUserV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNativeUserV2Request.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{34}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *CreateNativeUserV2Request) GetResourceId() string {
@@ -2520,7 +2616,7 @@ type CreateNativeUserV2Response struct {
 
 func (x *CreateNativeUserV2Response) Reset() {
 	*x = CreateNativeUserV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[35]
+	mi := &file_core_v1_resource_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2532,7 +2628,7 @@ func (x *CreateNativeUserV2Response) String() string {
 func (*CreateNativeUserV2Response) ProtoMessage() {}
 
 func (x *CreateNativeUserV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[35]
+	mi := &file_core_v1_resource_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2545,7 +2641,7 @@ func (x *CreateNativeUserV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNativeUserV2Response.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{35}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *CreateNativeUserV2Response) GetNativeUser() *NativeUser {
@@ -2567,7 +2663,7 @@ type ListNativeUsersRequest struct {
 
 func (x *ListNativeUsersRequest) Reset() {
 	*x = ListNativeUsersRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[36]
+	mi := &file_core_v1_resource_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2579,7 +2675,7 @@ func (x *ListNativeUsersRequest) String() string {
 func (*ListNativeUsersRequest) ProtoMessage() {}
 
 func (x *ListNativeUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[36]
+	mi := &file_core_v1_resource_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2592,7 +2688,7 @@ func (x *ListNativeUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNativeUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListNativeUsersRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{36}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ListNativeUsersRequest) GetLimit() int32 {
@@ -2633,7 +2729,7 @@ type ListNativeUsersResponse struct {
 
 func (x *ListNativeUsersResponse) Reset() {
 	*x = ListNativeUsersResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[37]
+	mi := &file_core_v1_resource_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2645,7 +2741,7 @@ func (x *ListNativeUsersResponse) String() string {
 func (*ListNativeUsersResponse) ProtoMessage() {}
 
 func (x *ListNativeUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[37]
+	mi := &file_core_v1_resource_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2658,7 +2754,7 @@ func (x *ListNativeUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNativeUsersResponse.ProtoReflect.Descriptor instead.
 func (*ListNativeUsersResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{37}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *ListNativeUsersResponse) GetNativeUsers() []*NativeUser {
@@ -2684,7 +2780,7 @@ type GetNativeUserRequest struct {
 
 func (x *GetNativeUserRequest) Reset() {
 	*x = GetNativeUserRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[38]
+	mi := &file_core_v1_resource_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2696,7 +2792,7 @@ func (x *GetNativeUserRequest) String() string {
 func (*GetNativeUserRequest) ProtoMessage() {}
 
 func (x *GetNativeUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[38]
+	mi := &file_core_v1_resource_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2709,7 +2805,7 @@ func (x *GetNativeUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNativeUserRequest.ProtoReflect.Descriptor instead.
 func (*GetNativeUserRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{38}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetNativeUserRequest) GetId() string {
@@ -2728,7 +2824,7 @@ type GetNativeUserResponse struct {
 
 func (x *GetNativeUserResponse) Reset() {
 	*x = GetNativeUserResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[39]
+	mi := &file_core_v1_resource_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2740,7 +2836,7 @@ func (x *GetNativeUserResponse) String() string {
 func (*GetNativeUserResponse) ProtoMessage() {}
 
 func (x *GetNativeUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[39]
+	mi := &file_core_v1_resource_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2753,7 +2849,7 @@ func (x *GetNativeUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNativeUserResponse.ProtoReflect.Descriptor instead.
 func (*GetNativeUserResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{39}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GetNativeUserResponse) GetNativeUser() *NativeUser {
@@ -2772,7 +2868,7 @@ type DeleteNativeUserRequest struct {
 
 func (x *DeleteNativeUserRequest) Reset() {
 	*x = DeleteNativeUserRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[40]
+	mi := &file_core_v1_resource_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2784,7 +2880,7 @@ func (x *DeleteNativeUserRequest) String() string {
 func (*DeleteNativeUserRequest) ProtoMessage() {}
 
 func (x *DeleteNativeUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[40]
+	mi := &file_core_v1_resource_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2797,7 +2893,7 @@ func (x *DeleteNativeUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteNativeUserRequest.ProtoReflect.Descriptor instead.
 func (*DeleteNativeUserRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{40}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *DeleteNativeUserRequest) GetId() string {
@@ -2816,7 +2912,7 @@ type DeleteNativeUserResponse struct {
 
 func (x *DeleteNativeUserResponse) Reset() {
 	*x = DeleteNativeUserResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[41]
+	mi := &file_core_v1_resource_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2828,7 +2924,7 @@ func (x *DeleteNativeUserResponse) String() string {
 func (*DeleteNativeUserResponse) ProtoMessage() {}
 
 func (x *DeleteNativeUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[41]
+	mi := &file_core_v1_resource_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2841,7 +2937,7 @@ func (x *DeleteNativeUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteNativeUserResponse.ProtoReflect.Descriptor instead.
 func (*DeleteNativeUserResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{41}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *DeleteNativeUserResponse) GetId() string {
@@ -2863,7 +2959,7 @@ type UpdateNativeUserRequest struct {
 
 func (x *UpdateNativeUserRequest) Reset() {
 	*x = UpdateNativeUserRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[42]
+	mi := &file_core_v1_resource_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2875,7 +2971,7 @@ func (x *UpdateNativeUserRequest) String() string {
 func (*UpdateNativeUserRequest) ProtoMessage() {}
 
 func (x *UpdateNativeUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[42]
+	mi := &file_core_v1_resource_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2888,7 +2984,7 @@ func (x *UpdateNativeUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNativeUserRequest.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{42}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *UpdateNativeUserRequest) GetId() string {
@@ -2928,7 +3024,7 @@ type UpdateNativeUserResponse struct {
 
 func (x *UpdateNativeUserResponse) Reset() {
 	*x = UpdateNativeUserResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[43]
+	mi := &file_core_v1_resource_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2940,7 +3036,7 @@ func (x *UpdateNativeUserResponse) String() string {
 func (*UpdateNativeUserResponse) ProtoMessage() {}
 
 func (x *UpdateNativeUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[43]
+	mi := &file_core_v1_resource_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2953,7 +3049,7 @@ func (x *UpdateNativeUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNativeUserResponse.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{43}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *UpdateNativeUserResponse) GetId() string {
@@ -2990,7 +3086,7 @@ type UpdateNativeUserV2Request struct {
 
 func (x *UpdateNativeUserV2Request) Reset() {
 	*x = UpdateNativeUserV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[44]
+	mi := &file_core_v1_resource_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3002,7 +3098,7 @@ func (x *UpdateNativeUserV2Request) String() string {
 func (*UpdateNativeUserV2Request) ProtoMessage() {}
 
 func (x *UpdateNativeUserV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[44]
+	mi := &file_core_v1_resource_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3015,7 +3111,7 @@ func (x *UpdateNativeUserV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNativeUserV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{44}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *UpdateNativeUserV2Request) GetId() string {
@@ -3179,7 +3275,7 @@ type UpdateNativeUserV2Response struct {
 
 func (x *UpdateNativeUserV2Response) Reset() {
 	*x = UpdateNativeUserV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[45]
+	mi := &file_core_v1_resource_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3191,7 +3287,7 @@ func (x *UpdateNativeUserV2Response) String() string {
 func (*UpdateNativeUserV2Response) ProtoMessage() {}
 
 func (x *UpdateNativeUserV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[45]
+	mi := &file_core_v1_resource_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3204,7 +3300,7 @@ func (x *UpdateNativeUserV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNativeUserV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{45}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *UpdateNativeUserV2Response) GetId() string {
@@ -3226,7 +3322,7 @@ type CreateNativeUserIdentityLinkRequest struct {
 
 func (x *CreateNativeUserIdentityLinkRequest) Reset() {
 	*x = CreateNativeUserIdentityLinkRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[46]
+	mi := &file_core_v1_resource_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3238,7 +3334,7 @@ func (x *CreateNativeUserIdentityLinkRequest) String() string {
 func (*CreateNativeUserIdentityLinkRequest) ProtoMessage() {}
 
 func (x *CreateNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[46]
+	mi := &file_core_v1_resource_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3251,7 +3347,7 @@ func (x *CreateNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CreateNativeUserIdentityLinkRequest.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserIdentityLinkRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{46}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CreateNativeUserIdentityLinkRequest) GetNativeUserId() string {
@@ -3291,7 +3387,7 @@ type CreateNativeUserIdentityLinkResponse struct {
 
 func (x *CreateNativeUserIdentityLinkResponse) Reset() {
 	*x = CreateNativeUserIdentityLinkResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[47]
+	mi := &file_core_v1_resource_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3303,7 +3399,7 @@ func (x *CreateNativeUserIdentityLinkResponse) String() string {
 func (*CreateNativeUserIdentityLinkResponse) ProtoMessage() {}
 
 func (x *CreateNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[47]
+	mi := &file_core_v1_resource_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3316,7 +3412,7 @@ func (x *CreateNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CreateNativeUserIdentityLinkResponse.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserIdentityLinkResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{47}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CreateNativeUserIdentityLinkResponse) GetLink() *NativeUserLink {
@@ -3335,7 +3431,7 @@ type GetNativeUserIdentityLinkRequest struct {
 
 func (x *GetNativeUserIdentityLinkRequest) Reset() {
 	*x = GetNativeUserIdentityLinkRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[48]
+	mi := &file_core_v1_resource_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3347,7 +3443,7 @@ func (x *GetNativeUserIdentityLinkRequest) String() string {
 func (*GetNativeUserIdentityLinkRequest) ProtoMessage() {}
 
 func (x *GetNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[48]
+	mi := &file_core_v1_resource_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3360,7 +3456,7 @@ func (x *GetNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNativeUserIdentityLinkRequest.ProtoReflect.Descriptor instead.
 func (*GetNativeUserIdentityLinkRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{48}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *GetNativeUserIdentityLinkRequest) GetId() string {
@@ -3379,7 +3475,7 @@ type GetNativeUserIdentityLinkResponse struct {
 
 func (x *GetNativeUserIdentityLinkResponse) Reset() {
 	*x = GetNativeUserIdentityLinkResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[49]
+	mi := &file_core_v1_resource_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3391,7 +3487,7 @@ func (x *GetNativeUserIdentityLinkResponse) String() string {
 func (*GetNativeUserIdentityLinkResponse) ProtoMessage() {}
 
 func (x *GetNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[49]
+	mi := &file_core_v1_resource_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3404,7 +3500,7 @@ func (x *GetNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetNativeUserIdentityLinkResponse.ProtoReflect.Descriptor instead.
 func (*GetNativeUserIdentityLinkResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{49}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *GetNativeUserIdentityLinkResponse) GetLink() *NativeUserLink {
@@ -3427,7 +3523,7 @@ type ListNativeUserIdentityLinksRequest struct {
 
 func (x *ListNativeUserIdentityLinksRequest) Reset() {
 	*x = ListNativeUserIdentityLinksRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[50]
+	mi := &file_core_v1_resource_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3439,7 +3535,7 @@ func (x *ListNativeUserIdentityLinksRequest) String() string {
 func (*ListNativeUserIdentityLinksRequest) ProtoMessage() {}
 
 func (x *ListNativeUserIdentityLinksRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[50]
+	mi := &file_core_v1_resource_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3452,7 +3548,7 @@ func (x *ListNativeUserIdentityLinksRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListNativeUserIdentityLinksRequest.ProtoReflect.Descriptor instead.
 func (*ListNativeUserIdentityLinksRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{50}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *ListNativeUserIdentityLinksRequest) GetLimit() int32 {
@@ -3500,7 +3596,7 @@ type ListNativeUserIdentityLinksResponse struct {
 
 func (x *ListNativeUserIdentityLinksResponse) Reset() {
 	*x = ListNativeUserIdentityLinksResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[51]
+	mi := &file_core_v1_resource_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3512,7 +3608,7 @@ func (x *ListNativeUserIdentityLinksResponse) String() string {
 func (*ListNativeUserIdentityLinksResponse) ProtoMessage() {}
 
 func (x *ListNativeUserIdentityLinksResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[51]
+	mi := &file_core_v1_resource_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3525,7 +3621,7 @@ func (x *ListNativeUserIdentityLinksResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use ListNativeUserIdentityLinksResponse.ProtoReflect.Descriptor instead.
 func (*ListNativeUserIdentityLinksResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{51}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *ListNativeUserIdentityLinksResponse) GetLinks() []*NativeUserLink {
@@ -3551,7 +3647,7 @@ type DeleteNativeUserIdentityLinkRequest struct {
 
 func (x *DeleteNativeUserIdentityLinkRequest) Reset() {
 	*x = DeleteNativeUserIdentityLinkRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[52]
+	mi := &file_core_v1_resource_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3563,7 +3659,7 @@ func (x *DeleteNativeUserIdentityLinkRequest) String() string {
 func (*DeleteNativeUserIdentityLinkRequest) ProtoMessage() {}
 
 func (x *DeleteNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[52]
+	mi := &file_core_v1_resource_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3576,7 +3672,7 @@ func (x *DeleteNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use DeleteNativeUserIdentityLinkRequest.ProtoReflect.Descriptor instead.
 func (*DeleteNativeUserIdentityLinkRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{52}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *DeleteNativeUserIdentityLinkRequest) GetId() string {
@@ -3595,7 +3691,7 @@ type DeleteNativeUserIdentityLinkResponse struct {
 
 func (x *DeleteNativeUserIdentityLinkResponse) Reset() {
 	*x = DeleteNativeUserIdentityLinkResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[53]
+	mi := &file_core_v1_resource_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3607,7 +3703,7 @@ func (x *DeleteNativeUserIdentityLinkResponse) String() string {
 func (*DeleteNativeUserIdentityLinkResponse) ProtoMessage() {}
 
 func (x *DeleteNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[53]
+	mi := &file_core_v1_resource_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3620,7 +3716,7 @@ func (x *DeleteNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use DeleteNativeUserIdentityLinkResponse.ProtoReflect.Descriptor instead.
 func (*DeleteNativeUserIdentityLinkResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{53}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *DeleteNativeUserIdentityLinkResponse) GetId() string {
@@ -3640,7 +3736,7 @@ type UpdateNativeUserIdentityLinkRequest struct {
 
 func (x *UpdateNativeUserIdentityLinkRequest) Reset() {
 	*x = UpdateNativeUserIdentityLinkRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[54]
+	mi := &file_core_v1_resource_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3652,7 +3748,7 @@ func (x *UpdateNativeUserIdentityLinkRequest) String() string {
 func (*UpdateNativeUserIdentityLinkRequest) ProtoMessage() {}
 
 func (x *UpdateNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[54]
+	mi := &file_core_v1_resource_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3665,7 +3761,7 @@ func (x *UpdateNativeUserIdentityLinkRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use UpdateNativeUserIdentityLinkRequest.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserIdentityLinkRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{54}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *UpdateNativeUserIdentityLinkRequest) GetId() string {
@@ -3691,7 +3787,7 @@ type UpdateNativeUserIdentityLinkResponse struct {
 
 func (x *UpdateNativeUserIdentityLinkResponse) Reset() {
 	*x = UpdateNativeUserIdentityLinkResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[55]
+	mi := &file_core_v1_resource_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3703,7 +3799,7 @@ func (x *UpdateNativeUserIdentityLinkResponse) String() string {
 func (*UpdateNativeUserIdentityLinkResponse) ProtoMessage() {}
 
 func (x *UpdateNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[55]
+	mi := &file_core_v1_resource_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3716,7 +3812,7 @@ func (x *UpdateNativeUserIdentityLinkResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use UpdateNativeUserIdentityLinkResponse.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserIdentityLinkResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{55}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *UpdateNativeUserIdentityLinkResponse) GetId() string {
@@ -3739,7 +3835,7 @@ type GetDataDiscoveryConfigurationRequest struct {
 
 func (x *GetDataDiscoveryConfigurationRequest) Reset() {
 	*x = GetDataDiscoveryConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[56]
+	mi := &file_core_v1_resource_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3751,7 +3847,7 @@ func (x *GetDataDiscoveryConfigurationRequest) String() string {
 func (*GetDataDiscoveryConfigurationRequest) ProtoMessage() {}
 
 func (x *GetDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[56]
+	mi := &file_core_v1_resource_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3764,7 +3860,7 @@ func (x *GetDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetDataDiscoveryConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetDataDiscoveryConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{56}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *GetDataDiscoveryConfigurationRequest) GetId() isGetDataDiscoveryConfigurationRequest_Id {
@@ -3818,7 +3914,7 @@ type GetDataDiscoveryConfigurationResponse struct {
 
 func (x *GetDataDiscoveryConfigurationResponse) Reset() {
 	*x = GetDataDiscoveryConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[57]
+	mi := &file_core_v1_resource_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3830,7 +3926,7 @@ func (x *GetDataDiscoveryConfigurationResponse) String() string {
 func (*GetDataDiscoveryConfigurationResponse) ProtoMessage() {}
 
 func (x *GetDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[57]
+	mi := &file_core_v1_resource_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3843,7 +3939,7 @@ func (x *GetDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use GetDataDiscoveryConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetDataDiscoveryConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{57}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *GetDataDiscoveryConfigurationResponse) GetDataDiscoveryConfiguration() *DataDiscoveryConfiguration {
@@ -3865,7 +3961,7 @@ type ListDataDiscoveryConfigurationsRequest struct {
 
 func (x *ListDataDiscoveryConfigurationsRequest) Reset() {
 	*x = ListDataDiscoveryConfigurationsRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[58]
+	mi := &file_core_v1_resource_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3877,7 +3973,7 @@ func (x *ListDataDiscoveryConfigurationsRequest) String() string {
 func (*ListDataDiscoveryConfigurationsRequest) ProtoMessage() {}
 
 func (x *ListDataDiscoveryConfigurationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[58]
+	mi := &file_core_v1_resource_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3890,7 +3986,7 @@ func (x *ListDataDiscoveryConfigurationsRequest) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use ListDataDiscoveryConfigurationsRequest.ProtoReflect.Descriptor instead.
 func (*ListDataDiscoveryConfigurationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{58}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *ListDataDiscoveryConfigurationsRequest) GetLimit() int32 {
@@ -3931,7 +4027,7 @@ type ListDataDiscoveryConfigurationsResponse struct {
 
 func (x *ListDataDiscoveryConfigurationsResponse) Reset() {
 	*x = ListDataDiscoveryConfigurationsResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[59]
+	mi := &file_core_v1_resource_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3943,7 +4039,7 @@ func (x *ListDataDiscoveryConfigurationsResponse) String() string {
 func (*ListDataDiscoveryConfigurationsResponse) ProtoMessage() {}
 
 func (x *ListDataDiscoveryConfigurationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[59]
+	mi := &file_core_v1_resource_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3956,7 +4052,7 @@ func (x *ListDataDiscoveryConfigurationsResponse) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use ListDataDiscoveryConfigurationsResponse.ProtoReflect.Descriptor instead.
 func (*ListDataDiscoveryConfigurationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{59}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *ListDataDiscoveryConfigurationsResponse) GetDataDiscoveryConfigurations() []*DataDiscoveryConfiguration {
@@ -3987,7 +4083,7 @@ type CreateDataDiscoveryConfigurationRequest struct {
 
 func (x *CreateDataDiscoveryConfigurationRequest) Reset() {
 	*x = CreateDataDiscoveryConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[60]
+	mi := &file_core_v1_resource_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3999,7 +4095,7 @@ func (x *CreateDataDiscoveryConfigurationRequest) String() string {
 func (*CreateDataDiscoveryConfigurationRequest) ProtoMessage() {}
 
 func (x *CreateDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[60]
+	mi := &file_core_v1_resource_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4012,7 +4108,7 @@ func (x *CreateDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CreateDataDiscoveryConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreateDataDiscoveryConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{60}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *CreateDataDiscoveryConfigurationRequest) GetResourceId() string {
@@ -4066,7 +4162,7 @@ type CreateDataDiscoveryConfigurationResponse struct {
 
 func (x *CreateDataDiscoveryConfigurationResponse) Reset() {
 	*x = CreateDataDiscoveryConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[61]
+	mi := &file_core_v1_resource_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4078,7 +4174,7 @@ func (x *CreateDataDiscoveryConfigurationResponse) String() string {
 func (*CreateDataDiscoveryConfigurationResponse) ProtoMessage() {}
 
 func (x *CreateDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[61]
+	mi := &file_core_v1_resource_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4091,7 +4187,7 @@ func (x *CreateDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.M
 
 // Deprecated: Use CreateDataDiscoveryConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreateDataDiscoveryConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{61}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *CreateDataDiscoveryConfigurationResponse) GetDataDiscoveryConfiguration() *DataDiscoveryConfiguration {
@@ -4115,7 +4211,7 @@ type UpdateDataDiscoveryConfigurationRequest struct {
 
 func (x *UpdateDataDiscoveryConfigurationRequest) Reset() {
 	*x = UpdateDataDiscoveryConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[62]
+	mi := &file_core_v1_resource_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4127,7 +4223,7 @@ func (x *UpdateDataDiscoveryConfigurationRequest) String() string {
 func (*UpdateDataDiscoveryConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdateDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[62]
+	mi := &file_core_v1_resource_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4140,7 +4236,7 @@ func (x *UpdateDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use UpdateDataDiscoveryConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDataDiscoveryConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{62}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *UpdateDataDiscoveryConfigurationRequest) GetId() string {
@@ -4194,7 +4290,7 @@ type UpdateDataDiscoveryConfigurationResponse struct {
 
 func (x *UpdateDataDiscoveryConfigurationResponse) Reset() {
 	*x = UpdateDataDiscoveryConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[63]
+	mi := &file_core_v1_resource_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4206,7 +4302,7 @@ func (x *UpdateDataDiscoveryConfigurationResponse) String() string {
 func (*UpdateDataDiscoveryConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdateDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[63]
+	mi := &file_core_v1_resource_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4219,7 +4315,7 @@ func (x *UpdateDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.M
 
 // Deprecated: Use UpdateDataDiscoveryConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDataDiscoveryConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{63}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *UpdateDataDiscoveryConfigurationResponse) GetId() string {
@@ -4238,7 +4334,7 @@ type DeleteDataDiscoveryConfigurationRequest struct {
 
 func (x *DeleteDataDiscoveryConfigurationRequest) Reset() {
 	*x = DeleteDataDiscoveryConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[64]
+	mi := &file_core_v1_resource_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4250,7 +4346,7 @@ func (x *DeleteDataDiscoveryConfigurationRequest) String() string {
 func (*DeleteDataDiscoveryConfigurationRequest) ProtoMessage() {}
 
 func (x *DeleteDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[64]
+	mi := &file_core_v1_resource_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4263,7 +4359,7 @@ func (x *DeleteDataDiscoveryConfigurationRequest) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use DeleteDataDiscoveryConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDataDiscoveryConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{64}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *DeleteDataDiscoveryConfigurationRequest) GetId() string {
@@ -4282,7 +4378,7 @@ type DeleteDataDiscoveryConfigurationResponse struct {
 
 func (x *DeleteDataDiscoveryConfigurationResponse) Reset() {
 	*x = DeleteDataDiscoveryConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[65]
+	mi := &file_core_v1_resource_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4294,7 +4390,7 @@ func (x *DeleteDataDiscoveryConfigurationResponse) String() string {
 func (*DeleteDataDiscoveryConfigurationResponse) ProtoMessage() {}
 
 func (x *DeleteDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[65]
+	mi := &file_core_v1_resource_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4307,7 +4403,7 @@ func (x *DeleteDataDiscoveryConfigurationResponse) ProtoReflect() protoreflect.M
 
 // Deprecated: Use DeleteDataDiscoveryConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDataDiscoveryConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{65}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *DeleteDataDiscoveryConfigurationResponse) GetId() string {
@@ -4333,7 +4429,7 @@ type CreateResourceTlsConfigurationRequest struct {
 
 func (x *CreateResourceTlsConfigurationRequest) Reset() {
 	*x = CreateResourceTlsConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[66]
+	mi := &file_core_v1_resource_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4345,7 +4441,7 @@ func (x *CreateResourceTlsConfigurationRequest) String() string {
 func (*CreateResourceTlsConfigurationRequest) ProtoMessage() {}
 
 func (x *CreateResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[66]
+	mi := &file_core_v1_resource_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4358,7 +4454,7 @@ func (x *CreateResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use CreateResourceTlsConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceTlsConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{66}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *CreateResourceTlsConfigurationRequest) GetResourceId() string {
@@ -4426,7 +4522,7 @@ type CreateResourceTlsConfigurationResponse struct {
 
 func (x *CreateResourceTlsConfigurationResponse) Reset() {
 	*x = CreateResourceTlsConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[67]
+	mi := &file_core_v1_resource_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4438,7 +4534,7 @@ func (x *CreateResourceTlsConfigurationResponse) String() string {
 func (*CreateResourceTlsConfigurationResponse) ProtoMessage() {}
 
 func (x *CreateResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[67]
+	mi := &file_core_v1_resource_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4451,7 +4547,7 @@ func (x *CreateResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CreateResourceTlsConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceTlsConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{67}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *CreateResourceTlsConfigurationResponse) GetResourceTlsConfiguration() *ResourceTlsConfiguration {
@@ -4474,7 +4570,7 @@ type GetResourceTlsConfigurationRequest struct {
 
 func (x *GetResourceTlsConfigurationRequest) Reset() {
 	*x = GetResourceTlsConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[68]
+	mi := &file_core_v1_resource_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4486,7 +4582,7 @@ func (x *GetResourceTlsConfigurationRequest) String() string {
 func (*GetResourceTlsConfigurationRequest) ProtoMessage() {}
 
 func (x *GetResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[68]
+	mi := &file_core_v1_resource_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4499,7 +4595,7 @@ func (x *GetResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetResourceTlsConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceTlsConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{68}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *GetResourceTlsConfigurationRequest) GetId() isGetResourceTlsConfigurationRequest_Id {
@@ -4553,7 +4649,7 @@ type GetResourceTlsConfigurationResponse struct {
 
 func (x *GetResourceTlsConfigurationResponse) Reset() {
 	*x = GetResourceTlsConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[69]
+	mi := &file_core_v1_resource_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4565,7 +4661,7 @@ func (x *GetResourceTlsConfigurationResponse) String() string {
 func (*GetResourceTlsConfigurationResponse) ProtoMessage() {}
 
 func (x *GetResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[69]
+	mi := &file_core_v1_resource_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4578,7 +4674,7 @@ func (x *GetResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetResourceTlsConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceTlsConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{69}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *GetResourceTlsConfigurationResponse) GetResourceTlsConfiguration() *ResourceTlsConfiguration {
@@ -4604,7 +4700,7 @@ type UpdateResourceTlsConfigurationRequest struct {
 
 func (x *UpdateResourceTlsConfigurationRequest) Reset() {
 	*x = UpdateResourceTlsConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[70]
+	mi := &file_core_v1_resource_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4616,7 +4712,7 @@ func (x *UpdateResourceTlsConfigurationRequest) String() string {
 func (*UpdateResourceTlsConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdateResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[70]
+	mi := &file_core_v1_resource_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4629,7 +4725,7 @@ func (x *UpdateResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use UpdateResourceTlsConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTlsConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{70}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *UpdateResourceTlsConfigurationRequest) GetId() string {
@@ -4697,7 +4793,7 @@ type UpdateResourceTlsConfigurationResponse struct {
 
 func (x *UpdateResourceTlsConfigurationResponse) Reset() {
 	*x = UpdateResourceTlsConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[71]
+	mi := &file_core_v1_resource_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4709,7 +4805,7 @@ func (x *UpdateResourceTlsConfigurationResponse) String() string {
 func (*UpdateResourceTlsConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdateResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[71]
+	mi := &file_core_v1_resource_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4722,7 +4818,7 @@ func (x *UpdateResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use UpdateResourceTlsConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTlsConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{71}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *UpdateResourceTlsConfigurationResponse) GetResourceTlsConfiguration() *ResourceTlsConfiguration {
@@ -4741,7 +4837,7 @@ type DeleteResourceTlsConfigurationRequest struct {
 
 func (x *DeleteResourceTlsConfigurationRequest) Reset() {
 	*x = DeleteResourceTlsConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[72]
+	mi := &file_core_v1_resource_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4753,7 +4849,7 @@ func (x *DeleteResourceTlsConfigurationRequest) String() string {
 func (*DeleteResourceTlsConfigurationRequest) ProtoMessage() {}
 
 func (x *DeleteResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[72]
+	mi := &file_core_v1_resource_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4766,7 +4862,7 @@ func (x *DeleteResourceTlsConfigurationRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use DeleteResourceTlsConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceTlsConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{72}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *DeleteResourceTlsConfigurationRequest) GetId() string {
@@ -4785,7 +4881,7 @@ type DeleteResourceTlsConfigurationResponse struct {
 
 func (x *DeleteResourceTlsConfigurationResponse) Reset() {
 	*x = DeleteResourceTlsConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[73]
+	mi := &file_core_v1_resource_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4797,7 +4893,7 @@ func (x *DeleteResourceTlsConfigurationResponse) String() string {
 func (*DeleteResourceTlsConfigurationResponse) ProtoMessage() {}
 
 func (x *DeleteResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[73]
+	mi := &file_core_v1_resource_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4810,7 +4906,7 @@ func (x *DeleteResourceTlsConfigurationResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use DeleteResourceTlsConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceTlsConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{73}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *DeleteResourceTlsConfigurationResponse) GetId() string {
@@ -4830,7 +4926,7 @@ type CreateResourceSshHostKeyRequest struct {
 
 func (x *CreateResourceSshHostKeyRequest) Reset() {
 	*x = CreateResourceSshHostKeyRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[74]
+	mi := &file_core_v1_resource_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4842,7 +4938,7 @@ func (x *CreateResourceSshHostKeyRequest) String() string {
 func (*CreateResourceSshHostKeyRequest) ProtoMessage() {}
 
 func (x *CreateResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[74]
+	mi := &file_core_v1_resource_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4855,7 +4951,7 @@ func (x *CreateResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{74}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *CreateResourceSshHostKeyRequest) GetResourceId() string {
@@ -4881,7 +4977,7 @@ type CreateResourceSshHostKeyResponse struct {
 
 func (x *CreateResourceSshHostKeyResponse) Reset() {
 	*x = CreateResourceSshHostKeyResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[75]
+	mi := &file_core_v1_resource_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4893,7 +4989,7 @@ func (x *CreateResourceSshHostKeyResponse) String() string {
 func (*CreateResourceSshHostKeyResponse) ProtoMessage() {}
 
 func (x *CreateResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[75]
+	mi := &file_core_v1_resource_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4906,7 +5002,7 @@ func (x *CreateResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{75}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *CreateResourceSshHostKeyResponse) GetResourceSshHostKey() *ResourceSshHostKey {
@@ -4925,7 +5021,7 @@ type GetResourceSshHostKeyRequest struct {
 
 func (x *GetResourceSshHostKeyRequest) Reset() {
 	*x = GetResourceSshHostKeyRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[76]
+	mi := &file_core_v1_resource_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4937,7 +5033,7 @@ func (x *GetResourceSshHostKeyRequest) String() string {
 func (*GetResourceSshHostKeyRequest) ProtoMessage() {}
 
 func (x *GetResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[76]
+	mi := &file_core_v1_resource_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4950,7 +5046,7 @@ func (x *GetResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{76}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{78}
 }
 
 func (x *GetResourceSshHostKeyRequest) GetId() string {
@@ -4969,7 +5065,7 @@ type GetResourceSshHostKeyResponse struct {
 
 func (x *GetResourceSshHostKeyResponse) Reset() {
 	*x = GetResourceSshHostKeyResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[77]
+	mi := &file_core_v1_resource_proto_msgTypes[79]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4981,7 +5077,7 @@ func (x *GetResourceSshHostKeyResponse) String() string {
 func (*GetResourceSshHostKeyResponse) ProtoMessage() {}
 
 func (x *GetResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[77]
+	mi := &file_core_v1_resource_proto_msgTypes[79]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4994,7 +5090,7 @@ func (x *GetResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{77}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *GetResourceSshHostKeyResponse) GetResourceSshHostKey() *ResourceSshHostKey {
@@ -5013,7 +5109,7 @@ type ListResourceSshHostKeysRequest struct {
 
 func (x *ListResourceSshHostKeysRequest) Reset() {
 	*x = ListResourceSshHostKeysRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[78]
+	mi := &file_core_v1_resource_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5025,7 +5121,7 @@ func (x *ListResourceSshHostKeysRequest) String() string {
 func (*ListResourceSshHostKeysRequest) ProtoMessage() {}
 
 func (x *ListResourceSshHostKeysRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[78]
+	mi := &file_core_v1_resource_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5038,7 +5134,7 @@ func (x *ListResourceSshHostKeysRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceSshHostKeysRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceSshHostKeysRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{78}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *ListResourceSshHostKeysRequest) GetResourceId() string {
@@ -5057,7 +5153,7 @@ type ListResourceSshHostKeysResponse struct {
 
 func (x *ListResourceSshHostKeysResponse) Reset() {
 	*x = ListResourceSshHostKeysResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[79]
+	mi := &file_core_v1_resource_proto_msgTypes[81]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5069,7 +5165,7 @@ func (x *ListResourceSshHostKeysResponse) String() string {
 func (*ListResourceSshHostKeysResponse) ProtoMessage() {}
 
 func (x *ListResourceSshHostKeysResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[79]
+	mi := &file_core_v1_resource_proto_msgTypes[81]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5082,7 +5178,7 @@ func (x *ListResourceSshHostKeysResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceSshHostKeysResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceSshHostKeysResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{79}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *ListResourceSshHostKeysResponse) GetResourceSshHostKeys() []*ResourceSshHostKey {
@@ -5102,7 +5198,7 @@ type UpdateResourceSshHostKeyRequest struct {
 
 func (x *UpdateResourceSshHostKeyRequest) Reset() {
 	*x = UpdateResourceSshHostKeyRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[80]
+	mi := &file_core_v1_resource_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5114,7 +5210,7 @@ func (x *UpdateResourceSshHostKeyRequest) String() string {
 func (*UpdateResourceSshHostKeyRequest) ProtoMessage() {}
 
 func (x *UpdateResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[80]
+	mi := &file_core_v1_resource_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5127,7 +5223,7 @@ func (x *UpdateResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{80}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{82}
 }
 
 func (x *UpdateResourceSshHostKeyRequest) GetId() string {
@@ -5153,7 +5249,7 @@ type UpdateResourceSshHostKeyResponse struct {
 
 func (x *UpdateResourceSshHostKeyResponse) Reset() {
 	*x = UpdateResourceSshHostKeyResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[81]
+	mi := &file_core_v1_resource_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5165,7 +5261,7 @@ func (x *UpdateResourceSshHostKeyResponse) String() string {
 func (*UpdateResourceSshHostKeyResponse) ProtoMessage() {}
 
 func (x *UpdateResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[81]
+	mi := &file_core_v1_resource_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5178,7 +5274,7 @@ func (x *UpdateResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{81}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{83}
 }
 
 func (x *UpdateResourceSshHostKeyResponse) GetResourceSshHostKey() *ResourceSshHostKey {
@@ -5197,7 +5293,7 @@ type DeleteResourceSshHostKeyRequest struct {
 
 func (x *DeleteResourceSshHostKeyRequest) Reset() {
 	*x = DeleteResourceSshHostKeyRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[82]
+	mi := &file_core_v1_resource_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5209,7 +5305,7 @@ func (x *DeleteResourceSshHostKeyRequest) String() string {
 func (*DeleteResourceSshHostKeyRequest) ProtoMessage() {}
 
 func (x *DeleteResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[82]
+	mi := &file_core_v1_resource_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5222,7 +5318,7 @@ func (x *DeleteResourceSshHostKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceSshHostKeyRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceSshHostKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{82}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *DeleteResourceSshHostKeyRequest) GetId() string {
@@ -5241,7 +5337,7 @@ type DeleteResourceSshHostKeyResponse struct {
 
 func (x *DeleteResourceSshHostKeyResponse) Reset() {
 	*x = DeleteResourceSshHostKeyResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[83]
+	mi := &file_core_v1_resource_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5253,7 +5349,7 @@ func (x *DeleteResourceSshHostKeyResponse) String() string {
 func (*DeleteResourceSshHostKeyResponse) ProtoMessage() {}
 
 func (x *DeleteResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[83]
+	mi := &file_core_v1_resource_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5266,7 +5362,7 @@ func (x *DeleteResourceSshHostKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceSshHostKeyResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceSshHostKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{83}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{85}
 }
 
 func (x *DeleteResourceSshHostKeyResponse) GetId() string {
@@ -5287,7 +5383,7 @@ type CreateResourceDialConfigurationRequest struct {
 
 func (x *CreateResourceDialConfigurationRequest) Reset() {
 	*x = CreateResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[84]
+	mi := &file_core_v1_resource_proto_msgTypes[86]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5299,7 +5395,7 @@ func (x *CreateResourceDialConfigurationRequest) String() string {
 func (*CreateResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *CreateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[84]
+	mi := &file_core_v1_resource_proto_msgTypes[86]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5312,7 +5408,7 @@ func (x *CreateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CreateResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{84}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{86}
 }
 
 func (x *CreateResourceDialConfigurationRequest) GetResourceId() string {
@@ -5345,7 +5441,7 @@ type CreateResourceDialConfigurationResponse struct {
 
 func (x *CreateResourceDialConfigurationResponse) Reset() {
 	*x = CreateResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[85]
+	mi := &file_core_v1_resource_proto_msgTypes[87]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5357,7 +5453,7 @@ func (x *CreateResourceDialConfigurationResponse) String() string {
 func (*CreateResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *CreateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[85]
+	mi := &file_core_v1_resource_proto_msgTypes[87]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5370,7 +5466,7 @@ func (x *CreateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CreateResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{85}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{87}
 }
 
 func (x *CreateResourceDialConfigurationResponse) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -5393,7 +5489,7 @@ type GetResourceDialConfigurationRequest struct {
 
 func (x *GetResourceDialConfigurationRequest) Reset() {
 	*x = GetResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[86]
+	mi := &file_core_v1_resource_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5405,7 +5501,7 @@ func (x *GetResourceDialConfigurationRequest) String() string {
 func (*GetResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *GetResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[86]
+	mi := &file_core_v1_resource_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5418,7 +5514,7 @@ func (x *GetResourceDialConfigurationRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{86}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *GetResourceDialConfigurationRequest) GetId() isGetResourceDialConfigurationRequest_Id {
@@ -5472,7 +5568,7 @@ type GetResourceDialConfigurationResponse struct {
 
 func (x *GetResourceDialConfigurationResponse) Reset() {
 	*x = GetResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[87]
+	mi := &file_core_v1_resource_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5484,7 +5580,7 @@ func (x *GetResourceDialConfigurationResponse) String() string {
 func (*GetResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *GetResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[87]
+	mi := &file_core_v1_resource_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5497,7 +5593,7 @@ func (x *GetResourceDialConfigurationResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{87}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *GetResourceDialConfigurationResponse) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -5516,7 +5612,7 @@ type UpdateResourceDialConfigurationRequest struct {
 
 func (x *UpdateResourceDialConfigurationRequest) Reset() {
 	*x = UpdateResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[88]
+	mi := &file_core_v1_resource_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5528,7 +5624,7 @@ func (x *UpdateResourceDialConfigurationRequest) String() string {
 func (*UpdateResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[88]
+	mi := &file_core_v1_resource_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5541,7 +5637,7 @@ func (x *UpdateResourceDialConfigurationRequest) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use UpdateResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{88}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *UpdateResourceDialConfigurationRequest) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -5560,7 +5656,7 @@ type UpdateResourceDialConfigurationResponse struct {
 
 func (x *UpdateResourceDialConfigurationResponse) Reset() {
 	*x = UpdateResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[89]
+	mi := &file_core_v1_resource_proto_msgTypes[91]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5572,7 +5668,7 @@ func (x *UpdateResourceDialConfigurationResponse) String() string {
 func (*UpdateResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[89]
+	mi := &file_core_v1_resource_proto_msgTypes[91]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5585,7 +5681,7 @@ func (x *UpdateResourceDialConfigurationResponse) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use UpdateResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{89}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{91}
 }
 
 func (x *UpdateResourceDialConfigurationResponse) GetResourceDialConfiguration() *ResourceDialConfiguration {
@@ -5604,7 +5700,7 @@ type DeleteResourceDialConfigurationRequest struct {
 
 func (x *DeleteResourceDialConfigurationRequest) Reset() {
 	*x = DeleteResourceDialConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[90]
+	mi := &file_core_v1_resource_proto_msgTypes[92]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5616,7 +5712,7 @@ func (x *DeleteResourceDialConfigurationRequest) String() string {
 func (*DeleteResourceDialConfigurationRequest) ProtoMessage() {}
 
 func (x *DeleteResourceDialConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[90]
+	mi := &file_core_v1_resource_proto_msgTypes[92]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5629,7 +5725,7 @@ func (x *DeleteResourceDialConfigurationRequest) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use DeleteResourceDialConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceDialConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{90}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{92}
 }
 
 func (x *DeleteResourceDialConfigurationRequest) GetId() string {
@@ -5648,7 +5744,7 @@ type DeleteResourceDialConfigurationResponse struct {
 
 func (x *DeleteResourceDialConfigurationResponse) Reset() {
 	*x = DeleteResourceDialConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[91]
+	mi := &file_core_v1_resource_proto_msgTypes[93]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5660,7 +5756,7 @@ func (x *DeleteResourceDialConfigurationResponse) String() string {
 func (*DeleteResourceDialConfigurationResponse) ProtoMessage() {}
 
 func (x *DeleteResourceDialConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[91]
+	mi := &file_core_v1_resource_proto_msgTypes[93]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5673,7 +5769,7 @@ func (x *DeleteResourceDialConfigurationResponse) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use DeleteResourceDialConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceDialConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{91}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{93}
 }
 
 func (x *DeleteResourceDialConfigurationResponse) GetId() string {
@@ -5695,7 +5791,7 @@ type CreateResourceHostnameRequest struct {
 
 func (x *CreateResourceHostnameRequest) Reset() {
 	*x = CreateResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[92]
+	mi := &file_core_v1_resource_proto_msgTypes[94]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5707,7 +5803,7 @@ func (x *CreateResourceHostnameRequest) String() string {
 func (*CreateResourceHostnameRequest) ProtoMessage() {}
 
 func (x *CreateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[92]
+	mi := &file_core_v1_resource_proto_msgTypes[94]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5720,7 +5816,7 @@ func (x *CreateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{92}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *CreateResourceHostnameRequest) GetHostname() string {
@@ -5760,7 +5856,7 @@ type CreateResourceHostnameResponse struct {
 
 func (x *CreateResourceHostnameResponse) Reset() {
 	*x = CreateResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[93]
+	mi := &file_core_v1_resource_proto_msgTypes[95]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5772,7 +5868,7 @@ func (x *CreateResourceHostnameResponse) String() string {
 func (*CreateResourceHostnameResponse) ProtoMessage() {}
 
 func (x *CreateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[93]
+	mi := &file_core_v1_resource_proto_msgTypes[95]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5785,7 +5881,7 @@ func (x *CreateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{93}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *CreateResourceHostnameResponse) GetResourceHostname() *ResourceHostname {
@@ -5804,7 +5900,7 @@ type GetResourceHostnameRequest struct {
 
 func (x *GetResourceHostnameRequest) Reset() {
 	*x = GetResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[94]
+	mi := &file_core_v1_resource_proto_msgTypes[96]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5816,7 +5912,7 @@ func (x *GetResourceHostnameRequest) String() string {
 func (*GetResourceHostnameRequest) ProtoMessage() {}
 
 func (x *GetResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[94]
+	mi := &file_core_v1_resource_proto_msgTypes[96]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5829,7 +5925,7 @@ func (x *GetResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{94}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *GetResourceHostnameRequest) GetId() string {
@@ -5848,7 +5944,7 @@ type GetResourceHostnameResponse struct {
 
 func (x *GetResourceHostnameResponse) Reset() {
 	*x = GetResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[95]
+	mi := &file_core_v1_resource_proto_msgTypes[97]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5860,7 +5956,7 @@ func (x *GetResourceHostnameResponse) String() string {
 func (*GetResourceHostnameResponse) ProtoMessage() {}
 
 func (x *GetResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[95]
+	mi := &file_core_v1_resource_proto_msgTypes[97]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5873,7 +5969,7 @@ func (x *GetResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{95}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *GetResourceHostnameResponse) GetResourceHostname() *ResourceHostname {
@@ -5892,7 +5988,7 @@ type ListResourceHostnamesRequest struct {
 
 func (x *ListResourceHostnamesRequest) Reset() {
 	*x = ListResourceHostnamesRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[96]
+	mi := &file_core_v1_resource_proto_msgTypes[98]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5904,7 +6000,7 @@ func (x *ListResourceHostnamesRequest) String() string {
 func (*ListResourceHostnamesRequest) ProtoMessage() {}
 
 func (x *ListResourceHostnamesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[96]
+	mi := &file_core_v1_resource_proto_msgTypes[98]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5917,7 +6013,7 @@ func (x *ListResourceHostnamesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceHostnamesRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceHostnamesRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{96}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *ListResourceHostnamesRequest) GetResourceId() string {
@@ -5936,7 +6032,7 @@ type ListResourceHostnamesResponse struct {
 
 func (x *ListResourceHostnamesResponse) Reset() {
 	*x = ListResourceHostnamesResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[97]
+	mi := &file_core_v1_resource_proto_msgTypes[99]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5948,7 +6044,7 @@ func (x *ListResourceHostnamesResponse) String() string {
 func (*ListResourceHostnamesResponse) ProtoMessage() {}
 
 func (x *ListResourceHostnamesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[97]
+	mi := &file_core_v1_resource_proto_msgTypes[99]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5961,7 +6057,7 @@ func (x *ListResourceHostnamesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceHostnamesResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceHostnamesResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{97}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{99}
 }
 
 func (x *ListResourceHostnamesResponse) GetResourceHostnames() []*ResourceHostname {
@@ -5983,7 +6079,7 @@ type UpdateResourceHostnameRequest struct {
 
 func (x *UpdateResourceHostnameRequest) Reset() {
 	*x = UpdateResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[98]
+	mi := &file_core_v1_resource_proto_msgTypes[100]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5995,7 +6091,7 @@ func (x *UpdateResourceHostnameRequest) String() string {
 func (*UpdateResourceHostnameRequest) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[98]
+	mi := &file_core_v1_resource_proto_msgTypes[100]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6008,7 +6104,7 @@ func (x *UpdateResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{98}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{100}
 }
 
 func (x *UpdateResourceHostnameRequest) GetId() string {
@@ -6048,7 +6144,7 @@ type UpdateResourceHostnameResponse struct {
 
 func (x *UpdateResourceHostnameResponse) Reset() {
 	*x = UpdateResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[99]
+	mi := &file_core_v1_resource_proto_msgTypes[101]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6060,7 +6156,7 @@ func (x *UpdateResourceHostnameResponse) String() string {
 func (*UpdateResourceHostnameResponse) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[99]
+	mi := &file_core_v1_resource_proto_msgTypes[101]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6073,7 +6169,7 @@ func (x *UpdateResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{99}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{101}
 }
 
 func (x *UpdateResourceHostnameResponse) GetResourceHostname() *ResourceHostname {
@@ -6092,7 +6188,7 @@ type DeleteResourceHostnameRequest struct {
 
 func (x *DeleteResourceHostnameRequest) Reset() {
 	*x = DeleteResourceHostnameRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[100]
+	mi := &file_core_v1_resource_proto_msgTypes[102]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6104,7 +6200,7 @@ func (x *DeleteResourceHostnameRequest) String() string {
 func (*DeleteResourceHostnameRequest) ProtoMessage() {}
 
 func (x *DeleteResourceHostnameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[100]
+	mi := &file_core_v1_resource_proto_msgTypes[102]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6117,7 +6213,7 @@ func (x *DeleteResourceHostnameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceHostnameRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceHostnameRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{100}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{102}
 }
 
 func (x *DeleteResourceHostnameRequest) GetId() string {
@@ -6136,7 +6232,7 @@ type DeleteResourceHostnameResponse struct {
 
 func (x *DeleteResourceHostnameResponse) Reset() {
 	*x = DeleteResourceHostnameResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[101]
+	mi := &file_core_v1_resource_proto_msgTypes[103]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6148,7 +6244,7 @@ func (x *DeleteResourceHostnameResponse) String() string {
 func (*DeleteResourceHostnameResponse) ProtoMessage() {}
 
 func (x *DeleteResourceHostnameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[101]
+	mi := &file_core_v1_resource_proto_msgTypes[103]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6161,7 +6257,7 @@ func (x *DeleteResourceHostnameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceHostnameResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceHostnameResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{101}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{103}
 }
 
 func (x *DeleteResourceHostnameResponse) GetId() string {
@@ -6184,7 +6280,7 @@ type CreateResourceClassifierConfigurationRequest struct {
 
 func (x *CreateResourceClassifierConfigurationRequest) Reset() {
 	*x = CreateResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[102]
+	mi := &file_core_v1_resource_proto_msgTypes[104]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6196,7 +6292,7 @@ func (x *CreateResourceClassifierConfigurationRequest) String() string {
 func (*CreateResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *CreateResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[102]
+	mi := &file_core_v1_resource_proto_msgTypes[104]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6209,7 +6305,7 @@ func (x *CreateResourceClassifierConfigurationRequest) ProtoReflect() protorefle
 
 // Deprecated: Use CreateResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{102}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{104}
 }
 
 func (x *CreateResourceClassifierConfigurationRequest) GetResourceId() string {
@@ -6256,7 +6352,7 @@ type CreateResourceClassifierConfigurationResponse struct {
 
 func (x *CreateResourceClassifierConfigurationResponse) Reset() {
 	*x = CreateResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[103]
+	mi := &file_core_v1_resource_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6268,7 +6364,7 @@ func (x *CreateResourceClassifierConfigurationResponse) String() string {
 func (*CreateResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *CreateResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[103]
+	mi := &file_core_v1_resource_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6281,7 +6377,7 @@ func (x *CreateResourceClassifierConfigurationResponse) ProtoReflect() protorefl
 
 // Deprecated: Use CreateResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{103}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{105}
 }
 
 func (x *CreateResourceClassifierConfigurationResponse) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -6302,7 +6398,7 @@ type ListResourceClassifierConfigurationsRequest struct {
 
 func (x *ListResourceClassifierConfigurationsRequest) Reset() {
 	*x = ListResourceClassifierConfigurationsRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[104]
+	mi := &file_core_v1_resource_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6314,7 +6410,7 @@ func (x *ListResourceClassifierConfigurationsRequest) String() string {
 func (*ListResourceClassifierConfigurationsRequest) ProtoMessage() {}
 
 func (x *ListResourceClassifierConfigurationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[104]
+	mi := &file_core_v1_resource_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6327,7 +6423,7 @@ func (x *ListResourceClassifierConfigurationsRequest) ProtoReflect() protoreflec
 
 // Deprecated: Use ListResourceClassifierConfigurationsRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceClassifierConfigurationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{104}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{106}
 }
 
 func (x *ListResourceClassifierConfigurationsRequest) GetLimit() int32 {
@@ -6361,7 +6457,7 @@ type ListResourceClassifierConfigurationsResponse struct {
 
 func (x *ListResourceClassifierConfigurationsResponse) Reset() {
 	*x = ListResourceClassifierConfigurationsResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[105]
+	mi := &file_core_v1_resource_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6373,7 +6469,7 @@ func (x *ListResourceClassifierConfigurationsResponse) String() string {
 func (*ListResourceClassifierConfigurationsResponse) ProtoMessage() {}
 
 func (x *ListResourceClassifierConfigurationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[105]
+	mi := &file_core_v1_resource_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6386,7 +6482,7 @@ func (x *ListResourceClassifierConfigurationsResponse) ProtoReflect() protorefle
 
 // Deprecated: Use ListResourceClassifierConfigurationsResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceClassifierConfigurationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{105}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{107}
 }
 
 func (x *ListResourceClassifierConfigurationsResponse) GetResourceClassifierConfigurations() []*ResourceClassifierConfiguration {
@@ -6412,7 +6508,7 @@ type GetResourceClassifierConfigurationRequest struct {
 
 func (x *GetResourceClassifierConfigurationRequest) Reset() {
 	*x = GetResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[106]
+	mi := &file_core_v1_resource_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6424,7 +6520,7 @@ func (x *GetResourceClassifierConfigurationRequest) String() string {
 func (*GetResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *GetResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[106]
+	mi := &file_core_v1_resource_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6437,7 +6533,7 @@ func (x *GetResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.
 
 // Deprecated: Use GetResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{106}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{108}
 }
 
 func (x *GetResourceClassifierConfigurationRequest) GetResourceId() string {
@@ -6456,7 +6552,7 @@ type GetResourceClassifierConfigurationResponse struct {
 
 func (x *GetResourceClassifierConfigurationResponse) Reset() {
 	*x = GetResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[107]
+	mi := &file_core_v1_resource_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6468,7 +6564,7 @@ func (x *GetResourceClassifierConfigurationResponse) String() string {
 func (*GetResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *GetResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[107]
+	mi := &file_core_v1_resource_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6481,7 +6577,7 @@ func (x *GetResourceClassifierConfigurationResponse) ProtoReflect() protoreflect
 
 // Deprecated: Use GetResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{107}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{109}
 }
 
 func (x *GetResourceClassifierConfigurationResponse) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -6504,7 +6600,7 @@ type UpdateResourceClassifierConfigurationRequest struct {
 
 func (x *UpdateResourceClassifierConfigurationRequest) Reset() {
 	*x = UpdateResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[108]
+	mi := &file_core_v1_resource_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6516,7 +6612,7 @@ func (x *UpdateResourceClassifierConfigurationRequest) String() string {
 func (*UpdateResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[108]
+	mi := &file_core_v1_resource_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6529,7 +6625,7 @@ func (x *UpdateResourceClassifierConfigurationRequest) ProtoReflect() protorefle
 
 // Deprecated: Use UpdateResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{108}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{110}
 }
 
 func (x *UpdateResourceClassifierConfigurationRequest) GetId() string {
@@ -6576,7 +6672,7 @@ type UpdateResourceClassifierConfigurationResponse struct {
 
 func (x *UpdateResourceClassifierConfigurationResponse) Reset() {
 	*x = UpdateResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[109]
+	mi := &file_core_v1_resource_proto_msgTypes[111]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6588,7 +6684,7 @@ func (x *UpdateResourceClassifierConfigurationResponse) String() string {
 func (*UpdateResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[109]
+	mi := &file_core_v1_resource_proto_msgTypes[111]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6601,7 +6697,7 @@ func (x *UpdateResourceClassifierConfigurationResponse) ProtoReflect() protorefl
 
 // Deprecated: Use UpdateResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{109}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{111}
 }
 
 func (x *UpdateResourceClassifierConfigurationResponse) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -6620,7 +6716,7 @@ type DeleteResourceClassifierConfigurationRequest struct {
 
 func (x *DeleteResourceClassifierConfigurationRequest) Reset() {
 	*x = DeleteResourceClassifierConfigurationRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[110]
+	mi := &file_core_v1_resource_proto_msgTypes[112]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6632,7 +6728,7 @@ func (x *DeleteResourceClassifierConfigurationRequest) String() string {
 func (*DeleteResourceClassifierConfigurationRequest) ProtoMessage() {}
 
 func (x *DeleteResourceClassifierConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[110]
+	mi := &file_core_v1_resource_proto_msgTypes[112]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6645,7 +6741,7 @@ func (x *DeleteResourceClassifierConfigurationRequest) ProtoReflect() protorefle
 
 // Deprecated: Use DeleteResourceClassifierConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceClassifierConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{110}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{112}
 }
 
 func (x *DeleteResourceClassifierConfigurationRequest) GetId() string {
@@ -6664,7 +6760,7 @@ type DeleteResourceClassifierConfigurationResponse struct {
 
 func (x *DeleteResourceClassifierConfigurationResponse) Reset() {
 	*x = DeleteResourceClassifierConfigurationResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[111]
+	mi := &file_core_v1_resource_proto_msgTypes[113]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6676,7 +6772,7 @@ func (x *DeleteResourceClassifierConfigurationResponse) String() string {
 func (*DeleteResourceClassifierConfigurationResponse) ProtoMessage() {}
 
 func (x *DeleteResourceClassifierConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[111]
+	mi := &file_core_v1_resource_proto_msgTypes[113]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6689,7 +6785,7 @@ func (x *DeleteResourceClassifierConfigurationResponse) ProtoReflect() protorefl
 
 // Deprecated: Use DeleteResourceClassifierConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceClassifierConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{111}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{113}
 }
 
 func (x *DeleteResourceClassifierConfigurationResponse) GetId() string {
@@ -6708,7 +6804,7 @@ type ListResourceConnectorAccessRequest struct {
 
 func (x *ListResourceConnectorAccessRequest) Reset() {
 	*x = ListResourceConnectorAccessRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[112]
+	mi := &file_core_v1_resource_proto_msgTypes[114]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6720,7 +6816,7 @@ func (x *ListResourceConnectorAccessRequest) String() string {
 func (*ListResourceConnectorAccessRequest) ProtoMessage() {}
 
 func (x *ListResourceConnectorAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[112]
+	mi := &file_core_v1_resource_proto_msgTypes[114]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6733,7 +6829,7 @@ func (x *ListResourceConnectorAccessRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListResourceConnectorAccessRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceConnectorAccessRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{112}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *ListResourceConnectorAccessRequest) GetResourceId() string {
@@ -6752,7 +6848,7 @@ type ListResourceConnectorAccessResponse struct {
 
 func (x *ListResourceConnectorAccessResponse) Reset() {
 	*x = ListResourceConnectorAccessResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[113]
+	mi := &file_core_v1_resource_proto_msgTypes[115]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6764,7 +6860,7 @@ func (x *ListResourceConnectorAccessResponse) String() string {
 func (*ListResourceConnectorAccessResponse) ProtoMessage() {}
 
 func (x *ListResourceConnectorAccessResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[113]
+	mi := &file_core_v1_resource_proto_msgTypes[115]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6777,7 +6873,7 @@ func (x *ListResourceConnectorAccessResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use ListResourceConnectorAccessResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceConnectorAccessResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{113}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{115}
 }
 
 func (x *ListResourceConnectorAccessResponse) GetResourceConnectorAccess() []*ResourceConnectorAccess {
@@ -6798,7 +6894,7 @@ type CreateResourceTagRequest struct {
 
 func (x *CreateResourceTagRequest) Reset() {
 	*x = CreateResourceTagRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[114]
+	mi := &file_core_v1_resource_proto_msgTypes[116]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6810,7 +6906,7 @@ func (x *CreateResourceTagRequest) String() string {
 func (*CreateResourceTagRequest) ProtoMessage() {}
 
 func (x *CreateResourceTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[114]
+	mi := &file_core_v1_resource_proto_msgTypes[116]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6823,7 +6919,7 @@ func (x *CreateResourceTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceTagRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceTagRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{114}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{116}
 }
 
 func (x *CreateResourceTagRequest) GetResourceId() string {
@@ -6856,7 +6952,7 @@ type CreateResourceTagResponse struct {
 
 func (x *CreateResourceTagResponse) Reset() {
 	*x = CreateResourceTagResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[115]
+	mi := &file_core_v1_resource_proto_msgTypes[117]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6868,7 +6964,7 @@ func (x *CreateResourceTagResponse) String() string {
 func (*CreateResourceTagResponse) ProtoMessage() {}
 
 func (x *CreateResourceTagResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[115]
+	mi := &file_core_v1_resource_proto_msgTypes[117]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6881,7 +6977,7 @@ func (x *CreateResourceTagResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceTagResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceTagResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{115}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{117}
 }
 
 func (x *CreateResourceTagResponse) GetTag() *ResourceTag {
@@ -6900,7 +6996,7 @@ type DeleteResourceTagRequest struct {
 
 func (x *DeleteResourceTagRequest) Reset() {
 	*x = DeleteResourceTagRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[116]
+	mi := &file_core_v1_resource_proto_msgTypes[118]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6912,7 +7008,7 @@ func (x *DeleteResourceTagRequest) String() string {
 func (*DeleteResourceTagRequest) ProtoMessage() {}
 
 func (x *DeleteResourceTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[116]
+	mi := &file_core_v1_resource_proto_msgTypes[118]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6925,7 +7021,7 @@ func (x *DeleteResourceTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceTagRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceTagRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{116}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{118}
 }
 
 func (x *DeleteResourceTagRequest) GetId() string {
@@ -6943,7 +7039,7 @@ type DeleteResourceTagResponse struct {
 
 func (x *DeleteResourceTagResponse) Reset() {
 	*x = DeleteResourceTagResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[117]
+	mi := &file_core_v1_resource_proto_msgTypes[119]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6955,7 +7051,7 @@ func (x *DeleteResourceTagResponse) String() string {
 func (*DeleteResourceTagResponse) ProtoMessage() {}
 
 func (x *DeleteResourceTagResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[117]
+	mi := &file_core_v1_resource_proto_msgTypes[119]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6968,7 +7064,7 @@ func (x *DeleteResourceTagResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceTagResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceTagResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{117}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{119}
 }
 
 type UpdateResourceTagRequest struct {
@@ -6982,7 +7078,7 @@ type UpdateResourceTagRequest struct {
 
 func (x *UpdateResourceTagRequest) Reset() {
 	*x = UpdateResourceTagRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[118]
+	mi := &file_core_v1_resource_proto_msgTypes[120]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6994,7 +7090,7 @@ func (x *UpdateResourceTagRequest) String() string {
 func (*UpdateResourceTagRequest) ProtoMessage() {}
 
 func (x *UpdateResourceTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[118]
+	mi := &file_core_v1_resource_proto_msgTypes[120]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7007,7 +7103,7 @@ func (x *UpdateResourceTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceTagRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTagRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{118}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{120}
 }
 
 func (x *UpdateResourceTagRequest) GetResourceId() string {
@@ -7040,7 +7136,7 @@ type UpdateResourceTagResponse struct {
 
 func (x *UpdateResourceTagResponse) Reset() {
 	*x = UpdateResourceTagResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[119]
+	mi := &file_core_v1_resource_proto_msgTypes[121]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7052,7 +7148,7 @@ func (x *UpdateResourceTagResponse) String() string {
 func (*UpdateResourceTagResponse) ProtoMessage() {}
 
 func (x *UpdateResourceTagResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[119]
+	mi := &file_core_v1_resource_proto_msgTypes[121]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7065,7 +7161,7 @@ func (x *UpdateResourceTagResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceTagResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTagResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{119}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{121}
 }
 
 func (x *UpdateResourceTagResponse) GetTag() *ResourceTag {
@@ -7084,7 +7180,7 @@ type UpdateNativeUserIdentityLinkV2Request struct {
 
 func (x *UpdateNativeUserIdentityLinkV2Request) Reset() {
 	*x = UpdateNativeUserIdentityLinkV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[120]
+	mi := &file_core_v1_resource_proto_msgTypes[122]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7096,7 +7192,7 @@ func (x *UpdateNativeUserIdentityLinkV2Request) String() string {
 func (*UpdateNativeUserIdentityLinkV2Request) ProtoMessage() {}
 
 func (x *UpdateNativeUserIdentityLinkV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[120]
+	mi := &file_core_v1_resource_proto_msgTypes[122]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7109,7 +7205,7 @@ func (x *UpdateNativeUserIdentityLinkV2Request) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use UpdateNativeUserIdentityLinkV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserIdentityLinkV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{120}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{122}
 }
 
 func (x *UpdateNativeUserIdentityLinkV2Request) GetLink() *NativeUserLink {
@@ -7128,7 +7224,7 @@ type UpdateNativeUserIdentityLinkV2Response struct {
 
 func (x *UpdateNativeUserIdentityLinkV2Response) Reset() {
 	*x = UpdateNativeUserIdentityLinkV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[121]
+	mi := &file_core_v1_resource_proto_msgTypes[123]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7140,7 +7236,7 @@ func (x *UpdateNativeUserIdentityLinkV2Response) String() string {
 func (*UpdateNativeUserIdentityLinkV2Response) ProtoMessage() {}
 
 func (x *UpdateNativeUserIdentityLinkV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[121]
+	mi := &file_core_v1_resource_proto_msgTypes[123]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7153,7 +7249,7 @@ func (x *UpdateNativeUserIdentityLinkV2Response) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use UpdateNativeUserIdentityLinkV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserIdentityLinkV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{121}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{123}
 }
 
 func (x *UpdateNativeUserIdentityLinkV2Response) GetLink() *NativeUserLink {
@@ -7172,7 +7268,7 @@ type UpdateDataDiscoveryConfigurationV2Request struct {
 
 func (x *UpdateDataDiscoveryConfigurationV2Request) Reset() {
 	*x = UpdateDataDiscoveryConfigurationV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[122]
+	mi := &file_core_v1_resource_proto_msgTypes[124]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7184,7 +7280,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Request) String() string {
 func (*UpdateDataDiscoveryConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateDataDiscoveryConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[122]
+	mi := &file_core_v1_resource_proto_msgTypes[124]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7197,7 +7293,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Request) ProtoReflect() protoreflect.
 
 // Deprecated: Use UpdateDataDiscoveryConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateDataDiscoveryConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{122}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{124}
 }
 
 func (x *UpdateDataDiscoveryConfigurationV2Request) GetDataDiscoveryConfiguration() *DataDiscoveryConfiguration {
@@ -7216,7 +7312,7 @@ type UpdateDataDiscoveryConfigurationV2Response struct {
 
 func (x *UpdateDataDiscoveryConfigurationV2Response) Reset() {
 	*x = UpdateDataDiscoveryConfigurationV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[123]
+	mi := &file_core_v1_resource_proto_msgTypes[125]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7228,7 +7324,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Response) String() string {
 func (*UpdateDataDiscoveryConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateDataDiscoveryConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[123]
+	mi := &file_core_v1_resource_proto_msgTypes[125]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7241,7 +7337,7 @@ func (x *UpdateDataDiscoveryConfigurationV2Response) ProtoReflect() protoreflect
 
 // Deprecated: Use UpdateDataDiscoveryConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateDataDiscoveryConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{123}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{125}
 }
 
 func (x *UpdateDataDiscoveryConfigurationV2Response) GetDataDiscoveryConfiguration() *DataDiscoveryConfiguration {
@@ -7260,7 +7356,7 @@ type UpdateResourceHealthCheckV2Request struct {
 
 func (x *UpdateResourceHealthCheckV2Request) Reset() {
 	*x = UpdateResourceHealthCheckV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[124]
+	mi := &file_core_v1_resource_proto_msgTypes[126]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7272,7 +7368,7 @@ func (x *UpdateResourceHealthCheckV2Request) String() string {
 func (*UpdateResourceHealthCheckV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceHealthCheckV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[124]
+	mi := &file_core_v1_resource_proto_msgTypes[126]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7285,7 +7381,7 @@ func (x *UpdateResourceHealthCheckV2Request) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use UpdateResourceHealthCheckV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHealthCheckV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{124}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{126}
 }
 
 func (x *UpdateResourceHealthCheckV2Request) GetResourceHealthCheck() *ResourceHealthCheck {
@@ -7304,7 +7400,7 @@ type UpdateResourceHealthCheckV2Response struct {
 
 func (x *UpdateResourceHealthCheckV2Response) Reset() {
 	*x = UpdateResourceHealthCheckV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[125]
+	mi := &file_core_v1_resource_proto_msgTypes[127]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7316,7 +7412,7 @@ func (x *UpdateResourceHealthCheckV2Response) String() string {
 func (*UpdateResourceHealthCheckV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceHealthCheckV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[125]
+	mi := &file_core_v1_resource_proto_msgTypes[127]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7329,7 +7425,7 @@ func (x *UpdateResourceHealthCheckV2Response) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use UpdateResourceHealthCheckV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHealthCheckV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{125}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{127}
 }
 
 func (x *UpdateResourceHealthCheckV2Response) GetResourceHealthCheck() *ResourceHealthCheck {
@@ -7348,7 +7444,7 @@ type UpdateResourceTlsConfigurationV2Request struct {
 
 func (x *UpdateResourceTlsConfigurationV2Request) Reset() {
 	*x = UpdateResourceTlsConfigurationV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[126]
+	mi := &file_core_v1_resource_proto_msgTypes[128]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7360,7 +7456,7 @@ func (x *UpdateResourceTlsConfigurationV2Request) String() string {
 func (*UpdateResourceTlsConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceTlsConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[126]
+	mi := &file_core_v1_resource_proto_msgTypes[128]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7373,7 +7469,7 @@ func (x *UpdateResourceTlsConfigurationV2Request) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use UpdateResourceTlsConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTlsConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{126}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{128}
 }
 
 func (x *UpdateResourceTlsConfigurationV2Request) GetResourceTlsConfiguration() *ResourceTlsConfiguration {
@@ -7392,7 +7488,7 @@ type UpdateResourceTlsConfigurationV2Response struct {
 
 func (x *UpdateResourceTlsConfigurationV2Response) Reset() {
 	*x = UpdateResourceTlsConfigurationV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[127]
+	mi := &file_core_v1_resource_proto_msgTypes[129]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7404,7 +7500,7 @@ func (x *UpdateResourceTlsConfigurationV2Response) String() string {
 func (*UpdateResourceTlsConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceTlsConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[127]
+	mi := &file_core_v1_resource_proto_msgTypes[129]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7417,7 +7513,7 @@ func (x *UpdateResourceTlsConfigurationV2Response) ProtoReflect() protoreflect.M
 
 // Deprecated: Use UpdateResourceTlsConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceTlsConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{127}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{129}
 }
 
 func (x *UpdateResourceTlsConfigurationV2Response) GetResourceTlsConfiguration() *ResourceTlsConfiguration {
@@ -7436,7 +7532,7 @@ type UpdateResourceHostnameV2Request struct {
 
 func (x *UpdateResourceHostnameV2Request) Reset() {
 	*x = UpdateResourceHostnameV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[128]
+	mi := &file_core_v1_resource_proto_msgTypes[130]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7448,7 +7544,7 @@ func (x *UpdateResourceHostnameV2Request) String() string {
 func (*UpdateResourceHostnameV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[128]
+	mi := &file_core_v1_resource_proto_msgTypes[130]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7461,7 +7557,7 @@ func (x *UpdateResourceHostnameV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{128}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{130}
 }
 
 func (x *UpdateResourceHostnameV2Request) GetResourceHostname() *ResourceHostname {
@@ -7480,7 +7576,7 @@ type UpdateResourceHostnameV2Response struct {
 
 func (x *UpdateResourceHostnameV2Response) Reset() {
 	*x = UpdateResourceHostnameV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[129]
+	mi := &file_core_v1_resource_proto_msgTypes[131]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7492,7 +7588,7 @@ func (x *UpdateResourceHostnameV2Response) String() string {
 func (*UpdateResourceHostnameV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceHostnameV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[129]
+	mi := &file_core_v1_resource_proto_msgTypes[131]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7505,7 +7601,7 @@ func (x *UpdateResourceHostnameV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceHostnameV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceHostnameV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{129}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{131}
 }
 
 func (x *UpdateResourceHostnameV2Response) GetResourceHostname() *ResourceHostname {
@@ -7524,7 +7620,7 @@ type UpdateResourceClassifierConfigurationV2Request struct {
 
 func (x *UpdateResourceClassifierConfigurationV2Request) Reset() {
 	*x = UpdateResourceClassifierConfigurationV2Request{}
-	mi := &file_core_v1_resource_proto_msgTypes[130]
+	mi := &file_core_v1_resource_proto_msgTypes[132]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7536,7 +7632,7 @@ func (x *UpdateResourceClassifierConfigurationV2Request) String() string {
 func (*UpdateResourceClassifierConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[130]
+	mi := &file_core_v1_resource_proto_msgTypes[132]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7549,7 +7645,7 @@ func (x *UpdateResourceClassifierConfigurationV2Request) ProtoReflect() protoref
 
 // Deprecated: Use UpdateResourceClassifierConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{130}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{132}
 }
 
 func (x *UpdateResourceClassifierConfigurationV2Request) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -7568,7 +7664,7 @@ type UpdateResourceClassifierConfigurationV2Response struct {
 
 func (x *UpdateResourceClassifierConfigurationV2Response) Reset() {
 	*x = UpdateResourceClassifierConfigurationV2Response{}
-	mi := &file_core_v1_resource_proto_msgTypes[131]
+	mi := &file_core_v1_resource_proto_msgTypes[133]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7580,7 +7676,7 @@ func (x *UpdateResourceClassifierConfigurationV2Response) String() string {
 func (*UpdateResourceClassifierConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateResourceClassifierConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[131]
+	mi := &file_core_v1_resource_proto_msgTypes[133]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7593,7 +7689,7 @@ func (x *UpdateResourceClassifierConfigurationV2Response) ProtoReflect() protore
 
 // Deprecated: Use UpdateResourceClassifierConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateResourceClassifierConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{131}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{133}
 }
 
 func (x *UpdateResourceClassifierConfigurationV2Response) GetResourceClassifierConfiguration() *ResourceClassifierConfiguration {
@@ -7613,7 +7709,7 @@ type UpdateResourceAliasRequest struct {
 
 func (x *UpdateResourceAliasRequest) Reset() {
 	*x = UpdateResourceAliasRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[132]
+	mi := &file_core_v1_resource_proto_msgTypes[134]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7625,7 +7721,7 @@ func (x *UpdateResourceAliasRequest) String() string {
 func (*UpdateResourceAliasRequest) ProtoMessage() {}
 
 func (x *UpdateResourceAliasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[132]
+	mi := &file_core_v1_resource_proto_msgTypes[134]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7638,7 +7734,7 @@ func (x *UpdateResourceAliasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceAliasRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceAliasRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{132}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{134}
 }
 
 func (x *UpdateResourceAliasRequest) GetId() string {
@@ -7665,7 +7761,7 @@ type UpdateResourceAliasResponse struct {
 
 func (x *UpdateResourceAliasResponse) Reset() {
 	*x = UpdateResourceAliasResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[133]
+	mi := &file_core_v1_resource_proto_msgTypes[135]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7677,7 +7773,7 @@ func (x *UpdateResourceAliasResponse) String() string {
 func (*UpdateResourceAliasResponse) ProtoMessage() {}
 
 func (x *UpdateResourceAliasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[133]
+	mi := &file_core_v1_resource_proto_msgTypes[135]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7690,7 +7786,7 @@ func (x *UpdateResourceAliasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceAliasResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceAliasResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{133}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{135}
 }
 
 func (x *UpdateResourceAliasResponse) GetId() string {
@@ -7717,7 +7813,7 @@ type CreateResourceAliasRequest struct {
 
 func (x *CreateResourceAliasRequest) Reset() {
 	*x = CreateResourceAliasRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[134]
+	mi := &file_core_v1_resource_proto_msgTypes[136]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7729,7 +7825,7 @@ func (x *CreateResourceAliasRequest) String() string {
 func (*CreateResourceAliasRequest) ProtoMessage() {}
 
 func (x *CreateResourceAliasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[134]
+	mi := &file_core_v1_resource_proto_msgTypes[136]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7742,7 +7838,7 @@ func (x *CreateResourceAliasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceAliasRequest.ProtoReflect.Descriptor instead.
 func (*CreateResourceAliasRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{134}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{136}
 }
 
 func (x *CreateResourceAliasRequest) GetResourceId() string {
@@ -7769,7 +7865,7 @@ type CreateResourceAliasResponse struct {
 
 func (x *CreateResourceAliasResponse) Reset() {
 	*x = CreateResourceAliasResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[135]
+	mi := &file_core_v1_resource_proto_msgTypes[137]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7781,7 +7877,7 @@ func (x *CreateResourceAliasResponse) String() string {
 func (*CreateResourceAliasResponse) ProtoMessage() {}
 
 func (x *CreateResourceAliasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[135]
+	mi := &file_core_v1_resource_proto_msgTypes[137]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7794,7 +7890,7 @@ func (x *CreateResourceAliasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResourceAliasResponse.ProtoReflect.Descriptor instead.
 func (*CreateResourceAliasResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{135}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{137}
 }
 
 func (x *CreateResourceAliasResponse) GetId() string {
@@ -7820,7 +7916,7 @@ type DeleteResourceAliasRequest struct {
 
 func (x *DeleteResourceAliasRequest) Reset() {
 	*x = DeleteResourceAliasRequest{}
-	mi := &file_core_v1_resource_proto_msgTypes[136]
+	mi := &file_core_v1_resource_proto_msgTypes[138]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7832,7 +7928,7 @@ func (x *DeleteResourceAliasRequest) String() string {
 func (*DeleteResourceAliasRequest) ProtoMessage() {}
 
 func (x *DeleteResourceAliasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[136]
+	mi := &file_core_v1_resource_proto_msgTypes[138]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7845,7 +7941,7 @@ func (x *DeleteResourceAliasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceAliasRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceAliasRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{136}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{138}
 }
 
 func (x *DeleteResourceAliasRequest) GetId() string {
@@ -7863,7 +7959,7 @@ type DeleteResourceAliasResponse struct {
 
 func (x *DeleteResourceAliasResponse) Reset() {
 	*x = DeleteResourceAliasResponse{}
-	mi := &file_core_v1_resource_proto_msgTypes[137]
+	mi := &file_core_v1_resource_proto_msgTypes[139]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7875,7 +7971,7 @@ func (x *DeleteResourceAliasResponse) String() string {
 func (*DeleteResourceAliasResponse) ProtoMessage() {}
 
 func (x *DeleteResourceAliasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[137]
+	mi := &file_core_v1_resource_proto_msgTypes[139]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7888,7 +7984,7 @@ func (x *DeleteResourceAliasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceAliasResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceAliasResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{137}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{139}
 }
 
 type UpdateResourceRequest_UpdateResourceTag struct {
@@ -7900,7 +7996,7 @@ type UpdateResourceRequest_UpdateResourceTag struct {
 
 func (x *UpdateResourceRequest_UpdateResourceTag) Reset() {
 	*x = UpdateResourceRequest_UpdateResourceTag{}
-	mi := &file_core_v1_resource_proto_msgTypes[138]
+	mi := &file_core_v1_resource_proto_msgTypes[140]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7912,7 +8008,7 @@ func (x *UpdateResourceRequest_UpdateResourceTag) String() string {
 func (*UpdateResourceRequest_UpdateResourceTag) ProtoMessage() {}
 
 func (x *UpdateResourceRequest_UpdateResourceTag) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[138]
+	mi := &file_core_v1_resource_proto_msgTypes[140]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7925,7 +8021,7 @@ func (x *UpdateResourceRequest_UpdateResourceTag) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use UpdateResourceRequest_UpdateResourceTag.ProtoReflect.Descriptor instead.
 func (*UpdateResourceRequest_UpdateResourceTag) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{18, 0}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{20, 0}
 }
 
 func (x *UpdateResourceRequest_UpdateResourceTag) GetTags() []*ResourceTag {
@@ -7944,7 +8040,7 @@ type UpdateResourceRequest_UpdateResourceAlias struct {
 
 func (x *UpdateResourceRequest_UpdateResourceAlias) Reset() {
 	*x = UpdateResourceRequest_UpdateResourceAlias{}
-	mi := &file_core_v1_resource_proto_msgTypes[139]
+	mi := &file_core_v1_resource_proto_msgTypes[141]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7956,7 +8052,7 @@ func (x *UpdateResourceRequest_UpdateResourceAlias) String() string {
 func (*UpdateResourceRequest_UpdateResourceAlias) ProtoMessage() {}
 
 func (x *UpdateResourceRequest_UpdateResourceAlias) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_resource_proto_msgTypes[139]
+	mi := &file_core_v1_resource_proto_msgTypes[141]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7969,7 +8065,7 @@ func (x *UpdateResourceRequest_UpdateResourceAlias) ProtoReflect() protoreflect.
 
 // Deprecated: Use UpdateResourceRequest_UpdateResourceAlias.ProtoReflect.Descriptor instead.
 func (*UpdateResourceRequest_UpdateResourceAlias) Descriptor() ([]byte, []int) {
-	return file_core_v1_resource_proto_rawDescGZIP(), []int{18, 1}
+	return file_core_v1_resource_proto_rawDescGZIP(), []int{20, 1}
 }
 
 func (x *UpdateResourceRequest_UpdateResourceAlias) GetAliases() []string {
@@ -8052,7 +8148,14 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x15DeleteResourceRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"1\n" +
 	"\x16DeleteResourceResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"C\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"w\n" +
+	")UpdateResourceNativeUsersV3EnabledRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12%\n" +
+	"\aenabled\x18\x02 \x01(\bB\x06\xbaH\x03\xc8\x01\x01H\x00R\aenabled\x88\x01\x01B\n" +
+	"\n" +
+	"\b_enabled\"\x84\x01\n" +
+	"*UpdateResourceNativeUsersV3EnabledResponse\x12V\n" +
+	"\x1anative_users_v3_enabled_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x16nativeUsersV3EnabledAt\"C\n" +
 	"(DeleteResourceNativeUserSelectionRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"D\n" +
 	")DeleteResourceNativeUserSelectionResponse\x12\x17\n" +
@@ -8556,14 +8659,15 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1aIAM_NATIVE_USER_TYPE_AZURE\x10\x02*a\n" +
 	"\x12HTTPAPIKeyLocation\x12 \n" +
 	"\x1cHTTP_API_KEY_LOCATION_HEADER\x10\x00\x12)\n" +
-	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xe5Y\n" +
+	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xbd[\n" +
 	"\x0fResourceService\x12|\n" +
 	"\vGetResource\x12\x1b.core.v1.GetResourceRequest\x1a\x1c.core.v1.GetResourceResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.ResourceService/GetResource\x90\x02\x01\x12\x84\x01\n" +
 	"\rListResources\x12\x1d.core.v1.ListResourcesRequest\x1a\x1e.core.v1.ListResourcesResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/ListResources\x90\x02\x01\x12\x85\x01\n" +
 	"\x0eCreateResource\x12\x1e.core.v1.CreateResourceRequest\x1a\x1f.core.v1.CreateResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/CreateResource\x12\x85\x01\n" +
 	"\x0eUpdateResource\x12\x1e.core.v1.UpdateResourceRequest\x1a\x1f.core.v1.UpdateResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/UpdateResource\x12\x8d\x01\n" +
 	"\x10UpdateResourceV2\x12 .core.v1.UpdateResourceV2Request\x1a!.core.v1.UpdateResourceV2Response\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/UpdateResourceV2\x12\x85\x01\n" +
-	"\x0eDeleteResource\x12\x1e.core.v1.DeleteResourceRequest\x1a\x1f.core.v1.DeleteResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/DeleteResource\x12\xd1\x01\n" +
+	"\x0eDeleteResource\x12\x1e.core.v1.DeleteResourceRequest\x1a\x1f.core.v1.DeleteResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/DeleteResource\x12\xd5\x01\n" +
+	"\"UpdateResourceNativeUsersV3Enabled\x122.core.v1.UpdateResourceNativeUsersV3EnabledRequest\x1a3.core.v1.UpdateResourceNativeUsersV3EnabledResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/UpdateResourceNativeUsersV3Enabled\x12\xd1\x01\n" +
 	"!DeleteResourceNativeUserSelection\x121.core.v1.DeleteResourceNativeUserSelectionRequest\x1a2.core.v1.DeleteResourceNativeUserSelectionResponse\"E\x82\xd3\xe4\x93\x02?:\x01*\":/core.v1.ResourceService/DeleteResourceNativeUserSelection\x12\x8d\x01\n" +
 	"\x10CreateNativeUser\x12 .core.v1.CreateNativeUserRequest\x1a!.core.v1.CreateNativeUserResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/CreateNativeUser\x12\x95\x01\n" +
 	"\x12CreateNativeUserV2\x12\".core.v1.CreateNativeUserV2Request\x1a#.core.v1.CreateNativeUserV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ResourceService/CreateNativeUserV2\x12\x84\x01\n" +
@@ -8637,7 +8741,7 @@ func file_core_v1_resource_proto_rawDescGZIP() []byte {
 }
 
 var file_core_v1_resource_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_core_v1_resource_proto_msgTypes = make([]protoimpl.MessageInfo, 140)
+var file_core_v1_resource_proto_msgTypes = make([]protoimpl.MessageInfo, 142)
 var file_core_v1_resource_proto_goTypes = []any{
 	(IAMNativeUserType)(0),                                  // 0: core.v1.IAMNativeUserType
 	(HTTPAPIKeyLocation)(0),                                 // 1: core.v1.HTTPAPIKeyLocation
@@ -8657,376 +8761,381 @@ var file_core_v1_resource_proto_goTypes = []any{
 	(*ListResourcesResponse)(nil),                           // 15: core.v1.ListResourcesResponse
 	(*DeleteResourceRequest)(nil),                           // 16: core.v1.DeleteResourceRequest
 	(*DeleteResourceResponse)(nil),                          // 17: core.v1.DeleteResourceResponse
-	(*DeleteResourceNativeUserSelectionRequest)(nil),        // 18: core.v1.DeleteResourceNativeUserSelectionRequest
-	(*DeleteResourceNativeUserSelectionResponse)(nil),       // 19: core.v1.DeleteResourceNativeUserSelectionResponse
-	(*UpdateResourceRequest)(nil),                           // 20: core.v1.UpdateResourceRequest
-	(*UpdateResourceResponse)(nil),                          // 21: core.v1.UpdateResourceResponse
-	(*UpdateResourceV2Request)(nil),                         // 22: core.v1.UpdateResourceV2Request
-	(*UpdateResourceV2Response)(nil),                        // 23: core.v1.UpdateResourceV2Response
-	(*BasicNativeUser)(nil),                                 // 24: core.v1.BasicNativeUser
-	(*IAMNativeUser)(nil),                                   // 25: core.v1.IAMNativeUser
-	(*KubernetesNativeUser)(nil),                            // 26: core.v1.KubernetesNativeUser
-	(*SSHKeyNativeUser)(nil),                                // 27: core.v1.SSHKeyNativeUser
-	(*SnowflakeKeyNativeUser)(nil),                          // 28: core.v1.SnowflakeKeyNativeUser
-	(*HTTPBasicNativeUser)(nil),                             // 29: core.v1.HTTPBasicNativeUser
-	(*HTTPBearerNativeUser)(nil),                            // 30: core.v1.HTTPBearerNativeUser
-	(*HTTPAPIKeyNativeUser)(nil),                            // 31: core.v1.HTTPAPIKeyNativeUser
-	(*NativeUser)(nil),                                      // 32: core.v1.NativeUser
-	(*NativeUserLink)(nil),                                  // 33: core.v1.NativeUserLink
-	(*CreateNativeUserRequest)(nil),                         // 34: core.v1.CreateNativeUserRequest
-	(*CreateNativeUserResponse)(nil),                        // 35: core.v1.CreateNativeUserResponse
-	(*CreateNativeUserV2Request)(nil),                       // 36: core.v1.CreateNativeUserV2Request
-	(*CreateNativeUserV2Response)(nil),                      // 37: core.v1.CreateNativeUserV2Response
-	(*ListNativeUsersRequest)(nil),                          // 38: core.v1.ListNativeUsersRequest
-	(*ListNativeUsersResponse)(nil),                         // 39: core.v1.ListNativeUsersResponse
-	(*GetNativeUserRequest)(nil),                            // 40: core.v1.GetNativeUserRequest
-	(*GetNativeUserResponse)(nil),                           // 41: core.v1.GetNativeUserResponse
-	(*DeleteNativeUserRequest)(nil),                         // 42: core.v1.DeleteNativeUserRequest
-	(*DeleteNativeUserResponse)(nil),                        // 43: core.v1.DeleteNativeUserResponse
-	(*UpdateNativeUserRequest)(nil),                         // 44: core.v1.UpdateNativeUserRequest
-	(*UpdateNativeUserResponse)(nil),                        // 45: core.v1.UpdateNativeUserResponse
-	(*UpdateNativeUserV2Request)(nil),                       // 46: core.v1.UpdateNativeUserV2Request
-	(*UpdateNativeUserV2Response)(nil),                      // 47: core.v1.UpdateNativeUserV2Response
-	(*CreateNativeUserIdentityLinkRequest)(nil),             // 48: core.v1.CreateNativeUserIdentityLinkRequest
-	(*CreateNativeUserIdentityLinkResponse)(nil),            // 49: core.v1.CreateNativeUserIdentityLinkResponse
-	(*GetNativeUserIdentityLinkRequest)(nil),                // 50: core.v1.GetNativeUserIdentityLinkRequest
-	(*GetNativeUserIdentityLinkResponse)(nil),               // 51: core.v1.GetNativeUserIdentityLinkResponse
-	(*ListNativeUserIdentityLinksRequest)(nil),              // 52: core.v1.ListNativeUserIdentityLinksRequest
-	(*ListNativeUserIdentityLinksResponse)(nil),             // 53: core.v1.ListNativeUserIdentityLinksResponse
-	(*DeleteNativeUserIdentityLinkRequest)(nil),             // 54: core.v1.DeleteNativeUserIdentityLinkRequest
-	(*DeleteNativeUserIdentityLinkResponse)(nil),            // 55: core.v1.DeleteNativeUserIdentityLinkResponse
-	(*UpdateNativeUserIdentityLinkRequest)(nil),             // 56: core.v1.UpdateNativeUserIdentityLinkRequest
-	(*UpdateNativeUserIdentityLinkResponse)(nil),            // 57: core.v1.UpdateNativeUserIdentityLinkResponse
-	(*GetDataDiscoveryConfigurationRequest)(nil),            // 58: core.v1.GetDataDiscoveryConfigurationRequest
-	(*GetDataDiscoveryConfigurationResponse)(nil),           // 59: core.v1.GetDataDiscoveryConfigurationResponse
-	(*ListDataDiscoveryConfigurationsRequest)(nil),          // 60: core.v1.ListDataDiscoveryConfigurationsRequest
-	(*ListDataDiscoveryConfigurationsResponse)(nil),         // 61: core.v1.ListDataDiscoveryConfigurationsResponse
-	(*CreateDataDiscoveryConfigurationRequest)(nil),         // 62: core.v1.CreateDataDiscoveryConfigurationRequest
-	(*CreateDataDiscoveryConfigurationResponse)(nil),        // 63: core.v1.CreateDataDiscoveryConfigurationResponse
-	(*UpdateDataDiscoveryConfigurationRequest)(nil),         // 64: core.v1.UpdateDataDiscoveryConfigurationRequest
-	(*UpdateDataDiscoveryConfigurationResponse)(nil),        // 65: core.v1.UpdateDataDiscoveryConfigurationResponse
-	(*DeleteDataDiscoveryConfigurationRequest)(nil),         // 66: core.v1.DeleteDataDiscoveryConfigurationRequest
-	(*DeleteDataDiscoveryConfigurationResponse)(nil),        // 67: core.v1.DeleteDataDiscoveryConfigurationResponse
-	(*CreateResourceTlsConfigurationRequest)(nil),           // 68: core.v1.CreateResourceTlsConfigurationRequest
-	(*CreateResourceTlsConfigurationResponse)(nil),          // 69: core.v1.CreateResourceTlsConfigurationResponse
-	(*GetResourceTlsConfigurationRequest)(nil),              // 70: core.v1.GetResourceTlsConfigurationRequest
-	(*GetResourceTlsConfigurationResponse)(nil),             // 71: core.v1.GetResourceTlsConfigurationResponse
-	(*UpdateResourceTlsConfigurationRequest)(nil),           // 72: core.v1.UpdateResourceTlsConfigurationRequest
-	(*UpdateResourceTlsConfigurationResponse)(nil),          // 73: core.v1.UpdateResourceTlsConfigurationResponse
-	(*DeleteResourceTlsConfigurationRequest)(nil),           // 74: core.v1.DeleteResourceTlsConfigurationRequest
-	(*DeleteResourceTlsConfigurationResponse)(nil),          // 75: core.v1.DeleteResourceTlsConfigurationResponse
-	(*CreateResourceSshHostKeyRequest)(nil),                 // 76: core.v1.CreateResourceSshHostKeyRequest
-	(*CreateResourceSshHostKeyResponse)(nil),                // 77: core.v1.CreateResourceSshHostKeyResponse
-	(*GetResourceSshHostKeyRequest)(nil),                    // 78: core.v1.GetResourceSshHostKeyRequest
-	(*GetResourceSshHostKeyResponse)(nil),                   // 79: core.v1.GetResourceSshHostKeyResponse
-	(*ListResourceSshHostKeysRequest)(nil),                  // 80: core.v1.ListResourceSshHostKeysRequest
-	(*ListResourceSshHostKeysResponse)(nil),                 // 81: core.v1.ListResourceSshHostKeysResponse
-	(*UpdateResourceSshHostKeyRequest)(nil),                 // 82: core.v1.UpdateResourceSshHostKeyRequest
-	(*UpdateResourceSshHostKeyResponse)(nil),                // 83: core.v1.UpdateResourceSshHostKeyResponse
-	(*DeleteResourceSshHostKeyRequest)(nil),                 // 84: core.v1.DeleteResourceSshHostKeyRequest
-	(*DeleteResourceSshHostKeyResponse)(nil),                // 85: core.v1.DeleteResourceSshHostKeyResponse
-	(*CreateResourceDialConfigurationRequest)(nil),          // 86: core.v1.CreateResourceDialConfigurationRequest
-	(*CreateResourceDialConfigurationResponse)(nil),         // 87: core.v1.CreateResourceDialConfigurationResponse
-	(*GetResourceDialConfigurationRequest)(nil),             // 88: core.v1.GetResourceDialConfigurationRequest
-	(*GetResourceDialConfigurationResponse)(nil),            // 89: core.v1.GetResourceDialConfigurationResponse
-	(*UpdateResourceDialConfigurationRequest)(nil),          // 90: core.v1.UpdateResourceDialConfigurationRequest
-	(*UpdateResourceDialConfigurationResponse)(nil),         // 91: core.v1.UpdateResourceDialConfigurationResponse
-	(*DeleteResourceDialConfigurationRequest)(nil),          // 92: core.v1.DeleteResourceDialConfigurationRequest
-	(*DeleteResourceDialConfigurationResponse)(nil),         // 93: core.v1.DeleteResourceDialConfigurationResponse
-	(*CreateResourceHostnameRequest)(nil),                   // 94: core.v1.CreateResourceHostnameRequest
-	(*CreateResourceHostnameResponse)(nil),                  // 95: core.v1.CreateResourceHostnameResponse
-	(*GetResourceHostnameRequest)(nil),                      // 96: core.v1.GetResourceHostnameRequest
-	(*GetResourceHostnameResponse)(nil),                     // 97: core.v1.GetResourceHostnameResponse
-	(*ListResourceHostnamesRequest)(nil),                    // 98: core.v1.ListResourceHostnamesRequest
-	(*ListResourceHostnamesResponse)(nil),                   // 99: core.v1.ListResourceHostnamesResponse
-	(*UpdateResourceHostnameRequest)(nil),                   // 100: core.v1.UpdateResourceHostnameRequest
-	(*UpdateResourceHostnameResponse)(nil),                  // 101: core.v1.UpdateResourceHostnameResponse
-	(*DeleteResourceHostnameRequest)(nil),                   // 102: core.v1.DeleteResourceHostnameRequest
-	(*DeleteResourceHostnameResponse)(nil),                  // 103: core.v1.DeleteResourceHostnameResponse
-	(*CreateResourceClassifierConfigurationRequest)(nil),    // 104: core.v1.CreateResourceClassifierConfigurationRequest
-	(*CreateResourceClassifierConfigurationResponse)(nil),   // 105: core.v1.CreateResourceClassifierConfigurationResponse
-	(*ListResourceClassifierConfigurationsRequest)(nil),     // 106: core.v1.ListResourceClassifierConfigurationsRequest
-	(*ListResourceClassifierConfigurationsResponse)(nil),    // 107: core.v1.ListResourceClassifierConfigurationsResponse
-	(*GetResourceClassifierConfigurationRequest)(nil),       // 108: core.v1.GetResourceClassifierConfigurationRequest
-	(*GetResourceClassifierConfigurationResponse)(nil),      // 109: core.v1.GetResourceClassifierConfigurationResponse
-	(*UpdateResourceClassifierConfigurationRequest)(nil),    // 110: core.v1.UpdateResourceClassifierConfigurationRequest
-	(*UpdateResourceClassifierConfigurationResponse)(nil),   // 111: core.v1.UpdateResourceClassifierConfigurationResponse
-	(*DeleteResourceClassifierConfigurationRequest)(nil),    // 112: core.v1.DeleteResourceClassifierConfigurationRequest
-	(*DeleteResourceClassifierConfigurationResponse)(nil),   // 113: core.v1.DeleteResourceClassifierConfigurationResponse
-	(*ListResourceConnectorAccessRequest)(nil),              // 114: core.v1.ListResourceConnectorAccessRequest
-	(*ListResourceConnectorAccessResponse)(nil),             // 115: core.v1.ListResourceConnectorAccessResponse
-	(*CreateResourceTagRequest)(nil),                        // 116: core.v1.CreateResourceTagRequest
-	(*CreateResourceTagResponse)(nil),                       // 117: core.v1.CreateResourceTagResponse
-	(*DeleteResourceTagRequest)(nil),                        // 118: core.v1.DeleteResourceTagRequest
-	(*DeleteResourceTagResponse)(nil),                       // 119: core.v1.DeleteResourceTagResponse
-	(*UpdateResourceTagRequest)(nil),                        // 120: core.v1.UpdateResourceTagRequest
-	(*UpdateResourceTagResponse)(nil),                       // 121: core.v1.UpdateResourceTagResponse
-	(*UpdateNativeUserIdentityLinkV2Request)(nil),           // 122: core.v1.UpdateNativeUserIdentityLinkV2Request
-	(*UpdateNativeUserIdentityLinkV2Response)(nil),          // 123: core.v1.UpdateNativeUserIdentityLinkV2Response
-	(*UpdateDataDiscoveryConfigurationV2Request)(nil),       // 124: core.v1.UpdateDataDiscoveryConfigurationV2Request
-	(*UpdateDataDiscoveryConfigurationV2Response)(nil),      // 125: core.v1.UpdateDataDiscoveryConfigurationV2Response
-	(*UpdateResourceHealthCheckV2Request)(nil),              // 126: core.v1.UpdateResourceHealthCheckV2Request
-	(*UpdateResourceHealthCheckV2Response)(nil),             // 127: core.v1.UpdateResourceHealthCheckV2Response
-	(*UpdateResourceTlsConfigurationV2Request)(nil),         // 128: core.v1.UpdateResourceTlsConfigurationV2Request
-	(*UpdateResourceTlsConfigurationV2Response)(nil),        // 129: core.v1.UpdateResourceTlsConfigurationV2Response
-	(*UpdateResourceHostnameV2Request)(nil),                 // 130: core.v1.UpdateResourceHostnameV2Request
-	(*UpdateResourceHostnameV2Response)(nil),                // 131: core.v1.UpdateResourceHostnameV2Response
-	(*UpdateResourceClassifierConfigurationV2Request)(nil),  // 132: core.v1.UpdateResourceClassifierConfigurationV2Request
-	(*UpdateResourceClassifierConfigurationV2Response)(nil), // 133: core.v1.UpdateResourceClassifierConfigurationV2Response
-	(*UpdateResourceAliasRequest)(nil),                      // 134: core.v1.UpdateResourceAliasRequest
-	(*UpdateResourceAliasResponse)(nil),                     // 135: core.v1.UpdateResourceAliasResponse
-	(*CreateResourceAliasRequest)(nil),                      // 136: core.v1.CreateResourceAliasRequest
-	(*CreateResourceAliasResponse)(nil),                     // 137: core.v1.CreateResourceAliasResponse
-	(*DeleteResourceAliasRequest)(nil),                      // 138: core.v1.DeleteResourceAliasRequest
-	(*DeleteResourceAliasResponse)(nil),                     // 139: core.v1.DeleteResourceAliasResponse
-	(*UpdateResourceRequest_UpdateResourceTag)(nil),         // 140: core.v1.UpdateResourceRequest.UpdateResourceTag
-	(*UpdateResourceRequest_UpdateResourceAlias)(nil),       // 141: core.v1.UpdateResourceRequest.UpdateResourceAlias
-	(*ResourceHealthCheck)(nil),                             // 142: core.v1.ResourceHealthCheck
-	(*ResourceTag)(nil),                                     // 143: core.v1.ResourceTag
-	(*Resource)(nil),                                        // 144: core.v1.Resource
-	(*Filter)(nil),                                          // 145: core.v1.Filter
-	(*ListMetadata)(nil),                                    // 146: core.v1.ListMetadata
-	(*timestamppb.Timestamp)(nil),                           // 147: google.protobuf.Timestamp
-	(*User)(nil),                                            // 148: core.v1.User
-	(*Group)(nil),                                           // 149: core.v1.Group
-	(*ResourceHostname)(nil),                                // 150: core.v1.ResourceHostname
-	(*DataDiscoveryConfiguration)(nil),                      // 151: core.v1.DataDiscoveryConfiguration
-	(*ResourceTlsConfiguration)(nil),                        // 152: core.v1.ResourceTlsConfiguration
-	(*ResourceSshHostKey)(nil),                              // 153: core.v1.ResourceSshHostKey
-	(*ResourceDialConfiguration)(nil),                       // 154: core.v1.ResourceDialConfiguration
-	(*ResourceClassifierConfiguration)(nil),                 // 155: core.v1.ResourceClassifierConfiguration
-	(*ResourceConnectorAccess)(nil),                         // 156: core.v1.ResourceConnectorAccess
+	(*UpdateResourceNativeUsersV3EnabledRequest)(nil),       // 18: core.v1.UpdateResourceNativeUsersV3EnabledRequest
+	(*UpdateResourceNativeUsersV3EnabledResponse)(nil),      // 19: core.v1.UpdateResourceNativeUsersV3EnabledResponse
+	(*DeleteResourceNativeUserSelectionRequest)(nil),        // 20: core.v1.DeleteResourceNativeUserSelectionRequest
+	(*DeleteResourceNativeUserSelectionResponse)(nil),       // 21: core.v1.DeleteResourceNativeUserSelectionResponse
+	(*UpdateResourceRequest)(nil),                           // 22: core.v1.UpdateResourceRequest
+	(*UpdateResourceResponse)(nil),                          // 23: core.v1.UpdateResourceResponse
+	(*UpdateResourceV2Request)(nil),                         // 24: core.v1.UpdateResourceV2Request
+	(*UpdateResourceV2Response)(nil),                        // 25: core.v1.UpdateResourceV2Response
+	(*BasicNativeUser)(nil),                                 // 26: core.v1.BasicNativeUser
+	(*IAMNativeUser)(nil),                                   // 27: core.v1.IAMNativeUser
+	(*KubernetesNativeUser)(nil),                            // 28: core.v1.KubernetesNativeUser
+	(*SSHKeyNativeUser)(nil),                                // 29: core.v1.SSHKeyNativeUser
+	(*SnowflakeKeyNativeUser)(nil),                          // 30: core.v1.SnowflakeKeyNativeUser
+	(*HTTPBasicNativeUser)(nil),                             // 31: core.v1.HTTPBasicNativeUser
+	(*HTTPBearerNativeUser)(nil),                            // 32: core.v1.HTTPBearerNativeUser
+	(*HTTPAPIKeyNativeUser)(nil),                            // 33: core.v1.HTTPAPIKeyNativeUser
+	(*NativeUser)(nil),                                      // 34: core.v1.NativeUser
+	(*NativeUserLink)(nil),                                  // 35: core.v1.NativeUserLink
+	(*CreateNativeUserRequest)(nil),                         // 36: core.v1.CreateNativeUserRequest
+	(*CreateNativeUserResponse)(nil),                        // 37: core.v1.CreateNativeUserResponse
+	(*CreateNativeUserV2Request)(nil),                       // 38: core.v1.CreateNativeUserV2Request
+	(*CreateNativeUserV2Response)(nil),                      // 39: core.v1.CreateNativeUserV2Response
+	(*ListNativeUsersRequest)(nil),                          // 40: core.v1.ListNativeUsersRequest
+	(*ListNativeUsersResponse)(nil),                         // 41: core.v1.ListNativeUsersResponse
+	(*GetNativeUserRequest)(nil),                            // 42: core.v1.GetNativeUserRequest
+	(*GetNativeUserResponse)(nil),                           // 43: core.v1.GetNativeUserResponse
+	(*DeleteNativeUserRequest)(nil),                         // 44: core.v1.DeleteNativeUserRequest
+	(*DeleteNativeUserResponse)(nil),                        // 45: core.v1.DeleteNativeUserResponse
+	(*UpdateNativeUserRequest)(nil),                         // 46: core.v1.UpdateNativeUserRequest
+	(*UpdateNativeUserResponse)(nil),                        // 47: core.v1.UpdateNativeUserResponse
+	(*UpdateNativeUserV2Request)(nil),                       // 48: core.v1.UpdateNativeUserV2Request
+	(*UpdateNativeUserV2Response)(nil),                      // 49: core.v1.UpdateNativeUserV2Response
+	(*CreateNativeUserIdentityLinkRequest)(nil),             // 50: core.v1.CreateNativeUserIdentityLinkRequest
+	(*CreateNativeUserIdentityLinkResponse)(nil),            // 51: core.v1.CreateNativeUserIdentityLinkResponse
+	(*GetNativeUserIdentityLinkRequest)(nil),                // 52: core.v1.GetNativeUserIdentityLinkRequest
+	(*GetNativeUserIdentityLinkResponse)(nil),               // 53: core.v1.GetNativeUserIdentityLinkResponse
+	(*ListNativeUserIdentityLinksRequest)(nil),              // 54: core.v1.ListNativeUserIdentityLinksRequest
+	(*ListNativeUserIdentityLinksResponse)(nil),             // 55: core.v1.ListNativeUserIdentityLinksResponse
+	(*DeleteNativeUserIdentityLinkRequest)(nil),             // 56: core.v1.DeleteNativeUserIdentityLinkRequest
+	(*DeleteNativeUserIdentityLinkResponse)(nil),            // 57: core.v1.DeleteNativeUserIdentityLinkResponse
+	(*UpdateNativeUserIdentityLinkRequest)(nil),             // 58: core.v1.UpdateNativeUserIdentityLinkRequest
+	(*UpdateNativeUserIdentityLinkResponse)(nil),            // 59: core.v1.UpdateNativeUserIdentityLinkResponse
+	(*GetDataDiscoveryConfigurationRequest)(nil),            // 60: core.v1.GetDataDiscoveryConfigurationRequest
+	(*GetDataDiscoveryConfigurationResponse)(nil),           // 61: core.v1.GetDataDiscoveryConfigurationResponse
+	(*ListDataDiscoveryConfigurationsRequest)(nil),          // 62: core.v1.ListDataDiscoveryConfigurationsRequest
+	(*ListDataDiscoveryConfigurationsResponse)(nil),         // 63: core.v1.ListDataDiscoveryConfigurationsResponse
+	(*CreateDataDiscoveryConfigurationRequest)(nil),         // 64: core.v1.CreateDataDiscoveryConfigurationRequest
+	(*CreateDataDiscoveryConfigurationResponse)(nil),        // 65: core.v1.CreateDataDiscoveryConfigurationResponse
+	(*UpdateDataDiscoveryConfigurationRequest)(nil),         // 66: core.v1.UpdateDataDiscoveryConfigurationRequest
+	(*UpdateDataDiscoveryConfigurationResponse)(nil),        // 67: core.v1.UpdateDataDiscoveryConfigurationResponse
+	(*DeleteDataDiscoveryConfigurationRequest)(nil),         // 68: core.v1.DeleteDataDiscoveryConfigurationRequest
+	(*DeleteDataDiscoveryConfigurationResponse)(nil),        // 69: core.v1.DeleteDataDiscoveryConfigurationResponse
+	(*CreateResourceTlsConfigurationRequest)(nil),           // 70: core.v1.CreateResourceTlsConfigurationRequest
+	(*CreateResourceTlsConfigurationResponse)(nil),          // 71: core.v1.CreateResourceTlsConfigurationResponse
+	(*GetResourceTlsConfigurationRequest)(nil),              // 72: core.v1.GetResourceTlsConfigurationRequest
+	(*GetResourceTlsConfigurationResponse)(nil),             // 73: core.v1.GetResourceTlsConfigurationResponse
+	(*UpdateResourceTlsConfigurationRequest)(nil),           // 74: core.v1.UpdateResourceTlsConfigurationRequest
+	(*UpdateResourceTlsConfigurationResponse)(nil),          // 75: core.v1.UpdateResourceTlsConfigurationResponse
+	(*DeleteResourceTlsConfigurationRequest)(nil),           // 76: core.v1.DeleteResourceTlsConfigurationRequest
+	(*DeleteResourceTlsConfigurationResponse)(nil),          // 77: core.v1.DeleteResourceTlsConfigurationResponse
+	(*CreateResourceSshHostKeyRequest)(nil),                 // 78: core.v1.CreateResourceSshHostKeyRequest
+	(*CreateResourceSshHostKeyResponse)(nil),                // 79: core.v1.CreateResourceSshHostKeyResponse
+	(*GetResourceSshHostKeyRequest)(nil),                    // 80: core.v1.GetResourceSshHostKeyRequest
+	(*GetResourceSshHostKeyResponse)(nil),                   // 81: core.v1.GetResourceSshHostKeyResponse
+	(*ListResourceSshHostKeysRequest)(nil),                  // 82: core.v1.ListResourceSshHostKeysRequest
+	(*ListResourceSshHostKeysResponse)(nil),                 // 83: core.v1.ListResourceSshHostKeysResponse
+	(*UpdateResourceSshHostKeyRequest)(nil),                 // 84: core.v1.UpdateResourceSshHostKeyRequest
+	(*UpdateResourceSshHostKeyResponse)(nil),                // 85: core.v1.UpdateResourceSshHostKeyResponse
+	(*DeleteResourceSshHostKeyRequest)(nil),                 // 86: core.v1.DeleteResourceSshHostKeyRequest
+	(*DeleteResourceSshHostKeyResponse)(nil),                // 87: core.v1.DeleteResourceSshHostKeyResponse
+	(*CreateResourceDialConfigurationRequest)(nil),          // 88: core.v1.CreateResourceDialConfigurationRequest
+	(*CreateResourceDialConfigurationResponse)(nil),         // 89: core.v1.CreateResourceDialConfigurationResponse
+	(*GetResourceDialConfigurationRequest)(nil),             // 90: core.v1.GetResourceDialConfigurationRequest
+	(*GetResourceDialConfigurationResponse)(nil),            // 91: core.v1.GetResourceDialConfigurationResponse
+	(*UpdateResourceDialConfigurationRequest)(nil),          // 92: core.v1.UpdateResourceDialConfigurationRequest
+	(*UpdateResourceDialConfigurationResponse)(nil),         // 93: core.v1.UpdateResourceDialConfigurationResponse
+	(*DeleteResourceDialConfigurationRequest)(nil),          // 94: core.v1.DeleteResourceDialConfigurationRequest
+	(*DeleteResourceDialConfigurationResponse)(nil),         // 95: core.v1.DeleteResourceDialConfigurationResponse
+	(*CreateResourceHostnameRequest)(nil),                   // 96: core.v1.CreateResourceHostnameRequest
+	(*CreateResourceHostnameResponse)(nil),                  // 97: core.v1.CreateResourceHostnameResponse
+	(*GetResourceHostnameRequest)(nil),                      // 98: core.v1.GetResourceHostnameRequest
+	(*GetResourceHostnameResponse)(nil),                     // 99: core.v1.GetResourceHostnameResponse
+	(*ListResourceHostnamesRequest)(nil),                    // 100: core.v1.ListResourceHostnamesRequest
+	(*ListResourceHostnamesResponse)(nil),                   // 101: core.v1.ListResourceHostnamesResponse
+	(*UpdateResourceHostnameRequest)(nil),                   // 102: core.v1.UpdateResourceHostnameRequest
+	(*UpdateResourceHostnameResponse)(nil),                  // 103: core.v1.UpdateResourceHostnameResponse
+	(*DeleteResourceHostnameRequest)(nil),                   // 104: core.v1.DeleteResourceHostnameRequest
+	(*DeleteResourceHostnameResponse)(nil),                  // 105: core.v1.DeleteResourceHostnameResponse
+	(*CreateResourceClassifierConfigurationRequest)(nil),    // 106: core.v1.CreateResourceClassifierConfigurationRequest
+	(*CreateResourceClassifierConfigurationResponse)(nil),   // 107: core.v1.CreateResourceClassifierConfigurationResponse
+	(*ListResourceClassifierConfigurationsRequest)(nil),     // 108: core.v1.ListResourceClassifierConfigurationsRequest
+	(*ListResourceClassifierConfigurationsResponse)(nil),    // 109: core.v1.ListResourceClassifierConfigurationsResponse
+	(*GetResourceClassifierConfigurationRequest)(nil),       // 110: core.v1.GetResourceClassifierConfigurationRequest
+	(*GetResourceClassifierConfigurationResponse)(nil),      // 111: core.v1.GetResourceClassifierConfigurationResponse
+	(*UpdateResourceClassifierConfigurationRequest)(nil),    // 112: core.v1.UpdateResourceClassifierConfigurationRequest
+	(*UpdateResourceClassifierConfigurationResponse)(nil),   // 113: core.v1.UpdateResourceClassifierConfigurationResponse
+	(*DeleteResourceClassifierConfigurationRequest)(nil),    // 114: core.v1.DeleteResourceClassifierConfigurationRequest
+	(*DeleteResourceClassifierConfigurationResponse)(nil),   // 115: core.v1.DeleteResourceClassifierConfigurationResponse
+	(*ListResourceConnectorAccessRequest)(nil),              // 116: core.v1.ListResourceConnectorAccessRequest
+	(*ListResourceConnectorAccessResponse)(nil),             // 117: core.v1.ListResourceConnectorAccessResponse
+	(*CreateResourceTagRequest)(nil),                        // 118: core.v1.CreateResourceTagRequest
+	(*CreateResourceTagResponse)(nil),                       // 119: core.v1.CreateResourceTagResponse
+	(*DeleteResourceTagRequest)(nil),                        // 120: core.v1.DeleteResourceTagRequest
+	(*DeleteResourceTagResponse)(nil),                       // 121: core.v1.DeleteResourceTagResponse
+	(*UpdateResourceTagRequest)(nil),                        // 122: core.v1.UpdateResourceTagRequest
+	(*UpdateResourceTagResponse)(nil),                       // 123: core.v1.UpdateResourceTagResponse
+	(*UpdateNativeUserIdentityLinkV2Request)(nil),           // 124: core.v1.UpdateNativeUserIdentityLinkV2Request
+	(*UpdateNativeUserIdentityLinkV2Response)(nil),          // 125: core.v1.UpdateNativeUserIdentityLinkV2Response
+	(*UpdateDataDiscoveryConfigurationV2Request)(nil),       // 126: core.v1.UpdateDataDiscoveryConfigurationV2Request
+	(*UpdateDataDiscoveryConfigurationV2Response)(nil),      // 127: core.v1.UpdateDataDiscoveryConfigurationV2Response
+	(*UpdateResourceHealthCheckV2Request)(nil),              // 128: core.v1.UpdateResourceHealthCheckV2Request
+	(*UpdateResourceHealthCheckV2Response)(nil),             // 129: core.v1.UpdateResourceHealthCheckV2Response
+	(*UpdateResourceTlsConfigurationV2Request)(nil),         // 130: core.v1.UpdateResourceTlsConfigurationV2Request
+	(*UpdateResourceTlsConfigurationV2Response)(nil),        // 131: core.v1.UpdateResourceTlsConfigurationV2Response
+	(*UpdateResourceHostnameV2Request)(nil),                 // 132: core.v1.UpdateResourceHostnameV2Request
+	(*UpdateResourceHostnameV2Response)(nil),                // 133: core.v1.UpdateResourceHostnameV2Response
+	(*UpdateResourceClassifierConfigurationV2Request)(nil),  // 134: core.v1.UpdateResourceClassifierConfigurationV2Request
+	(*UpdateResourceClassifierConfigurationV2Response)(nil), // 135: core.v1.UpdateResourceClassifierConfigurationV2Response
+	(*UpdateResourceAliasRequest)(nil),                      // 136: core.v1.UpdateResourceAliasRequest
+	(*UpdateResourceAliasResponse)(nil),                     // 137: core.v1.UpdateResourceAliasResponse
+	(*CreateResourceAliasRequest)(nil),                      // 138: core.v1.CreateResourceAliasRequest
+	(*CreateResourceAliasResponse)(nil),                     // 139: core.v1.CreateResourceAliasResponse
+	(*DeleteResourceAliasRequest)(nil),                      // 140: core.v1.DeleteResourceAliasRequest
+	(*DeleteResourceAliasResponse)(nil),                     // 141: core.v1.DeleteResourceAliasResponse
+	(*UpdateResourceRequest_UpdateResourceTag)(nil),         // 142: core.v1.UpdateResourceRequest.UpdateResourceTag
+	(*UpdateResourceRequest_UpdateResourceAlias)(nil),       // 143: core.v1.UpdateResourceRequest.UpdateResourceAlias
+	(*ResourceHealthCheck)(nil),                             // 144: core.v1.ResourceHealthCheck
+	(*ResourceTag)(nil),                                     // 145: core.v1.ResourceTag
+	(*Resource)(nil),                                        // 146: core.v1.Resource
+	(*Filter)(nil),                                          // 147: core.v1.Filter
+	(*ListMetadata)(nil),                                    // 148: core.v1.ListMetadata
+	(*timestamppb.Timestamp)(nil),                           // 149: google.protobuf.Timestamp
+	(*User)(nil),                                            // 150: core.v1.User
+	(*Group)(nil),                                           // 151: core.v1.Group
+	(*ResourceHostname)(nil),                                // 152: core.v1.ResourceHostname
+	(*DataDiscoveryConfiguration)(nil),                      // 153: core.v1.DataDiscoveryConfiguration
+	(*ResourceTlsConfiguration)(nil),                        // 154: core.v1.ResourceTlsConfiguration
+	(*ResourceSshHostKey)(nil),                              // 155: core.v1.ResourceSshHostKey
+	(*ResourceDialConfiguration)(nil),                       // 156: core.v1.ResourceDialConfiguration
+	(*ResourceClassifierConfiguration)(nil),                 // 157: core.v1.ResourceClassifierConfiguration
+	(*ResourceConnectorAccess)(nil),                         // 158: core.v1.ResourceConnectorAccess
 }
 var file_core_v1_resource_proto_depIdxs = []int32{
-	142, // 0: core.v1.CreateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	142, // 1: core.v1.GetResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	142, // 2: core.v1.UpdateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	143, // 3: core.v1.CreateResourceRequest.tags:type_name -> core.v1.ResourceTag
-	144, // 4: core.v1.CreateResourceResponse.resource:type_name -> core.v1.Resource
-	144, // 5: core.v1.GetResourceResponse.resource:type_name -> core.v1.Resource
-	145, // 6: core.v1.ListResourcesRequest.filter:type_name -> core.v1.Filter
-	144, // 7: core.v1.ListResourcesResponse.resources:type_name -> core.v1.Resource
-	146, // 8: core.v1.ListResourcesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	140, // 9: core.v1.UpdateResourceRequest.tags:type_name -> core.v1.UpdateResourceRequest.UpdateResourceTag
-	141, // 10: core.v1.UpdateResourceRequest.aliases:type_name -> core.v1.UpdateResourceRequest.UpdateResourceAlias
-	144, // 11: core.v1.UpdateResourceV2Request.resource:type_name -> core.v1.Resource
-	144, // 12: core.v1.UpdateResourceV2Response.resource:type_name -> core.v1.Resource
-	0,   // 13: core.v1.IAMNativeUser.type:type_name -> core.v1.IAMNativeUserType
-	1,   // 14: core.v1.HTTPAPIKeyNativeUser.location:type_name -> core.v1.HTTPAPIKeyLocation
-	24,  // 15: core.v1.NativeUser.basic:type_name -> core.v1.BasicNativeUser
-	25,  // 16: core.v1.NativeUser.iam:type_name -> core.v1.IAMNativeUser
-	26,  // 17: core.v1.NativeUser.kubernetes:type_name -> core.v1.KubernetesNativeUser
-	27,  // 18: core.v1.NativeUser.ssh_key:type_name -> core.v1.SSHKeyNativeUser
-	28,  // 19: core.v1.NativeUser.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUser
-	29,  // 20: core.v1.NativeUser.http_basic:type_name -> core.v1.HTTPBasicNativeUser
-	30,  // 21: core.v1.NativeUser.http_bearer:type_name -> core.v1.HTTPBearerNativeUser
-	31,  // 22: core.v1.NativeUser.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
-	147, // 23: core.v1.NativeUser.created_at:type_name -> google.protobuf.Timestamp
-	147, // 24: core.v1.NativeUser.updated_at:type_name -> google.protobuf.Timestamp
-	148, // 25: core.v1.NativeUserLink.user:type_name -> core.v1.User
-	149, // 26: core.v1.NativeUserLink.group:type_name -> core.v1.Group
-	150, // 27: core.v1.NativeUserLink.resource_hostname:type_name -> core.v1.ResourceHostname
-	32,  // 28: core.v1.NativeUserLink.native_user:type_name -> core.v1.NativeUser
-	147, // 29: core.v1.NativeUserLink.created_at:type_name -> google.protobuf.Timestamp
-	147, // 30: core.v1.NativeUserLink.updated_at:type_name -> google.protobuf.Timestamp
-	32,  // 31: core.v1.CreateNativeUserResponse.native_user:type_name -> core.v1.NativeUser
-	24,  // 32: core.v1.CreateNativeUserV2Request.basic:type_name -> core.v1.BasicNativeUser
-	25,  // 33: core.v1.CreateNativeUserV2Request.iam:type_name -> core.v1.IAMNativeUser
-	26,  // 34: core.v1.CreateNativeUserV2Request.kubernetes:type_name -> core.v1.KubernetesNativeUser
-	27,  // 35: core.v1.CreateNativeUserV2Request.ssh_key:type_name -> core.v1.SSHKeyNativeUser
-	28,  // 36: core.v1.CreateNativeUserV2Request.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUser
-	29,  // 37: core.v1.CreateNativeUserV2Request.http_basic:type_name -> core.v1.HTTPBasicNativeUser
-	30,  // 38: core.v1.CreateNativeUserV2Request.http_bearer:type_name -> core.v1.HTTPBearerNativeUser
-	31,  // 39: core.v1.CreateNativeUserV2Request.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
-	32,  // 40: core.v1.CreateNativeUserV2Response.native_user:type_name -> core.v1.NativeUser
-	32,  // 41: core.v1.ListNativeUsersResponse.native_users:type_name -> core.v1.NativeUser
-	146, // 42: core.v1.ListNativeUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
-	32,  // 43: core.v1.GetNativeUserResponse.native_user:type_name -> core.v1.NativeUser
-	24,  // 44: core.v1.UpdateNativeUserV2Request.basic:type_name -> core.v1.BasicNativeUser
-	25,  // 45: core.v1.UpdateNativeUserV2Request.iam:type_name -> core.v1.IAMNativeUser
-	26,  // 46: core.v1.UpdateNativeUserV2Request.kubernetes:type_name -> core.v1.KubernetesNativeUser
-	27,  // 47: core.v1.UpdateNativeUserV2Request.ssh_key:type_name -> core.v1.SSHKeyNativeUser
-	28,  // 48: core.v1.UpdateNativeUserV2Request.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUser
-	29,  // 49: core.v1.UpdateNativeUserV2Request.http_basic:type_name -> core.v1.HTTPBasicNativeUser
-	30,  // 50: core.v1.UpdateNativeUserV2Request.http_bearer:type_name -> core.v1.HTTPBearerNativeUser
-	31,  // 51: core.v1.UpdateNativeUserV2Request.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
-	33,  // 52: core.v1.CreateNativeUserIdentityLinkResponse.link:type_name -> core.v1.NativeUserLink
-	33,  // 53: core.v1.GetNativeUserIdentityLinkResponse.link:type_name -> core.v1.NativeUserLink
-	33,  // 54: core.v1.ListNativeUserIdentityLinksResponse.links:type_name -> core.v1.NativeUserLink
-	146, // 55: core.v1.ListNativeUserIdentityLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
-	151, // 56: core.v1.GetDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	151, // 57: core.v1.ListDataDiscoveryConfigurationsResponse.data_discovery_configurations:type_name -> core.v1.DataDiscoveryConfiguration
-	146, // 58: core.v1.ListDataDiscoveryConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	151, // 59: core.v1.CreateDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	152, // 60: core.v1.CreateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	152, // 61: core.v1.GetResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	152, // 62: core.v1.UpdateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	153, // 63: core.v1.CreateResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
-	153, // 64: core.v1.GetResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
-	153, // 65: core.v1.ListResourceSshHostKeysResponse.resource_ssh_host_keys:type_name -> core.v1.ResourceSshHostKey
-	153, // 66: core.v1.UpdateResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
-	154, // 67: core.v1.CreateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	154, // 68: core.v1.GetResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	154, // 69: core.v1.UpdateResourceDialConfigurationRequest.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	154, // 70: core.v1.UpdateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
-	150, // 71: core.v1.CreateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
-	150, // 72: core.v1.GetResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
-	150, // 73: core.v1.ListResourceHostnamesResponse.resource_hostnames:type_name -> core.v1.ResourceHostname
-	150, // 74: core.v1.UpdateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
-	155, // 75: core.v1.CreateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	155, // 76: core.v1.ListResourceClassifierConfigurationsResponse.resource_classifier_configurations:type_name -> core.v1.ResourceClassifierConfiguration
-	146, // 77: core.v1.ListResourceClassifierConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	155, // 78: core.v1.GetResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	155, // 79: core.v1.UpdateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	156, // 80: core.v1.ListResourceConnectorAccessResponse.resource_connector_access:type_name -> core.v1.ResourceConnectorAccess
-	143, // 81: core.v1.CreateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
-	143, // 82: core.v1.UpdateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
-	33,  // 83: core.v1.UpdateNativeUserIdentityLinkV2Request.link:type_name -> core.v1.NativeUserLink
-	33,  // 84: core.v1.UpdateNativeUserIdentityLinkV2Response.link:type_name -> core.v1.NativeUserLink
-	151, // 85: core.v1.UpdateDataDiscoveryConfigurationV2Request.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	151, // 86: core.v1.UpdateDataDiscoveryConfigurationV2Response.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
-	142, // 87: core.v1.UpdateResourceHealthCheckV2Request.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	142, // 88: core.v1.UpdateResourceHealthCheckV2Response.resource_health_check:type_name -> core.v1.ResourceHealthCheck
-	152, // 89: core.v1.UpdateResourceTlsConfigurationV2Request.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	152, // 90: core.v1.UpdateResourceTlsConfigurationV2Response.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
-	150, // 91: core.v1.UpdateResourceHostnameV2Request.resource_hostname:type_name -> core.v1.ResourceHostname
-	150, // 92: core.v1.UpdateResourceHostnameV2Response.resource_hostname:type_name -> core.v1.ResourceHostname
-	155, // 93: core.v1.UpdateResourceClassifierConfigurationV2Request.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	155, // 94: core.v1.UpdateResourceClassifierConfigurationV2Response.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
-	143, // 95: core.v1.UpdateResourceRequest.UpdateResourceTag.tags:type_name -> core.v1.ResourceTag
-	12,  // 96: core.v1.ResourceService.GetResource:input_type -> core.v1.GetResourceRequest
-	14,  // 97: core.v1.ResourceService.ListResources:input_type -> core.v1.ListResourcesRequest
-	10,  // 98: core.v1.ResourceService.CreateResource:input_type -> core.v1.CreateResourceRequest
-	20,  // 99: core.v1.ResourceService.UpdateResource:input_type -> core.v1.UpdateResourceRequest
-	22,  // 100: core.v1.ResourceService.UpdateResourceV2:input_type -> core.v1.UpdateResourceV2Request
-	16,  // 101: core.v1.ResourceService.DeleteResource:input_type -> core.v1.DeleteResourceRequest
-	18,  // 102: core.v1.ResourceService.DeleteResourceNativeUserSelection:input_type -> core.v1.DeleteResourceNativeUserSelectionRequest
-	34,  // 103: core.v1.ResourceService.CreateNativeUser:input_type -> core.v1.CreateNativeUserRequest
-	36,  // 104: core.v1.ResourceService.CreateNativeUserV2:input_type -> core.v1.CreateNativeUserV2Request
-	40,  // 105: core.v1.ResourceService.GetNativeUser:input_type -> core.v1.GetNativeUserRequest
-	38,  // 106: core.v1.ResourceService.ListNativeUsers:input_type -> core.v1.ListNativeUsersRequest
-	42,  // 107: core.v1.ResourceService.DeleteNativeUser:input_type -> core.v1.DeleteNativeUserRequest
-	44,  // 108: core.v1.ResourceService.UpdateNativeUser:input_type -> core.v1.UpdateNativeUserRequest
-	46,  // 109: core.v1.ResourceService.UpdateNativeUserV2:input_type -> core.v1.UpdateNativeUserV2Request
-	48,  // 110: core.v1.ResourceService.CreateNativeUserIdentityLink:input_type -> core.v1.CreateNativeUserIdentityLinkRequest
-	50,  // 111: core.v1.ResourceService.GetNativeUserIdentityLink:input_type -> core.v1.GetNativeUserIdentityLinkRequest
-	52,  // 112: core.v1.ResourceService.ListNativeUserIdentityLinks:input_type -> core.v1.ListNativeUserIdentityLinksRequest
-	56,  // 113: core.v1.ResourceService.UpdateNativeUserIdentityLink:input_type -> core.v1.UpdateNativeUserIdentityLinkRequest
-	122, // 114: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:input_type -> core.v1.UpdateNativeUserIdentityLinkV2Request
-	54,  // 115: core.v1.ResourceService.DeleteNativeUserIdentityLink:input_type -> core.v1.DeleteNativeUserIdentityLinkRequest
-	58,  // 116: core.v1.ResourceService.GetDataDiscoveryConfiguration:input_type -> core.v1.GetDataDiscoveryConfigurationRequest
-	60,  // 117: core.v1.ResourceService.ListDataDiscoveryConfigurations:input_type -> core.v1.ListDataDiscoveryConfigurationsRequest
-	62,  // 118: core.v1.ResourceService.CreateDataDiscoveryConfiguration:input_type -> core.v1.CreateDataDiscoveryConfigurationRequest
-	64,  // 119: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:input_type -> core.v1.UpdateDataDiscoveryConfigurationRequest
-	124, // 120: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:input_type -> core.v1.UpdateDataDiscoveryConfigurationV2Request
-	66,  // 121: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:input_type -> core.v1.DeleteDataDiscoveryConfigurationRequest
-	2,   // 122: core.v1.ResourceService.CreateResourceHealthCheck:input_type -> core.v1.CreateResourceHealthCheckRequest
-	4,   // 123: core.v1.ResourceService.GetResourceHealthCheck:input_type -> core.v1.GetResourceHealthCheckRequest
-	6,   // 124: core.v1.ResourceService.UpdateResourceHealthCheck:input_type -> core.v1.UpdateResourceHealthCheckRequest
-	126, // 125: core.v1.ResourceService.UpdateResourceHealthCheckV2:input_type -> core.v1.UpdateResourceHealthCheckV2Request
-	8,   // 126: core.v1.ResourceService.DeleteResourceHealthCheck:input_type -> core.v1.DeleteResourceHealthCheckRequest
-	68,  // 127: core.v1.ResourceService.CreateResourceTlsConfiguration:input_type -> core.v1.CreateResourceTlsConfigurationRequest
-	70,  // 128: core.v1.ResourceService.GetResourceTlsConfiguration:input_type -> core.v1.GetResourceTlsConfigurationRequest
-	72,  // 129: core.v1.ResourceService.UpdateResourceTlsConfiguration:input_type -> core.v1.UpdateResourceTlsConfigurationRequest
-	128, // 130: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:input_type -> core.v1.UpdateResourceTlsConfigurationV2Request
-	74,  // 131: core.v1.ResourceService.DeleteResourceTlsConfiguration:input_type -> core.v1.DeleteResourceTlsConfigurationRequest
-	76,  // 132: core.v1.ResourceService.CreateResourceSshHostKey:input_type -> core.v1.CreateResourceSshHostKeyRequest
-	78,  // 133: core.v1.ResourceService.GetResourceSshHostKey:input_type -> core.v1.GetResourceSshHostKeyRequest
-	80,  // 134: core.v1.ResourceService.ListResourceSshHostKeys:input_type -> core.v1.ListResourceSshHostKeysRequest
-	82,  // 135: core.v1.ResourceService.UpdateResourceSshHostKey:input_type -> core.v1.UpdateResourceSshHostKeyRequest
-	84,  // 136: core.v1.ResourceService.DeleteResourceSshHostKey:input_type -> core.v1.DeleteResourceSshHostKeyRequest
-	86,  // 137: core.v1.ResourceService.CreateResourceDialConfiguration:input_type -> core.v1.CreateResourceDialConfigurationRequest
-	88,  // 138: core.v1.ResourceService.GetResourceDialConfiguration:input_type -> core.v1.GetResourceDialConfigurationRequest
-	90,  // 139: core.v1.ResourceService.UpdateResourceDialConfiguration:input_type -> core.v1.UpdateResourceDialConfigurationRequest
-	92,  // 140: core.v1.ResourceService.DeleteResourceDialConfiguration:input_type -> core.v1.DeleteResourceDialConfigurationRequest
-	94,  // 141: core.v1.ResourceService.CreateResourceHostname:input_type -> core.v1.CreateResourceHostnameRequest
-	96,  // 142: core.v1.ResourceService.GetResourceHostname:input_type -> core.v1.GetResourceHostnameRequest
-	98,  // 143: core.v1.ResourceService.ListResourceHostnames:input_type -> core.v1.ListResourceHostnamesRequest
-	100, // 144: core.v1.ResourceService.UpdateResourceHostname:input_type -> core.v1.UpdateResourceHostnameRequest
-	130, // 145: core.v1.ResourceService.UpdateResourceHostnameV2:input_type -> core.v1.UpdateResourceHostnameV2Request
-	102, // 146: core.v1.ResourceService.DeleteResourceHostname:input_type -> core.v1.DeleteResourceHostnameRequest
-	104, // 147: core.v1.ResourceService.CreateResourceClassifierConfiguration:input_type -> core.v1.CreateResourceClassifierConfigurationRequest
-	106, // 148: core.v1.ResourceService.ListResourceClassifierConfigurations:input_type -> core.v1.ListResourceClassifierConfigurationsRequest
-	108, // 149: core.v1.ResourceService.GetResourceClassifierConfiguration:input_type -> core.v1.GetResourceClassifierConfigurationRequest
-	110, // 150: core.v1.ResourceService.UpdateResourceClassifierConfiguration:input_type -> core.v1.UpdateResourceClassifierConfigurationRequest
-	132, // 151: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:input_type -> core.v1.UpdateResourceClassifierConfigurationV2Request
-	112, // 152: core.v1.ResourceService.DeleteResourceClassifierConfiguration:input_type -> core.v1.DeleteResourceClassifierConfigurationRequest
-	116, // 153: core.v1.ResourceService.CreateResourceTag:input_type -> core.v1.CreateResourceTagRequest
-	118, // 154: core.v1.ResourceService.DeleteResourceTag:input_type -> core.v1.DeleteResourceTagRequest
-	120, // 155: core.v1.ResourceService.UpdateResourceTag:input_type -> core.v1.UpdateResourceTagRequest
-	136, // 156: core.v1.ResourceService.CreateResourceAlias:input_type -> core.v1.CreateResourceAliasRequest
-	138, // 157: core.v1.ResourceService.DeleteResourceAlias:input_type -> core.v1.DeleteResourceAliasRequest
-	134, // 158: core.v1.ResourceService.UpdateResourceAlias:input_type -> core.v1.UpdateResourceAliasRequest
-	114, // 159: core.v1.ResourceService.ListResourceConnectorAccess:input_type -> core.v1.ListResourceConnectorAccessRequest
-	13,  // 160: core.v1.ResourceService.GetResource:output_type -> core.v1.GetResourceResponse
-	15,  // 161: core.v1.ResourceService.ListResources:output_type -> core.v1.ListResourcesResponse
-	11,  // 162: core.v1.ResourceService.CreateResource:output_type -> core.v1.CreateResourceResponse
-	21,  // 163: core.v1.ResourceService.UpdateResource:output_type -> core.v1.UpdateResourceResponse
-	23,  // 164: core.v1.ResourceService.UpdateResourceV2:output_type -> core.v1.UpdateResourceV2Response
-	17,  // 165: core.v1.ResourceService.DeleteResource:output_type -> core.v1.DeleteResourceResponse
-	19,  // 166: core.v1.ResourceService.DeleteResourceNativeUserSelection:output_type -> core.v1.DeleteResourceNativeUserSelectionResponse
-	35,  // 167: core.v1.ResourceService.CreateNativeUser:output_type -> core.v1.CreateNativeUserResponse
-	37,  // 168: core.v1.ResourceService.CreateNativeUserV2:output_type -> core.v1.CreateNativeUserV2Response
-	41,  // 169: core.v1.ResourceService.GetNativeUser:output_type -> core.v1.GetNativeUserResponse
-	39,  // 170: core.v1.ResourceService.ListNativeUsers:output_type -> core.v1.ListNativeUsersResponse
-	43,  // 171: core.v1.ResourceService.DeleteNativeUser:output_type -> core.v1.DeleteNativeUserResponse
-	45,  // 172: core.v1.ResourceService.UpdateNativeUser:output_type -> core.v1.UpdateNativeUserResponse
-	47,  // 173: core.v1.ResourceService.UpdateNativeUserV2:output_type -> core.v1.UpdateNativeUserV2Response
-	49,  // 174: core.v1.ResourceService.CreateNativeUserIdentityLink:output_type -> core.v1.CreateNativeUserIdentityLinkResponse
-	51,  // 175: core.v1.ResourceService.GetNativeUserIdentityLink:output_type -> core.v1.GetNativeUserIdentityLinkResponse
-	53,  // 176: core.v1.ResourceService.ListNativeUserIdentityLinks:output_type -> core.v1.ListNativeUserIdentityLinksResponse
-	57,  // 177: core.v1.ResourceService.UpdateNativeUserIdentityLink:output_type -> core.v1.UpdateNativeUserIdentityLinkResponse
-	123, // 178: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:output_type -> core.v1.UpdateNativeUserIdentityLinkV2Response
-	55,  // 179: core.v1.ResourceService.DeleteNativeUserIdentityLink:output_type -> core.v1.DeleteNativeUserIdentityLinkResponse
-	59,  // 180: core.v1.ResourceService.GetDataDiscoveryConfiguration:output_type -> core.v1.GetDataDiscoveryConfigurationResponse
-	61,  // 181: core.v1.ResourceService.ListDataDiscoveryConfigurations:output_type -> core.v1.ListDataDiscoveryConfigurationsResponse
-	63,  // 182: core.v1.ResourceService.CreateDataDiscoveryConfiguration:output_type -> core.v1.CreateDataDiscoveryConfigurationResponse
-	65,  // 183: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:output_type -> core.v1.UpdateDataDiscoveryConfigurationResponse
-	125, // 184: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:output_type -> core.v1.UpdateDataDiscoveryConfigurationV2Response
-	67,  // 185: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:output_type -> core.v1.DeleteDataDiscoveryConfigurationResponse
-	3,   // 186: core.v1.ResourceService.CreateResourceHealthCheck:output_type -> core.v1.CreateResourceHealthCheckResponse
-	5,   // 187: core.v1.ResourceService.GetResourceHealthCheck:output_type -> core.v1.GetResourceHealthCheckResponse
-	7,   // 188: core.v1.ResourceService.UpdateResourceHealthCheck:output_type -> core.v1.UpdateResourceHealthCheckResponse
-	127, // 189: core.v1.ResourceService.UpdateResourceHealthCheckV2:output_type -> core.v1.UpdateResourceHealthCheckV2Response
-	9,   // 190: core.v1.ResourceService.DeleteResourceHealthCheck:output_type -> core.v1.DeleteResourceHealthCheckResponse
-	69,  // 191: core.v1.ResourceService.CreateResourceTlsConfiguration:output_type -> core.v1.CreateResourceTlsConfigurationResponse
-	71,  // 192: core.v1.ResourceService.GetResourceTlsConfiguration:output_type -> core.v1.GetResourceTlsConfigurationResponse
-	73,  // 193: core.v1.ResourceService.UpdateResourceTlsConfiguration:output_type -> core.v1.UpdateResourceTlsConfigurationResponse
-	129, // 194: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:output_type -> core.v1.UpdateResourceTlsConfigurationV2Response
-	75,  // 195: core.v1.ResourceService.DeleteResourceTlsConfiguration:output_type -> core.v1.DeleteResourceTlsConfigurationResponse
-	77,  // 196: core.v1.ResourceService.CreateResourceSshHostKey:output_type -> core.v1.CreateResourceSshHostKeyResponse
-	79,  // 197: core.v1.ResourceService.GetResourceSshHostKey:output_type -> core.v1.GetResourceSshHostKeyResponse
-	81,  // 198: core.v1.ResourceService.ListResourceSshHostKeys:output_type -> core.v1.ListResourceSshHostKeysResponse
-	83,  // 199: core.v1.ResourceService.UpdateResourceSshHostKey:output_type -> core.v1.UpdateResourceSshHostKeyResponse
-	85,  // 200: core.v1.ResourceService.DeleteResourceSshHostKey:output_type -> core.v1.DeleteResourceSshHostKeyResponse
-	87,  // 201: core.v1.ResourceService.CreateResourceDialConfiguration:output_type -> core.v1.CreateResourceDialConfigurationResponse
-	89,  // 202: core.v1.ResourceService.GetResourceDialConfiguration:output_type -> core.v1.GetResourceDialConfigurationResponse
-	91,  // 203: core.v1.ResourceService.UpdateResourceDialConfiguration:output_type -> core.v1.UpdateResourceDialConfigurationResponse
-	93,  // 204: core.v1.ResourceService.DeleteResourceDialConfiguration:output_type -> core.v1.DeleteResourceDialConfigurationResponse
-	95,  // 205: core.v1.ResourceService.CreateResourceHostname:output_type -> core.v1.CreateResourceHostnameResponse
-	97,  // 206: core.v1.ResourceService.GetResourceHostname:output_type -> core.v1.GetResourceHostnameResponse
-	99,  // 207: core.v1.ResourceService.ListResourceHostnames:output_type -> core.v1.ListResourceHostnamesResponse
-	101, // 208: core.v1.ResourceService.UpdateResourceHostname:output_type -> core.v1.UpdateResourceHostnameResponse
-	131, // 209: core.v1.ResourceService.UpdateResourceHostnameV2:output_type -> core.v1.UpdateResourceHostnameV2Response
-	103, // 210: core.v1.ResourceService.DeleteResourceHostname:output_type -> core.v1.DeleteResourceHostnameResponse
-	105, // 211: core.v1.ResourceService.CreateResourceClassifierConfiguration:output_type -> core.v1.CreateResourceClassifierConfigurationResponse
-	107, // 212: core.v1.ResourceService.ListResourceClassifierConfigurations:output_type -> core.v1.ListResourceClassifierConfigurationsResponse
-	109, // 213: core.v1.ResourceService.GetResourceClassifierConfiguration:output_type -> core.v1.GetResourceClassifierConfigurationResponse
-	111, // 214: core.v1.ResourceService.UpdateResourceClassifierConfiguration:output_type -> core.v1.UpdateResourceClassifierConfigurationResponse
-	133, // 215: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:output_type -> core.v1.UpdateResourceClassifierConfigurationV2Response
-	113, // 216: core.v1.ResourceService.DeleteResourceClassifierConfiguration:output_type -> core.v1.DeleteResourceClassifierConfigurationResponse
-	117, // 217: core.v1.ResourceService.CreateResourceTag:output_type -> core.v1.CreateResourceTagResponse
-	119, // 218: core.v1.ResourceService.DeleteResourceTag:output_type -> core.v1.DeleteResourceTagResponse
-	121, // 219: core.v1.ResourceService.UpdateResourceTag:output_type -> core.v1.UpdateResourceTagResponse
-	137, // 220: core.v1.ResourceService.CreateResourceAlias:output_type -> core.v1.CreateResourceAliasResponse
-	139, // 221: core.v1.ResourceService.DeleteResourceAlias:output_type -> core.v1.DeleteResourceAliasResponse
-	135, // 222: core.v1.ResourceService.UpdateResourceAlias:output_type -> core.v1.UpdateResourceAliasResponse
-	115, // 223: core.v1.ResourceService.ListResourceConnectorAccess:output_type -> core.v1.ListResourceConnectorAccessResponse
-	160, // [160:224] is the sub-list for method output_type
-	96,  // [96:160] is the sub-list for method input_type
-	96,  // [96:96] is the sub-list for extension type_name
-	96,  // [96:96] is the sub-list for extension extendee
-	0,   // [0:96] is the sub-list for field type_name
+	144, // 0: core.v1.CreateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	144, // 1: core.v1.GetResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	144, // 2: core.v1.UpdateResourceHealthCheckResponse.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	145, // 3: core.v1.CreateResourceRequest.tags:type_name -> core.v1.ResourceTag
+	146, // 4: core.v1.CreateResourceResponse.resource:type_name -> core.v1.Resource
+	146, // 5: core.v1.GetResourceResponse.resource:type_name -> core.v1.Resource
+	147, // 6: core.v1.ListResourcesRequest.filter:type_name -> core.v1.Filter
+	146, // 7: core.v1.ListResourcesResponse.resources:type_name -> core.v1.Resource
+	148, // 8: core.v1.ListResourcesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	149, // 9: core.v1.UpdateResourceNativeUsersV3EnabledResponse.native_users_v3_enabled_at:type_name -> google.protobuf.Timestamp
+	142, // 10: core.v1.UpdateResourceRequest.tags:type_name -> core.v1.UpdateResourceRequest.UpdateResourceTag
+	143, // 11: core.v1.UpdateResourceRequest.aliases:type_name -> core.v1.UpdateResourceRequest.UpdateResourceAlias
+	146, // 12: core.v1.UpdateResourceV2Request.resource:type_name -> core.v1.Resource
+	146, // 13: core.v1.UpdateResourceV2Response.resource:type_name -> core.v1.Resource
+	0,   // 14: core.v1.IAMNativeUser.type:type_name -> core.v1.IAMNativeUserType
+	1,   // 15: core.v1.HTTPAPIKeyNativeUser.location:type_name -> core.v1.HTTPAPIKeyLocation
+	26,  // 16: core.v1.NativeUser.basic:type_name -> core.v1.BasicNativeUser
+	27,  // 17: core.v1.NativeUser.iam:type_name -> core.v1.IAMNativeUser
+	28,  // 18: core.v1.NativeUser.kubernetes:type_name -> core.v1.KubernetesNativeUser
+	29,  // 19: core.v1.NativeUser.ssh_key:type_name -> core.v1.SSHKeyNativeUser
+	30,  // 20: core.v1.NativeUser.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUser
+	31,  // 21: core.v1.NativeUser.http_basic:type_name -> core.v1.HTTPBasicNativeUser
+	32,  // 22: core.v1.NativeUser.http_bearer:type_name -> core.v1.HTTPBearerNativeUser
+	33,  // 23: core.v1.NativeUser.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
+	149, // 24: core.v1.NativeUser.created_at:type_name -> google.protobuf.Timestamp
+	149, // 25: core.v1.NativeUser.updated_at:type_name -> google.protobuf.Timestamp
+	150, // 26: core.v1.NativeUserLink.user:type_name -> core.v1.User
+	151, // 27: core.v1.NativeUserLink.group:type_name -> core.v1.Group
+	152, // 28: core.v1.NativeUserLink.resource_hostname:type_name -> core.v1.ResourceHostname
+	34,  // 29: core.v1.NativeUserLink.native_user:type_name -> core.v1.NativeUser
+	149, // 30: core.v1.NativeUserLink.created_at:type_name -> google.protobuf.Timestamp
+	149, // 31: core.v1.NativeUserLink.updated_at:type_name -> google.protobuf.Timestamp
+	34,  // 32: core.v1.CreateNativeUserResponse.native_user:type_name -> core.v1.NativeUser
+	26,  // 33: core.v1.CreateNativeUserV2Request.basic:type_name -> core.v1.BasicNativeUser
+	27,  // 34: core.v1.CreateNativeUserV2Request.iam:type_name -> core.v1.IAMNativeUser
+	28,  // 35: core.v1.CreateNativeUserV2Request.kubernetes:type_name -> core.v1.KubernetesNativeUser
+	29,  // 36: core.v1.CreateNativeUserV2Request.ssh_key:type_name -> core.v1.SSHKeyNativeUser
+	30,  // 37: core.v1.CreateNativeUserV2Request.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUser
+	31,  // 38: core.v1.CreateNativeUserV2Request.http_basic:type_name -> core.v1.HTTPBasicNativeUser
+	32,  // 39: core.v1.CreateNativeUserV2Request.http_bearer:type_name -> core.v1.HTTPBearerNativeUser
+	33,  // 40: core.v1.CreateNativeUserV2Request.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
+	34,  // 41: core.v1.CreateNativeUserV2Response.native_user:type_name -> core.v1.NativeUser
+	34,  // 42: core.v1.ListNativeUsersResponse.native_users:type_name -> core.v1.NativeUser
+	148, // 43: core.v1.ListNativeUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	34,  // 44: core.v1.GetNativeUserResponse.native_user:type_name -> core.v1.NativeUser
+	26,  // 45: core.v1.UpdateNativeUserV2Request.basic:type_name -> core.v1.BasicNativeUser
+	27,  // 46: core.v1.UpdateNativeUserV2Request.iam:type_name -> core.v1.IAMNativeUser
+	28,  // 47: core.v1.UpdateNativeUserV2Request.kubernetes:type_name -> core.v1.KubernetesNativeUser
+	29,  // 48: core.v1.UpdateNativeUserV2Request.ssh_key:type_name -> core.v1.SSHKeyNativeUser
+	30,  // 49: core.v1.UpdateNativeUserV2Request.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUser
+	31,  // 50: core.v1.UpdateNativeUserV2Request.http_basic:type_name -> core.v1.HTTPBasicNativeUser
+	32,  // 51: core.v1.UpdateNativeUserV2Request.http_bearer:type_name -> core.v1.HTTPBearerNativeUser
+	33,  // 52: core.v1.UpdateNativeUserV2Request.http_api_key:type_name -> core.v1.HTTPAPIKeyNativeUser
+	35,  // 53: core.v1.CreateNativeUserIdentityLinkResponse.link:type_name -> core.v1.NativeUserLink
+	35,  // 54: core.v1.GetNativeUserIdentityLinkResponse.link:type_name -> core.v1.NativeUserLink
+	35,  // 55: core.v1.ListNativeUserIdentityLinksResponse.links:type_name -> core.v1.NativeUserLink
+	148, // 56: core.v1.ListNativeUserIdentityLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
+	153, // 57: core.v1.GetDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	153, // 58: core.v1.ListDataDiscoveryConfigurationsResponse.data_discovery_configurations:type_name -> core.v1.DataDiscoveryConfiguration
+	148, // 59: core.v1.ListDataDiscoveryConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	153, // 60: core.v1.CreateDataDiscoveryConfigurationResponse.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	154, // 61: core.v1.CreateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	154, // 62: core.v1.GetResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	154, // 63: core.v1.UpdateResourceTlsConfigurationResponse.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	155, // 64: core.v1.CreateResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
+	155, // 65: core.v1.GetResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
+	155, // 66: core.v1.ListResourceSshHostKeysResponse.resource_ssh_host_keys:type_name -> core.v1.ResourceSshHostKey
+	155, // 67: core.v1.UpdateResourceSshHostKeyResponse.resource_ssh_host_key:type_name -> core.v1.ResourceSshHostKey
+	156, // 68: core.v1.CreateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	156, // 69: core.v1.GetResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	156, // 70: core.v1.UpdateResourceDialConfigurationRequest.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	156, // 71: core.v1.UpdateResourceDialConfigurationResponse.resource_dial_configuration:type_name -> core.v1.ResourceDialConfiguration
+	152, // 72: core.v1.CreateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
+	152, // 73: core.v1.GetResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
+	152, // 74: core.v1.ListResourceHostnamesResponse.resource_hostnames:type_name -> core.v1.ResourceHostname
+	152, // 75: core.v1.UpdateResourceHostnameResponse.resource_hostname:type_name -> core.v1.ResourceHostname
+	157, // 76: core.v1.CreateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	157, // 77: core.v1.ListResourceClassifierConfigurationsResponse.resource_classifier_configurations:type_name -> core.v1.ResourceClassifierConfiguration
+	148, // 78: core.v1.ListResourceClassifierConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	157, // 79: core.v1.GetResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	157, // 80: core.v1.UpdateResourceClassifierConfigurationResponse.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	158, // 81: core.v1.ListResourceConnectorAccessResponse.resource_connector_access:type_name -> core.v1.ResourceConnectorAccess
+	145, // 82: core.v1.CreateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
+	145, // 83: core.v1.UpdateResourceTagResponse.tag:type_name -> core.v1.ResourceTag
+	35,  // 84: core.v1.UpdateNativeUserIdentityLinkV2Request.link:type_name -> core.v1.NativeUserLink
+	35,  // 85: core.v1.UpdateNativeUserIdentityLinkV2Response.link:type_name -> core.v1.NativeUserLink
+	153, // 86: core.v1.UpdateDataDiscoveryConfigurationV2Request.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	153, // 87: core.v1.UpdateDataDiscoveryConfigurationV2Response.data_discovery_configuration:type_name -> core.v1.DataDiscoveryConfiguration
+	144, // 88: core.v1.UpdateResourceHealthCheckV2Request.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	144, // 89: core.v1.UpdateResourceHealthCheckV2Response.resource_health_check:type_name -> core.v1.ResourceHealthCheck
+	154, // 90: core.v1.UpdateResourceTlsConfigurationV2Request.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	154, // 91: core.v1.UpdateResourceTlsConfigurationV2Response.resource_tls_configuration:type_name -> core.v1.ResourceTlsConfiguration
+	152, // 92: core.v1.UpdateResourceHostnameV2Request.resource_hostname:type_name -> core.v1.ResourceHostname
+	152, // 93: core.v1.UpdateResourceHostnameV2Response.resource_hostname:type_name -> core.v1.ResourceHostname
+	157, // 94: core.v1.UpdateResourceClassifierConfigurationV2Request.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	157, // 95: core.v1.UpdateResourceClassifierConfigurationV2Response.resource_classifier_configuration:type_name -> core.v1.ResourceClassifierConfiguration
+	145, // 96: core.v1.UpdateResourceRequest.UpdateResourceTag.tags:type_name -> core.v1.ResourceTag
+	12,  // 97: core.v1.ResourceService.GetResource:input_type -> core.v1.GetResourceRequest
+	14,  // 98: core.v1.ResourceService.ListResources:input_type -> core.v1.ListResourcesRequest
+	10,  // 99: core.v1.ResourceService.CreateResource:input_type -> core.v1.CreateResourceRequest
+	22,  // 100: core.v1.ResourceService.UpdateResource:input_type -> core.v1.UpdateResourceRequest
+	24,  // 101: core.v1.ResourceService.UpdateResourceV2:input_type -> core.v1.UpdateResourceV2Request
+	16,  // 102: core.v1.ResourceService.DeleteResource:input_type -> core.v1.DeleteResourceRequest
+	18,  // 103: core.v1.ResourceService.UpdateResourceNativeUsersV3Enabled:input_type -> core.v1.UpdateResourceNativeUsersV3EnabledRequest
+	20,  // 104: core.v1.ResourceService.DeleteResourceNativeUserSelection:input_type -> core.v1.DeleteResourceNativeUserSelectionRequest
+	36,  // 105: core.v1.ResourceService.CreateNativeUser:input_type -> core.v1.CreateNativeUserRequest
+	38,  // 106: core.v1.ResourceService.CreateNativeUserV2:input_type -> core.v1.CreateNativeUserV2Request
+	42,  // 107: core.v1.ResourceService.GetNativeUser:input_type -> core.v1.GetNativeUserRequest
+	40,  // 108: core.v1.ResourceService.ListNativeUsers:input_type -> core.v1.ListNativeUsersRequest
+	44,  // 109: core.v1.ResourceService.DeleteNativeUser:input_type -> core.v1.DeleteNativeUserRequest
+	46,  // 110: core.v1.ResourceService.UpdateNativeUser:input_type -> core.v1.UpdateNativeUserRequest
+	48,  // 111: core.v1.ResourceService.UpdateNativeUserV2:input_type -> core.v1.UpdateNativeUserV2Request
+	50,  // 112: core.v1.ResourceService.CreateNativeUserIdentityLink:input_type -> core.v1.CreateNativeUserIdentityLinkRequest
+	52,  // 113: core.v1.ResourceService.GetNativeUserIdentityLink:input_type -> core.v1.GetNativeUserIdentityLinkRequest
+	54,  // 114: core.v1.ResourceService.ListNativeUserIdentityLinks:input_type -> core.v1.ListNativeUserIdentityLinksRequest
+	58,  // 115: core.v1.ResourceService.UpdateNativeUserIdentityLink:input_type -> core.v1.UpdateNativeUserIdentityLinkRequest
+	124, // 116: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:input_type -> core.v1.UpdateNativeUserIdentityLinkV2Request
+	56,  // 117: core.v1.ResourceService.DeleteNativeUserIdentityLink:input_type -> core.v1.DeleteNativeUserIdentityLinkRequest
+	60,  // 118: core.v1.ResourceService.GetDataDiscoveryConfiguration:input_type -> core.v1.GetDataDiscoveryConfigurationRequest
+	62,  // 119: core.v1.ResourceService.ListDataDiscoveryConfigurations:input_type -> core.v1.ListDataDiscoveryConfigurationsRequest
+	64,  // 120: core.v1.ResourceService.CreateDataDiscoveryConfiguration:input_type -> core.v1.CreateDataDiscoveryConfigurationRequest
+	66,  // 121: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:input_type -> core.v1.UpdateDataDiscoveryConfigurationRequest
+	126, // 122: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:input_type -> core.v1.UpdateDataDiscoveryConfigurationV2Request
+	68,  // 123: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:input_type -> core.v1.DeleteDataDiscoveryConfigurationRequest
+	2,   // 124: core.v1.ResourceService.CreateResourceHealthCheck:input_type -> core.v1.CreateResourceHealthCheckRequest
+	4,   // 125: core.v1.ResourceService.GetResourceHealthCheck:input_type -> core.v1.GetResourceHealthCheckRequest
+	6,   // 126: core.v1.ResourceService.UpdateResourceHealthCheck:input_type -> core.v1.UpdateResourceHealthCheckRequest
+	128, // 127: core.v1.ResourceService.UpdateResourceHealthCheckV2:input_type -> core.v1.UpdateResourceHealthCheckV2Request
+	8,   // 128: core.v1.ResourceService.DeleteResourceHealthCheck:input_type -> core.v1.DeleteResourceHealthCheckRequest
+	70,  // 129: core.v1.ResourceService.CreateResourceTlsConfiguration:input_type -> core.v1.CreateResourceTlsConfigurationRequest
+	72,  // 130: core.v1.ResourceService.GetResourceTlsConfiguration:input_type -> core.v1.GetResourceTlsConfigurationRequest
+	74,  // 131: core.v1.ResourceService.UpdateResourceTlsConfiguration:input_type -> core.v1.UpdateResourceTlsConfigurationRequest
+	130, // 132: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:input_type -> core.v1.UpdateResourceTlsConfigurationV2Request
+	76,  // 133: core.v1.ResourceService.DeleteResourceTlsConfiguration:input_type -> core.v1.DeleteResourceTlsConfigurationRequest
+	78,  // 134: core.v1.ResourceService.CreateResourceSshHostKey:input_type -> core.v1.CreateResourceSshHostKeyRequest
+	80,  // 135: core.v1.ResourceService.GetResourceSshHostKey:input_type -> core.v1.GetResourceSshHostKeyRequest
+	82,  // 136: core.v1.ResourceService.ListResourceSshHostKeys:input_type -> core.v1.ListResourceSshHostKeysRequest
+	84,  // 137: core.v1.ResourceService.UpdateResourceSshHostKey:input_type -> core.v1.UpdateResourceSshHostKeyRequest
+	86,  // 138: core.v1.ResourceService.DeleteResourceSshHostKey:input_type -> core.v1.DeleteResourceSshHostKeyRequest
+	88,  // 139: core.v1.ResourceService.CreateResourceDialConfiguration:input_type -> core.v1.CreateResourceDialConfigurationRequest
+	90,  // 140: core.v1.ResourceService.GetResourceDialConfiguration:input_type -> core.v1.GetResourceDialConfigurationRequest
+	92,  // 141: core.v1.ResourceService.UpdateResourceDialConfiguration:input_type -> core.v1.UpdateResourceDialConfigurationRequest
+	94,  // 142: core.v1.ResourceService.DeleteResourceDialConfiguration:input_type -> core.v1.DeleteResourceDialConfigurationRequest
+	96,  // 143: core.v1.ResourceService.CreateResourceHostname:input_type -> core.v1.CreateResourceHostnameRequest
+	98,  // 144: core.v1.ResourceService.GetResourceHostname:input_type -> core.v1.GetResourceHostnameRequest
+	100, // 145: core.v1.ResourceService.ListResourceHostnames:input_type -> core.v1.ListResourceHostnamesRequest
+	102, // 146: core.v1.ResourceService.UpdateResourceHostname:input_type -> core.v1.UpdateResourceHostnameRequest
+	132, // 147: core.v1.ResourceService.UpdateResourceHostnameV2:input_type -> core.v1.UpdateResourceHostnameV2Request
+	104, // 148: core.v1.ResourceService.DeleteResourceHostname:input_type -> core.v1.DeleteResourceHostnameRequest
+	106, // 149: core.v1.ResourceService.CreateResourceClassifierConfiguration:input_type -> core.v1.CreateResourceClassifierConfigurationRequest
+	108, // 150: core.v1.ResourceService.ListResourceClassifierConfigurations:input_type -> core.v1.ListResourceClassifierConfigurationsRequest
+	110, // 151: core.v1.ResourceService.GetResourceClassifierConfiguration:input_type -> core.v1.GetResourceClassifierConfigurationRequest
+	112, // 152: core.v1.ResourceService.UpdateResourceClassifierConfiguration:input_type -> core.v1.UpdateResourceClassifierConfigurationRequest
+	134, // 153: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:input_type -> core.v1.UpdateResourceClassifierConfigurationV2Request
+	114, // 154: core.v1.ResourceService.DeleteResourceClassifierConfiguration:input_type -> core.v1.DeleteResourceClassifierConfigurationRequest
+	118, // 155: core.v1.ResourceService.CreateResourceTag:input_type -> core.v1.CreateResourceTagRequest
+	120, // 156: core.v1.ResourceService.DeleteResourceTag:input_type -> core.v1.DeleteResourceTagRequest
+	122, // 157: core.v1.ResourceService.UpdateResourceTag:input_type -> core.v1.UpdateResourceTagRequest
+	138, // 158: core.v1.ResourceService.CreateResourceAlias:input_type -> core.v1.CreateResourceAliasRequest
+	140, // 159: core.v1.ResourceService.DeleteResourceAlias:input_type -> core.v1.DeleteResourceAliasRequest
+	136, // 160: core.v1.ResourceService.UpdateResourceAlias:input_type -> core.v1.UpdateResourceAliasRequest
+	116, // 161: core.v1.ResourceService.ListResourceConnectorAccess:input_type -> core.v1.ListResourceConnectorAccessRequest
+	13,  // 162: core.v1.ResourceService.GetResource:output_type -> core.v1.GetResourceResponse
+	15,  // 163: core.v1.ResourceService.ListResources:output_type -> core.v1.ListResourcesResponse
+	11,  // 164: core.v1.ResourceService.CreateResource:output_type -> core.v1.CreateResourceResponse
+	23,  // 165: core.v1.ResourceService.UpdateResource:output_type -> core.v1.UpdateResourceResponse
+	25,  // 166: core.v1.ResourceService.UpdateResourceV2:output_type -> core.v1.UpdateResourceV2Response
+	17,  // 167: core.v1.ResourceService.DeleteResource:output_type -> core.v1.DeleteResourceResponse
+	19,  // 168: core.v1.ResourceService.UpdateResourceNativeUsersV3Enabled:output_type -> core.v1.UpdateResourceNativeUsersV3EnabledResponse
+	21,  // 169: core.v1.ResourceService.DeleteResourceNativeUserSelection:output_type -> core.v1.DeleteResourceNativeUserSelectionResponse
+	37,  // 170: core.v1.ResourceService.CreateNativeUser:output_type -> core.v1.CreateNativeUserResponse
+	39,  // 171: core.v1.ResourceService.CreateNativeUserV2:output_type -> core.v1.CreateNativeUserV2Response
+	43,  // 172: core.v1.ResourceService.GetNativeUser:output_type -> core.v1.GetNativeUserResponse
+	41,  // 173: core.v1.ResourceService.ListNativeUsers:output_type -> core.v1.ListNativeUsersResponse
+	45,  // 174: core.v1.ResourceService.DeleteNativeUser:output_type -> core.v1.DeleteNativeUserResponse
+	47,  // 175: core.v1.ResourceService.UpdateNativeUser:output_type -> core.v1.UpdateNativeUserResponse
+	49,  // 176: core.v1.ResourceService.UpdateNativeUserV2:output_type -> core.v1.UpdateNativeUserV2Response
+	51,  // 177: core.v1.ResourceService.CreateNativeUserIdentityLink:output_type -> core.v1.CreateNativeUserIdentityLinkResponse
+	53,  // 178: core.v1.ResourceService.GetNativeUserIdentityLink:output_type -> core.v1.GetNativeUserIdentityLinkResponse
+	55,  // 179: core.v1.ResourceService.ListNativeUserIdentityLinks:output_type -> core.v1.ListNativeUserIdentityLinksResponse
+	59,  // 180: core.v1.ResourceService.UpdateNativeUserIdentityLink:output_type -> core.v1.UpdateNativeUserIdentityLinkResponse
+	125, // 181: core.v1.ResourceService.UpdateNativeUserIdentityLinkV2:output_type -> core.v1.UpdateNativeUserIdentityLinkV2Response
+	57,  // 182: core.v1.ResourceService.DeleteNativeUserIdentityLink:output_type -> core.v1.DeleteNativeUserIdentityLinkResponse
+	61,  // 183: core.v1.ResourceService.GetDataDiscoveryConfiguration:output_type -> core.v1.GetDataDiscoveryConfigurationResponse
+	63,  // 184: core.v1.ResourceService.ListDataDiscoveryConfigurations:output_type -> core.v1.ListDataDiscoveryConfigurationsResponse
+	65,  // 185: core.v1.ResourceService.CreateDataDiscoveryConfiguration:output_type -> core.v1.CreateDataDiscoveryConfigurationResponse
+	67,  // 186: core.v1.ResourceService.UpdateDataDiscoveryConfiguration:output_type -> core.v1.UpdateDataDiscoveryConfigurationResponse
+	127, // 187: core.v1.ResourceService.UpdateDataDiscoveryConfigurationV2:output_type -> core.v1.UpdateDataDiscoveryConfigurationV2Response
+	69,  // 188: core.v1.ResourceService.DeleteDataDiscoveryConfiguration:output_type -> core.v1.DeleteDataDiscoveryConfigurationResponse
+	3,   // 189: core.v1.ResourceService.CreateResourceHealthCheck:output_type -> core.v1.CreateResourceHealthCheckResponse
+	5,   // 190: core.v1.ResourceService.GetResourceHealthCheck:output_type -> core.v1.GetResourceHealthCheckResponse
+	7,   // 191: core.v1.ResourceService.UpdateResourceHealthCheck:output_type -> core.v1.UpdateResourceHealthCheckResponse
+	129, // 192: core.v1.ResourceService.UpdateResourceHealthCheckV2:output_type -> core.v1.UpdateResourceHealthCheckV2Response
+	9,   // 193: core.v1.ResourceService.DeleteResourceHealthCheck:output_type -> core.v1.DeleteResourceHealthCheckResponse
+	71,  // 194: core.v1.ResourceService.CreateResourceTlsConfiguration:output_type -> core.v1.CreateResourceTlsConfigurationResponse
+	73,  // 195: core.v1.ResourceService.GetResourceTlsConfiguration:output_type -> core.v1.GetResourceTlsConfigurationResponse
+	75,  // 196: core.v1.ResourceService.UpdateResourceTlsConfiguration:output_type -> core.v1.UpdateResourceTlsConfigurationResponse
+	131, // 197: core.v1.ResourceService.UpdateResourceTlsConfigurationV2:output_type -> core.v1.UpdateResourceTlsConfigurationV2Response
+	77,  // 198: core.v1.ResourceService.DeleteResourceTlsConfiguration:output_type -> core.v1.DeleteResourceTlsConfigurationResponse
+	79,  // 199: core.v1.ResourceService.CreateResourceSshHostKey:output_type -> core.v1.CreateResourceSshHostKeyResponse
+	81,  // 200: core.v1.ResourceService.GetResourceSshHostKey:output_type -> core.v1.GetResourceSshHostKeyResponse
+	83,  // 201: core.v1.ResourceService.ListResourceSshHostKeys:output_type -> core.v1.ListResourceSshHostKeysResponse
+	85,  // 202: core.v1.ResourceService.UpdateResourceSshHostKey:output_type -> core.v1.UpdateResourceSshHostKeyResponse
+	87,  // 203: core.v1.ResourceService.DeleteResourceSshHostKey:output_type -> core.v1.DeleteResourceSshHostKeyResponse
+	89,  // 204: core.v1.ResourceService.CreateResourceDialConfiguration:output_type -> core.v1.CreateResourceDialConfigurationResponse
+	91,  // 205: core.v1.ResourceService.GetResourceDialConfiguration:output_type -> core.v1.GetResourceDialConfigurationResponse
+	93,  // 206: core.v1.ResourceService.UpdateResourceDialConfiguration:output_type -> core.v1.UpdateResourceDialConfigurationResponse
+	95,  // 207: core.v1.ResourceService.DeleteResourceDialConfiguration:output_type -> core.v1.DeleteResourceDialConfigurationResponse
+	97,  // 208: core.v1.ResourceService.CreateResourceHostname:output_type -> core.v1.CreateResourceHostnameResponse
+	99,  // 209: core.v1.ResourceService.GetResourceHostname:output_type -> core.v1.GetResourceHostnameResponse
+	101, // 210: core.v1.ResourceService.ListResourceHostnames:output_type -> core.v1.ListResourceHostnamesResponse
+	103, // 211: core.v1.ResourceService.UpdateResourceHostname:output_type -> core.v1.UpdateResourceHostnameResponse
+	133, // 212: core.v1.ResourceService.UpdateResourceHostnameV2:output_type -> core.v1.UpdateResourceHostnameV2Response
+	105, // 213: core.v1.ResourceService.DeleteResourceHostname:output_type -> core.v1.DeleteResourceHostnameResponse
+	107, // 214: core.v1.ResourceService.CreateResourceClassifierConfiguration:output_type -> core.v1.CreateResourceClassifierConfigurationResponse
+	109, // 215: core.v1.ResourceService.ListResourceClassifierConfigurations:output_type -> core.v1.ListResourceClassifierConfigurationsResponse
+	111, // 216: core.v1.ResourceService.GetResourceClassifierConfiguration:output_type -> core.v1.GetResourceClassifierConfigurationResponse
+	113, // 217: core.v1.ResourceService.UpdateResourceClassifierConfiguration:output_type -> core.v1.UpdateResourceClassifierConfigurationResponse
+	135, // 218: core.v1.ResourceService.UpdateResourceClassifierConfigurationV2:output_type -> core.v1.UpdateResourceClassifierConfigurationV2Response
+	115, // 219: core.v1.ResourceService.DeleteResourceClassifierConfiguration:output_type -> core.v1.DeleteResourceClassifierConfigurationResponse
+	119, // 220: core.v1.ResourceService.CreateResourceTag:output_type -> core.v1.CreateResourceTagResponse
+	121, // 221: core.v1.ResourceService.DeleteResourceTag:output_type -> core.v1.DeleteResourceTagResponse
+	123, // 222: core.v1.ResourceService.UpdateResourceTag:output_type -> core.v1.UpdateResourceTagResponse
+	139, // 223: core.v1.ResourceService.CreateResourceAlias:output_type -> core.v1.CreateResourceAliasResponse
+	141, // 224: core.v1.ResourceService.DeleteResourceAlias:output_type -> core.v1.DeleteResourceAliasResponse
+	137, // 225: core.v1.ResourceService.UpdateResourceAlias:output_type -> core.v1.UpdateResourceAliasResponse
+	117, // 226: core.v1.ResourceService.ListResourceConnectorAccess:output_type -> core.v1.ListResourceConnectorAccessResponse
+	162, // [162:227] is the sub-list for method output_type
+	97,  // [97:162] is the sub-list for method input_type
+	97,  // [97:97] is the sub-list for extension type_name
+	97,  // [97:97] is the sub-list for extension extendee
+	0,   // [0:97] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_resource_proto_init() }
@@ -9046,9 +9155,10 @@ func file_core_v1_resource_proto_init() {
 	file_core_v1_resource_proto_msgTypes[4].OneofWrappers = []any{}
 	file_core_v1_resource_proto_msgTypes[8].OneofWrappers = []any{}
 	file_core_v1_resource_proto_msgTypes[12].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[18].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[23].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[30].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[16].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[20].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[25].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[32].OneofWrappers = []any{
 		(*NativeUser_Basic)(nil),
 		(*NativeUser_Iam)(nil),
 		(*NativeUser_Kubernetes)(nil),
@@ -9058,12 +9168,12 @@ func file_core_v1_resource_proto_init() {
 		(*NativeUser_HttpBearer)(nil),
 		(*NativeUser_HttpApiKey)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[31].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[33].OneofWrappers = []any{
 		(*NativeUserLink_User)(nil),
 		(*NativeUserLink_Group)(nil),
 		(*NativeUserLink_ResourceHostname)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[34].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[36].OneofWrappers = []any{
 		(*CreateNativeUserV2Request_Basic)(nil),
 		(*CreateNativeUserV2Request_Iam)(nil),
 		(*CreateNativeUserV2Request_Kubernetes)(nil),
@@ -9073,8 +9183,8 @@ func file_core_v1_resource_proto_init() {
 		(*CreateNativeUserV2Request_HttpBearer)(nil),
 		(*CreateNativeUserV2Request_HttpApiKey)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[42].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[44].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[44].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[46].OneofWrappers = []any{
 		(*UpdateNativeUserV2Request_Basic)(nil),
 		(*UpdateNativeUserV2Request_Iam)(nil),
 		(*UpdateNativeUserV2Request_Kubernetes)(nil),
@@ -9084,32 +9194,32 @@ func file_core_v1_resource_proto_init() {
 		(*UpdateNativeUserV2Request_HttpBearer)(nil),
 		(*UpdateNativeUserV2Request_HttpApiKey)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[54].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[56].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[56].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[58].OneofWrappers = []any{
 		(*GetDataDiscoveryConfigurationRequest_DataDiscoveryConfigurationId)(nil),
 		(*GetDataDiscoveryConfigurationRequest_ResourceId)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[60].OneofWrappers = []any{}
 	file_core_v1_resource_proto_msgTypes[62].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[68].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[64].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[70].OneofWrappers = []any{
 		(*GetResourceTlsConfigurationRequest_ResourceTlsConfigurationId)(nil),
 		(*GetResourceTlsConfigurationRequest_ResourceId)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[70].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[86].OneofWrappers = []any{
+	file_core_v1_resource_proto_msgTypes[72].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[88].OneofWrappers = []any{
 		(*GetResourceDialConfigurationRequest_ResourceDialConfigurationId)(nil),
 		(*GetResourceDialConfigurationRequest_ResourceId)(nil),
 	}
-	file_core_v1_resource_proto_msgTypes[98].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[102].OneofWrappers = []any{}
-	file_core_v1_resource_proto_msgTypes[108].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[100].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[104].OneofWrappers = []any{}
+	file_core_v1_resource_proto_msgTypes[110].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_resource_proto_rawDesc), len(file_core_v1_resource_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   140,
+			NumMessages:   142,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

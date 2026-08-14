@@ -2656,9 +2656,8 @@ func (c *ResourceServiceClient) DeleteResourceHostname(ctx context.Context, req 
 
 // Delete resource native user selection
 //
-// Clear a resource's native user selection expression, moving it back to
-// legacy native user authentication. Native users already created for the
-// resource are kept, so the selection expression can be set again later.
+// Clear a resource's optional native user selection expression. This does
+// not disable Native Users V3 or delete its native users.
 func (c *ResourceServiceClient) DeleteResourceNativeUserSelection(ctx context.Context, req *corev1.DeleteResourceNativeUserSelectionRequest) (*corev1.DeleteResourceNativeUserSelectionResponse, error) {
 	res, err := c.inner.DeleteResourceNativeUserSelection(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3045,6 +3044,17 @@ func (c *ResourceServiceClient) UpdateResourceHostname(ctx context.Context, req 
 // Update a resource hostname by sending the full object. All mutable fields are replaced.
 func (c *ResourceServiceClient) UpdateResourceHostnameV2(ctx context.Context, req *corev1.UpdateResourceHostnameV2Request) (*corev1.UpdateResourceHostnameV2Response, error) {
 	res, err := c.inner.UpdateResourceHostnameV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update Native Users V3 enabled
+//
+// Enable or disable Native Users V3 for a resource.
+func (c *ResourceServiceClient) UpdateResourceNativeUsersV3Enabled(ctx context.Context, req *corev1.UpdateResourceNativeUsersV3EnabledRequest) (*corev1.UpdateResourceNativeUsersV3EnabledResponse, error) {
+	res, err := c.inner.UpdateResourceNativeUsersV3Enabled(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
