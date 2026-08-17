@@ -3593,20 +3593,24 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\tconnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorR\tconnector\x126\n" +
 	"\x12connector_hostname\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x11connectorHostname\x12,\n" +
 	"\rlistener_port\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\flistenerPort\"\x19\n" +
-	"\x17FormalAiSatelliteConfig\"0\n" +
-	"\fGeminiConfig\x12 \n" +
-	"\aapi_key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiKey\"f\n" +
+	"\x17FormalAiSatelliteConfig\"3\n" +
+	"\fGeminiConfig\x12#\n" +
+	"\aapi_key\x18\x01 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\"f\n" +
 	"\x14GoogleVertexAiConfig\x12-\n" +
 	"\x0egcp_project_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fgcpProjectId\x12\x1f\n" +
-	"\x06region\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06region\"3\n" +
-	"\x0fAnthropicConfig\x12 \n" +
-	"\aapi_key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiKey\"3\n" +
+	"\x06region\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06region\"6\n" +
+	"\x0fAnthropicConfig\x12#\n" +
+	"\aapi_key\x18\x01 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\"3\n" +
 	"\x10AwsBedrockConfig\x12\x1f\n" +
-	"\x06region\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06region\"0\n" +
-	"\fOpenAiConfig\x12 \n" +
-	"\aapi_key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiKey\"V\n" +
-	"\rAzureAiConfig\x12 \n" +
-	"\aapi_key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiKey\x12#\n" +
+	"\x06region\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06region\"3\n" +
+	"\fOpenAiConfig\x12#\n" +
+	"\aapi_key\x18\x01 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\"Y\n" +
+	"\rAzureAiConfig\x12#\n" +
+	"\aapi_key\x18\x01 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\x12#\n" +
 	"\bendpoint\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bendpoint\"\xd5\x03\n" +
 	"\x19ConnectorAiProviderConfig\x12R\n" +
 	"\x13formal_ai_satellite\x18\x01 \x01(\v2 .core.v1.FormalAiSatelliteConfigH\x00R\x11formalAiSatellite\x12/\n" +

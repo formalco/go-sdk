@@ -364,7 +364,8 @@ type GCP struct {
 	GcpServiceAccountEmail          string                 `protobuf:"bytes,3,opt,name=gcp_service_account_email,json=gcpServiceAccountEmail,proto3" json:"gcp_service_account_email,omitempty"`
 	GcpWorkloadIdentityPoolProvider string                 `protobuf:"bytes,4,opt,name=gcp_workload_identity_pool_provider,json=gcpWorkloadIdentityPoolProvider,proto3" json:"gcp_workload_identity_pool_provider,omitempty"`
 	AwsFormalRoleArn                string                 `protobuf:"bytes,5,opt,name=aws_formal_role_arn,json=awsFormalRoleArn,proto3" json:"aws_formal_role_arn,omitempty"`
-	SecurityKey                     string                 `protobuf:"bytes,6,opt,name=security_key,json=securityKey,proto3" json:"security_key,omitempty"`
+	// Bearer capability for unauthenticated GCP setup/activation RPCs; never expose via MCP query_api.
+	SecurityKey string `protobuf:"bytes,6,opt,name=security_key,json=securityKey,proto3" json:"security_key,omitempty"`
 	// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
 	GcpRoles                                []string `protobuf:"bytes,7,rep,name=gcp_roles,json=gcpRoles,proto3" json:"gcp_roles,omitempty"` // superseded by gcp_permissions
 	GcpAllowGcsAccess                       bool     `protobuf:"varint,8,opt,name=gcp_allow_gcs_access,json=gcpAllowGcsAccess,proto3" json:"gcp_allow_gcs_access,omitempty"`
@@ -1889,13 +1890,13 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x15aws_customer_role_arn\x18\x14 \x01(\tR\x12awsCustomerRoleArn\x12=\n" +
 	"\x1baws_enable_s3_autodiscovery\x18\x15 \x01(\bR\x18awsEnableS3Autodiscovery\x124\n" +
 	"\x17aws_formal_iam_role_arn\x18\x16 \x01(\tR\x13awsFormalIamRoleArn\x12:\n" +
-	"\x19aws_autodiscovery_regions\x18\x17 \x03(\tR\x17awsAutodiscoveryRegions\"\xb5\x05\n" +
+	"\x19aws_autodiscovery_regions\x18\x17 \x03(\tR\x17awsAutodiscoveryRegions\"\xba\x05\n" +
 	"\x03GCP\x12$\n" +
 	"\x0egcp_project_id\x18\x02 \x01(\tR\fgcpProjectId\x129\n" +
 	"\x19gcp_service_account_email\x18\x03 \x01(\tR\x16gcpServiceAccountEmail\x12L\n" +
 	"#gcp_workload_identity_pool_provider\x18\x04 \x01(\tR\x1fgcpWorkloadIdentityPoolProvider\x12-\n" +
-	"\x13aws_formal_role_arn\x18\x05 \x01(\tR\x10awsFormalRoleArn\x12!\n" +
-	"\fsecurity_key\x18\x06 \x01(\tR\vsecurityKey\x12\x1f\n" +
+	"\x13aws_formal_role_arn\x18\x05 \x01(\tR\x10awsFormalRoleArn\x12&\n" +
+	"\fsecurity_key\x18\x06 \x01(\tB\x03\x80\x01\x01R\vsecurityKey\x12\x1f\n" +
 	"\tgcp_roles\x18\a \x03(\tB\x02\x18\x01R\bgcpRoles\x12/\n" +
 	"\x14gcp_allow_gcs_access\x18\b \x01(\bR\x11gcpAllowGcsAccess\x12&\n" +
 	"\x0fgcp_gcs_buckets\x18\t \x03(\tR\rgcpGcsBuckets\x12Z\n" +
@@ -1943,11 +1944,11 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"'_enable_compute_instances_autodiscoveryB$\n" +
 	"\"_enable_gke_clusters_autodiscoveryB*\n" +
 	"(_enable_cloudsql_instances_autodiscoveryB\a\n" +
-	"\x05cloud\"n\n" +
+	"\x05cloud\"s\n" +
 	"\x1eCreateCloudIntegrationResponse\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12\x17\n" +
-	"\x02id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12!\n" +
-	"\fsecurity_key\x18\x03 \x01(\tR\vsecurityKey\"\xbc\r\n" +
+	"\x02id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12&\n" +
+	"\fsecurity_key\x18\x03 \x01(\tB\x03\x80\x01\x01R\vsecurityKey\"\xbc\r\n" +
 	"\x1dUpdateCloudIntegrationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12>\n" +
 	"\x03aws\x18\x02 \x01(\v2*.core.v1.UpdateCloudIntegrationRequest.AWSH\x00R\x03aws\x12>\n" +
@@ -2014,16 +2015,18 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x1dDeleteCloudIntegrationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"9\n" +
 	"\x1eDeleteCloudIntegrationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xfb\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xfe\x01\n" +
 	"'SetGCPCloudIntegrationActivationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12;\n" +
 	"\x15service_account_email\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x13serviceAccountEmail\x12N\n" +
-	"\x1fworkload_identity_pool_provider\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x1cworkloadIdentityPoolProvider\x12*\n" +
-	"\fsecurity_key\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsecurityKey\"*\n" +
-	"(SetGCPCloudIntegrationActivationResponse\"i\n" +
+	"\x1fworkload_identity_pool_provider\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x1cworkloadIdentityPoolProvider\x12-\n" +
+	"\fsecurity_key\x18\x04 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\vsecurityKey\"*\n" +
+	"(SetGCPCloudIntegrationActivationResponse\"l\n" +
 	"\"GetGCPCloudIntegrationSetupRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12*\n" +
-	"\fsecurity_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsecurityKey\"\xc9\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12-\n" +
+	"\fsecurity_key\x18\x02 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\vsecurityKey\"\xc9\x01\n" +
 	"#GetGCPCloudIntegrationSetupResponse\x12\x1d\n" +
 	"\n" +
 	"project_id\x18\x01 \x01(\tR\tprojectId\x12&\n" +
