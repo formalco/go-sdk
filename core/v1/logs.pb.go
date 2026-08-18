@@ -5203,9 +5203,9 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x11log_configuration\x18\x01 \x01(\v2\x19.core.v1.LogConfigurationR\x10logConfiguration\"8\n" +
 	"\x1dDeleteLogConfigurationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\" \n" +
-	"\x1eDeleteLogConfigurationResponse\"\xc6\x02\n" +
-	"\x1aCreateEncryptionKeyRequest\x125\n" +
-	"\bprovider\x18\x01 \x01(\tB\x19\xbaH\x16r\x14\x10\x01R\aaws-kmsR\agcp-kmsR\bprovider\x12\x1e\n" +
+	"\x1eDeleteLogConfigurationResponse\"\xd7\x02\n" +
+	"\x1aCreateEncryptionKeyRequest\x12F\n" +
+	"\bprovider\x18\x01 \x01(\tB*\xbaH'r%\x10\x01R\aaws-kmsR\agcp-kmsR\x0fazure-key-vaultR\bprovider\x12\x1e\n" +
 	"\x06key_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05keyId\x12W\n" +
 	"\talgorithm\x18\x03 \x01(\tB9\xbaH6r4\x10\x01R\n" +
 	"aes_randomR\x11aes_deterministicR\x11rsaes_oaep_sha256R\talgorithm\x12(\n" +
@@ -5222,10 +5222,10 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x1fGetEncryptionKeysByKeyIdRequest\x12\x1e\n" +
 	"\x06key_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05keyId\"c\n" +
 	" GetEncryptionKeysByKeyIdResponse\x12?\n" +
-	"\x0fencryption_keys\x18\x01 \x03(\v2\x16.core.v1.EncryptionKeyR\x0eencryptionKeys\"\x90\x03\n" +
+	"\x0fencryption_keys\x18\x01 \x03(\v2\x16.core.v1.EncryptionKeyR\x0eencryptionKeys\"\xa1\x03\n" +
 	"\x1aUpdateEncryptionKeyRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12?\n" +
-	"\bprovider\x18\x02 \x01(\tB\x1e\xbaH\x1br\x19\x10\x01R\aaws-kmsR\agcp-kmsR\x03awsH\x00R\bprovider\x88\x01\x01\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12P\n" +
+	"\bprovider\x18\x02 \x01(\tB/\xbaH,r*\x10\x01R\aaws-kmsR\agcp-kmsR\x0fazure-key-vaultR\x03awsH\x00R\bprovider\x88\x01\x01\x12\x1a\n" +
 	"\x06key_id\x18\x03 \x01(\tH\x01R\x05keyId\x88\x01\x01\x12\\\n" +
 	"\talgorithm\x18\x04 \x01(\tB9\xbaH6r4\x10\x01R\n" +
 	"aes_randomR\x11aes_deterministicR\x11rsaes_oaep_sha256H\x02R\talgorithm\x88\x01\x01\x12(\n" +
