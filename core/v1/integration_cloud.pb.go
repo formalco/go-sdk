@@ -35,6 +35,7 @@ type CloudIntegration struct {
 	//
 	//	*CloudIntegration_Aws
 	//	*CloudIntegration_Gcp
+	//	*CloudIntegration_Azure
 	Cloud         isCloudIntegration_Cloud `protobuf_oneof:"cloud"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -130,6 +131,15 @@ func (x *CloudIntegration) GetGcp() *GCP {
 	return nil
 }
 
+func (x *CloudIntegration) GetAzure() *Azure {
+	if x != nil {
+		if x, ok := x.Cloud.(*CloudIntegration_Azure); ok {
+			return x.Azure
+		}
+	}
+	return nil
+}
+
 type isCloudIntegration_Cloud interface {
 	isCloudIntegration_Cloud()
 }
@@ -142,9 +152,15 @@ type CloudIntegration_Gcp struct {
 	Gcp *GCP `protobuf:"bytes,8,opt,name=gcp,proto3,oneof"`
 }
 
+type CloudIntegration_Azure struct {
+	Azure *Azure `protobuf:"bytes,9,opt,name=azure,proto3,oneof"`
+}
+
 func (*CloudIntegration_Aws) isCloudIntegration_Cloud() {}
 
 func (*CloudIntegration_Gcp) isCloudIntegration_Cloud() {}
+
+func (*CloudIntegration_Azure) isCloudIntegration_Cloud() {}
 
 type AWS struct {
 	state                          protoimpl.MessageState `protogen:"open.v1"`
@@ -493,15 +509,140 @@ func (x *GCP) GetGcpPermissions() []string {
 	return nil
 }
 
+type Azure struct {
+	state                       protoimpl.MessageState `protogen:"open.v1"`
+	AzureTenantId               string                 `protobuf:"bytes,1,opt,name=azure_tenant_id,json=azureTenantId,proto3" json:"azure_tenant_id,omitempty"`
+	AzureClientId               string                 `protobuf:"bytes,2,opt,name=azure_client_id,json=azureClientId,proto3" json:"azure_client_id,omitempty"`
+	AzureSubscriptionId         string                 `protobuf:"bytes,3,opt,name=azure_subscription_id,json=azureSubscriptionId,proto3" json:"azure_subscription_id,omitempty"`
+	AzureResourceGroup          string                 `protobuf:"bytes,4,opt,name=azure_resource_group,json=azureResourceGroup,proto3" json:"azure_resource_group,omitempty"`
+	AwsFormalRoleArn            string                 `protobuf:"bytes,5,opt,name=aws_formal_role_arn,json=awsFormalRoleArn,proto3" json:"aws_formal_role_arn,omitempty"`
+	SecurityKey                 string                 `protobuf:"bytes,6,opt,name=security_key,json=securityKey,proto3" json:"security_key,omitempty"`
+	AzureEnableVmAutodiscovery  bool                   `protobuf:"varint,7,opt,name=azure_enable_vm_autodiscovery,json=azureEnableVmAutodiscovery,proto3" json:"azure_enable_vm_autodiscovery,omitempty"`
+	AzureEnableAksAutodiscovery bool                   `protobuf:"varint,8,opt,name=azure_enable_aks_autodiscovery,json=azureEnableAksAutodiscovery,proto3" json:"azure_enable_aks_autodiscovery,omitempty"`
+	AzureEnableDbAutodiscovery  bool                   `protobuf:"varint,9,opt,name=azure_enable_db_autodiscovery,json=azureEnableDbAutodiscovery,proto3" json:"azure_enable_db_autodiscovery,omitempty"`
+	AzureAllowBlobAccess        bool                   `protobuf:"varint,10,opt,name=azure_allow_blob_access,json=azureAllowBlobAccess,proto3" json:"azure_allow_blob_access,omitempty"`
+	AzureBlobStorageAccounts    []string               `protobuf:"bytes,11,rep,name=azure_blob_storage_accounts,json=azureBlobStorageAccounts,proto3" json:"azure_blob_storage_accounts,omitempty"`
+	unknownFields               protoimpl.UnknownFields
+	sizeCache                   protoimpl.SizeCache
+}
+
+func (x *Azure) Reset() {
+	*x = Azure{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Azure) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Azure) ProtoMessage() {}
+
+func (x *Azure) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Azure.ProtoReflect.Descriptor instead.
+func (*Azure) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Azure) GetAzureTenantId() string {
+	if x != nil {
+		return x.AzureTenantId
+	}
+	return ""
+}
+
+func (x *Azure) GetAzureClientId() string {
+	if x != nil {
+		return x.AzureClientId
+	}
+	return ""
+}
+
+func (x *Azure) GetAzureSubscriptionId() string {
+	if x != nil {
+		return x.AzureSubscriptionId
+	}
+	return ""
+}
+
+func (x *Azure) GetAzureResourceGroup() string {
+	if x != nil {
+		return x.AzureResourceGroup
+	}
+	return ""
+}
+
+func (x *Azure) GetAwsFormalRoleArn() string {
+	if x != nil {
+		return x.AwsFormalRoleArn
+	}
+	return ""
+}
+
+func (x *Azure) GetSecurityKey() string {
+	if x != nil {
+		return x.SecurityKey
+	}
+	return ""
+}
+
+func (x *Azure) GetAzureEnableVmAutodiscovery() bool {
+	if x != nil {
+		return x.AzureEnableVmAutodiscovery
+	}
+	return false
+}
+
+func (x *Azure) GetAzureEnableAksAutodiscovery() bool {
+	if x != nil {
+		return x.AzureEnableAksAutodiscovery
+	}
+	return false
+}
+
+func (x *Azure) GetAzureEnableDbAutodiscovery() bool {
+	if x != nil {
+		return x.AzureEnableDbAutodiscovery
+	}
+	return false
+}
+
+func (x *Azure) GetAzureAllowBlobAccess() bool {
+	if x != nil {
+		return x.AzureAllowBlobAccess
+	}
+	return false
+}
+
+func (x *Azure) GetAzureBlobStorageAccounts() []string {
+	if x != nil {
+		return x.AzureBlobStorageAccounts
+	}
+	return nil
+}
+
 type CreateCloudIntegrationRequest struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
 	Name        string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	CloudRegion string                 `protobuf:"bytes,2,opt,name=cloud_region,json=cloudRegion,proto3" json:"cloud_region,omitempty"` // required for AWS, unused for GCP
+	CloudRegion string                 `protobuf:"bytes,2,opt,name=cloud_region,json=cloudRegion,proto3" json:"cloud_region,omitempty"` // required for AWS, unused for GCP and Azure
 	Type        string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`                                  // TODO: remove, deprecated by oneof cloud (2025-02-24)
 	// Types that are valid to be assigned to Cloud:
 	//
 	//	*CreateCloudIntegrationRequest_Aws
 	//	*CreateCloudIntegrationRequest_Gcp
+	//	*CreateCloudIntegrationRequest_Azure_
 	Cloud         isCreateCloudIntegrationRequest_Cloud `protobuf_oneof:"cloud"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -509,7 +650,7 @@ type CreateCloudIntegrationRequest struct {
 
 func (x *CreateCloudIntegrationRequest) Reset() {
 	*x = CreateCloudIntegrationRequest{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[3]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -521,7 +662,7 @@ func (x *CreateCloudIntegrationRequest) String() string {
 func (*CreateCloudIntegrationRequest) ProtoMessage() {}
 
 func (x *CreateCloudIntegrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[3]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -534,7 +675,7 @@ func (x *CreateCloudIntegrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCloudIntegrationRequest.ProtoReflect.Descriptor instead.
 func (*CreateCloudIntegrationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{3}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateCloudIntegrationRequest) GetName() string {
@@ -583,6 +724,15 @@ func (x *CreateCloudIntegrationRequest) GetGcp() *CreateCloudIntegrationRequest_
 	return nil
 }
 
+func (x *CreateCloudIntegrationRequest) GetAzure() *CreateCloudIntegrationRequest_Azure {
+	if x != nil {
+		if x, ok := x.Cloud.(*CreateCloudIntegrationRequest_Azure_); ok {
+			return x.Azure
+		}
+	}
+	return nil
+}
+
 type isCreateCloudIntegrationRequest_Cloud interface {
 	isCreateCloudIntegrationRequest_Cloud()
 }
@@ -595,9 +745,15 @@ type CreateCloudIntegrationRequest_Gcp struct {
 	Gcp *CreateCloudIntegrationRequest_GCP `protobuf:"bytes,5,opt,name=gcp,proto3,oneof"`
 }
 
+type CreateCloudIntegrationRequest_Azure_ struct {
+	Azure *CreateCloudIntegrationRequest_Azure `protobuf:"bytes,6,opt,name=azure,proto3,oneof"`
+}
+
 func (*CreateCloudIntegrationRequest_Aws) isCreateCloudIntegrationRequest_Cloud() {}
 
 func (*CreateCloudIntegrationRequest_Gcp) isCreateCloudIntegrationRequest_Cloud() {}
+
+func (*CreateCloudIntegrationRequest_Azure_) isCreateCloudIntegrationRequest_Cloud() {}
 
 type CreateCloudIntegrationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -610,7 +766,7 @@ type CreateCloudIntegrationResponse struct {
 
 func (x *CreateCloudIntegrationResponse) Reset() {
 	*x = CreateCloudIntegrationResponse{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[4]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -622,7 +778,7 @@ func (x *CreateCloudIntegrationResponse) String() string {
 func (*CreateCloudIntegrationResponse) ProtoMessage() {}
 
 func (x *CreateCloudIntegrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[4]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -635,7 +791,7 @@ func (x *CreateCloudIntegrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCloudIntegrationResponse.ProtoReflect.Descriptor instead.
 func (*CreateCloudIntegrationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{4}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateCloudIntegrationResponse) GetUrl() string {
@@ -666,6 +822,7 @@ type UpdateCloudIntegrationRequest struct {
 	//
 	//	*UpdateCloudIntegrationRequest_Aws
 	//	*UpdateCloudIntegrationRequest_Gcp
+	//	*UpdateCloudIntegrationRequest_Azure_
 	Cloud         isUpdateCloudIntegrationRequest_Cloud `protobuf_oneof:"cloud"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -673,7 +830,7 @@ type UpdateCloudIntegrationRequest struct {
 
 func (x *UpdateCloudIntegrationRequest) Reset() {
 	*x = UpdateCloudIntegrationRequest{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[5]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -685,7 +842,7 @@ func (x *UpdateCloudIntegrationRequest) String() string {
 func (*UpdateCloudIntegrationRequest) ProtoMessage() {}
 
 func (x *UpdateCloudIntegrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[5]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -698,7 +855,7 @@ func (x *UpdateCloudIntegrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCloudIntegrationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateCloudIntegrationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{5}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UpdateCloudIntegrationRequest) GetId() string {
@@ -733,6 +890,15 @@ func (x *UpdateCloudIntegrationRequest) GetGcp() *UpdateCloudIntegrationRequest_
 	return nil
 }
 
+func (x *UpdateCloudIntegrationRequest) GetAzure() *UpdateCloudIntegrationRequest_Azure {
+	if x != nil {
+		if x, ok := x.Cloud.(*UpdateCloudIntegrationRequest_Azure_); ok {
+			return x.Azure
+		}
+	}
+	return nil
+}
+
 type isUpdateCloudIntegrationRequest_Cloud interface {
 	isUpdateCloudIntegrationRequest_Cloud()
 }
@@ -745,9 +911,15 @@ type UpdateCloudIntegrationRequest_Gcp struct {
 	Gcp *UpdateCloudIntegrationRequest_GCP `protobuf:"bytes,3,opt,name=gcp,proto3,oneof"`
 }
 
+type UpdateCloudIntegrationRequest_Azure_ struct {
+	Azure *UpdateCloudIntegrationRequest_Azure `protobuf:"bytes,4,opt,name=azure,proto3,oneof"`
+}
+
 func (*UpdateCloudIntegrationRequest_Aws) isUpdateCloudIntegrationRequest_Cloud() {}
 
 func (*UpdateCloudIntegrationRequest_Gcp) isUpdateCloudIntegrationRequest_Cloud() {}
+
+func (*UpdateCloudIntegrationRequest_Azure_) isUpdateCloudIntegrationRequest_Cloud() {}
 
 type UpdateCloudIntegrationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -758,7 +930,7 @@ type UpdateCloudIntegrationResponse struct {
 
 func (x *UpdateCloudIntegrationResponse) Reset() {
 	*x = UpdateCloudIntegrationResponse{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[6]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -770,7 +942,7 @@ func (x *UpdateCloudIntegrationResponse) String() string {
 func (*UpdateCloudIntegrationResponse) ProtoMessage() {}
 
 func (x *UpdateCloudIntegrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[6]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -783,7 +955,7 @@ func (x *UpdateCloudIntegrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCloudIntegrationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateCloudIntegrationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{6}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateCloudIntegrationResponse) GetCloud() *CloudIntegration {
@@ -802,7 +974,7 @@ type UpdateCloudIntegrationV2Request struct {
 
 func (x *UpdateCloudIntegrationV2Request) Reset() {
 	*x = UpdateCloudIntegrationV2Request{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[7]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -814,7 +986,7 @@ func (x *UpdateCloudIntegrationV2Request) String() string {
 func (*UpdateCloudIntegrationV2Request) ProtoMessage() {}
 
 func (x *UpdateCloudIntegrationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[7]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -827,7 +999,7 @@ func (x *UpdateCloudIntegrationV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCloudIntegrationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateCloudIntegrationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{7}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateCloudIntegrationV2Request) GetCloud() *CloudIntegration {
@@ -846,7 +1018,7 @@ type UpdateCloudIntegrationV2Response struct {
 
 func (x *UpdateCloudIntegrationV2Response) Reset() {
 	*x = UpdateCloudIntegrationV2Response{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[8]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -858,7 +1030,7 @@ func (x *UpdateCloudIntegrationV2Response) String() string {
 func (*UpdateCloudIntegrationV2Response) ProtoMessage() {}
 
 func (x *UpdateCloudIntegrationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[8]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -871,7 +1043,7 @@ func (x *UpdateCloudIntegrationV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCloudIntegrationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateCloudIntegrationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{8}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateCloudIntegrationV2Response) GetCloud() *CloudIntegration {
@@ -890,7 +1062,7 @@ type GetIntegrationCloudRequest struct {
 
 func (x *GetIntegrationCloudRequest) Reset() {
 	*x = GetIntegrationCloudRequest{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[9]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -902,7 +1074,7 @@ func (x *GetIntegrationCloudRequest) String() string {
 func (*GetIntegrationCloudRequest) ProtoMessage() {}
 
 func (x *GetIntegrationCloudRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[9]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -915,7 +1087,7 @@ func (x *GetIntegrationCloudRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIntegrationCloudRequest.ProtoReflect.Descriptor instead.
 func (*GetIntegrationCloudRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{9}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetIntegrationCloudRequest) GetId() string {
@@ -934,7 +1106,7 @@ type GetIntegrationCloudResponse struct {
 
 func (x *GetIntegrationCloudResponse) Reset() {
 	*x = GetIntegrationCloudResponse{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[10]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -946,7 +1118,7 @@ func (x *GetIntegrationCloudResponse) String() string {
 func (*GetIntegrationCloudResponse) ProtoMessage() {}
 
 func (x *GetIntegrationCloudResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[10]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -959,7 +1131,7 @@ func (x *GetIntegrationCloudResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIntegrationCloudResponse.ProtoReflect.Descriptor instead.
 func (*GetIntegrationCloudResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{10}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetIntegrationCloudResponse) GetCloud() *CloudIntegration {
@@ -983,7 +1155,7 @@ type ListIntegrationCloudsRequest struct {
 
 func (x *ListIntegrationCloudsRequest) Reset() {
 	*x = ListIntegrationCloudsRequest{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[11]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -995,7 +1167,7 @@ func (x *ListIntegrationCloudsRequest) String() string {
 func (*ListIntegrationCloudsRequest) ProtoMessage() {}
 
 func (x *ListIntegrationCloudsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[11]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1008,7 +1180,7 @@ func (x *ListIntegrationCloudsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListIntegrationCloudsRequest.ProtoReflect.Descriptor instead.
 func (*ListIntegrationCloudsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{11}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListIntegrationCloudsRequest) GetLimit() int32 {
@@ -1063,7 +1235,7 @@ type ListIntegrationCloudsResponse struct {
 
 func (x *ListIntegrationCloudsResponse) Reset() {
 	*x = ListIntegrationCloudsResponse{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[12]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1075,7 +1247,7 @@ func (x *ListIntegrationCloudsResponse) String() string {
 func (*ListIntegrationCloudsResponse) ProtoMessage() {}
 
 func (x *ListIntegrationCloudsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[12]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1088,7 +1260,7 @@ func (x *ListIntegrationCloudsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListIntegrationCloudsResponse.ProtoReflect.Descriptor instead.
 func (*ListIntegrationCloudsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{12}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListIntegrationCloudsResponse) GetClouds() []*CloudIntegration {
@@ -1114,7 +1286,7 @@ type DeleteCloudIntegrationRequest struct {
 
 func (x *DeleteCloudIntegrationRequest) Reset() {
 	*x = DeleteCloudIntegrationRequest{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[13]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1126,7 +1298,7 @@ func (x *DeleteCloudIntegrationRequest) String() string {
 func (*DeleteCloudIntegrationRequest) ProtoMessage() {}
 
 func (x *DeleteCloudIntegrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[13]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1139,7 +1311,7 @@ func (x *DeleteCloudIntegrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCloudIntegrationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteCloudIntegrationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DeleteCloudIntegrationRequest) GetId() string {
@@ -1158,7 +1330,7 @@ type DeleteCloudIntegrationResponse struct {
 
 func (x *DeleteCloudIntegrationResponse) Reset() {
 	*x = DeleteCloudIntegrationResponse{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[14]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1170,7 +1342,7 @@ func (x *DeleteCloudIntegrationResponse) String() string {
 func (*DeleteCloudIntegrationResponse) ProtoMessage() {}
 
 func (x *DeleteCloudIntegrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[14]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1183,7 +1355,7 @@ func (x *DeleteCloudIntegrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCloudIntegrationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteCloudIntegrationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DeleteCloudIntegrationResponse) GetId() string {
@@ -1205,7 +1377,7 @@ type SetGCPCloudIntegrationActivationRequest struct {
 
 func (x *SetGCPCloudIntegrationActivationRequest) Reset() {
 	*x = SetGCPCloudIntegrationActivationRequest{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[15]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1217,7 +1389,7 @@ func (x *SetGCPCloudIntegrationActivationRequest) String() string {
 func (*SetGCPCloudIntegrationActivationRequest) ProtoMessage() {}
 
 func (x *SetGCPCloudIntegrationActivationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[15]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1230,7 +1402,7 @@ func (x *SetGCPCloudIntegrationActivationRequest) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use SetGCPCloudIntegrationActivationRequest.ProtoReflect.Descriptor instead.
 func (*SetGCPCloudIntegrationActivationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SetGCPCloudIntegrationActivationRequest) GetId() string {
@@ -1269,7 +1441,7 @@ type SetGCPCloudIntegrationActivationResponse struct {
 
 func (x *SetGCPCloudIntegrationActivationResponse) Reset() {
 	*x = SetGCPCloudIntegrationActivationResponse{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[16]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1281,7 +1453,7 @@ func (x *SetGCPCloudIntegrationActivationResponse) String() string {
 func (*SetGCPCloudIntegrationActivationResponse) ProtoMessage() {}
 
 func (x *SetGCPCloudIntegrationActivationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[16]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1294,7 +1466,7 @@ func (x *SetGCPCloudIntegrationActivationResponse) ProtoReflect() protoreflect.M
 
 // Deprecated: Use SetGCPCloudIntegrationActivationResponse.ProtoReflect.Descriptor instead.
 func (*SetGCPCloudIntegrationActivationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{17}
 }
 
 type GetGCPCloudIntegrationSetupRequest struct {
@@ -1307,7 +1479,7 @@ type GetGCPCloudIntegrationSetupRequest struct {
 
 func (x *GetGCPCloudIntegrationSetupRequest) Reset() {
 	*x = GetGCPCloudIntegrationSetupRequest{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[17]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1319,7 +1491,7 @@ func (x *GetGCPCloudIntegrationSetupRequest) String() string {
 func (*GetGCPCloudIntegrationSetupRequest) ProtoMessage() {}
 
 func (x *GetGCPCloudIntegrationSetupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[17]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1332,7 +1504,7 @@ func (x *GetGCPCloudIntegrationSetupRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetGCPCloudIntegrationSetupRequest.ProtoReflect.Descriptor instead.
 func (*GetGCPCloudIntegrationSetupRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetGCPCloudIntegrationSetupRequest) GetId() string {
@@ -1363,7 +1535,7 @@ type GetGCPCloudIntegrationSetupResponse struct {
 
 func (x *GetGCPCloudIntegrationSetupResponse) Reset() {
 	*x = GetGCPCloudIntegrationSetupResponse{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[18]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1375,7 +1547,7 @@ func (x *GetGCPCloudIntegrationSetupResponse) String() string {
 func (*GetGCPCloudIntegrationSetupResponse) ProtoMessage() {}
 
 func (x *GetGCPCloudIntegrationSetupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[18]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1388,7 +1560,7 @@ func (x *GetGCPCloudIntegrationSetupResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetGCPCloudIntegrationSetupResponse.ProtoReflect.Descriptor instead.
 func (*GetGCPCloudIntegrationSetupResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetGCPCloudIntegrationSetupResponse) GetProjectId() string {
@@ -1427,6 +1599,254 @@ func (x *GetGCPCloudIntegrationSetupResponse) GetPermissions() []string {
 	return nil
 }
 
+type SetAzureCloudIntegrationActivationRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ClientId      string                 `protobuf:"bytes,3,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	SecurityKey   string                 `protobuf:"bytes,4,opt,name=security_key,json=securityKey,proto3" json:"security_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetAzureCloudIntegrationActivationRequest) Reset() {
+	*x = SetAzureCloudIntegrationActivationRequest{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetAzureCloudIntegrationActivationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetAzureCloudIntegrationActivationRequest) ProtoMessage() {}
+
+func (x *SetAzureCloudIntegrationActivationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetAzureCloudIntegrationActivationRequest.ProtoReflect.Descriptor instead.
+func (*SetAzureCloudIntegrationActivationRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *SetAzureCloudIntegrationActivationRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *SetAzureCloudIntegrationActivationRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *SetAzureCloudIntegrationActivationRequest) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *SetAzureCloudIntegrationActivationRequest) GetSecurityKey() string {
+	if x != nil {
+		return x.SecurityKey
+	}
+	return ""
+}
+
+type SetAzureCloudIntegrationActivationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetAzureCloudIntegrationActivationResponse) Reset() {
+	*x = SetAzureCloudIntegrationActivationResponse{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetAzureCloudIntegrationActivationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetAzureCloudIntegrationActivationResponse) ProtoMessage() {}
+
+func (x *SetAzureCloudIntegrationActivationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetAzureCloudIntegrationActivationResponse.ProtoReflect.Descriptor instead.
+func (*SetAzureCloudIntegrationActivationResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{21}
+}
+
+type GetAzureCloudIntegrationSetupRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	SecurityKey   string                 `protobuf:"bytes,2,opt,name=security_key,json=securityKey,proto3" json:"security_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAzureCloudIntegrationSetupRequest) Reset() {
+	*x = GetAzureCloudIntegrationSetupRequest{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAzureCloudIntegrationSetupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAzureCloudIntegrationSetupRequest) ProtoMessage() {}
+
+func (x *GetAzureCloudIntegrationSetupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAzureCloudIntegrationSetupRequest.ProtoReflect.Descriptor instead.
+func (*GetAzureCloudIntegrationSetupRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetAzureCloudIntegrationSetupRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *GetAzureCloudIntegrationSetupRequest) GetSecurityKey() string {
+	if x != nil {
+		return x.SecurityKey
+	}
+	return ""
+}
+
+type GetAzureCloudIntegrationSetupResponse struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	Issuer              string                 `protobuf:"bytes,1,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	Subject             string                 `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
+	Audience            string                 `protobuf:"bytes,3,opt,name=audience,proto3" json:"audience,omitempty"`
+	SubscriptionId      string                 `protobuf:"bytes,4,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
+	ResourceGroup       string                 `protobuf:"bytes,5,opt,name=resource_group,json=resourceGroup,proto3" json:"resource_group,omitempty"`
+	RoleDefinitions     []string               `protobuf:"bytes,6,rep,name=role_definitions,json=roleDefinitions,proto3" json:"role_definitions,omitempty"`
+	BlobStorageAccounts []string               `protobuf:"bytes,7,rep,name=blob_storage_accounts,json=blobStorageAccounts,proto3" json:"blob_storage_accounts,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) Reset() {
+	*x = GetAzureCloudIntegrationSetupResponse{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAzureCloudIntegrationSetupResponse) ProtoMessage() {}
+
+func (x *GetAzureCloudIntegrationSetupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAzureCloudIntegrationSetupResponse.ProtoReflect.Descriptor instead.
+func (*GetAzureCloudIntegrationSetupResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetIssuer() string {
+	if x != nil {
+		return x.Issuer
+	}
+	return ""
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetSubject() string {
+	if x != nil {
+		return x.Subject
+	}
+	return ""
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetAudience() string {
+	if x != nil {
+		return x.Audience
+	}
+	return ""
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetSubscriptionId() string {
+	if x != nil {
+		return x.SubscriptionId
+	}
+	return ""
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetResourceGroup() string {
+	if x != nil {
+		return x.ResourceGroup
+	}
+	return ""
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetRoleDefinitions() []string {
+	if x != nil {
+		return x.RoleDefinitions
+	}
+	return nil
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetBlobStorageAccounts() []string {
+	if x != nil {
+		return x.BlobStorageAccounts
+	}
+	return nil
+}
+
 type CreateCloudIntegrationRequest_AWS struct {
 	state                       protoimpl.MessageState `protogen:"open.v1"`
 	TemplateVersion             string                 `protobuf:"bytes,1,opt,name=template_version,json=templateVersion,proto3" json:"template_version,omitempty"`
@@ -1446,7 +1866,7 @@ type CreateCloudIntegrationRequest_AWS struct {
 
 func (x *CreateCloudIntegrationRequest_AWS) Reset() {
 	*x = CreateCloudIntegrationRequest_AWS{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[19]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1458,7 +1878,7 @@ func (x *CreateCloudIntegrationRequest_AWS) String() string {
 func (*CreateCloudIntegrationRequest_AWS) ProtoMessage() {}
 
 func (x *CreateCloudIntegrationRequest_AWS) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[19]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1471,7 +1891,7 @@ func (x *CreateCloudIntegrationRequest_AWS) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CreateCloudIntegrationRequest_AWS.ProtoReflect.Descriptor instead.
 func (*CreateCloudIntegrationRequest_AWS) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{3, 0}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{4, 0}
 }
 
 func (x *CreateCloudIntegrationRequest_AWS) GetTemplateVersion() string {
@@ -1565,7 +1985,7 @@ type CreateCloudIntegrationRequest_GCP struct {
 
 func (x *CreateCloudIntegrationRequest_GCP) Reset() {
 	*x = CreateCloudIntegrationRequest_GCP{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[20]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1577,7 +1997,7 @@ func (x *CreateCloudIntegrationRequest_GCP) String() string {
 func (*CreateCloudIntegrationRequest_GCP) ProtoMessage() {}
 
 func (x *CreateCloudIntegrationRequest_GCP) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[20]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1590,7 +2010,7 @@ func (x *CreateCloudIntegrationRequest_GCP) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CreateCloudIntegrationRequest_GCP.ProtoReflect.Descriptor instead.
 func (*CreateCloudIntegrationRequest_GCP) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{3, 1}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{4, 1}
 }
 
 func (x *CreateCloudIntegrationRequest_GCP) GetProjectId() string {
@@ -1635,6 +2055,98 @@ func (x *CreateCloudIntegrationRequest_GCP) GetEnableCloudsqlInstancesAutodiscov
 	return false
 }
 
+type CreateCloudIntegrationRequest_Azure struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	SubscriptionId         string                 `protobuf:"bytes,1,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
+	ResourceGroup          string                 `protobuf:"bytes,2,opt,name=resource_group,json=resourceGroup,proto3" json:"resource_group,omitempty"`
+	AllowBlobAccess        bool                   `protobuf:"varint,3,opt,name=allow_blob_access,json=allowBlobAccess,proto3" json:"allow_blob_access,omitempty"`
+	BlobStorageAccounts    []string               `protobuf:"bytes,4,rep,name=blob_storage_accounts,json=blobStorageAccounts,proto3" json:"blob_storage_accounts,omitempty"`
+	EnableVmAutodiscovery  *bool                  `protobuf:"varint,5,opt,name=enable_vm_autodiscovery,json=enableVmAutodiscovery,proto3,oneof" json:"enable_vm_autodiscovery,omitempty"`
+	EnableAksAutodiscovery *bool                  `protobuf:"varint,6,opt,name=enable_aks_autodiscovery,json=enableAksAutodiscovery,proto3,oneof" json:"enable_aks_autodiscovery,omitempty"`
+	EnableDbAutodiscovery  *bool                  `protobuf:"varint,7,opt,name=enable_db_autodiscovery,json=enableDbAutodiscovery,proto3,oneof" json:"enable_db_autodiscovery,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) Reset() {
+	*x = CreateCloudIntegrationRequest_Azure{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCloudIntegrationRequest_Azure) ProtoMessage() {}
+
+func (x *CreateCloudIntegrationRequest_Azure) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCloudIntegrationRequest_Azure.ProtoReflect.Descriptor instead.
+func (*CreateCloudIntegrationRequest_Azure) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{4, 2}
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) GetSubscriptionId() string {
+	if x != nil {
+		return x.SubscriptionId
+	}
+	return ""
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) GetResourceGroup() string {
+	if x != nil {
+		return x.ResourceGroup
+	}
+	return ""
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) GetAllowBlobAccess() bool {
+	if x != nil {
+		return x.AllowBlobAccess
+	}
+	return false
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) GetBlobStorageAccounts() []string {
+	if x != nil {
+		return x.BlobStorageAccounts
+	}
+	return nil
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) GetEnableVmAutodiscovery() bool {
+	if x != nil && x.EnableVmAutodiscovery != nil {
+		return *x.EnableVmAutodiscovery
+	}
+	return false
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) GetEnableAksAutodiscovery() bool {
+	if x != nil && x.EnableAksAutodiscovery != nil {
+		return *x.EnableAksAutodiscovery
+	}
+	return false
+}
+
+func (x *CreateCloudIntegrationRequest_Azure) GetEnableDbAutodiscovery() bool {
+	if x != nil && x.EnableDbAutodiscovery != nil {
+		return *x.EnableDbAutodiscovery
+	}
+	return false
+}
+
 type UpdateCloudIntegrationRequest_AWS struct {
 	state                       protoimpl.MessageState `protogen:"open.v1"`
 	TemplateVersion             string                 `protobuf:"bytes,1,opt,name=template_version,json=templateVersion,proto3" json:"template_version,omitempty"`
@@ -1654,7 +2166,7 @@ type UpdateCloudIntegrationRequest_AWS struct {
 
 func (x *UpdateCloudIntegrationRequest_AWS) Reset() {
 	*x = UpdateCloudIntegrationRequest_AWS{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[21]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1666,7 +2178,7 @@ func (x *UpdateCloudIntegrationRequest_AWS) String() string {
 func (*UpdateCloudIntegrationRequest_AWS) ProtoMessage() {}
 
 func (x *UpdateCloudIntegrationRequest_AWS) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[21]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1679,7 +2191,7 @@ func (x *UpdateCloudIntegrationRequest_AWS) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use UpdateCloudIntegrationRequest_AWS.ProtoReflect.Descriptor instead.
 func (*UpdateCloudIntegrationRequest_AWS) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{5, 0}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{6, 0}
 }
 
 func (x *UpdateCloudIntegrationRequest_AWS) GetTemplateVersion() string {
@@ -1774,7 +2286,7 @@ type UpdateCloudIntegrationRequest_GCP struct {
 
 func (x *UpdateCloudIntegrationRequest_GCP) Reset() {
 	*x = UpdateCloudIntegrationRequest_GCP{}
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[22]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1786,7 +2298,7 @@ func (x *UpdateCloudIntegrationRequest_GCP) String() string {
 func (*UpdateCloudIntegrationRequest_GCP) ProtoMessage() {}
 
 func (x *UpdateCloudIntegrationRequest_GCP) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_cloud_proto_msgTypes[22]
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1799,7 +2311,7 @@ func (x *UpdateCloudIntegrationRequest_GCP) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use UpdateCloudIntegrationRequest_GCP.ProtoReflect.Descriptor instead.
 func (*UpdateCloudIntegrationRequest_GCP) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{5, 1}
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{6, 1}
 }
 
 func (x *UpdateCloudIntegrationRequest_GCP) GetServiceAccountEmail() string {
@@ -1851,11 +2363,103 @@ func (x *UpdateCloudIntegrationRequest_GCP) GetEnableCloudsqlInstancesAutodiscov
 	return false
 }
 
+type UpdateCloudIntegrationRequest_Azure struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	TenantId               *string                `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3,oneof" json:"tenant_id,omitempty"`
+	ClientId               *string                `protobuf:"bytes,2,opt,name=client_id,json=clientId,proto3,oneof" json:"client_id,omitempty"`
+	AllowBlobAccess        *bool                  `protobuf:"varint,3,opt,name=allow_blob_access,json=allowBlobAccess,proto3,oneof" json:"allow_blob_access,omitempty"`
+	BlobStorageAccounts    []string               `protobuf:"bytes,4,rep,name=blob_storage_accounts,json=blobStorageAccounts,proto3" json:"blob_storage_accounts,omitempty"`
+	EnableVmAutodiscovery  *bool                  `protobuf:"varint,5,opt,name=enable_vm_autodiscovery,json=enableVmAutodiscovery,proto3,oneof" json:"enable_vm_autodiscovery,omitempty"`
+	EnableAksAutodiscovery *bool                  `protobuf:"varint,6,opt,name=enable_aks_autodiscovery,json=enableAksAutodiscovery,proto3,oneof" json:"enable_aks_autodiscovery,omitempty"`
+	EnableDbAutodiscovery  *bool                  `protobuf:"varint,7,opt,name=enable_db_autodiscovery,json=enableDbAutodiscovery,proto3,oneof" json:"enable_db_autodiscovery,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) Reset() {
+	*x = UpdateCloudIntegrationRequest_Azure{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCloudIntegrationRequest_Azure) ProtoMessage() {}
+
+func (x *UpdateCloudIntegrationRequest_Azure) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCloudIntegrationRequest_Azure.ProtoReflect.Descriptor instead.
+func (*UpdateCloudIntegrationRequest_Azure) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{6, 2}
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) GetTenantId() string {
+	if x != nil && x.TenantId != nil {
+		return *x.TenantId
+	}
+	return ""
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) GetClientId() string {
+	if x != nil && x.ClientId != nil {
+		return *x.ClientId
+	}
+	return ""
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) GetAllowBlobAccess() bool {
+	if x != nil && x.AllowBlobAccess != nil {
+		return *x.AllowBlobAccess
+	}
+	return false
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) GetBlobStorageAccounts() []string {
+	if x != nil {
+		return x.BlobStorageAccounts
+	}
+	return nil
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) GetEnableVmAutodiscovery() bool {
+	if x != nil && x.EnableVmAutodiscovery != nil {
+		return *x.EnableVmAutodiscovery
+	}
+	return false
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) GetEnableAksAutodiscovery() bool {
+	if x != nil && x.EnableAksAutodiscovery != nil {
+		return *x.EnableAksAutodiscovery
+	}
+	return false
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure) GetEnableDbAutodiscovery() bool {
+	if x != nil && x.EnableDbAutodiscovery != nil {
+		return *x.EnableDbAutodiscovery
+	}
+	return false
+}
+
 var File_core_v1_integration_cloud_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\n" +
-	"\x1fcore/v1/integration_cloud.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb7\x02\n" +
+	"\x1fcore/v1/integration_cloud.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdf\x02\n" +
 	"\x10CloudIntegration\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x16\n" +
@@ -1865,7 +2469,8 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12 \n" +
 	"\x03aws\x18\a \x01(\v2\f.core.v1.AWSH\x00R\x03aws\x12 \n" +
-	"\x03gcp\x18\b \x01(\v2\f.core.v1.GCPH\x00R\x03gcpB\a\n" +
+	"\x03gcp\x18\b \x01(\v2\f.core.v1.GCPH\x00R\x03gcp\x12&\n" +
+	"\x05azure\x18\t \x01(\v2\x0e.core.v1.AzureH\x00R\x05azureB\a\n" +
 	"\x05cloud\"\xca\t\n" +
 	"\x03AWS\x12\x19\n" +
 	"\x03url\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\x12+\n" +
@@ -1904,13 +2509,27 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	" \x01(\bR&gcpEnableComputeInstancesAutodiscovery\x12P\n" +
 	"%gcp_enable_gke_clusters_autodiscovery\x18\v \x01(\bR!gcpEnableGkeClustersAutodiscovery\x12\\\n" +
 	"+gcp_enable_cloudsql_instances_autodiscovery\x18\f \x01(\bR'gcpEnableCloudsqlInstancesAutodiscovery\x12'\n" +
-	"\x0fgcp_permissions\x18\r \x03(\tR\x0egcpPermissions\"\xc2\f\n" +
+	"\x0fgcp_permissions\x18\r \x03(\tR\x0egcpPermissions\"\xd5\x04\n" +
+	"\x05Azure\x12&\n" +
+	"\x0fazure_tenant_id\x18\x01 \x01(\tR\razureTenantId\x12&\n" +
+	"\x0fazure_client_id\x18\x02 \x01(\tR\razureClientId\x122\n" +
+	"\x15azure_subscription_id\x18\x03 \x01(\tR\x13azureSubscriptionId\x120\n" +
+	"\x14azure_resource_group\x18\x04 \x01(\tR\x12azureResourceGroup\x12-\n" +
+	"\x13aws_formal_role_arn\x18\x05 \x01(\tR\x10awsFormalRoleArn\x12&\n" +
+	"\fsecurity_key\x18\x06 \x01(\tB\x03\x80\x01\x01R\vsecurityKey\x12A\n" +
+	"\x1dazure_enable_vm_autodiscovery\x18\a \x01(\bR\x1aazureEnableVmAutodiscovery\x12C\n" +
+	"\x1eazure_enable_aks_autodiscovery\x18\b \x01(\bR\x1bazureEnableAksAutodiscovery\x12A\n" +
+	"\x1dazure_enable_db_autodiscovery\x18\t \x01(\bR\x1aazureEnableDbAutodiscovery\x125\n" +
+	"\x17azure_allow_blob_access\x18\n" +
+	" \x01(\bR\x14azureAllowBlobAccess\x12=\n" +
+	"\x1bazure_blob_storage_accounts\x18\v \x03(\tR\x18azureBlobStorageAccounts\"\xd9\x10\n" +
 	"\x1dCreateCloudIntegrationRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12!\n" +
 	"\fcloud_region\x18\x02 \x01(\tR\vcloudRegion\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\tR\x04type\x12>\n" +
 	"\x03aws\x18\x04 \x01(\v2*.core.v1.CreateCloudIntegrationRequest.AWSH\x00R\x03aws\x12>\n" +
-	"\x03gcp\x18\x05 \x01(\v2*.core.v1.CreateCloudIntegrationRequest.GCPH\x00R\x03gcp\x1a\xc5\x06\n" +
+	"\x03gcp\x18\x05 \x01(\v2*.core.v1.CreateCloudIntegrationRequest.GCPH\x00R\x03gcp\x12D\n" +
+	"\x05azure\x18\x06 \x01(\v2,.core.v1.CreateCloudIntegrationRequest.AzureH\x00R\x05azure\x1a\xc5\x06\n" +
 	"\x03AWS\x12)\n" +
 	"\x10template_version\x18\x01 \x01(\tR\x0ftemplateVersion\x12\"\n" +
 	"\rs3_bucket_arn\x18\x02 \x01(\tR\vs3BucketArn\x12=\n" +
@@ -1943,16 +2562,28 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"'enable_cloudsql_instances_autodiscovery\x18\x06 \x01(\bH\x02R$enableCloudsqlInstancesAutodiscovery\x88\x01\x01B)\n" +
 	"'_enable_compute_instances_autodiscoveryB$\n" +
 	"\"_enable_gke_clusters_autodiscoveryB*\n" +
-	"(_enable_cloudsql_instances_autodiscoveryB\a\n" +
+	"(_enable_cloudsql_instances_autodiscovery\x1a\xce\x03\n" +
+	"\x05Azure\x120\n" +
+	"\x0fsubscription_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0esubscriptionId\x12%\n" +
+	"\x0eresource_group\x18\x02 \x01(\tR\rresourceGroup\x12*\n" +
+	"\x11allow_blob_access\x18\x03 \x01(\bR\x0fallowBlobAccess\x122\n" +
+	"\x15blob_storage_accounts\x18\x04 \x03(\tR\x13blobStorageAccounts\x12;\n" +
+	"\x17enable_vm_autodiscovery\x18\x05 \x01(\bH\x00R\x15enableVmAutodiscovery\x88\x01\x01\x12=\n" +
+	"\x18enable_aks_autodiscovery\x18\x06 \x01(\bH\x01R\x16enableAksAutodiscovery\x88\x01\x01\x12;\n" +
+	"\x17enable_db_autodiscovery\x18\a \x01(\bH\x02R\x15enableDbAutodiscovery\x88\x01\x01B\x1a\n" +
+	"\x18_enable_vm_autodiscoveryB\x1b\n" +
+	"\x19_enable_aks_autodiscoveryB\x1a\n" +
+	"\x18_enable_db_autodiscoveryB\a\n" +
 	"\x05cloud\"s\n" +
 	"\x1eCreateCloudIntegrationResponse\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12\x17\n" +
 	"\x02id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12&\n" +
-	"\fsecurity_key\x18\x03 \x01(\tB\x03\x80\x01\x01R\vsecurityKey\"\xbc\r\n" +
+	"\fsecurity_key\x18\x03 \x01(\tB\x03\x80\x01\x01R\vsecurityKey\"\xf5\x11\n" +
 	"\x1dUpdateCloudIntegrationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12>\n" +
 	"\x03aws\x18\x02 \x01(\v2*.core.v1.UpdateCloudIntegrationRequest.AWSH\x00R\x03aws\x12>\n" +
-	"\x03gcp\x18\x03 \x01(\v2*.core.v1.UpdateCloudIntegrationRequest.GCPH\x00R\x03gcp\x1a\xc5\x06\n" +
+	"\x03gcp\x18\x03 \x01(\v2*.core.v1.UpdateCloudIntegrationRequest.GCPH\x00R\x03gcp\x12D\n" +
+	"\x05azure\x18\x04 \x01(\v2,.core.v1.UpdateCloudIntegrationRequest.AzureH\x00R\x05azure\x1a\xc5\x06\n" +
 	"\x03AWS\x12)\n" +
 	"\x10template_version\x18\x01 \x01(\tR\x0ftemplateVersion\x12\"\n" +
 	"\rs3_bucket_arn\x18\x02 \x01(\tR\vs3BucketArn\x12=\n" +
@@ -1988,7 +2619,23 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x11_allow_gcs_accessB)\n" +
 	"'_enable_compute_instances_autodiscoveryB$\n" +
 	"\"_enable_gke_clusters_autodiscoveryB*\n" +
-	"(_enable_cloudsql_instances_autodiscoveryB\a\n" +
+	"(_enable_cloudsql_instances_autodiscovery\x1a\xf0\x03\n" +
+	"\x05Azure\x12 \n" +
+	"\ttenant_id\x18\x01 \x01(\tH\x00R\btenantId\x88\x01\x01\x12 \n" +
+	"\tclient_id\x18\x02 \x01(\tH\x01R\bclientId\x88\x01\x01\x12/\n" +
+	"\x11allow_blob_access\x18\x03 \x01(\bH\x02R\x0fallowBlobAccess\x88\x01\x01\x122\n" +
+	"\x15blob_storage_accounts\x18\x04 \x03(\tR\x13blobStorageAccounts\x12;\n" +
+	"\x17enable_vm_autodiscovery\x18\x05 \x01(\bH\x03R\x15enableVmAutodiscovery\x88\x01\x01\x12=\n" +
+	"\x18enable_aks_autodiscovery\x18\x06 \x01(\bH\x04R\x16enableAksAutodiscovery\x88\x01\x01\x12;\n" +
+	"\x17enable_db_autodiscovery\x18\a \x01(\bH\x05R\x15enableDbAutodiscovery\x88\x01\x01B\f\n" +
+	"\n" +
+	"_tenant_idB\f\n" +
+	"\n" +
+	"_client_idB\x14\n" +
+	"\x12_allow_blob_accessB\x1a\n" +
+	"\x18_enable_vm_autodiscoveryB\x1b\n" +
+	"\x19_enable_aks_autodiscoveryB\x1a\n" +
+	"\x18_enable_db_autodiscoveryB\a\n" +
 	"\x05cloud\"Q\n" +
 	"\x1eUpdateCloudIntegrationResponse\x12/\n" +
 	"\x05cloud\x18\x01 \x01(\v2\x19.core.v1.CloudIntegrationR\x05cloud\"Z\n" +
@@ -2034,7 +2681,26 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x05roles\x18\x03 \x03(\tB\x02\x18\x01R\x05roles\x12\x1f\n" +
 	"\vgcs_buckets\x18\x04 \x03(\tR\n" +
 	"gcsBuckets\x12 \n" +
-	"\vpermissions\x18\x05 \x03(\tR\vpermissions2\xd6\v\n" +
+	"\vpermissions\x18\x05 \x03(\tR\vpermissions\"\xbf\x01\n" +
+	")SetAzureCloudIntegrationActivationRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12$\n" +
+	"\ttenant_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\btenantId\x12$\n" +
+	"\tclient_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bclientId\x12-\n" +
+	"\fsecurity_key\x18\x04 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\vsecurityKey\",\n" +
+	"*SetAzureCloudIntegrationActivationResponse\"n\n" +
+	"$GetAzureCloudIntegrationSetupRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12-\n" +
+	"\fsecurity_key\x18\x02 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\vsecurityKey\"\xa4\x02\n" +
+	"%GetAzureCloudIntegrationSetupResponse\x12\x16\n" +
+	"\x06issuer\x18\x01 \x01(\tR\x06issuer\x12\x18\n" +
+	"\asubject\x18\x02 \x01(\tR\asubject\x12\x1a\n" +
+	"\baudience\x18\x03 \x01(\tR\baudience\x12'\n" +
+	"\x0fsubscription_id\x18\x04 \x01(\tR\x0esubscriptionId\x12%\n" +
+	"\x0eresource_group\x18\x05 \x01(\tR\rresourceGroup\x12)\n" +
+	"\x10role_definitions\x18\x06 \x03(\tR\x0froleDefinitions\x122\n" +
+	"\x15blob_storage_accounts\x18\a \x03(\tR\x13blobStorageAccounts2\x85\x0f\n" +
 	"\x17IntegrationCloudService\x12\xa4\x01\n" +
 	"\x13GetIntegrationCloud\x12#.core.v1.GetIntegrationCloudRequest\x1a$.core.v1.GetIntegrationCloudResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.IntegrationCloudService/GetIntegrationCloud\x90\x02\x01\x12\xac\x01\n" +
 	"\x15ListIntegrationClouds\x12%.core.v1.ListIntegrationCloudsRequest\x1a&.core.v1.ListIntegrationCloudsResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.IntegrationCloudService/ListIntegrationClouds\x90\x02\x01\x12\xad\x01\n" +
@@ -2043,7 +2709,9 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x18UpdateCloudIntegrationV2\x12(.core.v1.UpdateCloudIntegrationV2Request\x1a).core.v1.UpdateCloudIntegrationV2Response\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.IntegrationCloudService/UpdateCloudIntegrationV2\x12\xad\x01\n" +
 	"\x16DeleteCloudIntegration\x12&.core.v1.DeleteCloudIntegrationRequest\x1a'.core.v1.DeleteCloudIntegrationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.IntegrationCloudService/DeleteCloudIntegration\x12\xc4\x01\n" +
 	"\x1bGetGCPCloudIntegrationSetup\x12+.core.v1.GetGCPCloudIntegrationSetupRequest\x1a,.core.v1.GetGCPCloudIntegrationSetupResponse\"J\x82\xd3\xe4\x93\x02A:\x01*\"</core.v1.IntegrationCloudService/GetGCPCloudIntegrationSetup\x90\x02\x01\x12\xd5\x01\n" +
-	" SetGCPCloudIntegrationActivation\x120.core.v1.SetGCPCloudIntegrationActivationRequest\x1a1.core.v1.SetGCPCloudIntegrationActivationResponse\"L\x82\xd3\xe4\x93\x02F:\x01*\"A/core.v1.IntegrationCloudService/SetGCPCloudIntegrationActivationB\x8f\x01\n" +
+	" SetGCPCloudIntegrationActivation\x120.core.v1.SetGCPCloudIntegrationActivationRequest\x1a1.core.v1.SetGCPCloudIntegrationActivationResponse\"L\x82\xd3\xe4\x93\x02F:\x01*\"A/core.v1.IntegrationCloudService/SetGCPCloudIntegrationActivation\x12\xcc\x01\n" +
+	"\x1dGetAzureCloudIntegrationSetup\x12-.core.v1.GetAzureCloudIntegrationSetupRequest\x1a..core.v1.GetAzureCloudIntegrationSetupResponse\"L\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.IntegrationCloudService/GetAzureCloudIntegrationSetup\x90\x02\x01\x12\xdd\x01\n" +
+	"\"SetAzureCloudIntegrationActivation\x122.core.v1.SetAzureCloudIntegrationActivationRequest\x1a3.core.v1.SetAzureCloudIntegrationActivationResponse\"N\x82\xd3\xe4\x93\x02H:\x01*\"C/core.v1.IntegrationCloudService/SetAzureCloudIntegrationActivationB\x8f\x01\n" +
 	"\vcom.core.v1B\x15IntegrationCloudProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (
@@ -2058,72 +2726,86 @@ func file_core_v1_integration_cloud_proto_rawDescGZIP() []byte {
 	return file_core_v1_integration_cloud_proto_rawDescData
 }
 
-var file_core_v1_integration_cloud_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_core_v1_integration_cloud_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_core_v1_integration_cloud_proto_goTypes = []any{
-	(*CloudIntegration)(nil),                         // 0: core.v1.CloudIntegration
-	(*AWS)(nil),                                      // 1: core.v1.AWS
-	(*GCP)(nil),                                      // 2: core.v1.GCP
-	(*CreateCloudIntegrationRequest)(nil),            // 3: core.v1.CreateCloudIntegrationRequest
-	(*CreateCloudIntegrationResponse)(nil),           // 4: core.v1.CreateCloudIntegrationResponse
-	(*UpdateCloudIntegrationRequest)(nil),            // 5: core.v1.UpdateCloudIntegrationRequest
-	(*UpdateCloudIntegrationResponse)(nil),           // 6: core.v1.UpdateCloudIntegrationResponse
-	(*UpdateCloudIntegrationV2Request)(nil),          // 7: core.v1.UpdateCloudIntegrationV2Request
-	(*UpdateCloudIntegrationV2Response)(nil),         // 8: core.v1.UpdateCloudIntegrationV2Response
-	(*GetIntegrationCloudRequest)(nil),               // 9: core.v1.GetIntegrationCloudRequest
-	(*GetIntegrationCloudResponse)(nil),              // 10: core.v1.GetIntegrationCloudResponse
-	(*ListIntegrationCloudsRequest)(nil),             // 11: core.v1.ListIntegrationCloudsRequest
-	(*ListIntegrationCloudsResponse)(nil),            // 12: core.v1.ListIntegrationCloudsResponse
-	(*DeleteCloudIntegrationRequest)(nil),            // 13: core.v1.DeleteCloudIntegrationRequest
-	(*DeleteCloudIntegrationResponse)(nil),           // 14: core.v1.DeleteCloudIntegrationResponse
-	(*SetGCPCloudIntegrationActivationRequest)(nil),  // 15: core.v1.SetGCPCloudIntegrationActivationRequest
-	(*SetGCPCloudIntegrationActivationResponse)(nil), // 16: core.v1.SetGCPCloudIntegrationActivationResponse
-	(*GetGCPCloudIntegrationSetupRequest)(nil),       // 17: core.v1.GetGCPCloudIntegrationSetupRequest
-	(*GetGCPCloudIntegrationSetupResponse)(nil),      // 18: core.v1.GetGCPCloudIntegrationSetupResponse
-	(*CreateCloudIntegrationRequest_AWS)(nil),        // 19: core.v1.CreateCloudIntegrationRequest.AWS
-	(*CreateCloudIntegrationRequest_GCP)(nil),        // 20: core.v1.CreateCloudIntegrationRequest.GCP
-	(*UpdateCloudIntegrationRequest_AWS)(nil),        // 21: core.v1.UpdateCloudIntegrationRequest.AWS
-	(*UpdateCloudIntegrationRequest_GCP)(nil),        // 22: core.v1.UpdateCloudIntegrationRequest.GCP
-	(*timestamppb.Timestamp)(nil),                    // 23: google.protobuf.Timestamp
-	(*Filter)(nil),                                   // 24: core.v1.Filter
-	(*ListMetadata)(nil),                             // 25: core.v1.ListMetadata
+	(*CloudIntegration)(nil),                           // 0: core.v1.CloudIntegration
+	(*AWS)(nil),                                        // 1: core.v1.AWS
+	(*GCP)(nil),                                        // 2: core.v1.GCP
+	(*Azure)(nil),                                      // 3: core.v1.Azure
+	(*CreateCloudIntegrationRequest)(nil),              // 4: core.v1.CreateCloudIntegrationRequest
+	(*CreateCloudIntegrationResponse)(nil),             // 5: core.v1.CreateCloudIntegrationResponse
+	(*UpdateCloudIntegrationRequest)(nil),              // 6: core.v1.UpdateCloudIntegrationRequest
+	(*UpdateCloudIntegrationResponse)(nil),             // 7: core.v1.UpdateCloudIntegrationResponse
+	(*UpdateCloudIntegrationV2Request)(nil),            // 8: core.v1.UpdateCloudIntegrationV2Request
+	(*UpdateCloudIntegrationV2Response)(nil),           // 9: core.v1.UpdateCloudIntegrationV2Response
+	(*GetIntegrationCloudRequest)(nil),                 // 10: core.v1.GetIntegrationCloudRequest
+	(*GetIntegrationCloudResponse)(nil),                // 11: core.v1.GetIntegrationCloudResponse
+	(*ListIntegrationCloudsRequest)(nil),               // 12: core.v1.ListIntegrationCloudsRequest
+	(*ListIntegrationCloudsResponse)(nil),              // 13: core.v1.ListIntegrationCloudsResponse
+	(*DeleteCloudIntegrationRequest)(nil),              // 14: core.v1.DeleteCloudIntegrationRequest
+	(*DeleteCloudIntegrationResponse)(nil),             // 15: core.v1.DeleteCloudIntegrationResponse
+	(*SetGCPCloudIntegrationActivationRequest)(nil),    // 16: core.v1.SetGCPCloudIntegrationActivationRequest
+	(*SetGCPCloudIntegrationActivationResponse)(nil),   // 17: core.v1.SetGCPCloudIntegrationActivationResponse
+	(*GetGCPCloudIntegrationSetupRequest)(nil),         // 18: core.v1.GetGCPCloudIntegrationSetupRequest
+	(*GetGCPCloudIntegrationSetupResponse)(nil),        // 19: core.v1.GetGCPCloudIntegrationSetupResponse
+	(*SetAzureCloudIntegrationActivationRequest)(nil),  // 20: core.v1.SetAzureCloudIntegrationActivationRequest
+	(*SetAzureCloudIntegrationActivationResponse)(nil), // 21: core.v1.SetAzureCloudIntegrationActivationResponse
+	(*GetAzureCloudIntegrationSetupRequest)(nil),       // 22: core.v1.GetAzureCloudIntegrationSetupRequest
+	(*GetAzureCloudIntegrationSetupResponse)(nil),      // 23: core.v1.GetAzureCloudIntegrationSetupResponse
+	(*CreateCloudIntegrationRequest_AWS)(nil),          // 24: core.v1.CreateCloudIntegrationRequest.AWS
+	(*CreateCloudIntegrationRequest_GCP)(nil),          // 25: core.v1.CreateCloudIntegrationRequest.GCP
+	(*CreateCloudIntegrationRequest_Azure)(nil),        // 26: core.v1.CreateCloudIntegrationRequest.Azure
+	(*UpdateCloudIntegrationRequest_AWS)(nil),          // 27: core.v1.UpdateCloudIntegrationRequest.AWS
+	(*UpdateCloudIntegrationRequest_GCP)(nil),          // 28: core.v1.UpdateCloudIntegrationRequest.GCP
+	(*UpdateCloudIntegrationRequest_Azure)(nil),        // 29: core.v1.UpdateCloudIntegrationRequest.Azure
+	(*timestamppb.Timestamp)(nil),                      // 30: google.protobuf.Timestamp
+	(*Filter)(nil),                                     // 31: core.v1.Filter
+	(*ListMetadata)(nil),                               // 32: core.v1.ListMetadata
 }
 var file_core_v1_integration_cloud_proto_depIdxs = []int32{
-	23, // 0: core.v1.CloudIntegration.created_at:type_name -> google.protobuf.Timestamp
-	23, // 1: core.v1.CloudIntegration.updated_at:type_name -> google.protobuf.Timestamp
+	30, // 0: core.v1.CloudIntegration.created_at:type_name -> google.protobuf.Timestamp
+	30, // 1: core.v1.CloudIntegration.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 2: core.v1.CloudIntegration.aws:type_name -> core.v1.AWS
 	2,  // 3: core.v1.CloudIntegration.gcp:type_name -> core.v1.GCP
-	19, // 4: core.v1.CreateCloudIntegrationRequest.aws:type_name -> core.v1.CreateCloudIntegrationRequest.AWS
-	20, // 5: core.v1.CreateCloudIntegrationRequest.gcp:type_name -> core.v1.CreateCloudIntegrationRequest.GCP
-	21, // 6: core.v1.UpdateCloudIntegrationRequest.aws:type_name -> core.v1.UpdateCloudIntegrationRequest.AWS
-	22, // 7: core.v1.UpdateCloudIntegrationRequest.gcp:type_name -> core.v1.UpdateCloudIntegrationRequest.GCP
-	0,  // 8: core.v1.UpdateCloudIntegrationResponse.cloud:type_name -> core.v1.CloudIntegration
-	0,  // 9: core.v1.UpdateCloudIntegrationV2Request.cloud:type_name -> core.v1.CloudIntegration
-	0,  // 10: core.v1.UpdateCloudIntegrationV2Response.cloud:type_name -> core.v1.CloudIntegration
-	0,  // 11: core.v1.GetIntegrationCloudResponse.cloud:type_name -> core.v1.CloudIntegration
-	24, // 12: core.v1.ListIntegrationCloudsRequest.filter:type_name -> core.v1.Filter
-	0,  // 13: core.v1.ListIntegrationCloudsResponse.clouds:type_name -> core.v1.CloudIntegration
-	25, // 14: core.v1.ListIntegrationCloudsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	9,  // 15: core.v1.IntegrationCloudService.GetIntegrationCloud:input_type -> core.v1.GetIntegrationCloudRequest
-	11, // 16: core.v1.IntegrationCloudService.ListIntegrationClouds:input_type -> core.v1.ListIntegrationCloudsRequest
-	3,  // 17: core.v1.IntegrationCloudService.CreateCloudIntegration:input_type -> core.v1.CreateCloudIntegrationRequest
-	5,  // 18: core.v1.IntegrationCloudService.UpdateCloudIntegration:input_type -> core.v1.UpdateCloudIntegrationRequest
-	7,  // 19: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:input_type -> core.v1.UpdateCloudIntegrationV2Request
-	13, // 20: core.v1.IntegrationCloudService.DeleteCloudIntegration:input_type -> core.v1.DeleteCloudIntegrationRequest
-	17, // 21: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:input_type -> core.v1.GetGCPCloudIntegrationSetupRequest
-	15, // 22: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:input_type -> core.v1.SetGCPCloudIntegrationActivationRequest
-	10, // 23: core.v1.IntegrationCloudService.GetIntegrationCloud:output_type -> core.v1.GetIntegrationCloudResponse
-	12, // 24: core.v1.IntegrationCloudService.ListIntegrationClouds:output_type -> core.v1.ListIntegrationCloudsResponse
-	4,  // 25: core.v1.IntegrationCloudService.CreateCloudIntegration:output_type -> core.v1.CreateCloudIntegrationResponse
-	6,  // 26: core.v1.IntegrationCloudService.UpdateCloudIntegration:output_type -> core.v1.UpdateCloudIntegrationResponse
-	8,  // 27: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:output_type -> core.v1.UpdateCloudIntegrationV2Response
-	14, // 28: core.v1.IntegrationCloudService.DeleteCloudIntegration:output_type -> core.v1.DeleteCloudIntegrationResponse
-	18, // 29: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:output_type -> core.v1.GetGCPCloudIntegrationSetupResponse
-	16, // 30: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:output_type -> core.v1.SetGCPCloudIntegrationActivationResponse
-	23, // [23:31] is the sub-list for method output_type
-	15, // [15:23] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	3,  // 4: core.v1.CloudIntegration.azure:type_name -> core.v1.Azure
+	24, // 5: core.v1.CreateCloudIntegrationRequest.aws:type_name -> core.v1.CreateCloudIntegrationRequest.AWS
+	25, // 6: core.v1.CreateCloudIntegrationRequest.gcp:type_name -> core.v1.CreateCloudIntegrationRequest.GCP
+	26, // 7: core.v1.CreateCloudIntegrationRequest.azure:type_name -> core.v1.CreateCloudIntegrationRequest.Azure
+	27, // 8: core.v1.UpdateCloudIntegrationRequest.aws:type_name -> core.v1.UpdateCloudIntegrationRequest.AWS
+	28, // 9: core.v1.UpdateCloudIntegrationRequest.gcp:type_name -> core.v1.UpdateCloudIntegrationRequest.GCP
+	29, // 10: core.v1.UpdateCloudIntegrationRequest.azure:type_name -> core.v1.UpdateCloudIntegrationRequest.Azure
+	0,  // 11: core.v1.UpdateCloudIntegrationResponse.cloud:type_name -> core.v1.CloudIntegration
+	0,  // 12: core.v1.UpdateCloudIntegrationV2Request.cloud:type_name -> core.v1.CloudIntegration
+	0,  // 13: core.v1.UpdateCloudIntegrationV2Response.cloud:type_name -> core.v1.CloudIntegration
+	0,  // 14: core.v1.GetIntegrationCloudResponse.cloud:type_name -> core.v1.CloudIntegration
+	31, // 15: core.v1.ListIntegrationCloudsRequest.filter:type_name -> core.v1.Filter
+	0,  // 16: core.v1.ListIntegrationCloudsResponse.clouds:type_name -> core.v1.CloudIntegration
+	32, // 17: core.v1.ListIntegrationCloudsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	10, // 18: core.v1.IntegrationCloudService.GetIntegrationCloud:input_type -> core.v1.GetIntegrationCloudRequest
+	12, // 19: core.v1.IntegrationCloudService.ListIntegrationClouds:input_type -> core.v1.ListIntegrationCloudsRequest
+	4,  // 20: core.v1.IntegrationCloudService.CreateCloudIntegration:input_type -> core.v1.CreateCloudIntegrationRequest
+	6,  // 21: core.v1.IntegrationCloudService.UpdateCloudIntegration:input_type -> core.v1.UpdateCloudIntegrationRequest
+	8,  // 22: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:input_type -> core.v1.UpdateCloudIntegrationV2Request
+	14, // 23: core.v1.IntegrationCloudService.DeleteCloudIntegration:input_type -> core.v1.DeleteCloudIntegrationRequest
+	18, // 24: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:input_type -> core.v1.GetGCPCloudIntegrationSetupRequest
+	16, // 25: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:input_type -> core.v1.SetGCPCloudIntegrationActivationRequest
+	22, // 26: core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup:input_type -> core.v1.GetAzureCloudIntegrationSetupRequest
+	20, // 27: core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation:input_type -> core.v1.SetAzureCloudIntegrationActivationRequest
+	11, // 28: core.v1.IntegrationCloudService.GetIntegrationCloud:output_type -> core.v1.GetIntegrationCloudResponse
+	13, // 29: core.v1.IntegrationCloudService.ListIntegrationClouds:output_type -> core.v1.ListIntegrationCloudsResponse
+	5,  // 30: core.v1.IntegrationCloudService.CreateCloudIntegration:output_type -> core.v1.CreateCloudIntegrationResponse
+	7,  // 31: core.v1.IntegrationCloudService.UpdateCloudIntegration:output_type -> core.v1.UpdateCloudIntegrationResponse
+	9,  // 32: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:output_type -> core.v1.UpdateCloudIntegrationV2Response
+	15, // 33: core.v1.IntegrationCloudService.DeleteCloudIntegration:output_type -> core.v1.DeleteCloudIntegrationResponse
+	19, // 34: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:output_type -> core.v1.GetGCPCloudIntegrationSetupResponse
+	17, // 35: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:output_type -> core.v1.SetGCPCloudIntegrationActivationResponse
+	23, // 36: core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup:output_type -> core.v1.GetAzureCloudIntegrationSetupResponse
+	21, // 37: core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation:output_type -> core.v1.SetAzureCloudIntegrationActivationResponse
+	28, // [28:38] is the sub-list for method output_type
+	18, // [18:28] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_integration_cloud_proto_init() }
@@ -2136,27 +2818,32 @@ func file_core_v1_integration_cloud_proto_init() {
 	file_core_v1_integration_cloud_proto_msgTypes[0].OneofWrappers = []any{
 		(*CloudIntegration_Aws)(nil),
 		(*CloudIntegration_Gcp)(nil),
+		(*CloudIntegration_Azure)(nil),
 	}
-	file_core_v1_integration_cloud_proto_msgTypes[3].OneofWrappers = []any{
+	file_core_v1_integration_cloud_proto_msgTypes[4].OneofWrappers = []any{
 		(*CreateCloudIntegrationRequest_Aws)(nil),
 		(*CreateCloudIntegrationRequest_Gcp)(nil),
+		(*CreateCloudIntegrationRequest_Azure_)(nil),
 	}
-	file_core_v1_integration_cloud_proto_msgTypes[5].OneofWrappers = []any{
+	file_core_v1_integration_cloud_proto_msgTypes[6].OneofWrappers = []any{
 		(*UpdateCloudIntegrationRequest_Aws)(nil),
 		(*UpdateCloudIntegrationRequest_Gcp)(nil),
+		(*UpdateCloudIntegrationRequest_Azure_)(nil),
 	}
-	file_core_v1_integration_cloud_proto_msgTypes[11].OneofWrappers = []any{}
-	file_core_v1_integration_cloud_proto_msgTypes[19].OneofWrappers = []any{}
-	file_core_v1_integration_cloud_proto_msgTypes[20].OneofWrappers = []any{}
-	file_core_v1_integration_cloud_proto_msgTypes[21].OneofWrappers = []any{}
-	file_core_v1_integration_cloud_proto_msgTypes[22].OneofWrappers = []any{}
+	file_core_v1_integration_cloud_proto_msgTypes[12].OneofWrappers = []any{}
+	file_core_v1_integration_cloud_proto_msgTypes[24].OneofWrappers = []any{}
+	file_core_v1_integration_cloud_proto_msgTypes[25].OneofWrappers = []any{}
+	file_core_v1_integration_cloud_proto_msgTypes[26].OneofWrappers = []any{}
+	file_core_v1_integration_cloud_proto_msgTypes[27].OneofWrappers = []any{}
+	file_core_v1_integration_cloud_proto_msgTypes[28].OneofWrappers = []any{}
+	file_core_v1_integration_cloud_proto_msgTypes[29].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_integration_cloud_proto_rawDesc), len(file_core_v1_integration_cloud_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

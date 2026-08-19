@@ -1250,6 +1250,17 @@ func (c *IntegrationCloudServiceClient) DeleteCloudIntegration(ctx context.Conte
 	return res.Msg, nil
 }
 
+// Get Azure cloud integration setup parameters
+//
+// Return the parameters needed to provision an Azure cloud integration, authenticated by the integration's security key.
+func (c *IntegrationCloudServiceClient) GetAzureCloudIntegrationSetup(ctx context.Context, req *corev1.GetAzureCloudIntegrationSetupRequest) (*corev1.GetAzureCloudIntegrationSetupResponse, error) {
+	res, err := c.inner.GetAzureCloudIntegrationSetup(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Get GCP cloud integration setup parameters
 //
 // Return the parameters needed to provision a GCP cloud integration, authenticated by the integration's security key.
@@ -1277,6 +1288,17 @@ func (c *IntegrationCloudServiceClient) GetIntegrationCloud(ctx context.Context,
 // List all cloud integrations
 func (c *IntegrationCloudServiceClient) ListIntegrationClouds(ctx context.Context, req *corev1.ListIntegrationCloudsRequest) (*corev1.ListIntegrationCloudsResponse, error) {
 	res, err := c.inner.ListIntegrationClouds(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Activate an Azure cloud integration
+//
+// Report the created Azure resources and activate an Azure cloud integration.
+func (c *IntegrationCloudServiceClient) SetAzureCloudIntegrationActivation(ctx context.Context, req *corev1.SetAzureCloudIntegrationActivationRequest) (*corev1.SetAzureCloudIntegrationActivationResponse, error) {
+	res, err := c.inner.SetAzureCloudIntegrationActivation(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

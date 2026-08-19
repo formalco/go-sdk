@@ -57,6 +57,12 @@ const (
 	// IntegrationCloudServiceSetGCPCloudIntegrationActivationProcedure is the fully-qualified name of
 	// the IntegrationCloudService's SetGCPCloudIntegrationActivation RPC.
 	IntegrationCloudServiceSetGCPCloudIntegrationActivationProcedure = "/core.v1.IntegrationCloudService/SetGCPCloudIntegrationActivation"
+	// IntegrationCloudServiceGetAzureCloudIntegrationSetupProcedure is the fully-qualified name of the
+	// IntegrationCloudService's GetAzureCloudIntegrationSetup RPC.
+	IntegrationCloudServiceGetAzureCloudIntegrationSetupProcedure = "/core.v1.IntegrationCloudService/GetAzureCloudIntegrationSetup"
+	// IntegrationCloudServiceSetAzureCloudIntegrationActivationProcedure is the fully-qualified name of
+	// the IntegrationCloudService's SetAzureCloudIntegrationActivation RPC.
+	IntegrationCloudServiceSetAzureCloudIntegrationActivationProcedure = "/core.v1.IntegrationCloudService/SetAzureCloudIntegrationActivation"
 )
 
 // IntegrationCloudServiceClient is a client for the core.v1.IntegrationCloudService service.
@@ -93,6 +99,14 @@ type IntegrationCloudServiceClient interface {
 	//
 	// Report the created GCP resources and activate a GCP cloud integration.
 	SetGCPCloudIntegrationActivation(context.Context, *connect.Request[v1.SetGCPCloudIntegrationActivationRequest]) (*connect.Response[v1.SetGCPCloudIntegrationActivationResponse], error)
+	// Get Azure cloud integration setup parameters
+	//
+	// Return the parameters needed to provision an Azure cloud integration, authenticated by the integration's security key.
+	GetAzureCloudIntegrationSetup(context.Context, *connect.Request[v1.GetAzureCloudIntegrationSetupRequest]) (*connect.Response[v1.GetAzureCloudIntegrationSetupResponse], error)
+	// Activate an Azure cloud integration
+	//
+	// Report the created Azure resources and activate an Azure cloud integration.
+	SetAzureCloudIntegrationActivation(context.Context, *connect.Request[v1.SetAzureCloudIntegrationActivationRequest]) (*connect.Response[v1.SetAzureCloudIntegrationActivationResponse], error)
 }
 
 // NewIntegrationCloudServiceClient constructs a client for the core.v1.IntegrationCloudService
@@ -157,19 +171,34 @@ func NewIntegrationCloudServiceClient(httpClient connect.HTTPClient, baseURL str
 			connect.WithSchema(integrationCloudServiceMethods.ByName("SetGCPCloudIntegrationActivation")),
 			connect.WithClientOptions(opts...),
 		),
+		getAzureCloudIntegrationSetup: connect.NewClient[v1.GetAzureCloudIntegrationSetupRequest, v1.GetAzureCloudIntegrationSetupResponse](
+			httpClient,
+			baseURL+IntegrationCloudServiceGetAzureCloudIntegrationSetupProcedure,
+			connect.WithSchema(integrationCloudServiceMethods.ByName("GetAzureCloudIntegrationSetup")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		setAzureCloudIntegrationActivation: connect.NewClient[v1.SetAzureCloudIntegrationActivationRequest, v1.SetAzureCloudIntegrationActivationResponse](
+			httpClient,
+			baseURL+IntegrationCloudServiceSetAzureCloudIntegrationActivationProcedure,
+			connect.WithSchema(integrationCloudServiceMethods.ByName("SetAzureCloudIntegrationActivation")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // integrationCloudServiceClient implements IntegrationCloudServiceClient.
 type integrationCloudServiceClient struct {
-	getIntegrationCloud              *connect.Client[v1.GetIntegrationCloudRequest, v1.GetIntegrationCloudResponse]
-	listIntegrationClouds            *connect.Client[v1.ListIntegrationCloudsRequest, v1.ListIntegrationCloudsResponse]
-	createCloudIntegration           *connect.Client[v1.CreateCloudIntegrationRequest, v1.CreateCloudIntegrationResponse]
-	updateCloudIntegration           *connect.Client[v1.UpdateCloudIntegrationRequest, v1.UpdateCloudIntegrationResponse]
-	updateCloudIntegrationV2         *connect.Client[v1.UpdateCloudIntegrationV2Request, v1.UpdateCloudIntegrationV2Response]
-	deleteCloudIntegration           *connect.Client[v1.DeleteCloudIntegrationRequest, v1.DeleteCloudIntegrationResponse]
-	getGCPCloudIntegrationSetup      *connect.Client[v1.GetGCPCloudIntegrationSetupRequest, v1.GetGCPCloudIntegrationSetupResponse]
-	setGCPCloudIntegrationActivation *connect.Client[v1.SetGCPCloudIntegrationActivationRequest, v1.SetGCPCloudIntegrationActivationResponse]
+	getIntegrationCloud                *connect.Client[v1.GetIntegrationCloudRequest, v1.GetIntegrationCloudResponse]
+	listIntegrationClouds              *connect.Client[v1.ListIntegrationCloudsRequest, v1.ListIntegrationCloudsResponse]
+	createCloudIntegration             *connect.Client[v1.CreateCloudIntegrationRequest, v1.CreateCloudIntegrationResponse]
+	updateCloudIntegration             *connect.Client[v1.UpdateCloudIntegrationRequest, v1.UpdateCloudIntegrationResponse]
+	updateCloudIntegrationV2           *connect.Client[v1.UpdateCloudIntegrationV2Request, v1.UpdateCloudIntegrationV2Response]
+	deleteCloudIntegration             *connect.Client[v1.DeleteCloudIntegrationRequest, v1.DeleteCloudIntegrationResponse]
+	getGCPCloudIntegrationSetup        *connect.Client[v1.GetGCPCloudIntegrationSetupRequest, v1.GetGCPCloudIntegrationSetupResponse]
+	setGCPCloudIntegrationActivation   *connect.Client[v1.SetGCPCloudIntegrationActivationRequest, v1.SetGCPCloudIntegrationActivationResponse]
+	getAzureCloudIntegrationSetup      *connect.Client[v1.GetAzureCloudIntegrationSetupRequest, v1.GetAzureCloudIntegrationSetupResponse]
+	setAzureCloudIntegrationActivation *connect.Client[v1.SetAzureCloudIntegrationActivationRequest, v1.SetAzureCloudIntegrationActivationResponse]
 }
 
 // GetIntegrationCloud calls core.v1.IntegrationCloudService.GetIntegrationCloud.
@@ -213,6 +242,18 @@ func (c *integrationCloudServiceClient) SetGCPCloudIntegrationActivation(ctx con
 	return c.setGCPCloudIntegrationActivation.CallUnary(ctx, req)
 }
 
+// GetAzureCloudIntegrationSetup calls
+// core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup.
+func (c *integrationCloudServiceClient) GetAzureCloudIntegrationSetup(ctx context.Context, req *connect.Request[v1.GetAzureCloudIntegrationSetupRequest]) (*connect.Response[v1.GetAzureCloudIntegrationSetupResponse], error) {
+	return c.getAzureCloudIntegrationSetup.CallUnary(ctx, req)
+}
+
+// SetAzureCloudIntegrationActivation calls
+// core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation.
+func (c *integrationCloudServiceClient) SetAzureCloudIntegrationActivation(ctx context.Context, req *connect.Request[v1.SetAzureCloudIntegrationActivationRequest]) (*connect.Response[v1.SetAzureCloudIntegrationActivationResponse], error) {
+	return c.setAzureCloudIntegrationActivation.CallUnary(ctx, req)
+}
+
 // IntegrationCloudServiceHandler is an implementation of the core.v1.IntegrationCloudService
 // service.
 type IntegrationCloudServiceHandler interface {
@@ -248,6 +289,14 @@ type IntegrationCloudServiceHandler interface {
 	//
 	// Report the created GCP resources and activate a GCP cloud integration.
 	SetGCPCloudIntegrationActivation(context.Context, *connect.Request[v1.SetGCPCloudIntegrationActivationRequest]) (*connect.Response[v1.SetGCPCloudIntegrationActivationResponse], error)
+	// Get Azure cloud integration setup parameters
+	//
+	// Return the parameters needed to provision an Azure cloud integration, authenticated by the integration's security key.
+	GetAzureCloudIntegrationSetup(context.Context, *connect.Request[v1.GetAzureCloudIntegrationSetupRequest]) (*connect.Response[v1.GetAzureCloudIntegrationSetupResponse], error)
+	// Activate an Azure cloud integration
+	//
+	// Report the created Azure resources and activate an Azure cloud integration.
+	SetAzureCloudIntegrationActivation(context.Context, *connect.Request[v1.SetAzureCloudIntegrationActivationRequest]) (*connect.Response[v1.SetAzureCloudIntegrationActivationResponse], error)
 }
 
 // NewIntegrationCloudServiceHandler builds an HTTP handler from the service implementation. It
@@ -308,6 +357,19 @@ func NewIntegrationCloudServiceHandler(svc IntegrationCloudServiceHandler, opts 
 		connect.WithSchema(integrationCloudServiceMethods.ByName("SetGCPCloudIntegrationActivation")),
 		connect.WithHandlerOptions(opts...),
 	)
+	integrationCloudServiceGetAzureCloudIntegrationSetupHandler := connect.NewUnaryHandler(
+		IntegrationCloudServiceGetAzureCloudIntegrationSetupProcedure,
+		svc.GetAzureCloudIntegrationSetup,
+		connect.WithSchema(integrationCloudServiceMethods.ByName("GetAzureCloudIntegrationSetup")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	integrationCloudServiceSetAzureCloudIntegrationActivationHandler := connect.NewUnaryHandler(
+		IntegrationCloudServiceSetAzureCloudIntegrationActivationProcedure,
+		svc.SetAzureCloudIntegrationActivation,
+		connect.WithSchema(integrationCloudServiceMethods.ByName("SetAzureCloudIntegrationActivation")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/core.v1.IntegrationCloudService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case IntegrationCloudServiceGetIntegrationCloudProcedure:
@@ -326,6 +388,10 @@ func NewIntegrationCloudServiceHandler(svc IntegrationCloudServiceHandler, opts 
 			integrationCloudServiceGetGCPCloudIntegrationSetupHandler.ServeHTTP(w, r)
 		case IntegrationCloudServiceSetGCPCloudIntegrationActivationProcedure:
 			integrationCloudServiceSetGCPCloudIntegrationActivationHandler.ServeHTTP(w, r)
+		case IntegrationCloudServiceGetAzureCloudIntegrationSetupProcedure:
+			integrationCloudServiceGetAzureCloudIntegrationSetupHandler.ServeHTTP(w, r)
+		case IntegrationCloudServiceSetAzureCloudIntegrationActivationProcedure:
+			integrationCloudServiceSetAzureCloudIntegrationActivationHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -365,4 +431,12 @@ func (UnimplementedIntegrationCloudServiceHandler) GetGCPCloudIntegrationSetup(c
 
 func (UnimplementedIntegrationCloudServiceHandler) SetGCPCloudIntegrationActivation(context.Context, *connect.Request[v1.SetGCPCloudIntegrationActivationRequest]) (*connect.Response[v1.SetGCPCloudIntegrationActivationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation is not implemented"))
+}
+
+func (UnimplementedIntegrationCloudServiceHandler) GetAzureCloudIntegrationSetup(context.Context, *connect.Request[v1.GetAzureCloudIntegrationSetupRequest]) (*connect.Response[v1.GetAzureCloudIntegrationSetupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup is not implemented"))
+}
+
+func (UnimplementedIntegrationCloudServiceHandler) SetAzureCloudIntegrationActivation(context.Context, *connect.Request[v1.SetAzureCloudIntegrationActivationRequest]) (*connect.Response[v1.SetAzureCloudIntegrationActivationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation is not implemented"))
 }
