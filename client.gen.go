@@ -34,6 +34,7 @@ type Client struct {
 	ResourceServiceClient              *ResourceServiceClient
 	SatelliteServiceClient             *SatelliteServiceClient
 	ScenarioMonitoringServiceClient    *ScenarioMonitoringServiceClient
+	SearchServiceClient                *SearchServiceClient
 	SessionsServiceClient              *SessionsServiceClient
 	SpaceServiceClient                 *SpaceServiceClient
 	UserServiceClient                  *UserServiceClient
@@ -66,6 +67,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		ResourceServiceClient:              &ResourceServiceClient{inner: corev1connect.NewResourceServiceClient(httpClient, baseURL)},
 		SatelliteServiceClient:             &SatelliteServiceClient{inner: corev1connect.NewSatelliteServiceClient(httpClient, baseURL)},
 		ScenarioMonitoringServiceClient:    &ScenarioMonitoringServiceClient{inner: corev1connect.NewScenarioMonitoringServiceClient(httpClient, baseURL)},
+		SearchServiceClient:                &SearchServiceClient{inner: corev1connect.NewSearchServiceClient(httpClient, baseURL)},
 		SessionsServiceClient:              &SessionsServiceClient{inner: corev1connect.NewSessionsServiceClient(httpClient, baseURL)},
 		SpaceServiceClient:                 &SpaceServiceClient{inner: corev1connect.NewSpaceServiceClient(httpClient, baseURL)},
 		UserServiceClient:                  &UserServiceClient{inner: corev1connect.NewUserServiceClient(httpClient, baseURL)},
@@ -3406,6 +3408,24 @@ func (c *ScenarioMonitoringServiceClient) UpdateScenarioMonitor(ctx context.Cont
 // Update a scenario monitor by sending the full object. All mutable fields are replaced.
 func (c *ScenarioMonitoringServiceClient) UpdateScenarioMonitorV2(ctx context.Context, req *corev1.UpdateScenarioMonitorV2Request) (*corev1.UpdateScenarioMonitorV2Response, error) {
 	res, err := c.inner.UpdateScenarioMonitorV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// SearchServiceClient is a client for the core.v1.SearchService service.
+type SearchServiceClient struct {
+	inner corev1connect.SearchServiceClient
+}
+
+// List search results
+//
+// Performs a global search across multiple entity types.
+// Results are grouped by category and scoped to the authenticated user's organization.
+// Returns up to 10 results per category, ordered by updated_at descending.
+func (c *SearchServiceClient) ListSearchResults(ctx context.Context, req *corev1.ListSearchResultsRequest) (*corev1.ListSearchResultsResponse, error) {
+	res, err := c.inner.ListSearchResults(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
