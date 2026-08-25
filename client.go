@@ -2,13 +2,19 @@ package formal
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
+	"strings"
+
+	"github.com/formalco/go-sdk/v3/oidc"
 )
 
 type options struct {
-	baseURL    string
-	apiKey     string
-	httpClient *http.Client
+	baseURL         string
+	apiKey          string
+	oidcTokenSource oidc.TokenSource
+	oidcSet         bool
+	httpClient      *http.Client
 }
 
 // Option configures a Client.
@@ -18,6 +24,15 @@ type Option func(*options)
 func WithAPIKey(apiKey string) Option {
 	return func(o *options) {
 		o.apiKey = apiKey
+	}
+}
+
+// WithOIDCTokenSource authenticates requests with an Authorization Bearer JWT
+// from source. Mutually exclusive with WithAPIKey.
+func WithOIDCTokenSource(source oidc.TokenSource) Option {
+	return func(o *options) {
+		o.oidcTokenSource = source
+		o.oidcSet = true
 	}
 }
 
@@ -48,8 +63,14 @@ func New(opts ...Option) (*Client, error) {
 	if o.baseURL == "" {
 		return nil, errors.New("formal: base URL must not be empty")
 	}
-	if o.apiKey == "" {
-		return nil, errors.New("formal: authentication required (use WithAPIKey)")
+	if o.apiKey != "" && o.oidcSet {
+		return nil, errors.New("formal: WithAPIKey and WithOIDCTokenSource are mutually exclusive")
+	}
+	if o.oidcSet && o.oidcTokenSource == nil {
+		return nil, errors.New("formal: WithOIDCTokenSource requires a TokenSource")
+	}
+	if o.apiKey == "" && !o.oidcSet {
+		return nil, errors.New("formal: authentication required (use WithAPIKey or WithOIDCTokenSource)")
 	}
 
 	httpClient := o.httpClient
@@ -63,9 +84,16 @@ func New(opts ...Option) (*Client, error) {
 	}
 
 	client := *httpClient
-	client.Transport = &apiKeyTransport{
-		apiKey: o.apiKey,
-		base:   base,
+	if o.oidcSet {
+		client.Transport = &oidcTransport{
+			source: o.oidcTokenSource,
+			base:   base,
+		}
+	} else {
+		client.Transport = &apiKeyTransport{
+			apiKey: o.apiKey,
+			base:   base,
+		}
 	}
 
 	return newClient(&client, o.baseURL), nil
@@ -79,6 +107,26 @@ type apiKeyTransport struct {
 func (t *apiKeyTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	req = req.Clone(req.Context())
 	req.Header.Set("X-Api-Key", t.apiKey)
+	req.Header.Set("X-Formal-API-Version", defaultAPIVersion)
+	return t.base.RoundTrip(req)
+}
+
+type oidcTransport struct {
+	source oidc.TokenSource
+	base   http.RoundTripper
+}
+
+func (t *oidcTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	token, err := t.source.Token(req.Context())
+	if err != nil {
+		return nil, fmt.Errorf("formal: get OIDC token: %w", err)
+	}
+	if strings.TrimSpace(token.JWT) == "" {
+		return nil, errors.New("formal: OIDC token must not be empty")
+	}
+
+	req = req.Clone(req.Context())
+	req.Header.Set("Authorization", "Bearer "+token.JWT)
 	req.Header.Set("X-Formal-API-Version", defaultAPIVersion)
 	return t.base.RoundTrip(req)
 }
