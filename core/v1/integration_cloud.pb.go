@@ -2272,14 +2272,16 @@ func (x *UpdateCloudIntegrationRequest_AWS) GetAutodiscoveryRegions() []string {
 }
 
 type UpdateCloudIntegrationRequest_GCP struct {
-	state                                protoimpl.MessageState `protogen:"open.v1"`
-	ServiceAccountEmail                  *string                `protobuf:"bytes,1,opt,name=service_account_email,json=serviceAccountEmail,proto3,oneof" json:"service_account_email,omitempty"`
-	WorkloadIdentityPoolProvider         *string                `protobuf:"bytes,2,opt,name=workload_identity_pool_provider,json=workloadIdentityPoolProvider,proto3,oneof" json:"workload_identity_pool_provider,omitempty"`
-	AllowGcsAccess                       *bool                  `protobuf:"varint,3,opt,name=allow_gcs_access,json=allowGcsAccess,proto3,oneof" json:"allow_gcs_access,omitempty"`
-	GcsBuckets                           []string               `protobuf:"bytes,4,rep,name=gcs_buckets,json=gcsBuckets,proto3" json:"gcs_buckets,omitempty"`
-	EnableComputeInstancesAutodiscovery  *bool                  `protobuf:"varint,5,opt,name=enable_compute_instances_autodiscovery,json=enableComputeInstancesAutodiscovery,proto3,oneof" json:"enable_compute_instances_autodiscovery,omitempty"`
-	EnableGkeClustersAutodiscovery       *bool                  `protobuf:"varint,6,opt,name=enable_gke_clusters_autodiscovery,json=enableGkeClustersAutodiscovery,proto3,oneof" json:"enable_gke_clusters_autodiscovery,omitempty"`
-	EnableCloudsqlInstancesAutodiscovery *bool                  `protobuf:"varint,7,opt,name=enable_cloudsql_instances_autodiscovery,json=enableCloudsqlInstancesAutodiscovery,proto3,oneof" json:"enable_cloudsql_instances_autodiscovery,omitempty"`
+	state                        protoimpl.MessageState `protogen:"open.v1"`
+	ServiceAccountEmail          *string                `protobuf:"bytes,1,opt,name=service_account_email,json=serviceAccountEmail,proto3,oneof" json:"service_account_email,omitempty"`
+	WorkloadIdentityPoolProvider *string                `protobuf:"bytes,2,opt,name=workload_identity_pool_provider,json=workloadIdentityPoolProvider,proto3,oneof" json:"workload_identity_pool_provider,omitempty"`
+	AllowGcsAccess               *bool                  `protobuf:"varint,3,opt,name=allow_gcs_access,json=allowGcsAccess,proto3,oneof" json:"allow_gcs_access,omitempty"`
+	// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
+	GcsBuckets                           []string                                            `protobuf:"bytes,4,rep,name=gcs_buckets,json=gcsBuckets,proto3" json:"gcs_buckets,omitempty"` // superseded by gcs_buckets_v2
+	EnableComputeInstancesAutodiscovery  *bool                                               `protobuf:"varint,5,opt,name=enable_compute_instances_autodiscovery,json=enableComputeInstancesAutodiscovery,proto3,oneof" json:"enable_compute_instances_autodiscovery,omitempty"`
+	EnableGkeClustersAutodiscovery       *bool                                               `protobuf:"varint,6,opt,name=enable_gke_clusters_autodiscovery,json=enableGkeClustersAutodiscovery,proto3,oneof" json:"enable_gke_clusters_autodiscovery,omitempty"`
+	EnableCloudsqlInstancesAutodiscovery *bool                                               `protobuf:"varint,7,opt,name=enable_cloudsql_instances_autodiscovery,json=enableCloudsqlInstancesAutodiscovery,proto3,oneof" json:"enable_cloudsql_instances_autodiscovery,omitempty"`
+	GcsBucketsV2                         *UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets `protobuf:"bytes,8,opt,name=gcs_buckets_v2,json=gcsBucketsV2,proto3,oneof" json:"gcs_buckets_v2,omitempty"`
 	unknownFields                        protoimpl.UnknownFields
 	sizeCache                            protoimpl.SizeCache
 }
@@ -2335,6 +2337,7 @@ func (x *UpdateCloudIntegrationRequest_GCP) GetAllowGcsAccess() bool {
 	return false
 }
 
+// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
 func (x *UpdateCloudIntegrationRequest_GCP) GetGcsBuckets() []string {
 	if x != nil {
 		return x.GcsBuckets
@@ -2363,15 +2366,22 @@ func (x *UpdateCloudIntegrationRequest_GCP) GetEnableCloudsqlInstancesAutodiscov
 	return false
 }
 
+func (x *UpdateCloudIntegrationRequest_GCP) GetGcsBucketsV2() *UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets {
+	if x != nil {
+		return x.GcsBucketsV2
+	}
+	return nil
+}
+
 type UpdateCloudIntegrationRequest_Azure struct {
-	state                  protoimpl.MessageState `protogen:"open.v1"`
-	TenantId               *string                `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3,oneof" json:"tenant_id,omitempty"`
-	ClientId               *string                `protobuf:"bytes,2,opt,name=client_id,json=clientId,proto3,oneof" json:"client_id,omitempty"`
-	AllowBlobAccess        *bool                  `protobuf:"varint,3,opt,name=allow_blob_access,json=allowBlobAccess,proto3,oneof" json:"allow_blob_access,omitempty"`
-	BlobStorageAccounts    []string               `protobuf:"bytes,4,rep,name=blob_storage_accounts,json=blobStorageAccounts,proto3" json:"blob_storage_accounts,omitempty"`
-	EnableVmAutodiscovery  *bool                  `protobuf:"varint,5,opt,name=enable_vm_autodiscovery,json=enableVmAutodiscovery,proto3,oneof" json:"enable_vm_autodiscovery,omitempty"`
-	EnableAksAutodiscovery *bool                  `protobuf:"varint,6,opt,name=enable_aks_autodiscovery,json=enableAksAutodiscovery,proto3,oneof" json:"enable_aks_autodiscovery,omitempty"`
-	EnableDbAutodiscovery  *bool                  `protobuf:"varint,7,opt,name=enable_db_autodiscovery,json=enableDbAutodiscovery,proto3,oneof" json:"enable_db_autodiscovery,omitempty"`
+	state                  protoimpl.MessageState                                         `protogen:"open.v1"`
+	TenantId               *string                                                        `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3,oneof" json:"tenant_id,omitempty"`
+	ClientId               *string                                                        `protobuf:"bytes,2,opt,name=client_id,json=clientId,proto3,oneof" json:"client_id,omitempty"`
+	AllowBlobAccess        *bool                                                          `protobuf:"varint,3,opt,name=allow_blob_access,json=allowBlobAccess,proto3,oneof" json:"allow_blob_access,omitempty"`
+	BlobStorageAccounts    *UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts `protobuf:"bytes,4,opt,name=blob_storage_accounts,json=blobStorageAccounts,proto3,oneof" json:"blob_storage_accounts,omitempty"`
+	EnableVmAutodiscovery  *bool                                                          `protobuf:"varint,5,opt,name=enable_vm_autodiscovery,json=enableVmAutodiscovery,proto3,oneof" json:"enable_vm_autodiscovery,omitempty"`
+	EnableAksAutodiscovery *bool                                                          `protobuf:"varint,6,opt,name=enable_aks_autodiscovery,json=enableAksAutodiscovery,proto3,oneof" json:"enable_aks_autodiscovery,omitempty"`
+	EnableDbAutodiscovery  *bool                                                          `protobuf:"varint,7,opt,name=enable_db_autodiscovery,json=enableDbAutodiscovery,proto3,oneof" json:"enable_db_autodiscovery,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -2427,7 +2437,7 @@ func (x *UpdateCloudIntegrationRequest_Azure) GetAllowBlobAccess() bool {
 	return false
 }
 
-func (x *UpdateCloudIntegrationRequest_Azure) GetBlobStorageAccounts() []string {
+func (x *UpdateCloudIntegrationRequest_Azure) GetBlobStorageAccounts() *UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts {
 	if x != nil {
 		return x.BlobStorageAccounts
 	}
@@ -2453,6 +2463,94 @@ func (x *UpdateCloudIntegrationRequest_Azure) GetEnableDbAutodiscovery() bool {
 		return *x.EnableDbAutodiscovery
 	}
 	return false
+}
+
+type UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GcsBuckets    []string               `protobuf:"bytes,1,rep,name=gcs_buckets,json=gcsBuckets,proto3" json:"gcs_buckets,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets) Reset() {
+	*x = UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets) ProtoMessage() {}
+
+func (x *UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets.ProtoReflect.Descriptor instead.
+func (*UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{6, 1, 0}
+}
+
+func (x *UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets) GetGcsBuckets() []string {
+	if x != nil {
+		return x.GcsBuckets
+	}
+	return nil
+}
+
+type UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	BlobStorageAccounts []string               `protobuf:"bytes,1,rep,name=blob_storage_accounts,json=blobStorageAccounts,proto3" json:"blob_storage_accounts,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts) Reset() {
+	*x = UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts{}
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts) ProtoMessage() {}
+
+func (x *UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_cloud_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts.ProtoReflect.Descriptor instead.
+func (*UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_cloud_proto_rawDescGZIP(), []int{6, 2, 0}
+}
+
+func (x *UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts) GetBlobStorageAccounts() []string {
+	if x != nil {
+		return x.BlobStorageAccounts
+	}
+	return nil
 }
 
 var File_core_v1_integration_cloud_proto protoreflect.FileDescriptor
@@ -2578,7 +2676,7 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x1eCreateCloudIntegrationResponse\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12\x17\n" +
 	"\x02id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12&\n" +
-	"\fsecurity_key\x18\x03 \x01(\tB\x03\x80\x01\x01R\vsecurityKey\"\xf5\x11\n" +
+	"\fsecurity_key\x18\x03 \x01(\tB\x03\x80\x01\x01R\vsecurityKey\"\xe1\x14\n" +
 	"\x1dUpdateCloudIntegrationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12>\n" +
 	"\x03aws\x18\x02 \x01(\v2*.core.v1.UpdateCloudIntegrationRequest.AWSH\x00R\x03aws\x12>\n" +
@@ -2604,35 +2702,43 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x19_enable_ec2_autodiscoveryB\x1b\n" +
 	"\x19_enable_ecs_autodiscoveryB\x14\n" +
 	"\x12_customer_role_arnB\x1a\n" +
-	"\x18_enable_s3_autodiscovery\x1a\xb0\x05\n" +
+	"\x18_enable_s3_autodiscovery\x1a\xe4\x06\n" +
 	"\x03GCP\x127\n" +
 	"\x15service_account_email\x18\x01 \x01(\tH\x00R\x13serviceAccountEmail\x88\x01\x01\x12J\n" +
 	"\x1fworkload_identity_pool_provider\x18\x02 \x01(\tH\x01R\x1cworkloadIdentityPoolProvider\x88\x01\x01\x12-\n" +
-	"\x10allow_gcs_access\x18\x03 \x01(\bH\x02R\x0eallowGcsAccess\x88\x01\x01\x12\x1f\n" +
-	"\vgcs_buckets\x18\x04 \x03(\tR\n" +
+	"\x10allow_gcs_access\x18\x03 \x01(\bH\x02R\x0eallowGcsAccess\x88\x01\x01\x12#\n" +
+	"\vgcs_buckets\x18\x04 \x03(\tB\x02\x18\x01R\n" +
 	"gcsBuckets\x12X\n" +
 	"&enable_compute_instances_autodiscovery\x18\x05 \x01(\bH\x03R#enableComputeInstancesAutodiscovery\x88\x01\x01\x12N\n" +
 	"!enable_gke_clusters_autodiscovery\x18\x06 \x01(\bH\x04R\x1eenableGkeClustersAutodiscovery\x88\x01\x01\x12Z\n" +
-	"'enable_cloudsql_instances_autodiscovery\x18\a \x01(\bH\x05R$enableCloudsqlInstancesAutodiscovery\x88\x01\x01B\x18\n" +
+	"'enable_cloudsql_instances_autodiscovery\x18\a \x01(\bH\x05R$enableCloudsqlInstancesAutodiscovery\x88\x01\x01\x12f\n" +
+	"\x0egcs_buckets_v2\x18\b \x01(\v2;.core.v1.UpdateCloudIntegrationRequest.GCP.UpdateGcsBucketsH\x06R\fgcsBucketsV2\x88\x01\x01\x1a3\n" +
+	"\x10UpdateGcsBuckets\x12\x1f\n" +
+	"\vgcs_buckets\x18\x01 \x03(\tR\n" +
+	"gcsBucketsB\x18\n" +
 	"\x16_service_account_emailB\"\n" +
 	" _workload_identity_pool_providerB\x13\n" +
 	"\x11_allow_gcs_accessB)\n" +
 	"'_enable_compute_instances_autodiscoveryB$\n" +
 	"\"_enable_gke_clusters_autodiscoveryB*\n" +
-	"(_enable_cloudsql_instances_autodiscovery\x1a\xf0\x03\n" +
+	"(_enable_cloudsql_instances_autodiscoveryB\x11\n" +
+	"\x0f_gcs_buckets_v2\x1a\xa8\x05\n" +
 	"\x05Azure\x12 \n" +
 	"\ttenant_id\x18\x01 \x01(\tH\x00R\btenantId\x88\x01\x01\x12 \n" +
 	"\tclient_id\x18\x02 \x01(\tH\x01R\bclientId\x88\x01\x01\x12/\n" +
-	"\x11allow_blob_access\x18\x03 \x01(\bH\x02R\x0fallowBlobAccess\x88\x01\x01\x122\n" +
-	"\x15blob_storage_accounts\x18\x04 \x03(\tR\x13blobStorageAccounts\x12;\n" +
-	"\x17enable_vm_autodiscovery\x18\x05 \x01(\bH\x03R\x15enableVmAutodiscovery\x88\x01\x01\x12=\n" +
-	"\x18enable_aks_autodiscovery\x18\x06 \x01(\bH\x04R\x16enableAksAutodiscovery\x88\x01\x01\x12;\n" +
-	"\x17enable_db_autodiscovery\x18\a \x01(\bH\x05R\x15enableDbAutodiscovery\x88\x01\x01B\f\n" +
+	"\x11allow_blob_access\x18\x03 \x01(\bH\x02R\x0fallowBlobAccess\x88\x01\x01\x12\x7f\n" +
+	"\x15blob_storage_accounts\x18\x04 \x01(\v2F.core.v1.UpdateCloudIntegrationRequest.Azure.UpdateBlobStorageAccountsH\x03R\x13blobStorageAccounts\x88\x01\x01\x12;\n" +
+	"\x17enable_vm_autodiscovery\x18\x05 \x01(\bH\x04R\x15enableVmAutodiscovery\x88\x01\x01\x12=\n" +
+	"\x18enable_aks_autodiscovery\x18\x06 \x01(\bH\x05R\x16enableAksAutodiscovery\x88\x01\x01\x12;\n" +
+	"\x17enable_db_autodiscovery\x18\a \x01(\bH\x06R\x15enableDbAutodiscovery\x88\x01\x01\x1aO\n" +
+	"\x19UpdateBlobStorageAccounts\x122\n" +
+	"\x15blob_storage_accounts\x18\x01 \x03(\tR\x13blobStorageAccountsB\f\n" +
 	"\n" +
 	"_tenant_idB\f\n" +
 	"\n" +
 	"_client_idB\x14\n" +
-	"\x12_allow_blob_accessB\x1a\n" +
+	"\x12_allow_blob_accessB\x18\n" +
+	"\x16_blob_storage_accountsB\x1a\n" +
 	"\x18_enable_vm_autodiscoveryB\x1b\n" +
 	"\x19_enable_aks_autodiscoveryB\x1a\n" +
 	"\x18_enable_db_autodiscoveryB\a\n" +
@@ -2726,45 +2832,47 @@ func file_core_v1_integration_cloud_proto_rawDescGZIP() []byte {
 	return file_core_v1_integration_cloud_proto_rawDescData
 }
 
-var file_core_v1_integration_cloud_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_core_v1_integration_cloud_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_core_v1_integration_cloud_proto_goTypes = []any{
-	(*CloudIntegration)(nil),                           // 0: core.v1.CloudIntegration
-	(*AWS)(nil),                                        // 1: core.v1.AWS
-	(*GCP)(nil),                                        // 2: core.v1.GCP
-	(*Azure)(nil),                                      // 3: core.v1.Azure
-	(*CreateCloudIntegrationRequest)(nil),              // 4: core.v1.CreateCloudIntegrationRequest
-	(*CreateCloudIntegrationResponse)(nil),             // 5: core.v1.CreateCloudIntegrationResponse
-	(*UpdateCloudIntegrationRequest)(nil),              // 6: core.v1.UpdateCloudIntegrationRequest
-	(*UpdateCloudIntegrationResponse)(nil),             // 7: core.v1.UpdateCloudIntegrationResponse
-	(*UpdateCloudIntegrationV2Request)(nil),            // 8: core.v1.UpdateCloudIntegrationV2Request
-	(*UpdateCloudIntegrationV2Response)(nil),           // 9: core.v1.UpdateCloudIntegrationV2Response
-	(*GetIntegrationCloudRequest)(nil),                 // 10: core.v1.GetIntegrationCloudRequest
-	(*GetIntegrationCloudResponse)(nil),                // 11: core.v1.GetIntegrationCloudResponse
-	(*ListIntegrationCloudsRequest)(nil),               // 12: core.v1.ListIntegrationCloudsRequest
-	(*ListIntegrationCloudsResponse)(nil),              // 13: core.v1.ListIntegrationCloudsResponse
-	(*DeleteCloudIntegrationRequest)(nil),              // 14: core.v1.DeleteCloudIntegrationRequest
-	(*DeleteCloudIntegrationResponse)(nil),             // 15: core.v1.DeleteCloudIntegrationResponse
-	(*SetGCPCloudIntegrationActivationRequest)(nil),    // 16: core.v1.SetGCPCloudIntegrationActivationRequest
-	(*SetGCPCloudIntegrationActivationResponse)(nil),   // 17: core.v1.SetGCPCloudIntegrationActivationResponse
-	(*GetGCPCloudIntegrationSetupRequest)(nil),         // 18: core.v1.GetGCPCloudIntegrationSetupRequest
-	(*GetGCPCloudIntegrationSetupResponse)(nil),        // 19: core.v1.GetGCPCloudIntegrationSetupResponse
-	(*SetAzureCloudIntegrationActivationRequest)(nil),  // 20: core.v1.SetAzureCloudIntegrationActivationRequest
-	(*SetAzureCloudIntegrationActivationResponse)(nil), // 21: core.v1.SetAzureCloudIntegrationActivationResponse
-	(*GetAzureCloudIntegrationSetupRequest)(nil),       // 22: core.v1.GetAzureCloudIntegrationSetupRequest
-	(*GetAzureCloudIntegrationSetupResponse)(nil),      // 23: core.v1.GetAzureCloudIntegrationSetupResponse
-	(*CreateCloudIntegrationRequest_AWS)(nil),          // 24: core.v1.CreateCloudIntegrationRequest.AWS
-	(*CreateCloudIntegrationRequest_GCP)(nil),          // 25: core.v1.CreateCloudIntegrationRequest.GCP
-	(*CreateCloudIntegrationRequest_Azure)(nil),        // 26: core.v1.CreateCloudIntegrationRequest.Azure
-	(*UpdateCloudIntegrationRequest_AWS)(nil),          // 27: core.v1.UpdateCloudIntegrationRequest.AWS
-	(*UpdateCloudIntegrationRequest_GCP)(nil),          // 28: core.v1.UpdateCloudIntegrationRequest.GCP
-	(*UpdateCloudIntegrationRequest_Azure)(nil),        // 29: core.v1.UpdateCloudIntegrationRequest.Azure
-	(*timestamppb.Timestamp)(nil),                      // 30: google.protobuf.Timestamp
-	(*Filter)(nil),                                     // 31: core.v1.Filter
-	(*ListMetadata)(nil),                               // 32: core.v1.ListMetadata
+	(*CloudIntegration)(nil),                                              // 0: core.v1.CloudIntegration
+	(*AWS)(nil),                                                           // 1: core.v1.AWS
+	(*GCP)(nil),                                                           // 2: core.v1.GCP
+	(*Azure)(nil),                                                         // 3: core.v1.Azure
+	(*CreateCloudIntegrationRequest)(nil),                                 // 4: core.v1.CreateCloudIntegrationRequest
+	(*CreateCloudIntegrationResponse)(nil),                                // 5: core.v1.CreateCloudIntegrationResponse
+	(*UpdateCloudIntegrationRequest)(nil),                                 // 6: core.v1.UpdateCloudIntegrationRequest
+	(*UpdateCloudIntegrationResponse)(nil),                                // 7: core.v1.UpdateCloudIntegrationResponse
+	(*UpdateCloudIntegrationV2Request)(nil),                               // 8: core.v1.UpdateCloudIntegrationV2Request
+	(*UpdateCloudIntegrationV2Response)(nil),                              // 9: core.v1.UpdateCloudIntegrationV2Response
+	(*GetIntegrationCloudRequest)(nil),                                    // 10: core.v1.GetIntegrationCloudRequest
+	(*GetIntegrationCloudResponse)(nil),                                   // 11: core.v1.GetIntegrationCloudResponse
+	(*ListIntegrationCloudsRequest)(nil),                                  // 12: core.v1.ListIntegrationCloudsRequest
+	(*ListIntegrationCloudsResponse)(nil),                                 // 13: core.v1.ListIntegrationCloudsResponse
+	(*DeleteCloudIntegrationRequest)(nil),                                 // 14: core.v1.DeleteCloudIntegrationRequest
+	(*DeleteCloudIntegrationResponse)(nil),                                // 15: core.v1.DeleteCloudIntegrationResponse
+	(*SetGCPCloudIntegrationActivationRequest)(nil),                       // 16: core.v1.SetGCPCloudIntegrationActivationRequest
+	(*SetGCPCloudIntegrationActivationResponse)(nil),                      // 17: core.v1.SetGCPCloudIntegrationActivationResponse
+	(*GetGCPCloudIntegrationSetupRequest)(nil),                            // 18: core.v1.GetGCPCloudIntegrationSetupRequest
+	(*GetGCPCloudIntegrationSetupResponse)(nil),                           // 19: core.v1.GetGCPCloudIntegrationSetupResponse
+	(*SetAzureCloudIntegrationActivationRequest)(nil),                     // 20: core.v1.SetAzureCloudIntegrationActivationRequest
+	(*SetAzureCloudIntegrationActivationResponse)(nil),                    // 21: core.v1.SetAzureCloudIntegrationActivationResponse
+	(*GetAzureCloudIntegrationSetupRequest)(nil),                          // 22: core.v1.GetAzureCloudIntegrationSetupRequest
+	(*GetAzureCloudIntegrationSetupResponse)(nil),                         // 23: core.v1.GetAzureCloudIntegrationSetupResponse
+	(*CreateCloudIntegrationRequest_AWS)(nil),                             // 24: core.v1.CreateCloudIntegrationRequest.AWS
+	(*CreateCloudIntegrationRequest_GCP)(nil),                             // 25: core.v1.CreateCloudIntegrationRequest.GCP
+	(*CreateCloudIntegrationRequest_Azure)(nil),                           // 26: core.v1.CreateCloudIntegrationRequest.Azure
+	(*UpdateCloudIntegrationRequest_AWS)(nil),                             // 27: core.v1.UpdateCloudIntegrationRequest.AWS
+	(*UpdateCloudIntegrationRequest_GCP)(nil),                             // 28: core.v1.UpdateCloudIntegrationRequest.GCP
+	(*UpdateCloudIntegrationRequest_Azure)(nil),                           // 29: core.v1.UpdateCloudIntegrationRequest.Azure
+	(*UpdateCloudIntegrationRequest_GCP_UpdateGcsBuckets)(nil),            // 30: core.v1.UpdateCloudIntegrationRequest.GCP.UpdateGcsBuckets
+	(*UpdateCloudIntegrationRequest_Azure_UpdateBlobStorageAccounts)(nil), // 31: core.v1.UpdateCloudIntegrationRequest.Azure.UpdateBlobStorageAccounts
+	(*timestamppb.Timestamp)(nil),                                         // 32: google.protobuf.Timestamp
+	(*Filter)(nil),                                                        // 33: core.v1.Filter
+	(*ListMetadata)(nil),                                                  // 34: core.v1.ListMetadata
 }
 var file_core_v1_integration_cloud_proto_depIdxs = []int32{
-	30, // 0: core.v1.CloudIntegration.created_at:type_name -> google.protobuf.Timestamp
-	30, // 1: core.v1.CloudIntegration.updated_at:type_name -> google.protobuf.Timestamp
+	32, // 0: core.v1.CloudIntegration.created_at:type_name -> google.protobuf.Timestamp
+	32, // 1: core.v1.CloudIntegration.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 2: core.v1.CloudIntegration.aws:type_name -> core.v1.AWS
 	2,  // 3: core.v1.CloudIntegration.gcp:type_name -> core.v1.GCP
 	3,  // 4: core.v1.CloudIntegration.azure:type_name -> core.v1.Azure
@@ -2778,34 +2886,36 @@ var file_core_v1_integration_cloud_proto_depIdxs = []int32{
 	0,  // 12: core.v1.UpdateCloudIntegrationV2Request.cloud:type_name -> core.v1.CloudIntegration
 	0,  // 13: core.v1.UpdateCloudIntegrationV2Response.cloud:type_name -> core.v1.CloudIntegration
 	0,  // 14: core.v1.GetIntegrationCloudResponse.cloud:type_name -> core.v1.CloudIntegration
-	31, // 15: core.v1.ListIntegrationCloudsRequest.filter:type_name -> core.v1.Filter
+	33, // 15: core.v1.ListIntegrationCloudsRequest.filter:type_name -> core.v1.Filter
 	0,  // 16: core.v1.ListIntegrationCloudsResponse.clouds:type_name -> core.v1.CloudIntegration
-	32, // 17: core.v1.ListIntegrationCloudsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	10, // 18: core.v1.IntegrationCloudService.GetIntegrationCloud:input_type -> core.v1.GetIntegrationCloudRequest
-	12, // 19: core.v1.IntegrationCloudService.ListIntegrationClouds:input_type -> core.v1.ListIntegrationCloudsRequest
-	4,  // 20: core.v1.IntegrationCloudService.CreateCloudIntegration:input_type -> core.v1.CreateCloudIntegrationRequest
-	6,  // 21: core.v1.IntegrationCloudService.UpdateCloudIntegration:input_type -> core.v1.UpdateCloudIntegrationRequest
-	8,  // 22: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:input_type -> core.v1.UpdateCloudIntegrationV2Request
-	14, // 23: core.v1.IntegrationCloudService.DeleteCloudIntegration:input_type -> core.v1.DeleteCloudIntegrationRequest
-	18, // 24: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:input_type -> core.v1.GetGCPCloudIntegrationSetupRequest
-	16, // 25: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:input_type -> core.v1.SetGCPCloudIntegrationActivationRequest
-	22, // 26: core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup:input_type -> core.v1.GetAzureCloudIntegrationSetupRequest
-	20, // 27: core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation:input_type -> core.v1.SetAzureCloudIntegrationActivationRequest
-	11, // 28: core.v1.IntegrationCloudService.GetIntegrationCloud:output_type -> core.v1.GetIntegrationCloudResponse
-	13, // 29: core.v1.IntegrationCloudService.ListIntegrationClouds:output_type -> core.v1.ListIntegrationCloudsResponse
-	5,  // 30: core.v1.IntegrationCloudService.CreateCloudIntegration:output_type -> core.v1.CreateCloudIntegrationResponse
-	7,  // 31: core.v1.IntegrationCloudService.UpdateCloudIntegration:output_type -> core.v1.UpdateCloudIntegrationResponse
-	9,  // 32: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:output_type -> core.v1.UpdateCloudIntegrationV2Response
-	15, // 33: core.v1.IntegrationCloudService.DeleteCloudIntegration:output_type -> core.v1.DeleteCloudIntegrationResponse
-	19, // 34: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:output_type -> core.v1.GetGCPCloudIntegrationSetupResponse
-	17, // 35: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:output_type -> core.v1.SetGCPCloudIntegrationActivationResponse
-	23, // 36: core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup:output_type -> core.v1.GetAzureCloudIntegrationSetupResponse
-	21, // 37: core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation:output_type -> core.v1.SetAzureCloudIntegrationActivationResponse
-	28, // [28:38] is the sub-list for method output_type
-	18, // [18:28] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	34, // 17: core.v1.ListIntegrationCloudsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	30, // 18: core.v1.UpdateCloudIntegrationRequest.GCP.gcs_buckets_v2:type_name -> core.v1.UpdateCloudIntegrationRequest.GCP.UpdateGcsBuckets
+	31, // 19: core.v1.UpdateCloudIntegrationRequest.Azure.blob_storage_accounts:type_name -> core.v1.UpdateCloudIntegrationRequest.Azure.UpdateBlobStorageAccounts
+	10, // 20: core.v1.IntegrationCloudService.GetIntegrationCloud:input_type -> core.v1.GetIntegrationCloudRequest
+	12, // 21: core.v1.IntegrationCloudService.ListIntegrationClouds:input_type -> core.v1.ListIntegrationCloudsRequest
+	4,  // 22: core.v1.IntegrationCloudService.CreateCloudIntegration:input_type -> core.v1.CreateCloudIntegrationRequest
+	6,  // 23: core.v1.IntegrationCloudService.UpdateCloudIntegration:input_type -> core.v1.UpdateCloudIntegrationRequest
+	8,  // 24: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:input_type -> core.v1.UpdateCloudIntegrationV2Request
+	14, // 25: core.v1.IntegrationCloudService.DeleteCloudIntegration:input_type -> core.v1.DeleteCloudIntegrationRequest
+	18, // 26: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:input_type -> core.v1.GetGCPCloudIntegrationSetupRequest
+	16, // 27: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:input_type -> core.v1.SetGCPCloudIntegrationActivationRequest
+	22, // 28: core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup:input_type -> core.v1.GetAzureCloudIntegrationSetupRequest
+	20, // 29: core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation:input_type -> core.v1.SetAzureCloudIntegrationActivationRequest
+	11, // 30: core.v1.IntegrationCloudService.GetIntegrationCloud:output_type -> core.v1.GetIntegrationCloudResponse
+	13, // 31: core.v1.IntegrationCloudService.ListIntegrationClouds:output_type -> core.v1.ListIntegrationCloudsResponse
+	5,  // 32: core.v1.IntegrationCloudService.CreateCloudIntegration:output_type -> core.v1.CreateCloudIntegrationResponse
+	7,  // 33: core.v1.IntegrationCloudService.UpdateCloudIntegration:output_type -> core.v1.UpdateCloudIntegrationResponse
+	9,  // 34: core.v1.IntegrationCloudService.UpdateCloudIntegrationV2:output_type -> core.v1.UpdateCloudIntegrationV2Response
+	15, // 35: core.v1.IntegrationCloudService.DeleteCloudIntegration:output_type -> core.v1.DeleteCloudIntegrationResponse
+	19, // 36: core.v1.IntegrationCloudService.GetGCPCloudIntegrationSetup:output_type -> core.v1.GetGCPCloudIntegrationSetupResponse
+	17, // 37: core.v1.IntegrationCloudService.SetGCPCloudIntegrationActivation:output_type -> core.v1.SetGCPCloudIntegrationActivationResponse
+	23, // 38: core.v1.IntegrationCloudService.GetAzureCloudIntegrationSetup:output_type -> core.v1.GetAzureCloudIntegrationSetupResponse
+	21, // 39: core.v1.IntegrationCloudService.SetAzureCloudIntegrationActivation:output_type -> core.v1.SetAzureCloudIntegrationActivationResponse
+	30, // [30:40] is the sub-list for method output_type
+	20, // [20:30] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_integration_cloud_proto_init() }
@@ -2843,7 +2953,7 @@ func file_core_v1_integration_cloud_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_integration_cloud_proto_rawDesc), len(file_core_v1_integration_cloud_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   30,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
