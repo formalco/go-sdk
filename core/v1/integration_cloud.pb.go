@@ -522,6 +522,8 @@ type Azure struct {
 	AzureEnableDbAutodiscovery  bool                   `protobuf:"varint,9,opt,name=azure_enable_db_autodiscovery,json=azureEnableDbAutodiscovery,proto3" json:"azure_enable_db_autodiscovery,omitempty"`
 	AzureAllowBlobAccess        bool                   `protobuf:"varint,10,opt,name=azure_allow_blob_access,json=azureAllowBlobAccess,proto3" json:"azure_allow_blob_access,omitempty"`
 	AzureBlobStorageAccounts    []string               `protobuf:"bytes,11,rep,name=azure_blob_storage_accounts,json=azureBlobStorageAccounts,proto3" json:"azure_blob_storage_accounts,omitempty"`
+	AzureIssuer                 string                 `protobuf:"bytes,12,opt,name=azure_issuer,json=azureIssuer,proto3" json:"azure_issuer,omitempty"`
+	AzureRoleDefinitions        []string               `protobuf:"bytes,13,rep,name=azure_role_definitions,json=azureRoleDefinitions,proto3" json:"azure_role_definitions,omitempty"`
 	unknownFields               protoimpl.UnknownFields
 	sizeCache                   protoimpl.SizeCache
 }
@@ -629,6 +631,20 @@ func (x *Azure) GetAzureAllowBlobAccess() bool {
 func (x *Azure) GetAzureBlobStorageAccounts() []string {
 	if x != nil {
 		return x.AzureBlobStorageAccounts
+	}
+	return nil
+}
+
+func (x *Azure) GetAzureIssuer() string {
+	if x != nil {
+		return x.AzureIssuer
+	}
+	return ""
+}
+
+func (x *Azure) GetAzureRoleDefinitions() []string {
+	if x != nil {
+		return x.AzureRoleDefinitions
 	}
 	return nil
 }
@@ -2607,7 +2623,7 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	" \x01(\bR&gcpEnableComputeInstancesAutodiscovery\x12P\n" +
 	"%gcp_enable_gke_clusters_autodiscovery\x18\v \x01(\bR!gcpEnableGkeClustersAutodiscovery\x12\\\n" +
 	"+gcp_enable_cloudsql_instances_autodiscovery\x18\f \x01(\bR'gcpEnableCloudsqlInstancesAutodiscovery\x12'\n" +
-	"\x0fgcp_permissions\x18\r \x03(\tR\x0egcpPermissions\"\xd5\x04\n" +
+	"\x0fgcp_permissions\x18\r \x03(\tR\x0egcpPermissions\"\xae\x05\n" +
 	"\x05Azure\x12&\n" +
 	"\x0fazure_tenant_id\x18\x01 \x01(\tR\razureTenantId\x12&\n" +
 	"\x0fazure_client_id\x18\x02 \x01(\tR\razureClientId\x122\n" +
@@ -2620,7 +2636,9 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x1dazure_enable_db_autodiscovery\x18\t \x01(\bR\x1aazureEnableDbAutodiscovery\x125\n" +
 	"\x17azure_allow_blob_access\x18\n" +
 	" \x01(\bR\x14azureAllowBlobAccess\x12=\n" +
-	"\x1bazure_blob_storage_accounts\x18\v \x03(\tR\x18azureBlobStorageAccounts\"\xd9\x10\n" +
+	"\x1bazure_blob_storage_accounts\x18\v \x03(\tR\x18azureBlobStorageAccounts\x12!\n" +
+	"\fazure_issuer\x18\f \x01(\tR\vazureIssuer\x124\n" +
+	"\x16azure_role_definitions\x18\r \x03(\tR\x14azureRoleDefinitions\"\xd9\x10\n" +
 	"\x1dCreateCloudIntegrationRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12!\n" +
 	"\fcloud_region\x18\x02 \x01(\tR\vcloudRegion\x12\x12\n" +
