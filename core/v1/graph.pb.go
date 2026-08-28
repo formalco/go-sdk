@@ -499,110 +499,6 @@ func (x *Graph) GetEdges() []*Edge {
 	return nil
 }
 
-type GetGraphRequest struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Query          string                 `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	StartTimestamp *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_timestamp,json=startTimestamp,proto3" json:"start_timestamp,omitempty"`
-	EndTimestamp   *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_timestamp,json=endTimestamp,proto3" json:"end_timestamp,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
-}
-
-func (x *GetGraphRequest) Reset() {
-	*x = GetGraphRequest{}
-	mi := &file_core_v1_graph_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetGraphRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetGraphRequest) ProtoMessage() {}
-
-func (x *GetGraphRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetGraphRequest.ProtoReflect.Descriptor instead.
-func (*GetGraphRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *GetGraphRequest) GetQuery() string {
-	if x != nil {
-		return x.Query
-	}
-	return ""
-}
-
-func (x *GetGraphRequest) GetStartTimestamp() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartTimestamp
-	}
-	return nil
-}
-
-func (x *GetGraphRequest) GetEndTimestamp() *timestamppb.Timestamp {
-	if x != nil {
-		return x.EndTimestamp
-	}
-	return nil
-}
-
-type GetGraphResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Graph         *Graph                 `protobuf:"bytes,1,opt,name=graph,proto3" json:"graph,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetGraphResponse) Reset() {
-	*x = GetGraphResponse{}
-	mi := &file_core_v1_graph_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetGraphResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetGraphResponse) ProtoMessage() {}
-
-func (x *GetGraphResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetGraphResponse.ProtoReflect.Descriptor instead.
-func (*GetGraphResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *GetGraphResponse) GetGraph() *Graph {
-	if x != nil {
-		return x.Graph
-	}
-	return nil
-}
-
 type GetAccessGraphRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Primary filter: Quickwit query string defining the log universe
@@ -630,7 +526,7 @@ type GetAccessGraphRequest struct {
 
 func (x *GetAccessGraphRequest) Reset() {
 	*x = GetAccessGraphRequest{}
-	mi := &file_core_v1_graph_proto_msgTypes[9]
+	mi := &file_core_v1_graph_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -642,7 +538,7 @@ func (x *GetAccessGraphRequest) String() string {
 func (*GetAccessGraphRequest) ProtoMessage() {}
 
 func (x *GetAccessGraphRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[9]
+	mi := &file_core_v1_graph_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -655,7 +551,7 @@ func (x *GetAccessGraphRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAccessGraphRequest.ProtoReflect.Descriptor instead.
 func (*GetAccessGraphRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{9}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetAccessGraphRequest) GetQuery() string {
@@ -745,7 +641,7 @@ type GetAccessGraphResponse struct {
 
 func (x *GetAccessGraphResponse) Reset() {
 	*x = GetAccessGraphResponse{}
-	mi := &file_core_v1_graph_proto_msgTypes[10]
+	mi := &file_core_v1_graph_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -757,7 +653,7 @@ func (x *GetAccessGraphResponse) String() string {
 func (*GetAccessGraphResponse) ProtoMessage() {}
 
 func (x *GetAccessGraphResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[10]
+	mi := &file_core_v1_graph_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -770,7 +666,7 @@ func (x *GetAccessGraphResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAccessGraphResponse.ProtoReflect.Descriptor instead.
 func (*GetAccessGraphResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{10}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetAccessGraphResponse) GetGraph() *AccessGraph {
@@ -802,7 +698,7 @@ type GetAccessGraphNodeDetailsRequest struct {
 
 func (x *GetAccessGraphNodeDetailsRequest) Reset() {
 	*x = GetAccessGraphNodeDetailsRequest{}
-	mi := &file_core_v1_graph_proto_msgTypes[11]
+	mi := &file_core_v1_graph_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -814,7 +710,7 @@ func (x *GetAccessGraphNodeDetailsRequest) String() string {
 func (*GetAccessGraphNodeDetailsRequest) ProtoMessage() {}
 
 func (x *GetAccessGraphNodeDetailsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[11]
+	mi := &file_core_v1_graph_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -827,7 +723,7 @@ func (x *GetAccessGraphNodeDetailsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAccessGraphNodeDetailsRequest.ProtoReflect.Descriptor instead.
 func (*GetAccessGraphNodeDetailsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{11}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetAccessGraphNodeDetailsRequest) GetNodeId() string {
@@ -874,7 +770,7 @@ type GetAccessGraphNodeDetailsResponse struct {
 
 func (x *GetAccessGraphNodeDetailsResponse) Reset() {
 	*x = GetAccessGraphNodeDetailsResponse{}
-	mi := &file_core_v1_graph_proto_msgTypes[12]
+	mi := &file_core_v1_graph_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -886,7 +782,7 @@ func (x *GetAccessGraphNodeDetailsResponse) String() string {
 func (*GetAccessGraphNodeDetailsResponse) ProtoMessage() {}
 
 func (x *GetAccessGraphNodeDetailsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[12]
+	mi := &file_core_v1_graph_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -899,7 +795,7 @@ func (x *GetAccessGraphNodeDetailsResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetAccessGraphNodeDetailsResponse.ProtoReflect.Descriptor instead.
 func (*GetAccessGraphNodeDetailsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{12}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetAccessGraphNodeDetailsResponse) GetDetail() *AccessGraphNodeDetail {
@@ -919,7 +815,7 @@ type AccessGraph struct {
 
 func (x *AccessGraph) Reset() {
 	*x = AccessGraph{}
-	mi := &file_core_v1_graph_proto_msgTypes[13]
+	mi := &file_core_v1_graph_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -931,7 +827,7 @@ func (x *AccessGraph) String() string {
 func (*AccessGraph) ProtoMessage() {}
 
 func (x *AccessGraph) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[13]
+	mi := &file_core_v1_graph_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -944,7 +840,7 @@ func (x *AccessGraph) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraph.ProtoReflect.Descriptor instead.
 func (*AccessGraph) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AccessGraph) GetNodes() []*AccessGraphNode {
@@ -976,7 +872,7 @@ type AccessGraphNode struct {
 
 func (x *AccessGraphNode) Reset() {
 	*x = AccessGraphNode{}
-	mi := &file_core_v1_graph_proto_msgTypes[14]
+	mi := &file_core_v1_graph_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -988,7 +884,7 @@ func (x *AccessGraphNode) String() string {
 func (*AccessGraphNode) ProtoMessage() {}
 
 func (x *AccessGraphNode) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[14]
+	mi := &file_core_v1_graph_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1001,7 +897,7 @@ func (x *AccessGraphNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphNode.ProtoReflect.Descriptor instead.
 func (*AccessGraphNode) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *AccessGraphNode) GetId() string {
@@ -1085,7 +981,7 @@ type AccessGraphIdentityNode struct {
 
 func (x *AccessGraphIdentityNode) Reset() {
 	*x = AccessGraphIdentityNode{}
-	mi := &file_core_v1_graph_proto_msgTypes[15]
+	mi := &file_core_v1_graph_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1097,7 +993,7 @@ func (x *AccessGraphIdentityNode) String() string {
 func (*AccessGraphIdentityNode) ProtoMessage() {}
 
 func (x *AccessGraphIdentityNode) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[15]
+	mi := &file_core_v1_graph_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1110,7 +1006,7 @@ func (x *AccessGraphIdentityNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphIdentityNode.ProtoReflect.Descriptor instead.
 func (*AccessGraphIdentityNode) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *AccessGraphIdentityNode) GetName() string {
@@ -1184,7 +1080,7 @@ type AccessGraphConnectorNode struct {
 
 func (x *AccessGraphConnectorNode) Reset() {
 	*x = AccessGraphConnectorNode{}
-	mi := &file_core_v1_graph_proto_msgTypes[16]
+	mi := &file_core_v1_graph_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1196,7 +1092,7 @@ func (x *AccessGraphConnectorNode) String() string {
 func (*AccessGraphConnectorNode) ProtoMessage() {}
 
 func (x *AccessGraphConnectorNode) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[16]
+	mi := &file_core_v1_graph_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1209,7 +1105,7 @@ func (x *AccessGraphConnectorNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphConnectorNode.ProtoReflect.Descriptor instead.
 func (*AccessGraphConnectorNode) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *AccessGraphConnectorNode) GetName() string {
@@ -1273,7 +1169,7 @@ type AccessGraphResourceNode struct {
 
 func (x *AccessGraphResourceNode) Reset() {
 	*x = AccessGraphResourceNode{}
-	mi := &file_core_v1_graph_proto_msgTypes[17]
+	mi := &file_core_v1_graph_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1285,7 +1181,7 @@ func (x *AccessGraphResourceNode) String() string {
 func (*AccessGraphResourceNode) ProtoMessage() {}
 
 func (x *AccessGraphResourceNode) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[17]
+	mi := &file_core_v1_graph_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1298,7 +1194,7 @@ func (x *AccessGraphResourceNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphResourceNode.ProtoReflect.Descriptor instead.
 func (*AccessGraphResourceNode) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *AccessGraphResourceNode) GetName() string {
@@ -1387,7 +1283,7 @@ type AccessGraphEdge struct {
 
 func (x *AccessGraphEdge) Reset() {
 	*x = AccessGraphEdge{}
-	mi := &file_core_v1_graph_proto_msgTypes[18]
+	mi := &file_core_v1_graph_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1399,7 +1295,7 @@ func (x *AccessGraphEdge) String() string {
 func (*AccessGraphEdge) ProtoMessage() {}
 
 func (x *AccessGraphEdge) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[18]
+	mi := &file_core_v1_graph_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1412,7 +1308,7 @@ func (x *AccessGraphEdge) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphEdge.ProtoReflect.Descriptor instead.
 func (*AccessGraphEdge) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AccessGraphEdge) GetId() string {
@@ -1476,7 +1372,7 @@ type AccessGraphPolicyBreakdown struct {
 
 func (x *AccessGraphPolicyBreakdown) Reset() {
 	*x = AccessGraphPolicyBreakdown{}
-	mi := &file_core_v1_graph_proto_msgTypes[19]
+	mi := &file_core_v1_graph_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1488,7 +1384,7 @@ func (x *AccessGraphPolicyBreakdown) String() string {
 func (*AccessGraphPolicyBreakdown) ProtoMessage() {}
 
 func (x *AccessGraphPolicyBreakdown) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[19]
+	mi := &file_core_v1_graph_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1501,7 +1397,7 @@ func (x *AccessGraphPolicyBreakdown) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphPolicyBreakdown.ProtoReflect.Descriptor instead.
 func (*AccessGraphPolicyBreakdown) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *AccessGraphPolicyBreakdown) GetMask() int64 {
@@ -1541,7 +1437,7 @@ type AccessGraphSummary struct {
 
 func (x *AccessGraphSummary) Reset() {
 	*x = AccessGraphSummary{}
-	mi := &file_core_v1_graph_proto_msgTypes[20]
+	mi := &file_core_v1_graph_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1553,7 +1449,7 @@ func (x *AccessGraphSummary) String() string {
 func (*AccessGraphSummary) ProtoMessage() {}
 
 func (x *AccessGraphSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[20]
+	mi := &file_core_v1_graph_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1566,7 +1462,7 @@ func (x *AccessGraphSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphSummary.ProtoReflect.Descriptor instead.
 func (*AccessGraphSummary) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *AccessGraphSummary) GetTotalLogs() int64 {
@@ -1636,7 +1532,7 @@ type AccessGraphLayerSummary struct {
 
 func (x *AccessGraphLayerSummary) Reset() {
 	*x = AccessGraphLayerSummary{}
-	mi := &file_core_v1_graph_proto_msgTypes[21]
+	mi := &file_core_v1_graph_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1648,7 +1544,7 @@ func (x *AccessGraphLayerSummary) String() string {
 func (*AccessGraphLayerSummary) ProtoMessage() {}
 
 func (x *AccessGraphLayerSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[21]
+	mi := &file_core_v1_graph_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1661,7 +1557,7 @@ func (x *AccessGraphLayerSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphLayerSummary.ProtoReflect.Descriptor instead.
 func (*AccessGraphLayerSummary) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{21}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AccessGraphLayerSummary) GetTotal() int64 {
@@ -1701,7 +1597,7 @@ type AccessGraphNodeDetail struct {
 
 func (x *AccessGraphNodeDetail) Reset() {
 	*x = AccessGraphNodeDetail{}
-	mi := &file_core_v1_graph_proto_msgTypes[22]
+	mi := &file_core_v1_graph_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1713,7 +1609,7 @@ func (x *AccessGraphNodeDetail) String() string {
 func (*AccessGraphNodeDetail) ProtoMessage() {}
 
 func (x *AccessGraphNodeDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[22]
+	mi := &file_core_v1_graph_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1726,7 +1622,7 @@ func (x *AccessGraphNodeDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphNodeDetail.ProtoReflect.Descriptor instead.
 func (*AccessGraphNodeDetail) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{22}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *AccessGraphNodeDetail) GetNodeId() string {
@@ -1816,7 +1712,7 @@ type AccessGraphIdentityDetail struct {
 
 func (x *AccessGraphIdentityDetail) Reset() {
 	*x = AccessGraphIdentityDetail{}
-	mi := &file_core_v1_graph_proto_msgTypes[23]
+	mi := &file_core_v1_graph_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1828,7 +1724,7 @@ func (x *AccessGraphIdentityDetail) String() string {
 func (*AccessGraphIdentityDetail) ProtoMessage() {}
 
 func (x *AccessGraphIdentityDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[23]
+	mi := &file_core_v1_graph_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1841,7 +1737,7 @@ func (x *AccessGraphIdentityDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphIdentityDetail.ProtoReflect.Descriptor instead.
 func (*AccessGraphIdentityDetail) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{23}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *AccessGraphIdentityDetail) GetName() string {
@@ -1917,7 +1813,7 @@ type AccessGraphResourceDetail struct {
 
 func (x *AccessGraphResourceDetail) Reset() {
 	*x = AccessGraphResourceDetail{}
-	mi := &file_core_v1_graph_proto_msgTypes[24]
+	mi := &file_core_v1_graph_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1929,7 +1825,7 @@ func (x *AccessGraphResourceDetail) String() string {
 func (*AccessGraphResourceDetail) ProtoMessage() {}
 
 func (x *AccessGraphResourceDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[24]
+	mi := &file_core_v1_graph_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1942,7 +1838,7 @@ func (x *AccessGraphResourceDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphResourceDetail.ProtoReflect.Descriptor instead.
 func (*AccessGraphResourceDetail) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{24}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *AccessGraphResourceDetail) GetName() string {
@@ -2015,7 +1911,7 @@ type AccessGraphConnectorDetail struct {
 
 func (x *AccessGraphConnectorDetail) Reset() {
 	*x = AccessGraphConnectorDetail{}
-	mi := &file_core_v1_graph_proto_msgTypes[25]
+	mi := &file_core_v1_graph_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2027,7 +1923,7 @@ func (x *AccessGraphConnectorDetail) String() string {
 func (*AccessGraphConnectorDetail) ProtoMessage() {}
 
 func (x *AccessGraphConnectorDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[25]
+	mi := &file_core_v1_graph_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2040,7 +1936,7 @@ func (x *AccessGraphConnectorDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphConnectorDetail.ProtoReflect.Descriptor instead.
 func (*AccessGraphConnectorDetail) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{25}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *AccessGraphConnectorDetail) GetName() string {
@@ -2092,7 +1988,7 @@ type AccessGraphConnectedPeer struct {
 
 func (x *AccessGraphConnectedPeer) Reset() {
 	*x = AccessGraphConnectedPeer{}
-	mi := &file_core_v1_graph_proto_msgTypes[26]
+	mi := &file_core_v1_graph_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2104,7 +2000,7 @@ func (x *AccessGraphConnectedPeer) String() string {
 func (*AccessGraphConnectedPeer) ProtoMessage() {}
 
 func (x *AccessGraphConnectedPeer) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_graph_proto_msgTypes[26]
+	mi := &file_core_v1_graph_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2117,7 +2013,7 @@ func (x *AccessGraphConnectedPeer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessGraphConnectedPeer.ProtoReflect.Descriptor instead.
 func (*AccessGraphConnectedPeer) Descriptor() ([]byte, []int) {
-	return file_core_v1_graph_proto_rawDescGZIP(), []int{26}
+	return file_core_v1_graph_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *AccessGraphConnectedPeer) GetNodeId() string {
@@ -2192,13 +2088,7 @@ const file_core_v1_graph_proto_rawDesc = "" +
 	"\aactions\x18\b \x03(\v2\x0f.core.v1.ActionR\aactions\"Q\n" +
 	"\x05Graph\x12#\n" +
 	"\x05nodes\x18\x01 \x03(\v2\r.core.v1.NodeR\x05nodes\x12#\n" +
-	"\x05edges\x18\x02 \x03(\v2\r.core.v1.EdgeR\x05edges\"\xb6\x01\n" +
-	"\x0fGetGraphRequest\x12\x1d\n" +
-	"\x05query\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05query\x12C\n" +
-	"\x0fstart_timestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\x0estartTimestamp\x12?\n" +
-	"\rend_timestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\fendTimestamp\"8\n" +
-	"\x10GetGraphResponse\x12$\n" +
-	"\x05graph\x18\x01 \x01(\v2\x0e.core.v1.GraphR\x05graph\"\xd3\x03\n" +
+	"\x05edges\x18\x02 \x03(\v2\r.core.v1.EdgeR\x05edges\"\xd3\x03\n" +
 	"\x15GetAccessGraphRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x120\n" +
 	"\x0fstart_timestamp\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0estartTimestamp\x12,\n" +
@@ -2341,9 +2231,8 @@ const file_core_v1_graph_proto_rawDesc = "" +
 	"\tnode_type\x18\x02 \x01(\tR\bnodeType\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x1b\n" +
 	"\tlog_count\x18\x04 \x01(\x03R\blogCount\x124\n" +
-	"\x16triggered_policy_count\x18\x05 \x01(\x03R\x14triggeredPolicyCount2\xb9\x03\n" +
-	"\fGraphService\x12m\n" +
-	"\bGetGraph\x12\x18.core.v1.GetGraphRequest\x1a\x19.core.v1.GetGraphResponse\",\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/core.v1.GraphService/GetGraph\x90\x02\x01\x12\x85\x01\n" +
+	"\x16triggered_policy_count\x18\x05 \x01(\x03R\x14triggeredPolicyCount2\xca\x02\n" +
+	"\fGraphService\x12\x85\x01\n" +
 	"\x0eGetAccessGraph\x12\x1e.core.v1.GetAccessGraphRequest\x1a\x1f.core.v1.GetAccessGraphResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.GraphService/GetAccessGraph\x90\x02\x01\x12\xb1\x01\n" +
 	"\x19GetAccessGraphNodeDetails\x12).core.v1.GetAccessGraphNodeDetailsRequest\x1a*.core.v1.GetAccessGraphNodeDetailsResponse\"=\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.GraphService/GetAccessGraphNodeDetails\x90\x02\x01B\x84\x01\n" +
 	"\vcom.core.v1B\n" +
@@ -2361,7 +2250,7 @@ func file_core_v1_graph_proto_rawDescGZIP() []byte {
 	return file_core_v1_graph_proto_rawDescData
 }
 
-var file_core_v1_graph_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_core_v1_graph_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_core_v1_graph_proto_goTypes = []any{
 	(*ConnectorNode)(nil),                     // 0: core.v1.ConnectorNode
 	(*ResourceNode)(nil),                      // 1: core.v1.ResourceNode
@@ -2370,27 +2259,25 @@ var file_core_v1_graph_proto_goTypes = []any{
 	(*Action)(nil),                            // 4: core.v1.Action
 	(*Edge)(nil),                              // 5: core.v1.Edge
 	(*Graph)(nil),                             // 6: core.v1.Graph
-	(*GetGraphRequest)(nil),                   // 7: core.v1.GetGraphRequest
-	(*GetGraphResponse)(nil),                  // 8: core.v1.GetGraphResponse
-	(*GetAccessGraphRequest)(nil),             // 9: core.v1.GetAccessGraphRequest
-	(*GetAccessGraphResponse)(nil),            // 10: core.v1.GetAccessGraphResponse
-	(*GetAccessGraphNodeDetailsRequest)(nil),  // 11: core.v1.GetAccessGraphNodeDetailsRequest
-	(*GetAccessGraphNodeDetailsResponse)(nil), // 12: core.v1.GetAccessGraphNodeDetailsResponse
-	(*AccessGraph)(nil),                       // 13: core.v1.AccessGraph
-	(*AccessGraphNode)(nil),                   // 14: core.v1.AccessGraphNode
-	(*AccessGraphIdentityNode)(nil),           // 15: core.v1.AccessGraphIdentityNode
-	(*AccessGraphConnectorNode)(nil),          // 16: core.v1.AccessGraphConnectorNode
-	(*AccessGraphResourceNode)(nil),           // 17: core.v1.AccessGraphResourceNode
-	(*AccessGraphEdge)(nil),                   // 18: core.v1.AccessGraphEdge
-	(*AccessGraphPolicyBreakdown)(nil),        // 19: core.v1.AccessGraphPolicyBreakdown
-	(*AccessGraphSummary)(nil),                // 20: core.v1.AccessGraphSummary
-	(*AccessGraphLayerSummary)(nil),           // 21: core.v1.AccessGraphLayerSummary
-	(*AccessGraphNodeDetail)(nil),             // 22: core.v1.AccessGraphNodeDetail
-	(*AccessGraphIdentityDetail)(nil),         // 23: core.v1.AccessGraphIdentityDetail
-	(*AccessGraphResourceDetail)(nil),         // 24: core.v1.AccessGraphResourceDetail
-	(*AccessGraphConnectorDetail)(nil),        // 25: core.v1.AccessGraphConnectorDetail
-	(*AccessGraphConnectedPeer)(nil),          // 26: core.v1.AccessGraphConnectedPeer
-	(*timestamppb.Timestamp)(nil),             // 27: google.protobuf.Timestamp
+	(*GetAccessGraphRequest)(nil),             // 7: core.v1.GetAccessGraphRequest
+	(*GetAccessGraphResponse)(nil),            // 8: core.v1.GetAccessGraphResponse
+	(*GetAccessGraphNodeDetailsRequest)(nil),  // 9: core.v1.GetAccessGraphNodeDetailsRequest
+	(*GetAccessGraphNodeDetailsResponse)(nil), // 10: core.v1.GetAccessGraphNodeDetailsResponse
+	(*AccessGraph)(nil),                       // 11: core.v1.AccessGraph
+	(*AccessGraphNode)(nil),                   // 12: core.v1.AccessGraphNode
+	(*AccessGraphIdentityNode)(nil),           // 13: core.v1.AccessGraphIdentityNode
+	(*AccessGraphConnectorNode)(nil),          // 14: core.v1.AccessGraphConnectorNode
+	(*AccessGraphResourceNode)(nil),           // 15: core.v1.AccessGraphResourceNode
+	(*AccessGraphEdge)(nil),                   // 16: core.v1.AccessGraphEdge
+	(*AccessGraphPolicyBreakdown)(nil),        // 17: core.v1.AccessGraphPolicyBreakdown
+	(*AccessGraphSummary)(nil),                // 18: core.v1.AccessGraphSummary
+	(*AccessGraphLayerSummary)(nil),           // 19: core.v1.AccessGraphLayerSummary
+	(*AccessGraphNodeDetail)(nil),             // 20: core.v1.AccessGraphNodeDetail
+	(*AccessGraphIdentityDetail)(nil),         // 21: core.v1.AccessGraphIdentityDetail
+	(*AccessGraphResourceDetail)(nil),         // 22: core.v1.AccessGraphResourceDetail
+	(*AccessGraphConnectorDetail)(nil),        // 23: core.v1.AccessGraphConnectorDetail
+	(*AccessGraphConnectedPeer)(nil),          // 24: core.v1.AccessGraphConnectedPeer
+	(*timestamppb.Timestamp)(nil),             // 25: google.protobuf.Timestamp
 }
 var file_core_v1_graph_proto_depIdxs = []int32{
 	0,  // 0: core.v1.Node.connector_node:type_name -> core.v1.ConnectorNode
@@ -2399,48 +2286,43 @@ var file_core_v1_graph_proto_depIdxs = []int32{
 	4,  // 3: core.v1.Edge.actions:type_name -> core.v1.Action
 	3,  // 4: core.v1.Graph.nodes:type_name -> core.v1.Node
 	5,  // 5: core.v1.Graph.edges:type_name -> core.v1.Edge
-	27, // 6: core.v1.GetGraphRequest.start_timestamp:type_name -> google.protobuf.Timestamp
-	27, // 7: core.v1.GetGraphRequest.end_timestamp:type_name -> google.protobuf.Timestamp
-	6,  // 8: core.v1.GetGraphResponse.graph:type_name -> core.v1.Graph
-	13, // 9: core.v1.GetAccessGraphResponse.graph:type_name -> core.v1.AccessGraph
-	20, // 10: core.v1.GetAccessGraphResponse.summary:type_name -> core.v1.AccessGraphSummary
-	22, // 11: core.v1.GetAccessGraphNodeDetailsResponse.detail:type_name -> core.v1.AccessGraphNodeDetail
-	14, // 12: core.v1.AccessGraph.nodes:type_name -> core.v1.AccessGraphNode
-	18, // 13: core.v1.AccessGraph.edges:type_name -> core.v1.AccessGraphEdge
-	15, // 14: core.v1.AccessGraphNode.identity:type_name -> core.v1.AccessGraphIdentityNode
-	16, // 15: core.v1.AccessGraphNode.connector:type_name -> core.v1.AccessGraphConnectorNode
-	17, // 16: core.v1.AccessGraphNode.resource:type_name -> core.v1.AccessGraphResourceNode
-	19, // 17: core.v1.AccessGraphIdentityNode.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	19, // 18: core.v1.AccessGraphConnectorNode.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	19, // 19: core.v1.AccessGraphResourceNode.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	19, // 20: core.v1.AccessGraphEdge.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	27, // 21: core.v1.AccessGraphEdge.last_activity:type_name -> google.protobuf.Timestamp
-	19, // 22: core.v1.AccessGraphSummary.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	21, // 23: core.v1.AccessGraphSummary.humans:type_name -> core.v1.AccessGraphLayerSummary
-	21, // 24: core.v1.AccessGraphSummary.agents:type_name -> core.v1.AccessGraphLayerSummary
-	21, // 25: core.v1.AccessGraphSummary.machines:type_name -> core.v1.AccessGraphLayerSummary
-	21, // 26: core.v1.AccessGraphSummary.connectors:type_name -> core.v1.AccessGraphLayerSummary
-	21, // 27: core.v1.AccessGraphSummary.resources:type_name -> core.v1.AccessGraphLayerSummary
-	23, // 28: core.v1.AccessGraphNodeDetail.identity_detail:type_name -> core.v1.AccessGraphIdentityDetail
-	24, // 29: core.v1.AccessGraphNodeDetail.resource_detail:type_name -> core.v1.AccessGraphResourceDetail
-	25, // 30: core.v1.AccessGraphNodeDetail.connector_detail:type_name -> core.v1.AccessGraphConnectorDetail
-	19, // 31: core.v1.AccessGraphIdentityDetail.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	26, // 32: core.v1.AccessGraphIdentityDetail.connected_peers:type_name -> core.v1.AccessGraphConnectedPeer
-	19, // 33: core.v1.AccessGraphResourceDetail.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	26, // 34: core.v1.AccessGraphResourceDetail.connected_peers:type_name -> core.v1.AccessGraphConnectedPeer
-	19, // 35: core.v1.AccessGraphConnectorDetail.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
-	26, // 36: core.v1.AccessGraphConnectorDetail.connected_peers:type_name -> core.v1.AccessGraphConnectedPeer
-	7,  // 37: core.v1.GraphService.GetGraph:input_type -> core.v1.GetGraphRequest
-	9,  // 38: core.v1.GraphService.GetAccessGraph:input_type -> core.v1.GetAccessGraphRequest
-	11, // 39: core.v1.GraphService.GetAccessGraphNodeDetails:input_type -> core.v1.GetAccessGraphNodeDetailsRequest
-	8,  // 40: core.v1.GraphService.GetGraph:output_type -> core.v1.GetGraphResponse
-	10, // 41: core.v1.GraphService.GetAccessGraph:output_type -> core.v1.GetAccessGraphResponse
-	12, // 42: core.v1.GraphService.GetAccessGraphNodeDetails:output_type -> core.v1.GetAccessGraphNodeDetailsResponse
-	40, // [40:43] is the sub-list for method output_type
-	37, // [37:40] is the sub-list for method input_type
-	37, // [37:37] is the sub-list for extension type_name
-	37, // [37:37] is the sub-list for extension extendee
-	0,  // [0:37] is the sub-list for field type_name
+	11, // 6: core.v1.GetAccessGraphResponse.graph:type_name -> core.v1.AccessGraph
+	18, // 7: core.v1.GetAccessGraphResponse.summary:type_name -> core.v1.AccessGraphSummary
+	20, // 8: core.v1.GetAccessGraphNodeDetailsResponse.detail:type_name -> core.v1.AccessGraphNodeDetail
+	12, // 9: core.v1.AccessGraph.nodes:type_name -> core.v1.AccessGraphNode
+	16, // 10: core.v1.AccessGraph.edges:type_name -> core.v1.AccessGraphEdge
+	13, // 11: core.v1.AccessGraphNode.identity:type_name -> core.v1.AccessGraphIdentityNode
+	14, // 12: core.v1.AccessGraphNode.connector:type_name -> core.v1.AccessGraphConnectorNode
+	15, // 13: core.v1.AccessGraphNode.resource:type_name -> core.v1.AccessGraphResourceNode
+	17, // 14: core.v1.AccessGraphIdentityNode.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	17, // 15: core.v1.AccessGraphConnectorNode.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	17, // 16: core.v1.AccessGraphResourceNode.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	17, // 17: core.v1.AccessGraphEdge.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	25, // 18: core.v1.AccessGraphEdge.last_activity:type_name -> google.protobuf.Timestamp
+	17, // 19: core.v1.AccessGraphSummary.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	19, // 20: core.v1.AccessGraphSummary.humans:type_name -> core.v1.AccessGraphLayerSummary
+	19, // 21: core.v1.AccessGraphSummary.agents:type_name -> core.v1.AccessGraphLayerSummary
+	19, // 22: core.v1.AccessGraphSummary.machines:type_name -> core.v1.AccessGraphLayerSummary
+	19, // 23: core.v1.AccessGraphSummary.connectors:type_name -> core.v1.AccessGraphLayerSummary
+	19, // 24: core.v1.AccessGraphSummary.resources:type_name -> core.v1.AccessGraphLayerSummary
+	21, // 25: core.v1.AccessGraphNodeDetail.identity_detail:type_name -> core.v1.AccessGraphIdentityDetail
+	22, // 26: core.v1.AccessGraphNodeDetail.resource_detail:type_name -> core.v1.AccessGraphResourceDetail
+	23, // 27: core.v1.AccessGraphNodeDetail.connector_detail:type_name -> core.v1.AccessGraphConnectorDetail
+	17, // 28: core.v1.AccessGraphIdentityDetail.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	24, // 29: core.v1.AccessGraphIdentityDetail.connected_peers:type_name -> core.v1.AccessGraphConnectedPeer
+	17, // 30: core.v1.AccessGraphResourceDetail.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	24, // 31: core.v1.AccessGraphResourceDetail.connected_peers:type_name -> core.v1.AccessGraphConnectedPeer
+	17, // 32: core.v1.AccessGraphConnectorDetail.policy_breakdown:type_name -> core.v1.AccessGraphPolicyBreakdown
+	24, // 33: core.v1.AccessGraphConnectorDetail.connected_peers:type_name -> core.v1.AccessGraphConnectedPeer
+	7,  // 34: core.v1.GraphService.GetAccessGraph:input_type -> core.v1.GetAccessGraphRequest
+	9,  // 35: core.v1.GraphService.GetAccessGraphNodeDetails:input_type -> core.v1.GetAccessGraphNodeDetailsRequest
+	8,  // 36: core.v1.GraphService.GetAccessGraph:output_type -> core.v1.GetAccessGraphResponse
+	10, // 37: core.v1.GraphService.GetAccessGraphNodeDetails:output_type -> core.v1.GetAccessGraphNodeDetailsResponse
+	36, // [36:38] is the sub-list for method output_type
+	34, // [34:36] is the sub-list for method input_type
+	34, // [34:34] is the sub-list for extension type_name
+	34, // [34:34] is the sub-list for extension extendee
+	0,  // [0:34] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_graph_proto_init() }
@@ -2455,12 +2337,12 @@ func file_core_v1_graph_proto_init() {
 		(*Node_ResourceNode)(nil),
 		(*Node_UserNode)(nil),
 	}
-	file_core_v1_graph_proto_msgTypes[14].OneofWrappers = []any{
+	file_core_v1_graph_proto_msgTypes[12].OneofWrappers = []any{
 		(*AccessGraphNode_Identity)(nil),
 		(*AccessGraphNode_Connector)(nil),
 		(*AccessGraphNode_Resource)(nil),
 	}
-	file_core_v1_graph_proto_msgTypes[22].OneofWrappers = []any{
+	file_core_v1_graph_proto_msgTypes[20].OneofWrappers = []any{
 		(*AccessGraphNodeDetail_IdentityDetail)(nil),
 		(*AccessGraphNodeDetail_ResourceDetail)(nil),
 		(*AccessGraphNodeDetail_ConnectorDetail)(nil),
@@ -2471,7 +2353,7 @@ func file_core_v1_graph_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_graph_proto_rawDesc), len(file_core_v1_graph_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   27,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

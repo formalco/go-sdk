@@ -854,17 +854,6 @@ func (c *GraphServiceClient) GetAccessGraphNodeDetails(ctx context.Context, req 
 	return res.Msg, nil
 }
 
-// Get graph
-//
-// Get a graph of identity-to-resource access patterns for the logs page.
-func (c *GraphServiceClient) GetGraph(ctx context.Context, req *corev1.GetGraphRequest) (*corev1.GetGraphResponse, error) {
-	res, err := c.inner.GetGraph(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
 // GroupServiceClient is a client for the core.v1.GroupService service.
 type GroupServiceClient struct {
 	inner corev1connect.GroupServiceClient

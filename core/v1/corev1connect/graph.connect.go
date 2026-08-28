@@ -33,8 +33,6 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// GraphServiceGetGraphProcedure is the fully-qualified name of the GraphService's GetGraph RPC.
-	GraphServiceGetGraphProcedure = "/core.v1.GraphService/GetGraph"
 	// GraphServiceGetAccessGraphProcedure is the fully-qualified name of the GraphService's
 	// GetAccessGraph RPC.
 	GraphServiceGetAccessGraphProcedure = "/core.v1.GraphService/GetAccessGraph"
@@ -45,10 +43,6 @@ const (
 
 // GraphServiceClient is a client for the core.v1.GraphService service.
 type GraphServiceClient interface {
-	// Get graph
-	//
-	// Get a graph of identity-to-resource access patterns for the logs page.
-	GetGraph(context.Context, *connect.Request[v1.GetGraphRequest]) (*connect.Response[v1.GetGraphResponse], error)
 	// Get access graph
 	//
 	// Returns a multi-layer access graph showing identities (human/agent/machine), connectors, and resources with top-N selection, triggered policy stats, and per-layer summaries. The query field accepts Quickwit syntax as the primary filter on the log universe.
@@ -70,13 +64,6 @@ func NewGraphServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 	baseURL = strings.TrimRight(baseURL, "/")
 	graphServiceMethods := v1.File_core_v1_graph_proto.Services().ByName("GraphService").Methods()
 	return &graphServiceClient{
-		getGraph: connect.NewClient[v1.GetGraphRequest, v1.GetGraphResponse](
-			httpClient,
-			baseURL+GraphServiceGetGraphProcedure,
-			connect.WithSchema(graphServiceMethods.ByName("GetGraph")),
-			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
-			connect.WithClientOptions(opts...),
-		),
 		getAccessGraph: connect.NewClient[v1.GetAccessGraphRequest, v1.GetAccessGraphResponse](
 			httpClient,
 			baseURL+GraphServiceGetAccessGraphProcedure,
@@ -96,14 +83,8 @@ func NewGraphServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 
 // graphServiceClient implements GraphServiceClient.
 type graphServiceClient struct {
-	getGraph                  *connect.Client[v1.GetGraphRequest, v1.GetGraphResponse]
 	getAccessGraph            *connect.Client[v1.GetAccessGraphRequest, v1.GetAccessGraphResponse]
 	getAccessGraphNodeDetails *connect.Client[v1.GetAccessGraphNodeDetailsRequest, v1.GetAccessGraphNodeDetailsResponse]
-}
-
-// GetGraph calls core.v1.GraphService.GetGraph.
-func (c *graphServiceClient) GetGraph(ctx context.Context, req *connect.Request[v1.GetGraphRequest]) (*connect.Response[v1.GetGraphResponse], error) {
-	return c.getGraph.CallUnary(ctx, req)
 }
 
 // GetAccessGraph calls core.v1.GraphService.GetAccessGraph.
@@ -118,10 +99,6 @@ func (c *graphServiceClient) GetAccessGraphNodeDetails(ctx context.Context, req 
 
 // GraphServiceHandler is an implementation of the core.v1.GraphService service.
 type GraphServiceHandler interface {
-	// Get graph
-	//
-	// Get a graph of identity-to-resource access patterns for the logs page.
-	GetGraph(context.Context, *connect.Request[v1.GetGraphRequest]) (*connect.Response[v1.GetGraphResponse], error)
 	// Get access graph
 	//
 	// Returns a multi-layer access graph showing identities (human/agent/machine), connectors, and resources with top-N selection, triggered policy stats, and per-layer summaries. The query field accepts Quickwit syntax as the primary filter on the log universe.
@@ -139,13 +116,6 @@ type GraphServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewGraphServiceHandler(svc GraphServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	graphServiceMethods := v1.File_core_v1_graph_proto.Services().ByName("GraphService").Methods()
-	graphServiceGetGraphHandler := connect.NewUnaryHandler(
-		GraphServiceGetGraphProcedure,
-		svc.GetGraph,
-		connect.WithSchema(graphServiceMethods.ByName("GetGraph")),
-		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
-		connect.WithHandlerOptions(opts...),
-	)
 	graphServiceGetAccessGraphHandler := connect.NewUnaryHandler(
 		GraphServiceGetAccessGraphProcedure,
 		svc.GetAccessGraph,
@@ -162,8 +132,6 @@ func NewGraphServiceHandler(svc GraphServiceHandler, opts ...connect.HandlerOpti
 	)
 	return "/core.v1.GraphService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case GraphServiceGetGraphProcedure:
-			graphServiceGetGraphHandler.ServeHTTP(w, r)
 		case GraphServiceGetAccessGraphProcedure:
 			graphServiceGetAccessGraphHandler.ServeHTTP(w, r)
 		case GraphServiceGetAccessGraphNodeDetailsProcedure:
@@ -176,10 +144,6 @@ func NewGraphServiceHandler(svc GraphServiceHandler, opts ...connect.HandlerOpti
 
 // UnimplementedGraphServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedGraphServiceHandler struct{}
-
-func (UnimplementedGraphServiceHandler) GetGraph(context.Context, *connect.Request[v1.GetGraphRequest]) (*connect.Response[v1.GetGraphResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.GraphService.GetGraph is not implemented"))
-}
 
 func (UnimplementedGraphServiceHandler) GetAccessGraph(context.Context, *connect.Request[v1.GetAccessGraphRequest]) (*connect.Response[v1.GetAccessGraphResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.GraphService.GetAccessGraph is not implemented"))
