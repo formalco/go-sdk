@@ -6074,11 +6074,10 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	",CreateConnectorCloudformationTemplateRequest\x12*\n" +
 	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"R\n" +
 	"-CreateConnectorCloudformationTemplateResponse\x12!\n" +
-	"\ftemplate_url\x18\x01 \x01(\tR\vtemplateUrl\"\x86\x01\n" +
+	"\ftemplate_url\x18\x01 \x01(\tR\vtemplateUrl\"\x8d\x01\n" +
 	" CreateConnectorHelmValuesRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x126\n" +
-	"\x0ecloud_provider\x18\x02 \x01(\tB\x0f\xbaH\fr\n" +
-	"R\x03awsR\x03gcpR\rcloudProvider\"B\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12=\n" +
+	"\x0ecloud_provider\x18\x02 \x01(\tB\x16\xbaH\x13r\x11R\x03awsR\x03gcpR\x05azureR\rcloudProvider\"B\n" +
 	"!CreateConnectorHelmValuesResponse\x12\x1d\n" +
 	"\n" +
 	"values_url\x18\x01 \x01(\tR\tvaluesUrl\"K\n" +
