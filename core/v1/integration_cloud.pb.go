@@ -2770,14 +2770,14 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x1aGetIntegrationCloudRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"N\n" +
 	"\x1bGetIntegrationCloudResponse\x12/\n" +
-	"\x05cloud\x18\x01 \x01(\v2\x19.core.v1.CloudIntegrationR\x05cloud\"\x8c\x02\n" +
+	"\x05cloud\x18\x01 \x01(\v2\x19.core.v1.CloudIntegrationR\x05cloud\"\x92\x02\n" +
 	"\x1cListIntegrationCloudsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x16\n" +
-	"\x06search\x18\x04 \x01(\tR\x06search\x12K\n" +
-	"\rsearch_fields\x18\x05 \x03(\tB&\xbaH#\x92\x01 \"\x1er\x1cR\x02idR\x0ecloud_providerR\x06activeR\fsearchFields\x12,\n" +
+	"\x06search\x18\x04 \x01(\tR\x06search\x12Q\n" +
+	"\rsearch_fields\x18\x05 \x03(\tB,\xbaH)\x92\x01&\"$r\"R\x02idR\x04nameR\x0ecloud_providerR\x06activeR\fsearchFields\x12,\n" +
 	"\x06filter\x18\x06 \x01(\v2\x0f.core.v1.FilterH\x00R\x06filter\x88\x01\x01B\t\n" +
 	"\a_filter\"\x8e\x01\n" +
 	"\x1dListIntegrationCloudsResponse\x121\n" +
