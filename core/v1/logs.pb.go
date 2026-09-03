@@ -135,7 +135,7 @@ type LogConfigurationSource int32
 const (
 	LogConfigurationSource_LOG_CONFIGURATION_SOURCE_UNSPECIFIED LogConfigurationSource = 0
 	LogConfigurationSource_LOG_CONFIGURATION_SOURCE_CONNECTOR   LogConfigurationSource = 1
-	LogConfigurationSource_LOG_CONFIGURATION_SOURCE_DESKTOP     LogConfigurationSource = 2
+	LogConfigurationSource_LOG_CONFIGURATION_SOURCE_ENDPOINT    LogConfigurationSource = 2
 )
 
 // Enum value maps for LogConfigurationSource.
@@ -143,12 +143,12 @@ var (
 	LogConfigurationSource_name = map[int32]string{
 		0: "LOG_CONFIGURATION_SOURCE_UNSPECIFIED",
 		1: "LOG_CONFIGURATION_SOURCE_CONNECTOR",
-		2: "LOG_CONFIGURATION_SOURCE_DESKTOP",
+		2: "LOG_CONFIGURATION_SOURCE_ENDPOINT",
 	}
 	LogConfigurationSource_value = map[string]int32{
 		"LOG_CONFIGURATION_SOURCE_UNSPECIFIED": 0,
 		"LOG_CONFIGURATION_SOURCE_CONNECTOR":   1,
-		"LOG_CONFIGURATION_SOURCE_DESKTOP":     2,
+		"LOG_CONFIGURATION_SOURCE_ENDPOINT":    2,
 	}
 )
 
@@ -5283,11 +5283,11 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"%LOG_CONFIGURATION_SCOPE_TYPE_RESOURCE\x10\x01\x12*\n" +
 	"&LOG_CONFIGURATION_SCOPE_TYPE_CONNECTOR\x10\x02\x12&\n" +
 	"\"LOG_CONFIGURATION_SCOPE_TYPE_SPACE\x10\x03\x12$\n" +
-	" LOG_CONFIGURATION_SCOPE_TYPE_ORG\x10\x04*\x90\x01\n" +
+	" LOG_CONFIGURATION_SCOPE_TYPE_ORG\x10\x04*\x91\x01\n" +
 	"\x16LogConfigurationSource\x12(\n" +
 	"$LOG_CONFIGURATION_SOURCE_UNSPECIFIED\x10\x00\x12&\n" +
-	"\"LOG_CONFIGURATION_SOURCE_CONNECTOR\x10\x01\x12$\n" +
-	" LOG_CONFIGURATION_SOURCE_DESKTOP\x10\x022\xe9\x1e\n" +
+	"\"LOG_CONFIGURATION_SOURCE_CONNECTOR\x10\x01\x12%\n" +
+	"!LOG_CONFIGURATION_SOURCE_ENDPOINT\x10\x022\xe9\x1e\n" +
 	"\vLogsService\x12d\n" +
 	"\x06GetLog\x12\x16.core.v1.GetLogRequest\x1a\x17.core.v1.GetLogResponse\")\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/core.v1.LogsService/GetLog\x90\x02\x01\x12\xa0\x01\n" +
 	"\x15GetGroupByAggregation\x12%.core.v1.GetGroupByAggregationRequest\x1a&.core.v1.GetGroupByAggregationResponse\"8\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.LogsService/GetGroupByAggregation\x90\x02\x01\x12\x9c\x01\n" +
