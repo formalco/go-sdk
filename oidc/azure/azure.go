@@ -4,9 +4,11 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore"
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/policy"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/samber/mo"
 
 	"github.com/formalco/go-sdk/v3/oidc"
@@ -17,6 +19,30 @@ const armScope = "https://management.azure.com/.default"
 type tokenSource struct {
 	credential    azcore.TokenCredential
 	integrationID string
+}
+
+// NewDefaultCredential returns Workload Identity when AZURE_FEDERATED_TOKEN_FILE
+// is set, otherwise managed identity. AZURE_CLIENT_ID selects a user-assigned
+// identity. This is not azidentity.NewDefaultAzureCredential.
+func NewDefaultCredential() (azcore.TokenCredential, error) {
+	if os.Getenv("AZURE_FEDERATED_TOKEN_FILE") != "" {
+		return azidentity.NewWorkloadIdentityCredential(nil)
+	}
+
+	options := &azidentity.ManagedIdentityCredentialOptions{}
+	if clientID := os.Getenv("AZURE_CLIENT_ID"); clientID != "" {
+		options.ID = azidentity.ClientID(clientID)
+	}
+	return azidentity.NewManagedIdentityCredential(options)
+}
+
+// NewDefaultTokenSource builds a TokenSource from NewDefaultCredential.
+func NewDefaultTokenSource(integrationID string) (oidc.TokenSource, error) {
+	credential, err := NewDefaultCredential()
+	if err != nil {
+		return nil, fmt.Errorf("load Azure credential for OIDC: %w", err)
+	}
+	return NewTokenSource(credential, integrationID)
 }
 
 // NewTokenSource returns a TokenSource backed by an Azure credential. It requests
