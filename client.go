@@ -124,9 +124,18 @@ func (t *oidcTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	if strings.TrimSpace(token.JWT) == "" {
 		return nil, errors.New("formal: OIDC token must not be empty")
 	}
+	headerIntegrationID, sendIntegrationIDHeader := token.HeaderIntegrationID.Get()
+	if sendIntegrationIDHeader {
+		if err := oidc.ValidateAudience(oidc.AudiencePrefix + headerIntegrationID); err != nil {
+			return nil, fmt.Errorf("formal: invalid OIDC header integration ID: %w", err)
+		}
+	}
 
 	req = req.Clone(req.Context())
 	req.Header.Set("Authorization", "Bearer "+token.JWT)
 	req.Header.Set("X-Formal-API-Version", defaultAPIVersion)
+	if sendIntegrationIDHeader {
+		req.Header.Set("X-Formal-OIDC-Integration-Id", headerIntegrationID)
+	}
 	return t.base.RoundTrip(req)
 }

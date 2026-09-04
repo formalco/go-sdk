@@ -6,6 +6,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/samber/mo"
+
 	"github.com/formalco/typeid"
 )
 
@@ -14,13 +16,14 @@ const integrationOIDCType = "integrationoidc"
 // AudiencePrefix is the required prefix for Formal OIDC integration audiences.
 const AudiencePrefix = "oidc.formal.ai/"
 
-// Token is an OIDC JWT and its expiration time.
+// Token contains an OIDC JWT and its request authentication metadata.
 type Token struct {
-	JWT    string
-	Expiry time.Time
+	JWT                 string
+	Expiry              time.Time
+	HeaderIntegrationID mo.Option[string]
 }
 
-// TokenSource returns Formal-audience OIDC tokens.
+// TokenSource returns OIDC tokens accepted by Formal.
 type TokenSource interface {
 	Token(context.Context) (Token, error)
 }
