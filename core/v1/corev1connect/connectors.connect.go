@@ -631,12 +631,14 @@ func NewConnectorServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			httpClient,
 			baseURL+ConnectorServiceGetConnectorConfigurationProcedure,
 			connect.WithSchema(connectorServiceMethods.ByName("GetConnectorConfiguration")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		getConnectorConfigurationByConnectorId: connect.NewClient[v1.GetConnectorConfigurationByConnectorIdRequest, v1.GetConnectorConfigurationByConnectorIdResponse](
 			httpClient,
 			baseURL+ConnectorServiceGetConnectorConfigurationByConnectorIdProcedure,
 			connect.WithSchema(connectorServiceMethods.ByName("GetConnectorConfigurationByConnectorId")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		updateConnectorConfiguration: connect.NewClient[v1.UpdateConnectorConfigurationRequest, v1.UpdateConnectorConfigurationResponse](
@@ -1551,12 +1553,14 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 		ConnectorServiceGetConnectorConfigurationProcedure,
 		svc.GetConnectorConfiguration,
 		connect.WithSchema(connectorServiceMethods.ByName("GetConnectorConfiguration")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	connectorServiceGetConnectorConfigurationByConnectorIdHandler := connect.NewUnaryHandler(
 		ConnectorServiceGetConnectorConfigurationByConnectorIdProcedure,
 		svc.GetConnectorConfigurationByConnectorId,
 		connect.WithSchema(connectorServiceMethods.ByName("GetConnectorConfigurationByConnectorId")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	connectorServiceUpdateConnectorConfigurationHandler := connect.NewUnaryHandler(

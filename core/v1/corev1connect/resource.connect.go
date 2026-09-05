@@ -825,12 +825,14 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			httpClient,
 			baseURL+ResourceServiceListResourceClassifierConfigurationsProcedure,
 			connect.WithSchema(resourceServiceMethods.ByName("ListResourceClassifierConfigurations")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		getResourceClassifierConfiguration: connect.NewClient[v1.GetResourceClassifierConfigurationRequest, v1.GetResourceClassifierConfigurationResponse](
 			httpClient,
 			baseURL+ResourceServiceGetResourceClassifierConfigurationProcedure,
 			connect.WithSchema(resourceServiceMethods.ByName("GetResourceClassifierConfiguration")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		updateResourceClassifierConfiguration: connect.NewClient[v1.UpdateResourceClassifierConfigurationRequest, v1.UpdateResourceClassifierConfigurationResponse](
@@ -891,6 +893,7 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			httpClient,
 			baseURL+ResourceServiceListResourceConnectorAccessProcedure,
 			connect.WithSchema(resourceServiceMethods.ByName("ListResourceConnectorAccess")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -1890,12 +1893,14 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 		ResourceServiceListResourceClassifierConfigurationsProcedure,
 		svc.ListResourceClassifierConfigurations,
 		connect.WithSchema(resourceServiceMethods.ByName("ListResourceClassifierConfigurations")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	resourceServiceGetResourceClassifierConfigurationHandler := connect.NewUnaryHandler(
 		ResourceServiceGetResourceClassifierConfigurationProcedure,
 		svc.GetResourceClassifierConfiguration,
 		connect.WithSchema(resourceServiceMethods.ByName("GetResourceClassifierConfiguration")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	resourceServiceUpdateResourceClassifierConfigurationHandler := connect.NewUnaryHandler(
@@ -1956,6 +1961,7 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 		ResourceServiceListResourceConnectorAccessProcedure,
 		svc.ListResourceConnectorAccess,
 		connect.WithSchema(resourceServiceMethods.ByName("ListResourceConnectorAccess")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/core.v1.ResourceService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

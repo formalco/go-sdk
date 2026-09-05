@@ -8659,7 +8659,7 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1aIAM_NATIVE_USER_TYPE_AZURE\x10\x02*a\n" +
 	"\x12HTTPAPIKeyLocation\x12 \n" +
 	"\x1cHTTP_API_KEY_LOCATION_HEADER\x10\x00\x12)\n" +
-	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xbd[\n" +
+	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xc6[\n" +
 	"\x0fResourceService\x12|\n" +
 	"\vGetResource\x12\x1b.core.v1.GetResourceRequest\x1a\x1c.core.v1.GetResourceResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.ResourceService/GetResource\x90\x02\x01\x12\x84\x01\n" +
 	"\rListResources\x12\x1d.core.v1.ListResourcesRequest\x1a\x1e.core.v1.ListResourcesResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/ListResources\x90\x02\x01\x12\x85\x01\n" +
@@ -8713,9 +8713,9 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x16UpdateResourceHostname\x12&.core.v1.UpdateResourceHostnameRequest\x1a'.core.v1.UpdateResourceHostnameResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/UpdateResourceHostname\x12\xad\x01\n" +
 	"\x18UpdateResourceHostnameV2\x12(.core.v1.UpdateResourceHostnameV2Request\x1a).core.v1.UpdateResourceHostnameV2Response\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/UpdateResourceHostnameV2\x12\xa5\x01\n" +
 	"\x16DeleteResourceHostname\x12&.core.v1.DeleteResourceHostnameRequest\x1a'.core.v1.DeleteResourceHostnameResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/DeleteResourceHostname\x12\xe1\x01\n" +
-	"%CreateResourceClassifierConfiguration\x125.core.v1.CreateResourceClassifierConfigurationRequest\x1a6.core.v1.CreateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/CreateResourceClassifierConfiguration\x12\xdd\x01\n" +
-	"$ListResourceClassifierConfigurations\x124.core.v1.ListResourceClassifierConfigurationsRequest\x1a5.core.v1.ListResourceClassifierConfigurationsResponse\"H\x82\xd3\xe4\x93\x02B:\x01*\"=/core.v1.ResourceService/ListResourceClassifierConfigurations\x12\xd5\x01\n" +
-	"\"GetResourceClassifierConfiguration\x122.core.v1.GetResourceClassifierConfigurationRequest\x1a3.core.v1.GetResourceClassifierConfigurationResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/GetResourceClassifierConfiguration\x12\xe1\x01\n" +
+	"%CreateResourceClassifierConfiguration\x125.core.v1.CreateResourceClassifierConfigurationRequest\x1a6.core.v1.CreateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/CreateResourceClassifierConfiguration\x12\xe0\x01\n" +
+	"$ListResourceClassifierConfigurations\x124.core.v1.ListResourceClassifierConfigurationsRequest\x1a5.core.v1.ListResourceClassifierConfigurationsResponse\"K\x82\xd3\xe4\x93\x02B:\x01*\"=/core.v1.ResourceService/ListResourceClassifierConfigurations\x90\x02\x01\x12\xd8\x01\n" +
+	"\"GetResourceClassifierConfiguration\x122.core.v1.GetResourceClassifierConfigurationRequest\x1a3.core.v1.GetResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/GetResourceClassifierConfiguration\x90\x02\x01\x12\xe1\x01\n" +
 	"%UpdateResourceClassifierConfiguration\x125.core.v1.UpdateResourceClassifierConfigurationRequest\x1a6.core.v1.UpdateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/UpdateResourceClassifierConfiguration\x12\xe9\x01\n" +
 	"'UpdateResourceClassifierConfigurationV2\x127.core.v1.UpdateResourceClassifierConfigurationV2Request\x1a8.core.v1.UpdateResourceClassifierConfigurationV2Response\"K\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.ResourceService/UpdateResourceClassifierConfigurationV2\x12\xe1\x01\n" +
 	"%DeleteResourceClassifierConfiguration\x125.core.v1.DeleteResourceClassifierConfigurationRequest\x1a6.core.v1.DeleteResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/DeleteResourceClassifierConfiguration\x12\x91\x01\n" +
@@ -8724,8 +8724,8 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x11UpdateResourceTag\x12!.core.v1.UpdateResourceTagRequest\x1a\".core.v1.UpdateResourceTagResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.ResourceService/UpdateResourceTag\x12\x99\x01\n" +
 	"\x13CreateResourceAlias\x12#.core.v1.CreateResourceAliasRequest\x1a$.core.v1.CreateResourceAliasResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/CreateResourceAlias\x12\x99\x01\n" +
 	"\x13DeleteResourceAlias\x12#.core.v1.DeleteResourceAliasRequest\x1a$.core.v1.DeleteResourceAliasResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/DeleteResourceAlias\x12\x99\x01\n" +
-	"\x13UpdateResourceAlias\x12#.core.v1.UpdateResourceAliasRequest\x1a$.core.v1.UpdateResourceAliasResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/UpdateResourceAlias\x12\xb9\x01\n" +
-	"\x1bListResourceConnectorAccess\x12+.core.v1.ListResourceConnectorAccessRequest\x1a,.core.v1.ListResourceConnectorAccessResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/ListResourceConnectorAccessB\x87\x01\n" +
+	"\x13UpdateResourceAlias\x12#.core.v1.UpdateResourceAliasRequest\x1a$.core.v1.UpdateResourceAliasResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/UpdateResourceAlias\x12\xbc\x01\n" +
+	"\x1bListResourceConnectorAccess\x12+.core.v1.ListResourceConnectorAccessRequest\x1a,.core.v1.ListResourceConnectorAccessResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/ListResourceConnectorAccess\x90\x02\x01B\x87\x01\n" +
 	"\vcom.core.v1B\rResourceProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

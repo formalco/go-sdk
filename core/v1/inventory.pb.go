@@ -3518,7 +3518,7 @@ const file_core_v1_inventory_proto_rawDesc = "" +
 	"\x16DeleteDataLabelRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"2\n" +
 	"\x17DeleteDataLabelResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xca\x14\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xd1\x14\n" +
 	"\x10InventoryService\x12~\n" +
 	"\fUpdateColumn\x12\x1c.core.v1.UpdateColumnRequest\x1a\x1d.core.v1.UpdateColumnResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.InventoryService/UpdateColumn\x12\xa2\x01\n" +
 	"\x15CreateInventoryObject\x12%.core.v1.CreateInventoryObjectRequest\x1a&.core.v1.CreateInventoryObjectResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.InventoryService/CreateInventoryObject\x12\xb2\x01\n" +
@@ -3531,9 +3531,9 @@ const file_core_v1_inventory_proto_rawDesc = "" +
 	"\x11ListInventoryTags\x12!.core.v1.ListInventoryTagsRequest\x1a\".core.v1.ListInventoryTagsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.InventoryService/ListInventoryTags\x90\x02\x01\x12\x96\x01\n" +
 	"\x12DeleteInventoryTag\x12\".core.v1.DeleteInventoryTagRequest\x1a#.core.v1.DeleteInventoryTagResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InventoryService/DeleteInventoryTag\x12\x96\x01\n" +
 	"\x12UpdateInventoryTag\x12\".core.v1.UpdateInventoryTagRequest\x1a#.core.v1.UpdateInventoryTagResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InventoryService/UpdateInventoryTag\x12\x8a\x01\n" +
-	"\x0fCreateDataLabel\x12\x1f.core.v1.CreateDataLabelRequest\x1a .core.v1.CreateDataLabelResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.InventoryService/CreateDataLabel\x12~\n" +
-	"\fGetDataLabel\x12\x1c.core.v1.GetDataLabelRequest\x1a\x1d.core.v1.GetDataLabelResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.InventoryService/GetDataLabel\x12\x86\x01\n" +
-	"\x0eListDataLabels\x12\x1e.core.v1.ListDataLabelsRequest\x1a\x1f.core.v1.ListDataLabelsResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.InventoryService/ListDataLabels\x12\x8a\x01\n" +
+	"\x0fCreateDataLabel\x12\x1f.core.v1.CreateDataLabelRequest\x1a .core.v1.CreateDataLabelResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.InventoryService/CreateDataLabel\x12\x81\x01\n" +
+	"\fGetDataLabel\x12\x1c.core.v1.GetDataLabelRequest\x1a\x1d.core.v1.GetDataLabelResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.InventoryService/GetDataLabel\x90\x02\x01\x12\x89\x01\n" +
+	"\x0eListDataLabels\x12\x1e.core.v1.ListDataLabelsRequest\x1a\x1f.core.v1.ListDataLabelsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.InventoryService/ListDataLabels\x90\x02\x01\x12\x8a\x01\n" +
 	"\x0fUpdateDataLabel\x12\x1f.core.v1.UpdateDataLabelRequest\x1a .core.v1.UpdateDataLabelResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.InventoryService/UpdateDataLabel\x12\x92\x01\n" +
 	"\x11UpdateDataLabelV2\x12!.core.v1.UpdateDataLabelV2Request\x1a\".core.v1.UpdateDataLabelV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.InventoryService/UpdateDataLabelV2\x12\x8a\x01\n" +
 	"\x0fDeleteDataLabel\x12\x1f.core.v1.DeleteDataLabelRequest\x1a .core.v1.DeleteDataLabelResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.InventoryService/DeleteDataLabelB\x88\x01\n" +

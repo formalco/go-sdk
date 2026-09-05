@@ -224,6 +224,7 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			httpClient,
 			baseURL+UserServiceGetBlockedUserProcedure,
 			connect.WithSchema(userServiceMethods.ByName("GetBlockedUser")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		getMachineUserCredentials: connect.NewClient[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse](
@@ -518,6 +519,7 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		UserServiceGetBlockedUserProcedure,
 		svc.GetBlockedUser,
 		connect.WithSchema(userServiceMethods.ByName("GetBlockedUser")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	userServiceGetMachineUserCredentialsHandler := connect.NewUnaryHandler(

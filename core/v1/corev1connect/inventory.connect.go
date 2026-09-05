@@ -248,12 +248,14 @@ func NewInventoryServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			httpClient,
 			baseURL+InventoryServiceGetDataLabelProcedure,
 			connect.WithSchema(inventoryServiceMethods.ByName("GetDataLabel")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		listDataLabels: connect.NewClient[v1.ListDataLabelsRequest, v1.ListDataLabelsResponse](
 			httpClient,
 			baseURL+InventoryServiceListDataLabelsProcedure,
 			connect.WithSchema(inventoryServiceMethods.ByName("ListDataLabels")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		updateDataLabel: connect.NewClient[v1.UpdateDataLabelRequest, v1.UpdateDataLabelResponse](
@@ -541,12 +543,14 @@ func NewInventoryServiceHandler(svc InventoryServiceHandler, opts ...connect.Han
 		InventoryServiceGetDataLabelProcedure,
 		svc.GetDataLabel,
 		connect.WithSchema(inventoryServiceMethods.ByName("GetDataLabel")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	inventoryServiceListDataLabelsHandler := connect.NewUnaryHandler(
 		InventoryServiceListDataLabelsProcedure,
 		svc.ListDataLabels,
 		connect.WithSchema(inventoryServiceMethods.ByName("ListDataLabels")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	inventoryServiceUpdateDataLabelHandler := connect.NewUnaryHandler(

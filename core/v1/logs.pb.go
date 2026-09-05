@@ -5287,7 +5287,7 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x16LogConfigurationSource\x12(\n" +
 	"$LOG_CONFIGURATION_SOURCE_UNSPECIFIED\x10\x00\x12&\n" +
 	"\"LOG_CONFIGURATION_SOURCE_CONNECTOR\x10\x01\x12%\n" +
-	"!LOG_CONFIGURATION_SOURCE_ENDPOINT\x10\x022\xe9\x1e\n" +
+	"!LOG_CONFIGURATION_SOURCE_ENDPOINT\x10\x022\xec\x1e\n" +
 	"\vLogsService\x12d\n" +
 	"\x06GetLog\x12\x16.core.v1.GetLogRequest\x1a\x17.core.v1.GetLogResponse\")\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/core.v1.LogsService/GetLog\x90\x02\x01\x12\xa0\x01\n" +
 	"\x15GetGroupByAggregation\x12%.core.v1.GetGroupByAggregationRequest\x1a&.core.v1.GetGroupByAggregationResponse\"8\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.LogsService/GetGroupByAggregation\x90\x02\x01\x12\x9c\x01\n" +
@@ -5310,8 +5310,8 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x18UpdateLogConfigurationV2\x12(.core.v1.UpdateLogConfigurationV2Request\x1a).core.v1.UpdateLogConfigurationV2Response\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.LogsService/UpdateLogConfigurationV2\x12\xa1\x01\n" +
 	"\x16DeleteLogConfiguration\x12&.core.v1.DeleteLogConfigurationRequest\x1a'.core.v1.DeleteLogConfigurationResponse\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.LogsService/DeleteLogConfiguration\x12\x95\x01\n" +
 	"\x13CreateEncryptionKey\x12#.core.v1.CreateEncryptionKeyRequest\x1a$.core.v1.CreateEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.LogsService/CreateEncryptionKey\x12\x8c\x01\n" +
-	"\x10GetEncryptionKey\x12 .core.v1.GetEncryptionKeyRequest\x1a!.core.v1.GetEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.LogsService/GetEncryptionKey\x90\x02\x01\x12\xa9\x01\n" +
-	"\x18GetEncryptionKeysByKeyId\x12(.core.v1.GetEncryptionKeysByKeyIdRequest\x1a).core.v1.GetEncryptionKeysByKeyIdResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.LogsService/GetEncryptionKeysByKeyId\x12\x94\x01\n" +
+	"\x10GetEncryptionKey\x12 .core.v1.GetEncryptionKeyRequest\x1a!.core.v1.GetEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.LogsService/GetEncryptionKey\x90\x02\x01\x12\xac\x01\n" +
+	"\x18GetEncryptionKeysByKeyId\x12(.core.v1.GetEncryptionKeysByKeyIdRequest\x1a).core.v1.GetEncryptionKeysByKeyIdResponse\";\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.LogsService/GetEncryptionKeysByKeyId\x90\x02\x01\x12\x94\x01\n" +
 	"\x12ListEncryptionKeys\x12\".core.v1.ListEncryptionKeysRequest\x1a#.core.v1.ListEncryptionKeysResponse\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.LogsService/ListEncryptionKeys\x90\x02\x01\x12\x95\x01\n" +
 	"\x13UpdateEncryptionKey\x12#.core.v1.UpdateEncryptionKeyRequest\x1a$.core.v1.UpdateEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.LogsService/UpdateEncryptionKey\x12\x9d\x01\n" +
 	"\x15UpdateEncryptionKeyV2\x12%.core.v1.UpdateEncryptionKeyV2Request\x1a&.core.v1.UpdateEncryptionKeyV2Response\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.LogsService/UpdateEncryptionKeyV2\x12\x95\x01\n" +

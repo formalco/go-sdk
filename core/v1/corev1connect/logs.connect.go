@@ -371,6 +371,7 @@ func NewLogsServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			httpClient,
 			baseURL+LogsServiceGetEncryptionKeysByKeyIdProcedure,
 			connect.WithSchema(logsServiceMethods.ByName("GetEncryptionKeysByKeyId")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		listEncryptionKeys: connect.NewClient[v1.ListEncryptionKeysRequest, v1.ListEncryptionKeysResponse](
@@ -818,6 +819,7 @@ func NewLogsServiceHandler(svc LogsServiceHandler, opts ...connect.HandlerOption
 		LogsServiceGetEncryptionKeysByKeyIdProcedure,
 		svc.GetEncryptionKeysByKeyId,
 		connect.WithSchema(logsServiceMethods.ByName("GetEncryptionKeysByKeyId")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	logsServiceListEncryptionKeysHandler := connect.NewUnaryHandler(

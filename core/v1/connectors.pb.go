@@ -6160,7 +6160,7 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\"UpdateConnectorAiProviderV2Request\x12X\n" +
 	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderB\x06\xbaH\x03\xc8\x01\x01R\x13connectorAiProvider\"w\n" +
 	"#UpdateConnectorAiProviderV2Response\x12P\n" +
-	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\x9cN\n" +
+	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\xa2N\n" +
 	"\x10ConnectorService\x12\x89\x01\n" +
 	"\x0eListConnectors\x12\x1e.core.v1.ListConnectorsRequest\x1a\x1f.core.v1.ListConnectorsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.ConnectorService/ListConnectors\x90\x02\x01\x12\x81\x01\n" +
 	"\fGetConnector\x12\x1c.core.v1.GetConnectorRequest\x1a\x1d.core.v1.GetConnectorResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ConnectorService/GetConnector\x90\x02\x01\x12\x99\x01\n" +
@@ -6191,9 +6191,9 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x1aGetConnectorTLSCertificate\x12*.core.v1.GetConnectorTLSCertificateRequest\x1a+.core.v1.GetConnectorTLSCertificateResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ConnectorService/GetConnectorTLSCertificate\x90\x02\x01\x12\xaa\x01\n" +
 	"\x17UpdateConnectorHostname\x12'.core.v1.UpdateConnectorHostnameRequest\x1a(.core.v1.UpdateConnectorHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/UpdateConnectorHostname\x12\xaa\x01\n" +
 	"\x17DeleteConnectorHostname\x12'.core.v1.DeleteConnectorHostnameRequest\x1a(.core.v1.DeleteConnectorHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/DeleteConnectorHostname\x12\xbe\x01\n" +
-	"\x1cCreateConnectorConfiguration\x12,.core.v1.CreateConnectorConfigurationRequest\x1a-.core.v1.CreateConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/CreateConnectorConfiguration\x12\xb2\x01\n" +
-	"\x19GetConnectorConfiguration\x12).core.v1.GetConnectorConfigurationRequest\x1a*.core.v1.GetConnectorConfigurationResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/GetConnectorConfiguration\x12\xe6\x01\n" +
-	"&GetConnectorConfigurationByConnectorId\x126.core.v1.GetConnectorConfigurationByConnectorIdRequest\x1a7.core.v1.GetConnectorConfigurationByConnectorIdResponse\"K\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.ConnectorService/GetConnectorConfigurationByConnectorId\x12\xbe\x01\n" +
+	"\x1cCreateConnectorConfiguration\x12,.core.v1.CreateConnectorConfigurationRequest\x1a-.core.v1.CreateConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/CreateConnectorConfiguration\x12\xb5\x01\n" +
+	"\x19GetConnectorConfiguration\x12).core.v1.GetConnectorConfigurationRequest\x1a*.core.v1.GetConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/GetConnectorConfiguration\x90\x02\x01\x12\xe9\x01\n" +
+	"&GetConnectorConfigurationByConnectorId\x126.core.v1.GetConnectorConfigurationByConnectorIdRequest\x1a7.core.v1.GetConnectorConfigurationByConnectorIdResponse\"N\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.ConnectorService/GetConnectorConfigurationByConnectorId\x90\x02\x01\x12\xbe\x01\n" +
 	"\x1cUpdateConnectorConfiguration\x12,.core.v1.UpdateConnectorConfigurationRequest\x1a-.core.v1.UpdateConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/UpdateConnectorConfiguration\x12\xbe\x01\n" +
 	"\x1cDeleteConnectorConfiguration\x12,.core.v1.DeleteConnectorConfigurationRequest\x1a-.core.v1.DeleteConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/DeleteConnectorConfiguration\x12\xbe\x01\n" +
 	"\x1cCreateConnectorSatelliteLink\x12,.core.v1.CreateConnectorSatelliteLinkRequest\x1a-.core.v1.CreateConnectorSatelliteLinkResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/CreateConnectorSatelliteLink\x12\xe2\x01\n" +

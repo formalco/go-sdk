@@ -98,12 +98,14 @@ func NewScenarioMonitoringServiceClient(httpClient connect.HTTPClient, baseURL s
 			httpClient,
 			baseURL+ScenarioMonitoringServiceGetScenarioMonitorProcedure,
 			connect.WithSchema(scenarioMonitoringServiceMethods.ByName("GetScenarioMonitor")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		listScenarioMonitors: connect.NewClient[v1.ListScenarioMonitorsRequest, v1.ListScenarioMonitorsResponse](
 			httpClient,
 			baseURL+ScenarioMonitoringServiceListScenarioMonitorsProcedure,
 			connect.WithSchema(scenarioMonitoringServiceMethods.ByName("ListScenarioMonitors")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		updateScenarioMonitor: connect.NewClient[v1.UpdateScenarioMonitorRequest, v1.UpdateScenarioMonitorResponse](
@@ -202,12 +204,14 @@ func NewScenarioMonitoringServiceHandler(svc ScenarioMonitoringServiceHandler, o
 		ScenarioMonitoringServiceGetScenarioMonitorProcedure,
 		svc.GetScenarioMonitor,
 		connect.WithSchema(scenarioMonitoringServiceMethods.ByName("GetScenarioMonitor")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	scenarioMonitoringServiceListScenarioMonitorsHandler := connect.NewUnaryHandler(
 		ScenarioMonitoringServiceListScenarioMonitorsProcedure,
 		svc.ListScenarioMonitors,
 		connect.WithSchema(scenarioMonitoringServiceMethods.ByName("ListScenarioMonitors")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	scenarioMonitoringServiceUpdateScenarioMonitorHandler := connect.NewUnaryHandler(
