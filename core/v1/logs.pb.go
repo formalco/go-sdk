@@ -4924,12 +4924,14 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\rGetLogRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\";\n" +
 	"\x0eGetLogResponse\x12)\n" +
-	"\x03log\x18\x01 \x01(\v2\x17.google.protobuf.StructR\x03log\"\xde\x01\n" +
+	"\x03log\x18\x01 \x01(\v2\x17.google.protobuf.StructR\x03log\"\xee\x01\n" +
 	"\x1bGetMetricAggregationRequest\x12I\n" +
 	"\x12metric_aggregation\x18\x01 \x01(\v2\x1a.core.v1.MetricAggregationR\x11metricAggregation\x12\x14\n" +
-	"\x05query\x18\x02 \x01(\tR\x05query\x120\n" +
-	"\x0fstart_timestamp\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0estartTimestamp\x12,\n" +
-	"\rend_timestamp\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fendTimestamp\"r\n" +
+	"\x05query\x18\x02 \x01(\tR\x05query\x128\n" +
+	"\x0fstart_timestamp\x18\x03 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\x0estartTimestamp\x124\n" +
+	"\rend_timestamp\x18\x04 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\fendTimestamp\"r\n" +
 	"\x1cGetMetricAggregationResponse\x12<\n" +
 	"\vaggregation\x18\x01 \x01(\v2\x1a.core.v1.MetricAggregationR\vaggregation\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x01R\x05value\"\xcc0\n" +
@@ -5030,24 +5032,28 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"DateBucket\x12\x1a\n" +
 	"\bdatetime\x18\x01 \x01(\tR\bdatetime\x12\x14\n" +
 	"\x05count\x18\x02 \x01(\x05R\x05count\x12A\n" +
-	"\abuckets\x18\x03 \x03(\v2'.core.v1.ListLogsResponse.GroupByBucketR\abuckets\"\x90\x02\n" +
+	"\abuckets\x18\x03 \x03(\v2'.core.v1.ListLogsResponse.GroupByBucketR\abuckets\"\xa0\x02\n" +
 	"\x11ListLogsV2Request\x12!\n" +
 	"\x05limit\x18\x01 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xa0\x8d\x06 \x00R\x05limit\x12\x14\n" +
 	"\x05query\x18\x02 \x01(\tR\x05query\x12\x17\n" +
-	"\asort_by\x18\x03 \x01(\tR\x06sortBy\x120\n" +
-	"\x0fstart_timestamp\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0estartTimestamp\x12,\n" +
-	"\rend_timestamp\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fendTimestamp\x12\x16\n" +
+	"\asort_by\x18\x03 \x01(\tR\x06sortBy\x128\n" +
+	"\x0fstart_timestamp\x18\x04 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\x0estartTimestamp\x124\n" +
+	"\rend_timestamp\x18\x05 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\fendTimestamp\x12\x16\n" +
 	"\x06cursor\x18\x06 \x01(\tR\x06cursor\x12\"\n" +
 	"\n" +
 	"page_token\x18\a \x01(\tH\x00R\tpageToken\x88\x01\x01B\r\n" +
 	"\v_page_token\"}\n" +
 	"\x12ListLogsV2Response\x12+\n" +
 	"\x04logs\x18\x01 \x03(\v2\x17.google.protobuf.StructR\x04logs\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xdf\x02\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xef\x02\n" +
 	"\x1aListLogAggregationsRequest\x12\x14\n" +
-	"\x05query\x18\x01 \x01(\tR\x05query\x120\n" +
-	"\x0fstart_timestamp\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0estartTimestamp\x12,\n" +
-	"\rend_timestamp\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fendTimestamp\x12-\n" +
+	"\x05query\x18\x01 \x01(\tR\x05query\x128\n" +
+	"\x0fstart_timestamp\x18\x02 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\x0estartTimestamp\x124\n" +
+	"\rend_timestamp\x18\x03 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\fendTimestamp\x12-\n" +
 	"\x12histogram_interval\x18\x04 \x01(\tR\x11histogramInterval\x12E\n" +
 	"\x19histogram_group_by_fields\x18\x05 \x03(\tB\n" +
 	"\xbaH\a\x92\x01\x04\b\x00\x10\x03R\x16histogramGroupByFields\x12L\n" +
@@ -5080,11 +5086,13 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x05field\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05field\x126\n" +
 	"\x0edistinct_limit\x18\x04 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\x90N \x00H\x00R\rdistinctLimit\x88\x01\x01B\x11\n" +
-	"\x0f_distinct_limit\"\xb5\x02\n" +
+	"\x0f_distinct_limit\"\xc5\x02\n" +
 	"\x1cGetGroupByAggregationRequest\x12\x14\n" +
-	"\x05query\x18\x01 \x01(\tR\x05query\x120\n" +
-	"\x0fstart_timestamp\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0estartTimestamp\x12,\n" +
-	"\rend_timestamp\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fendTimestamp\x122\n" +
+	"\x05query\x18\x01 \x01(\tR\x05query\x128\n" +
+	"\x0fstart_timestamp\x18\x02 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\x0estartTimestamp\x124\n" +
+	"\rend_timestamp\x18\x03 \x01(\tB\x0f\xbaH\fr\n" +
+	"2\b^[0-9]+$R\fendTimestamp\x122\n" +
 	"\x0fgroup_by_fields\x18\x04 \x03(\tB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x10\x05R\rgroupByFields\x12:\n" +
 	"\ametrics\x18\x05 \x03(\v2\x16.core.v1.GroupByMetricB\b\xbaH\x05\x92\x01\x02\x10\fR\ametrics\x12%\n" +
