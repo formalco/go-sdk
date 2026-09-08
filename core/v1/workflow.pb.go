@@ -1820,141 +1820,6 @@ func (x *DeleteFormResponse) GetId() string {
 	return ""
 }
 
-type CreateWorkflowCodeFromNaturalLanguageRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Natural language description of the desired workflow.
-	// May include context such as existing YAML code, validation errors, or org context
-	// composed by the caller.
-	NaturalLanguagePrompt string `protobuf:"bytes,1,opt,name=natural_language_prompt,json=naturalLanguagePrompt,proto3" json:"natural_language_prompt,omitempty"`
-	// When true, the code is still validated but the retry loop is skipped on validation
-	// failure. The response will contain accurate valid/validation_error fields regardless.
-	// Useful when the caller wants to inspect invalid code (e.g. to explain why it fails).
-	// Defaults to false (retry up to 3 times on validation failure).
-	SkipRetryOnInvalid bool `protobuf:"varint,2,opt,name=skip_retry_on_invalid,json=skipRetryOnInvalid,proto3" json:"skip_retry_on_invalid,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageRequest) Reset() {
-	*x = CreateWorkflowCodeFromNaturalLanguageRequest{}
-	mi := &file_core_v1_workflow_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateWorkflowCodeFromNaturalLanguageRequest) ProtoMessage() {}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateWorkflowCodeFromNaturalLanguageRequest.ProtoReflect.Descriptor instead.
-func (*CreateWorkflowCodeFromNaturalLanguageRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageRequest) GetNaturalLanguagePrompt() string {
-	if x != nil {
-		return x.NaturalLanguagePrompt
-	}
-	return ""
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageRequest) GetSkipRetryOnInvalid() bool {
-	if x != nil {
-		return x.SkipRetryOnInvalid
-	}
-	return false
-}
-
-type CreateWorkflowCodeFromNaturalLanguageResponse struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Code            string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
-	Name            string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Description     string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Valid           bool                   `protobuf:"varint,4,opt,name=valid,proto3" json:"valid,omitempty"`
-	ValidationError string                 `protobuf:"bytes,5,opt,name=validation_error,json=validationError,proto3" json:"validation_error,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) Reset() {
-	*x = CreateWorkflowCodeFromNaturalLanguageResponse{}
-	mi := &file_core_v1_workflow_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateWorkflowCodeFromNaturalLanguageResponse) ProtoMessage() {}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateWorkflowCodeFromNaturalLanguageResponse.ProtoReflect.Descriptor instead.
-func (*CreateWorkflowCodeFromNaturalLanguageResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) GetValid() bool {
-	if x != nil {
-		return x.Valid
-	}
-	return false
-}
-
-func (x *CreateWorkflowCodeFromNaturalLanguageResponse) GetValidationError() string {
-	if x != nil {
-		return x.ValidationError
-	}
-	return ""
-}
-
 var File_core_v1_workflow_proto protoreflect.FileDescriptor
 
 const file_core_v1_workflow_proto_rawDesc = "" +
@@ -2076,17 +1941,7 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\x11DeleteFormRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"-\n" +
 	"\x12DeleteFormResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xa5\x01\n" +
-	",CreateWorkflowCodeFromNaturalLanguageRequest\x12B\n" +
-	"\x17natural_language_prompt\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x90NR\x15naturalLanguagePrompt\x121\n" +
-	"\x15skip_retry_on_invalid\x18\x02 \x01(\bR\x12skipRetryOnInvalid\"\xba\x01\n" +
-	"-CreateWorkflowCodeFromNaturalLanguageResponse\x12\x12\n" +
-	"\x04code\x18\x01 \x01(\tR\x04code\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x14\n" +
-	"\x05valid\x18\x04 \x01(\bR\x05valid\x12)\n" +
-	"\x10validation_error\x18\x05 \x01(\tR\x0fvalidationError2\x8e\x0f\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xaa\r\n" +
 	"\x0fWorkflowService\x12\x85\x01\n" +
 	"\x0eCreateWorkflow\x12\x1e.core.v1.CreateWorkflowRequest\x1a\x1f.core.v1.CreateWorkflowResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.WorkflowService/CreateWorkflow\x12|\n" +
 	"\vGetWorkflow\x12\x1b.core.v1.GetWorkflowRequest\x1a\x1c.core.v1.GetWorkflowResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.WorkflowService/GetWorkflow\x90\x02\x01\x12\x84\x01\n" +
@@ -2094,8 +1949,7 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\x0eUpdateWorkflow\x12\x1e.core.v1.UpdateWorkflowRequest\x1a\x1f.core.v1.UpdateWorkflowResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.WorkflowService/UpdateWorkflow\x12\x8d\x01\n" +
 	"\x10UpdateWorkflowV2\x12 .core.v1.UpdateWorkflowV2Request\x1a!.core.v1.UpdateWorkflowV2Response\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.WorkflowService/UpdateWorkflowV2\x12\x85\x01\n" +
 	"\x0eDeleteWorkflow\x12\x1e.core.v1.DeleteWorkflowRequest\x1a\x1f.core.v1.DeleteWorkflowResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.WorkflowService/DeleteWorkflow\x12\xa1\x01\n" +
-	"\x15CreateWorkflowTrigger\x12%.core.v1.CreateWorkflowTriggerRequest\x1a&.core.v1.CreateWorkflowTriggerResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.WorkflowService/CreateWorkflowTrigger\x12\xe1\x01\n" +
-	"%CreateWorkflowCodeFromNaturalLanguage\x125.core.v1.CreateWorkflowCodeFromNaturalLanguageRequest\x1a6.core.v1.CreateWorkflowCodeFromNaturalLanguageResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.WorkflowService/CreateWorkflowCodeFromNaturalLanguage\x12u\n" +
+	"\x15CreateWorkflowTrigger\x12%.core.v1.CreateWorkflowTriggerRequest\x1a&.core.v1.CreateWorkflowTriggerResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.WorkflowService/CreateWorkflowTrigger\x12u\n" +
 	"\n" +
 	"CreateForm\x12\x1a.core.v1.CreateFormRequest\x1a\x1b.core.v1.CreateFormResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.WorkflowService/CreateForm\x12l\n" +
 	"\aGetForm\x12\x17.core.v1.GetFormRequest\x1a\x18.core.v1.GetFormResponse\".\x82\xd3\xe4\x93\x02%:\x01*\" /core.v1.WorkflowService/GetForm\x90\x02\x01\x12t\n" +
@@ -2119,71 +1973,69 @@ func file_core_v1_workflow_proto_rawDescGZIP() []byte {
 	return file_core_v1_workflow_proto_rawDescData
 }
 
-var file_core_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
+var file_core_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_core_v1_workflow_proto_goTypes = []any{
-	(*Workflow)(nil),                                      // 0: core.v1.Workflow
-	(*CreateWorkflowRequest)(nil),                         // 1: core.v1.CreateWorkflowRequest
-	(*CreateWorkflowResponse)(nil),                        // 2: core.v1.CreateWorkflowResponse
-	(*GetWorkflowRequest)(nil),                            // 3: core.v1.GetWorkflowRequest
-	(*GetWorkflowResponse)(nil),                           // 4: core.v1.GetWorkflowResponse
-	(*ListWorkflowsRequest)(nil),                          // 5: core.v1.ListWorkflowsRequest
-	(*ListWorkflowsResponse)(nil),                         // 6: core.v1.ListWorkflowsResponse
-	(*UpdateWorkflowRequest)(nil),                         // 7: core.v1.UpdateWorkflowRequest
-	(*UpdateWorkflowResponse)(nil),                        // 8: core.v1.UpdateWorkflowResponse
-	(*UpdateWorkflowV2Request)(nil),                       // 9: core.v1.UpdateWorkflowV2Request
-	(*UpdateWorkflowV2Response)(nil),                      // 10: core.v1.UpdateWorkflowV2Response
-	(*DeleteWorkflowRequest)(nil),                         // 11: core.v1.DeleteWorkflowRequest
-	(*DeleteWorkflowResponse)(nil),                        // 12: core.v1.DeleteWorkflowResponse
-	(*CreateWorkflowTriggerRequest)(nil),                  // 13: core.v1.CreateWorkflowTriggerRequest
-	(*CreateWorkflowTriggerResponse)(nil),                 // 14: core.v1.CreateWorkflowTriggerResponse
-	(*FormFieldOption)(nil),                               // 15: core.v1.FormFieldOption
-	(*FormFieldOptionsSourceCommand)(nil),                 // 16: core.v1.FormFieldOptionsSourceCommand
-	(*FormFieldOptionsSource)(nil),                        // 17: core.v1.FormFieldOptionsSource
-	(*FormFieldConfig)(nil),                               // 18: core.v1.FormFieldConfig
-	(*FormField)(nil),                                     // 19: core.v1.FormField
-	(*Form)(nil),                                          // 20: core.v1.Form
-	(*CreateFormRequest)(nil),                             // 21: core.v1.CreateFormRequest
-	(*CreateFormResponse)(nil),                            // 22: core.v1.CreateFormResponse
-	(*GetFormRequest)(nil),                                // 23: core.v1.GetFormRequest
-	(*GetFormResponse)(nil),                               // 24: core.v1.GetFormResponse
-	(*ListFormsRequest)(nil),                              // 25: core.v1.ListFormsRequest
-	(*ListFormsResponse)(nil),                             // 26: core.v1.ListFormsResponse
-	(*UpdateFormRequest)(nil),                             // 27: core.v1.UpdateFormRequest
-	(*UpdateFormResponse)(nil),                            // 28: core.v1.UpdateFormResponse
-	(*UpdateFormV2Request)(nil),                           // 29: core.v1.UpdateFormV2Request
-	(*UpdateFormV2Response)(nil),                          // 30: core.v1.UpdateFormV2Response
-	(*DeleteFormRequest)(nil),                             // 31: core.v1.DeleteFormRequest
-	(*DeleteFormResponse)(nil),                            // 32: core.v1.DeleteFormResponse
-	(*CreateWorkflowCodeFromNaturalLanguageRequest)(nil),  // 33: core.v1.CreateWorkflowCodeFromNaturalLanguageRequest
-	(*CreateWorkflowCodeFromNaturalLanguageResponse)(nil), // 34: core.v1.CreateWorkflowCodeFromNaturalLanguageResponse
-	(*timestamppb.Timestamp)(nil),                         // 35: google.protobuf.Timestamp
-	(*ListMetadata)(nil),                                  // 36: core.v1.ListMetadata
-	(*structpb.Struct)(nil),                               // 37: google.protobuf.Struct
+	(*Workflow)(nil),                      // 0: core.v1.Workflow
+	(*CreateWorkflowRequest)(nil),         // 1: core.v1.CreateWorkflowRequest
+	(*CreateWorkflowResponse)(nil),        // 2: core.v1.CreateWorkflowResponse
+	(*GetWorkflowRequest)(nil),            // 3: core.v1.GetWorkflowRequest
+	(*GetWorkflowResponse)(nil),           // 4: core.v1.GetWorkflowResponse
+	(*ListWorkflowsRequest)(nil),          // 5: core.v1.ListWorkflowsRequest
+	(*ListWorkflowsResponse)(nil),         // 6: core.v1.ListWorkflowsResponse
+	(*UpdateWorkflowRequest)(nil),         // 7: core.v1.UpdateWorkflowRequest
+	(*UpdateWorkflowResponse)(nil),        // 8: core.v1.UpdateWorkflowResponse
+	(*UpdateWorkflowV2Request)(nil),       // 9: core.v1.UpdateWorkflowV2Request
+	(*UpdateWorkflowV2Response)(nil),      // 10: core.v1.UpdateWorkflowV2Response
+	(*DeleteWorkflowRequest)(nil),         // 11: core.v1.DeleteWorkflowRequest
+	(*DeleteWorkflowResponse)(nil),        // 12: core.v1.DeleteWorkflowResponse
+	(*CreateWorkflowTriggerRequest)(nil),  // 13: core.v1.CreateWorkflowTriggerRequest
+	(*CreateWorkflowTriggerResponse)(nil), // 14: core.v1.CreateWorkflowTriggerResponse
+	(*FormFieldOption)(nil),               // 15: core.v1.FormFieldOption
+	(*FormFieldOptionsSourceCommand)(nil), // 16: core.v1.FormFieldOptionsSourceCommand
+	(*FormFieldOptionsSource)(nil),        // 17: core.v1.FormFieldOptionsSource
+	(*FormFieldConfig)(nil),               // 18: core.v1.FormFieldConfig
+	(*FormField)(nil),                     // 19: core.v1.FormField
+	(*Form)(nil),                          // 20: core.v1.Form
+	(*CreateFormRequest)(nil),             // 21: core.v1.CreateFormRequest
+	(*CreateFormResponse)(nil),            // 22: core.v1.CreateFormResponse
+	(*GetFormRequest)(nil),                // 23: core.v1.GetFormRequest
+	(*GetFormResponse)(nil),               // 24: core.v1.GetFormResponse
+	(*ListFormsRequest)(nil),              // 25: core.v1.ListFormsRequest
+	(*ListFormsResponse)(nil),             // 26: core.v1.ListFormsResponse
+	(*UpdateFormRequest)(nil),             // 27: core.v1.UpdateFormRequest
+	(*UpdateFormResponse)(nil),            // 28: core.v1.UpdateFormResponse
+	(*UpdateFormV2Request)(nil),           // 29: core.v1.UpdateFormV2Request
+	(*UpdateFormV2Response)(nil),          // 30: core.v1.UpdateFormV2Response
+	(*DeleteFormRequest)(nil),             // 31: core.v1.DeleteFormRequest
+	(*DeleteFormResponse)(nil),            // 32: core.v1.DeleteFormResponse
+	(*timestamppb.Timestamp)(nil),         // 33: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                  // 34: core.v1.ListMetadata
+	(*structpb.Struct)(nil),               // 35: google.protobuf.Struct
 }
 var file_core_v1_workflow_proto_depIdxs = []int32{
-	35, // 0: core.v1.Workflow.created_at:type_name -> google.protobuf.Timestamp
-	35, // 1: core.v1.Workflow.updated_at:type_name -> google.protobuf.Timestamp
+	33, // 0: core.v1.Workflow.created_at:type_name -> google.protobuf.Timestamp
+	33, // 1: core.v1.Workflow.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: core.v1.CreateWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 3: core.v1.GetWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 4: core.v1.ListWorkflowsResponse.workflows:type_name -> core.v1.Workflow
-	36, // 5: core.v1.ListWorkflowsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	34, // 5: core.v1.ListWorkflowsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	0,  // 6: core.v1.UpdateWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 7: core.v1.UpdateWorkflowV2Request.workflow:type_name -> core.v1.Workflow
 	0,  // 8: core.v1.UpdateWorkflowV2Response.workflow:type_name -> core.v1.Workflow
-	37, // 9: core.v1.CreateWorkflowTriggerRequest.payload:type_name -> google.protobuf.Struct
+	35, // 9: core.v1.CreateWorkflowTriggerRequest.payload:type_name -> google.protobuf.Struct
 	16, // 10: core.v1.FormFieldOptionsSource.command:type_name -> core.v1.FormFieldOptionsSourceCommand
-	37, // 11: core.v1.FormFieldOptionsSource.input:type_name -> google.protobuf.Struct
+	35, // 11: core.v1.FormFieldOptionsSource.input:type_name -> google.protobuf.Struct
 	15, // 12: core.v1.FormFieldConfig.options:type_name -> core.v1.FormFieldOption
 	17, // 13: core.v1.FormFieldConfig.options_source:type_name -> core.v1.FormFieldOptionsSource
 	18, // 14: core.v1.FormField.config:type_name -> core.v1.FormFieldConfig
 	19, // 15: core.v1.Form.fields:type_name -> core.v1.FormField
-	35, // 16: core.v1.Form.created_at:type_name -> google.protobuf.Timestamp
-	35, // 17: core.v1.Form.updated_at:type_name -> google.protobuf.Timestamp
+	33, // 16: core.v1.Form.created_at:type_name -> google.protobuf.Timestamp
+	33, // 17: core.v1.Form.updated_at:type_name -> google.protobuf.Timestamp
 	19, // 18: core.v1.CreateFormRequest.fields:type_name -> core.v1.FormField
 	20, // 19: core.v1.CreateFormResponse.form:type_name -> core.v1.Form
 	20, // 20: core.v1.GetFormResponse.form:type_name -> core.v1.Form
 	20, // 21: core.v1.ListFormsResponse.forms:type_name -> core.v1.Form
-	36, // 22: core.v1.ListFormsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	34, // 22: core.v1.ListFormsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	19, // 23: core.v1.UpdateFormRequest.fields:type_name -> core.v1.FormField
 	20, // 24: core.v1.UpdateFormResponse.form:type_name -> core.v1.Form
 	20, // 25: core.v1.UpdateFormV2Request.form:type_name -> core.v1.Form
@@ -2195,29 +2047,27 @@ var file_core_v1_workflow_proto_depIdxs = []int32{
 	9,  // 31: core.v1.WorkflowService.UpdateWorkflowV2:input_type -> core.v1.UpdateWorkflowV2Request
 	11, // 32: core.v1.WorkflowService.DeleteWorkflow:input_type -> core.v1.DeleteWorkflowRequest
 	13, // 33: core.v1.WorkflowService.CreateWorkflowTrigger:input_type -> core.v1.CreateWorkflowTriggerRequest
-	33, // 34: core.v1.WorkflowService.CreateWorkflowCodeFromNaturalLanguage:input_type -> core.v1.CreateWorkflowCodeFromNaturalLanguageRequest
-	21, // 35: core.v1.WorkflowService.CreateForm:input_type -> core.v1.CreateFormRequest
-	23, // 36: core.v1.WorkflowService.GetForm:input_type -> core.v1.GetFormRequest
-	25, // 37: core.v1.WorkflowService.ListForms:input_type -> core.v1.ListFormsRequest
-	27, // 38: core.v1.WorkflowService.UpdateForm:input_type -> core.v1.UpdateFormRequest
-	29, // 39: core.v1.WorkflowService.UpdateFormV2:input_type -> core.v1.UpdateFormV2Request
-	31, // 40: core.v1.WorkflowService.DeleteForm:input_type -> core.v1.DeleteFormRequest
-	2,  // 41: core.v1.WorkflowService.CreateWorkflow:output_type -> core.v1.CreateWorkflowResponse
-	4,  // 42: core.v1.WorkflowService.GetWorkflow:output_type -> core.v1.GetWorkflowResponse
-	6,  // 43: core.v1.WorkflowService.ListWorkflows:output_type -> core.v1.ListWorkflowsResponse
-	8,  // 44: core.v1.WorkflowService.UpdateWorkflow:output_type -> core.v1.UpdateWorkflowResponse
-	10, // 45: core.v1.WorkflowService.UpdateWorkflowV2:output_type -> core.v1.UpdateWorkflowV2Response
-	12, // 46: core.v1.WorkflowService.DeleteWorkflow:output_type -> core.v1.DeleteWorkflowResponse
-	14, // 47: core.v1.WorkflowService.CreateWorkflowTrigger:output_type -> core.v1.CreateWorkflowTriggerResponse
-	34, // 48: core.v1.WorkflowService.CreateWorkflowCodeFromNaturalLanguage:output_type -> core.v1.CreateWorkflowCodeFromNaturalLanguageResponse
-	22, // 49: core.v1.WorkflowService.CreateForm:output_type -> core.v1.CreateFormResponse
-	24, // 50: core.v1.WorkflowService.GetForm:output_type -> core.v1.GetFormResponse
-	26, // 51: core.v1.WorkflowService.ListForms:output_type -> core.v1.ListFormsResponse
-	28, // 52: core.v1.WorkflowService.UpdateForm:output_type -> core.v1.UpdateFormResponse
-	30, // 53: core.v1.WorkflowService.UpdateFormV2:output_type -> core.v1.UpdateFormV2Response
-	32, // 54: core.v1.WorkflowService.DeleteForm:output_type -> core.v1.DeleteFormResponse
-	41, // [41:55] is the sub-list for method output_type
-	27, // [27:41] is the sub-list for method input_type
+	21, // 34: core.v1.WorkflowService.CreateForm:input_type -> core.v1.CreateFormRequest
+	23, // 35: core.v1.WorkflowService.GetForm:input_type -> core.v1.GetFormRequest
+	25, // 36: core.v1.WorkflowService.ListForms:input_type -> core.v1.ListFormsRequest
+	27, // 37: core.v1.WorkflowService.UpdateForm:input_type -> core.v1.UpdateFormRequest
+	29, // 38: core.v1.WorkflowService.UpdateFormV2:input_type -> core.v1.UpdateFormV2Request
+	31, // 39: core.v1.WorkflowService.DeleteForm:input_type -> core.v1.DeleteFormRequest
+	2,  // 40: core.v1.WorkflowService.CreateWorkflow:output_type -> core.v1.CreateWorkflowResponse
+	4,  // 41: core.v1.WorkflowService.GetWorkflow:output_type -> core.v1.GetWorkflowResponse
+	6,  // 42: core.v1.WorkflowService.ListWorkflows:output_type -> core.v1.ListWorkflowsResponse
+	8,  // 43: core.v1.WorkflowService.UpdateWorkflow:output_type -> core.v1.UpdateWorkflowResponse
+	10, // 44: core.v1.WorkflowService.UpdateWorkflowV2:output_type -> core.v1.UpdateWorkflowV2Response
+	12, // 45: core.v1.WorkflowService.DeleteWorkflow:output_type -> core.v1.DeleteWorkflowResponse
+	14, // 46: core.v1.WorkflowService.CreateWorkflowTrigger:output_type -> core.v1.CreateWorkflowTriggerResponse
+	22, // 47: core.v1.WorkflowService.CreateForm:output_type -> core.v1.CreateFormResponse
+	24, // 48: core.v1.WorkflowService.GetForm:output_type -> core.v1.GetFormResponse
+	26, // 49: core.v1.WorkflowService.ListForms:output_type -> core.v1.ListFormsResponse
+	28, // 50: core.v1.WorkflowService.UpdateForm:output_type -> core.v1.UpdateFormResponse
+	30, // 51: core.v1.WorkflowService.UpdateFormV2:output_type -> core.v1.UpdateFormV2Response
+	32, // 52: core.v1.WorkflowService.DeleteForm:output_type -> core.v1.DeleteFormResponse
+	40, // [40:53] is the sub-list for method output_type
+	27, // [27:40] is the sub-list for method input_type
 	27, // [27:27] is the sub-list for extension type_name
 	27, // [27:27] is the sub-list for extension extendee
 	0,  // [0:27] is the sub-list for field type_name
@@ -2237,7 +2087,7 @@ func file_core_v1_workflow_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_workflow_proto_rawDesc), len(file_core_v1_workflow_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   35,
+			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

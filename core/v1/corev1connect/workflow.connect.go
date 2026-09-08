@@ -54,9 +54,6 @@ const (
 	// WorkflowServiceCreateWorkflowTriggerProcedure is the fully-qualified name of the
 	// WorkflowService's CreateWorkflowTrigger RPC.
 	WorkflowServiceCreateWorkflowTriggerProcedure = "/core.v1.WorkflowService/CreateWorkflowTrigger"
-	// WorkflowServiceCreateWorkflowCodeFromNaturalLanguageProcedure is the fully-qualified name of the
-	// WorkflowService's CreateWorkflowCodeFromNaturalLanguage RPC.
-	WorkflowServiceCreateWorkflowCodeFromNaturalLanguageProcedure = "/core.v1.WorkflowService/CreateWorkflowCodeFromNaturalLanguage"
 	// WorkflowServiceCreateFormProcedure is the fully-qualified name of the WorkflowService's
 	// CreateForm RPC.
 	WorkflowServiceCreateFormProcedure = "/core.v1.WorkflowService/CreateForm"
@@ -106,10 +103,6 @@ type WorkflowServiceClient interface {
 	//
 	// Trigger a workflow with api-request trigger type. The workflow's allow CEL expression is evaluated with the requesting user's context.
 	CreateWorkflowTrigger(context.Context, *connect.Request[v1.CreateWorkflowTriggerRequest]) (*connect.Response[v1.CreateWorkflowTriggerResponse], error)
-	// Generate workflow YAML code from natural language
-	//
-	// Translates a natural language prompt into Formal workflow YAML code using an LLM, with validation and retry.
-	CreateWorkflowCodeFromNaturalLanguage(context.Context, *connect.Request[v1.CreateWorkflowCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateWorkflowCodeFromNaturalLanguageResponse], error)
 	// Create form
 	//
 	// Create a new form
@@ -191,12 +184,6 @@ func NewWorkflowServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(workflowServiceMethods.ByName("CreateWorkflowTrigger")),
 			connect.WithClientOptions(opts...),
 		),
-		createWorkflowCodeFromNaturalLanguage: connect.NewClient[v1.CreateWorkflowCodeFromNaturalLanguageRequest, v1.CreateWorkflowCodeFromNaturalLanguageResponse](
-			httpClient,
-			baseURL+WorkflowServiceCreateWorkflowCodeFromNaturalLanguageProcedure,
-			connect.WithSchema(workflowServiceMethods.ByName("CreateWorkflowCodeFromNaturalLanguage")),
-			connect.WithClientOptions(opts...),
-		),
 		createForm: connect.NewClient[v1.CreateFormRequest, v1.CreateFormResponse](
 			httpClient,
 			baseURL+WorkflowServiceCreateFormProcedure,
@@ -240,20 +227,19 @@ func NewWorkflowServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // workflowServiceClient implements WorkflowServiceClient.
 type workflowServiceClient struct {
-	createWorkflow                        *connect.Client[v1.CreateWorkflowRequest, v1.CreateWorkflowResponse]
-	getWorkflow                           *connect.Client[v1.GetWorkflowRequest, v1.GetWorkflowResponse]
-	listWorkflows                         *connect.Client[v1.ListWorkflowsRequest, v1.ListWorkflowsResponse]
-	updateWorkflow                        *connect.Client[v1.UpdateWorkflowRequest, v1.UpdateWorkflowResponse]
-	updateWorkflowV2                      *connect.Client[v1.UpdateWorkflowV2Request, v1.UpdateWorkflowV2Response]
-	deleteWorkflow                        *connect.Client[v1.DeleteWorkflowRequest, v1.DeleteWorkflowResponse]
-	createWorkflowTrigger                 *connect.Client[v1.CreateWorkflowTriggerRequest, v1.CreateWorkflowTriggerResponse]
-	createWorkflowCodeFromNaturalLanguage *connect.Client[v1.CreateWorkflowCodeFromNaturalLanguageRequest, v1.CreateWorkflowCodeFromNaturalLanguageResponse]
-	createForm                            *connect.Client[v1.CreateFormRequest, v1.CreateFormResponse]
-	getForm                               *connect.Client[v1.GetFormRequest, v1.GetFormResponse]
-	listForms                             *connect.Client[v1.ListFormsRequest, v1.ListFormsResponse]
-	updateForm                            *connect.Client[v1.UpdateFormRequest, v1.UpdateFormResponse]
-	updateFormV2                          *connect.Client[v1.UpdateFormV2Request, v1.UpdateFormV2Response]
-	deleteForm                            *connect.Client[v1.DeleteFormRequest, v1.DeleteFormResponse]
+	createWorkflow        *connect.Client[v1.CreateWorkflowRequest, v1.CreateWorkflowResponse]
+	getWorkflow           *connect.Client[v1.GetWorkflowRequest, v1.GetWorkflowResponse]
+	listWorkflows         *connect.Client[v1.ListWorkflowsRequest, v1.ListWorkflowsResponse]
+	updateWorkflow        *connect.Client[v1.UpdateWorkflowRequest, v1.UpdateWorkflowResponse]
+	updateWorkflowV2      *connect.Client[v1.UpdateWorkflowV2Request, v1.UpdateWorkflowV2Response]
+	deleteWorkflow        *connect.Client[v1.DeleteWorkflowRequest, v1.DeleteWorkflowResponse]
+	createWorkflowTrigger *connect.Client[v1.CreateWorkflowTriggerRequest, v1.CreateWorkflowTriggerResponse]
+	createForm            *connect.Client[v1.CreateFormRequest, v1.CreateFormResponse]
+	getForm               *connect.Client[v1.GetFormRequest, v1.GetFormResponse]
+	listForms             *connect.Client[v1.ListFormsRequest, v1.ListFormsResponse]
+	updateForm            *connect.Client[v1.UpdateFormRequest, v1.UpdateFormResponse]
+	updateFormV2          *connect.Client[v1.UpdateFormV2Request, v1.UpdateFormV2Response]
+	deleteForm            *connect.Client[v1.DeleteFormRequest, v1.DeleteFormResponse]
 }
 
 // CreateWorkflow calls core.v1.WorkflowService.CreateWorkflow.
@@ -289,12 +275,6 @@ func (c *workflowServiceClient) DeleteWorkflow(ctx context.Context, req *connect
 // CreateWorkflowTrigger calls core.v1.WorkflowService.CreateWorkflowTrigger.
 func (c *workflowServiceClient) CreateWorkflowTrigger(ctx context.Context, req *connect.Request[v1.CreateWorkflowTriggerRequest]) (*connect.Response[v1.CreateWorkflowTriggerResponse], error) {
 	return c.createWorkflowTrigger.CallUnary(ctx, req)
-}
-
-// CreateWorkflowCodeFromNaturalLanguage calls
-// core.v1.WorkflowService.CreateWorkflowCodeFromNaturalLanguage.
-func (c *workflowServiceClient) CreateWorkflowCodeFromNaturalLanguage(ctx context.Context, req *connect.Request[v1.CreateWorkflowCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateWorkflowCodeFromNaturalLanguageResponse], error) {
-	return c.createWorkflowCodeFromNaturalLanguage.CallUnary(ctx, req)
 }
 
 // CreateForm calls core.v1.WorkflowService.CreateForm.
@@ -357,10 +337,6 @@ type WorkflowServiceHandler interface {
 	//
 	// Trigger a workflow with api-request trigger type. The workflow's allow CEL expression is evaluated with the requesting user's context.
 	CreateWorkflowTrigger(context.Context, *connect.Request[v1.CreateWorkflowTriggerRequest]) (*connect.Response[v1.CreateWorkflowTriggerResponse], error)
-	// Generate workflow YAML code from natural language
-	//
-	// Translates a natural language prompt into Formal workflow YAML code using an LLM, with validation and retry.
-	CreateWorkflowCodeFromNaturalLanguage(context.Context, *connect.Request[v1.CreateWorkflowCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateWorkflowCodeFromNaturalLanguageResponse], error)
 	// Create form
 	//
 	// Create a new form
@@ -438,12 +414,6 @@ func NewWorkflowServiceHandler(svc WorkflowServiceHandler, opts ...connect.Handl
 		connect.WithSchema(workflowServiceMethods.ByName("CreateWorkflowTrigger")),
 		connect.WithHandlerOptions(opts...),
 	)
-	workflowServiceCreateWorkflowCodeFromNaturalLanguageHandler := connect.NewUnaryHandler(
-		WorkflowServiceCreateWorkflowCodeFromNaturalLanguageProcedure,
-		svc.CreateWorkflowCodeFromNaturalLanguage,
-		connect.WithSchema(workflowServiceMethods.ByName("CreateWorkflowCodeFromNaturalLanguage")),
-		connect.WithHandlerOptions(opts...),
-	)
 	workflowServiceCreateFormHandler := connect.NewUnaryHandler(
 		WorkflowServiceCreateFormProcedure,
 		svc.CreateForm,
@@ -498,8 +468,6 @@ func NewWorkflowServiceHandler(svc WorkflowServiceHandler, opts ...connect.Handl
 			workflowServiceDeleteWorkflowHandler.ServeHTTP(w, r)
 		case WorkflowServiceCreateWorkflowTriggerProcedure:
 			workflowServiceCreateWorkflowTriggerHandler.ServeHTTP(w, r)
-		case WorkflowServiceCreateWorkflowCodeFromNaturalLanguageProcedure:
-			workflowServiceCreateWorkflowCodeFromNaturalLanguageHandler.ServeHTTP(w, r)
 		case WorkflowServiceCreateFormProcedure:
 			workflowServiceCreateFormHandler.ServeHTTP(w, r)
 		case WorkflowServiceGetFormProcedure:
@@ -547,10 +515,6 @@ func (UnimplementedWorkflowServiceHandler) DeleteWorkflow(context.Context, *conn
 
 func (UnimplementedWorkflowServiceHandler) CreateWorkflowTrigger(context.Context, *connect.Request[v1.CreateWorkflowTriggerRequest]) (*connect.Response[v1.CreateWorkflowTriggerResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.WorkflowService.CreateWorkflowTrigger is not implemented"))
-}
-
-func (UnimplementedWorkflowServiceHandler) CreateWorkflowCodeFromNaturalLanguage(context.Context, *connect.Request[v1.CreateWorkflowCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateWorkflowCodeFromNaturalLanguageResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.WorkflowService.CreateWorkflowCodeFromNaturalLanguage is not implemented"))
 }
 
 func (UnimplementedWorkflowServiceHandler) CreateForm(context.Context, *connect.Request[v1.CreateFormRequest]) (*connect.Response[v1.CreateFormResponse], error) {

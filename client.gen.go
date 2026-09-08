@@ -2231,17 +2231,6 @@ func (c *PoliciesServiceClient) CreatePolicySuspension(ctx context.Context, req 
 	return res.Msg, nil
 }
 
-// Generate Rego code from natural language
-//
-// Translates a natural language prompt into OPA/Rego policy or permission code using an LLM.
-func (c *PoliciesServiceClient) CreateRegoCodeFromNaturalLanguage(ctx context.Context, req *corev1.CreateRegoCodeFromNaturalLanguageRequest) (*corev1.CreateRegoCodeFromNaturalLanguageResponse, error) {
-	res, err := c.inner.CreateRegoCodeFromNaturalLanguage(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
 // Delete policy
 //
 // Delete a policy
@@ -3838,17 +3827,6 @@ func (c *WorkflowServiceClient) CreateForm(ctx context.Context, req *corev1.Crea
 // Create a new workflow
 func (c *WorkflowServiceClient) CreateWorkflow(ctx context.Context, req *corev1.CreateWorkflowRequest) (*corev1.CreateWorkflowResponse, error) {
 	res, err := c.inner.CreateWorkflow(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
-// Generate workflow YAML code from natural language
-//
-// Translates a natural language prompt into Formal workflow YAML code using an LLM, with validation and retry.
-func (c *WorkflowServiceClient) CreateWorkflowCodeFromNaturalLanguage(ctx context.Context, req *corev1.CreateWorkflowCodeFromNaturalLanguageRequest) (*corev1.CreateWorkflowCodeFromNaturalLanguageResponse, error) {
-	res, err := c.inner.CreateWorkflowCodeFromNaturalLanguage(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

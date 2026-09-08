@@ -102,9 +102,6 @@ const (
 	// PoliciesServiceDeletePolicySuspensionProcedure is the fully-qualified name of the
 	// PoliciesService's DeletePolicySuspension RPC.
 	PoliciesServiceDeletePolicySuspensionProcedure = "/core.v1.PoliciesService/DeletePolicySuspension"
-	// PoliciesServiceCreateRegoCodeFromNaturalLanguageProcedure is the fully-qualified name of the
-	// PoliciesService's CreateRegoCodeFromNaturalLanguage RPC.
-	PoliciesServiceCreateRegoCodeFromNaturalLanguageProcedure = "/core.v1.PoliciesService/CreateRegoCodeFromNaturalLanguage"
 )
 
 // PoliciesServiceClient is a client for the core.v1.PoliciesService service.
@@ -189,10 +186,6 @@ type PoliciesServiceClient interface {
 	//
 	// Delete a policy suspension
 	DeletePolicySuspension(context.Context, *connect.Request[v1.DeletePolicySuspensionRequest]) (*connect.Response[v1.DeletePolicySuspensionResponse], error)
-	// Generate Rego code from natural language
-	//
-	// Translates a natural language prompt into OPA/Rego policy or permission code using an LLM.
-	CreateRegoCodeFromNaturalLanguage(context.Context, *connect.Request[v1.CreateRegoCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateRegoCodeFromNaturalLanguageResponse], error)
 }
 
 // NewPoliciesServiceClient constructs a client for the core.v1.PoliciesService service. By default,
@@ -356,41 +349,34 @@ func NewPoliciesServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(policiesServiceMethods.ByName("DeletePolicySuspension")),
 			connect.WithClientOptions(opts...),
 		),
-		createRegoCodeFromNaturalLanguage: connect.NewClient[v1.CreateRegoCodeFromNaturalLanguageRequest, v1.CreateRegoCodeFromNaturalLanguageResponse](
-			httpClient,
-			baseURL+PoliciesServiceCreateRegoCodeFromNaturalLanguageProcedure,
-			connect.WithSchema(policiesServiceMethods.ByName("CreateRegoCodeFromNaturalLanguage")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // policiesServiceClient implements PoliciesServiceClient.
 type policiesServiceClient struct {
-	listPolicies                      *connect.Client[v1.ListPoliciesRequest, v1.ListPoliciesResponse]
-	getPolicy                         *connect.Client[v1.GetPolicyRequest, v1.GetPolicyResponse]
-	getPolicyCodeValidity             *connect.Client[v1.GetPolicyCodeValidityRequest, v1.GetPolicyCodeValidityResponse]
-	createPolicy                      *connect.Client[v1.CreatePolicyRequest, v1.CreatePolicyResponse]
-	updatePolicy                      *connect.Client[v1.UpdatePolicyRequest, v1.UpdatePolicyResponse]
-	updatePolicyV2                    *connect.Client[v1.UpdatePolicyV2Request, v1.UpdatePolicyV2Response]
-	deletePolicy                      *connect.Client[v1.DeletePolicyRequest, v1.DeletePolicyResponse]
-	createPolicyReport                *connect.Client[v1.CreatePolicyReportRequest, v1.CreatePolicyReportResponse]
-	getPolicyReport                   *connect.Client[v1.GetPolicyReportRequest, v1.GetPolicyReportResponse]
-	getPolicyImpactReportGraph        *connect.Client[v1.GetPolicyImpactReportGraphRequest, v1.GetPolicyImpactReportGraphResponse]
-	listPolicyImpactReportLogs        *connect.Client[v1.ListPolicyImpactReportLogsRequest, v1.ListPolicyImpactReportLogsResponse]
-	createPolicyStageConfiguration    *connect.Client[v1.CreatePolicyStageConfigurationRequest, v1.CreatePolicyStageConfigurationResponse]
-	getPolicyStageConfiguration       *connect.Client[v1.GetPolicyStageConfigurationRequest, v1.GetPolicyStageConfigurationResponse]
-	listPolicyStageConfigurations     *connect.Client[v1.ListPolicyStageConfigurationsRequest, v1.ListPolicyStageConfigurationsResponse]
-	updatePolicyStageConfiguration    *connect.Client[v1.UpdatePolicyStageConfigurationRequest, v1.UpdatePolicyStageConfigurationResponse]
-	updatePolicyStageConfigurationV2  *connect.Client[v1.UpdatePolicyStageConfigurationV2Request, v1.UpdatePolicyStageConfigurationV2Response]
-	deletePolicyStageConfiguration    *connect.Client[v1.DeletePolicyStageConfigurationRequest, v1.DeletePolicyStageConfigurationResponse]
-	getPolicyVersion                  *connect.Client[v1.GetPolicyVersionRequest, v1.GetPolicyVersionResponse]
-	listPolicyVersions                *connect.Client[v1.ListPolicyVersionsRequest, v1.ListPolicyVersionsResponse]
-	createPolicySuspension            *connect.Client[v1.CreatePolicySuspensionRequest, v1.CreatePolicySuspensionResponse]
-	getPolicySuspension               *connect.Client[v1.GetPolicySuspensionRequest, v1.GetPolicySuspensionResponse]
-	listPolicySuspensions             *connect.Client[v1.ListPolicySuspensionsRequest, v1.ListPolicySuspensionsResponse]
-	deletePolicySuspension            *connect.Client[v1.DeletePolicySuspensionRequest, v1.DeletePolicySuspensionResponse]
-	createRegoCodeFromNaturalLanguage *connect.Client[v1.CreateRegoCodeFromNaturalLanguageRequest, v1.CreateRegoCodeFromNaturalLanguageResponse]
+	listPolicies                     *connect.Client[v1.ListPoliciesRequest, v1.ListPoliciesResponse]
+	getPolicy                        *connect.Client[v1.GetPolicyRequest, v1.GetPolicyResponse]
+	getPolicyCodeValidity            *connect.Client[v1.GetPolicyCodeValidityRequest, v1.GetPolicyCodeValidityResponse]
+	createPolicy                     *connect.Client[v1.CreatePolicyRequest, v1.CreatePolicyResponse]
+	updatePolicy                     *connect.Client[v1.UpdatePolicyRequest, v1.UpdatePolicyResponse]
+	updatePolicyV2                   *connect.Client[v1.UpdatePolicyV2Request, v1.UpdatePolicyV2Response]
+	deletePolicy                     *connect.Client[v1.DeletePolicyRequest, v1.DeletePolicyResponse]
+	createPolicyReport               *connect.Client[v1.CreatePolicyReportRequest, v1.CreatePolicyReportResponse]
+	getPolicyReport                  *connect.Client[v1.GetPolicyReportRequest, v1.GetPolicyReportResponse]
+	getPolicyImpactReportGraph       *connect.Client[v1.GetPolicyImpactReportGraphRequest, v1.GetPolicyImpactReportGraphResponse]
+	listPolicyImpactReportLogs       *connect.Client[v1.ListPolicyImpactReportLogsRequest, v1.ListPolicyImpactReportLogsResponse]
+	createPolicyStageConfiguration   *connect.Client[v1.CreatePolicyStageConfigurationRequest, v1.CreatePolicyStageConfigurationResponse]
+	getPolicyStageConfiguration      *connect.Client[v1.GetPolicyStageConfigurationRequest, v1.GetPolicyStageConfigurationResponse]
+	listPolicyStageConfigurations    *connect.Client[v1.ListPolicyStageConfigurationsRequest, v1.ListPolicyStageConfigurationsResponse]
+	updatePolicyStageConfiguration   *connect.Client[v1.UpdatePolicyStageConfigurationRequest, v1.UpdatePolicyStageConfigurationResponse]
+	updatePolicyStageConfigurationV2 *connect.Client[v1.UpdatePolicyStageConfigurationV2Request, v1.UpdatePolicyStageConfigurationV2Response]
+	deletePolicyStageConfiguration   *connect.Client[v1.DeletePolicyStageConfigurationRequest, v1.DeletePolicyStageConfigurationResponse]
+	getPolicyVersion                 *connect.Client[v1.GetPolicyVersionRequest, v1.GetPolicyVersionResponse]
+	listPolicyVersions               *connect.Client[v1.ListPolicyVersionsRequest, v1.ListPolicyVersionsResponse]
+	createPolicySuspension           *connect.Client[v1.CreatePolicySuspensionRequest, v1.CreatePolicySuspensionResponse]
+	getPolicySuspension              *connect.Client[v1.GetPolicySuspensionRequest, v1.GetPolicySuspensionResponse]
+	listPolicySuspensions            *connect.Client[v1.ListPolicySuspensionsRequest, v1.ListPolicySuspensionsResponse]
+	deletePolicySuspension           *connect.Client[v1.DeletePolicySuspensionRequest, v1.DeletePolicySuspensionResponse]
 }
 
 // ListPolicies calls core.v1.PoliciesService.ListPolicies.
@@ -508,12 +494,6 @@ func (c *policiesServiceClient) DeletePolicySuspension(ctx context.Context, req 
 	return c.deletePolicySuspension.CallUnary(ctx, req)
 }
 
-// CreateRegoCodeFromNaturalLanguage calls
-// core.v1.PoliciesService.CreateRegoCodeFromNaturalLanguage.
-func (c *policiesServiceClient) CreateRegoCodeFromNaturalLanguage(ctx context.Context, req *connect.Request[v1.CreateRegoCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateRegoCodeFromNaturalLanguageResponse], error) {
-	return c.createRegoCodeFromNaturalLanguage.CallUnary(ctx, req)
-}
-
 // PoliciesServiceHandler is an implementation of the core.v1.PoliciesService service.
 type PoliciesServiceHandler interface {
 	// List policies
@@ -596,10 +576,6 @@ type PoliciesServiceHandler interface {
 	//
 	// Delete a policy suspension
 	DeletePolicySuspension(context.Context, *connect.Request[v1.DeletePolicySuspensionRequest]) (*connect.Response[v1.DeletePolicySuspensionResponse], error)
-	// Generate Rego code from natural language
-	//
-	// Translates a natural language prompt into OPA/Rego policy or permission code using an LLM.
-	CreateRegoCodeFromNaturalLanguage(context.Context, *connect.Request[v1.CreateRegoCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateRegoCodeFromNaturalLanguageResponse], error)
 }
 
 // NewPoliciesServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -759,12 +735,6 @@ func NewPoliciesServiceHandler(svc PoliciesServiceHandler, opts ...connect.Handl
 		connect.WithSchema(policiesServiceMethods.ByName("DeletePolicySuspension")),
 		connect.WithHandlerOptions(opts...),
 	)
-	policiesServiceCreateRegoCodeFromNaturalLanguageHandler := connect.NewUnaryHandler(
-		PoliciesServiceCreateRegoCodeFromNaturalLanguageProcedure,
-		svc.CreateRegoCodeFromNaturalLanguage,
-		connect.WithSchema(policiesServiceMethods.ByName("CreateRegoCodeFromNaturalLanguage")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/core.v1.PoliciesService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case PoliciesServiceListPoliciesProcedure:
@@ -813,8 +783,6 @@ func NewPoliciesServiceHandler(svc PoliciesServiceHandler, opts ...connect.Handl
 			policiesServiceListPolicySuspensionsHandler.ServeHTTP(w, r)
 		case PoliciesServiceDeletePolicySuspensionProcedure:
 			policiesServiceDeletePolicySuspensionHandler.ServeHTTP(w, r)
-		case PoliciesServiceCreateRegoCodeFromNaturalLanguageProcedure:
-			policiesServiceCreateRegoCodeFromNaturalLanguageHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -914,8 +882,4 @@ func (UnimplementedPoliciesServiceHandler) ListPolicySuspensions(context.Context
 
 func (UnimplementedPoliciesServiceHandler) DeletePolicySuspension(context.Context, *connect.Request[v1.DeletePolicySuspensionRequest]) (*connect.Response[v1.DeletePolicySuspensionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.PoliciesService.DeletePolicySuspension is not implemented"))
-}
-
-func (UnimplementedPoliciesServiceHandler) CreateRegoCodeFromNaturalLanguage(context.Context, *connect.Request[v1.CreateRegoCodeFromNaturalLanguageRequest]) (*connect.Response[v1.CreateRegoCodeFromNaturalLanguageResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.PoliciesService.CreateRegoCodeFromNaturalLanguage is not implemented"))
 }
