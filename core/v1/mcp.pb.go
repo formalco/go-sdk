@@ -728,6 +728,202 @@ func (x *ListShadowMcpsResponse) GetShadowMcps() []*ShadowMcp {
 	return nil
 }
 
+type ApprovalRequest struct {
+	state           protoimpl.MessageState  `protogen:"open.v1"`
+	Id              string                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	RequesterUserId string                  `protobuf:"bytes,2,opt,name=requester_user_id,json=requesterUserId,proto3" json:"requester_user_id,omitempty"`
+	RequesterEmail  string                  `protobuf:"bytes,3,opt,name=requester_email,json=requesterEmail,proto3" json:"requester_email,omitempty"`
+	Request         *CreateMcpServerRequest `protobuf:"bytes,4,opt,name=request,proto3" json:"request,omitempty"`
+	Reason          string                  `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
+	Status          string                  `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedAt       *timestamppb.Timestamp  `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ApprovalRequest) Reset() {
+	*x = ApprovalRequest{}
+	mi := &file_core_v1_mcp_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ApprovalRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ApprovalRequest) ProtoMessage() {}
+
+func (x *ApprovalRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_mcp_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ApprovalRequest.ProtoReflect.Descriptor instead.
+func (*ApprovalRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_mcp_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ApprovalRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *ApprovalRequest) GetRequesterUserId() string {
+	if x != nil {
+		return x.RequesterUserId
+	}
+	return ""
+}
+
+func (x *ApprovalRequest) GetRequesterEmail() string {
+	if x != nil {
+		return x.RequesterEmail
+	}
+	return ""
+}
+
+func (x *ApprovalRequest) GetRequest() *CreateMcpServerRequest {
+	if x != nil {
+		return x.Request
+	}
+	return nil
+}
+
+func (x *ApprovalRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *ApprovalRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *ApprovalRequest) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+type CreateMcpRequestRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Url           string                 `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	Reason        string                 `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateMcpRequestRequest) Reset() {
+	*x = CreateMcpRequestRequest{}
+	mi := &file_core_v1_mcp_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateMcpRequestRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateMcpRequestRequest) ProtoMessage() {}
+
+func (x *CreateMcpRequestRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_mcp_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateMcpRequestRequest.ProtoReflect.Descriptor instead.
+func (*CreateMcpRequestRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_mcp_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *CreateMcpRequestRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateMcpRequestRequest) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+func (x *CreateMcpRequestRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type CreateMcpRequestResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Request       *ApprovalRequest       `protobuf:"bytes,1,opt,name=request,proto3" json:"request,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateMcpRequestResponse) Reset() {
+	*x = CreateMcpRequestResponse{}
+	mi := &file_core_v1_mcp_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateMcpRequestResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateMcpRequestResponse) ProtoMessage() {}
+
+func (x *CreateMcpRequestResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_mcp_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateMcpRequestResponse.ProtoReflect.Descriptor instead.
+func (*CreateMcpRequestResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_mcp_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *CreateMcpRequestResponse) GetRequest() *ApprovalRequest {
+	if x != nil {
+		return x.Request
+	}
+	return nil
+}
+
 var File_core_v1_mcp_proto protoreflect.FileDescriptor
 
 const file_core_v1_mcp_proto_rawDesc = "" +
@@ -778,7 +974,22 @@ const file_core_v1_mcp_proto_rawDesc = "" +
 	"\tlast_seen\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\"M\n" +
 	"\x16ListShadowMcpsResponse\x123\n" +
 	"\vshadow_mcps\x18\x01 \x03(\v2\x12.core.v1.ShadowMcpR\n" +
-	"shadowMcps2\xaa\x06\n" +
+	"shadowMcps\"\x9c\x02\n" +
+	"\x0fApprovalRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12*\n" +
+	"\x11requester_user_id\x18\x02 \x01(\tR\x0frequesterUserId\x12'\n" +
+	"\x0frequester_email\x18\x03 \x01(\tR\x0erequesterEmail\x129\n" +
+	"\arequest\x18\x04 \x01(\v2\x1f.core.v1.CreateMcpServerRequestR\arequest\x12\x16\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason\x12\x16\n" +
+	"\x06status\x18\x06 \x01(\tR\x06status\x129\n" +
+	"\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"i\n" +
+	"\x17CreateMcpRequestRequest\x12\x1b\n" +
+	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x19\n" +
+	"\x03url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\"N\n" +
+	"\x18CreateMcpRequestResponse\x122\n" +
+	"\arequest\x18\x01 \x01(\v2\x18.core.v1.ApprovalRequestR\arequest2\xb5\a\n" +
 	"\n" +
 	"McpService\x12\x83\x01\n" +
 	"\x0eListMcpServers\x12\x1e.core.v1.ListMcpServersRequest\x1a\x1f.core.v1.ListMcpServersResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.McpService/ListMcpServers\x90\x02\x01\x12{\n" +
@@ -786,7 +997,8 @@ const file_core_v1_mcp_proto_rawDesc = "" +
 	"\x0fCreateMcpServer\x12\x1f.core.v1.CreateMcpServerRequest\x1a .core.v1.CreateMcpServerResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.McpService/CreateMcpServer\x12\x84\x01\n" +
 	"\x0fUpdateMcpServer\x12\x1f.core.v1.UpdateMcpServerRequest\x1a .core.v1.UpdateMcpServerResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.McpService/UpdateMcpServer\x12\x84\x01\n" +
 	"\x0fDeleteMcpServer\x12\x1f.core.v1.DeleteMcpServerRequest\x1a .core.v1.DeleteMcpServerResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.McpService/DeleteMcpServer\x12\x83\x01\n" +
-	"\x0eListShadowMcps\x12\x1e.core.v1.ListShadowMcpsRequest\x1a\x1f.core.v1.ListShadowMcpsResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.McpService/ListShadowMcps\x90\x02\x01B\x82\x01\n" +
+	"\x0eListShadowMcps\x12\x1e.core.v1.ListShadowMcpsRequest\x1a\x1f.core.v1.ListShadowMcpsResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.McpService/ListShadowMcps\x90\x02\x01\x12\x88\x01\n" +
+	"\x10CreateMcpRequest\x12 .core.v1.CreateMcpRequestRequest\x1a!.core.v1.CreateMcpRequestResponse\"/\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.McpService/CreateMcpRequestB\x82\x01\n" +
 	"\vcom.core.v1B\bMcpProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (
@@ -801,51 +1013,59 @@ func file_core_v1_mcp_proto_rawDescGZIP() []byte {
 	return file_core_v1_mcp_proto_rawDescData
 }
 
-var file_core_v1_mcp_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_core_v1_mcp_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_core_v1_mcp_proto_goTypes = []any{
-	(*ListMcpServersRequest)(nil),   // 0: core.v1.ListMcpServersRequest
-	(*McpServer)(nil),               // 1: core.v1.McpServer
-	(*ListMcpServersResponse)(nil),  // 2: core.v1.ListMcpServersResponse
-	(*GetMcpServerRequest)(nil),     // 3: core.v1.GetMcpServerRequest
-	(*GetMcpServerResponse)(nil),    // 4: core.v1.GetMcpServerResponse
-	(*CreateMcpServerRequest)(nil),  // 5: core.v1.CreateMcpServerRequest
-	(*CreateMcpServerResponse)(nil), // 6: core.v1.CreateMcpServerResponse
-	(*UpdateMcpServerRequest)(nil),  // 7: core.v1.UpdateMcpServerRequest
-	(*UpdateMcpServerResponse)(nil), // 8: core.v1.UpdateMcpServerResponse
-	(*DeleteMcpServerRequest)(nil),  // 9: core.v1.DeleteMcpServerRequest
-	(*DeleteMcpServerResponse)(nil), // 10: core.v1.DeleteMcpServerResponse
-	(*ListShadowMcpsRequest)(nil),   // 11: core.v1.ListShadowMcpsRequest
-	(*ShadowMcp)(nil),               // 12: core.v1.ShadowMcp
-	(*ListShadowMcpsResponse)(nil),  // 13: core.v1.ListShadowMcpsResponse
-	(*ListMetadata)(nil),            // 14: core.v1.ListMetadata
-	(*timestamppb.Timestamp)(nil),   // 15: google.protobuf.Timestamp
+	(*ListMcpServersRequest)(nil),    // 0: core.v1.ListMcpServersRequest
+	(*McpServer)(nil),                // 1: core.v1.McpServer
+	(*ListMcpServersResponse)(nil),   // 2: core.v1.ListMcpServersResponse
+	(*GetMcpServerRequest)(nil),      // 3: core.v1.GetMcpServerRequest
+	(*GetMcpServerResponse)(nil),     // 4: core.v1.GetMcpServerResponse
+	(*CreateMcpServerRequest)(nil),   // 5: core.v1.CreateMcpServerRequest
+	(*CreateMcpServerResponse)(nil),  // 6: core.v1.CreateMcpServerResponse
+	(*UpdateMcpServerRequest)(nil),   // 7: core.v1.UpdateMcpServerRequest
+	(*UpdateMcpServerResponse)(nil),  // 8: core.v1.UpdateMcpServerResponse
+	(*DeleteMcpServerRequest)(nil),   // 9: core.v1.DeleteMcpServerRequest
+	(*DeleteMcpServerResponse)(nil),  // 10: core.v1.DeleteMcpServerResponse
+	(*ListShadowMcpsRequest)(nil),    // 11: core.v1.ListShadowMcpsRequest
+	(*ShadowMcp)(nil),                // 12: core.v1.ShadowMcp
+	(*ListShadowMcpsResponse)(nil),   // 13: core.v1.ListShadowMcpsResponse
+	(*ApprovalRequest)(nil),          // 14: core.v1.ApprovalRequest
+	(*CreateMcpRequestRequest)(nil),  // 15: core.v1.CreateMcpRequestRequest
+	(*CreateMcpRequestResponse)(nil), // 16: core.v1.CreateMcpRequestResponse
+	(*ListMetadata)(nil),             // 17: core.v1.ListMetadata
+	(*timestamppb.Timestamp)(nil),    // 18: google.protobuf.Timestamp
 }
 var file_core_v1_mcp_proto_depIdxs = []int32{
 	1,  // 0: core.v1.ListMcpServersResponse.mcp_servers:type_name -> core.v1.McpServer
-	14, // 1: core.v1.ListMcpServersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	17, // 1: core.v1.ListMcpServersResponse.list_metadata:type_name -> core.v1.ListMetadata
 	1,  // 2: core.v1.GetMcpServerResponse.mcp_server:type_name -> core.v1.McpServer
 	1,  // 3: core.v1.CreateMcpServerResponse.mcp_server:type_name -> core.v1.McpServer
 	1,  // 4: core.v1.UpdateMcpServerResponse.mcp_server:type_name -> core.v1.McpServer
-	15, // 5: core.v1.ShadowMcp.first_seen:type_name -> google.protobuf.Timestamp
-	15, // 6: core.v1.ShadowMcp.last_seen:type_name -> google.protobuf.Timestamp
+	18, // 5: core.v1.ShadowMcp.first_seen:type_name -> google.protobuf.Timestamp
+	18, // 6: core.v1.ShadowMcp.last_seen:type_name -> google.protobuf.Timestamp
 	12, // 7: core.v1.ListShadowMcpsResponse.shadow_mcps:type_name -> core.v1.ShadowMcp
-	0,  // 8: core.v1.McpService.ListMcpServers:input_type -> core.v1.ListMcpServersRequest
-	3,  // 9: core.v1.McpService.GetMcpServer:input_type -> core.v1.GetMcpServerRequest
-	5,  // 10: core.v1.McpService.CreateMcpServer:input_type -> core.v1.CreateMcpServerRequest
-	7,  // 11: core.v1.McpService.UpdateMcpServer:input_type -> core.v1.UpdateMcpServerRequest
-	9,  // 12: core.v1.McpService.DeleteMcpServer:input_type -> core.v1.DeleteMcpServerRequest
-	11, // 13: core.v1.McpService.ListShadowMcps:input_type -> core.v1.ListShadowMcpsRequest
-	2,  // 14: core.v1.McpService.ListMcpServers:output_type -> core.v1.ListMcpServersResponse
-	4,  // 15: core.v1.McpService.GetMcpServer:output_type -> core.v1.GetMcpServerResponse
-	6,  // 16: core.v1.McpService.CreateMcpServer:output_type -> core.v1.CreateMcpServerResponse
-	8,  // 17: core.v1.McpService.UpdateMcpServer:output_type -> core.v1.UpdateMcpServerResponse
-	10, // 18: core.v1.McpService.DeleteMcpServer:output_type -> core.v1.DeleteMcpServerResponse
-	13, // 19: core.v1.McpService.ListShadowMcps:output_type -> core.v1.ListShadowMcpsResponse
-	14, // [14:20] is the sub-list for method output_type
-	8,  // [8:14] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	5,  // 8: core.v1.ApprovalRequest.request:type_name -> core.v1.CreateMcpServerRequest
+	18, // 9: core.v1.ApprovalRequest.created_at:type_name -> google.protobuf.Timestamp
+	14, // 10: core.v1.CreateMcpRequestResponse.request:type_name -> core.v1.ApprovalRequest
+	0,  // 11: core.v1.McpService.ListMcpServers:input_type -> core.v1.ListMcpServersRequest
+	3,  // 12: core.v1.McpService.GetMcpServer:input_type -> core.v1.GetMcpServerRequest
+	5,  // 13: core.v1.McpService.CreateMcpServer:input_type -> core.v1.CreateMcpServerRequest
+	7,  // 14: core.v1.McpService.UpdateMcpServer:input_type -> core.v1.UpdateMcpServerRequest
+	9,  // 15: core.v1.McpService.DeleteMcpServer:input_type -> core.v1.DeleteMcpServerRequest
+	11, // 16: core.v1.McpService.ListShadowMcps:input_type -> core.v1.ListShadowMcpsRequest
+	15, // 17: core.v1.McpService.CreateMcpRequest:input_type -> core.v1.CreateMcpRequestRequest
+	2,  // 18: core.v1.McpService.ListMcpServers:output_type -> core.v1.ListMcpServersResponse
+	4,  // 19: core.v1.McpService.GetMcpServer:output_type -> core.v1.GetMcpServerResponse
+	6,  // 20: core.v1.McpService.CreateMcpServer:output_type -> core.v1.CreateMcpServerResponse
+	8,  // 21: core.v1.McpService.UpdateMcpServer:output_type -> core.v1.UpdateMcpServerResponse
+	10, // 22: core.v1.McpService.DeleteMcpServer:output_type -> core.v1.DeleteMcpServerResponse
+	13, // 23: core.v1.McpService.ListShadowMcps:output_type -> core.v1.ListShadowMcpsResponse
+	16, // 24: core.v1.McpService.CreateMcpRequest:output_type -> core.v1.CreateMcpRequestResponse
+	18, // [18:25] is the sub-list for method output_type
+	11, // [11:18] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_mcp_proto_init() }
@@ -860,7 +1080,7 @@ func file_core_v1_mcp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_mcp_proto_rawDesc), len(file_core_v1_mcp_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

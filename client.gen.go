@@ -1988,6 +1988,17 @@ type McpServiceClient struct {
 	inner corev1connect.McpServiceClient
 }
 
+// Create MCP request
+//
+// File an approval request to create a managed MCP server.
+func (c *McpServiceClient) CreateMcpRequest(ctx context.Context, req *corev1.CreateMcpRequestRequest) (*corev1.CreateMcpRequestResponse, error) {
+	res, err := c.inner.CreateMcpRequest(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Create MCP server
 //
 // Create a managed MCP server.

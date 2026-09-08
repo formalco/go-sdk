@@ -50,6 +50,9 @@ const (
 	// McpServiceListShadowMcpsProcedure is the fully-qualified name of the McpService's ListShadowMcps
 	// RPC.
 	McpServiceListShadowMcpsProcedure = "/core.v1.McpService/ListShadowMcps"
+	// McpServiceCreateMcpRequestProcedure is the fully-qualified name of the McpService's
+	// CreateMcpRequest RPC.
+	McpServiceCreateMcpRequestProcedure = "/core.v1.McpService/CreateMcpRequest"
 )
 
 // McpServiceClient is a client for the core.v1.McpService service.
@@ -78,6 +81,10 @@ type McpServiceClient interface {
 	//
 	// List observed MCP servers that are not yet managed.
 	ListShadowMcps(context.Context, *connect.Request[v1.ListShadowMcpsRequest]) (*connect.Response[v1.ListShadowMcpsResponse], error)
+	// Create MCP request
+	//
+	// File an approval request to create a managed MCP server.
+	CreateMcpRequest(context.Context, *connect.Request[v1.CreateMcpRequestRequest]) (*connect.Response[v1.CreateMcpRequestResponse], error)
 }
 
 // NewMcpServiceClient constructs a client for the core.v1.McpService service. By default, it uses
@@ -130,17 +137,24 @@ func NewMcpServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
+		createMcpRequest: connect.NewClient[v1.CreateMcpRequestRequest, v1.CreateMcpRequestResponse](
+			httpClient,
+			baseURL+McpServiceCreateMcpRequestProcedure,
+			connect.WithSchema(mcpServiceMethods.ByName("CreateMcpRequest")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // mcpServiceClient implements McpServiceClient.
 type mcpServiceClient struct {
-	listMcpServers  *connect.Client[v1.ListMcpServersRequest, v1.ListMcpServersResponse]
-	getMcpServer    *connect.Client[v1.GetMcpServerRequest, v1.GetMcpServerResponse]
-	createMcpServer *connect.Client[v1.CreateMcpServerRequest, v1.CreateMcpServerResponse]
-	updateMcpServer *connect.Client[v1.UpdateMcpServerRequest, v1.UpdateMcpServerResponse]
-	deleteMcpServer *connect.Client[v1.DeleteMcpServerRequest, v1.DeleteMcpServerResponse]
-	listShadowMcps  *connect.Client[v1.ListShadowMcpsRequest, v1.ListShadowMcpsResponse]
+	listMcpServers   *connect.Client[v1.ListMcpServersRequest, v1.ListMcpServersResponse]
+	getMcpServer     *connect.Client[v1.GetMcpServerRequest, v1.GetMcpServerResponse]
+	createMcpServer  *connect.Client[v1.CreateMcpServerRequest, v1.CreateMcpServerResponse]
+	updateMcpServer  *connect.Client[v1.UpdateMcpServerRequest, v1.UpdateMcpServerResponse]
+	deleteMcpServer  *connect.Client[v1.DeleteMcpServerRequest, v1.DeleteMcpServerResponse]
+	listShadowMcps   *connect.Client[v1.ListShadowMcpsRequest, v1.ListShadowMcpsResponse]
+	createMcpRequest *connect.Client[v1.CreateMcpRequestRequest, v1.CreateMcpRequestResponse]
 }
 
 // ListMcpServers calls core.v1.McpService.ListMcpServers.
@@ -173,6 +187,11 @@ func (c *mcpServiceClient) ListShadowMcps(ctx context.Context, req *connect.Requ
 	return c.listShadowMcps.CallUnary(ctx, req)
 }
 
+// CreateMcpRequest calls core.v1.McpService.CreateMcpRequest.
+func (c *mcpServiceClient) CreateMcpRequest(ctx context.Context, req *connect.Request[v1.CreateMcpRequestRequest]) (*connect.Response[v1.CreateMcpRequestResponse], error) {
+	return c.createMcpRequest.CallUnary(ctx, req)
+}
+
 // McpServiceHandler is an implementation of the core.v1.McpService service.
 type McpServiceHandler interface {
 	// List MCP servers
@@ -199,6 +218,10 @@ type McpServiceHandler interface {
 	//
 	// List observed MCP servers that are not yet managed.
 	ListShadowMcps(context.Context, *connect.Request[v1.ListShadowMcpsRequest]) (*connect.Response[v1.ListShadowMcpsResponse], error)
+	// Create MCP request
+	//
+	// File an approval request to create a managed MCP server.
+	CreateMcpRequest(context.Context, *connect.Request[v1.CreateMcpRequestRequest]) (*connect.Response[v1.CreateMcpRequestResponse], error)
 }
 
 // NewMcpServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -247,6 +270,12 @@ func NewMcpServiceHandler(svc McpServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
+	mcpServiceCreateMcpRequestHandler := connect.NewUnaryHandler(
+		McpServiceCreateMcpRequestProcedure,
+		svc.CreateMcpRequest,
+		connect.WithSchema(mcpServiceMethods.ByName("CreateMcpRequest")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/core.v1.McpService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case McpServiceListMcpServersProcedure:
@@ -261,6 +290,8 @@ func NewMcpServiceHandler(svc McpServiceHandler, opts ...connect.HandlerOption) 
 			mcpServiceDeleteMcpServerHandler.ServeHTTP(w, r)
 		case McpServiceListShadowMcpsProcedure:
 			mcpServiceListShadowMcpsHandler.ServeHTTP(w, r)
+		case McpServiceCreateMcpRequestProcedure:
+			mcpServiceCreateMcpRequestHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -292,4 +323,8 @@ func (UnimplementedMcpServiceHandler) DeleteMcpServer(context.Context, *connect.
 
 func (UnimplementedMcpServiceHandler) ListShadowMcps(context.Context, *connect.Request[v1.ListShadowMcpsRequest]) (*connect.Response[v1.ListShadowMcpsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.McpService.ListShadowMcps is not implemented"))
+}
+
+func (UnimplementedMcpServiceHandler) CreateMcpRequest(context.Context, *connect.Request[v1.CreateMcpRequestRequest]) (*connect.Response[v1.CreateMcpRequestResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.McpService.CreateMcpRequest is not implemented"))
 }
