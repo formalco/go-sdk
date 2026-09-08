@@ -27,6 +27,7 @@ type Client struct {
 	IntegrationsLogServiceClient       *IntegrationsLogServiceClient
 	InventoryServiceClient             *InventoryServiceClient
 	LogsServiceClient                  *LogsServiceClient
+	McpServiceClient                   *McpServiceClient
 	NativeUserServiceClient            *NativeUserServiceClient
 	PermissionsServiceClient           *PermissionsServiceClient
 	PoliciesServiceClient              *PoliciesServiceClient
@@ -60,6 +61,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		IntegrationsLogServiceClient:       &IntegrationsLogServiceClient{inner: corev1connect.NewIntegrationsLogServiceClient(httpClient, baseURL)},
 		InventoryServiceClient:             &InventoryServiceClient{inner: corev1connect.NewInventoryServiceClient(httpClient, baseURL)},
 		LogsServiceClient:                  &LogsServiceClient{inner: corev1connect.NewLogsServiceClient(httpClient, baseURL)},
+		McpServiceClient:                   &McpServiceClient{inner: corev1connect.NewMcpServiceClient(httpClient, baseURL)},
 		NativeUserServiceClient:            &NativeUserServiceClient{inner: corev1connect.NewNativeUserServiceClient(httpClient, baseURL)},
 		PermissionsServiceClient:           &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
 		PoliciesServiceClient:              &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
@@ -1975,6 +1977,77 @@ func (c *LogsServiceClient) UpdateLogQuery(ctx context.Context, req *corev1.Upda
 // Update a log query by sending the full object. All mutable fields are replaced.
 func (c *LogsServiceClient) UpdateLogQueryV2(ctx context.Context, req *corev1.UpdateLogQueryV2Request) (*corev1.UpdateLogQueryV2Response, error) {
 	res, err := c.inner.UpdateLogQueryV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// McpServiceClient is a client for the core.v1.McpService service.
+type McpServiceClient struct {
+	inner corev1connect.McpServiceClient
+}
+
+// Create MCP server
+//
+// Create a managed MCP server.
+func (c *McpServiceClient) CreateMcpServer(ctx context.Context, req *corev1.CreateMcpServerRequest) (*corev1.CreateMcpServerResponse, error) {
+	res, err := c.inner.CreateMcpServer(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete MCP server
+//
+// Delete a managed MCP server.
+func (c *McpServiceClient) DeleteMcpServer(ctx context.Context, req *corev1.DeleteMcpServerRequest) (*corev1.DeleteMcpServerResponse, error) {
+	res, err := c.inner.DeleteMcpServer(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get MCP server
+//
+// Get a managed MCP server by ID.
+func (c *McpServiceClient) GetMcpServer(ctx context.Context, req *corev1.GetMcpServerRequest) (*corev1.GetMcpServerResponse, error) {
+	res, err := c.inner.GetMcpServer(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List MCP servers
+//
+// List managed MCP servers for the organization.
+func (c *McpServiceClient) ListMcpServers(ctx context.Context, req *corev1.ListMcpServersRequest) (*corev1.ListMcpServersResponse, error) {
+	res, err := c.inner.ListMcpServers(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List shadow MCP servers
+//
+// List observed MCP servers that are not yet managed.
+func (c *McpServiceClient) ListShadowMcps(ctx context.Context, req *corev1.ListShadowMcpsRequest) (*corev1.ListShadowMcpsResponse, error) {
+	res, err := c.inner.ListShadowMcps(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update MCP server
+//
+// Update a managed MCP server.
+func (c *McpServiceClient) UpdateMcpServer(ctx context.Context, req *corev1.UpdateMcpServerRequest) (*corev1.UpdateMcpServerResponse, error) {
+	res, err := c.inner.UpdateMcpServer(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
