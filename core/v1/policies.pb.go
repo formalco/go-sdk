@@ -32,7 +32,6 @@ type Policy struct {
 	Name                  string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description           string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Code                  string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	Ast                   string                 `protobuf:"bytes,5,opt,name=ast,proto3" json:"ast,omitempty"`
 	Notification          string                 `protobuf:"bytes,6,opt,name=notification,proto3" json:"notification,omitempty"`
 	Owners                []*Owner               `protobuf:"bytes,7,rep,name=owners,proto3" json:"owners,omitempty"`
 	Status                string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
@@ -99,13 +98,6 @@ func (x *Policy) GetDescription() string {
 func (x *Policy) GetCode() string {
 	if x != nil {
 		return x.Code
-	}
-	return ""
-}
-
-func (x *Policy) GetAst() string {
-	if x != nil {
-		return x.Ast
 	}
 	return ""
 }
@@ -3423,13 +3415,12 @@ var File_core_v1_policies_proto protoreflect.FileDescriptor
 
 const file_core_v1_policies_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8d\x05\n" +
+	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x86\x05\n" +
 	"\x06Policy\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12)\n" +
 	"\vdescription\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vdescription\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04code\x12\x10\n" +
-	"\x03ast\x18\x05 \x01(\tR\x03ast\x12F\n" +
+	"\x04code\x18\x04 \x01(\tR\x04code\x12F\n" +
 	"\fnotification\x18\x06 \x01(\tB\"\xbaH\x1fr\x1dR\x04noneR\bconsumerR\x06ownersR\x03allR\fnotification\x12&\n" +
 	"\x06owners\x18\a \x03(\v2\x0e.core.v1.OwnerR\x06owners\x125\n" +
 	"\x06status\x18\b \x01(\tB\x1d\xbaH\x1ar\x18R\x05draftR\adry-runR\x06activeR\x06status\x125\n" +
@@ -3443,7 +3434,7 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"\x04tags\x18\r \x03(\v2\x19.core.v1.Policy.TagsEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x04tags\x1a7\n" +
 	"\tTagsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8b\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01J\x04\b\x05\x10\x06R\x03ast\"\x8b\x01\n" +
 	"\n" +
 	"PolicyTags\x12B\n" +
 	"\x06values\x18\x01 \x03(\v2\x1f.core.v1.PolicyTags.ValuesEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x06values\x1a9\n" +
