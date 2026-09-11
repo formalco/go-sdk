@@ -40,6 +40,7 @@ type Policy struct {
 	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt             *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	Version               int32                  `protobuf:"varint,12,opt,name=version,proto3" json:"version,omitempty"`
+	Tags                  map[string]string      `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -158,6 +159,57 @@ func (x *Policy) GetVersion() int32 {
 	return 0
 }
 
+func (x *Policy) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+type PolicyTags struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Values        map[string]string      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PolicyTags) Reset() {
+	*x = PolicyTags{}
+	mi := &file_core_v1_policies_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PolicyTags) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PolicyTags) ProtoMessage() {}
+
+func (x *PolicyTags) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_policies_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PolicyTags.ProtoReflect.Descriptor instead.
+func (*PolicyTags) Descriptor() ([]byte, []int) {
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *PolicyTags) GetValues() map[string]string {
+	if x != nil {
+		return x.Values
+	}
+	return nil
+}
+
 type Auth struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Type          string                 `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
@@ -168,7 +220,7 @@ type Auth struct {
 
 func (x *Auth) Reset() {
 	*x = Auth{}
-	mi := &file_core_v1_policies_proto_msgTypes[1]
+	mi := &file_core_v1_policies_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -180,7 +232,7 @@ func (x *Auth) String() string {
 func (*Auth) ProtoMessage() {}
 
 func (x *Auth) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[1]
+	mi := &file_core_v1_policies_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -193,7 +245,7 @@ func (x *Auth) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Auth.ProtoReflect.Descriptor instead.
 func (*Auth) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{1}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Auth) GetType() string {
@@ -219,7 +271,7 @@ type GetPolicyCodeValidityRequest struct {
 
 func (x *GetPolicyCodeValidityRequest) Reset() {
 	*x = GetPolicyCodeValidityRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[2]
+	mi := &file_core_v1_policies_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -231,7 +283,7 @@ func (x *GetPolicyCodeValidityRequest) String() string {
 func (*GetPolicyCodeValidityRequest) ProtoMessage() {}
 
 func (x *GetPolicyCodeValidityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[2]
+	mi := &file_core_v1_policies_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -244,7 +296,7 @@ func (x *GetPolicyCodeValidityRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyCodeValidityRequest.ProtoReflect.Descriptor instead.
 func (*GetPolicyCodeValidityRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{2}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetPolicyCodeValidityRequest) GetCode() string {
@@ -265,7 +317,7 @@ type GetPolicyCodeValidityResponse struct {
 
 func (x *GetPolicyCodeValidityResponse) Reset() {
 	*x = GetPolicyCodeValidityResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[3]
+	mi := &file_core_v1_policies_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -277,7 +329,7 @@ func (x *GetPolicyCodeValidityResponse) String() string {
 func (*GetPolicyCodeValidityResponse) ProtoMessage() {}
 
 func (x *GetPolicyCodeValidityResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[3]
+	mi := &file_core_v1_policies_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -290,7 +342,7 @@ func (x *GetPolicyCodeValidityResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyCodeValidityResponse.ProtoReflect.Descriptor instead.
 func (*GetPolicyCodeValidityResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{3}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetPolicyCodeValidityResponse) GetValid() bool {
@@ -327,13 +379,14 @@ type CreatePolicyRequest struct {
 	//	*CreatePolicyRequest_UserEmail
 	//	*CreatePolicyRequest_GroupName
 	Owner         isCreatePolicyRequest_Owner `protobuf_oneof:"owner"`
+	Tags          map[string]string           `protobuf:"bytes,9,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreatePolicyRequest) Reset() {
 	*x = CreatePolicyRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[4]
+	mi := &file_core_v1_policies_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -345,7 +398,7 @@ func (x *CreatePolicyRequest) String() string {
 func (*CreatePolicyRequest) ProtoMessage() {}
 
 func (x *CreatePolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[4]
+	mi := &file_core_v1_policies_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -358,7 +411,7 @@ func (x *CreatePolicyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePolicyRequest.ProtoReflect.Descriptor instead.
 func (*CreatePolicyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{4}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreatePolicyRequest) GetName() string {
@@ -428,6 +481,13 @@ func (x *CreatePolicyRequest) GetGroupName() string {
 	return ""
 }
 
+func (x *CreatePolicyRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
 type isCreatePolicyRequest_Owner interface {
 	isCreatePolicyRequest_Owner()
 }
@@ -453,7 +513,7 @@ type CreatePolicyResponse struct {
 
 func (x *CreatePolicyResponse) Reset() {
 	*x = CreatePolicyResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[5]
+	mi := &file_core_v1_policies_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -465,7 +525,7 @@ func (x *CreatePolicyResponse) String() string {
 func (*CreatePolicyResponse) ProtoMessage() {}
 
 func (x *CreatePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[5]
+	mi := &file_core_v1_policies_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -478,7 +538,7 @@ func (x *CreatePolicyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePolicyResponse.ProtoReflect.Descriptor instead.
 func (*CreatePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{5}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreatePolicyResponse) GetPolicy() *Policy {
@@ -501,14 +561,16 @@ type UpdatePolicyRequest struct {
 	//
 	//	*UpdatePolicyRequest_UserEmail
 	//	*UpdatePolicyRequest_GroupName
-	Owner         isUpdatePolicyRequest_Owner `protobuf_oneof:"owner"`
+	Owner isUpdatePolicyRequest_Owner `protobuf_oneof:"owner"`
+	// Omit to preserve tags; supply an empty values map to clear them.
+	Tags          *PolicyTags `protobuf:"bytes,12,opt,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdatePolicyRequest) Reset() {
 	*x = UpdatePolicyRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[6]
+	mi := &file_core_v1_policies_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -520,7 +582,7 @@ func (x *UpdatePolicyRequest) String() string {
 func (*UpdatePolicyRequest) ProtoMessage() {}
 
 func (x *UpdatePolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[6]
+	mi := &file_core_v1_policies_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -533,7 +595,7 @@ func (x *UpdatePolicyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePolicyRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{6}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdatePolicyRequest) GetId() string {
@@ -610,6 +672,13 @@ func (x *UpdatePolicyRequest) GetGroupName() string {
 	return ""
 }
 
+func (x *UpdatePolicyRequest) GetTags() *PolicyTags {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
 type isUpdatePolicyRequest_Owner interface {
 	isUpdatePolicyRequest_Owner()
 }
@@ -635,7 +704,7 @@ type UpdatePolicyResponse struct {
 
 func (x *UpdatePolicyResponse) Reset() {
 	*x = UpdatePolicyResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[7]
+	mi := &file_core_v1_policies_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -647,7 +716,7 @@ func (x *UpdatePolicyResponse) String() string {
 func (*UpdatePolicyResponse) ProtoMessage() {}
 
 func (x *UpdatePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[7]
+	mi := &file_core_v1_policies_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -660,7 +729,7 @@ func (x *UpdatePolicyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePolicyResponse.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{7}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdatePolicyResponse) GetPolicy() *Policy {
@@ -679,7 +748,7 @@ type UpdatePolicyV2Request struct {
 
 func (x *UpdatePolicyV2Request) Reset() {
 	*x = UpdatePolicyV2Request{}
-	mi := &file_core_v1_policies_proto_msgTypes[8]
+	mi := &file_core_v1_policies_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -691,7 +760,7 @@ func (x *UpdatePolicyV2Request) String() string {
 func (*UpdatePolicyV2Request) ProtoMessage() {}
 
 func (x *UpdatePolicyV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[8]
+	mi := &file_core_v1_policies_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -704,7 +773,7 @@ func (x *UpdatePolicyV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePolicyV2Request.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{8}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdatePolicyV2Request) GetPolicy() *Policy {
@@ -723,7 +792,7 @@ type UpdatePolicyV2Response struct {
 
 func (x *UpdatePolicyV2Response) Reset() {
 	*x = UpdatePolicyV2Response{}
-	mi := &file_core_v1_policies_proto_msgTypes[9]
+	mi := &file_core_v1_policies_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -735,7 +804,7 @@ func (x *UpdatePolicyV2Response) String() string {
 func (*UpdatePolicyV2Response) ProtoMessage() {}
 
 func (x *UpdatePolicyV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[9]
+	mi := &file_core_v1_policies_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -748,7 +817,7 @@ func (x *UpdatePolicyV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePolicyV2Response.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{9}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdatePolicyV2Response) GetPolicy() *Policy {
@@ -767,7 +836,7 @@ type DeletePolicyRequest struct {
 
 func (x *DeletePolicyRequest) Reset() {
 	*x = DeletePolicyRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[10]
+	mi := &file_core_v1_policies_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -779,7 +848,7 @@ func (x *DeletePolicyRequest) String() string {
 func (*DeletePolicyRequest) ProtoMessage() {}
 
 func (x *DeletePolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[10]
+	mi := &file_core_v1_policies_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -792,7 +861,7 @@ func (x *DeletePolicyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePolicyRequest.ProtoReflect.Descriptor instead.
 func (*DeletePolicyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{10}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeletePolicyRequest) GetId() string {
@@ -811,7 +880,7 @@ type DeletePolicyResponse struct {
 
 func (x *DeletePolicyResponse) Reset() {
 	*x = DeletePolicyResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[11]
+	mi := &file_core_v1_policies_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -823,7 +892,7 @@ func (x *DeletePolicyResponse) String() string {
 func (*DeletePolicyResponse) ProtoMessage() {}
 
 func (x *DeletePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[11]
+	mi := &file_core_v1_policies_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -836,7 +905,7 @@ func (x *DeletePolicyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePolicyResponse.ProtoReflect.Descriptor instead.
 func (*DeletePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{11}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeletePolicyResponse) GetId() string {
@@ -855,7 +924,7 @@ type GetPolicyRequest struct {
 
 func (x *GetPolicyRequest) Reset() {
 	*x = GetPolicyRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[12]
+	mi := &file_core_v1_policies_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -867,7 +936,7 @@ func (x *GetPolicyRequest) String() string {
 func (*GetPolicyRequest) ProtoMessage() {}
 
 func (x *GetPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[12]
+	mi := &file_core_v1_policies_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -880,7 +949,7 @@ func (x *GetPolicyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyRequest.ProtoReflect.Descriptor instead.
 func (*GetPolicyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{12}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetPolicyRequest) GetId() string {
@@ -899,7 +968,7 @@ type GetPolicyResponse struct {
 
 func (x *GetPolicyResponse) Reset() {
 	*x = GetPolicyResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[13]
+	mi := &file_core_v1_policies_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -911,7 +980,7 @@ func (x *GetPolicyResponse) String() string {
 func (*GetPolicyResponse) ProtoMessage() {}
 
 func (x *GetPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[13]
+	mi := &file_core_v1_policies_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -924,7 +993,7 @@ func (x *GetPolicyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyResponse.ProtoReflect.Descriptor instead.
 func (*GetPolicyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetPolicyResponse) GetPolicy() *Policy {
@@ -948,7 +1017,7 @@ type ListPoliciesRequest struct {
 
 func (x *ListPoliciesRequest) Reset() {
 	*x = ListPoliciesRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[14]
+	mi := &file_core_v1_policies_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -960,7 +1029,7 @@ func (x *ListPoliciesRequest) String() string {
 func (*ListPoliciesRequest) ProtoMessage() {}
 
 func (x *ListPoliciesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[14]
+	mi := &file_core_v1_policies_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -973,7 +1042,7 @@ func (x *ListPoliciesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPoliciesRequest.ProtoReflect.Descriptor instead.
 func (*ListPoliciesRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListPoliciesRequest) GetLimit() int32 {
@@ -1028,7 +1097,7 @@ type ListPoliciesResponse struct {
 
 func (x *ListPoliciesResponse) Reset() {
 	*x = ListPoliciesResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[15]
+	mi := &file_core_v1_policies_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1040,7 +1109,7 @@ func (x *ListPoliciesResponse) String() string {
 func (*ListPoliciesResponse) ProtoMessage() {}
 
 func (x *ListPoliciesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[15]
+	mi := &file_core_v1_policies_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1053,7 +1122,7 @@ func (x *ListPoliciesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPoliciesResponse.ProtoReflect.Descriptor instead.
 func (*ListPoliciesResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListPoliciesResponse) GetPolicies() []*Policy {
@@ -1082,7 +1151,7 @@ type CreatePolicyReportRequest struct {
 
 func (x *CreatePolicyReportRequest) Reset() {
 	*x = CreatePolicyReportRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[16]
+	mi := &file_core_v1_policies_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1094,7 +1163,7 @@ func (x *CreatePolicyReportRequest) String() string {
 func (*CreatePolicyReportRequest) ProtoMessage() {}
 
 func (x *CreatePolicyReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[16]
+	mi := &file_core_v1_policies_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1107,7 +1176,7 @@ func (x *CreatePolicyReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePolicyReportRequest.ProtoReflect.Descriptor instead.
 func (*CreatePolicyReportRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CreatePolicyReportRequest) GetPolicyCode() string {
@@ -1147,7 +1216,7 @@ type CreatePolicyReportResponse struct {
 
 func (x *CreatePolicyReportResponse) Reset() {
 	*x = CreatePolicyReportResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[17]
+	mi := &file_core_v1_policies_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1159,7 +1228,7 @@ func (x *CreatePolicyReportResponse) String() string {
 func (*CreatePolicyReportResponse) ProtoMessage() {}
 
 func (x *CreatePolicyReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[17]
+	mi := &file_core_v1_policies_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1172,7 +1241,7 @@ func (x *CreatePolicyReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePolicyReportResponse.ProtoReflect.Descriptor instead.
 func (*CreatePolicyReportResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CreatePolicyReportResponse) GetReportId() string {
@@ -1199,7 +1268,7 @@ type PolicyReport struct {
 
 func (x *PolicyReport) Reset() {
 	*x = PolicyReport{}
-	mi := &file_core_v1_policies_proto_msgTypes[18]
+	mi := &file_core_v1_policies_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1211,7 +1280,7 @@ func (x *PolicyReport) String() string {
 func (*PolicyReport) ProtoMessage() {}
 
 func (x *PolicyReport) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[18]
+	mi := &file_core_v1_policies_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1224,7 +1293,7 @@ func (x *PolicyReport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PolicyReport.ProtoReflect.Descriptor instead.
 func (*PolicyReport) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *PolicyReport) GetId() string {
@@ -1293,7 +1362,7 @@ type GetPolicyReportRequest struct {
 
 func (x *GetPolicyReportRequest) Reset() {
 	*x = GetPolicyReportRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[19]
+	mi := &file_core_v1_policies_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1305,7 +1374,7 @@ func (x *GetPolicyReportRequest) String() string {
 func (*GetPolicyReportRequest) ProtoMessage() {}
 
 func (x *GetPolicyReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[19]
+	mi := &file_core_v1_policies_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1318,7 +1387,7 @@ func (x *GetPolicyReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyReportRequest.ProtoReflect.Descriptor instead.
 func (*GetPolicyReportRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetPolicyReportRequest) GetId() string {
@@ -1337,7 +1406,7 @@ type GetPolicyReportResponse struct {
 
 func (x *GetPolicyReportResponse) Reset() {
 	*x = GetPolicyReportResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[20]
+	mi := &file_core_v1_policies_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1349,7 +1418,7 @@ func (x *GetPolicyReportResponse) String() string {
 func (*GetPolicyReportResponse) ProtoMessage() {}
 
 func (x *GetPolicyReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[20]
+	mi := &file_core_v1_policies_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1362,7 +1431,7 @@ func (x *GetPolicyReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyReportResponse.ProtoReflect.Descriptor instead.
 func (*GetPolicyReportResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetPolicyReportResponse) GetReport() *PolicyReport {
@@ -1382,7 +1451,7 @@ type GetPolicyImpactReportGraphRequest struct {
 
 func (x *GetPolicyImpactReportGraphRequest) Reset() {
 	*x = GetPolicyImpactReportGraphRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[21]
+	mi := &file_core_v1_policies_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1394,7 +1463,7 @@ func (x *GetPolicyImpactReportGraphRequest) String() string {
 func (*GetPolicyImpactReportGraphRequest) ProtoMessage() {}
 
 func (x *GetPolicyImpactReportGraphRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[21]
+	mi := &file_core_v1_policies_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1407,7 +1476,7 @@ func (x *GetPolicyImpactReportGraphRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetPolicyImpactReportGraphRequest.ProtoReflect.Descriptor instead.
 func (*GetPolicyImpactReportGraphRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{21}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetPolicyImpactReportGraphRequest) GetReportId() string {
@@ -1433,7 +1502,7 @@ type GetPolicyImpactReportGraphResponse struct {
 
 func (x *GetPolicyImpactReportGraphResponse) Reset() {
 	*x = GetPolicyImpactReportGraphResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[22]
+	mi := &file_core_v1_policies_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1445,7 +1514,7 @@ func (x *GetPolicyImpactReportGraphResponse) String() string {
 func (*GetPolicyImpactReportGraphResponse) ProtoMessage() {}
 
 func (x *GetPolicyImpactReportGraphResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[22]
+	mi := &file_core_v1_policies_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1458,7 +1527,7 @@ func (x *GetPolicyImpactReportGraphResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetPolicyImpactReportGraphResponse.ProtoReflect.Descriptor instead.
 func (*GetPolicyImpactReportGraphResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{22}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetPolicyImpactReportGraphResponse) GetGraph() *Graph {
@@ -1480,7 +1549,7 @@ type ListPolicyImpactReportLogsRequest struct {
 
 func (x *ListPolicyImpactReportLogsRequest) Reset() {
 	*x = ListPolicyImpactReportLogsRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[23]
+	mi := &file_core_v1_policies_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1492,7 +1561,7 @@ func (x *ListPolicyImpactReportLogsRequest) String() string {
 func (*ListPolicyImpactReportLogsRequest) ProtoMessage() {}
 
 func (x *ListPolicyImpactReportLogsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[23]
+	mi := &file_core_v1_policies_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1505,7 +1574,7 @@ func (x *ListPolicyImpactReportLogsRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ListPolicyImpactReportLogsRequest.ProtoReflect.Descriptor instead.
 func (*ListPolicyImpactReportLogsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{23}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListPolicyImpactReportLogsRequest) GetReportId() string {
@@ -1548,7 +1617,7 @@ type TriggeredPolicyInfo struct {
 
 func (x *TriggeredPolicyInfo) Reset() {
 	*x = TriggeredPolicyInfo{}
-	mi := &file_core_v1_policies_proto_msgTypes[24]
+	mi := &file_core_v1_policies_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1560,7 +1629,7 @@ func (x *TriggeredPolicyInfo) String() string {
 func (*TriggeredPolicyInfo) ProtoMessage() {}
 
 func (x *TriggeredPolicyInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[24]
+	mi := &file_core_v1_policies_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1573,7 +1642,7 @@ func (x *TriggeredPolicyInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TriggeredPolicyInfo.ProtoReflect.Descriptor instead.
 func (*TriggeredPolicyInfo) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{24}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *TriggeredPolicyInfo) GetId() string {
@@ -1614,7 +1683,7 @@ type ListPolicyImpactReportLogsResponse struct {
 
 func (x *ListPolicyImpactReportLogsResponse) Reset() {
 	*x = ListPolicyImpactReportLogsResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[25]
+	mi := &file_core_v1_policies_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1626,7 +1695,7 @@ func (x *ListPolicyImpactReportLogsResponse) String() string {
 func (*ListPolicyImpactReportLogsResponse) ProtoMessage() {}
 
 func (x *ListPolicyImpactReportLogsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[25]
+	mi := &file_core_v1_policies_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1639,7 +1708,7 @@ func (x *ListPolicyImpactReportLogsResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListPolicyImpactReportLogsResponse.ProtoReflect.Descriptor instead.
 func (*ListPolicyImpactReportLogsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{25}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ListPolicyImpactReportLogsResponse) GetLogs() []*structpb.Struct {
@@ -1676,7 +1745,7 @@ type PolicyStageConfiguration struct {
 
 func (x *PolicyStageConfiguration) Reset() {
 	*x = PolicyStageConfiguration{}
-	mi := &file_core_v1_policies_proto_msgTypes[26]
+	mi := &file_core_v1_policies_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1688,7 +1757,7 @@ func (x *PolicyStageConfiguration) String() string {
 func (*PolicyStageConfiguration) ProtoMessage() {}
 
 func (x *PolicyStageConfiguration) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[26]
+	mi := &file_core_v1_policies_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1701,7 +1770,7 @@ func (x *PolicyStageConfiguration) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PolicyStageConfiguration.ProtoReflect.Descriptor instead.
 func (*PolicyStageConfiguration) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{26}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *PolicyStageConfiguration) GetId() string {
@@ -1810,7 +1879,7 @@ type CreatePolicyStageConfigurationRequest struct {
 
 func (x *CreatePolicyStageConfigurationRequest) Reset() {
 	*x = CreatePolicyStageConfigurationRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[27]
+	mi := &file_core_v1_policies_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1822,7 +1891,7 @@ func (x *CreatePolicyStageConfigurationRequest) String() string {
 func (*CreatePolicyStageConfigurationRequest) ProtoMessage() {}
 
 func (x *CreatePolicyStageConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[27]
+	mi := &file_core_v1_policies_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1835,7 +1904,7 @@ func (x *CreatePolicyStageConfigurationRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use CreatePolicyStageConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreatePolicyStageConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{27}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CreatePolicyStageConfigurationRequest) GetScope() isCreatePolicyStageConfigurationRequest_Scope {
@@ -1911,7 +1980,7 @@ type CreatePolicyStageConfigurationResponse struct {
 
 func (x *CreatePolicyStageConfigurationResponse) Reset() {
 	*x = CreatePolicyStageConfigurationResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[28]
+	mi := &file_core_v1_policies_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1923,7 +1992,7 @@ func (x *CreatePolicyStageConfigurationResponse) String() string {
 func (*CreatePolicyStageConfigurationResponse) ProtoMessage() {}
 
 func (x *CreatePolicyStageConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[28]
+	mi := &file_core_v1_policies_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1936,7 +2005,7 @@ func (x *CreatePolicyStageConfigurationResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CreatePolicyStageConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreatePolicyStageConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{28}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CreatePolicyStageConfigurationResponse) GetPolicyStageConfiguration() *PolicyStageConfiguration {
@@ -1955,7 +2024,7 @@ type GetPolicyStageConfigurationRequest struct {
 
 func (x *GetPolicyStageConfigurationRequest) Reset() {
 	*x = GetPolicyStageConfigurationRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[29]
+	mi := &file_core_v1_policies_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1967,7 +2036,7 @@ func (x *GetPolicyStageConfigurationRequest) String() string {
 func (*GetPolicyStageConfigurationRequest) ProtoMessage() {}
 
 func (x *GetPolicyStageConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[29]
+	mi := &file_core_v1_policies_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1980,7 +2049,7 @@ func (x *GetPolicyStageConfigurationRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetPolicyStageConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetPolicyStageConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{29}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GetPolicyStageConfigurationRequest) GetId() string {
@@ -1999,7 +2068,7 @@ type GetPolicyStageConfigurationResponse struct {
 
 func (x *GetPolicyStageConfigurationResponse) Reset() {
 	*x = GetPolicyStageConfigurationResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[30]
+	mi := &file_core_v1_policies_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2011,7 +2080,7 @@ func (x *GetPolicyStageConfigurationResponse) String() string {
 func (*GetPolicyStageConfigurationResponse) ProtoMessage() {}
 
 func (x *GetPolicyStageConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[30]
+	mi := &file_core_v1_policies_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2024,7 +2093,7 @@ func (x *GetPolicyStageConfigurationResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetPolicyStageConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetPolicyStageConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{30}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetPolicyStageConfigurationResponse) GetPolicyStageConfiguration() *PolicyStageConfiguration {
@@ -2045,7 +2114,7 @@ type ListPolicyStageConfigurationsRequest struct {
 
 func (x *ListPolicyStageConfigurationsRequest) Reset() {
 	*x = ListPolicyStageConfigurationsRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[31]
+	mi := &file_core_v1_policies_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2057,7 +2126,7 @@ func (x *ListPolicyStageConfigurationsRequest) String() string {
 func (*ListPolicyStageConfigurationsRequest) ProtoMessage() {}
 
 func (x *ListPolicyStageConfigurationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[31]
+	mi := &file_core_v1_policies_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2070,7 +2139,7 @@ func (x *ListPolicyStageConfigurationsRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ListPolicyStageConfigurationsRequest.ProtoReflect.Descriptor instead.
 func (*ListPolicyStageConfigurationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{31}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ListPolicyStageConfigurationsRequest) GetLimit() int32 {
@@ -2104,7 +2173,7 @@ type ListPolicyStageConfigurationsResponse struct {
 
 func (x *ListPolicyStageConfigurationsResponse) Reset() {
 	*x = ListPolicyStageConfigurationsResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[32]
+	mi := &file_core_v1_policies_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2116,7 +2185,7 @@ func (x *ListPolicyStageConfigurationsResponse) String() string {
 func (*ListPolicyStageConfigurationsResponse) ProtoMessage() {}
 
 func (x *ListPolicyStageConfigurationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[32]
+	mi := &file_core_v1_policies_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2129,7 +2198,7 @@ func (x *ListPolicyStageConfigurationsResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use ListPolicyStageConfigurationsResponse.ProtoReflect.Descriptor instead.
 func (*ListPolicyStageConfigurationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{32}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *ListPolicyStageConfigurationsResponse) GetPolicyStageConfigurations() []*PolicyStageConfiguration {
@@ -2158,7 +2227,7 @@ type UpdatePolicyStageConfigurationRequest struct {
 
 func (x *UpdatePolicyStageConfigurationRequest) Reset() {
 	*x = UpdatePolicyStageConfigurationRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[33]
+	mi := &file_core_v1_policies_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2170,7 +2239,7 @@ func (x *UpdatePolicyStageConfigurationRequest) String() string {
 func (*UpdatePolicyStageConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdatePolicyStageConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[33]
+	mi := &file_core_v1_policies_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2183,7 +2252,7 @@ func (x *UpdatePolicyStageConfigurationRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use UpdatePolicyStageConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyStageConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{33}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *UpdatePolicyStageConfigurationRequest) GetId() string {
@@ -2223,7 +2292,7 @@ type UpdatePolicyStageConfigurationResponse struct {
 
 func (x *UpdatePolicyStageConfigurationResponse) Reset() {
 	*x = UpdatePolicyStageConfigurationResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[34]
+	mi := &file_core_v1_policies_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2235,7 +2304,7 @@ func (x *UpdatePolicyStageConfigurationResponse) String() string {
 func (*UpdatePolicyStageConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdatePolicyStageConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[34]
+	mi := &file_core_v1_policies_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2248,7 +2317,7 @@ func (x *UpdatePolicyStageConfigurationResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use UpdatePolicyStageConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyStageConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{34}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *UpdatePolicyStageConfigurationResponse) GetPolicyStageConfiguration() *PolicyStageConfiguration {
@@ -2267,7 +2336,7 @@ type DeletePolicyStageConfigurationRequest struct {
 
 func (x *DeletePolicyStageConfigurationRequest) Reset() {
 	*x = DeletePolicyStageConfigurationRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[35]
+	mi := &file_core_v1_policies_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2279,7 +2348,7 @@ func (x *DeletePolicyStageConfigurationRequest) String() string {
 func (*DeletePolicyStageConfigurationRequest) ProtoMessage() {}
 
 func (x *DeletePolicyStageConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[35]
+	mi := &file_core_v1_policies_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2292,7 +2361,7 @@ func (x *DeletePolicyStageConfigurationRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use DeletePolicyStageConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeletePolicyStageConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{35}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *DeletePolicyStageConfigurationRequest) GetId() string {
@@ -2311,7 +2380,7 @@ type DeletePolicyStageConfigurationResponse struct {
 
 func (x *DeletePolicyStageConfigurationResponse) Reset() {
 	*x = DeletePolicyStageConfigurationResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[36]
+	mi := &file_core_v1_policies_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2323,7 +2392,7 @@ func (x *DeletePolicyStageConfigurationResponse) String() string {
 func (*DeletePolicyStageConfigurationResponse) ProtoMessage() {}
 
 func (x *DeletePolicyStageConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[36]
+	mi := &file_core_v1_policies_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2336,7 +2405,7 @@ func (x *DeletePolicyStageConfigurationResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use DeletePolicyStageConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeletePolicyStageConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{36}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *DeletePolicyStageConfigurationResponse) GetId() string {
@@ -2360,7 +2429,7 @@ type PolicyVersion struct {
 
 func (x *PolicyVersion) Reset() {
 	*x = PolicyVersion{}
-	mi := &file_core_v1_policies_proto_msgTypes[37]
+	mi := &file_core_v1_policies_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2372,7 +2441,7 @@ func (x *PolicyVersion) String() string {
 func (*PolicyVersion) ProtoMessage() {}
 
 func (x *PolicyVersion) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[37]
+	mi := &file_core_v1_policies_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2385,7 +2454,7 @@ func (x *PolicyVersion) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PolicyVersion.ProtoReflect.Descriptor instead.
 func (*PolicyVersion) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{37}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *PolicyVersion) GetId() string {
@@ -2440,7 +2509,7 @@ type GetPolicyVersionRequest struct {
 
 func (x *GetPolicyVersionRequest) Reset() {
 	*x = GetPolicyVersionRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[38]
+	mi := &file_core_v1_policies_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2452,7 +2521,7 @@ func (x *GetPolicyVersionRequest) String() string {
 func (*GetPolicyVersionRequest) ProtoMessage() {}
 
 func (x *GetPolicyVersionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[38]
+	mi := &file_core_v1_policies_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2465,7 +2534,7 @@ func (x *GetPolicyVersionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyVersionRequest.ProtoReflect.Descriptor instead.
 func (*GetPolicyVersionRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{38}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *GetPolicyVersionRequest) GetPolicyId() string {
@@ -2491,7 +2560,7 @@ type GetPolicyVersionResponse struct {
 
 func (x *GetPolicyVersionResponse) Reset() {
 	*x = GetPolicyVersionResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[39]
+	mi := &file_core_v1_policies_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2503,7 +2572,7 @@ func (x *GetPolicyVersionResponse) String() string {
 func (*GetPolicyVersionResponse) ProtoMessage() {}
 
 func (x *GetPolicyVersionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[39]
+	mi := &file_core_v1_policies_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2516,7 +2585,7 @@ func (x *GetPolicyVersionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicyVersionResponse.ProtoReflect.Descriptor instead.
 func (*GetPolicyVersionResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{39}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetPolicyVersionResponse) GetPolicyVersion() *PolicyVersion {
@@ -2538,7 +2607,7 @@ type ListPolicyVersionsRequest struct {
 
 func (x *ListPolicyVersionsRequest) Reset() {
 	*x = ListPolicyVersionsRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[40]
+	mi := &file_core_v1_policies_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2550,7 +2619,7 @@ func (x *ListPolicyVersionsRequest) String() string {
 func (*ListPolicyVersionsRequest) ProtoMessage() {}
 
 func (x *ListPolicyVersionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[40]
+	mi := &file_core_v1_policies_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2563,7 +2632,7 @@ func (x *ListPolicyVersionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPolicyVersionsRequest.ProtoReflect.Descriptor instead.
 func (*ListPolicyVersionsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{40}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *ListPolicyVersionsRequest) GetPolicyId() string {
@@ -2604,7 +2673,7 @@ type ListPolicyVersionsResponse struct {
 
 func (x *ListPolicyVersionsResponse) Reset() {
 	*x = ListPolicyVersionsResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[41]
+	mi := &file_core_v1_policies_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2616,7 +2685,7 @@ func (x *ListPolicyVersionsResponse) String() string {
 func (*ListPolicyVersionsResponse) ProtoMessage() {}
 
 func (x *ListPolicyVersionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[41]
+	mi := &file_core_v1_policies_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2629,7 +2698,7 @@ func (x *ListPolicyVersionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPolicyVersionsResponse.ProtoReflect.Descriptor instead.
 func (*ListPolicyVersionsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{41}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *ListPolicyVersionsResponse) GetPolicyVersions() []*PolicyVersion {
@@ -2667,7 +2736,7 @@ type PolicySuspension struct {
 
 func (x *PolicySuspension) Reset() {
 	*x = PolicySuspension{}
-	mi := &file_core_v1_policies_proto_msgTypes[42]
+	mi := &file_core_v1_policies_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2679,7 +2748,7 @@ func (x *PolicySuspension) String() string {
 func (*PolicySuspension) ProtoMessage() {}
 
 func (x *PolicySuspension) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[42]
+	mi := &file_core_v1_policies_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2692,7 +2761,7 @@ func (x *PolicySuspension) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PolicySuspension.ProtoReflect.Descriptor instead.
 func (*PolicySuspension) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{42}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *PolicySuspension) GetId() string {
@@ -2801,7 +2870,7 @@ type CreatePolicySuspensionRequest struct {
 
 func (x *CreatePolicySuspensionRequest) Reset() {
 	*x = CreatePolicySuspensionRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[43]
+	mi := &file_core_v1_policies_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2813,7 +2882,7 @@ func (x *CreatePolicySuspensionRequest) String() string {
 func (*CreatePolicySuspensionRequest) ProtoMessage() {}
 
 func (x *CreatePolicySuspensionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[43]
+	mi := &file_core_v1_policies_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2826,7 +2895,7 @@ func (x *CreatePolicySuspensionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePolicySuspensionRequest.ProtoReflect.Descriptor instead.
 func (*CreatePolicySuspensionRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{43}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CreatePolicySuspensionRequest) GetPolicyId() string {
@@ -2887,7 +2956,7 @@ type CreatePolicySuspensionResponse struct {
 
 func (x *CreatePolicySuspensionResponse) Reset() {
 	*x = CreatePolicySuspensionResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[44]
+	mi := &file_core_v1_policies_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2899,7 +2968,7 @@ func (x *CreatePolicySuspensionResponse) String() string {
 func (*CreatePolicySuspensionResponse) ProtoMessage() {}
 
 func (x *CreatePolicySuspensionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[44]
+	mi := &file_core_v1_policies_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2912,7 +2981,7 @@ func (x *CreatePolicySuspensionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePolicySuspensionResponse.ProtoReflect.Descriptor instead.
 func (*CreatePolicySuspensionResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{44}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *CreatePolicySuspensionResponse) GetPolicySuspension() *PolicySuspension {
@@ -2931,7 +3000,7 @@ type GetPolicySuspensionRequest struct {
 
 func (x *GetPolicySuspensionRequest) Reset() {
 	*x = GetPolicySuspensionRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[45]
+	mi := &file_core_v1_policies_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2943,7 +3012,7 @@ func (x *GetPolicySuspensionRequest) String() string {
 func (*GetPolicySuspensionRequest) ProtoMessage() {}
 
 func (x *GetPolicySuspensionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[45]
+	mi := &file_core_v1_policies_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2956,7 +3025,7 @@ func (x *GetPolicySuspensionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicySuspensionRequest.ProtoReflect.Descriptor instead.
 func (*GetPolicySuspensionRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{45}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *GetPolicySuspensionRequest) GetId() string {
@@ -2975,7 +3044,7 @@ type GetPolicySuspensionResponse struct {
 
 func (x *GetPolicySuspensionResponse) Reset() {
 	*x = GetPolicySuspensionResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[46]
+	mi := &file_core_v1_policies_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2987,7 +3056,7 @@ func (x *GetPolicySuspensionResponse) String() string {
 func (*GetPolicySuspensionResponse) ProtoMessage() {}
 
 func (x *GetPolicySuspensionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[46]
+	mi := &file_core_v1_policies_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3000,7 +3069,7 @@ func (x *GetPolicySuspensionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPolicySuspensionResponse.ProtoReflect.Descriptor instead.
 func (*GetPolicySuspensionResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{46}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetPolicySuspensionResponse) GetPolicySuspension() *PolicySuspension {
@@ -3021,7 +3090,7 @@ type ListPolicySuspensionsRequest struct {
 
 func (x *ListPolicySuspensionsRequest) Reset() {
 	*x = ListPolicySuspensionsRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[47]
+	mi := &file_core_v1_policies_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3033,7 +3102,7 @@ func (x *ListPolicySuspensionsRequest) String() string {
 func (*ListPolicySuspensionsRequest) ProtoMessage() {}
 
 func (x *ListPolicySuspensionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[47]
+	mi := &file_core_v1_policies_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3046,7 +3115,7 @@ func (x *ListPolicySuspensionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPolicySuspensionsRequest.ProtoReflect.Descriptor instead.
 func (*ListPolicySuspensionsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{47}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ListPolicySuspensionsRequest) GetLimit() int32 {
@@ -3080,7 +3149,7 @@ type ListPolicySuspensionsResponse struct {
 
 func (x *ListPolicySuspensionsResponse) Reset() {
 	*x = ListPolicySuspensionsResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[48]
+	mi := &file_core_v1_policies_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3092,7 +3161,7 @@ func (x *ListPolicySuspensionsResponse) String() string {
 func (*ListPolicySuspensionsResponse) ProtoMessage() {}
 
 func (x *ListPolicySuspensionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[48]
+	mi := &file_core_v1_policies_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3105,7 +3174,7 @@ func (x *ListPolicySuspensionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPolicySuspensionsResponse.ProtoReflect.Descriptor instead.
 func (*ListPolicySuspensionsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{48}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *ListPolicySuspensionsResponse) GetPolicySuspensions() []*PolicySuspension {
@@ -3131,7 +3200,7 @@ type DeletePolicySuspensionRequest struct {
 
 func (x *DeletePolicySuspensionRequest) Reset() {
 	*x = DeletePolicySuspensionRequest{}
-	mi := &file_core_v1_policies_proto_msgTypes[49]
+	mi := &file_core_v1_policies_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3143,7 +3212,7 @@ func (x *DeletePolicySuspensionRequest) String() string {
 func (*DeletePolicySuspensionRequest) ProtoMessage() {}
 
 func (x *DeletePolicySuspensionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[49]
+	mi := &file_core_v1_policies_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3156,7 +3225,7 @@ func (x *DeletePolicySuspensionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePolicySuspensionRequest.ProtoReflect.Descriptor instead.
 func (*DeletePolicySuspensionRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{49}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *DeletePolicySuspensionRequest) GetId() string {
@@ -3175,7 +3244,7 @@ type DeletePolicySuspensionResponse struct {
 
 func (x *DeletePolicySuspensionResponse) Reset() {
 	*x = DeletePolicySuspensionResponse{}
-	mi := &file_core_v1_policies_proto_msgTypes[50]
+	mi := &file_core_v1_policies_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3187,7 +3256,7 @@ func (x *DeletePolicySuspensionResponse) String() string {
 func (*DeletePolicySuspensionResponse) ProtoMessage() {}
 
 func (x *DeletePolicySuspensionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[50]
+	mi := &file_core_v1_policies_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3200,7 +3269,7 @@ func (x *DeletePolicySuspensionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePolicySuspensionResponse.ProtoReflect.Descriptor instead.
 func (*DeletePolicySuspensionResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{50}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *DeletePolicySuspensionResponse) GetId() string {
@@ -3219,7 +3288,7 @@ type UpdatePolicyStageConfigurationV2Request struct {
 
 func (x *UpdatePolicyStageConfigurationV2Request) Reset() {
 	*x = UpdatePolicyStageConfigurationV2Request{}
-	mi := &file_core_v1_policies_proto_msgTypes[51]
+	mi := &file_core_v1_policies_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3231,7 +3300,7 @@ func (x *UpdatePolicyStageConfigurationV2Request) String() string {
 func (*UpdatePolicyStageConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdatePolicyStageConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[51]
+	mi := &file_core_v1_policies_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3244,7 +3313,7 @@ func (x *UpdatePolicyStageConfigurationV2Request) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use UpdatePolicyStageConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyStageConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{51}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *UpdatePolicyStageConfigurationV2Request) GetPolicyStageConfiguration() *PolicyStageConfiguration {
@@ -3263,7 +3332,7 @@ type UpdatePolicyStageConfigurationV2Response struct {
 
 func (x *UpdatePolicyStageConfigurationV2Response) Reset() {
 	*x = UpdatePolicyStageConfigurationV2Response{}
-	mi := &file_core_v1_policies_proto_msgTypes[52]
+	mi := &file_core_v1_policies_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3275,7 +3344,7 @@ func (x *UpdatePolicyStageConfigurationV2Response) String() string {
 func (*UpdatePolicyStageConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdatePolicyStageConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[52]
+	mi := &file_core_v1_policies_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3288,7 +3357,7 @@ func (x *UpdatePolicyStageConfigurationV2Response) ProtoReflect() protoreflect.M
 
 // Deprecated: Use UpdatePolicyStageConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdatePolicyStageConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{52}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *UpdatePolicyStageConfigurationV2Response) GetPolicyStageConfiguration() *PolicyStageConfiguration {
@@ -3308,7 +3377,7 @@ type Auth_Basic struct {
 
 func (x *Auth_Basic) Reset() {
 	*x = Auth_Basic{}
-	mi := &file_core_v1_policies_proto_msgTypes[53]
+	mi := &file_core_v1_policies_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3320,7 +3389,7 @@ func (x *Auth_Basic) String() string {
 func (*Auth_Basic) ProtoMessage() {}
 
 func (x *Auth_Basic) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_policies_proto_msgTypes[53]
+	mi := &file_core_v1_policies_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3333,7 +3402,7 @@ func (x *Auth_Basic) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Auth_Basic.ProtoReflect.Descriptor instead.
 func (*Auth_Basic) Descriptor() ([]byte, []int) {
-	return file_core_v1_policies_proto_rawDescGZIP(), []int{1, 0}
+	return file_core_v1_policies_proto_rawDescGZIP(), []int{2, 0}
 }
 
 func (x *Auth_Basic) GetUsername() string {
@@ -3354,7 +3423,7 @@ var File_core_v1_policies_proto protoreflect.FileDescriptor
 
 const file_core_v1_policies_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9a\x04\n" +
+	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8d\x05\n" +
 	"\x06Policy\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12)\n" +
@@ -3370,7 +3439,17 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	" \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
 	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12!\n" +
-	"\aversion\x18\f \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\aversion\"\xa1\x01\n" +
+	"\aversion\x18\f \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\aversion\x128\n" +
+	"\x04tags\x18\r \x03(\v2\x19.core.v1.Policy.TagsEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x04tags\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8b\x01\n" +
+	"\n" +
+	"PolicyTags\x12B\n" +
+	"\x06values\x18\x01 \x03(\v2\x1f.core.v1.PolicyTags.ValuesEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x06values\x1a9\n" +
+	"\vValuesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xa1\x01\n" +
 	"\x04Auth\x12(\n" +
 	"\x04type\x18\x01 \x01(\tB\x14\xbaH\x11r\x0fR\x05basicR\x06oauth2R\x04type\x12)\n" +
 	"\x05basic\x18\x02 \x01(\v2\x13.core.v1.Auth.BasicR\x05basic\x1aD\n" +
@@ -3382,7 +3461,7 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"\x1dGetPolicyCodeValidityResponse\x12\x14\n" +
 	"\x05valid\x18\x01 \x01(\bR\x05valid\x12\x10\n" +
 	"\x03ast\x18\x02 \x01(\tR\x03ast\x12\x14\n" +
-	"\x05error\x18\x03 \x01(\tR\x05error\"\x91\x03\n" +
+	"\x05error\x18\x03 \x01(\tR\x05error\"\x91\x04\n" +
 	"\x13CreatePolicyRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12)\n" +
 	"\vdescription\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vdescription\x12\x1b\n" +
@@ -3393,11 +3472,15 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"\n" +
 	"user_email\x18\a \x01(\tH\x00R\tuserEmail\x12\x1f\n" +
 	"\n" +
-	"group_name\x18\b \x01(\tH\x00R\tgroupNameB\a\n" +
+	"group_name\x18\b \x01(\tH\x00R\tgroupName\x12E\n" +
+	"\x04tags\x18\t \x03(\v2&.core.v1.CreatePolicyRequest.TagsEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x04tags\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\a\n" +
 	"\x05ownerB\x0f\n" +
 	"\r_notification\"?\n" +
 	"\x14CreatePolicyResponse\x12'\n" +
-	"\x06policy\x18\x01 \x01(\v2\x0f.core.v1.PolicyR\x06policy\"\xa1\x03\n" +
+	"\x06policy\x18\x01 \x01(\v2\x0f.core.v1.PolicyR\x06policy\"\xca\x03\n" +
 	"\x13UpdatePolicyRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12)\n" +
@@ -3410,7 +3493,8 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"user_email\x18\n" +
 	" \x01(\tH\x00R\tuserEmail\x12\x1f\n" +
 	"\n" +
-	"group_name\x18\v \x01(\tH\x00R\tgroupNameB\a\n" +
+	"group_name\x18\v \x01(\tH\x00R\tgroupName\x12'\n" +
+	"\x04tags\x18\f \x01(\v2\x13.core.v1.PolicyTagsR\x04tagsB\a\n" +
 	"\x05ownerB\x0f\n" +
 	"\r_notification\"?\n" +
 	"\x14UpdatePolicyResponse\x12'\n" +
@@ -3657,162 +3741,170 @@ func file_core_v1_policies_proto_rawDescGZIP() []byte {
 	return file_core_v1_policies_proto_rawDescData
 }
 
-var file_core_v1_policies_proto_msgTypes = make([]protoimpl.MessageInfo, 54)
+var file_core_v1_policies_proto_msgTypes = make([]protoimpl.MessageInfo, 58)
 var file_core_v1_policies_proto_goTypes = []any{
 	(*Policy)(nil),                                   // 0: core.v1.Policy
-	(*Auth)(nil),                                     // 1: core.v1.Auth
-	(*GetPolicyCodeValidityRequest)(nil),             // 2: core.v1.GetPolicyCodeValidityRequest
-	(*GetPolicyCodeValidityResponse)(nil),            // 3: core.v1.GetPolicyCodeValidityResponse
-	(*CreatePolicyRequest)(nil),                      // 4: core.v1.CreatePolicyRequest
-	(*CreatePolicyResponse)(nil),                     // 5: core.v1.CreatePolicyResponse
-	(*UpdatePolicyRequest)(nil),                      // 6: core.v1.UpdatePolicyRequest
-	(*UpdatePolicyResponse)(nil),                     // 7: core.v1.UpdatePolicyResponse
-	(*UpdatePolicyV2Request)(nil),                    // 8: core.v1.UpdatePolicyV2Request
-	(*UpdatePolicyV2Response)(nil),                   // 9: core.v1.UpdatePolicyV2Response
-	(*DeletePolicyRequest)(nil),                      // 10: core.v1.DeletePolicyRequest
-	(*DeletePolicyResponse)(nil),                     // 11: core.v1.DeletePolicyResponse
-	(*GetPolicyRequest)(nil),                         // 12: core.v1.GetPolicyRequest
-	(*GetPolicyResponse)(nil),                        // 13: core.v1.GetPolicyResponse
-	(*ListPoliciesRequest)(nil),                      // 14: core.v1.ListPoliciesRequest
-	(*ListPoliciesResponse)(nil),                     // 15: core.v1.ListPoliciesResponse
-	(*CreatePolicyReportRequest)(nil),                // 16: core.v1.CreatePolicyReportRequest
-	(*CreatePolicyReportResponse)(nil),               // 17: core.v1.CreatePolicyReportResponse
-	(*PolicyReport)(nil),                             // 18: core.v1.PolicyReport
-	(*GetPolicyReportRequest)(nil),                   // 19: core.v1.GetPolicyReportRequest
-	(*GetPolicyReportResponse)(nil),                  // 20: core.v1.GetPolicyReportResponse
-	(*GetPolicyImpactReportGraphRequest)(nil),        // 21: core.v1.GetPolicyImpactReportGraphRequest
-	(*GetPolicyImpactReportGraphResponse)(nil),       // 22: core.v1.GetPolicyImpactReportGraphResponse
-	(*ListPolicyImpactReportLogsRequest)(nil),        // 23: core.v1.ListPolicyImpactReportLogsRequest
-	(*TriggeredPolicyInfo)(nil),                      // 24: core.v1.TriggeredPolicyInfo
-	(*ListPolicyImpactReportLogsResponse)(nil),       // 25: core.v1.ListPolicyImpactReportLogsResponse
-	(*PolicyStageConfiguration)(nil),                 // 26: core.v1.PolicyStageConfiguration
-	(*CreatePolicyStageConfigurationRequest)(nil),    // 27: core.v1.CreatePolicyStageConfigurationRequest
-	(*CreatePolicyStageConfigurationResponse)(nil),   // 28: core.v1.CreatePolicyStageConfigurationResponse
-	(*GetPolicyStageConfigurationRequest)(nil),       // 29: core.v1.GetPolicyStageConfigurationRequest
-	(*GetPolicyStageConfigurationResponse)(nil),      // 30: core.v1.GetPolicyStageConfigurationResponse
-	(*ListPolicyStageConfigurationsRequest)(nil),     // 31: core.v1.ListPolicyStageConfigurationsRequest
-	(*ListPolicyStageConfigurationsResponse)(nil),    // 32: core.v1.ListPolicyStageConfigurationsResponse
-	(*UpdatePolicyStageConfigurationRequest)(nil),    // 33: core.v1.UpdatePolicyStageConfigurationRequest
-	(*UpdatePolicyStageConfigurationResponse)(nil),   // 34: core.v1.UpdatePolicyStageConfigurationResponse
-	(*DeletePolicyStageConfigurationRequest)(nil),    // 35: core.v1.DeletePolicyStageConfigurationRequest
-	(*DeletePolicyStageConfigurationResponse)(nil),   // 36: core.v1.DeletePolicyStageConfigurationResponse
-	(*PolicyVersion)(nil),                            // 37: core.v1.PolicyVersion
-	(*GetPolicyVersionRequest)(nil),                  // 38: core.v1.GetPolicyVersionRequest
-	(*GetPolicyVersionResponse)(nil),                 // 39: core.v1.GetPolicyVersionResponse
-	(*ListPolicyVersionsRequest)(nil),                // 40: core.v1.ListPolicyVersionsRequest
-	(*ListPolicyVersionsResponse)(nil),               // 41: core.v1.ListPolicyVersionsResponse
-	(*PolicySuspension)(nil),                         // 42: core.v1.PolicySuspension
-	(*CreatePolicySuspensionRequest)(nil),            // 43: core.v1.CreatePolicySuspensionRequest
-	(*CreatePolicySuspensionResponse)(nil),           // 44: core.v1.CreatePolicySuspensionResponse
-	(*GetPolicySuspensionRequest)(nil),               // 45: core.v1.GetPolicySuspensionRequest
-	(*GetPolicySuspensionResponse)(nil),              // 46: core.v1.GetPolicySuspensionResponse
-	(*ListPolicySuspensionsRequest)(nil),             // 47: core.v1.ListPolicySuspensionsRequest
-	(*ListPolicySuspensionsResponse)(nil),            // 48: core.v1.ListPolicySuspensionsResponse
-	(*DeletePolicySuspensionRequest)(nil),            // 49: core.v1.DeletePolicySuspensionRequest
-	(*DeletePolicySuspensionResponse)(nil),           // 50: core.v1.DeletePolicySuspensionResponse
-	(*UpdatePolicyStageConfigurationV2Request)(nil),  // 51: core.v1.UpdatePolicyStageConfigurationV2Request
-	(*UpdatePolicyStageConfigurationV2Response)(nil), // 52: core.v1.UpdatePolicyStageConfigurationV2Response
-	(*Auth_Basic)(nil),                               // 53: core.v1.Auth.Basic
-	(*Owner)(nil),                                    // 54: core.v1.Owner
-	(*timestamppb.Timestamp)(nil),                    // 55: google.protobuf.Timestamp
-	(*Filter)(nil),                                   // 56: core.v1.Filter
-	(*ListMetadata)(nil),                             // 57: core.v1.ListMetadata
-	(*durationpb.Duration)(nil),                      // 58: google.protobuf.Duration
-	(*Graph)(nil),                                    // 59: core.v1.Graph
-	(*structpb.Struct)(nil),                          // 60: google.protobuf.Struct
+	(*PolicyTags)(nil),                               // 1: core.v1.PolicyTags
+	(*Auth)(nil),                                     // 2: core.v1.Auth
+	(*GetPolicyCodeValidityRequest)(nil),             // 3: core.v1.GetPolicyCodeValidityRequest
+	(*GetPolicyCodeValidityResponse)(nil),            // 4: core.v1.GetPolicyCodeValidityResponse
+	(*CreatePolicyRequest)(nil),                      // 5: core.v1.CreatePolicyRequest
+	(*CreatePolicyResponse)(nil),                     // 6: core.v1.CreatePolicyResponse
+	(*UpdatePolicyRequest)(nil),                      // 7: core.v1.UpdatePolicyRequest
+	(*UpdatePolicyResponse)(nil),                     // 8: core.v1.UpdatePolicyResponse
+	(*UpdatePolicyV2Request)(nil),                    // 9: core.v1.UpdatePolicyV2Request
+	(*UpdatePolicyV2Response)(nil),                   // 10: core.v1.UpdatePolicyV2Response
+	(*DeletePolicyRequest)(nil),                      // 11: core.v1.DeletePolicyRequest
+	(*DeletePolicyResponse)(nil),                     // 12: core.v1.DeletePolicyResponse
+	(*GetPolicyRequest)(nil),                         // 13: core.v1.GetPolicyRequest
+	(*GetPolicyResponse)(nil),                        // 14: core.v1.GetPolicyResponse
+	(*ListPoliciesRequest)(nil),                      // 15: core.v1.ListPoliciesRequest
+	(*ListPoliciesResponse)(nil),                     // 16: core.v1.ListPoliciesResponse
+	(*CreatePolicyReportRequest)(nil),                // 17: core.v1.CreatePolicyReportRequest
+	(*CreatePolicyReportResponse)(nil),               // 18: core.v1.CreatePolicyReportResponse
+	(*PolicyReport)(nil),                             // 19: core.v1.PolicyReport
+	(*GetPolicyReportRequest)(nil),                   // 20: core.v1.GetPolicyReportRequest
+	(*GetPolicyReportResponse)(nil),                  // 21: core.v1.GetPolicyReportResponse
+	(*GetPolicyImpactReportGraphRequest)(nil),        // 22: core.v1.GetPolicyImpactReportGraphRequest
+	(*GetPolicyImpactReportGraphResponse)(nil),       // 23: core.v1.GetPolicyImpactReportGraphResponse
+	(*ListPolicyImpactReportLogsRequest)(nil),        // 24: core.v1.ListPolicyImpactReportLogsRequest
+	(*TriggeredPolicyInfo)(nil),                      // 25: core.v1.TriggeredPolicyInfo
+	(*ListPolicyImpactReportLogsResponse)(nil),       // 26: core.v1.ListPolicyImpactReportLogsResponse
+	(*PolicyStageConfiguration)(nil),                 // 27: core.v1.PolicyStageConfiguration
+	(*CreatePolicyStageConfigurationRequest)(nil),    // 28: core.v1.CreatePolicyStageConfigurationRequest
+	(*CreatePolicyStageConfigurationResponse)(nil),   // 29: core.v1.CreatePolicyStageConfigurationResponse
+	(*GetPolicyStageConfigurationRequest)(nil),       // 30: core.v1.GetPolicyStageConfigurationRequest
+	(*GetPolicyStageConfigurationResponse)(nil),      // 31: core.v1.GetPolicyStageConfigurationResponse
+	(*ListPolicyStageConfigurationsRequest)(nil),     // 32: core.v1.ListPolicyStageConfigurationsRequest
+	(*ListPolicyStageConfigurationsResponse)(nil),    // 33: core.v1.ListPolicyStageConfigurationsResponse
+	(*UpdatePolicyStageConfigurationRequest)(nil),    // 34: core.v1.UpdatePolicyStageConfigurationRequest
+	(*UpdatePolicyStageConfigurationResponse)(nil),   // 35: core.v1.UpdatePolicyStageConfigurationResponse
+	(*DeletePolicyStageConfigurationRequest)(nil),    // 36: core.v1.DeletePolicyStageConfigurationRequest
+	(*DeletePolicyStageConfigurationResponse)(nil),   // 37: core.v1.DeletePolicyStageConfigurationResponse
+	(*PolicyVersion)(nil),                            // 38: core.v1.PolicyVersion
+	(*GetPolicyVersionRequest)(nil),                  // 39: core.v1.GetPolicyVersionRequest
+	(*GetPolicyVersionResponse)(nil),                 // 40: core.v1.GetPolicyVersionResponse
+	(*ListPolicyVersionsRequest)(nil),                // 41: core.v1.ListPolicyVersionsRequest
+	(*ListPolicyVersionsResponse)(nil),               // 42: core.v1.ListPolicyVersionsResponse
+	(*PolicySuspension)(nil),                         // 43: core.v1.PolicySuspension
+	(*CreatePolicySuspensionRequest)(nil),            // 44: core.v1.CreatePolicySuspensionRequest
+	(*CreatePolicySuspensionResponse)(nil),           // 45: core.v1.CreatePolicySuspensionResponse
+	(*GetPolicySuspensionRequest)(nil),               // 46: core.v1.GetPolicySuspensionRequest
+	(*GetPolicySuspensionResponse)(nil),              // 47: core.v1.GetPolicySuspensionResponse
+	(*ListPolicySuspensionsRequest)(nil),             // 48: core.v1.ListPolicySuspensionsRequest
+	(*ListPolicySuspensionsResponse)(nil),            // 49: core.v1.ListPolicySuspensionsResponse
+	(*DeletePolicySuspensionRequest)(nil),            // 50: core.v1.DeletePolicySuspensionRequest
+	(*DeletePolicySuspensionResponse)(nil),           // 51: core.v1.DeletePolicySuspensionResponse
+	(*UpdatePolicyStageConfigurationV2Request)(nil),  // 52: core.v1.UpdatePolicyStageConfigurationV2Request
+	(*UpdatePolicyStageConfigurationV2Response)(nil), // 53: core.v1.UpdatePolicyStageConfigurationV2Response
+	nil,                           // 54: core.v1.Policy.TagsEntry
+	nil,                           // 55: core.v1.PolicyTags.ValuesEntry
+	(*Auth_Basic)(nil),            // 56: core.v1.Auth.Basic
+	nil,                           // 57: core.v1.CreatePolicyRequest.TagsEntry
+	(*Owner)(nil),                 // 58: core.v1.Owner
+	(*timestamppb.Timestamp)(nil), // 59: google.protobuf.Timestamp
+	(*Filter)(nil),                // 60: core.v1.Filter
+	(*ListMetadata)(nil),          // 61: core.v1.ListMetadata
+	(*durationpb.Duration)(nil),   // 62: google.protobuf.Duration
+	(*Graph)(nil),                 // 63: core.v1.Graph
+	(*structpb.Struct)(nil),       // 64: google.protobuf.Struct
 }
 var file_core_v1_policies_proto_depIdxs = []int32{
-	54, // 0: core.v1.Policy.owners:type_name -> core.v1.Owner
-	55, // 1: core.v1.Policy.created_at:type_name -> google.protobuf.Timestamp
-	55, // 2: core.v1.Policy.updated_at:type_name -> google.protobuf.Timestamp
-	53, // 3: core.v1.Auth.basic:type_name -> core.v1.Auth.Basic
-	0,  // 4: core.v1.CreatePolicyResponse.policy:type_name -> core.v1.Policy
-	0,  // 5: core.v1.UpdatePolicyResponse.policy:type_name -> core.v1.Policy
-	0,  // 6: core.v1.UpdatePolicyV2Request.policy:type_name -> core.v1.Policy
-	0,  // 7: core.v1.UpdatePolicyV2Response.policy:type_name -> core.v1.Policy
-	0,  // 8: core.v1.GetPolicyResponse.policy:type_name -> core.v1.Policy
-	56, // 9: core.v1.ListPoliciesRequest.filter:type_name -> core.v1.Filter
-	0,  // 10: core.v1.ListPoliciesResponse.policies:type_name -> core.v1.Policy
-	57, // 11: core.v1.ListPoliciesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	58, // 12: core.v1.CreatePolicyReportRequest.evaluation_window:type_name -> google.protobuf.Duration
-	55, // 13: core.v1.PolicyReport.evaluation_start:type_name -> google.protobuf.Timestamp
-	55, // 14: core.v1.PolicyReport.created_at:type_name -> google.protobuf.Timestamp
-	18, // 15: core.v1.GetPolicyReportResponse.report:type_name -> core.v1.PolicyReport
-	59, // 16: core.v1.GetPolicyImpactReportGraphResponse.graph:type_name -> core.v1.Graph
-	60, // 17: core.v1.ListPolicyImpactReportLogsResponse.logs:type_name -> google.protobuf.Struct
-	57, // 18: core.v1.ListPolicyImpactReportLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	55, // 19: core.v1.PolicyStageConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	55, // 20: core.v1.PolicyStageConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	26, // 21: core.v1.CreatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	26, // 22: core.v1.GetPolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	26, // 23: core.v1.ListPolicyStageConfigurationsResponse.policy_stage_configurations:type_name -> core.v1.PolicyStageConfiguration
-	57, // 24: core.v1.ListPolicyStageConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	26, // 25: core.v1.UpdatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	55, // 26: core.v1.PolicyVersion.created_at:type_name -> google.protobuf.Timestamp
-	55, // 27: core.v1.PolicyVersion.updated_at:type_name -> google.protobuf.Timestamp
-	37, // 28: core.v1.GetPolicyVersionResponse.policy_version:type_name -> core.v1.PolicyVersion
-	37, // 29: core.v1.ListPolicyVersionsResponse.policy_versions:type_name -> core.v1.PolicyVersion
-	57, // 30: core.v1.ListPolicyVersionsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	55, // 31: core.v1.PolicySuspension.expire_at:type_name -> google.protobuf.Timestamp
-	55, // 32: core.v1.PolicySuspension.created_at:type_name -> google.protobuf.Timestamp
-	55, // 33: core.v1.PolicySuspension.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 34: core.v1.CreatePolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
-	42, // 35: core.v1.GetPolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
-	42, // 36: core.v1.ListPolicySuspensionsResponse.policy_suspensions:type_name -> core.v1.PolicySuspension
-	57, // 37: core.v1.ListPolicySuspensionsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	26, // 38: core.v1.UpdatePolicyStageConfigurationV2Request.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	26, // 39: core.v1.UpdatePolicyStageConfigurationV2Response.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	14, // 40: core.v1.PoliciesService.ListPolicies:input_type -> core.v1.ListPoliciesRequest
-	12, // 41: core.v1.PoliciesService.GetPolicy:input_type -> core.v1.GetPolicyRequest
-	2,  // 42: core.v1.PoliciesService.GetPolicyCodeValidity:input_type -> core.v1.GetPolicyCodeValidityRequest
-	4,  // 43: core.v1.PoliciesService.CreatePolicy:input_type -> core.v1.CreatePolicyRequest
-	6,  // 44: core.v1.PoliciesService.UpdatePolicy:input_type -> core.v1.UpdatePolicyRequest
-	8,  // 45: core.v1.PoliciesService.UpdatePolicyV2:input_type -> core.v1.UpdatePolicyV2Request
-	10, // 46: core.v1.PoliciesService.DeletePolicy:input_type -> core.v1.DeletePolicyRequest
-	16, // 47: core.v1.PoliciesService.CreatePolicyReport:input_type -> core.v1.CreatePolicyReportRequest
-	19, // 48: core.v1.PoliciesService.GetPolicyReport:input_type -> core.v1.GetPolicyReportRequest
-	21, // 49: core.v1.PoliciesService.GetPolicyImpactReportGraph:input_type -> core.v1.GetPolicyImpactReportGraphRequest
-	23, // 50: core.v1.PoliciesService.ListPolicyImpactReportLogs:input_type -> core.v1.ListPolicyImpactReportLogsRequest
-	27, // 51: core.v1.PoliciesService.CreatePolicyStageConfiguration:input_type -> core.v1.CreatePolicyStageConfigurationRequest
-	29, // 52: core.v1.PoliciesService.GetPolicyStageConfiguration:input_type -> core.v1.GetPolicyStageConfigurationRequest
-	31, // 53: core.v1.PoliciesService.ListPolicyStageConfigurations:input_type -> core.v1.ListPolicyStageConfigurationsRequest
-	33, // 54: core.v1.PoliciesService.UpdatePolicyStageConfiguration:input_type -> core.v1.UpdatePolicyStageConfigurationRequest
-	51, // 55: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:input_type -> core.v1.UpdatePolicyStageConfigurationV2Request
-	35, // 56: core.v1.PoliciesService.DeletePolicyStageConfiguration:input_type -> core.v1.DeletePolicyStageConfigurationRequest
-	38, // 57: core.v1.PoliciesService.GetPolicyVersion:input_type -> core.v1.GetPolicyVersionRequest
-	40, // 58: core.v1.PoliciesService.ListPolicyVersions:input_type -> core.v1.ListPolicyVersionsRequest
-	43, // 59: core.v1.PoliciesService.CreatePolicySuspension:input_type -> core.v1.CreatePolicySuspensionRequest
-	45, // 60: core.v1.PoliciesService.GetPolicySuspension:input_type -> core.v1.GetPolicySuspensionRequest
-	47, // 61: core.v1.PoliciesService.ListPolicySuspensions:input_type -> core.v1.ListPolicySuspensionsRequest
-	49, // 62: core.v1.PoliciesService.DeletePolicySuspension:input_type -> core.v1.DeletePolicySuspensionRequest
-	15, // 63: core.v1.PoliciesService.ListPolicies:output_type -> core.v1.ListPoliciesResponse
-	13, // 64: core.v1.PoliciesService.GetPolicy:output_type -> core.v1.GetPolicyResponse
-	3,  // 65: core.v1.PoliciesService.GetPolicyCodeValidity:output_type -> core.v1.GetPolicyCodeValidityResponse
-	5,  // 66: core.v1.PoliciesService.CreatePolicy:output_type -> core.v1.CreatePolicyResponse
-	7,  // 67: core.v1.PoliciesService.UpdatePolicy:output_type -> core.v1.UpdatePolicyResponse
-	9,  // 68: core.v1.PoliciesService.UpdatePolicyV2:output_type -> core.v1.UpdatePolicyV2Response
-	11, // 69: core.v1.PoliciesService.DeletePolicy:output_type -> core.v1.DeletePolicyResponse
-	17, // 70: core.v1.PoliciesService.CreatePolicyReport:output_type -> core.v1.CreatePolicyReportResponse
-	20, // 71: core.v1.PoliciesService.GetPolicyReport:output_type -> core.v1.GetPolicyReportResponse
-	22, // 72: core.v1.PoliciesService.GetPolicyImpactReportGraph:output_type -> core.v1.GetPolicyImpactReportGraphResponse
-	25, // 73: core.v1.PoliciesService.ListPolicyImpactReportLogs:output_type -> core.v1.ListPolicyImpactReportLogsResponse
-	28, // 74: core.v1.PoliciesService.CreatePolicyStageConfiguration:output_type -> core.v1.CreatePolicyStageConfigurationResponse
-	30, // 75: core.v1.PoliciesService.GetPolicyStageConfiguration:output_type -> core.v1.GetPolicyStageConfigurationResponse
-	32, // 76: core.v1.PoliciesService.ListPolicyStageConfigurations:output_type -> core.v1.ListPolicyStageConfigurationsResponse
-	34, // 77: core.v1.PoliciesService.UpdatePolicyStageConfiguration:output_type -> core.v1.UpdatePolicyStageConfigurationResponse
-	52, // 78: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:output_type -> core.v1.UpdatePolicyStageConfigurationV2Response
-	36, // 79: core.v1.PoliciesService.DeletePolicyStageConfiguration:output_type -> core.v1.DeletePolicyStageConfigurationResponse
-	39, // 80: core.v1.PoliciesService.GetPolicyVersion:output_type -> core.v1.GetPolicyVersionResponse
-	41, // 81: core.v1.PoliciesService.ListPolicyVersions:output_type -> core.v1.ListPolicyVersionsResponse
-	44, // 82: core.v1.PoliciesService.CreatePolicySuspension:output_type -> core.v1.CreatePolicySuspensionResponse
-	46, // 83: core.v1.PoliciesService.GetPolicySuspension:output_type -> core.v1.GetPolicySuspensionResponse
-	48, // 84: core.v1.PoliciesService.ListPolicySuspensions:output_type -> core.v1.ListPolicySuspensionsResponse
-	50, // 85: core.v1.PoliciesService.DeletePolicySuspension:output_type -> core.v1.DeletePolicySuspensionResponse
-	63, // [63:86] is the sub-list for method output_type
-	40, // [40:63] is the sub-list for method input_type
-	40, // [40:40] is the sub-list for extension type_name
-	40, // [40:40] is the sub-list for extension extendee
-	0,  // [0:40] is the sub-list for field type_name
+	58, // 0: core.v1.Policy.owners:type_name -> core.v1.Owner
+	59, // 1: core.v1.Policy.created_at:type_name -> google.protobuf.Timestamp
+	59, // 2: core.v1.Policy.updated_at:type_name -> google.protobuf.Timestamp
+	54, // 3: core.v1.Policy.tags:type_name -> core.v1.Policy.TagsEntry
+	55, // 4: core.v1.PolicyTags.values:type_name -> core.v1.PolicyTags.ValuesEntry
+	56, // 5: core.v1.Auth.basic:type_name -> core.v1.Auth.Basic
+	57, // 6: core.v1.CreatePolicyRequest.tags:type_name -> core.v1.CreatePolicyRequest.TagsEntry
+	0,  // 7: core.v1.CreatePolicyResponse.policy:type_name -> core.v1.Policy
+	1,  // 8: core.v1.UpdatePolicyRequest.tags:type_name -> core.v1.PolicyTags
+	0,  // 9: core.v1.UpdatePolicyResponse.policy:type_name -> core.v1.Policy
+	0,  // 10: core.v1.UpdatePolicyV2Request.policy:type_name -> core.v1.Policy
+	0,  // 11: core.v1.UpdatePolicyV2Response.policy:type_name -> core.v1.Policy
+	0,  // 12: core.v1.GetPolicyResponse.policy:type_name -> core.v1.Policy
+	60, // 13: core.v1.ListPoliciesRequest.filter:type_name -> core.v1.Filter
+	0,  // 14: core.v1.ListPoliciesResponse.policies:type_name -> core.v1.Policy
+	61, // 15: core.v1.ListPoliciesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	62, // 16: core.v1.CreatePolicyReportRequest.evaluation_window:type_name -> google.protobuf.Duration
+	59, // 17: core.v1.PolicyReport.evaluation_start:type_name -> google.protobuf.Timestamp
+	59, // 18: core.v1.PolicyReport.created_at:type_name -> google.protobuf.Timestamp
+	19, // 19: core.v1.GetPolicyReportResponse.report:type_name -> core.v1.PolicyReport
+	63, // 20: core.v1.GetPolicyImpactReportGraphResponse.graph:type_name -> core.v1.Graph
+	64, // 21: core.v1.ListPolicyImpactReportLogsResponse.logs:type_name -> google.protobuf.Struct
+	61, // 22: core.v1.ListPolicyImpactReportLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	59, // 23: core.v1.PolicyStageConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	59, // 24: core.v1.PolicyStageConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 25: core.v1.CreatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	27, // 26: core.v1.GetPolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	27, // 27: core.v1.ListPolicyStageConfigurationsResponse.policy_stage_configurations:type_name -> core.v1.PolicyStageConfiguration
+	61, // 28: core.v1.ListPolicyStageConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	27, // 29: core.v1.UpdatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	59, // 30: core.v1.PolicyVersion.created_at:type_name -> google.protobuf.Timestamp
+	59, // 31: core.v1.PolicyVersion.updated_at:type_name -> google.protobuf.Timestamp
+	38, // 32: core.v1.GetPolicyVersionResponse.policy_version:type_name -> core.v1.PolicyVersion
+	38, // 33: core.v1.ListPolicyVersionsResponse.policy_versions:type_name -> core.v1.PolicyVersion
+	61, // 34: core.v1.ListPolicyVersionsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	59, // 35: core.v1.PolicySuspension.expire_at:type_name -> google.protobuf.Timestamp
+	59, // 36: core.v1.PolicySuspension.created_at:type_name -> google.protobuf.Timestamp
+	59, // 37: core.v1.PolicySuspension.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 38: core.v1.CreatePolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
+	43, // 39: core.v1.GetPolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
+	43, // 40: core.v1.ListPolicySuspensionsResponse.policy_suspensions:type_name -> core.v1.PolicySuspension
+	61, // 41: core.v1.ListPolicySuspensionsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	27, // 42: core.v1.UpdatePolicyStageConfigurationV2Request.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	27, // 43: core.v1.UpdatePolicyStageConfigurationV2Response.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	15, // 44: core.v1.PoliciesService.ListPolicies:input_type -> core.v1.ListPoliciesRequest
+	13, // 45: core.v1.PoliciesService.GetPolicy:input_type -> core.v1.GetPolicyRequest
+	3,  // 46: core.v1.PoliciesService.GetPolicyCodeValidity:input_type -> core.v1.GetPolicyCodeValidityRequest
+	5,  // 47: core.v1.PoliciesService.CreatePolicy:input_type -> core.v1.CreatePolicyRequest
+	7,  // 48: core.v1.PoliciesService.UpdatePolicy:input_type -> core.v1.UpdatePolicyRequest
+	9,  // 49: core.v1.PoliciesService.UpdatePolicyV2:input_type -> core.v1.UpdatePolicyV2Request
+	11, // 50: core.v1.PoliciesService.DeletePolicy:input_type -> core.v1.DeletePolicyRequest
+	17, // 51: core.v1.PoliciesService.CreatePolicyReport:input_type -> core.v1.CreatePolicyReportRequest
+	20, // 52: core.v1.PoliciesService.GetPolicyReport:input_type -> core.v1.GetPolicyReportRequest
+	22, // 53: core.v1.PoliciesService.GetPolicyImpactReportGraph:input_type -> core.v1.GetPolicyImpactReportGraphRequest
+	24, // 54: core.v1.PoliciesService.ListPolicyImpactReportLogs:input_type -> core.v1.ListPolicyImpactReportLogsRequest
+	28, // 55: core.v1.PoliciesService.CreatePolicyStageConfiguration:input_type -> core.v1.CreatePolicyStageConfigurationRequest
+	30, // 56: core.v1.PoliciesService.GetPolicyStageConfiguration:input_type -> core.v1.GetPolicyStageConfigurationRequest
+	32, // 57: core.v1.PoliciesService.ListPolicyStageConfigurations:input_type -> core.v1.ListPolicyStageConfigurationsRequest
+	34, // 58: core.v1.PoliciesService.UpdatePolicyStageConfiguration:input_type -> core.v1.UpdatePolicyStageConfigurationRequest
+	52, // 59: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:input_type -> core.v1.UpdatePolicyStageConfigurationV2Request
+	36, // 60: core.v1.PoliciesService.DeletePolicyStageConfiguration:input_type -> core.v1.DeletePolicyStageConfigurationRequest
+	39, // 61: core.v1.PoliciesService.GetPolicyVersion:input_type -> core.v1.GetPolicyVersionRequest
+	41, // 62: core.v1.PoliciesService.ListPolicyVersions:input_type -> core.v1.ListPolicyVersionsRequest
+	44, // 63: core.v1.PoliciesService.CreatePolicySuspension:input_type -> core.v1.CreatePolicySuspensionRequest
+	46, // 64: core.v1.PoliciesService.GetPolicySuspension:input_type -> core.v1.GetPolicySuspensionRequest
+	48, // 65: core.v1.PoliciesService.ListPolicySuspensions:input_type -> core.v1.ListPolicySuspensionsRequest
+	50, // 66: core.v1.PoliciesService.DeletePolicySuspension:input_type -> core.v1.DeletePolicySuspensionRequest
+	16, // 67: core.v1.PoliciesService.ListPolicies:output_type -> core.v1.ListPoliciesResponse
+	14, // 68: core.v1.PoliciesService.GetPolicy:output_type -> core.v1.GetPolicyResponse
+	4,  // 69: core.v1.PoliciesService.GetPolicyCodeValidity:output_type -> core.v1.GetPolicyCodeValidityResponse
+	6,  // 70: core.v1.PoliciesService.CreatePolicy:output_type -> core.v1.CreatePolicyResponse
+	8,  // 71: core.v1.PoliciesService.UpdatePolicy:output_type -> core.v1.UpdatePolicyResponse
+	10, // 72: core.v1.PoliciesService.UpdatePolicyV2:output_type -> core.v1.UpdatePolicyV2Response
+	12, // 73: core.v1.PoliciesService.DeletePolicy:output_type -> core.v1.DeletePolicyResponse
+	18, // 74: core.v1.PoliciesService.CreatePolicyReport:output_type -> core.v1.CreatePolicyReportResponse
+	21, // 75: core.v1.PoliciesService.GetPolicyReport:output_type -> core.v1.GetPolicyReportResponse
+	23, // 76: core.v1.PoliciesService.GetPolicyImpactReportGraph:output_type -> core.v1.GetPolicyImpactReportGraphResponse
+	26, // 77: core.v1.PoliciesService.ListPolicyImpactReportLogs:output_type -> core.v1.ListPolicyImpactReportLogsResponse
+	29, // 78: core.v1.PoliciesService.CreatePolicyStageConfiguration:output_type -> core.v1.CreatePolicyStageConfigurationResponse
+	31, // 79: core.v1.PoliciesService.GetPolicyStageConfiguration:output_type -> core.v1.GetPolicyStageConfigurationResponse
+	33, // 80: core.v1.PoliciesService.ListPolicyStageConfigurations:output_type -> core.v1.ListPolicyStageConfigurationsResponse
+	35, // 81: core.v1.PoliciesService.UpdatePolicyStageConfiguration:output_type -> core.v1.UpdatePolicyStageConfigurationResponse
+	53, // 82: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:output_type -> core.v1.UpdatePolicyStageConfigurationV2Response
+	37, // 83: core.v1.PoliciesService.DeletePolicyStageConfiguration:output_type -> core.v1.DeletePolicyStageConfigurationResponse
+	40, // 84: core.v1.PoliciesService.GetPolicyVersion:output_type -> core.v1.GetPolicyVersionResponse
+	42, // 85: core.v1.PoliciesService.ListPolicyVersions:output_type -> core.v1.ListPolicyVersionsResponse
+	45, // 86: core.v1.PoliciesService.CreatePolicySuspension:output_type -> core.v1.CreatePolicySuspensionResponse
+	47, // 87: core.v1.PoliciesService.GetPolicySuspension:output_type -> core.v1.GetPolicySuspensionResponse
+	49, // 88: core.v1.PoliciesService.ListPolicySuspensions:output_type -> core.v1.ListPolicySuspensionsResponse
+	51, // 89: core.v1.PoliciesService.DeletePolicySuspension:output_type -> core.v1.DeletePolicySuspensionResponse
+	67, // [67:90] is the sub-list for method output_type
+	44, // [44:67] is the sub-list for method input_type
+	44, // [44:44] is the sub-list for extension type_name
+	44, // [44:44] is the sub-list for extension extendee
+	0,  // [0:44] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_policies_proto_init() }
@@ -3824,36 +3916,36 @@ func file_core_v1_policies_proto_init() {
 	file_core_v1_graph_proto_init()
 	file_core_v1_list_metadata_proto_init()
 	file_core_v1_types_proto_init()
-	file_core_v1_policies_proto_msgTypes[4].OneofWrappers = []any{
+	file_core_v1_policies_proto_msgTypes[5].OneofWrappers = []any{
 		(*CreatePolicyRequest_UserEmail)(nil),
 		(*CreatePolicyRequest_GroupName)(nil),
 	}
-	file_core_v1_policies_proto_msgTypes[6].OneofWrappers = []any{
+	file_core_v1_policies_proto_msgTypes[7].OneofWrappers = []any{
 		(*UpdatePolicyRequest_UserEmail)(nil),
 		(*UpdatePolicyRequest_GroupName)(nil),
 	}
-	file_core_v1_policies_proto_msgTypes[14].OneofWrappers = []any{}
-	file_core_v1_policies_proto_msgTypes[16].OneofWrappers = []any{}
-	file_core_v1_policies_proto_msgTypes[18].OneofWrappers = []any{}
-	file_core_v1_policies_proto_msgTypes[21].OneofWrappers = []any{}
-	file_core_v1_policies_proto_msgTypes[23].OneofWrappers = []any{}
-	file_core_v1_policies_proto_msgTypes[26].OneofWrappers = []any{
+	file_core_v1_policies_proto_msgTypes[15].OneofWrappers = []any{}
+	file_core_v1_policies_proto_msgTypes[17].OneofWrappers = []any{}
+	file_core_v1_policies_proto_msgTypes[19].OneofWrappers = []any{}
+	file_core_v1_policies_proto_msgTypes[22].OneofWrappers = []any{}
+	file_core_v1_policies_proto_msgTypes[24].OneofWrappers = []any{}
+	file_core_v1_policies_proto_msgTypes[27].OneofWrappers = []any{
 		(*PolicyStageConfiguration_ResourceId)(nil),
 		(*PolicyStageConfiguration_ConnectorId)(nil),
 	}
-	file_core_v1_policies_proto_msgTypes[27].OneofWrappers = []any{
+	file_core_v1_policies_proto_msgTypes[28].OneofWrappers = []any{
 		(*CreatePolicyStageConfigurationRequest_ResourceId)(nil),
 		(*CreatePolicyStageConfigurationRequest_ConnectorId)(nil),
 	}
-	file_core_v1_policies_proto_msgTypes[33].OneofWrappers = []any{}
-	file_core_v1_policies_proto_msgTypes[43].OneofWrappers = []any{}
+	file_core_v1_policies_proto_msgTypes[34].OneofWrappers = []any{}
+	file_core_v1_policies_proto_msgTypes[44].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_policies_proto_rawDesc), len(file_core_v1_policies_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   54,
+			NumMessages:   58,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
