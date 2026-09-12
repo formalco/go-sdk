@@ -1003,6 +1003,7 @@ type ListPoliciesRequest struct {
 	Search        string                 `protobuf:"bytes,4,opt,name=search,proto3" json:"search,omitempty"`
 	SearchFields  []string               `protobuf:"bytes,5,rep,name=search_fields,json=searchFields,proto3" json:"search_fields,omitempty"`
 	Filter        *Filter                `protobuf:"bytes,6,opt,name=filter,proto3,oneof" json:"filter,omitempty"`
+	Tags          map[string]string      `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1075,6 +1076,13 @@ func (x *ListPoliciesRequest) GetSearchFields() []string {
 func (x *ListPoliciesRequest) GetFilter() *Filter {
 	if x != nil {
 		return x.Filter
+	}
+	return nil
+}
+
+func (x *ListPoliciesRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
 	}
 	return nil
 }
@@ -3501,7 +3509,7 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"\x10GetPolicyRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"<\n" +
 	"\x11GetPolicyResponse\x12'\n" +
-	"\x06policy\x18\x01 \x01(\v2\x0f.core.v1.PolicyR\x06policy\"\x8e\x02\n" +
+	"\x06policy\x18\x01 \x01(\v2\x0f.core.v1.PolicyR\x06policy\"\x8e\x03\n" +
 	"\x13ListPoliciesRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -3509,7 +3517,11 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x16\n" +
 	"\x06search\x18\x04 \x01(\tR\x06search\x12V\n" +
 	"\rsearch_fields\x18\x05 \x03(\tB1\xbaH.\x92\x01+\")r'R\x02idR\x04nameR\vdescriptionR\x06ownersR\x06statusR\fsearchFields\x12,\n" +
-	"\x06filter\x18\x06 \x01(\v2\x0f.core.v1.FilterH\x00R\x06filter\x88\x01\x01B\t\n" +
+	"\x06filter\x18\x06 \x01(\v2\x0f.core.v1.FilterH\x00R\x06filter\x88\x01\x01\x12E\n" +
+	"\x04tags\x18\a \x03(\v2&.core.v1.ListPoliciesRequest.TagsEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x04tags\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\t\n" +
 	"\a_filter\"\x7f\n" +
 	"\x14ListPoliciesResponse\x12+\n" +
 	"\bpolicies\x18\x01 \x03(\v2\x0f.core.v1.PolicyR\bpolicies\x12:\n" +
@@ -3732,7 +3744,7 @@ func file_core_v1_policies_proto_rawDescGZIP() []byte {
 	return file_core_v1_policies_proto_rawDescData
 }
 
-var file_core_v1_policies_proto_msgTypes = make([]protoimpl.MessageInfo, 58)
+var file_core_v1_policies_proto_msgTypes = make([]protoimpl.MessageInfo, 59)
 var file_core_v1_policies_proto_goTypes = []any{
 	(*Policy)(nil),                                   // 0: core.v1.Policy
 	(*PolicyTags)(nil),                               // 1: core.v1.PolicyTags
@@ -3792,18 +3804,19 @@ var file_core_v1_policies_proto_goTypes = []any{
 	nil,                           // 55: core.v1.PolicyTags.ValuesEntry
 	(*Auth_Basic)(nil),            // 56: core.v1.Auth.Basic
 	nil,                           // 57: core.v1.CreatePolicyRequest.TagsEntry
-	(*Owner)(nil),                 // 58: core.v1.Owner
-	(*timestamppb.Timestamp)(nil), // 59: google.protobuf.Timestamp
-	(*Filter)(nil),                // 60: core.v1.Filter
-	(*ListMetadata)(nil),          // 61: core.v1.ListMetadata
-	(*durationpb.Duration)(nil),   // 62: google.protobuf.Duration
-	(*Graph)(nil),                 // 63: core.v1.Graph
-	(*structpb.Struct)(nil),       // 64: google.protobuf.Struct
+	nil,                           // 58: core.v1.ListPoliciesRequest.TagsEntry
+	(*Owner)(nil),                 // 59: core.v1.Owner
+	(*timestamppb.Timestamp)(nil), // 60: google.protobuf.Timestamp
+	(*Filter)(nil),                // 61: core.v1.Filter
+	(*ListMetadata)(nil),          // 62: core.v1.ListMetadata
+	(*durationpb.Duration)(nil),   // 63: google.protobuf.Duration
+	(*Graph)(nil),                 // 64: core.v1.Graph
+	(*structpb.Struct)(nil),       // 65: google.protobuf.Struct
 }
 var file_core_v1_policies_proto_depIdxs = []int32{
-	58, // 0: core.v1.Policy.owners:type_name -> core.v1.Owner
-	59, // 1: core.v1.Policy.created_at:type_name -> google.protobuf.Timestamp
-	59, // 2: core.v1.Policy.updated_at:type_name -> google.protobuf.Timestamp
+	59, // 0: core.v1.Policy.owners:type_name -> core.v1.Owner
+	60, // 1: core.v1.Policy.created_at:type_name -> google.protobuf.Timestamp
+	60, // 2: core.v1.Policy.updated_at:type_name -> google.protobuf.Timestamp
 	54, // 3: core.v1.Policy.tags:type_name -> core.v1.Policy.TagsEntry
 	55, // 4: core.v1.PolicyTags.values:type_name -> core.v1.PolicyTags.ValuesEntry
 	56, // 5: core.v1.Auth.basic:type_name -> core.v1.Auth.Basic
@@ -3814,88 +3827,89 @@ var file_core_v1_policies_proto_depIdxs = []int32{
 	0,  // 10: core.v1.UpdatePolicyV2Request.policy:type_name -> core.v1.Policy
 	0,  // 11: core.v1.UpdatePolicyV2Response.policy:type_name -> core.v1.Policy
 	0,  // 12: core.v1.GetPolicyResponse.policy:type_name -> core.v1.Policy
-	60, // 13: core.v1.ListPoliciesRequest.filter:type_name -> core.v1.Filter
-	0,  // 14: core.v1.ListPoliciesResponse.policies:type_name -> core.v1.Policy
-	61, // 15: core.v1.ListPoliciesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	62, // 16: core.v1.CreatePolicyReportRequest.evaluation_window:type_name -> google.protobuf.Duration
-	59, // 17: core.v1.PolicyReport.evaluation_start:type_name -> google.protobuf.Timestamp
-	59, // 18: core.v1.PolicyReport.created_at:type_name -> google.protobuf.Timestamp
-	19, // 19: core.v1.GetPolicyReportResponse.report:type_name -> core.v1.PolicyReport
-	63, // 20: core.v1.GetPolicyImpactReportGraphResponse.graph:type_name -> core.v1.Graph
-	64, // 21: core.v1.ListPolicyImpactReportLogsResponse.logs:type_name -> google.protobuf.Struct
-	61, // 22: core.v1.ListPolicyImpactReportLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	59, // 23: core.v1.PolicyStageConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	59, // 24: core.v1.PolicyStageConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	27, // 25: core.v1.CreatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	27, // 26: core.v1.GetPolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	27, // 27: core.v1.ListPolicyStageConfigurationsResponse.policy_stage_configurations:type_name -> core.v1.PolicyStageConfiguration
-	61, // 28: core.v1.ListPolicyStageConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	27, // 29: core.v1.UpdatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	59, // 30: core.v1.PolicyVersion.created_at:type_name -> google.protobuf.Timestamp
-	59, // 31: core.v1.PolicyVersion.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 32: core.v1.GetPolicyVersionResponse.policy_version:type_name -> core.v1.PolicyVersion
-	38, // 33: core.v1.ListPolicyVersionsResponse.policy_versions:type_name -> core.v1.PolicyVersion
-	61, // 34: core.v1.ListPolicyVersionsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	59, // 35: core.v1.PolicySuspension.expire_at:type_name -> google.protobuf.Timestamp
-	59, // 36: core.v1.PolicySuspension.created_at:type_name -> google.protobuf.Timestamp
-	59, // 37: core.v1.PolicySuspension.updated_at:type_name -> google.protobuf.Timestamp
-	43, // 38: core.v1.CreatePolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
-	43, // 39: core.v1.GetPolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
-	43, // 40: core.v1.ListPolicySuspensionsResponse.policy_suspensions:type_name -> core.v1.PolicySuspension
-	61, // 41: core.v1.ListPolicySuspensionsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	27, // 42: core.v1.UpdatePolicyStageConfigurationV2Request.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	27, // 43: core.v1.UpdatePolicyStageConfigurationV2Response.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
-	15, // 44: core.v1.PoliciesService.ListPolicies:input_type -> core.v1.ListPoliciesRequest
-	13, // 45: core.v1.PoliciesService.GetPolicy:input_type -> core.v1.GetPolicyRequest
-	3,  // 46: core.v1.PoliciesService.GetPolicyCodeValidity:input_type -> core.v1.GetPolicyCodeValidityRequest
-	5,  // 47: core.v1.PoliciesService.CreatePolicy:input_type -> core.v1.CreatePolicyRequest
-	7,  // 48: core.v1.PoliciesService.UpdatePolicy:input_type -> core.v1.UpdatePolicyRequest
-	9,  // 49: core.v1.PoliciesService.UpdatePolicyV2:input_type -> core.v1.UpdatePolicyV2Request
-	11, // 50: core.v1.PoliciesService.DeletePolicy:input_type -> core.v1.DeletePolicyRequest
-	17, // 51: core.v1.PoliciesService.CreatePolicyReport:input_type -> core.v1.CreatePolicyReportRequest
-	20, // 52: core.v1.PoliciesService.GetPolicyReport:input_type -> core.v1.GetPolicyReportRequest
-	22, // 53: core.v1.PoliciesService.GetPolicyImpactReportGraph:input_type -> core.v1.GetPolicyImpactReportGraphRequest
-	24, // 54: core.v1.PoliciesService.ListPolicyImpactReportLogs:input_type -> core.v1.ListPolicyImpactReportLogsRequest
-	28, // 55: core.v1.PoliciesService.CreatePolicyStageConfiguration:input_type -> core.v1.CreatePolicyStageConfigurationRequest
-	30, // 56: core.v1.PoliciesService.GetPolicyStageConfiguration:input_type -> core.v1.GetPolicyStageConfigurationRequest
-	32, // 57: core.v1.PoliciesService.ListPolicyStageConfigurations:input_type -> core.v1.ListPolicyStageConfigurationsRequest
-	34, // 58: core.v1.PoliciesService.UpdatePolicyStageConfiguration:input_type -> core.v1.UpdatePolicyStageConfigurationRequest
-	52, // 59: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:input_type -> core.v1.UpdatePolicyStageConfigurationV2Request
-	36, // 60: core.v1.PoliciesService.DeletePolicyStageConfiguration:input_type -> core.v1.DeletePolicyStageConfigurationRequest
-	39, // 61: core.v1.PoliciesService.GetPolicyVersion:input_type -> core.v1.GetPolicyVersionRequest
-	41, // 62: core.v1.PoliciesService.ListPolicyVersions:input_type -> core.v1.ListPolicyVersionsRequest
-	44, // 63: core.v1.PoliciesService.CreatePolicySuspension:input_type -> core.v1.CreatePolicySuspensionRequest
-	46, // 64: core.v1.PoliciesService.GetPolicySuspension:input_type -> core.v1.GetPolicySuspensionRequest
-	48, // 65: core.v1.PoliciesService.ListPolicySuspensions:input_type -> core.v1.ListPolicySuspensionsRequest
-	50, // 66: core.v1.PoliciesService.DeletePolicySuspension:input_type -> core.v1.DeletePolicySuspensionRequest
-	16, // 67: core.v1.PoliciesService.ListPolicies:output_type -> core.v1.ListPoliciesResponse
-	14, // 68: core.v1.PoliciesService.GetPolicy:output_type -> core.v1.GetPolicyResponse
-	4,  // 69: core.v1.PoliciesService.GetPolicyCodeValidity:output_type -> core.v1.GetPolicyCodeValidityResponse
-	6,  // 70: core.v1.PoliciesService.CreatePolicy:output_type -> core.v1.CreatePolicyResponse
-	8,  // 71: core.v1.PoliciesService.UpdatePolicy:output_type -> core.v1.UpdatePolicyResponse
-	10, // 72: core.v1.PoliciesService.UpdatePolicyV2:output_type -> core.v1.UpdatePolicyV2Response
-	12, // 73: core.v1.PoliciesService.DeletePolicy:output_type -> core.v1.DeletePolicyResponse
-	18, // 74: core.v1.PoliciesService.CreatePolicyReport:output_type -> core.v1.CreatePolicyReportResponse
-	21, // 75: core.v1.PoliciesService.GetPolicyReport:output_type -> core.v1.GetPolicyReportResponse
-	23, // 76: core.v1.PoliciesService.GetPolicyImpactReportGraph:output_type -> core.v1.GetPolicyImpactReportGraphResponse
-	26, // 77: core.v1.PoliciesService.ListPolicyImpactReportLogs:output_type -> core.v1.ListPolicyImpactReportLogsResponse
-	29, // 78: core.v1.PoliciesService.CreatePolicyStageConfiguration:output_type -> core.v1.CreatePolicyStageConfigurationResponse
-	31, // 79: core.v1.PoliciesService.GetPolicyStageConfiguration:output_type -> core.v1.GetPolicyStageConfigurationResponse
-	33, // 80: core.v1.PoliciesService.ListPolicyStageConfigurations:output_type -> core.v1.ListPolicyStageConfigurationsResponse
-	35, // 81: core.v1.PoliciesService.UpdatePolicyStageConfiguration:output_type -> core.v1.UpdatePolicyStageConfigurationResponse
-	53, // 82: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:output_type -> core.v1.UpdatePolicyStageConfigurationV2Response
-	37, // 83: core.v1.PoliciesService.DeletePolicyStageConfiguration:output_type -> core.v1.DeletePolicyStageConfigurationResponse
-	40, // 84: core.v1.PoliciesService.GetPolicyVersion:output_type -> core.v1.GetPolicyVersionResponse
-	42, // 85: core.v1.PoliciesService.ListPolicyVersions:output_type -> core.v1.ListPolicyVersionsResponse
-	45, // 86: core.v1.PoliciesService.CreatePolicySuspension:output_type -> core.v1.CreatePolicySuspensionResponse
-	47, // 87: core.v1.PoliciesService.GetPolicySuspension:output_type -> core.v1.GetPolicySuspensionResponse
-	49, // 88: core.v1.PoliciesService.ListPolicySuspensions:output_type -> core.v1.ListPolicySuspensionsResponse
-	51, // 89: core.v1.PoliciesService.DeletePolicySuspension:output_type -> core.v1.DeletePolicySuspensionResponse
-	67, // [67:90] is the sub-list for method output_type
-	44, // [44:67] is the sub-list for method input_type
-	44, // [44:44] is the sub-list for extension type_name
-	44, // [44:44] is the sub-list for extension extendee
-	0,  // [0:44] is the sub-list for field type_name
+	61, // 13: core.v1.ListPoliciesRequest.filter:type_name -> core.v1.Filter
+	58, // 14: core.v1.ListPoliciesRequest.tags:type_name -> core.v1.ListPoliciesRequest.TagsEntry
+	0,  // 15: core.v1.ListPoliciesResponse.policies:type_name -> core.v1.Policy
+	62, // 16: core.v1.ListPoliciesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	63, // 17: core.v1.CreatePolicyReportRequest.evaluation_window:type_name -> google.protobuf.Duration
+	60, // 18: core.v1.PolicyReport.evaluation_start:type_name -> google.protobuf.Timestamp
+	60, // 19: core.v1.PolicyReport.created_at:type_name -> google.protobuf.Timestamp
+	19, // 20: core.v1.GetPolicyReportResponse.report:type_name -> core.v1.PolicyReport
+	64, // 21: core.v1.GetPolicyImpactReportGraphResponse.graph:type_name -> core.v1.Graph
+	65, // 22: core.v1.ListPolicyImpactReportLogsResponse.logs:type_name -> google.protobuf.Struct
+	62, // 23: core.v1.ListPolicyImpactReportLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	60, // 24: core.v1.PolicyStageConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	60, // 25: core.v1.PolicyStageConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 26: core.v1.CreatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	27, // 27: core.v1.GetPolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	27, // 28: core.v1.ListPolicyStageConfigurationsResponse.policy_stage_configurations:type_name -> core.v1.PolicyStageConfiguration
+	62, // 29: core.v1.ListPolicyStageConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	27, // 30: core.v1.UpdatePolicyStageConfigurationResponse.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	60, // 31: core.v1.PolicyVersion.created_at:type_name -> google.protobuf.Timestamp
+	60, // 32: core.v1.PolicyVersion.updated_at:type_name -> google.protobuf.Timestamp
+	38, // 33: core.v1.GetPolicyVersionResponse.policy_version:type_name -> core.v1.PolicyVersion
+	38, // 34: core.v1.ListPolicyVersionsResponse.policy_versions:type_name -> core.v1.PolicyVersion
+	62, // 35: core.v1.ListPolicyVersionsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	60, // 36: core.v1.PolicySuspension.expire_at:type_name -> google.protobuf.Timestamp
+	60, // 37: core.v1.PolicySuspension.created_at:type_name -> google.protobuf.Timestamp
+	60, // 38: core.v1.PolicySuspension.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 39: core.v1.CreatePolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
+	43, // 40: core.v1.GetPolicySuspensionResponse.policy_suspension:type_name -> core.v1.PolicySuspension
+	43, // 41: core.v1.ListPolicySuspensionsResponse.policy_suspensions:type_name -> core.v1.PolicySuspension
+	62, // 42: core.v1.ListPolicySuspensionsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	27, // 43: core.v1.UpdatePolicyStageConfigurationV2Request.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	27, // 44: core.v1.UpdatePolicyStageConfigurationV2Response.policy_stage_configuration:type_name -> core.v1.PolicyStageConfiguration
+	15, // 45: core.v1.PoliciesService.ListPolicies:input_type -> core.v1.ListPoliciesRequest
+	13, // 46: core.v1.PoliciesService.GetPolicy:input_type -> core.v1.GetPolicyRequest
+	3,  // 47: core.v1.PoliciesService.GetPolicyCodeValidity:input_type -> core.v1.GetPolicyCodeValidityRequest
+	5,  // 48: core.v1.PoliciesService.CreatePolicy:input_type -> core.v1.CreatePolicyRequest
+	7,  // 49: core.v1.PoliciesService.UpdatePolicy:input_type -> core.v1.UpdatePolicyRequest
+	9,  // 50: core.v1.PoliciesService.UpdatePolicyV2:input_type -> core.v1.UpdatePolicyV2Request
+	11, // 51: core.v1.PoliciesService.DeletePolicy:input_type -> core.v1.DeletePolicyRequest
+	17, // 52: core.v1.PoliciesService.CreatePolicyReport:input_type -> core.v1.CreatePolicyReportRequest
+	20, // 53: core.v1.PoliciesService.GetPolicyReport:input_type -> core.v1.GetPolicyReportRequest
+	22, // 54: core.v1.PoliciesService.GetPolicyImpactReportGraph:input_type -> core.v1.GetPolicyImpactReportGraphRequest
+	24, // 55: core.v1.PoliciesService.ListPolicyImpactReportLogs:input_type -> core.v1.ListPolicyImpactReportLogsRequest
+	28, // 56: core.v1.PoliciesService.CreatePolicyStageConfiguration:input_type -> core.v1.CreatePolicyStageConfigurationRequest
+	30, // 57: core.v1.PoliciesService.GetPolicyStageConfiguration:input_type -> core.v1.GetPolicyStageConfigurationRequest
+	32, // 58: core.v1.PoliciesService.ListPolicyStageConfigurations:input_type -> core.v1.ListPolicyStageConfigurationsRequest
+	34, // 59: core.v1.PoliciesService.UpdatePolicyStageConfiguration:input_type -> core.v1.UpdatePolicyStageConfigurationRequest
+	52, // 60: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:input_type -> core.v1.UpdatePolicyStageConfigurationV2Request
+	36, // 61: core.v1.PoliciesService.DeletePolicyStageConfiguration:input_type -> core.v1.DeletePolicyStageConfigurationRequest
+	39, // 62: core.v1.PoliciesService.GetPolicyVersion:input_type -> core.v1.GetPolicyVersionRequest
+	41, // 63: core.v1.PoliciesService.ListPolicyVersions:input_type -> core.v1.ListPolicyVersionsRequest
+	44, // 64: core.v1.PoliciesService.CreatePolicySuspension:input_type -> core.v1.CreatePolicySuspensionRequest
+	46, // 65: core.v1.PoliciesService.GetPolicySuspension:input_type -> core.v1.GetPolicySuspensionRequest
+	48, // 66: core.v1.PoliciesService.ListPolicySuspensions:input_type -> core.v1.ListPolicySuspensionsRequest
+	50, // 67: core.v1.PoliciesService.DeletePolicySuspension:input_type -> core.v1.DeletePolicySuspensionRequest
+	16, // 68: core.v1.PoliciesService.ListPolicies:output_type -> core.v1.ListPoliciesResponse
+	14, // 69: core.v1.PoliciesService.GetPolicy:output_type -> core.v1.GetPolicyResponse
+	4,  // 70: core.v1.PoliciesService.GetPolicyCodeValidity:output_type -> core.v1.GetPolicyCodeValidityResponse
+	6,  // 71: core.v1.PoliciesService.CreatePolicy:output_type -> core.v1.CreatePolicyResponse
+	8,  // 72: core.v1.PoliciesService.UpdatePolicy:output_type -> core.v1.UpdatePolicyResponse
+	10, // 73: core.v1.PoliciesService.UpdatePolicyV2:output_type -> core.v1.UpdatePolicyV2Response
+	12, // 74: core.v1.PoliciesService.DeletePolicy:output_type -> core.v1.DeletePolicyResponse
+	18, // 75: core.v1.PoliciesService.CreatePolicyReport:output_type -> core.v1.CreatePolicyReportResponse
+	21, // 76: core.v1.PoliciesService.GetPolicyReport:output_type -> core.v1.GetPolicyReportResponse
+	23, // 77: core.v1.PoliciesService.GetPolicyImpactReportGraph:output_type -> core.v1.GetPolicyImpactReportGraphResponse
+	26, // 78: core.v1.PoliciesService.ListPolicyImpactReportLogs:output_type -> core.v1.ListPolicyImpactReportLogsResponse
+	29, // 79: core.v1.PoliciesService.CreatePolicyStageConfiguration:output_type -> core.v1.CreatePolicyStageConfigurationResponse
+	31, // 80: core.v1.PoliciesService.GetPolicyStageConfiguration:output_type -> core.v1.GetPolicyStageConfigurationResponse
+	33, // 81: core.v1.PoliciesService.ListPolicyStageConfigurations:output_type -> core.v1.ListPolicyStageConfigurationsResponse
+	35, // 82: core.v1.PoliciesService.UpdatePolicyStageConfiguration:output_type -> core.v1.UpdatePolicyStageConfigurationResponse
+	53, // 83: core.v1.PoliciesService.UpdatePolicyStageConfigurationV2:output_type -> core.v1.UpdatePolicyStageConfigurationV2Response
+	37, // 84: core.v1.PoliciesService.DeletePolicyStageConfiguration:output_type -> core.v1.DeletePolicyStageConfigurationResponse
+	40, // 85: core.v1.PoliciesService.GetPolicyVersion:output_type -> core.v1.GetPolicyVersionResponse
+	42, // 86: core.v1.PoliciesService.ListPolicyVersions:output_type -> core.v1.ListPolicyVersionsResponse
+	45, // 87: core.v1.PoliciesService.CreatePolicySuspension:output_type -> core.v1.CreatePolicySuspensionResponse
+	47, // 88: core.v1.PoliciesService.GetPolicySuspension:output_type -> core.v1.GetPolicySuspensionResponse
+	49, // 89: core.v1.PoliciesService.ListPolicySuspensions:output_type -> core.v1.ListPolicySuspensionsResponse
+	51, // 90: core.v1.PoliciesService.DeletePolicySuspension:output_type -> core.v1.DeletePolicySuspensionResponse
+	68, // [68:91] is the sub-list for method output_type
+	45, // [45:68] is the sub-list for method input_type
+	45, // [45:45] is the sub-list for extension type_name
+	45, // [45:45] is the sub-list for extension extendee
+	0,  // [0:45] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_policies_proto_init() }
@@ -3936,7 +3950,7 @@ func file_core_v1_policies_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_policies_proto_rawDesc), len(file_core_v1_policies_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   58,
+			NumMessages:   59,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
