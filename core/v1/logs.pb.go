@@ -4102,6 +4102,8 @@ type ListLogsResponse_Aggregations struct {
 	LlmModels        []*ListLogsResponse_Bucket `protobuf:"bytes,67,rep,name=llm_models,json=llmModels,proto3" json:"llm_models,omitempty"`
 	LlmProviders     []*ListLogsResponse_Bucket `protobuf:"bytes,68,rep,name=llm_providers,json=llmProviders,proto3" json:"llm_providers,omitempty"`
 	LlmStopReasons   []*ListLogsResponse_Bucket `protobuf:"bytes,69,rep,name=llm_stop_reasons,json=llmStopReasons,proto3" json:"llm_stop_reasons,omitempty"`
+	AgentTypes       []*ListLogsResponse_Bucket `protobuf:"bytes,72,rep,name=agent_types,json=agentTypes,proto3" json:"agent_types,omitempty"`
+	AgentProviders   []*ListLogsResponse_Bucket `protobuf:"bytes,73,rep,name=agent_providers,json=agentProviders,proto3" json:"agent_providers,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -4626,6 +4628,20 @@ func (x *ListLogsResponse_Aggregations) GetLlmStopReasons() []*ListLogsResponse_
 	return nil
 }
 
+func (x *ListLogsResponse_Aggregations) GetAgentTypes() []*ListLogsResponse_Bucket {
+	if x != nil {
+		return x.AgentTypes
+	}
+	return nil
+}
+
+func (x *ListLogsResponse_Aggregations) GetAgentProviders() []*ListLogsResponse_Bucket {
+	if x != nil {
+		return x.AgentProviders
+	}
+	return nil
+}
+
 type ListLogsResponse_Bucket struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
@@ -4934,12 +4950,12 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"2\b^[0-9]+$R\fendTimestamp\"r\n" +
 	"\x1cGetMetricAggregationResponse\x12<\n" +
 	"\vaggregation\x18\x01 \x01(\v2\x1a.core.v1.MetricAggregationR\vaggregation\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value\"\xcc0\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value\"\xda1\n" +
 	"\x10ListLogsResponse\x12+\n" +
 	"\x04logs\x18\x01 \x03(\v2\x17.google.protobuf.StructR\x04logs\x12\x19\n" +
 	"\bnum_hits\x18\x02 \x01(\x03R\anumHits\x12J\n" +
 	"\faggregations\x18\x03 \x01(\v2&.core.v1.ListLogsResponse.AggregationsR\faggregations\x12:\n" +
-	"\rlist_metadata\x18\x04 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\x1a\xb5,\n" +
+	"\rlist_metadata\x18\x04 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\x1a\xc3-\n" +
 	"\fAggregations\x12J\n" +
 	"\x0elogs_over_time\x18\x01 \x03(\v2$.core.v1.ListLogsResponse.DateBucketR\flogsOverTime\x12E\n" +
 	"\rsession_types\x18\x02 \x03(\v2 .core.v1.ListLogsResponse.BucketR\fsessionTypes\x12A\n" +
@@ -5020,7 +5036,10 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\n" +
 	"llm_models\x18C \x03(\v2 .core.v1.ListLogsResponse.BucketR\tllmModels\x12E\n" +
 	"\rllm_providers\x18D \x03(\v2 .core.v1.ListLogsResponse.BucketR\fllmProviders\x12J\n" +
-	"\x10llm_stop_reasons\x18E \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0ellmStopReasons\x1a0\n" +
+	"\x10llm_stop_reasons\x18E \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0ellmStopReasons\x12A\n" +
+	"\vagent_types\x18H \x03(\v2 .core.v1.ListLogsResponse.BucketR\n" +
+	"agentTypes\x12I\n" +
+	"\x0fagent_providers\x18I \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0eagentProviders\x1a0\n" +
 	"\x06Bucket\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05count\x18\x02 \x01(\x05R\x05count\x1az\n" +
@@ -5563,67 +5582,69 @@ var file_core_v1_logs_proto_depIdxs = []int32{
 	71,  // 136: core.v1.ListLogsResponse.Aggregations.llm_models:type_name -> core.v1.ListLogsResponse.Bucket
 	71,  // 137: core.v1.ListLogsResponse.Aggregations.llm_providers:type_name -> core.v1.ListLogsResponse.Bucket
 	71,  // 138: core.v1.ListLogsResponse.Aggregations.llm_stop_reasons:type_name -> core.v1.ListLogsResponse.Bucket
-	72,  // 139: core.v1.ListLogsResponse.GroupByBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
-	72,  // 140: core.v1.ListLogsResponse.DateBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
-	74,  // 141: core.v1.GetGroupByAggregationResponse.Bucket.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
-	75,  // 142: core.v1.GetGroupByAggregationResponse.Bucket.metrics:type_name -> core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
-	19,  // 143: core.v1.LogsService.GetLog:input_type -> core.v1.GetLogRequest
-	32,  // 144: core.v1.LogsService.GetGroupByAggregation:input_type -> core.v1.GetGroupByAggregationRequest
-	21,  // 145: core.v1.LogsService.GetMetricAggregation:input_type -> core.v1.GetMetricAggregationRequest
-	24,  // 146: core.v1.LogsService.ListLogsV2:input_type -> core.v1.ListLogsV2Request
-	26,  // 147: core.v1.LogsService.ListLogAggregations:input_type -> core.v1.ListLogAggregationsRequest
-	28,  // 148: core.v1.LogsService.ListLogPolicyEvaluationInputs:input_type -> core.v1.ListLogPolicyEvaluationInputsRequest
-	68,  // 149: core.v1.LogsService.GetLogsFromNaturalLanguage:input_type -> core.v1.GetLogsFromNaturalLanguageRequest
-	6,   // 150: core.v1.LogsService.CreateLogQuery:input_type -> core.v1.CreateLogQueryRequest
-	8,   // 151: core.v1.LogsService.UpdateLogQuery:input_type -> core.v1.UpdateLogQueryRequest
-	10,  // 152: core.v1.LogsService.UpdateLogQueryV2:input_type -> core.v1.UpdateLogQueryV2Request
-	12,  // 153: core.v1.LogsService.ListLogQueries:input_type -> core.v1.ListLogQueriesRequest
-	14,  // 154: core.v1.LogsService.GetLogQuery:input_type -> core.v1.GetLogQueryRequest
-	16,  // 155: core.v1.LogsService.DeleteLogQuery:input_type -> core.v1.DeleteLogQueryRequest
-	42,  // 156: core.v1.LogsService.CreateLogConfiguration:input_type -> core.v1.CreateLogConfigurationRequest
-	44,  // 157: core.v1.LogsService.GetLogConfiguration:input_type -> core.v1.GetLogConfigurationRequest
-	46,  // 158: core.v1.LogsService.ListLogConfigurations:input_type -> core.v1.ListLogConfigurationsRequest
-	48,  // 159: core.v1.LogsService.UpdateLogConfiguration:input_type -> core.v1.UpdateLogConfigurationRequest
-	50,  // 160: core.v1.LogsService.UpdateLogConfigurationV2:input_type -> core.v1.UpdateLogConfigurationV2Request
-	52,  // 161: core.v1.LogsService.DeleteLogConfiguration:input_type -> core.v1.DeleteLogConfigurationRequest
-	54,  // 162: core.v1.LogsService.CreateEncryptionKey:input_type -> core.v1.CreateEncryptionKeyRequest
-	56,  // 163: core.v1.LogsService.GetEncryptionKey:input_type -> core.v1.GetEncryptionKeyRequest
-	58,  // 164: core.v1.LogsService.GetEncryptionKeysByKeyId:input_type -> core.v1.GetEncryptionKeysByKeyIdRequest
-	66,  // 165: core.v1.LogsService.ListEncryptionKeys:input_type -> core.v1.ListEncryptionKeysRequest
-	60,  // 166: core.v1.LogsService.UpdateEncryptionKey:input_type -> core.v1.UpdateEncryptionKeyRequest
-	62,  // 167: core.v1.LogsService.UpdateEncryptionKeyV2:input_type -> core.v1.UpdateEncryptionKeyV2Request
-	64,  // 168: core.v1.LogsService.DeleteEncryptionKey:input_type -> core.v1.DeleteEncryptionKeyRequest
-	20,  // 169: core.v1.LogsService.GetLog:output_type -> core.v1.GetLogResponse
-	33,  // 170: core.v1.LogsService.GetGroupByAggregation:output_type -> core.v1.GetGroupByAggregationResponse
-	22,  // 171: core.v1.LogsService.GetMetricAggregation:output_type -> core.v1.GetMetricAggregationResponse
-	25,  // 172: core.v1.LogsService.ListLogsV2:output_type -> core.v1.ListLogsV2Response
-	27,  // 173: core.v1.LogsService.ListLogAggregations:output_type -> core.v1.ListLogAggregationsResponse
-	30,  // 174: core.v1.LogsService.ListLogPolicyEvaluationInputs:output_type -> core.v1.ListLogPolicyEvaluationInputsResponse
-	69,  // 175: core.v1.LogsService.GetLogsFromNaturalLanguage:output_type -> core.v1.GetLogsFromNaturalLanguageResponse
-	7,   // 176: core.v1.LogsService.CreateLogQuery:output_type -> core.v1.CreateLogQueryResponse
-	9,   // 177: core.v1.LogsService.UpdateLogQuery:output_type -> core.v1.UpdateLogQueryResponse
-	11,  // 178: core.v1.LogsService.UpdateLogQueryV2:output_type -> core.v1.UpdateLogQueryV2Response
-	13,  // 179: core.v1.LogsService.ListLogQueries:output_type -> core.v1.ListLogQueriesResponse
-	15,  // 180: core.v1.LogsService.GetLogQuery:output_type -> core.v1.GetLogQueryResponse
-	17,  // 181: core.v1.LogsService.DeleteLogQuery:output_type -> core.v1.DeleteLogQueryResponse
-	43,  // 182: core.v1.LogsService.CreateLogConfiguration:output_type -> core.v1.CreateLogConfigurationResponse
-	45,  // 183: core.v1.LogsService.GetLogConfiguration:output_type -> core.v1.GetLogConfigurationResponse
-	47,  // 184: core.v1.LogsService.ListLogConfigurations:output_type -> core.v1.ListLogConfigurationsResponse
-	49,  // 185: core.v1.LogsService.UpdateLogConfiguration:output_type -> core.v1.UpdateLogConfigurationResponse
-	51,  // 186: core.v1.LogsService.UpdateLogConfigurationV2:output_type -> core.v1.UpdateLogConfigurationV2Response
-	53,  // 187: core.v1.LogsService.DeleteLogConfiguration:output_type -> core.v1.DeleteLogConfigurationResponse
-	55,  // 188: core.v1.LogsService.CreateEncryptionKey:output_type -> core.v1.CreateEncryptionKeyResponse
-	57,  // 189: core.v1.LogsService.GetEncryptionKey:output_type -> core.v1.GetEncryptionKeyResponse
-	59,  // 190: core.v1.LogsService.GetEncryptionKeysByKeyId:output_type -> core.v1.GetEncryptionKeysByKeyIdResponse
-	67,  // 191: core.v1.LogsService.ListEncryptionKeys:output_type -> core.v1.ListEncryptionKeysResponse
-	61,  // 192: core.v1.LogsService.UpdateEncryptionKey:output_type -> core.v1.UpdateEncryptionKeyResponse
-	63,  // 193: core.v1.LogsService.UpdateEncryptionKeyV2:output_type -> core.v1.UpdateEncryptionKeyV2Response
-	65,  // 194: core.v1.LogsService.DeleteEncryptionKey:output_type -> core.v1.DeleteEncryptionKeyResponse
-	169, // [169:195] is the sub-list for method output_type
-	143, // [143:169] is the sub-list for method input_type
-	143, // [143:143] is the sub-list for extension type_name
-	143, // [143:143] is the sub-list for extension extendee
-	0,   // [0:143] is the sub-list for field type_name
+	71,  // 139: core.v1.ListLogsResponse.Aggregations.agent_types:type_name -> core.v1.ListLogsResponse.Bucket
+	71,  // 140: core.v1.ListLogsResponse.Aggregations.agent_providers:type_name -> core.v1.ListLogsResponse.Bucket
+	72,  // 141: core.v1.ListLogsResponse.GroupByBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
+	72,  // 142: core.v1.ListLogsResponse.DateBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
+	74,  // 143: core.v1.GetGroupByAggregationResponse.Bucket.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
+	75,  // 144: core.v1.GetGroupByAggregationResponse.Bucket.metrics:type_name -> core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
+	19,  // 145: core.v1.LogsService.GetLog:input_type -> core.v1.GetLogRequest
+	32,  // 146: core.v1.LogsService.GetGroupByAggregation:input_type -> core.v1.GetGroupByAggregationRequest
+	21,  // 147: core.v1.LogsService.GetMetricAggregation:input_type -> core.v1.GetMetricAggregationRequest
+	24,  // 148: core.v1.LogsService.ListLogsV2:input_type -> core.v1.ListLogsV2Request
+	26,  // 149: core.v1.LogsService.ListLogAggregations:input_type -> core.v1.ListLogAggregationsRequest
+	28,  // 150: core.v1.LogsService.ListLogPolicyEvaluationInputs:input_type -> core.v1.ListLogPolicyEvaluationInputsRequest
+	68,  // 151: core.v1.LogsService.GetLogsFromNaturalLanguage:input_type -> core.v1.GetLogsFromNaturalLanguageRequest
+	6,   // 152: core.v1.LogsService.CreateLogQuery:input_type -> core.v1.CreateLogQueryRequest
+	8,   // 153: core.v1.LogsService.UpdateLogQuery:input_type -> core.v1.UpdateLogQueryRequest
+	10,  // 154: core.v1.LogsService.UpdateLogQueryV2:input_type -> core.v1.UpdateLogQueryV2Request
+	12,  // 155: core.v1.LogsService.ListLogQueries:input_type -> core.v1.ListLogQueriesRequest
+	14,  // 156: core.v1.LogsService.GetLogQuery:input_type -> core.v1.GetLogQueryRequest
+	16,  // 157: core.v1.LogsService.DeleteLogQuery:input_type -> core.v1.DeleteLogQueryRequest
+	42,  // 158: core.v1.LogsService.CreateLogConfiguration:input_type -> core.v1.CreateLogConfigurationRequest
+	44,  // 159: core.v1.LogsService.GetLogConfiguration:input_type -> core.v1.GetLogConfigurationRequest
+	46,  // 160: core.v1.LogsService.ListLogConfigurations:input_type -> core.v1.ListLogConfigurationsRequest
+	48,  // 161: core.v1.LogsService.UpdateLogConfiguration:input_type -> core.v1.UpdateLogConfigurationRequest
+	50,  // 162: core.v1.LogsService.UpdateLogConfigurationV2:input_type -> core.v1.UpdateLogConfigurationV2Request
+	52,  // 163: core.v1.LogsService.DeleteLogConfiguration:input_type -> core.v1.DeleteLogConfigurationRequest
+	54,  // 164: core.v1.LogsService.CreateEncryptionKey:input_type -> core.v1.CreateEncryptionKeyRequest
+	56,  // 165: core.v1.LogsService.GetEncryptionKey:input_type -> core.v1.GetEncryptionKeyRequest
+	58,  // 166: core.v1.LogsService.GetEncryptionKeysByKeyId:input_type -> core.v1.GetEncryptionKeysByKeyIdRequest
+	66,  // 167: core.v1.LogsService.ListEncryptionKeys:input_type -> core.v1.ListEncryptionKeysRequest
+	60,  // 168: core.v1.LogsService.UpdateEncryptionKey:input_type -> core.v1.UpdateEncryptionKeyRequest
+	62,  // 169: core.v1.LogsService.UpdateEncryptionKeyV2:input_type -> core.v1.UpdateEncryptionKeyV2Request
+	64,  // 170: core.v1.LogsService.DeleteEncryptionKey:input_type -> core.v1.DeleteEncryptionKeyRequest
+	20,  // 171: core.v1.LogsService.GetLog:output_type -> core.v1.GetLogResponse
+	33,  // 172: core.v1.LogsService.GetGroupByAggregation:output_type -> core.v1.GetGroupByAggregationResponse
+	22,  // 173: core.v1.LogsService.GetMetricAggregation:output_type -> core.v1.GetMetricAggregationResponse
+	25,  // 174: core.v1.LogsService.ListLogsV2:output_type -> core.v1.ListLogsV2Response
+	27,  // 175: core.v1.LogsService.ListLogAggregations:output_type -> core.v1.ListLogAggregationsResponse
+	30,  // 176: core.v1.LogsService.ListLogPolicyEvaluationInputs:output_type -> core.v1.ListLogPolicyEvaluationInputsResponse
+	69,  // 177: core.v1.LogsService.GetLogsFromNaturalLanguage:output_type -> core.v1.GetLogsFromNaturalLanguageResponse
+	7,   // 178: core.v1.LogsService.CreateLogQuery:output_type -> core.v1.CreateLogQueryResponse
+	9,   // 179: core.v1.LogsService.UpdateLogQuery:output_type -> core.v1.UpdateLogQueryResponse
+	11,  // 180: core.v1.LogsService.UpdateLogQueryV2:output_type -> core.v1.UpdateLogQueryV2Response
+	13,  // 181: core.v1.LogsService.ListLogQueries:output_type -> core.v1.ListLogQueriesResponse
+	15,  // 182: core.v1.LogsService.GetLogQuery:output_type -> core.v1.GetLogQueryResponse
+	17,  // 183: core.v1.LogsService.DeleteLogQuery:output_type -> core.v1.DeleteLogQueryResponse
+	43,  // 184: core.v1.LogsService.CreateLogConfiguration:output_type -> core.v1.CreateLogConfigurationResponse
+	45,  // 185: core.v1.LogsService.GetLogConfiguration:output_type -> core.v1.GetLogConfigurationResponse
+	47,  // 186: core.v1.LogsService.ListLogConfigurations:output_type -> core.v1.ListLogConfigurationsResponse
+	49,  // 187: core.v1.LogsService.UpdateLogConfiguration:output_type -> core.v1.UpdateLogConfigurationResponse
+	51,  // 188: core.v1.LogsService.UpdateLogConfigurationV2:output_type -> core.v1.UpdateLogConfigurationV2Response
+	53,  // 189: core.v1.LogsService.DeleteLogConfiguration:output_type -> core.v1.DeleteLogConfigurationResponse
+	55,  // 190: core.v1.LogsService.CreateEncryptionKey:output_type -> core.v1.CreateEncryptionKeyResponse
+	57,  // 191: core.v1.LogsService.GetEncryptionKey:output_type -> core.v1.GetEncryptionKeyResponse
+	59,  // 192: core.v1.LogsService.GetEncryptionKeysByKeyId:output_type -> core.v1.GetEncryptionKeysByKeyIdResponse
+	67,  // 193: core.v1.LogsService.ListEncryptionKeys:output_type -> core.v1.ListEncryptionKeysResponse
+	61,  // 194: core.v1.LogsService.UpdateEncryptionKey:output_type -> core.v1.UpdateEncryptionKeyResponse
+	63,  // 195: core.v1.LogsService.UpdateEncryptionKeyV2:output_type -> core.v1.UpdateEncryptionKeyV2Response
+	65,  // 196: core.v1.LogsService.DeleteEncryptionKey:output_type -> core.v1.DeleteEncryptionKeyResponse
+	171, // [171:197] is the sub-list for method output_type
+	145, // [145:171] is the sub-list for method input_type
+	145, // [145:145] is the sub-list for extension type_name
+	145, // [145:145] is the sub-list for extension extendee
+	0,   // [0:145] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_logs_proto_init() }
