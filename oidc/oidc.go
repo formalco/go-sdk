@@ -16,6 +16,9 @@ const integrationOIDCType = "integrationoidc"
 // AudiencePrefix is the required prefix for Formal OIDC integration audiences.
 const AudiencePrefix = "oidc.formal.ai/"
 
+// IntegrationIDHeader selects an OIDC integration for providers with a fixed audience.
+const IntegrationIDHeader = "X-Formal-OIDC-Integration-Id"
+
 // Token contains an OIDC JWT and its request authentication metadata.
 type Token struct {
 	JWT                 string

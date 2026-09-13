@@ -135,7 +135,7 @@ func (t *oidcTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	req.Header.Set("Authorization", "Bearer "+token.JWT)
 	req.Header.Set("X-Formal-API-Version", defaultAPIVersion)
 	if sendIntegrationIDHeader {
-		req.Header.Set("X-Formal-OIDC-Integration-Id", headerIntegrationID)
+		req.Header.Set(oidc.IntegrationIDHeader, headerIntegrationID)
 	}
 	return t.base.RoundTrip(req)
 }
