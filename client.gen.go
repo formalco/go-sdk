@@ -927,6 +927,17 @@ func (c *GroupServiceClient) GetGroup(ctx context.Context, req *corev1.GetGroupR
 	return res.Msg, nil
 }
 
+// Get user group link
+//
+// Get a user group link
+func (c *GroupServiceClient) GetUserGroupLink(ctx context.Context, req *corev1.GetUserGroupLinkRequest) (*corev1.GetUserGroupLinkResponse, error) {
+	res, err := c.inner.GetUserGroupLink(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // List groups
 //
 // List all groups

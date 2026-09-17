@@ -910,6 +910,94 @@ func (x *ListUserGroupLinksResponse) GetListMetadata() *ListMetadata {
 	return nil
 }
 
+type GetUserGroupLinkRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserGroupLinkRequest) Reset() {
+	*x = GetUserGroupLinkRequest{}
+	mi := &file_core_v1_group_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserGroupLinkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserGroupLinkRequest) ProtoMessage() {}
+
+func (x *GetUserGroupLinkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_group_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserGroupLinkRequest.ProtoReflect.Descriptor instead.
+func (*GetUserGroupLinkRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_group_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetUserGroupLinkRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetUserGroupLinkResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserGroupLink *UserGroupLink         `protobuf:"bytes,1,opt,name=user_group_link,json=userGroupLink,proto3" json:"user_group_link,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserGroupLinkResponse) Reset() {
+	*x = GetUserGroupLinkResponse{}
+	mi := &file_core_v1_group_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserGroupLinkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserGroupLinkResponse) ProtoMessage() {}
+
+func (x *GetUserGroupLinkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_group_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserGroupLinkResponse.ProtoReflect.Descriptor instead.
+func (*GetUserGroupLinkResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_group_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetUserGroupLinkResponse) GetUserGroupLink() *UserGroupLink {
+	if x != nil {
+		return x.UserGroupLink
+	}
+	return nil
+}
+
 type DeleteUserGroupLinkRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -919,7 +1007,7 @@ type DeleteUserGroupLinkRequest struct {
 
 func (x *DeleteUserGroupLinkRequest) Reset() {
 	*x = DeleteUserGroupLinkRequest{}
-	mi := &file_core_v1_group_proto_msgTypes[16]
+	mi := &file_core_v1_group_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -931,7 +1019,7 @@ func (x *DeleteUserGroupLinkRequest) String() string {
 func (*DeleteUserGroupLinkRequest) ProtoMessage() {}
 
 func (x *DeleteUserGroupLinkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_group_proto_msgTypes[16]
+	mi := &file_core_v1_group_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -944,7 +1032,7 @@ func (x *DeleteUserGroupLinkRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserGroupLinkRequest.ProtoReflect.Descriptor instead.
 func (*DeleteUserGroupLinkRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_group_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_group_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DeleteUserGroupLinkRequest) GetId() string {
@@ -963,7 +1051,7 @@ type DeleteUserGroupLinkResponse struct {
 
 func (x *DeleteUserGroupLinkResponse) Reset() {
 	*x = DeleteUserGroupLinkResponse{}
-	mi := &file_core_v1_group_proto_msgTypes[17]
+	mi := &file_core_v1_group_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -975,7 +1063,7 @@ func (x *DeleteUserGroupLinkResponse) String() string {
 func (*DeleteUserGroupLinkResponse) ProtoMessage() {}
 
 func (x *DeleteUserGroupLinkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_group_proto_msgTypes[17]
+	mi := &file_core_v1_group_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -988,7 +1076,7 @@ func (x *DeleteUserGroupLinkResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserGroupLinkResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUserGroupLinkResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_group_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_group_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DeleteUserGroupLinkResponse) GetId() string {
@@ -1008,7 +1096,7 @@ type DeleteUserGroupLinkByUserIdAndGroupIdRequest struct {
 
 func (x *DeleteUserGroupLinkByUserIdAndGroupIdRequest) Reset() {
 	*x = DeleteUserGroupLinkByUserIdAndGroupIdRequest{}
-	mi := &file_core_v1_group_proto_msgTypes[18]
+	mi := &file_core_v1_group_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1020,7 +1108,7 @@ func (x *DeleteUserGroupLinkByUserIdAndGroupIdRequest) String() string {
 func (*DeleteUserGroupLinkByUserIdAndGroupIdRequest) ProtoMessage() {}
 
 func (x *DeleteUserGroupLinkByUserIdAndGroupIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_group_proto_msgTypes[18]
+	mi := &file_core_v1_group_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1033,7 +1121,7 @@ func (x *DeleteUserGroupLinkByUserIdAndGroupIdRequest) ProtoReflect() protorefle
 
 // Deprecated: Use DeleteUserGroupLinkByUserIdAndGroupIdRequest.ProtoReflect.Descriptor instead.
 func (*DeleteUserGroupLinkByUserIdAndGroupIdRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_group_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_group_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DeleteUserGroupLinkByUserIdAndGroupIdRequest) GetUserId() string {
@@ -1060,7 +1148,7 @@ type DeleteUserGroupLinkByUserIdAndGroupIdResponse struct {
 
 func (x *DeleteUserGroupLinkByUserIdAndGroupIdResponse) Reset() {
 	*x = DeleteUserGroupLinkByUserIdAndGroupIdResponse{}
-	mi := &file_core_v1_group_proto_msgTypes[19]
+	mi := &file_core_v1_group_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1072,7 +1160,7 @@ func (x *DeleteUserGroupLinkByUserIdAndGroupIdResponse) String() string {
 func (*DeleteUserGroupLinkByUserIdAndGroupIdResponse) ProtoMessage() {}
 
 func (x *DeleteUserGroupLinkByUserIdAndGroupIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_group_proto_msgTypes[19]
+	mi := &file_core_v1_group_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1085,7 +1173,7 @@ func (x *DeleteUserGroupLinkByUserIdAndGroupIdResponse) ProtoReflect() protorefl
 
 // Deprecated: Use DeleteUserGroupLinkByUserIdAndGroupIdResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUserGroupLinkByUserIdAndGroupIdResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_group_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_group_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DeleteUserGroupLinkByUserIdAndGroupIdResponse) GetUserId() string {
@@ -1164,7 +1252,11 @@ const file_core_v1_group_proto_rawDesc = "" +
 	"\x02id\"\x9a\x01\n" +
 	"\x1aListUserGroupLinksResponse\x12@\n" +
 	"\x10user_group_links\x18\x01 \x03(\v2\x16.core.v1.UserGroupLinkR\x0euserGroupLinks\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"5\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"2\n" +
+	"\x17GetUserGroupLinkRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"Z\n" +
+	"\x18GetUserGroupLinkResponse\x12>\n" +
+	"\x0fuser_group_link\x18\x01 \x01(\v2\x16.core.v1.UserGroupLinkR\ruserGroupLink\"5\n" +
 	"\x1aDeleteUserGroupLinkRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"6\n" +
 	"\x1bDeleteUserGroupLinkResponse\x12\x17\n" +
@@ -1174,7 +1266,7 @@ const file_core_v1_group_proto_rawDesc = "" +
 	"\bgroup_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\agroupId\"c\n" +
 	"-DeleteUserGroupLinkByUserIdAndGroupIdResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x19\n" +
-	"\bgroup_id\x18\x02 \x01(\tR\agroupId2\x87\v\n" +
+	"\bgroup_id\x18\x02 \x01(\tR\agroupId2\x97\f\n" +
 	"\fGroupService\x12v\n" +
 	"\vCreateGroup\x12\x1b.core.v1.CreateGroupRequest\x1a\x1c.core.v1.CreateGroupResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.GroupService/CreateGroup\x12u\n" +
 	"\n" +
@@ -1183,7 +1275,8 @@ const file_core_v1_group_proto_rawDesc = "" +
 	"\vUpdateGroup\x12\x1b.core.v1.UpdateGroupRequest\x1a\x1c.core.v1.UpdateGroupResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.GroupService/UpdateGroup\x12~\n" +
 	"\rUpdateGroupV2\x12\x1d.core.v1.UpdateGroupV2Request\x1a\x1e.core.v1.UpdateGroupV2Response\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.GroupService/UpdateGroupV2\x12v\n" +
 	"\vDeleteGroup\x12\x1b.core.v1.DeleteGroupRequest\x1a\x1c.core.v1.DeleteGroupResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.GroupService/DeleteGroup\x12\x95\x01\n" +
-	"\x12ListUserGroupLinks\x12\".core.v1.ListUserGroupLinksRequest\x1a#.core.v1.ListUserGroupLinksResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.GroupService/ListUserGroupLinks\x90\x02\x01\x12\x96\x01\n" +
+	"\x12ListUserGroupLinks\x12\".core.v1.ListUserGroupLinksRequest\x1a#.core.v1.ListUserGroupLinksResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.GroupService/ListUserGroupLinks\x90\x02\x01\x12\x8d\x01\n" +
+	"\x10GetUserGroupLink\x12 .core.v1.GetUserGroupLinkRequest\x1a!.core.v1.GetUserGroupLinkResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.GroupService/GetUserGroupLink\x90\x02\x01\x12\x96\x01\n" +
 	"\x13CreateUserGroupLink\x12#.core.v1.CreateUserGroupLinkRequest\x1a$.core.v1.CreateUserGroupLinkResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.GroupService/CreateUserGroupLink\x12\x96\x01\n" +
 	"\x13DeleteUserGroupLink\x12#.core.v1.DeleteUserGroupLinkRequest\x1a$.core.v1.DeleteUserGroupLinkResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.GroupService/DeleteUserGroupLink\x12\xde\x01\n" +
 	"%DeleteUserGroupLinkByUserIdAndGroupId\x125.core.v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest\x1a6.core.v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.GroupService/DeleteUserGroupLinkByUserIdAndGroupIdB\x84\x01\n" +
@@ -1202,7 +1295,7 @@ func file_core_v1_group_proto_rawDescGZIP() []byte {
 	return file_core_v1_group_proto_rawDescData
 }
 
-var file_core_v1_group_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_core_v1_group_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_core_v1_group_proto_goTypes = []any{
 	(*ListGroupsRequest)(nil),                             // 0: core.v1.ListGroupsRequest
 	(*ListGroupsResponse)(nil),                            // 1: core.v1.ListGroupsResponse
@@ -1220,52 +1313,57 @@ var file_core_v1_group_proto_goTypes = []any{
 	(*CreateUserGroupLinkResponse)(nil),                   // 13: core.v1.CreateUserGroupLinkResponse
 	(*ListUserGroupLinksRequest)(nil),                     // 14: core.v1.ListUserGroupLinksRequest
 	(*ListUserGroupLinksResponse)(nil),                    // 15: core.v1.ListUserGroupLinksResponse
-	(*DeleteUserGroupLinkRequest)(nil),                    // 16: core.v1.DeleteUserGroupLinkRequest
-	(*DeleteUserGroupLinkResponse)(nil),                   // 17: core.v1.DeleteUserGroupLinkResponse
-	(*DeleteUserGroupLinkByUserIdAndGroupIdRequest)(nil),  // 18: core.v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest
-	(*DeleteUserGroupLinkByUserIdAndGroupIdResponse)(nil), // 19: core.v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse
-	(*Filter)(nil),                                        // 20: core.v1.Filter
-	(*Group)(nil),                                         // 21: core.v1.Group
-	(*ListMetadata)(nil),                                  // 22: core.v1.ListMetadata
-	(*UserGroupLink)(nil),                                 // 23: core.v1.UserGroupLink
+	(*GetUserGroupLinkRequest)(nil),                       // 16: core.v1.GetUserGroupLinkRequest
+	(*GetUserGroupLinkResponse)(nil),                      // 17: core.v1.GetUserGroupLinkResponse
+	(*DeleteUserGroupLinkRequest)(nil),                    // 18: core.v1.DeleteUserGroupLinkRequest
+	(*DeleteUserGroupLinkResponse)(nil),                   // 19: core.v1.DeleteUserGroupLinkResponse
+	(*DeleteUserGroupLinkByUserIdAndGroupIdRequest)(nil),  // 20: core.v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest
+	(*DeleteUserGroupLinkByUserIdAndGroupIdResponse)(nil), // 21: core.v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse
+	(*Filter)(nil),                                        // 22: core.v1.Filter
+	(*Group)(nil),                                         // 23: core.v1.Group
+	(*ListMetadata)(nil),                                  // 24: core.v1.ListMetadata
+	(*UserGroupLink)(nil),                                 // 25: core.v1.UserGroupLink
 }
 var file_core_v1_group_proto_depIdxs = []int32{
-	20, // 0: core.v1.ListGroupsRequest.filter:type_name -> core.v1.Filter
-	21, // 1: core.v1.ListGroupsResponse.groups:type_name -> core.v1.Group
-	22, // 2: core.v1.ListGroupsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	21, // 3: core.v1.CreateGroupResponse.group:type_name -> core.v1.Group
-	21, // 4: core.v1.GetGroupResponse.group:type_name -> core.v1.Group
-	21, // 5: core.v1.UpdateGroupResponse.group:type_name -> core.v1.Group
-	21, // 6: core.v1.UpdateGroupV2Request.group:type_name -> core.v1.Group
-	21, // 7: core.v1.UpdateGroupV2Response.group:type_name -> core.v1.Group
-	23, // 8: core.v1.CreateUserGroupLinkResponse.user_group_link:type_name -> core.v1.UserGroupLink
-	23, // 9: core.v1.ListUserGroupLinksResponse.user_group_links:type_name -> core.v1.UserGroupLink
-	22, // 10: core.v1.ListUserGroupLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
-	2,  // 11: core.v1.GroupService.CreateGroup:input_type -> core.v1.CreateGroupRequest
-	0,  // 12: core.v1.GroupService.ListGroups:input_type -> core.v1.ListGroupsRequest
-	4,  // 13: core.v1.GroupService.GetGroup:input_type -> core.v1.GetGroupRequest
-	8,  // 14: core.v1.GroupService.UpdateGroup:input_type -> core.v1.UpdateGroupRequest
-	10, // 15: core.v1.GroupService.UpdateGroupV2:input_type -> core.v1.UpdateGroupV2Request
-	6,  // 16: core.v1.GroupService.DeleteGroup:input_type -> core.v1.DeleteGroupRequest
-	14, // 17: core.v1.GroupService.ListUserGroupLinks:input_type -> core.v1.ListUserGroupLinksRequest
-	12, // 18: core.v1.GroupService.CreateUserGroupLink:input_type -> core.v1.CreateUserGroupLinkRequest
-	16, // 19: core.v1.GroupService.DeleteUserGroupLink:input_type -> core.v1.DeleteUserGroupLinkRequest
-	18, // 20: core.v1.GroupService.DeleteUserGroupLinkByUserIdAndGroupId:input_type -> core.v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest
-	3,  // 21: core.v1.GroupService.CreateGroup:output_type -> core.v1.CreateGroupResponse
-	1,  // 22: core.v1.GroupService.ListGroups:output_type -> core.v1.ListGroupsResponse
-	5,  // 23: core.v1.GroupService.GetGroup:output_type -> core.v1.GetGroupResponse
-	9,  // 24: core.v1.GroupService.UpdateGroup:output_type -> core.v1.UpdateGroupResponse
-	11, // 25: core.v1.GroupService.UpdateGroupV2:output_type -> core.v1.UpdateGroupV2Response
-	7,  // 26: core.v1.GroupService.DeleteGroup:output_type -> core.v1.DeleteGroupResponse
-	15, // 27: core.v1.GroupService.ListUserGroupLinks:output_type -> core.v1.ListUserGroupLinksResponse
-	13, // 28: core.v1.GroupService.CreateUserGroupLink:output_type -> core.v1.CreateUserGroupLinkResponse
-	17, // 29: core.v1.GroupService.DeleteUserGroupLink:output_type -> core.v1.DeleteUserGroupLinkResponse
-	19, // 30: core.v1.GroupService.DeleteUserGroupLinkByUserIdAndGroupId:output_type -> core.v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse
-	21, // [21:31] is the sub-list for method output_type
-	11, // [11:21] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	22, // 0: core.v1.ListGroupsRequest.filter:type_name -> core.v1.Filter
+	23, // 1: core.v1.ListGroupsResponse.groups:type_name -> core.v1.Group
+	24, // 2: core.v1.ListGroupsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	23, // 3: core.v1.CreateGroupResponse.group:type_name -> core.v1.Group
+	23, // 4: core.v1.GetGroupResponse.group:type_name -> core.v1.Group
+	23, // 5: core.v1.UpdateGroupResponse.group:type_name -> core.v1.Group
+	23, // 6: core.v1.UpdateGroupV2Request.group:type_name -> core.v1.Group
+	23, // 7: core.v1.UpdateGroupV2Response.group:type_name -> core.v1.Group
+	25, // 8: core.v1.CreateUserGroupLinkResponse.user_group_link:type_name -> core.v1.UserGroupLink
+	25, // 9: core.v1.ListUserGroupLinksResponse.user_group_links:type_name -> core.v1.UserGroupLink
+	24, // 10: core.v1.ListUserGroupLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
+	25, // 11: core.v1.GetUserGroupLinkResponse.user_group_link:type_name -> core.v1.UserGroupLink
+	2,  // 12: core.v1.GroupService.CreateGroup:input_type -> core.v1.CreateGroupRequest
+	0,  // 13: core.v1.GroupService.ListGroups:input_type -> core.v1.ListGroupsRequest
+	4,  // 14: core.v1.GroupService.GetGroup:input_type -> core.v1.GetGroupRequest
+	8,  // 15: core.v1.GroupService.UpdateGroup:input_type -> core.v1.UpdateGroupRequest
+	10, // 16: core.v1.GroupService.UpdateGroupV2:input_type -> core.v1.UpdateGroupV2Request
+	6,  // 17: core.v1.GroupService.DeleteGroup:input_type -> core.v1.DeleteGroupRequest
+	14, // 18: core.v1.GroupService.ListUserGroupLinks:input_type -> core.v1.ListUserGroupLinksRequest
+	16, // 19: core.v1.GroupService.GetUserGroupLink:input_type -> core.v1.GetUserGroupLinkRequest
+	12, // 20: core.v1.GroupService.CreateUserGroupLink:input_type -> core.v1.CreateUserGroupLinkRequest
+	18, // 21: core.v1.GroupService.DeleteUserGroupLink:input_type -> core.v1.DeleteUserGroupLinkRequest
+	20, // 22: core.v1.GroupService.DeleteUserGroupLinkByUserIdAndGroupId:input_type -> core.v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest
+	3,  // 23: core.v1.GroupService.CreateGroup:output_type -> core.v1.CreateGroupResponse
+	1,  // 24: core.v1.GroupService.ListGroups:output_type -> core.v1.ListGroupsResponse
+	5,  // 25: core.v1.GroupService.GetGroup:output_type -> core.v1.GetGroupResponse
+	9,  // 26: core.v1.GroupService.UpdateGroup:output_type -> core.v1.UpdateGroupResponse
+	11, // 27: core.v1.GroupService.UpdateGroupV2:output_type -> core.v1.UpdateGroupV2Response
+	7,  // 28: core.v1.GroupService.DeleteGroup:output_type -> core.v1.DeleteGroupResponse
+	15, // 29: core.v1.GroupService.ListUserGroupLinks:output_type -> core.v1.ListUserGroupLinksResponse
+	17, // 30: core.v1.GroupService.GetUserGroupLink:output_type -> core.v1.GetUserGroupLinkResponse
+	13, // 31: core.v1.GroupService.CreateUserGroupLink:output_type -> core.v1.CreateUserGroupLinkResponse
+	19, // 32: core.v1.GroupService.DeleteUserGroupLink:output_type -> core.v1.DeleteUserGroupLinkResponse
+	21, // 33: core.v1.GroupService.DeleteUserGroupLinkByUserIdAndGroupId:output_type -> core.v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse
+	23, // [23:34] is the sub-list for method output_type
+	12, // [12:23] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_group_proto_init() }
@@ -1288,7 +1386,7 @@ func file_core_v1_group_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_group_proto_rawDesc), len(file_core_v1_group_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

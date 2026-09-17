@@ -52,6 +52,9 @@ const (
 	// GroupServiceListUserGroupLinksProcedure is the fully-qualified name of the GroupService's
 	// ListUserGroupLinks RPC.
 	GroupServiceListUserGroupLinksProcedure = "/core.v1.GroupService/ListUserGroupLinks"
+	// GroupServiceGetUserGroupLinkProcedure is the fully-qualified name of the GroupService's
+	// GetUserGroupLink RPC.
+	GroupServiceGetUserGroupLinkProcedure = "/core.v1.GroupService/GetUserGroupLink"
 	// GroupServiceCreateUserGroupLinkProcedure is the fully-qualified name of the GroupService's
 	// CreateUserGroupLink RPC.
 	GroupServiceCreateUserGroupLinkProcedure = "/core.v1.GroupService/CreateUserGroupLink"
@@ -93,6 +96,10 @@ type GroupServiceClient interface {
 	//
 	// List all user group links
 	ListUserGroupLinks(context.Context, *connect.Request[v1.ListUserGroupLinksRequest]) (*connect.Response[v1.ListUserGroupLinksResponse], error)
+	// Get user group link
+	//
+	// Get a user group link
+	GetUserGroupLink(context.Context, *connect.Request[v1.GetUserGroupLinkRequest]) (*connect.Response[v1.GetUserGroupLinkResponse], error)
 	// Create user group link
 	//
 	// Create a user group link
@@ -163,6 +170,13 @@ func NewGroupServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
+		getUserGroupLink: connect.NewClient[v1.GetUserGroupLinkRequest, v1.GetUserGroupLinkResponse](
+			httpClient,
+			baseURL+GroupServiceGetUserGroupLinkProcedure,
+			connect.WithSchema(groupServiceMethods.ByName("GetUserGroupLink")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
 		createUserGroupLink: connect.NewClient[v1.CreateUserGroupLinkRequest, v1.CreateUserGroupLinkResponse](
 			httpClient,
 			baseURL+GroupServiceCreateUserGroupLinkProcedure,
@@ -193,6 +207,7 @@ type groupServiceClient struct {
 	updateGroupV2                         *connect.Client[v1.UpdateGroupV2Request, v1.UpdateGroupV2Response]
 	deleteGroup                           *connect.Client[v1.DeleteGroupRequest, v1.DeleteGroupResponse]
 	listUserGroupLinks                    *connect.Client[v1.ListUserGroupLinksRequest, v1.ListUserGroupLinksResponse]
+	getUserGroupLink                      *connect.Client[v1.GetUserGroupLinkRequest, v1.GetUserGroupLinkResponse]
 	createUserGroupLink                   *connect.Client[v1.CreateUserGroupLinkRequest, v1.CreateUserGroupLinkResponse]
 	deleteUserGroupLink                   *connect.Client[v1.DeleteUserGroupLinkRequest, v1.DeleteUserGroupLinkResponse]
 	deleteUserGroupLinkByUserIdAndGroupId *connect.Client[v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest, v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse]
@@ -231,6 +246,11 @@ func (c *groupServiceClient) DeleteGroup(ctx context.Context, req *connect.Reque
 // ListUserGroupLinks calls core.v1.GroupService.ListUserGroupLinks.
 func (c *groupServiceClient) ListUserGroupLinks(ctx context.Context, req *connect.Request[v1.ListUserGroupLinksRequest]) (*connect.Response[v1.ListUserGroupLinksResponse], error) {
 	return c.listUserGroupLinks.CallUnary(ctx, req)
+}
+
+// GetUserGroupLink calls core.v1.GroupService.GetUserGroupLink.
+func (c *groupServiceClient) GetUserGroupLink(ctx context.Context, req *connect.Request[v1.GetUserGroupLinkRequest]) (*connect.Response[v1.GetUserGroupLinkResponse], error) {
+	return c.getUserGroupLink.CallUnary(ctx, req)
 }
 
 // CreateUserGroupLink calls core.v1.GroupService.CreateUserGroupLink.
@@ -279,6 +299,10 @@ type GroupServiceHandler interface {
 	//
 	// List all user group links
 	ListUserGroupLinks(context.Context, *connect.Request[v1.ListUserGroupLinksRequest]) (*connect.Response[v1.ListUserGroupLinksResponse], error)
+	// Get user group link
+	//
+	// Get a user group link
+	GetUserGroupLink(context.Context, *connect.Request[v1.GetUserGroupLinkRequest]) (*connect.Response[v1.GetUserGroupLinkResponse], error)
 	// Create user group link
 	//
 	// Create a user group link
@@ -345,6 +369,13 @@ func NewGroupServiceHandler(svc GroupServiceHandler, opts ...connect.HandlerOpti
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
+	groupServiceGetUserGroupLinkHandler := connect.NewUnaryHandler(
+		GroupServiceGetUserGroupLinkProcedure,
+		svc.GetUserGroupLink,
+		connect.WithSchema(groupServiceMethods.ByName("GetUserGroupLink")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
 	groupServiceCreateUserGroupLinkHandler := connect.NewUnaryHandler(
 		GroupServiceCreateUserGroupLinkProcedure,
 		svc.CreateUserGroupLink,
@@ -379,6 +410,8 @@ func NewGroupServiceHandler(svc GroupServiceHandler, opts ...connect.HandlerOpti
 			groupServiceDeleteGroupHandler.ServeHTTP(w, r)
 		case GroupServiceListUserGroupLinksProcedure:
 			groupServiceListUserGroupLinksHandler.ServeHTTP(w, r)
+		case GroupServiceGetUserGroupLinkProcedure:
+			groupServiceGetUserGroupLinkHandler.ServeHTTP(w, r)
 		case GroupServiceCreateUserGroupLinkProcedure:
 			groupServiceCreateUserGroupLinkHandler.ServeHTTP(w, r)
 		case GroupServiceDeleteUserGroupLinkProcedure:
@@ -420,6 +453,10 @@ func (UnimplementedGroupServiceHandler) DeleteGroup(context.Context, *connect.Re
 
 func (UnimplementedGroupServiceHandler) ListUserGroupLinks(context.Context, *connect.Request[v1.ListUserGroupLinksRequest]) (*connect.Response[v1.ListUserGroupLinksResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.GroupService.ListUserGroupLinks is not implemented"))
+}
+
+func (UnimplementedGroupServiceHandler) GetUserGroupLink(context.Context, *connect.Request[v1.GetUserGroupLinkRequest]) (*connect.Response[v1.GetUserGroupLinkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.GroupService.GetUserGroupLink is not implemented"))
 }
 
 func (UnimplementedGroupServiceHandler) CreateUserGroupLink(context.Context, *connect.Request[v1.CreateUserGroupLinkRequest]) (*connect.Response[v1.CreateUserGroupLinkResponse], error) {
