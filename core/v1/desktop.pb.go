@@ -217,6 +217,8 @@ type ListDesktopRoutingRulesRequest struct {
 	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
 	Cursor        string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
 	Order         string                 `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
+	Search        string                 `protobuf:"bytes,4,opt,name=search,proto3" json:"search,omitempty"`
+	SearchFields  []string               `protobuf:"bytes,5,rep,name=search_fields,json=searchFields,proto3" json:"search_fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -270,6 +272,20 @@ func (x *ListDesktopRoutingRulesRequest) GetOrder() string {
 		return x.Order
 	}
 	return ""
+}
+
+func (x *ListDesktopRoutingRulesRequest) GetSearch() string {
+	if x != nil {
+		return x.Search
+	}
+	return ""
+}
+
+func (x *ListDesktopRoutingRulesRequest) GetSearchFields() []string {
+	if x != nil {
+		return x.SearchFields
+	}
+	return nil
 }
 
 type ListDesktopRoutingRulesResponse struct {
@@ -1359,12 +1375,14 @@ const file_core_v1_desktop_proto_rawDesc = "" +
 	"\x1cGetDesktopRoutingRuleRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"P\n" +
 	"\x1dGetDesktopRoutingRuleResponse\x12/\n" +
-	"\x04rule\x18\x01 \x01(\v2\x1b.core.v1.DesktopRoutingRuleR\x04rule\"p\n" +
+	"\x04rule\x18\x01 \x01(\v2\x1b.core.v1.DesktopRoutingRuleR\x04rule\"\xd0\x01\n" +
 	"\x1eListDesktopRoutingRulesRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
-	"\x05order\x18\x03 \x01(\tR\x05order\"\x90\x01\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12\x16\n" +
+	"\x06search\x18\x04 \x01(\tR\x06search\x12F\n" +
+	"\rsearch_fields\x18\x05 \x03(\tB!\xbaH\x1e\x92\x01\x1b\"\x19r\x17R\x02idR\x04nameR\vdescriptionR\fsearchFields\"\x90\x01\n" +
 	"\x1fListDesktopRoutingRulesResponse\x121\n" +
 	"\x05rules\x18\x01 \x03(\v2\x1b.core.v1.DesktopRoutingRuleR\x05rules\x12:\n" +
 	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xf5\x01\n" +
