@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore"
@@ -25,11 +26,21 @@ type tokenSource struct {
 // is set, otherwise managed identity. AZURE_CLIENT_ID selects a user-assigned
 // identity. This is not azidentity.NewDefaultAzureCredential.
 func NewDefaultCredential() (azcore.TokenCredential, error) {
+	return newDefaultCredential(nil)
+}
+
+func newDefaultCredential(httpClient *http.Client) (azcore.TokenCredential, error) {
+	clientOptions := azcore.ClientOptions{}
+	if httpClient != nil {
+		clientOptions.Transport = httpClient
+	}
 	if os.Getenv("AZURE_FEDERATED_TOKEN_FILE") != "" {
-		return azidentity.NewWorkloadIdentityCredential(nil)
+		return azidentity.NewWorkloadIdentityCredential(&azidentity.WorkloadIdentityCredentialOptions{
+			ClientOptions: clientOptions,
+		})
 	}
 
-	options := &azidentity.ManagedIdentityCredentialOptions{}
+	options := &azidentity.ManagedIdentityCredentialOptions{ClientOptions: clientOptions}
 	if clientID := os.Getenv("AZURE_CLIENT_ID"); clientID != "" {
 		options.ID = azidentity.ClientID(clientID)
 	}
@@ -38,7 +49,13 @@ func NewDefaultCredential() (azcore.TokenCredential, error) {
 
 // NewDefaultTokenSource builds a TokenSource from NewDefaultCredential.
 func NewDefaultTokenSource(integrationID string) (oidc.TokenSource, error) {
-	credential, err := NewDefaultCredential()
+	return NewDefaultTokenSourceWithHTTPClient(integrationID, nil)
+}
+
+// NewDefaultTokenSourceWithHTTPClient builds a default Azure TokenSource whose
+// identity-provider requests use httpClient.
+func NewDefaultTokenSourceWithHTTPClient(integrationID string, httpClient *http.Client) (oidc.TokenSource, error) {
+	credential, err := newDefaultCredential(httpClient)
 	if err != nil {
 		return nil, fmt.Errorf("load Azure credential for OIDC: %w", err)
 	}
