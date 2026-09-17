@@ -1972,14 +1972,14 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\x96\x02\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\x9d\x02\n" +
 	"\x11CreateUserRequest\x12)\n" +
 	"\x04type\x18\x01 \x01(\tB\x15\xbaH\x12r\x10R\amachineR\x05humanR\x04type\x12+\n" +
 	"\x05human\x18\x02 \x01(\v2\x13.core.v1.User.HumanH\x00R\x05human\x121\n" +
 	"\amachine\x18\x03 \x01(\v2\x15.core.v1.User.MachineH\x00R\amachine\x127\n" +
 	"\texpire_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\bexpireAt\x125\n" +
-	"\x16termination_protection\x18\x05 \x01(\bR\x15terminationProtectionB\x06\n" +
-	"\x04info\"7\n" +
+	"\x16termination_protection\x18\x05 \x01(\bR\x15terminationProtectionB\r\n" +
+	"\x04info\x12\x05\xbaH\x02\b\x01\"7\n" +
 	"\x12CreateUserResponse\x12!\n" +
 	"\x04user\x18\x01 \x01(\v2\r.core.v1.UserR\x04user\"\xeb\x01\n" +
 	"\x10ListUsersRequest\x12\x14\n" +
