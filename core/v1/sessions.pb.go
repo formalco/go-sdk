@@ -1756,13 +1756,13 @@ const file_core_v1_sessions_proto_rawDesc = "" +
 	"session_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tsessionId\x12*\n" +
 	"\fconnector_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"g\n" +
 	" CreateSessionTerminationResponse\x12C\n" +
-	"\x10session_shutdown\x18\x01 \x01(\v2\x18.core.v1.SessionShutdownR\x0fsessionShutdown\"\xcf\x01\n" +
+	"\x10session_shutdown\x18\x01 \x01(\v2\x18.core.v1.SessionShutdownR\x0fsessionShutdown\"\xe1\x01\n" +
 	"\x15ListSessionsV2Request\x12!\n" +
 	"\x05limit\x18\x01 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xa0\x8d\x06 \x00R\x05limit\x12\x14\n" +
 	"\x05query\x18\x02 \x01(\tR\x05query\x12\x17\n" +
-	"\asort_by\x18\x03 \x01(\tR\x06sortBy\x12'\n" +
-	"\x0fstart_timestamp\x18\x04 \x01(\tR\x0estartTimestamp\x12#\n" +
-	"\rend_timestamp\x18\x05 \x01(\tR\fendTimestamp\x12\x16\n" +
+	"\asort_by\x18\x03 \x01(\tR\x06sortBy\x120\n" +
+	"\x0fstart_timestamp\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0estartTimestamp\x12,\n" +
+	"\rend_timestamp\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fendTimestamp\x12\x16\n" +
 	"\x06cursor\x18\x06 \x01(\tR\x06cursor\"\x88\x01\n" +
 	"\x16ListSessionsV2Response\x122\n" +
 	"\bsessions\x18\x01 \x03(\v2\x16.core.v1.SessionObjectR\bsessions\x12:\n" +
