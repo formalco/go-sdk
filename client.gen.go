@@ -12,6 +12,7 @@ import (
 
 // Client is the Formal core API client.
 type Client struct {
+	ApprovalServiceClient              *ApprovalServiceClient
 	ChangeAuthorizationServiceClient   *ChangeAuthorizationServiceClient
 	ConnectorServiceClient             *ConnectorServiceClient
 	DesktopServiceClient               *DesktopServiceClient
@@ -46,6 +47,7 @@ type Client struct {
 // Construction and auth live in New / Option helpers (hand-written).
 func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 	return &Client{
+		ApprovalServiceClient:              &ApprovalServiceClient{inner: corev1connect.NewApprovalServiceClient(httpClient, baseURL)},
 		ChangeAuthorizationServiceClient:   &ChangeAuthorizationServiceClient{inner: corev1connect.NewChangeAuthorizationServiceClient(httpClient, baseURL)},
 		ConnectorServiceClient:             &ConnectorServiceClient{inner: corev1connect.NewConnectorServiceClient(httpClient, baseURL)},
 		DesktopServiceClient:               &DesktopServiceClient{inner: corev1connect.NewDesktopServiceClient(httpClient, baseURL)},
@@ -75,6 +77,35 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		UserServiceClient:                  &UserServiceClient{inner: corev1connect.NewUserServiceClient(httpClient, baseURL)},
 		WorkflowServiceClient:              &WorkflowServiceClient{inner: corev1connect.NewWorkflowServiceClient(httpClient, baseURL)},
 	}
+}
+
+// ApprovalServiceClient is a client for the core.v1.ApprovalService service.
+type ApprovalServiceClient struct {
+	inner corev1connect.ApprovalServiceClient
+}
+
+func (c *ApprovalServiceClient) CreateApprovalRequest(ctx context.Context, req *corev1.CreateApprovalRequestRequest) (*corev1.CreateApprovalRequestResponse, error) {
+	res, err := c.inner.CreateApprovalRequest(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *ApprovalServiceClient) ListApprovalRequests(ctx context.Context, req *corev1.ListApprovalRequestsRequest) (*corev1.ListApprovalRequestsResponse, error) {
+	res, err := c.inner.ListApprovalRequests(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *ApprovalServiceClient) UpdateApprovalRequest(ctx context.Context, req *corev1.UpdateApprovalRequestRequest) (*corev1.UpdateApprovalRequestResponse, error) {
+	res, err := c.inner.UpdateApprovalRequest(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
 }
 
 // ChangeAuthorizationServiceClient is a client for the core.v1.ChangeAuthorizationService service.
@@ -2042,17 +2073,6 @@ func (c *LogsServiceClient) UpdateLogRewrite(ctx context.Context, req *corev1.Up
 // McpServiceClient is a client for the core.v1.McpService service.
 type McpServiceClient struct {
 	inner corev1connect.McpServiceClient
-}
-
-// Create MCP request
-//
-// File an approval request to create a managed MCP server.
-func (c *McpServiceClient) CreateMcpRequest(ctx context.Context, req *corev1.CreateMcpRequestRequest) (*corev1.CreateMcpRequestResponse, error) {
-	res, err := c.inner.CreateMcpRequest(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
 }
 
 // Create MCP server
