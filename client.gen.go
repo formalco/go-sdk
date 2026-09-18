@@ -1741,6 +1741,15 @@ func (c *LogsServiceClient) CreateLogQuery(ctx context.Context, req *corev1.Crea
 	return res.Msg, nil
 }
 
+// Create log rewrite
+func (c *LogsServiceClient) CreateLogRewrite(ctx context.Context, req *corev1.CreateLogRewriteRequest) (*corev1.CreateLogRewriteResponse, error) {
+	res, err := c.inner.CreateLogRewrite(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete encryption key
 //
 // Delete an encryption key
@@ -1768,6 +1777,15 @@ func (c *LogsServiceClient) DeleteLogConfiguration(ctx context.Context, req *cor
 // Delete a log query
 func (c *LogsServiceClient) DeleteLogQuery(ctx context.Context, req *corev1.DeleteLogQueryRequest) (*corev1.DeleteLogQueryResponse, error) {
 	res, err := c.inner.DeleteLogQuery(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete log rewrite
+func (c *LogsServiceClient) DeleteLogRewrite(ctx context.Context, req *corev1.DeleteLogRewriteRequest) (*corev1.DeleteLogRewriteResponse, error) {
+	res, err := c.inner.DeleteLogRewrite(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -1834,6 +1852,15 @@ func (c *LogsServiceClient) GetLogConfiguration(ctx context.Context, req *corev1
 // Get a log query
 func (c *LogsServiceClient) GetLogQuery(ctx context.Context, req *corev1.GetLogQueryRequest) (*corev1.GetLogQueryResponse, error) {
 	res, err := c.inner.GetLogQuery(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get log rewrite
+func (c *LogsServiceClient) GetLogRewrite(ctx context.Context, req *corev1.GetLogRewriteRequest) (*corev1.GetLogRewriteResponse, error) {
+	res, err := c.inner.GetLogRewrite(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -1917,6 +1944,15 @@ func (c *LogsServiceClient) ListLogQueries(ctx context.Context, req *corev1.List
 	return res.Msg, nil
 }
 
+// List log rewrites
+func (c *LogsServiceClient) ListLogRewrites(ctx context.Context, req *corev1.ListLogRewritesRequest) (*corev1.ListLogRewritesResponse, error) {
+	res, err := c.inner.ListLogRewrites(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // List logs V2
 //
 // List logs data only (without aggregations) for fast pagination
@@ -1988,6 +2024,15 @@ func (c *LogsServiceClient) UpdateLogQuery(ctx context.Context, req *corev1.Upda
 // Update a log query by sending the full object. All mutable fields are replaced.
 func (c *LogsServiceClient) UpdateLogQueryV2(ctx context.Context, req *corev1.UpdateLogQueryV2Request) (*corev1.UpdateLogQueryV2Response, error) {
 	res, err := c.inner.UpdateLogQueryV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update log rewrite
+func (c *LogsServiceClient) UpdateLogRewrite(ctx context.Context, req *corev1.UpdateLogRewriteRequest) (*corev1.UpdateLogRewriteResponse, error) {
+	res, err := c.inner.UpdateLogRewrite(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

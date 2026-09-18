@@ -87,6 +87,21 @@ const (
 	// LogsServiceDeleteLogConfigurationProcedure is the fully-qualified name of the LogsService's
 	// DeleteLogConfiguration RPC.
 	LogsServiceDeleteLogConfigurationProcedure = "/core.v1.LogsService/DeleteLogConfiguration"
+	// LogsServiceCreateLogRewriteProcedure is the fully-qualified name of the LogsService's
+	// CreateLogRewrite RPC.
+	LogsServiceCreateLogRewriteProcedure = "/core.v1.LogsService/CreateLogRewrite"
+	// LogsServiceGetLogRewriteProcedure is the fully-qualified name of the LogsService's GetLogRewrite
+	// RPC.
+	LogsServiceGetLogRewriteProcedure = "/core.v1.LogsService/GetLogRewrite"
+	// LogsServiceListLogRewritesProcedure is the fully-qualified name of the LogsService's
+	// ListLogRewrites RPC.
+	LogsServiceListLogRewritesProcedure = "/core.v1.LogsService/ListLogRewrites"
+	// LogsServiceUpdateLogRewriteProcedure is the fully-qualified name of the LogsService's
+	// UpdateLogRewrite RPC.
+	LogsServiceUpdateLogRewriteProcedure = "/core.v1.LogsService/UpdateLogRewrite"
+	// LogsServiceDeleteLogRewriteProcedure is the fully-qualified name of the LogsService's
+	// DeleteLogRewrite RPC.
+	LogsServiceDeleteLogRewriteProcedure = "/core.v1.LogsService/DeleteLogRewrite"
 	// LogsServiceCreateEncryptionKeyProcedure is the fully-qualified name of the LogsService's
 	// CreateEncryptionKey RPC.
 	LogsServiceCreateEncryptionKeyProcedure = "/core.v1.LogsService/CreateEncryptionKey"
@@ -188,6 +203,16 @@ type LogsServiceClient interface {
 	//
 	// Delete a log configuration
 	DeleteLogConfiguration(context.Context, *connect.Request[v1.DeleteLogConfigurationRequest]) (*connect.Response[v1.DeleteLogConfigurationResponse], error)
+	// Create log rewrite
+	CreateLogRewrite(context.Context, *connect.Request[v1.CreateLogRewriteRequest]) (*connect.Response[v1.CreateLogRewriteResponse], error)
+	// Get log rewrite
+	GetLogRewrite(context.Context, *connect.Request[v1.GetLogRewriteRequest]) (*connect.Response[v1.GetLogRewriteResponse], error)
+	// List log rewrites
+	ListLogRewrites(context.Context, *connect.Request[v1.ListLogRewritesRequest]) (*connect.Response[v1.ListLogRewritesResponse], error)
+	// Update log rewrite
+	UpdateLogRewrite(context.Context, *connect.Request[v1.UpdateLogRewriteRequest]) (*connect.Response[v1.UpdateLogRewriteResponse], error)
+	// Delete log rewrite
+	DeleteLogRewrite(context.Context, *connect.Request[v1.DeleteLogRewriteRequest]) (*connect.Response[v1.DeleteLogRewriteResponse], error)
 	// Create encryption key
 	//
 	// Create an encryption key
@@ -354,6 +379,38 @@ func NewLogsServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(logsServiceMethods.ByName("DeleteLogConfiguration")),
 			connect.WithClientOptions(opts...),
 		),
+		createLogRewrite: connect.NewClient[v1.CreateLogRewriteRequest, v1.CreateLogRewriteResponse](
+			httpClient,
+			baseURL+LogsServiceCreateLogRewriteProcedure,
+			connect.WithSchema(logsServiceMethods.ByName("CreateLogRewrite")),
+			connect.WithClientOptions(opts...),
+		),
+		getLogRewrite: connect.NewClient[v1.GetLogRewriteRequest, v1.GetLogRewriteResponse](
+			httpClient,
+			baseURL+LogsServiceGetLogRewriteProcedure,
+			connect.WithSchema(logsServiceMethods.ByName("GetLogRewrite")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		listLogRewrites: connect.NewClient[v1.ListLogRewritesRequest, v1.ListLogRewritesResponse](
+			httpClient,
+			baseURL+LogsServiceListLogRewritesProcedure,
+			connect.WithSchema(logsServiceMethods.ByName("ListLogRewrites")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		updateLogRewrite: connect.NewClient[v1.UpdateLogRewriteRequest, v1.UpdateLogRewriteResponse](
+			httpClient,
+			baseURL+LogsServiceUpdateLogRewriteProcedure,
+			connect.WithSchema(logsServiceMethods.ByName("UpdateLogRewrite")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteLogRewrite: connect.NewClient[v1.DeleteLogRewriteRequest, v1.DeleteLogRewriteResponse](
+			httpClient,
+			baseURL+LogsServiceDeleteLogRewriteProcedure,
+			connect.WithSchema(logsServiceMethods.ByName("DeleteLogRewrite")),
+			connect.WithClientOptions(opts...),
+		),
 		createEncryptionKey: connect.NewClient[v1.CreateEncryptionKeyRequest, v1.CreateEncryptionKeyResponse](
 			httpClient,
 			baseURL+LogsServiceCreateEncryptionKeyProcedure,
@@ -423,6 +480,11 @@ type logsServiceClient struct {
 	updateLogConfiguration        *connect.Client[v1.UpdateLogConfigurationRequest, v1.UpdateLogConfigurationResponse]
 	updateLogConfigurationV2      *connect.Client[v1.UpdateLogConfigurationV2Request, v1.UpdateLogConfigurationV2Response]
 	deleteLogConfiguration        *connect.Client[v1.DeleteLogConfigurationRequest, v1.DeleteLogConfigurationResponse]
+	createLogRewrite              *connect.Client[v1.CreateLogRewriteRequest, v1.CreateLogRewriteResponse]
+	getLogRewrite                 *connect.Client[v1.GetLogRewriteRequest, v1.GetLogRewriteResponse]
+	listLogRewrites               *connect.Client[v1.ListLogRewritesRequest, v1.ListLogRewritesResponse]
+	updateLogRewrite              *connect.Client[v1.UpdateLogRewriteRequest, v1.UpdateLogRewriteResponse]
+	deleteLogRewrite              *connect.Client[v1.DeleteLogRewriteRequest, v1.DeleteLogRewriteResponse]
 	createEncryptionKey           *connect.Client[v1.CreateEncryptionKeyRequest, v1.CreateEncryptionKeyResponse]
 	getEncryptionKey              *connect.Client[v1.GetEncryptionKeyRequest, v1.GetEncryptionKeyResponse]
 	getEncryptionKeysByKeyId      *connect.Client[v1.GetEncryptionKeysByKeyIdRequest, v1.GetEncryptionKeysByKeyIdResponse]
@@ -525,6 +587,31 @@ func (c *logsServiceClient) UpdateLogConfigurationV2(ctx context.Context, req *c
 // DeleteLogConfiguration calls core.v1.LogsService.DeleteLogConfiguration.
 func (c *logsServiceClient) DeleteLogConfiguration(ctx context.Context, req *connect.Request[v1.DeleteLogConfigurationRequest]) (*connect.Response[v1.DeleteLogConfigurationResponse], error) {
 	return c.deleteLogConfiguration.CallUnary(ctx, req)
+}
+
+// CreateLogRewrite calls core.v1.LogsService.CreateLogRewrite.
+func (c *logsServiceClient) CreateLogRewrite(ctx context.Context, req *connect.Request[v1.CreateLogRewriteRequest]) (*connect.Response[v1.CreateLogRewriteResponse], error) {
+	return c.createLogRewrite.CallUnary(ctx, req)
+}
+
+// GetLogRewrite calls core.v1.LogsService.GetLogRewrite.
+func (c *logsServiceClient) GetLogRewrite(ctx context.Context, req *connect.Request[v1.GetLogRewriteRequest]) (*connect.Response[v1.GetLogRewriteResponse], error) {
+	return c.getLogRewrite.CallUnary(ctx, req)
+}
+
+// ListLogRewrites calls core.v1.LogsService.ListLogRewrites.
+func (c *logsServiceClient) ListLogRewrites(ctx context.Context, req *connect.Request[v1.ListLogRewritesRequest]) (*connect.Response[v1.ListLogRewritesResponse], error) {
+	return c.listLogRewrites.CallUnary(ctx, req)
+}
+
+// UpdateLogRewrite calls core.v1.LogsService.UpdateLogRewrite.
+func (c *logsServiceClient) UpdateLogRewrite(ctx context.Context, req *connect.Request[v1.UpdateLogRewriteRequest]) (*connect.Response[v1.UpdateLogRewriteResponse], error) {
+	return c.updateLogRewrite.CallUnary(ctx, req)
+}
+
+// DeleteLogRewrite calls core.v1.LogsService.DeleteLogRewrite.
+func (c *logsServiceClient) DeleteLogRewrite(ctx context.Context, req *connect.Request[v1.DeleteLogRewriteRequest]) (*connect.Response[v1.DeleteLogRewriteResponse], error) {
+	return c.deleteLogRewrite.CallUnary(ctx, req)
 }
 
 // CreateEncryptionKey calls core.v1.LogsService.CreateEncryptionKey.
@@ -640,6 +727,16 @@ type LogsServiceHandler interface {
 	//
 	// Delete a log configuration
 	DeleteLogConfiguration(context.Context, *connect.Request[v1.DeleteLogConfigurationRequest]) (*connect.Response[v1.DeleteLogConfigurationResponse], error)
+	// Create log rewrite
+	CreateLogRewrite(context.Context, *connect.Request[v1.CreateLogRewriteRequest]) (*connect.Response[v1.CreateLogRewriteResponse], error)
+	// Get log rewrite
+	GetLogRewrite(context.Context, *connect.Request[v1.GetLogRewriteRequest]) (*connect.Response[v1.GetLogRewriteResponse], error)
+	// List log rewrites
+	ListLogRewrites(context.Context, *connect.Request[v1.ListLogRewritesRequest]) (*connect.Response[v1.ListLogRewritesResponse], error)
+	// Update log rewrite
+	UpdateLogRewrite(context.Context, *connect.Request[v1.UpdateLogRewriteRequest]) (*connect.Response[v1.UpdateLogRewriteResponse], error)
+	// Delete log rewrite
+	DeleteLogRewrite(context.Context, *connect.Request[v1.DeleteLogRewriteRequest]) (*connect.Response[v1.DeleteLogRewriteResponse], error)
 	// Create encryption key
 	//
 	// Create an encryption key
@@ -802,6 +899,38 @@ func NewLogsServiceHandler(svc LogsServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(logsServiceMethods.ByName("DeleteLogConfiguration")),
 		connect.WithHandlerOptions(opts...),
 	)
+	logsServiceCreateLogRewriteHandler := connect.NewUnaryHandler(
+		LogsServiceCreateLogRewriteProcedure,
+		svc.CreateLogRewrite,
+		connect.WithSchema(logsServiceMethods.ByName("CreateLogRewrite")),
+		connect.WithHandlerOptions(opts...),
+	)
+	logsServiceGetLogRewriteHandler := connect.NewUnaryHandler(
+		LogsServiceGetLogRewriteProcedure,
+		svc.GetLogRewrite,
+		connect.WithSchema(logsServiceMethods.ByName("GetLogRewrite")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	logsServiceListLogRewritesHandler := connect.NewUnaryHandler(
+		LogsServiceListLogRewritesProcedure,
+		svc.ListLogRewrites,
+		connect.WithSchema(logsServiceMethods.ByName("ListLogRewrites")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	logsServiceUpdateLogRewriteHandler := connect.NewUnaryHandler(
+		LogsServiceUpdateLogRewriteProcedure,
+		svc.UpdateLogRewrite,
+		connect.WithSchema(logsServiceMethods.ByName("UpdateLogRewrite")),
+		connect.WithHandlerOptions(opts...),
+	)
+	logsServiceDeleteLogRewriteHandler := connect.NewUnaryHandler(
+		LogsServiceDeleteLogRewriteProcedure,
+		svc.DeleteLogRewrite,
+		connect.WithSchema(logsServiceMethods.ByName("DeleteLogRewrite")),
+		connect.WithHandlerOptions(opts...),
+	)
 	logsServiceCreateEncryptionKeyHandler := connect.NewUnaryHandler(
 		LogsServiceCreateEncryptionKeyProcedure,
 		svc.CreateEncryptionKey,
@@ -887,6 +1016,16 @@ func NewLogsServiceHandler(svc LogsServiceHandler, opts ...connect.HandlerOption
 			logsServiceUpdateLogConfigurationV2Handler.ServeHTTP(w, r)
 		case LogsServiceDeleteLogConfigurationProcedure:
 			logsServiceDeleteLogConfigurationHandler.ServeHTTP(w, r)
+		case LogsServiceCreateLogRewriteProcedure:
+			logsServiceCreateLogRewriteHandler.ServeHTTP(w, r)
+		case LogsServiceGetLogRewriteProcedure:
+			logsServiceGetLogRewriteHandler.ServeHTTP(w, r)
+		case LogsServiceListLogRewritesProcedure:
+			logsServiceListLogRewritesHandler.ServeHTTP(w, r)
+		case LogsServiceUpdateLogRewriteProcedure:
+			logsServiceUpdateLogRewriteHandler.ServeHTTP(w, r)
+		case LogsServiceDeleteLogRewriteProcedure:
+			logsServiceDeleteLogRewriteHandler.ServeHTTP(w, r)
 		case LogsServiceCreateEncryptionKeyProcedure:
 			logsServiceCreateEncryptionKeyHandler.ServeHTTP(w, r)
 		case LogsServiceGetEncryptionKeyProcedure:
@@ -984,6 +1123,26 @@ func (UnimplementedLogsServiceHandler) UpdateLogConfigurationV2(context.Context,
 
 func (UnimplementedLogsServiceHandler) DeleteLogConfiguration(context.Context, *connect.Request[v1.DeleteLogConfigurationRequest]) (*connect.Response[v1.DeleteLogConfigurationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.LogsService.DeleteLogConfiguration is not implemented"))
+}
+
+func (UnimplementedLogsServiceHandler) CreateLogRewrite(context.Context, *connect.Request[v1.CreateLogRewriteRequest]) (*connect.Response[v1.CreateLogRewriteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.LogsService.CreateLogRewrite is not implemented"))
+}
+
+func (UnimplementedLogsServiceHandler) GetLogRewrite(context.Context, *connect.Request[v1.GetLogRewriteRequest]) (*connect.Response[v1.GetLogRewriteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.LogsService.GetLogRewrite is not implemented"))
+}
+
+func (UnimplementedLogsServiceHandler) ListLogRewrites(context.Context, *connect.Request[v1.ListLogRewritesRequest]) (*connect.Response[v1.ListLogRewritesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.LogsService.ListLogRewrites is not implemented"))
+}
+
+func (UnimplementedLogsServiceHandler) UpdateLogRewrite(context.Context, *connect.Request[v1.UpdateLogRewriteRequest]) (*connect.Response[v1.UpdateLogRewriteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.LogsService.UpdateLogRewrite is not implemented"))
+}
+
+func (UnimplementedLogsServiceHandler) DeleteLogRewrite(context.Context, *connect.Request[v1.DeleteLogRewriteRequest]) (*connect.Response[v1.DeleteLogRewriteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.LogsService.DeleteLogRewrite is not implemented"))
 }
 
 func (UnimplementedLogsServiceHandler) CreateEncryptionKey(context.Context, *connect.Request[v1.CreateEncryptionKeyRequest]) (*connect.Response[v1.CreateEncryptionKeyResponse], error) {
