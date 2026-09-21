@@ -1772,9 +1772,9 @@ func (c *LogsServiceClient) CreateLogQuery(ctx context.Context, req *corev1.Crea
 	return res.Msg, nil
 }
 
-// Create log rewrite
-func (c *LogsServiceClient) CreateLogRewrite(ctx context.Context, req *corev1.CreateLogRewriteRequest) (*corev1.CreateLogRewriteResponse, error) {
-	res, err := c.inner.CreateLogRewrite(ctx, connect.NewRequest(req))
+// Create log schema
+func (c *LogsServiceClient) CreateLogSchema(ctx context.Context, req *corev1.CreateLogSchemaRequest) (*corev1.CreateLogSchemaResponse, error) {
+	res, err := c.inner.CreateLogSchema(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -1814,9 +1814,9 @@ func (c *LogsServiceClient) DeleteLogQuery(ctx context.Context, req *corev1.Dele
 	return res.Msg, nil
 }
 
-// Delete log rewrite
-func (c *LogsServiceClient) DeleteLogRewrite(ctx context.Context, req *corev1.DeleteLogRewriteRequest) (*corev1.DeleteLogRewriteResponse, error) {
-	res, err := c.inner.DeleteLogRewrite(ctx, connect.NewRequest(req))
+// Delete log schema
+func (c *LogsServiceClient) DeleteLogSchema(ctx context.Context, req *corev1.DeleteLogSchemaRequest) (*corev1.DeleteLogSchemaResponse, error) {
+	res, err := c.inner.DeleteLogSchema(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -1889,9 +1889,9 @@ func (c *LogsServiceClient) GetLogQuery(ctx context.Context, req *corev1.GetLogQ
 	return res.Msg, nil
 }
 
-// Get log rewrite
-func (c *LogsServiceClient) GetLogRewrite(ctx context.Context, req *corev1.GetLogRewriteRequest) (*corev1.GetLogRewriteResponse, error) {
-	res, err := c.inner.GetLogRewrite(ctx, connect.NewRequest(req))
+// Get log schema
+func (c *LogsServiceClient) GetLogSchema(ctx context.Context, req *corev1.GetLogSchemaRequest) (*corev1.GetLogSchemaResponse, error) {
+	res, err := c.inner.GetLogSchema(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -1975,9 +1975,9 @@ func (c *LogsServiceClient) ListLogQueries(ctx context.Context, req *corev1.List
 	return res.Msg, nil
 }
 
-// List log rewrites
-func (c *LogsServiceClient) ListLogRewrites(ctx context.Context, req *corev1.ListLogRewritesRequest) (*corev1.ListLogRewritesResponse, error) {
-	res, err := c.inner.ListLogRewrites(ctx, connect.NewRequest(req))
+// List log schemas
+func (c *LogsServiceClient) ListLogSchemas(ctx context.Context, req *corev1.ListLogSchemasRequest) (*corev1.ListLogSchemasResponse, error) {
+	res, err := c.inner.ListLogSchemas(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -2061,9 +2061,9 @@ func (c *LogsServiceClient) UpdateLogQueryV2(ctx context.Context, req *corev1.Up
 	return res.Msg, nil
 }
 
-// Update log rewrite
-func (c *LogsServiceClient) UpdateLogRewrite(ctx context.Context, req *corev1.UpdateLogRewriteRequest) (*corev1.UpdateLogRewriteResponse, error) {
-	res, err := c.inner.UpdateLogRewrite(ctx, connect.NewRequest(req))
+// Update log schema
+func (c *LogsServiceClient) UpdateLogSchema(ctx context.Context, req *corev1.UpdateLogSchemaRequest) (*corev1.UpdateLogSchemaResponse, error) {
+	res, err := c.inner.UpdateLogSchema(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
