@@ -12,7 +12,7 @@ require (
 	github.com/aws/smithy-go v1.28.2
 	github.com/formalco/typeid v0.1.0
 	github.com/samber/mo v1.17.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20260918162117-cecb64721679
+	google.golang.org/genproto/googleapis/api v0.0.0-20260921155816-b14227669459
 	google.golang.org/protobuf v1.36.12
 )
 
