@@ -33,9 +33,6 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ApprovalServiceCreateApprovalRequestProcedure is the fully-qualified name of the
-	// ApprovalService's CreateApprovalRequest RPC.
-	ApprovalServiceCreateApprovalRequestProcedure = "/core.v1.ApprovalService/CreateApprovalRequest"
 	// ApprovalServiceListApprovalRequestsProcedure is the fully-qualified name of the ApprovalService's
 	// ListApprovalRequests RPC.
 	ApprovalServiceListApprovalRequestsProcedure = "/core.v1.ApprovalService/ListApprovalRequests"
@@ -46,7 +43,6 @@ const (
 
 // ApprovalServiceClient is a client for the core.v1.ApprovalService service.
 type ApprovalServiceClient interface {
-	CreateApprovalRequest(context.Context, *connect.Request[v1.CreateApprovalRequestRequest]) (*connect.Response[v1.CreateApprovalRequestResponse], error)
 	ListApprovalRequests(context.Context, *connect.Request[v1.ListApprovalRequestsRequest]) (*connect.Response[v1.ListApprovalRequestsResponse], error)
 	UpdateApprovalRequest(context.Context, *connect.Request[v1.UpdateApprovalRequestRequest]) (*connect.Response[v1.UpdateApprovalRequestResponse], error)
 }
@@ -62,12 +58,6 @@ func NewApprovalServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	approvalServiceMethods := v1.File_core_v1_approval_proto.Services().ByName("ApprovalService").Methods()
 	return &approvalServiceClient{
-		createApprovalRequest: connect.NewClient[v1.CreateApprovalRequestRequest, v1.CreateApprovalRequestResponse](
-			httpClient,
-			baseURL+ApprovalServiceCreateApprovalRequestProcedure,
-			connect.WithSchema(approvalServiceMethods.ByName("CreateApprovalRequest")),
-			connect.WithClientOptions(opts...),
-		),
 		listApprovalRequests: connect.NewClient[v1.ListApprovalRequestsRequest, v1.ListApprovalRequestsResponse](
 			httpClient,
 			baseURL+ApprovalServiceListApprovalRequestsProcedure,
@@ -86,14 +76,8 @@ func NewApprovalServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // approvalServiceClient implements ApprovalServiceClient.
 type approvalServiceClient struct {
-	createApprovalRequest *connect.Client[v1.CreateApprovalRequestRequest, v1.CreateApprovalRequestResponse]
 	listApprovalRequests  *connect.Client[v1.ListApprovalRequestsRequest, v1.ListApprovalRequestsResponse]
 	updateApprovalRequest *connect.Client[v1.UpdateApprovalRequestRequest, v1.UpdateApprovalRequestResponse]
-}
-
-// CreateApprovalRequest calls core.v1.ApprovalService.CreateApprovalRequest.
-func (c *approvalServiceClient) CreateApprovalRequest(ctx context.Context, req *connect.Request[v1.CreateApprovalRequestRequest]) (*connect.Response[v1.CreateApprovalRequestResponse], error) {
-	return c.createApprovalRequest.CallUnary(ctx, req)
 }
 
 // ListApprovalRequests calls core.v1.ApprovalService.ListApprovalRequests.
@@ -108,7 +92,6 @@ func (c *approvalServiceClient) UpdateApprovalRequest(ctx context.Context, req *
 
 // ApprovalServiceHandler is an implementation of the core.v1.ApprovalService service.
 type ApprovalServiceHandler interface {
-	CreateApprovalRequest(context.Context, *connect.Request[v1.CreateApprovalRequestRequest]) (*connect.Response[v1.CreateApprovalRequestResponse], error)
 	ListApprovalRequests(context.Context, *connect.Request[v1.ListApprovalRequestsRequest]) (*connect.Response[v1.ListApprovalRequestsResponse], error)
 	UpdateApprovalRequest(context.Context, *connect.Request[v1.UpdateApprovalRequestRequest]) (*connect.Response[v1.UpdateApprovalRequestResponse], error)
 }
@@ -120,12 +103,6 @@ type ApprovalServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewApprovalServiceHandler(svc ApprovalServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	approvalServiceMethods := v1.File_core_v1_approval_proto.Services().ByName("ApprovalService").Methods()
-	approvalServiceCreateApprovalRequestHandler := connect.NewUnaryHandler(
-		ApprovalServiceCreateApprovalRequestProcedure,
-		svc.CreateApprovalRequest,
-		connect.WithSchema(approvalServiceMethods.ByName("CreateApprovalRequest")),
-		connect.WithHandlerOptions(opts...),
-	)
 	approvalServiceListApprovalRequestsHandler := connect.NewUnaryHandler(
 		ApprovalServiceListApprovalRequestsProcedure,
 		svc.ListApprovalRequests,
@@ -141,8 +118,6 @@ func NewApprovalServiceHandler(svc ApprovalServiceHandler, opts ...connect.Handl
 	)
 	return "/core.v1.ApprovalService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case ApprovalServiceCreateApprovalRequestProcedure:
-			approvalServiceCreateApprovalRequestHandler.ServeHTTP(w, r)
 		case ApprovalServiceListApprovalRequestsProcedure:
 			approvalServiceListApprovalRequestsHandler.ServeHTTP(w, r)
 		case ApprovalServiceUpdateApprovalRequestProcedure:
@@ -155,10 +130,6 @@ func NewApprovalServiceHandler(svc ApprovalServiceHandler, opts ...connect.Handl
 
 // UnimplementedApprovalServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedApprovalServiceHandler struct{}
-
-func (UnimplementedApprovalServiceHandler) CreateApprovalRequest(context.Context, *connect.Request[v1.CreateApprovalRequestRequest]) (*connect.Response[v1.CreateApprovalRequestResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ApprovalService.CreateApprovalRequest is not implemented"))
-}
 
 func (UnimplementedApprovalServiceHandler) ListApprovalRequests(context.Context, *connect.Request[v1.ListApprovalRequestsRequest]) (*connect.Response[v1.ListApprovalRequestsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ApprovalService.ListApprovalRequests is not implemented"))

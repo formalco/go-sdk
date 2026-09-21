@@ -25,58 +25,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ListApprovalRequestsScope int32
-
-const (
-	ListApprovalRequestsScope_LIST_APPROVAL_REQUESTS_SCOPE_UNSPECIFIED    ListApprovalRequestsScope = 0
-	ListApprovalRequestsScope_LIST_APPROVAL_REQUESTS_SCOPE_MINE           ListApprovalRequestsScope = 1
-	ListApprovalRequestsScope_LIST_APPROVAL_REQUESTS_SCOPE_PENDING_REVIEW ListApprovalRequestsScope = 2
-	ListApprovalRequestsScope_LIST_APPROVAL_REQUESTS_SCOPE_REVIEW         ListApprovalRequestsScope = 3
-)
-
-// Enum value maps for ListApprovalRequestsScope.
-var (
-	ListApprovalRequestsScope_name = map[int32]string{
-		0: "LIST_APPROVAL_REQUESTS_SCOPE_UNSPECIFIED",
-		1: "LIST_APPROVAL_REQUESTS_SCOPE_MINE",
-		2: "LIST_APPROVAL_REQUESTS_SCOPE_PENDING_REVIEW",
-		3: "LIST_APPROVAL_REQUESTS_SCOPE_REVIEW",
-	}
-	ListApprovalRequestsScope_value = map[string]int32{
-		"LIST_APPROVAL_REQUESTS_SCOPE_UNSPECIFIED":    0,
-		"LIST_APPROVAL_REQUESTS_SCOPE_MINE":           1,
-		"LIST_APPROVAL_REQUESTS_SCOPE_PENDING_REVIEW": 2,
-		"LIST_APPROVAL_REQUESTS_SCOPE_REVIEW":         3,
-	}
-)
-
-func (x ListApprovalRequestsScope) Enum() *ListApprovalRequestsScope {
-	p := new(ListApprovalRequestsScope)
-	*p = x
-	return p
-}
-
-func (x ListApprovalRequestsScope) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (ListApprovalRequestsScope) Descriptor() protoreflect.EnumDescriptor {
-	return file_core_v1_approval_proto_enumTypes[0].Descriptor()
-}
-
-func (ListApprovalRequestsScope) Type() protoreflect.EnumType {
-	return &file_core_v1_approval_proto_enumTypes[0]
-}
-
-func (x ListApprovalRequestsScope) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use ListApprovalRequestsScope.Descriptor instead.
-func (ListApprovalRequestsScope) EnumDescriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{0}
-}
-
 type ListApprovalRequestsStatus int32
 
 const (
@@ -113,11 +61,11 @@ func (x ListApprovalRequestsStatus) String() string {
 }
 
 func (ListApprovalRequestsStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_core_v1_approval_proto_enumTypes[1].Descriptor()
+	return file_core_v1_approval_proto_enumTypes[0].Descriptor()
 }
 
 func (ListApprovalRequestsStatus) Type() protoreflect.EnumType {
-	return &file_core_v1_approval_proto_enumTypes[1]
+	return &file_core_v1_approval_proto_enumTypes[0]
 }
 
 func (x ListApprovalRequestsStatus) Number() protoreflect.EnumNumber {
@@ -126,7 +74,7 @@ func (x ListApprovalRequestsStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ListApprovalRequestsStatus.Descriptor instead.
 func (ListApprovalRequestsStatus) EnumDescriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{1}
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{0}
 }
 
 type UpdateApprovalRequestAction int32
@@ -162,11 +110,11 @@ func (x UpdateApprovalRequestAction) String() string {
 }
 
 func (UpdateApprovalRequestAction) Descriptor() protoreflect.EnumDescriptor {
-	return file_core_v1_approval_proto_enumTypes[2].Descriptor()
+	return file_core_v1_approval_proto_enumTypes[1].Descriptor()
 }
 
 func (UpdateApprovalRequestAction) Type() protoreflect.EnumType {
-	return &file_core_v1_approval_proto_enumTypes[2]
+	return &file_core_v1_approval_proto_enumTypes[1]
 }
 
 func (x UpdateApprovalRequestAction) Number() protoreflect.EnumNumber {
@@ -175,7 +123,7 @@ func (x UpdateApprovalRequestAction) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use UpdateApprovalRequestAction.Descriptor instead.
 func (UpdateApprovalRequestAction) EnumDescriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{2}
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{1}
 }
 
 type ApprovalRequest struct {
@@ -1048,123 +996,18 @@ func (x *CustomPolicyAccessApprovalRequest) GetScope() *ApprovalAccessScope {
 	return nil
 }
 
-type CreateApprovalRequestRequest struct {
-	state         protoimpl.MessageState  `protogen:"open.v1"`
-	Reason        string                  `protobuf:"bytes,1,opt,name=reason,proto3" json:"reason,omitempty"`
-	PolicyId      string                  `protobuf:"bytes,2,opt,name=policy_id,json=policyId,proto3" json:"policy_id,omitempty"`
-	Payload       *ApprovalRequestPayload `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateApprovalRequestRequest) Reset() {
-	*x = CreateApprovalRequestRequest{}
-	mi := &file_core_v1_approval_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateApprovalRequestRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateApprovalRequestRequest) ProtoMessage() {}
-
-func (x *CreateApprovalRequestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_approval_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateApprovalRequestRequest.ProtoReflect.Descriptor instead.
-func (*CreateApprovalRequestRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *CreateApprovalRequestRequest) GetReason() string {
-	if x != nil {
-		return x.Reason
-	}
-	return ""
-}
-
-func (x *CreateApprovalRequestRequest) GetPolicyId() string {
-	if x != nil {
-		return x.PolicyId
-	}
-	return ""
-}
-
-func (x *CreateApprovalRequestRequest) GetPayload() *ApprovalRequestPayload {
-	if x != nil {
-		return x.Payload
-	}
-	return nil
-}
-
-type CreateApprovalRequestResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Request       *ApprovalRequest       `protobuf:"bytes,1,opt,name=request,proto3" json:"request,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateApprovalRequestResponse) Reset() {
-	*x = CreateApprovalRequestResponse{}
-	mi := &file_core_v1_approval_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateApprovalRequestResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateApprovalRequestResponse) ProtoMessage() {}
-
-func (x *CreateApprovalRequestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_approval_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateApprovalRequestResponse.ProtoReflect.Descriptor instead.
-func (*CreateApprovalRequestResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *CreateApprovalRequestResponse) GetRequest() *ApprovalRequest {
-	if x != nil {
-		return x.Request
-	}
-	return nil
-}
-
 type ListApprovalRequestsRequest struct {
 	state         protoimpl.MessageState     `protogen:"open.v1"`
-	Scope         ListApprovalRequestsScope  `protobuf:"varint,1,opt,name=scope,proto3,enum=core.v1.ListApprovalRequestsScope" json:"scope,omitempty"`
-	Limit         int32                      `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
-	Cursor        string                     `protobuf:"bytes,3,opt,name=cursor,proto3" json:"cursor,omitempty"`
-	Status        ListApprovalRequestsStatus `protobuf:"varint,4,opt,name=status,proto3,enum=core.v1.ListApprovalRequestsStatus" json:"status,omitempty"`
+	Limit         int32                      `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Cursor        string                     `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	Status        ListApprovalRequestsStatus `protobuf:"varint,3,opt,name=status,proto3,enum=core.v1.ListApprovalRequestsStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListApprovalRequestsRequest) Reset() {
 	*x = ListApprovalRequestsRequest{}
-	mi := &file_core_v1_approval_proto_msgTypes[15]
+	mi := &file_core_v1_approval_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1176,7 +1019,7 @@ func (x *ListApprovalRequestsRequest) String() string {
 func (*ListApprovalRequestsRequest) ProtoMessage() {}
 
 func (x *ListApprovalRequestsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_approval_proto_msgTypes[15]
+	mi := &file_core_v1_approval_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1189,14 +1032,7 @@ func (x *ListApprovalRequestsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListApprovalRequestsRequest.ProtoReflect.Descriptor instead.
 func (*ListApprovalRequestsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *ListApprovalRequestsRequest) GetScope() ListApprovalRequestsScope {
-	if x != nil {
-		return x.Scope
-	}
-	return ListApprovalRequestsScope_LIST_APPROVAL_REQUESTS_SCOPE_UNSPECIFIED
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListApprovalRequestsRequest) GetLimit() int32 {
@@ -1230,7 +1066,7 @@ type ListApprovalRequestsResponse struct {
 
 func (x *ListApprovalRequestsResponse) Reset() {
 	*x = ListApprovalRequestsResponse{}
-	mi := &file_core_v1_approval_proto_msgTypes[16]
+	mi := &file_core_v1_approval_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1242,7 +1078,7 @@ func (x *ListApprovalRequestsResponse) String() string {
 func (*ListApprovalRequestsResponse) ProtoMessage() {}
 
 func (x *ListApprovalRequestsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_approval_proto_msgTypes[16]
+	mi := &file_core_v1_approval_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1255,7 +1091,7 @@ func (x *ListApprovalRequestsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListApprovalRequestsResponse.ProtoReflect.Descriptor instead.
 func (*ListApprovalRequestsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListApprovalRequestsResponse) GetRequests() []*ApprovalRequest {
@@ -1283,7 +1119,7 @@ type UpdateApprovalRequestRequest struct {
 
 func (x *UpdateApprovalRequestRequest) Reset() {
 	*x = UpdateApprovalRequestRequest{}
-	mi := &file_core_v1_approval_proto_msgTypes[17]
+	mi := &file_core_v1_approval_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1295,7 +1131,7 @@ func (x *UpdateApprovalRequestRequest) String() string {
 func (*UpdateApprovalRequestRequest) ProtoMessage() {}
 
 func (x *UpdateApprovalRequestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_approval_proto_msgTypes[17]
+	mi := &file_core_v1_approval_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1308,7 +1144,7 @@ func (x *UpdateApprovalRequestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateApprovalRequestRequest.ProtoReflect.Descriptor instead.
 func (*UpdateApprovalRequestRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *UpdateApprovalRequestRequest) GetId() string {
@@ -1341,7 +1177,7 @@ type UpdateApprovalRequestResponse struct {
 
 func (x *UpdateApprovalRequestResponse) Reset() {
 	*x = UpdateApprovalRequestResponse{}
-	mi := &file_core_v1_approval_proto_msgTypes[18]
+	mi := &file_core_v1_approval_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1353,7 +1189,7 @@ func (x *UpdateApprovalRequestResponse) String() string {
 func (*UpdateApprovalRequestResponse) ProtoMessage() {}
 
 func (x *UpdateApprovalRequestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_approval_proto_msgTypes[18]
+	mi := &file_core_v1_approval_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1366,7 +1202,7 @@ func (x *UpdateApprovalRequestResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateApprovalRequestResponse.ProtoReflect.Descriptor instead.
 func (*UpdateApprovalRequestResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_approval_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *UpdateApprovalRequestResponse) GetRequest() *ApprovalRequest {
@@ -1439,19 +1275,12 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"resourceId\"_\n" +
 	"!CustomPolicyAccessApprovalRequest\x12:\n" +
-	"\x05scope\x18\x01 \x01(\v2\x1c.core.v1.ApprovalAccessScopeB\x06\xbaH\x03\xc8\x01\x01R\x05scope\"\xa0\x01\n" +
-	"\x1cCreateApprovalRequestRequest\x12 \n" +
-	"\x06reason\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\xa0\x1fR\x06reason\x12\x1b\n" +
-	"\tpolicy_id\x18\x02 \x01(\tR\bpolicyId\x12A\n" +
-	"\apayload\x18\x03 \x01(\v2\x1f.core.v1.ApprovalRequestPayloadB\x06\xbaH\x03\xc8\x01\x01R\apayload\"S\n" +
-	"\x1dCreateApprovalRequestResponse\x122\n" +
-	"\arequest\x18\x01 \x01(\v2\x18.core.v1.ApprovalRequestR\arequest\"\xd8\x01\n" +
-	"\x1bListApprovalRequestsRequest\x128\n" +
-	"\x05scope\x18\x01 \x01(\x0e2\".core.v1.ListApprovalRequestsScopeR\x05scope\x12 \n" +
-	"\x05limit\x18\x02 \x01(\x05B\n" +
+	"\x05scope\x18\x01 \x01(\v2\x1c.core.v1.ApprovalAccessScopeB\x06\xbaH\x03\xc8\x01\x01R\x05scope\"\x9e\x01\n" +
+	"\x1bListApprovalRequestsRequest\x12 \n" +
+	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
-	"\x06cursor\x18\x03 \x01(\tR\x06cursor\x12E\n" +
-	"\x06status\x18\x04 \x01(\x0e2#.core.v1.ListApprovalRequestsStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status\"\x90\x01\n" +
+	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12E\n" +
+	"\x06status\x18\x03 \x01(\x0e2#.core.v1.ListApprovalRequestsStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status\"\x90\x01\n" +
 	"\x1cListApprovalRequestsResponse\x124\n" +
 	"\brequests\x18\x01 \x03(\v2\x18.core.v1.ApprovalRequestR\brequests\x12:\n" +
 	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xa1\x01\n" +
@@ -1460,12 +1289,7 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\x06action\x18\x02 \x01(\x0e2$.core.v1.UpdateApprovalRequestActionB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06action\x12 \n" +
 	"\x06reason\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\xa0\x1fR\x06reason\"S\n" +
 	"\x1dUpdateApprovalRequestResponse\x122\n" +
-	"\arequest\x18\x01 \x01(\v2\x18.core.v1.ApprovalRequestR\arequest*\xca\x01\n" +
-	"\x19ListApprovalRequestsScope\x12,\n" +
-	"(LIST_APPROVAL_REQUESTS_SCOPE_UNSPECIFIED\x10\x00\x12%\n" +
-	"!LIST_APPROVAL_REQUESTS_SCOPE_MINE\x10\x01\x12/\n" +
-	"+LIST_APPROVAL_REQUESTS_SCOPE_PENDING_REVIEW\x10\x02\x12'\n" +
-	"#LIST_APPROVAL_REQUESTS_SCOPE_REVIEW\x10\x03*\xce\x01\n" +
+	"\arequest\x18\x01 \x01(\v2\x18.core.v1.ApprovalRequestR\arequest*\xce\x01\n" +
 	"\x1aListApprovalRequestsStatus\x12-\n" +
 	")LIST_APPROVAL_REQUESTS_STATUS_UNSPECIFIED\x10\x00\x12)\n" +
 	"%LIST_APPROVAL_REQUESTS_STATUS_PENDING\x10\x01\x12*\n" +
@@ -1474,9 +1298,8 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\x1bUpdateApprovalRequestAction\x12.\n" +
 	"*UPDATE_APPROVAL_REQUEST_ACTION_UNSPECIFIED\x10\x00\x12*\n" +
 	"&UPDATE_APPROVAL_REQUEST_ACTION_APPROVE\x10\x01\x12)\n" +
-	"%UPDATE_APPROVAL_REQUEST_ACTION_REJECT\x10\x022\xfc\x03\n" +
-	"\x0fApprovalService\x12\xa1\x01\n" +
-	"\x15CreateApprovalRequest\x12%.core.v1.CreateApprovalRequestRequest\x1a&.core.v1.CreateApprovalRequestResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ApprovalService/CreateApprovalRequest\x12\xa0\x01\n" +
+	"%UPDATE_APPROVAL_REQUEST_ACTION_REJECT\x10\x022\xd8\x02\n" +
+	"\x0fApprovalService\x12\xa0\x01\n" +
 	"\x14ListApprovalRequests\x12$.core.v1.ListApprovalRequestsRequest\x1a%.core.v1.ListApprovalRequestsResponse\";\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.ApprovalService/ListApprovalRequests\x90\x02\x01\x12\xa1\x01\n" +
 	"\x15UpdateApprovalRequest\x12%.core.v1.UpdateApprovalRequestRequest\x1a&.core.v1.UpdateApprovalRequestResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ApprovalService/UpdateApprovalRequestB\x87\x01\n" +
 	"\vcom.core.v1B\rApprovalProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
@@ -1493,73 +1316,65 @@ func file_core_v1_approval_proto_rawDescGZIP() []byte {
 	return file_core_v1_approval_proto_rawDescData
 }
 
-var file_core_v1_approval_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_core_v1_approval_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_core_v1_approval_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_core_v1_approval_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_core_v1_approval_proto_goTypes = []any{
-	(ListApprovalRequestsScope)(0),            // 0: core.v1.ListApprovalRequestsScope
-	(ListApprovalRequestsStatus)(0),           // 1: core.v1.ListApprovalRequestsStatus
-	(UpdateApprovalRequestAction)(0),          // 2: core.v1.UpdateApprovalRequestAction
-	(*ApprovalRequest)(nil),                   // 3: core.v1.ApprovalRequest
-	(*ApprovalRequestPayload)(nil),            // 4: core.v1.ApprovalRequestPayload
-	(*PolicySuspensionApprovalRequest)(nil),   // 5: core.v1.PolicySuspensionApprovalRequest
-	(*OneTimeApprovalAccess)(nil),             // 6: core.v1.OneTimeApprovalAccess
-	(*TimeBoundApprovalAccess)(nil),           // 7: core.v1.TimeBoundApprovalAccess
-	(*ApprovalAccessScope)(nil),               // 8: core.v1.ApprovalAccessScope
-	(*ExactActionApprovalScope)(nil),          // 9: core.v1.ExactActionApprovalScope
-	(*ToolApprovalScope)(nil),                 // 10: core.v1.ToolApprovalScope
-	(*MethodApprovalScope)(nil),               // 11: core.v1.MethodApprovalScope
-	(*DeviceApprovalScope)(nil),               // 12: core.v1.DeviceApprovalScope
-	(*FullApprovalScope)(nil),                 // 13: core.v1.FullApprovalScope
-	(*McpRegistryAccessApprovalRequest)(nil),  // 14: core.v1.McpRegistryAccessApprovalRequest
-	(*CustomPolicyAccessApprovalRequest)(nil), // 15: core.v1.CustomPolicyAccessApprovalRequest
-	(*CreateApprovalRequestRequest)(nil),      // 16: core.v1.CreateApprovalRequestRequest
-	(*CreateApprovalRequestResponse)(nil),     // 17: core.v1.CreateApprovalRequestResponse
-	(*ListApprovalRequestsRequest)(nil),       // 18: core.v1.ListApprovalRequestsRequest
-	(*ListApprovalRequestsResponse)(nil),      // 19: core.v1.ListApprovalRequestsResponse
-	(*UpdateApprovalRequestRequest)(nil),      // 20: core.v1.UpdateApprovalRequestRequest
-	(*UpdateApprovalRequestResponse)(nil),     // 21: core.v1.UpdateApprovalRequestResponse
-	(*timestamppb.Timestamp)(nil),             // 22: google.protobuf.Timestamp
-	(*CreateMcpServerRequest)(nil),            // 23: core.v1.CreateMcpServerRequest
-	(*structpb.Struct)(nil),                   // 24: google.protobuf.Struct
-	(*ListMetadata)(nil),                      // 25: core.v1.ListMetadata
+	(ListApprovalRequestsStatus)(0),           // 0: core.v1.ListApprovalRequestsStatus
+	(UpdateApprovalRequestAction)(0),          // 1: core.v1.UpdateApprovalRequestAction
+	(*ApprovalRequest)(nil),                   // 2: core.v1.ApprovalRequest
+	(*ApprovalRequestPayload)(nil),            // 3: core.v1.ApprovalRequestPayload
+	(*PolicySuspensionApprovalRequest)(nil),   // 4: core.v1.PolicySuspensionApprovalRequest
+	(*OneTimeApprovalAccess)(nil),             // 5: core.v1.OneTimeApprovalAccess
+	(*TimeBoundApprovalAccess)(nil),           // 6: core.v1.TimeBoundApprovalAccess
+	(*ApprovalAccessScope)(nil),               // 7: core.v1.ApprovalAccessScope
+	(*ExactActionApprovalScope)(nil),          // 8: core.v1.ExactActionApprovalScope
+	(*ToolApprovalScope)(nil),                 // 9: core.v1.ToolApprovalScope
+	(*MethodApprovalScope)(nil),               // 10: core.v1.MethodApprovalScope
+	(*DeviceApprovalScope)(nil),               // 11: core.v1.DeviceApprovalScope
+	(*FullApprovalScope)(nil),                 // 12: core.v1.FullApprovalScope
+	(*McpRegistryAccessApprovalRequest)(nil),  // 13: core.v1.McpRegistryAccessApprovalRequest
+	(*CustomPolicyAccessApprovalRequest)(nil), // 14: core.v1.CustomPolicyAccessApprovalRequest
+	(*ListApprovalRequestsRequest)(nil),       // 15: core.v1.ListApprovalRequestsRequest
+	(*ListApprovalRequestsResponse)(nil),      // 16: core.v1.ListApprovalRequestsResponse
+	(*UpdateApprovalRequestRequest)(nil),      // 17: core.v1.UpdateApprovalRequestRequest
+	(*UpdateApprovalRequestResponse)(nil),     // 18: core.v1.UpdateApprovalRequestResponse
+	(*timestamppb.Timestamp)(nil),             // 19: google.protobuf.Timestamp
+	(*CreateMcpServerRequest)(nil),            // 20: core.v1.CreateMcpServerRequest
+	(*structpb.Struct)(nil),                   // 21: google.protobuf.Struct
+	(*ListMetadata)(nil),                      // 22: core.v1.ListMetadata
 }
 var file_core_v1_approval_proto_depIdxs = []int32{
-	4,  // 0: core.v1.ApprovalRequest.payload:type_name -> core.v1.ApprovalRequestPayload
-	22, // 1: core.v1.ApprovalRequest.created_at:type_name -> google.protobuf.Timestamp
-	22, // 2: core.v1.ApprovalRequest.decided_at:type_name -> google.protobuf.Timestamp
-	23, // 3: core.v1.ApprovalRequestPayload.mcp_server_create:type_name -> core.v1.CreateMcpServerRequest
-	5,  // 4: core.v1.ApprovalRequestPayload.policy_suspension:type_name -> core.v1.PolicySuspensionApprovalRequest
-	14, // 5: core.v1.ApprovalRequestPayload.mcp_registry_access:type_name -> core.v1.McpRegistryAccessApprovalRequest
-	15, // 6: core.v1.ApprovalRequestPayload.custom_policy_access:type_name -> core.v1.CustomPolicyAccessApprovalRequest
-	6,  // 7: core.v1.PolicySuspensionApprovalRequest.one_time:type_name -> core.v1.OneTimeApprovalAccess
-	7,  // 8: core.v1.PolicySuspensionApprovalRequest.time_bound:type_name -> core.v1.TimeBoundApprovalAccess
-	8,  // 9: core.v1.PolicySuspensionApprovalRequest.scope:type_name -> core.v1.ApprovalAccessScope
-	9,  // 10: core.v1.ApprovalAccessScope.exact_action:type_name -> core.v1.ExactActionApprovalScope
-	10, // 11: core.v1.ApprovalAccessScope.tool:type_name -> core.v1.ToolApprovalScope
-	11, // 12: core.v1.ApprovalAccessScope.method:type_name -> core.v1.MethodApprovalScope
-	12, // 13: core.v1.ApprovalAccessScope.device:type_name -> core.v1.DeviceApprovalScope
-	13, // 14: core.v1.ApprovalAccessScope.full:type_name -> core.v1.FullApprovalScope
-	24, // 15: core.v1.ExactActionApprovalScope.tool_arguments:type_name -> google.protobuf.Struct
-	8,  // 16: core.v1.CustomPolicyAccessApprovalRequest.scope:type_name -> core.v1.ApprovalAccessScope
-	4,  // 17: core.v1.CreateApprovalRequestRequest.payload:type_name -> core.v1.ApprovalRequestPayload
-	3,  // 18: core.v1.CreateApprovalRequestResponse.request:type_name -> core.v1.ApprovalRequest
-	0,  // 19: core.v1.ListApprovalRequestsRequest.scope:type_name -> core.v1.ListApprovalRequestsScope
-	1,  // 20: core.v1.ListApprovalRequestsRequest.status:type_name -> core.v1.ListApprovalRequestsStatus
-	3,  // 21: core.v1.ListApprovalRequestsResponse.requests:type_name -> core.v1.ApprovalRequest
-	25, // 22: core.v1.ListApprovalRequestsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	2,  // 23: core.v1.UpdateApprovalRequestRequest.action:type_name -> core.v1.UpdateApprovalRequestAction
-	3,  // 24: core.v1.UpdateApprovalRequestResponse.request:type_name -> core.v1.ApprovalRequest
-	16, // 25: core.v1.ApprovalService.CreateApprovalRequest:input_type -> core.v1.CreateApprovalRequestRequest
-	18, // 26: core.v1.ApprovalService.ListApprovalRequests:input_type -> core.v1.ListApprovalRequestsRequest
-	20, // 27: core.v1.ApprovalService.UpdateApprovalRequest:input_type -> core.v1.UpdateApprovalRequestRequest
-	17, // 28: core.v1.ApprovalService.CreateApprovalRequest:output_type -> core.v1.CreateApprovalRequestResponse
-	19, // 29: core.v1.ApprovalService.ListApprovalRequests:output_type -> core.v1.ListApprovalRequestsResponse
-	21, // 30: core.v1.ApprovalService.UpdateApprovalRequest:output_type -> core.v1.UpdateApprovalRequestResponse
-	28, // [28:31] is the sub-list for method output_type
-	25, // [25:28] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	3,  // 0: core.v1.ApprovalRequest.payload:type_name -> core.v1.ApprovalRequestPayload
+	19, // 1: core.v1.ApprovalRequest.created_at:type_name -> google.protobuf.Timestamp
+	19, // 2: core.v1.ApprovalRequest.decided_at:type_name -> google.protobuf.Timestamp
+	20, // 3: core.v1.ApprovalRequestPayload.mcp_server_create:type_name -> core.v1.CreateMcpServerRequest
+	4,  // 4: core.v1.ApprovalRequestPayload.policy_suspension:type_name -> core.v1.PolicySuspensionApprovalRequest
+	13, // 5: core.v1.ApprovalRequestPayload.mcp_registry_access:type_name -> core.v1.McpRegistryAccessApprovalRequest
+	14, // 6: core.v1.ApprovalRequestPayload.custom_policy_access:type_name -> core.v1.CustomPolicyAccessApprovalRequest
+	5,  // 7: core.v1.PolicySuspensionApprovalRequest.one_time:type_name -> core.v1.OneTimeApprovalAccess
+	6,  // 8: core.v1.PolicySuspensionApprovalRequest.time_bound:type_name -> core.v1.TimeBoundApprovalAccess
+	7,  // 9: core.v1.PolicySuspensionApprovalRequest.scope:type_name -> core.v1.ApprovalAccessScope
+	8,  // 10: core.v1.ApprovalAccessScope.exact_action:type_name -> core.v1.ExactActionApprovalScope
+	9,  // 11: core.v1.ApprovalAccessScope.tool:type_name -> core.v1.ToolApprovalScope
+	10, // 12: core.v1.ApprovalAccessScope.method:type_name -> core.v1.MethodApprovalScope
+	11, // 13: core.v1.ApprovalAccessScope.device:type_name -> core.v1.DeviceApprovalScope
+	12, // 14: core.v1.ApprovalAccessScope.full:type_name -> core.v1.FullApprovalScope
+	21, // 15: core.v1.ExactActionApprovalScope.tool_arguments:type_name -> google.protobuf.Struct
+	7,  // 16: core.v1.CustomPolicyAccessApprovalRequest.scope:type_name -> core.v1.ApprovalAccessScope
+	0,  // 17: core.v1.ListApprovalRequestsRequest.status:type_name -> core.v1.ListApprovalRequestsStatus
+	2,  // 18: core.v1.ListApprovalRequestsResponse.requests:type_name -> core.v1.ApprovalRequest
+	22, // 19: core.v1.ListApprovalRequestsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	1,  // 20: core.v1.UpdateApprovalRequestRequest.action:type_name -> core.v1.UpdateApprovalRequestAction
+	2,  // 21: core.v1.UpdateApprovalRequestResponse.request:type_name -> core.v1.ApprovalRequest
+	15, // 22: core.v1.ApprovalService.ListApprovalRequests:input_type -> core.v1.ListApprovalRequestsRequest
+	17, // 23: core.v1.ApprovalService.UpdateApprovalRequest:input_type -> core.v1.UpdateApprovalRequestRequest
+	16, // 24: core.v1.ApprovalService.ListApprovalRequests:output_type -> core.v1.ListApprovalRequestsResponse
+	18, // 25: core.v1.ApprovalService.UpdateApprovalRequest:output_type -> core.v1.UpdateApprovalRequestResponse
+	24, // [24:26] is the sub-list for method output_type
+	22, // [22:24] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_approval_proto_init() }
@@ -1591,8 +1406,8 @@ func file_core_v1_approval_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_approval_proto_rawDesc), len(file_core_v1_approval_proto_rawDesc)),
-			NumEnums:      3,
-			NumMessages:   19,
+			NumEnums:      2,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
