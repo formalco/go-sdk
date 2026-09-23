@@ -228,6 +228,18 @@ const (
 	// ResourceServiceListResourceConnectorAccessProcedure is the fully-qualified name of the
 	// ResourceService's ListResourceConnectorAccess RPC.
 	ResourceServiceListResourceConnectorAccessProcedure = "/core.v1.ResourceService/ListResourceConnectorAccess"
+	// ResourceServiceCreateResourceOAuthSettingsProcedure is the fully-qualified name of the
+	// ResourceService's CreateResourceOAuthSettings RPC.
+	ResourceServiceCreateResourceOAuthSettingsProcedure = "/core.v1.ResourceService/CreateResourceOAuthSettings"
+	// ResourceServiceGetResourceOAuthSettingsProcedure is the fully-qualified name of the
+	// ResourceService's GetResourceOAuthSettings RPC.
+	ResourceServiceGetResourceOAuthSettingsProcedure = "/core.v1.ResourceService/GetResourceOAuthSettings"
+	// ResourceServiceUpdateResourceOAuthSettingsProcedure is the fully-qualified name of the
+	// ResourceService's UpdateResourceOAuthSettings RPC.
+	ResourceServiceUpdateResourceOAuthSettingsProcedure = "/core.v1.ResourceService/UpdateResourceOAuthSettings"
+	// ResourceServiceDeleteResourceOAuthSettingsProcedure is the fully-qualified name of the
+	// ResourceService's DeleteResourceOAuthSettings RPC.
+	ResourceServiceDeleteResourceOAuthSettingsProcedure = "/core.v1.ResourceService/DeleteResourceOAuthSettings"
 )
 
 // ResourceServiceClient is a client for the core.v1.ResourceService service.
@@ -475,6 +487,25 @@ type ResourceServiceClient interface {
 	// Rename an existing alias for a resource
 	UpdateResourceAlias(context.Context, *connect.Request[v1.UpdateResourceAliasRequest]) (*connect.Response[v1.UpdateResourceAliasResponse], error)
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
+	// Create resource OAuth settings
+	//
+	// Enable upstream OAuth for an MCP server so users can link their own accounts.
+	// No network discovery happens until a user starts linking.
+	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
+	// Get resource OAuth settings
+	//
+	// Get the upstream OAuth settings of an MCP server
+	GetResourceOAuthSettings(context.Context, *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error)
+	// Update resource OAuth settings
+	//
+	// Replace the upstream OAuth settings of an MCP server. Existing user links keep
+	// the client binding they were created with.
+	UpdateResourceOAuthSettings(context.Context, *connect.Request[v1.UpdateResourceOAuthSettingsRequest]) (*connect.Response[v1.UpdateResourceOAuthSettingsResponse], error)
+	// Delete resource OAuth settings
+	//
+	// Disable upstream OAuth for an MCP server. Every pending link and every user's
+	// stored grant for the server is deleted.
+	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 
 // NewResourceServiceClient constructs a client for the core.v1.ResourceService service. By default,
@@ -896,6 +927,31 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
+		createResourceOAuthSettings: connect.NewClient[v1.CreateResourceOAuthSettingsRequest, v1.CreateResourceOAuthSettingsResponse](
+			httpClient,
+			baseURL+ResourceServiceCreateResourceOAuthSettingsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("CreateResourceOAuthSettings")),
+			connect.WithClientOptions(opts...),
+		),
+		getResourceOAuthSettings: connect.NewClient[v1.GetResourceOAuthSettingsRequest, v1.GetResourceOAuthSettingsResponse](
+			httpClient,
+			baseURL+ResourceServiceGetResourceOAuthSettingsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("GetResourceOAuthSettings")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		updateResourceOAuthSettings: connect.NewClient[v1.UpdateResourceOAuthSettingsRequest, v1.UpdateResourceOAuthSettingsResponse](
+			httpClient,
+			baseURL+ResourceServiceUpdateResourceOAuthSettingsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceOAuthSettings")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteResourceOAuthSettings: connect.NewClient[v1.DeleteResourceOAuthSettingsRequest, v1.DeleteResourceOAuthSettingsResponse](
+			httpClient,
+			baseURL+ResourceServiceDeleteResourceOAuthSettingsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("DeleteResourceOAuthSettings")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -966,6 +1022,10 @@ type resourceServiceClient struct {
 	deleteResourceAlias                     *connect.Client[v1.DeleteResourceAliasRequest, v1.DeleteResourceAliasResponse]
 	updateResourceAlias                     *connect.Client[v1.UpdateResourceAliasRequest, v1.UpdateResourceAliasResponse]
 	listResourceConnectorAccess             *connect.Client[v1.ListResourceConnectorAccessRequest, v1.ListResourceConnectorAccessResponse]
+	createResourceOAuthSettings             *connect.Client[v1.CreateResourceOAuthSettingsRequest, v1.CreateResourceOAuthSettingsResponse]
+	getResourceOAuthSettings                *connect.Client[v1.GetResourceOAuthSettingsRequest, v1.GetResourceOAuthSettingsResponse]
+	updateResourceOAuthSettings             *connect.Client[v1.UpdateResourceOAuthSettingsRequest, v1.UpdateResourceOAuthSettingsResponse]
+	deleteResourceOAuthSettings             *connect.Client[v1.DeleteResourceOAuthSettingsRequest, v1.DeleteResourceOAuthSettingsResponse]
 }
 
 // GetResource calls core.v1.ResourceService.GetResource.
@@ -1302,6 +1362,26 @@ func (c *resourceServiceClient) ListResourceConnectorAccess(ctx context.Context,
 	return c.listResourceConnectorAccess.CallUnary(ctx, req)
 }
 
+// CreateResourceOAuthSettings calls core.v1.ResourceService.CreateResourceOAuthSettings.
+func (c *resourceServiceClient) CreateResourceOAuthSettings(ctx context.Context, req *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error) {
+	return c.createResourceOAuthSettings.CallUnary(ctx, req)
+}
+
+// GetResourceOAuthSettings calls core.v1.ResourceService.GetResourceOAuthSettings.
+func (c *resourceServiceClient) GetResourceOAuthSettings(ctx context.Context, req *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error) {
+	return c.getResourceOAuthSettings.CallUnary(ctx, req)
+}
+
+// UpdateResourceOAuthSettings calls core.v1.ResourceService.UpdateResourceOAuthSettings.
+func (c *resourceServiceClient) UpdateResourceOAuthSettings(ctx context.Context, req *connect.Request[v1.UpdateResourceOAuthSettingsRequest]) (*connect.Response[v1.UpdateResourceOAuthSettingsResponse], error) {
+	return c.updateResourceOAuthSettings.CallUnary(ctx, req)
+}
+
+// DeleteResourceOAuthSettings calls core.v1.ResourceService.DeleteResourceOAuthSettings.
+func (c *resourceServiceClient) DeleteResourceOAuthSettings(ctx context.Context, req *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error) {
+	return c.deleteResourceOAuthSettings.CallUnary(ctx, req)
+}
+
 // ResourceServiceHandler is an implementation of the core.v1.ResourceService service.
 type ResourceServiceHandler interface {
 	// Get resource
@@ -1547,6 +1627,25 @@ type ResourceServiceHandler interface {
 	// Rename an existing alias for a resource
 	UpdateResourceAlias(context.Context, *connect.Request[v1.UpdateResourceAliasRequest]) (*connect.Response[v1.UpdateResourceAliasResponse], error)
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
+	// Create resource OAuth settings
+	//
+	// Enable upstream OAuth for an MCP server so users can link their own accounts.
+	// No network discovery happens until a user starts linking.
+	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
+	// Get resource OAuth settings
+	//
+	// Get the upstream OAuth settings of an MCP server
+	GetResourceOAuthSettings(context.Context, *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error)
+	// Update resource OAuth settings
+	//
+	// Replace the upstream OAuth settings of an MCP server. Existing user links keep
+	// the client binding they were created with.
+	UpdateResourceOAuthSettings(context.Context, *connect.Request[v1.UpdateResourceOAuthSettingsRequest]) (*connect.Response[v1.UpdateResourceOAuthSettingsResponse], error)
+	// Delete resource OAuth settings
+	//
+	// Disable upstream OAuth for an MCP server. Every pending link and every user's
+	// stored grant for the server is deleted.
+	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 
 // NewResourceServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -1964,6 +2063,31 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
+	resourceServiceCreateResourceOAuthSettingsHandler := connect.NewUnaryHandler(
+		ResourceServiceCreateResourceOAuthSettingsProcedure,
+		svc.CreateResourceOAuthSettings,
+		connect.WithSchema(resourceServiceMethods.ByName("CreateResourceOAuthSettings")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceGetResourceOAuthSettingsHandler := connect.NewUnaryHandler(
+		ResourceServiceGetResourceOAuthSettingsProcedure,
+		svc.GetResourceOAuthSettings,
+		connect.WithSchema(resourceServiceMethods.ByName("GetResourceOAuthSettings")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceUpdateResourceOAuthSettingsHandler := connect.NewUnaryHandler(
+		ResourceServiceUpdateResourceOAuthSettingsProcedure,
+		svc.UpdateResourceOAuthSettings,
+		connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceOAuthSettings")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceDeleteResourceOAuthSettingsHandler := connect.NewUnaryHandler(
+		ResourceServiceDeleteResourceOAuthSettingsProcedure,
+		svc.DeleteResourceOAuthSettings,
+		connect.WithSchema(resourceServiceMethods.ByName("DeleteResourceOAuthSettings")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/core.v1.ResourceService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ResourceServiceGetResourceProcedure:
@@ -2096,6 +2220,14 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 			resourceServiceUpdateResourceAliasHandler.ServeHTTP(w, r)
 		case ResourceServiceListResourceConnectorAccessProcedure:
 			resourceServiceListResourceConnectorAccessHandler.ServeHTTP(w, r)
+		case ResourceServiceCreateResourceOAuthSettingsProcedure:
+			resourceServiceCreateResourceOAuthSettingsHandler.ServeHTTP(w, r)
+		case ResourceServiceGetResourceOAuthSettingsProcedure:
+			resourceServiceGetResourceOAuthSettingsHandler.ServeHTTP(w, r)
+		case ResourceServiceUpdateResourceOAuthSettingsProcedure:
+			resourceServiceUpdateResourceOAuthSettingsHandler.ServeHTTP(w, r)
+		case ResourceServiceDeleteResourceOAuthSettingsProcedure:
+			resourceServiceDeleteResourceOAuthSettingsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -2363,4 +2495,20 @@ func (UnimplementedResourceServiceHandler) UpdateResourceAlias(context.Context, 
 
 func (UnimplementedResourceServiceHandler) ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.ListResourceConnectorAccess is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.CreateResourceOAuthSettings is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) GetResourceOAuthSettings(context.Context, *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.GetResourceOAuthSettings is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) UpdateResourceOAuthSettings(context.Context, *connect.Request[v1.UpdateResourceOAuthSettingsRequest]) (*connect.Response[v1.UpdateResourceOAuthSettingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.UpdateResourceOAuthSettings is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ResourceService.DeleteResourceOAuthSettings is not implemented"))
 }

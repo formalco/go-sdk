@@ -2679,6 +2679,18 @@ func (c *ResourceServiceClient) CreateResourceHostname(ctx context.Context, req 
 	return res.Msg, nil
 }
 
+// Create resource OAuth settings
+//
+// Enable upstream OAuth for an MCP server so users can link their own accounts.
+// No network discovery happens until a user starts linking.
+func (c *ResourceServiceClient) CreateResourceOAuthSettings(ctx context.Context, req *corev1.CreateResourceOAuthSettingsRequest) (*corev1.CreateResourceOAuthSettingsResponse, error) {
+	res, err := c.inner.CreateResourceOAuthSettings(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Create resource SSH host key
 //
 // Pin an upstream SSH host public key for a resource
@@ -2820,6 +2832,18 @@ func (c *ResourceServiceClient) DeleteResourceNativeUserSelection(ctx context.Co
 	return res.Msg, nil
 }
 
+// Delete resource OAuth settings
+//
+// Disable upstream OAuth for an MCP server. Every pending link and every user's
+// stored grant for the server is deleted.
+func (c *ResourceServiceClient) DeleteResourceOAuthSettings(ctx context.Context, req *corev1.DeleteResourceOAuthSettingsRequest) (*corev1.DeleteResourceOAuthSettingsResponse, error) {
+	res, err := c.inner.DeleteResourceOAuthSettings(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete resource SSH host key
 //
 // Delete a pinned upstream SSH host public key
@@ -2932,6 +2956,17 @@ func (c *ResourceServiceClient) GetResourceHealthCheck(ctx context.Context, req 
 // Get a resource hostname
 func (c *ResourceServiceClient) GetResourceHostname(ctx context.Context, req *corev1.GetResourceHostnameRequest) (*corev1.GetResourceHostnameResponse, error) {
 	res, err := c.inner.GetResourceHostname(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get resource OAuth settings
+//
+// Get the upstream OAuth settings of an MCP server
+func (c *ResourceServiceClient) GetResourceOAuthSettings(ctx context.Context, req *corev1.GetResourceOAuthSettingsRequest) (*corev1.GetResourceOAuthSettingsResponse, error) {
+	res, err := c.inner.GetResourceOAuthSettings(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -3209,6 +3244,18 @@ func (c *ResourceServiceClient) UpdateResourceHostnameV2(ctx context.Context, re
 // Enable or disable Native Users V3 for a resource.
 func (c *ResourceServiceClient) UpdateResourceNativeUsersV3Enabled(ctx context.Context, req *corev1.UpdateResourceNativeUsersV3EnabledRequest) (*corev1.UpdateResourceNativeUsersV3EnabledResponse, error) {
 	res, err := c.inner.UpdateResourceNativeUsersV3Enabled(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update resource OAuth settings
+//
+// Replace the upstream OAuth settings of an MCP server. Existing user links keep
+// the client binding they were created with.
+func (c *ResourceServiceClient) UpdateResourceOAuthSettings(ctx context.Context, req *corev1.UpdateResourceOAuthSettingsRequest) (*corev1.UpdateResourceOAuthSettingsResponse, error) {
+	res, err := c.inner.UpdateResourceOAuthSettings(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
