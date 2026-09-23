@@ -38,6 +38,7 @@ type Client struct {
 	ScenarioMonitoringServiceClient    *ScenarioMonitoringServiceClient
 	SearchServiceClient                *SearchServiceClient
 	SessionsServiceClient              *SessionsServiceClient
+	SkillServiceClient                 *SkillServiceClient
 	SpaceServiceClient                 *SpaceServiceClient
 	UserServiceClient                  *UserServiceClient
 	WorkflowServiceClient              *WorkflowServiceClient
@@ -73,6 +74,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		ScenarioMonitoringServiceClient:    &ScenarioMonitoringServiceClient{inner: corev1connect.NewScenarioMonitoringServiceClient(httpClient, baseURL)},
 		SearchServiceClient:                &SearchServiceClient{inner: corev1connect.NewSearchServiceClient(httpClient, baseURL)},
 		SessionsServiceClient:              &SessionsServiceClient{inner: corev1connect.NewSessionsServiceClient(httpClient, baseURL)},
+		SkillServiceClient:                 &SkillServiceClient{inner: corev1connect.NewSkillServiceClient(httpClient, baseURL)},
 		SpaceServiceClient:                 &SpaceServiceClient{inner: corev1connect.NewSpaceServiceClient(httpClient, baseURL)},
 		UserServiceClient:                  &UserServiceClient{inner: corev1connect.NewUserServiceClient(httpClient, baseURL)},
 		WorkflowServiceClient:              &WorkflowServiceClient{inner: corev1connect.NewWorkflowServiceClient(httpClient, baseURL)},
@@ -3652,6 +3654,43 @@ func (c *SessionsServiceClient) ListSessionAggregations(ctx context.Context, req
 // List sessions data only (without aggregations) for fast pagination
 func (c *SessionsServiceClient) ListSessionsV2(ctx context.Context, req *corev1.ListSessionsV2Request) (*corev1.ListSessionsV2Response, error) {
 	res, err := c.inner.ListSessionsV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// SkillServiceClient is a client for the core.v1.SkillService service.
+type SkillServiceClient struct {
+	inner corev1connect.SkillServiceClient
+}
+
+func (c *SkillServiceClient) CreateFormalSkill(ctx context.Context, req *corev1.CreateFormalSkillRequest) (*corev1.CreateFormalSkillResponse, error) {
+	res, err := c.inner.CreateFormalSkill(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *SkillServiceClient) DeleteFormalSkill(ctx context.Context, req *corev1.DeleteFormalSkillRequest) (*corev1.DeleteFormalSkillResponse, error) {
+	res, err := c.inner.DeleteFormalSkill(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *SkillServiceClient) ListShadowSkills(ctx context.Context, req *corev1.ListShadowSkillsRequest) (*corev1.ListShadowSkillsResponse, error) {
+	res, err := c.inner.ListShadowSkills(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *SkillServiceClient) ListSkills(ctx context.Context, req *corev1.ListSkillsRequest) (*corev1.ListSkillsResponse, error) {
+	res, err := c.inner.ListSkills(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
