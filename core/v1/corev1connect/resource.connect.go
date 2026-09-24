@@ -489,22 +489,26 @@ type ResourceServiceClient interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable upstream OAuth for an MCP server so users can link their own accounts.
-	// No network discovery happens until a user starts linking.
+	// Enable OAuth for an MCP server. OAuth clients can then connect to it through
+	// the Connector, and, unless the upstream OAuth mode is "none", users can link
+	// their own upstream accounts. No network discovery happens until a user
+	// starts linking.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//
-	// Get the upstream OAuth settings of an MCP server
+	// Get the OAuth settings of an MCP server
 	GetResourceOAuthSettings(context.Context, *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error)
 	// Update resource OAuth settings
 	//
-	// Replace the upstream OAuth settings of an MCP server. Existing user links keep
-	// the client binding they were created with.
+	// Replace the OAuth settings of an MCP server. Existing user links keep the
+	// client binding they were created with. Changing the upstream OAuth mode to
+	// "none" deletes every pending link and every user's stored grant for the
+	// server.
 	UpdateResourceOAuthSettings(context.Context, *connect.Request[v1.UpdateResourceOAuthSettingsRequest]) (*connect.Response[v1.UpdateResourceOAuthSettingsResponse], error)
 	// Delete resource OAuth settings
 	//
-	// Disable upstream OAuth for an MCP server. Every pending link and every user's
-	// stored grant for the server is deleted.
+	// Disable OAuth for an MCP server. Every pending link, every user's stored
+	// grant, and every OAuth client's authorization for the server is deleted.
 	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 
@@ -1629,22 +1633,26 @@ type ResourceServiceHandler interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable upstream OAuth for an MCP server so users can link their own accounts.
-	// No network discovery happens until a user starts linking.
+	// Enable OAuth for an MCP server. OAuth clients can then connect to it through
+	// the Connector, and, unless the upstream OAuth mode is "none", users can link
+	// their own upstream accounts. No network discovery happens until a user
+	// starts linking.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//
-	// Get the upstream OAuth settings of an MCP server
+	// Get the OAuth settings of an MCP server
 	GetResourceOAuthSettings(context.Context, *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error)
 	// Update resource OAuth settings
 	//
-	// Replace the upstream OAuth settings of an MCP server. Existing user links keep
-	// the client binding they were created with.
+	// Replace the OAuth settings of an MCP server. Existing user links keep the
+	// client binding they were created with. Changing the upstream OAuth mode to
+	// "none" deletes every pending link and every user's stored grant for the
+	// server.
 	UpdateResourceOAuthSettings(context.Context, *connect.Request[v1.UpdateResourceOAuthSettingsRequest]) (*connect.Response[v1.UpdateResourceOAuthSettingsResponse], error)
 	// Delete resource OAuth settings
 	//
-	// Disable upstream OAuth for an MCP server. Every pending link and every user's
-	// stored grant for the server is deleted.
+	// Disable OAuth for an MCP server. Every pending link, every user's stored
+	// grant, and every OAuth client's authorization for the server is deleted.
 	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 

@@ -124,9 +124,11 @@ type ResourceOAuthSettings struct {
 	Id         string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	ResourceId string                 `protobuf:"bytes,2,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
 	// How Formal identifies itself to the upstream authorization server.
-	// "auto" currently resolves to "cimd".
+	// "auto" currently resolves to "cimd". "none" links no upstream account: the
+	// Connector authenticates upstream with the user's native user.
 	UpstreamOauthMode string `protobuf:"bytes,3,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
 	// Empty means the scope parameter is omitted and the provider's defaults apply.
+	// Always empty when upstream_oauth_mode is "none".
 	RequestedScopes []string               `protobuf:"bytes,4,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
 	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -210,10 +212,11 @@ type CreateResourceOAuthSettingsRequest struct {
 	state      protoimpl.MessageState `protogen:"open.v1"`
 	ResourceId string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
 	// Defaults to "auto".
-	UpstreamOauthMode string   `protobuf:"bytes,2,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
-	RequestedScopes   []string `protobuf:"bytes,3,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	UpstreamOauthMode string `protobuf:"bytes,2,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
+	// Must be empty when upstream_oauth_mode is "none".
+	RequestedScopes []string `protobuf:"bytes,3,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *CreateResourceOAuthSettingsRequest) Reset() {
@@ -403,9 +406,10 @@ type UpdateResourceOAuthSettingsRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	ResourceId        string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
 	UpstreamOauthMode string                 `protobuf:"bytes,2,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
-	RequestedScopes   []string               `protobuf:"bytes,3,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	// Must be empty when upstream_oauth_mode is "none".
+	RequestedScopes []string `protobuf:"bytes,3,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *UpdateResourceOAuthSettingsRequest) Reset() {
@@ -8561,11 +8565,11 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf1\x01\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf7\x01\n" +
 	"\"CreateResourceOAuthSettingsRequest\x12(\n" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12C\n" +
-	"\x13upstream_oauth_mode\x18\x02 \x01(\tB\x13\xbaH\x10r\x0eR\x00R\x04autoR\x04cimdR\x11upstreamOauthMode\x12\\\n" +
+	"resourceId\x12I\n" +
+	"\x13upstream_oauth_mode\x18\x02 \x01(\tB\x19\xbaH\x16r\x14R\x00R\x04autoR\x04cimdR\x04noneR\x11upstreamOauthMode\x12\\\n" +
 	"\x10requested_scopes\x18\x03 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\"}\n" +
 	"#CreateResourceOAuthSettingsResponse\x12V\n" +
 	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"K\n" +
@@ -8573,11 +8577,11 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"resourceId\"z\n" +
 	" GetResourceOAuthSettingsResponse\x12V\n" +
-	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"\xef\x01\n" +
+	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"\xf5\x01\n" +
 	"\"UpdateResourceOAuthSettingsRequest\x12(\n" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12A\n" +
-	"\x13upstream_oauth_mode\x18\x02 \x01(\tB\x11\xbaH\x0er\fR\x04autoR\x04cimdR\x11upstreamOauthMode\x12\\\n" +
+	"resourceId\x12G\n" +
+	"\x13upstream_oauth_mode\x18\x02 \x01(\tB\x17\xbaH\x14r\x12R\x04autoR\x04cimdR\x04noneR\x11upstreamOauthMode\x12\\\n" +
 	"\x10requested_scopes\x18\x03 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\"}\n" +
 	"#UpdateResourceOAuthSettingsResponse\x12V\n" +
 	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"N\n" +
