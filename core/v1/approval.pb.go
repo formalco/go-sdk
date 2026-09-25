@@ -2027,12 +2027,14 @@ func (x *UserCustomPolicyAccess) GetScope() *UserExactActionScope {
 }
 
 type CreateAccessRequestRequest struct {
-	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Reason        string                    `protobuf:"bytes,1,opt,name=reason,proto3" json:"reason,omitempty"`
-	PolicyId      string                    `protobuf:"bytes,2,opt,name=policy_id,json=policyId,proto3" json:"policy_id,omitempty"`
-	Payload       *UserAccessRequestPayload `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state    protoimpl.MessageState    `protogen:"open.v1"`
+	Reason   string                    `protobuf:"bytes,1,opt,name=reason,proto3" json:"reason,omitempty"`
+	PolicyId string                    `protobuf:"bytes,2,opt,name=policy_id,json=policyId,proto3" json:"policy_id,omitempty"`
+	Payload  *UserAccessRequestPayload `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
+	// Only machine users may set this. The request is attributed to this user.
+	RequesterUserId string `protobuf:"bytes,4,opt,name=requester_user_id,json=requesterUserId,proto3" json:"requester_user_id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *CreateAccessRequestRequest) Reset() {
@@ -2084,6 +2086,13 @@ func (x *CreateAccessRequestRequest) GetPayload() *UserAccessRequestPayload {
 		return x.Payload
 	}
 	return nil
+}
+
+func (x *CreateAccessRequestRequest) GetRequesterUserId() string {
+	if x != nil {
+		return x.RequesterUserId
+	}
+	return ""
 }
 
 type CreateAccessRequestResponse struct {
@@ -2251,11 +2260,12 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"resourceId\"U\n" +
 	"\x16UserCustomPolicyAccess\x12;\n" +
-	"\x05scope\x18\x01 \x01(\v2\x1d.core.v1.UserExactActionScopeB\x06\xbaH\x03\xc8\x01\x01R\x05scope\"\xa0\x01\n" +
+	"\x05scope\x18\x01 \x01(\v2\x1d.core.v1.UserExactActionScopeB\x06\xbaH\x03\xc8\x01\x01R\x05scope\"\xd5\x01\n" +
 	"\x1aCreateAccessRequestRequest\x12 \n" +
 	"\x06reason\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\xa0\x1fR\x06reason\x12\x1b\n" +
 	"\tpolicy_id\x18\x02 \x01(\tR\bpolicyId\x12C\n" +
-	"\apayload\x18\x03 \x01(\v2!.core.v1.UserAccessRequestPayloadB\x06\xbaH\x03\xc8\x01\x01R\apayload\"\x1d\n" +
+	"\apayload\x18\x03 \x01(\v2!.core.v1.UserAccessRequestPayloadB\x06\xbaH\x03\xc8\x01\x01R\apayload\x123\n" +
+	"\x11requester_user_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0frequesterUserId\"\x1d\n" +
 	"\x1bCreateAccessRequestResponse*\xce\x01\n" +
 	"\x1aListApprovalRequestsStatus\x12-\n" +
 	")LIST_APPROVAL_REQUESTS_STATUS_UNSPECIFIED\x10\x00\x12)\n" +
