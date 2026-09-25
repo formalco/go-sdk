@@ -1212,6 +1212,916 @@ func (x *UpdateApprovalRequestResponse) GetRequest() *ApprovalRequest {
 	return nil
 }
 
+type ListAccessRequestsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Cursor        string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAccessRequestsRequest) Reset() {
+	*x = ListAccessRequestsRequest{}
+	mi := &file_core_v1_approval_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAccessRequestsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAccessRequestsRequest) ProtoMessage() {}
+
+func (x *ListAccessRequestsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAccessRequestsRequest.ProtoReflect.Descriptor instead.
+func (*ListAccessRequestsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *ListAccessRequestsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListAccessRequestsRequest) GetCursor() string {
+	if x != nil {
+		return x.Cursor
+	}
+	return ""
+}
+
+type ListAccessRequestsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Requests      []*UserAccessRequest   `protobuf:"bytes,1,rep,name=requests,proto3" json:"requests,omitempty"`
+	ListMetadata  *ListMetadata          `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAccessRequestsResponse) Reset() {
+	*x = ListAccessRequestsResponse{}
+	mi := &file_core_v1_approval_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAccessRequestsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAccessRequestsResponse) ProtoMessage() {}
+
+func (x *ListAccessRequestsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAccessRequestsResponse.ProtoReflect.Descriptor instead.
+func (*ListAccessRequestsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *ListAccessRequestsResponse) GetRequests() []*UserAccessRequest {
+	if x != nil {
+		return x.Requests
+	}
+	return nil
+}
+
+func (x *ListAccessRequestsResponse) GetListMetadata() *ListMetadata {
+	if x != nil {
+		return x.ListMetadata
+	}
+	return nil
+}
+
+type UserAccessRequest struct {
+	state             protoimpl.MessageState    `protogen:"open.v1"`
+	Id                string                    `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Payload           *UserAccessRequestPayload `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`
+	Reason            string                    `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	Status            string                    `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedAt         *timestamppb.Timestamp    `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	DecisionUserId    string                    `protobuf:"bytes,6,opt,name=decision_user_id,json=decisionUserId,proto3" json:"decision_user_id,omitempty"`
+	DecisionUserEmail string                    `protobuf:"bytes,7,opt,name=decision_user_email,json=decisionUserEmail,proto3" json:"decision_user_email,omitempty"`
+	DecisionReason    string                    `protobuf:"bytes,8,opt,name=decision_reason,json=decisionReason,proto3" json:"decision_reason,omitempty"`
+	DecidedAt         *timestamppb.Timestamp    `protobuf:"bytes,9,opt,name=decided_at,json=decidedAt,proto3" json:"decided_at,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *UserAccessRequest) Reset() {
+	*x = UserAccessRequest{}
+	mi := &file_core_v1_approval_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserAccessRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserAccessRequest) ProtoMessage() {}
+
+func (x *UserAccessRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserAccessRequest.ProtoReflect.Descriptor instead.
+func (*UserAccessRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *UserAccessRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UserAccessRequest) GetPayload() *UserAccessRequestPayload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+func (x *UserAccessRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *UserAccessRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *UserAccessRequest) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *UserAccessRequest) GetDecisionUserId() string {
+	if x != nil {
+		return x.DecisionUserId
+	}
+	return ""
+}
+
+func (x *UserAccessRequest) GetDecisionUserEmail() string {
+	if x != nil {
+		return x.DecisionUserEmail
+	}
+	return ""
+}
+
+func (x *UserAccessRequest) GetDecisionReason() string {
+	if x != nil {
+		return x.DecisionReason
+	}
+	return ""
+}
+
+func (x *UserAccessRequest) GetDecidedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DecidedAt
+	}
+	return nil
+}
+
+type UserAccessRequestPayload struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Kind:
+	//
+	//	*UserAccessRequestPayload_McpServerCreate
+	//	*UserAccessRequestPayload_PolicySuspension
+	//	*UserAccessRequestPayload_McpRegistryAccess
+	//	*UserAccessRequestPayload_CustomPolicyAccess
+	Kind          isUserAccessRequestPayload_Kind `protobuf_oneof:"kind"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserAccessRequestPayload) Reset() {
+	*x = UserAccessRequestPayload{}
+	mi := &file_core_v1_approval_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserAccessRequestPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserAccessRequestPayload) ProtoMessage() {}
+
+func (x *UserAccessRequestPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserAccessRequestPayload.ProtoReflect.Descriptor instead.
+func (*UserAccessRequestPayload) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *UserAccessRequestPayload) GetKind() isUserAccessRequestPayload_Kind {
+	if x != nil {
+		return x.Kind
+	}
+	return nil
+}
+
+func (x *UserAccessRequestPayload) GetMcpServerCreate() *UserMcpServerCreate {
+	if x != nil {
+		if x, ok := x.Kind.(*UserAccessRequestPayload_McpServerCreate); ok {
+			return x.McpServerCreate
+		}
+	}
+	return nil
+}
+
+func (x *UserAccessRequestPayload) GetPolicySuspension() *UserPolicySuspension {
+	if x != nil {
+		if x, ok := x.Kind.(*UserAccessRequestPayload_PolicySuspension); ok {
+			return x.PolicySuspension
+		}
+	}
+	return nil
+}
+
+func (x *UserAccessRequestPayload) GetMcpRegistryAccess() *UserMcpRegistryAccess {
+	if x != nil {
+		if x, ok := x.Kind.(*UserAccessRequestPayload_McpRegistryAccess); ok {
+			return x.McpRegistryAccess
+		}
+	}
+	return nil
+}
+
+func (x *UserAccessRequestPayload) GetCustomPolicyAccess() *UserCustomPolicyAccess {
+	if x != nil {
+		if x, ok := x.Kind.(*UserAccessRequestPayload_CustomPolicyAccess); ok {
+			return x.CustomPolicyAccess
+		}
+	}
+	return nil
+}
+
+type isUserAccessRequestPayload_Kind interface {
+	isUserAccessRequestPayload_Kind()
+}
+
+type UserAccessRequestPayload_McpServerCreate struct {
+	McpServerCreate *UserMcpServerCreate `protobuf:"bytes,1,opt,name=mcp_server_create,json=mcpServerCreate,proto3,oneof"`
+}
+
+type UserAccessRequestPayload_PolicySuspension struct {
+	PolicySuspension *UserPolicySuspension `protobuf:"bytes,2,opt,name=policy_suspension,json=policySuspension,proto3,oneof"`
+}
+
+type UserAccessRequestPayload_McpRegistryAccess struct {
+	McpRegistryAccess *UserMcpRegistryAccess `protobuf:"bytes,3,opt,name=mcp_registry_access,json=mcpRegistryAccess,proto3,oneof"`
+}
+
+type UserAccessRequestPayload_CustomPolicyAccess struct {
+	CustomPolicyAccess *UserCustomPolicyAccess `protobuf:"bytes,4,opt,name=custom_policy_access,json=customPolicyAccess,proto3,oneof"`
+}
+
+func (*UserAccessRequestPayload_McpServerCreate) isUserAccessRequestPayload_Kind() {}
+
+func (*UserAccessRequestPayload_PolicySuspension) isUserAccessRequestPayload_Kind() {}
+
+func (*UserAccessRequestPayload_McpRegistryAccess) isUserAccessRequestPayload_Kind() {}
+
+func (*UserAccessRequestPayload_CustomPolicyAccess) isUserAccessRequestPayload_Kind() {}
+
+type UserMcpServerCreate struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Url           string                 `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserMcpServerCreate) Reset() {
+	*x = UserMcpServerCreate{}
+	mi := &file_core_v1_approval_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserMcpServerCreate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserMcpServerCreate) ProtoMessage() {}
+
+func (x *UserMcpServerCreate) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserMcpServerCreate.ProtoReflect.Descriptor instead.
+func (*UserMcpServerCreate) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *UserMcpServerCreate) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UserMcpServerCreate) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+type UserPolicySuspension struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Duration:
+	//
+	//	*UserPolicySuspension_OneTime
+	//	*UserPolicySuspension_TimeBound
+	Duration      isUserPolicySuspension_Duration `protobuf_oneof:"duration"`
+	Scope         *UserApprovalAccessScope        `protobuf:"bytes,3,opt,name=scope,proto3" json:"scope,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserPolicySuspension) Reset() {
+	*x = UserPolicySuspension{}
+	mi := &file_core_v1_approval_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserPolicySuspension) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserPolicySuspension) ProtoMessage() {}
+
+func (x *UserPolicySuspension) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserPolicySuspension.ProtoReflect.Descriptor instead.
+func (*UserPolicySuspension) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *UserPolicySuspension) GetDuration() isUserPolicySuspension_Duration {
+	if x != nil {
+		return x.Duration
+	}
+	return nil
+}
+
+func (x *UserPolicySuspension) GetOneTime() *UserOneTimeAccess {
+	if x != nil {
+		if x, ok := x.Duration.(*UserPolicySuspension_OneTime); ok {
+			return x.OneTime
+		}
+	}
+	return nil
+}
+
+func (x *UserPolicySuspension) GetTimeBound() *UserTimeBoundAccess {
+	if x != nil {
+		if x, ok := x.Duration.(*UserPolicySuspension_TimeBound); ok {
+			return x.TimeBound
+		}
+	}
+	return nil
+}
+
+func (x *UserPolicySuspension) GetScope() *UserApprovalAccessScope {
+	if x != nil {
+		return x.Scope
+	}
+	return nil
+}
+
+type isUserPolicySuspension_Duration interface {
+	isUserPolicySuspension_Duration()
+}
+
+type UserPolicySuspension_OneTime struct {
+	OneTime *UserOneTimeAccess `protobuf:"bytes,1,opt,name=one_time,json=oneTime,proto3,oneof"`
+}
+
+type UserPolicySuspension_TimeBound struct {
+	TimeBound *UserTimeBoundAccess `protobuf:"bytes,2,opt,name=time_bound,json=timeBound,proto3,oneof"`
+}
+
+func (*UserPolicySuspension_OneTime) isUserPolicySuspension_Duration() {}
+
+func (*UserPolicySuspension_TimeBound) isUserPolicySuspension_Duration() {}
+
+type UserOneTimeAccess struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserOneTimeAccess) Reset() {
+	*x = UserOneTimeAccess{}
+	mi := &file_core_v1_approval_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserOneTimeAccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserOneTimeAccess) ProtoMessage() {}
+
+func (x *UserOneTimeAccess) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserOneTimeAccess.ProtoReflect.Descriptor instead.
+func (*UserOneTimeAccess) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{23}
+}
+
+type UserTimeBoundAccess struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	ExpirationMinutes uint64                 `protobuf:"varint,1,opt,name=expiration_minutes,json=expirationMinutes,proto3" json:"expiration_minutes,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *UserTimeBoundAccess) Reset() {
+	*x = UserTimeBoundAccess{}
+	mi := &file_core_v1_approval_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserTimeBoundAccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserTimeBoundAccess) ProtoMessage() {}
+
+func (x *UserTimeBoundAccess) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserTimeBoundAccess.ProtoReflect.Descriptor instead.
+func (*UserTimeBoundAccess) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *UserTimeBoundAccess) GetExpirationMinutes() uint64 {
+	if x != nil {
+		return x.ExpirationMinutes
+	}
+	return 0
+}
+
+type UserExactActionScope struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	McpMethod     string                 `protobuf:"bytes,1,opt,name=mcp_method,json=mcpMethod,proto3" json:"mcp_method,omitempty"`
+	ToolName      string                 `protobuf:"bytes,2,opt,name=tool_name,json=toolName,proto3" json:"tool_name,omitempty"`
+	ToolArguments *structpb.Struct       `protobuf:"bytes,3,opt,name=tool_arguments,json=toolArguments,proto3" json:"tool_arguments,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserExactActionScope) Reset() {
+	*x = UserExactActionScope{}
+	mi := &file_core_v1_approval_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserExactActionScope) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserExactActionScope) ProtoMessage() {}
+
+func (x *UserExactActionScope) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserExactActionScope.ProtoReflect.Descriptor instead.
+func (*UserExactActionScope) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *UserExactActionScope) GetMcpMethod() string {
+	if x != nil {
+		return x.McpMethod
+	}
+	return ""
+}
+
+func (x *UserExactActionScope) GetToolName() string {
+	if x != nil {
+		return x.ToolName
+	}
+	return ""
+}
+
+func (x *UserExactActionScope) GetToolArguments() *structpb.Struct {
+	if x != nil {
+		return x.ToolArguments
+	}
+	return nil
+}
+
+type UserApprovalAccessScope struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Kind:
+	//
+	//	*UserApprovalAccessScope_ExactAction
+	//	*UserApprovalAccessScope_Full
+	Kind          isUserApprovalAccessScope_Kind `protobuf_oneof:"kind"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserApprovalAccessScope) Reset() {
+	*x = UserApprovalAccessScope{}
+	mi := &file_core_v1_approval_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserApprovalAccessScope) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserApprovalAccessScope) ProtoMessage() {}
+
+func (x *UserApprovalAccessScope) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserApprovalAccessScope.ProtoReflect.Descriptor instead.
+func (*UserApprovalAccessScope) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *UserApprovalAccessScope) GetKind() isUserApprovalAccessScope_Kind {
+	if x != nil {
+		return x.Kind
+	}
+	return nil
+}
+
+func (x *UserApprovalAccessScope) GetExactAction() *UserExactActionScope {
+	if x != nil {
+		if x, ok := x.Kind.(*UserApprovalAccessScope_ExactAction); ok {
+			return x.ExactAction
+		}
+	}
+	return nil
+}
+
+func (x *UserApprovalAccessScope) GetFull() *UserFullPolicyScope {
+	if x != nil {
+		if x, ok := x.Kind.(*UserApprovalAccessScope_Full); ok {
+			return x.Full
+		}
+	}
+	return nil
+}
+
+type isUserApprovalAccessScope_Kind interface {
+	isUserApprovalAccessScope_Kind()
+}
+
+type UserApprovalAccessScope_ExactAction struct {
+	ExactAction *UserExactActionScope `protobuf:"bytes,1,opt,name=exact_action,json=exactAction,proto3,oneof"`
+}
+
+type UserApprovalAccessScope_Full struct {
+	Full *UserFullPolicyScope `protobuf:"bytes,2,opt,name=full,proto3,oneof"`
+}
+
+func (*UserApprovalAccessScope_ExactAction) isUserApprovalAccessScope_Kind() {}
+
+func (*UserApprovalAccessScope_Full) isUserApprovalAccessScope_Kind() {}
+
+type UserFullPolicyScope struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserFullPolicyScope) Reset() {
+	*x = UserFullPolicyScope{}
+	mi := &file_core_v1_approval_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserFullPolicyScope) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserFullPolicyScope) ProtoMessage() {}
+
+func (x *UserFullPolicyScope) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserFullPolicyScope.ProtoReflect.Descriptor instead.
+func (*UserFullPolicyScope) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{27}
+}
+
+type UserMcpRegistryAccess struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ResourceId    string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserMcpRegistryAccess) Reset() {
+	*x = UserMcpRegistryAccess{}
+	mi := &file_core_v1_approval_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserMcpRegistryAccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserMcpRegistryAccess) ProtoMessage() {}
+
+func (x *UserMcpRegistryAccess) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserMcpRegistryAccess.ProtoReflect.Descriptor instead.
+func (*UserMcpRegistryAccess) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *UserMcpRegistryAccess) GetResourceId() string {
+	if x != nil {
+		return x.ResourceId
+	}
+	return ""
+}
+
+type UserCustomPolicyAccess struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Scope         *UserExactActionScope  `protobuf:"bytes,1,opt,name=scope,proto3" json:"scope,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserCustomPolicyAccess) Reset() {
+	*x = UserCustomPolicyAccess{}
+	mi := &file_core_v1_approval_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserCustomPolicyAccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserCustomPolicyAccess) ProtoMessage() {}
+
+func (x *UserCustomPolicyAccess) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserCustomPolicyAccess.ProtoReflect.Descriptor instead.
+func (*UserCustomPolicyAccess) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *UserCustomPolicyAccess) GetScope() *UserExactActionScope {
+	if x != nil {
+		return x.Scope
+	}
+	return nil
+}
+
+type CreateAccessRequestRequest struct {
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	Reason        string                    `protobuf:"bytes,1,opt,name=reason,proto3" json:"reason,omitempty"`
+	PolicyId      string                    `protobuf:"bytes,2,opt,name=policy_id,json=policyId,proto3" json:"policy_id,omitempty"`
+	Payload       *UserAccessRequestPayload `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAccessRequestRequest) Reset() {
+	*x = CreateAccessRequestRequest{}
+	mi := &file_core_v1_approval_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAccessRequestRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAccessRequestRequest) ProtoMessage() {}
+
+func (x *CreateAccessRequestRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAccessRequestRequest.ProtoReflect.Descriptor instead.
+func (*CreateAccessRequestRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *CreateAccessRequestRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *CreateAccessRequestRequest) GetPolicyId() string {
+	if x != nil {
+		return x.PolicyId
+	}
+	return ""
+}
+
+func (x *CreateAccessRequestRequest) GetPayload() *UserAccessRequestPayload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+type CreateAccessRequestResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAccessRequestResponse) Reset() {
+	*x = CreateAccessRequestResponse{}
+	mi := &file_core_v1_approval_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAccessRequestResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAccessRequestResponse) ProtoMessage() {}
+
+func (x *CreateAccessRequestResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_approval_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAccessRequestResponse.ProtoReflect.Descriptor instead.
+func (*CreateAccessRequestResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_approval_proto_rawDescGZIP(), []int{31}
+}
+
 var File_core_v1_approval_proto protoreflect.FileDescriptor
 
 const file_core_v1_approval_proto_rawDesc = "" +
@@ -1289,7 +2199,64 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\x06action\x18\x02 \x01(\x0e2$.core.v1.UpdateApprovalRequestActionB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06action\x12 \n" +
 	"\x06reason\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\xa0\x1fR\x06reason\"S\n" +
 	"\x1dUpdateApprovalRequestResponse\x122\n" +
-	"\arequest\x18\x01 \x01(\v2\x18.core.v1.ApprovalRequestR\arequest*\xce\x01\n" +
+	"\arequest\x18\x01 \x01(\v2\x18.core.v1.ApprovalRequestR\arequest\"U\n" +
+	"\x19ListAccessRequestsRequest\x12 \n" +
+	"\x05limit\x18\x01 \x01(\x05B\n" +
+	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
+	"\x06cursor\x18\x02 \x01(\tR\x06cursor\"\x90\x01\n" +
+	"\x1aListAccessRequestsResponse\x126\n" +
+	"\brequests\x18\x01 \x03(\v2\x1a.core.v1.UserAccessRequestR\brequests\x12:\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x89\x03\n" +
+	"\x11UserAccessRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12;\n" +
+	"\apayload\x18\x02 \x01(\v2!.core.v1.UserAccessRequestPayloadR\apayload\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x129\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
+	"\x10decision_user_id\x18\x06 \x01(\tR\x0edecisionUserId\x12.\n" +
+	"\x13decision_user_email\x18\a \x01(\tR\x11decisionUserEmail\x12'\n" +
+	"\x0fdecision_reason\x18\b \x01(\tR\x0edecisionReason\x129\n" +
+	"\n" +
+	"decided_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdecidedAt\"\xea\x02\n" +
+	"\x18UserAccessRequestPayload\x12J\n" +
+	"\x11mcp_server_create\x18\x01 \x01(\v2\x1c.core.v1.UserMcpServerCreateH\x00R\x0fmcpServerCreate\x12L\n" +
+	"\x11policy_suspension\x18\x02 \x01(\v2\x1d.core.v1.UserPolicySuspensionH\x00R\x10policySuspension\x12P\n" +
+	"\x13mcp_registry_access\x18\x03 \x01(\v2\x1e.core.v1.UserMcpRegistryAccessH\x00R\x11mcpRegistryAccess\x12S\n" +
+	"\x14custom_policy_access\x18\x04 \x01(\v2\x1f.core.v1.UserCustomPolicyAccessH\x00R\x12customPolicyAccessB\r\n" +
+	"\x04kind\x12\x05\xbaH\x02\b\x01\"M\n" +
+	"\x13UserMcpServerCreate\x12\x1b\n" +
+	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x19\n" +
+	"\x03url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\"\xe1\x01\n" +
+	"\x14UserPolicySuspension\x127\n" +
+	"\bone_time\x18\x01 \x01(\v2\x1a.core.v1.UserOneTimeAccessH\x00R\aoneTime\x12=\n" +
+	"\n" +
+	"time_bound\x18\x02 \x01(\v2\x1c.core.v1.UserTimeBoundAccessH\x00R\ttimeBound\x12>\n" +
+	"\x05scope\x18\x03 \x01(\v2 .core.v1.UserApprovalAccessScopeB\x06\xbaH\x03\xc8\x01\x01R\x05scopeB\x11\n" +
+	"\bduration\x12\x05\xbaH\x02\b\x01\"\x13\n" +
+	"\x11UserOneTimeAccess\"M\n" +
+	"\x13UserTimeBoundAccess\x126\n" +
+	"\x12expiration_minutes\x18\x01 \x01(\x04B\a\xbaH\x042\x02 \x00R\x11expirationMinutes\"\x9b\x01\n" +
+	"\x14UserExactActionScope\x12&\n" +
+	"\n" +
+	"mcp_method\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tmcpMethod\x12\x1b\n" +
+	"\ttool_name\x18\x02 \x01(\tR\btoolName\x12>\n" +
+	"\x0etool_arguments\x18\x03 \x01(\v2\x17.google.protobuf.StructR\rtoolArguments\"\xa0\x01\n" +
+	"\x17UserApprovalAccessScope\x12B\n" +
+	"\fexact_action\x18\x01 \x01(\v2\x1d.core.v1.UserExactActionScopeH\x00R\vexactAction\x122\n" +
+	"\x04full\x18\x02 \x01(\v2\x1c.core.v1.UserFullPolicyScopeH\x00R\x04fullB\r\n" +
+	"\x04kind\x12\x05\xbaH\x02\b\x01\"\x15\n" +
+	"\x13UserFullPolicyScope\"A\n" +
+	"\x15UserMcpRegistryAccess\x12(\n" +
+	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"resourceId\"U\n" +
+	"\x16UserCustomPolicyAccess\x12;\n" +
+	"\x05scope\x18\x01 \x01(\v2\x1d.core.v1.UserExactActionScopeB\x06\xbaH\x03\xc8\x01\x01R\x05scope\"\xa0\x01\n" +
+	"\x1aCreateAccessRequestRequest\x12 \n" +
+	"\x06reason\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\xa0\x1fR\x06reason\x12\x1b\n" +
+	"\tpolicy_id\x18\x02 \x01(\tR\bpolicyId\x12C\n" +
+	"\apayload\x18\x03 \x01(\v2!.core.v1.UserAccessRequestPayloadB\x06\xbaH\x03\xc8\x01\x01R\apayload\"\x1d\n" +
+	"\x1bCreateAccessRequestResponse*\xce\x01\n" +
 	"\x1aListApprovalRequestsStatus\x12-\n" +
 	")LIST_APPROVAL_REQUESTS_STATUS_UNSPECIFIED\x10\x00\x12)\n" +
 	"%LIST_APPROVAL_REQUESTS_STATUS_PENDING\x10\x01\x12*\n" +
@@ -1298,10 +2265,12 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\x1bUpdateApprovalRequestAction\x12.\n" +
 	"*UPDATE_APPROVAL_REQUEST_ACTION_UNSPECIFIED\x10\x00\x12*\n" +
 	"&UPDATE_APPROVAL_REQUEST_ACTION_APPROVE\x10\x01\x12)\n" +
-	"%UPDATE_APPROVAL_REQUEST_ACTION_REJECT\x10\x022\xd8\x02\n" +
+	"%UPDATE_APPROVAL_REQUEST_ACTION_REJECT\x10\x022\x8f\x05\n" +
 	"\x0fApprovalService\x12\xa0\x01\n" +
 	"\x14ListApprovalRequests\x12$.core.v1.ListApprovalRequestsRequest\x1a%.core.v1.ListApprovalRequestsResponse\";\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.ApprovalService/ListApprovalRequests\x90\x02\x01\x12\xa1\x01\n" +
-	"\x15UpdateApprovalRequest\x12%.core.v1.UpdateApprovalRequestRequest\x1a&.core.v1.UpdateApprovalRequestResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ApprovalService/UpdateApprovalRequestB\x87\x01\n" +
+	"\x15UpdateApprovalRequest\x12%.core.v1.UpdateApprovalRequestRequest\x1a&.core.v1.UpdateApprovalRequestResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ApprovalService/UpdateApprovalRequest\x12\x98\x01\n" +
+	"\x12ListAccessRequests\x12\".core.v1.ListAccessRequestsRequest\x1a#.core.v1.ListAccessRequestsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ApprovalService/ListAccessRequests\x90\x02\x01\x12\x99\x01\n" +
+	"\x13CreateAccessRequest\x12#.core.v1.CreateAccessRequestRequest\x1a$.core.v1.CreateAccessRequestResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ApprovalService/CreateAccessRequestB\x87\x01\n" +
 	"\vcom.core.v1B\rApprovalProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (
@@ -1317,7 +2286,7 @@ func file_core_v1_approval_proto_rawDescGZIP() []byte {
 }
 
 var file_core_v1_approval_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_core_v1_approval_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_core_v1_approval_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_core_v1_approval_proto_goTypes = []any{
 	(ListApprovalRequestsStatus)(0),           // 0: core.v1.ListApprovalRequestsStatus
 	(UpdateApprovalRequestAction)(0),          // 1: core.v1.UpdateApprovalRequestAction
@@ -1338,16 +2307,31 @@ var file_core_v1_approval_proto_goTypes = []any{
 	(*ListApprovalRequestsResponse)(nil),      // 16: core.v1.ListApprovalRequestsResponse
 	(*UpdateApprovalRequestRequest)(nil),      // 17: core.v1.UpdateApprovalRequestRequest
 	(*UpdateApprovalRequestResponse)(nil),     // 18: core.v1.UpdateApprovalRequestResponse
-	(*timestamppb.Timestamp)(nil),             // 19: google.protobuf.Timestamp
-	(*CreateMcpServerRequest)(nil),            // 20: core.v1.CreateMcpServerRequest
-	(*structpb.Struct)(nil),                   // 21: google.protobuf.Struct
-	(*ListMetadata)(nil),                      // 22: core.v1.ListMetadata
+	(*ListAccessRequestsRequest)(nil),         // 19: core.v1.ListAccessRequestsRequest
+	(*ListAccessRequestsResponse)(nil),        // 20: core.v1.ListAccessRequestsResponse
+	(*UserAccessRequest)(nil),                 // 21: core.v1.UserAccessRequest
+	(*UserAccessRequestPayload)(nil),          // 22: core.v1.UserAccessRequestPayload
+	(*UserMcpServerCreate)(nil),               // 23: core.v1.UserMcpServerCreate
+	(*UserPolicySuspension)(nil),              // 24: core.v1.UserPolicySuspension
+	(*UserOneTimeAccess)(nil),                 // 25: core.v1.UserOneTimeAccess
+	(*UserTimeBoundAccess)(nil),               // 26: core.v1.UserTimeBoundAccess
+	(*UserExactActionScope)(nil),              // 27: core.v1.UserExactActionScope
+	(*UserApprovalAccessScope)(nil),           // 28: core.v1.UserApprovalAccessScope
+	(*UserFullPolicyScope)(nil),               // 29: core.v1.UserFullPolicyScope
+	(*UserMcpRegistryAccess)(nil),             // 30: core.v1.UserMcpRegistryAccess
+	(*UserCustomPolicyAccess)(nil),            // 31: core.v1.UserCustomPolicyAccess
+	(*CreateAccessRequestRequest)(nil),        // 32: core.v1.CreateAccessRequestRequest
+	(*CreateAccessRequestResponse)(nil),       // 33: core.v1.CreateAccessRequestResponse
+	(*timestamppb.Timestamp)(nil),             // 34: google.protobuf.Timestamp
+	(*CreateMcpServerRequest)(nil),            // 35: core.v1.CreateMcpServerRequest
+	(*structpb.Struct)(nil),                   // 36: google.protobuf.Struct
+	(*ListMetadata)(nil),                      // 37: core.v1.ListMetadata
 }
 var file_core_v1_approval_proto_depIdxs = []int32{
 	3,  // 0: core.v1.ApprovalRequest.payload:type_name -> core.v1.ApprovalRequestPayload
-	19, // 1: core.v1.ApprovalRequest.created_at:type_name -> google.protobuf.Timestamp
-	19, // 2: core.v1.ApprovalRequest.decided_at:type_name -> google.protobuf.Timestamp
-	20, // 3: core.v1.ApprovalRequestPayload.mcp_server_create:type_name -> core.v1.CreateMcpServerRequest
+	34, // 1: core.v1.ApprovalRequest.created_at:type_name -> google.protobuf.Timestamp
+	34, // 2: core.v1.ApprovalRequest.decided_at:type_name -> google.protobuf.Timestamp
+	35, // 3: core.v1.ApprovalRequestPayload.mcp_server_create:type_name -> core.v1.CreateMcpServerRequest
 	4,  // 4: core.v1.ApprovalRequestPayload.policy_suspension:type_name -> core.v1.PolicySuspensionApprovalRequest
 	13, // 5: core.v1.ApprovalRequestPayload.mcp_registry_access:type_name -> core.v1.McpRegistryAccessApprovalRequest
 	14, // 6: core.v1.ApprovalRequestPayload.custom_policy_access:type_name -> core.v1.CustomPolicyAccessApprovalRequest
@@ -1359,22 +2343,43 @@ var file_core_v1_approval_proto_depIdxs = []int32{
 	10, // 12: core.v1.ApprovalAccessScope.method:type_name -> core.v1.MethodApprovalScope
 	11, // 13: core.v1.ApprovalAccessScope.device:type_name -> core.v1.DeviceApprovalScope
 	12, // 14: core.v1.ApprovalAccessScope.full:type_name -> core.v1.FullApprovalScope
-	21, // 15: core.v1.ExactActionApprovalScope.tool_arguments:type_name -> google.protobuf.Struct
+	36, // 15: core.v1.ExactActionApprovalScope.tool_arguments:type_name -> google.protobuf.Struct
 	7,  // 16: core.v1.CustomPolicyAccessApprovalRequest.scope:type_name -> core.v1.ApprovalAccessScope
 	0,  // 17: core.v1.ListApprovalRequestsRequest.status:type_name -> core.v1.ListApprovalRequestsStatus
 	2,  // 18: core.v1.ListApprovalRequestsResponse.requests:type_name -> core.v1.ApprovalRequest
-	22, // 19: core.v1.ListApprovalRequestsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	37, // 19: core.v1.ListApprovalRequestsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	1,  // 20: core.v1.UpdateApprovalRequestRequest.action:type_name -> core.v1.UpdateApprovalRequestAction
 	2,  // 21: core.v1.UpdateApprovalRequestResponse.request:type_name -> core.v1.ApprovalRequest
-	15, // 22: core.v1.ApprovalService.ListApprovalRequests:input_type -> core.v1.ListApprovalRequestsRequest
-	17, // 23: core.v1.ApprovalService.UpdateApprovalRequest:input_type -> core.v1.UpdateApprovalRequestRequest
-	16, // 24: core.v1.ApprovalService.ListApprovalRequests:output_type -> core.v1.ListApprovalRequestsResponse
-	18, // 25: core.v1.ApprovalService.UpdateApprovalRequest:output_type -> core.v1.UpdateApprovalRequestResponse
-	24, // [24:26] is the sub-list for method output_type
-	22, // [22:24] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	21, // 22: core.v1.ListAccessRequestsResponse.requests:type_name -> core.v1.UserAccessRequest
+	37, // 23: core.v1.ListAccessRequestsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	22, // 24: core.v1.UserAccessRequest.payload:type_name -> core.v1.UserAccessRequestPayload
+	34, // 25: core.v1.UserAccessRequest.created_at:type_name -> google.protobuf.Timestamp
+	34, // 26: core.v1.UserAccessRequest.decided_at:type_name -> google.protobuf.Timestamp
+	23, // 27: core.v1.UserAccessRequestPayload.mcp_server_create:type_name -> core.v1.UserMcpServerCreate
+	24, // 28: core.v1.UserAccessRequestPayload.policy_suspension:type_name -> core.v1.UserPolicySuspension
+	30, // 29: core.v1.UserAccessRequestPayload.mcp_registry_access:type_name -> core.v1.UserMcpRegistryAccess
+	31, // 30: core.v1.UserAccessRequestPayload.custom_policy_access:type_name -> core.v1.UserCustomPolicyAccess
+	25, // 31: core.v1.UserPolicySuspension.one_time:type_name -> core.v1.UserOneTimeAccess
+	26, // 32: core.v1.UserPolicySuspension.time_bound:type_name -> core.v1.UserTimeBoundAccess
+	28, // 33: core.v1.UserPolicySuspension.scope:type_name -> core.v1.UserApprovalAccessScope
+	36, // 34: core.v1.UserExactActionScope.tool_arguments:type_name -> google.protobuf.Struct
+	27, // 35: core.v1.UserApprovalAccessScope.exact_action:type_name -> core.v1.UserExactActionScope
+	29, // 36: core.v1.UserApprovalAccessScope.full:type_name -> core.v1.UserFullPolicyScope
+	27, // 37: core.v1.UserCustomPolicyAccess.scope:type_name -> core.v1.UserExactActionScope
+	22, // 38: core.v1.CreateAccessRequestRequest.payload:type_name -> core.v1.UserAccessRequestPayload
+	15, // 39: core.v1.ApprovalService.ListApprovalRequests:input_type -> core.v1.ListApprovalRequestsRequest
+	17, // 40: core.v1.ApprovalService.UpdateApprovalRequest:input_type -> core.v1.UpdateApprovalRequestRequest
+	19, // 41: core.v1.ApprovalService.ListAccessRequests:input_type -> core.v1.ListAccessRequestsRequest
+	32, // 42: core.v1.ApprovalService.CreateAccessRequest:input_type -> core.v1.CreateAccessRequestRequest
+	16, // 43: core.v1.ApprovalService.ListApprovalRequests:output_type -> core.v1.ListApprovalRequestsResponse
+	18, // 44: core.v1.ApprovalService.UpdateApprovalRequest:output_type -> core.v1.UpdateApprovalRequestResponse
+	20, // 45: core.v1.ApprovalService.ListAccessRequests:output_type -> core.v1.ListAccessRequestsResponse
+	33, // 46: core.v1.ApprovalService.CreateAccessRequest:output_type -> core.v1.CreateAccessRequestResponse
+	43, // [43:47] is the sub-list for method output_type
+	39, // [39:43] is the sub-list for method input_type
+	39, // [39:39] is the sub-list for extension type_name
+	39, // [39:39] is the sub-list for extension extendee
+	0,  // [0:39] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_approval_proto_init() }
@@ -1401,13 +2406,27 @@ func file_core_v1_approval_proto_init() {
 		(*ApprovalAccessScope_Device)(nil),
 		(*ApprovalAccessScope_Full)(nil),
 	}
+	file_core_v1_approval_proto_msgTypes[20].OneofWrappers = []any{
+		(*UserAccessRequestPayload_McpServerCreate)(nil),
+		(*UserAccessRequestPayload_PolicySuspension)(nil),
+		(*UserAccessRequestPayload_McpRegistryAccess)(nil),
+		(*UserAccessRequestPayload_CustomPolicyAccess)(nil),
+	}
+	file_core_v1_approval_proto_msgTypes[22].OneofWrappers = []any{
+		(*UserPolicySuspension_OneTime)(nil),
+		(*UserPolicySuspension_TimeBound)(nil),
+	}
+	file_core_v1_approval_proto_msgTypes[26].OneofWrappers = []any{
+		(*UserApprovalAccessScope_ExactAction)(nil),
+		(*UserApprovalAccessScope_Full)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_approval_proto_rawDesc), len(file_core_v1_approval_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   17,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -39,12 +39,20 @@ const (
 	// ApprovalServiceUpdateApprovalRequestProcedure is the fully-qualified name of the
 	// ApprovalService's UpdateApprovalRequest RPC.
 	ApprovalServiceUpdateApprovalRequestProcedure = "/core.v1.ApprovalService/UpdateApprovalRequest"
+	// ApprovalServiceListAccessRequestsProcedure is the fully-qualified name of the ApprovalService's
+	// ListAccessRequests RPC.
+	ApprovalServiceListAccessRequestsProcedure = "/core.v1.ApprovalService/ListAccessRequests"
+	// ApprovalServiceCreateAccessRequestProcedure is the fully-qualified name of the ApprovalService's
+	// CreateAccessRequest RPC.
+	ApprovalServiceCreateAccessRequestProcedure = "/core.v1.ApprovalService/CreateAccessRequest"
 )
 
 // ApprovalServiceClient is a client for the core.v1.ApprovalService service.
 type ApprovalServiceClient interface {
 	ListApprovalRequests(context.Context, *connect.Request[v1.ListApprovalRequestsRequest]) (*connect.Response[v1.ListApprovalRequestsResponse], error)
 	UpdateApprovalRequest(context.Context, *connect.Request[v1.UpdateApprovalRequestRequest]) (*connect.Response[v1.UpdateApprovalRequestResponse], error)
+	ListAccessRequests(context.Context, *connect.Request[v1.ListAccessRequestsRequest]) (*connect.Response[v1.ListAccessRequestsResponse], error)
+	CreateAccessRequest(context.Context, *connect.Request[v1.CreateAccessRequestRequest]) (*connect.Response[v1.CreateAccessRequestResponse], error)
 }
 
 // NewApprovalServiceClient constructs a client for the core.v1.ApprovalService service. By default,
@@ -71,6 +79,19 @@ func NewApprovalServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(approvalServiceMethods.ByName("UpdateApprovalRequest")),
 			connect.WithClientOptions(opts...),
 		),
+		listAccessRequests: connect.NewClient[v1.ListAccessRequestsRequest, v1.ListAccessRequestsResponse](
+			httpClient,
+			baseURL+ApprovalServiceListAccessRequestsProcedure,
+			connect.WithSchema(approvalServiceMethods.ByName("ListAccessRequests")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		createAccessRequest: connect.NewClient[v1.CreateAccessRequestRequest, v1.CreateAccessRequestResponse](
+			httpClient,
+			baseURL+ApprovalServiceCreateAccessRequestProcedure,
+			connect.WithSchema(approvalServiceMethods.ByName("CreateAccessRequest")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -78,6 +99,8 @@ func NewApprovalServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 type approvalServiceClient struct {
 	listApprovalRequests  *connect.Client[v1.ListApprovalRequestsRequest, v1.ListApprovalRequestsResponse]
 	updateApprovalRequest *connect.Client[v1.UpdateApprovalRequestRequest, v1.UpdateApprovalRequestResponse]
+	listAccessRequests    *connect.Client[v1.ListAccessRequestsRequest, v1.ListAccessRequestsResponse]
+	createAccessRequest   *connect.Client[v1.CreateAccessRequestRequest, v1.CreateAccessRequestResponse]
 }
 
 // ListApprovalRequests calls core.v1.ApprovalService.ListApprovalRequests.
@@ -90,10 +113,22 @@ func (c *approvalServiceClient) UpdateApprovalRequest(ctx context.Context, req *
 	return c.updateApprovalRequest.CallUnary(ctx, req)
 }
 
+// ListAccessRequests calls core.v1.ApprovalService.ListAccessRequests.
+func (c *approvalServiceClient) ListAccessRequests(ctx context.Context, req *connect.Request[v1.ListAccessRequestsRequest]) (*connect.Response[v1.ListAccessRequestsResponse], error) {
+	return c.listAccessRequests.CallUnary(ctx, req)
+}
+
+// CreateAccessRequest calls core.v1.ApprovalService.CreateAccessRequest.
+func (c *approvalServiceClient) CreateAccessRequest(ctx context.Context, req *connect.Request[v1.CreateAccessRequestRequest]) (*connect.Response[v1.CreateAccessRequestResponse], error) {
+	return c.createAccessRequest.CallUnary(ctx, req)
+}
+
 // ApprovalServiceHandler is an implementation of the core.v1.ApprovalService service.
 type ApprovalServiceHandler interface {
 	ListApprovalRequests(context.Context, *connect.Request[v1.ListApprovalRequestsRequest]) (*connect.Response[v1.ListApprovalRequestsResponse], error)
 	UpdateApprovalRequest(context.Context, *connect.Request[v1.UpdateApprovalRequestRequest]) (*connect.Response[v1.UpdateApprovalRequestResponse], error)
+	ListAccessRequests(context.Context, *connect.Request[v1.ListAccessRequestsRequest]) (*connect.Response[v1.ListAccessRequestsResponse], error)
+	CreateAccessRequest(context.Context, *connect.Request[v1.CreateAccessRequestRequest]) (*connect.Response[v1.CreateAccessRequestResponse], error)
 }
 
 // NewApprovalServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -116,12 +151,29 @@ func NewApprovalServiceHandler(svc ApprovalServiceHandler, opts ...connect.Handl
 		connect.WithSchema(approvalServiceMethods.ByName("UpdateApprovalRequest")),
 		connect.WithHandlerOptions(opts...),
 	)
+	approvalServiceListAccessRequestsHandler := connect.NewUnaryHandler(
+		ApprovalServiceListAccessRequestsProcedure,
+		svc.ListAccessRequests,
+		connect.WithSchema(approvalServiceMethods.ByName("ListAccessRequests")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	approvalServiceCreateAccessRequestHandler := connect.NewUnaryHandler(
+		ApprovalServiceCreateAccessRequestProcedure,
+		svc.CreateAccessRequest,
+		connect.WithSchema(approvalServiceMethods.ByName("CreateAccessRequest")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/core.v1.ApprovalService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ApprovalServiceListApprovalRequestsProcedure:
 			approvalServiceListApprovalRequestsHandler.ServeHTTP(w, r)
 		case ApprovalServiceUpdateApprovalRequestProcedure:
 			approvalServiceUpdateApprovalRequestHandler.ServeHTTP(w, r)
+		case ApprovalServiceListAccessRequestsProcedure:
+			approvalServiceListAccessRequestsHandler.ServeHTTP(w, r)
+		case ApprovalServiceCreateAccessRequestProcedure:
+			approvalServiceCreateAccessRequestHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -137,4 +189,12 @@ func (UnimplementedApprovalServiceHandler) ListApprovalRequests(context.Context,
 
 func (UnimplementedApprovalServiceHandler) UpdateApprovalRequest(context.Context, *connect.Request[v1.UpdateApprovalRequestRequest]) (*connect.Response[v1.UpdateApprovalRequestResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ApprovalService.UpdateApprovalRequest is not implemented"))
+}
+
+func (UnimplementedApprovalServiceHandler) ListAccessRequests(context.Context, *connect.Request[v1.ListAccessRequestsRequest]) (*connect.Response[v1.ListAccessRequestsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ApprovalService.ListAccessRequests is not implemented"))
+}
+
+func (UnimplementedApprovalServiceHandler) CreateAccessRequest(context.Context, *connect.Request[v1.CreateAccessRequestRequest]) (*connect.Response[v1.CreateAccessRequestResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ApprovalService.CreateAccessRequest is not implemented"))
 }

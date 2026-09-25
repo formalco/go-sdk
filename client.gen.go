@@ -86,6 +86,22 @@ type ApprovalServiceClient struct {
 	inner corev1connect.ApprovalServiceClient
 }
 
+func (c *ApprovalServiceClient) CreateAccessRequest(ctx context.Context, req *corev1.CreateAccessRequestRequest) (*corev1.CreateAccessRequestResponse, error) {
+	res, err := c.inner.CreateAccessRequest(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *ApprovalServiceClient) ListAccessRequests(ctx context.Context, req *corev1.ListAccessRequestsRequest) (*corev1.ListAccessRequestsResponse, error) {
+	res, err := c.inner.ListAccessRequests(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 func (c *ApprovalServiceClient) ListApprovalRequests(ctx context.Context, req *corev1.ListApprovalRequestsRequest) (*corev1.ListApprovalRequestsResponse, error) {
 	res, err := c.inner.ListApprovalRequests(ctx, connect.NewRequest(req))
 	if err != nil {
