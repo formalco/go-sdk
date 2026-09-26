@@ -3270,20 +3270,6 @@ func (c *ResourceServiceClient) UpdateResourceNativeUsersV3Enabled(ctx context.C
 	return res.Msg, nil
 }
 
-// Update resource OAuth settings
-//
-// Replace the OAuth settings of an MCP server. Existing user links keep the
-// client binding they were created with. Changing the upstream OAuth mode to
-// "none" deletes every pending link and every user's stored grant for the
-// server.
-func (c *ResourceServiceClient) UpdateResourceOAuthSettings(ctx context.Context, req *corev1.UpdateResourceOAuthSettingsRequest) (*corev1.UpdateResourceOAuthSettingsResponse, error) {
-	res, err := c.inner.UpdateResourceOAuthSettings(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
 // Update resource SSH host key
 //
 // Update a pinned upstream SSH host public key
