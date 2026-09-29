@@ -617,11 +617,13 @@ func (*ListShadowMcpsRequest) Descriptor() ([]byte, []int) {
 }
 
 type ShadowMcp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Url           string                 `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
-	FirstSeen     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=first_seen,json=firstSeen,proto3" json:"first_seen,omitempty"`
-	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	Id        string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Url       string                 `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	FirstSeen *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=first_seen,json=firstSeen,proto3" json:"first_seen,omitempty"`
+	LastSeen  *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
+	// Self-reported MCP serverInfo title, else name, from observed responses.
+	ServerLabel   *string `protobuf:"bytes,5,opt,name=server_label,json=serverLabel,proto3,oneof" json:"server_label,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -682,6 +684,13 @@ func (x *ShadowMcp) GetLastSeen() *timestamppb.Timestamp {
 		return x.LastSeen
 	}
 	return nil
+}
+
+func (x *ShadowMcp) GetServerLabel() string {
+	if x != nil && x.ServerLabel != nil {
+		return *x.ServerLabel
+	}
+	return ""
 }
 
 type ListShadowMcpsResponse struct {
@@ -769,13 +778,15 @@ const file_core_v1_mcp_proto_rawDesc = "" +
 	"\x16DeleteMcpServerRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x19\n" +
 	"\x17DeleteMcpServerResponse\"\x17\n" +
-	"\x15ListShadowMcpsRequest\"\xa1\x01\n" +
+	"\x15ListShadowMcpsRequest\"\xda\x01\n" +
 	"\tShadowMcp\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03url\x18\x02 \x01(\tR\x03url\x129\n" +
 	"\n" +
 	"first_seen\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tfirstSeen\x127\n" +
-	"\tlast_seen\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\"M\n" +
+	"\tlast_seen\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x12&\n" +
+	"\fserver_label\x18\x05 \x01(\tH\x00R\vserverLabel\x88\x01\x01B\x0f\n" +
+	"\r_server_label\"M\n" +
 	"\x16ListShadowMcpsResponse\x123\n" +
 	"\vshadow_mcps\x18\x01 \x03(\v2\x12.core.v1.ShadowMcpR\n" +
 	"shadowMcps2\xaa\x06\n" +
@@ -854,6 +865,7 @@ func file_core_v1_mcp_proto_init() {
 		return
 	}
 	file_core_v1_list_metadata_proto_init()
+	file_core_v1_mcp_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
