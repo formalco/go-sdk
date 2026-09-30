@@ -12,6 +12,7 @@ import (
 
 // Client is the Formal core API client.
 type Client struct {
+	AIAssessmentServiceClient          *AIAssessmentServiceClient
 	ApprovalServiceClient              *ApprovalServiceClient
 	ChangeAuthorizationServiceClient   *ChangeAuthorizationServiceClient
 	ConnectorServiceClient             *ConnectorServiceClient
@@ -48,6 +49,7 @@ type Client struct {
 // Construction and auth live in New / Option helpers (hand-written).
 func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 	return &Client{
+		AIAssessmentServiceClient:          &AIAssessmentServiceClient{inner: corev1connect.NewAIAssessmentServiceClient(httpClient, baseURL)},
 		ApprovalServiceClient:              &ApprovalServiceClient{inner: corev1connect.NewApprovalServiceClient(httpClient, baseURL)},
 		ChangeAuthorizationServiceClient:   &ChangeAuthorizationServiceClient{inner: corev1connect.NewChangeAuthorizationServiceClient(httpClient, baseURL)},
 		ConnectorServiceClient:             &ConnectorServiceClient{inner: corev1connect.NewConnectorServiceClient(httpClient, baseURL)},
@@ -79,6 +81,89 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		UserServiceClient:                  &UserServiceClient{inner: corev1connect.NewUserServiceClient(httpClient, baseURL)},
 		WorkflowServiceClient:              &WorkflowServiceClient{inner: corev1connect.NewWorkflowServiceClient(httpClient, baseURL)},
 	}
+}
+
+// AIAssessmentServiceClient is a client for the core.v1.AIAssessmentService service.
+type AIAssessmentServiceClient struct {
+	inner corev1connect.AIAssessmentServiceClient
+}
+
+// Create AI assessment label
+//
+// Create a label that AI assessments can assign to LLM requests. Requires AI assessments to be enabled.
+func (c *AIAssessmentServiceClient) CreateAIAssessmentLabel(ctx context.Context, req *corev1.CreateAIAssessmentLabelRequest) (*corev1.CreateAIAssessmentLabelResponse, error) {
+	res, err := c.inner.CreateAIAssessmentLabel(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete AI assessment label
+//
+// Delete a label that AI assessments can assign to LLM requests. Requires AI assessments to be enabled.
+func (c *AIAssessmentServiceClient) DeleteAIAssessmentLabel(ctx context.Context, req *corev1.DeleteAIAssessmentLabelRequest) (*corev1.DeleteAIAssessmentLabelResponse, error) {
+	res, err := c.inner.DeleteAIAssessmentLabel(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get AI assessment label
+//
+// Get a label that AI assessments can assign to LLM requests
+func (c *AIAssessmentServiceClient) GetAIAssessmentLabel(ctx context.Context, req *corev1.GetAIAssessmentLabelRequest) (*corev1.GetAIAssessmentLabelResponse, error) {
+	res, err := c.inner.GetAIAssessmentLabel(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get AI assessment settings
+//
+// Get whether AI assessments are enabled for the organization
+func (c *AIAssessmentServiceClient) GetAIAssessmentSettings(ctx context.Context, req *corev1.GetAIAssessmentSettingsRequest) (*corev1.GetAIAssessmentSettingsResponse, error) {
+	res, err := c.inner.GetAIAssessmentSettings(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List AI assessment labels
+//
+// List the labels that AI assessments can assign to LLM requests
+func (c *AIAssessmentServiceClient) ListAIAssessmentLabels(ctx context.Context, req *corev1.ListAIAssessmentLabelsRequest) (*corev1.ListAIAssessmentLabelsResponse, error) {
+	res, err := c.inner.ListAIAssessmentLabels(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update AI assessment label
+//
+// Update a label by sending the full object. All mutable fields are replaced. Requires AI assessments to be enabled.
+func (c *AIAssessmentServiceClient) UpdateAIAssessmentLabel(ctx context.Context, req *corev1.UpdateAIAssessmentLabelRequest) (*corev1.UpdateAIAssessmentLabelResponse, error) {
+	res, err := c.inner.UpdateAIAssessmentLabel(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update AI assessment settings
+//
+// Enable or disable AI assessments for the organization. Enabling sends LLM
+// traffic to Typesafe for assessment. The first update creates the default labels.
+func (c *AIAssessmentServiceClient) UpdateAIAssessmentSettings(ctx context.Context, req *corev1.UpdateAIAssessmentSettingsRequest) (*corev1.UpdateAIAssessmentSettingsResponse, error) {
+	res, err := c.inner.UpdateAIAssessmentSettings(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
 }
 
 // ApprovalServiceClient is a client for the core.v1.ApprovalService service.
