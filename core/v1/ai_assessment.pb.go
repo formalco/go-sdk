@@ -91,8 +91,8 @@ type AIAssessmentLabel struct {
 	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Policies and logs match labels by name.
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// What the label covers. It completes "the current turn materially concerns ...".
-	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	// The condition under which the label applies. It completes "The current turn ...".
+	Condition string `protobuf:"bytes,3,opt,name=condition,proto3" json:"condition,omitempty"`
 	// The minimum assessed probability at which the label is assigned.
 	Threshold     float64                `protobuf:"fixed64,4,opt,name=threshold,proto3" json:"threshold,omitempty"`
 	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
@@ -146,9 +146,9 @@ func (x *AIAssessmentLabel) GetName() string {
 	return ""
 }
 
-func (x *AIAssessmentLabel) GetDescription() string {
+func (x *AIAssessmentLabel) GetCondition() string {
 	if x != nil {
-		return x.Description
+		return x.Condition
 	}
 	return ""
 }
@@ -352,7 +352,7 @@ func (x *UpdateAIAssessmentSettingsResponse) GetSettings() *AIAssessmentSettings
 type CreateAIAssessmentLabelRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Condition     string                 `protobuf:"bytes,2,opt,name=condition,proto3" json:"condition,omitempty"`
 	Threshold     float64                `protobuf:"fixed64,3,opt,name=threshold,proto3" json:"threshold,omitempty"`
 	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -396,9 +396,9 @@ func (x *CreateAIAssessmentLabelRequest) GetName() string {
 	return ""
 }
 
-func (x *CreateAIAssessmentLabelRequest) GetDescription() string {
+func (x *CreateAIAssessmentLabelRequest) GetCondition() string {
 	if x != nil {
-		return x.Description
+		return x.Condition
 	}
 	return ""
 }
@@ -847,12 +847,12 @@ const file_core_v1_ai_assessment_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf8\x02\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf4\x02\n" +
 	"\x11AIAssessmentLabel\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12-\n" +
-	"\x04name\x18\x02 \x01(\tB\x19\xbaH\x16r\x14\x10\x01\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x12,\n" +
-	"\vdescription\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\vdescription\x125\n" +
+	"\x04name\x18\x02 \x01(\tB\x19\xbaH\x16r\x14\x10\x01\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x12(\n" +
+	"\tcondition\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\tcondition\x125\n" +
 	"\tthreshold\x18\x04 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?!\x00\x00\x00\x00\x00\x00\x00\x00R\tthreshold\x12,\n" +
 	"\x06status\x18\x05 \x01(\tB\x14\xbaH\x11r\x0fR\x06activeR\x05draftR\x06status\x12C\n" +
 	"\n" +
@@ -865,11 +865,11 @@ const file_core_v1_ai_assessment_proto_rawDesc = "" +
 	"!UpdateAIAssessmentSettingsRequest\x12\x18\n" +
 	"\aenabled\x18\x01 \x01(\bR\aenabled\"_\n" +
 	"\"UpdateAIAssessmentSettingsResponse\x129\n" +
-	"\bsettings\x18\x01 \x01(\v2\x1d.core.v1.AIAssessmentSettingsR\bsettings\"\xe2\x01\n" +
+	"\bsettings\x18\x01 \x01(\v2\x1d.core.v1.AIAssessmentSettingsR\bsettings\"\xde\x01\n" +
 	"\x1eCreateAIAssessmentLabelRequest\x12-\n" +
-	"\x04name\x18\x01 \x01(\tB\x19\xbaH\x16r\x14\x10\x01\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\vdescription\x125\n" +
+	"\x04name\x18\x01 \x01(\tB\x19\xbaH\x16r\x14\x10\x01\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x12(\n" +
+	"\tcondition\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\tcondition\x125\n" +
 	"\tthreshold\x18\x03 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?!\x00\x00\x00\x00\x00\x00\x00\x00R\tthreshold\x12,\n" +
 	"\x06status\x18\x04 \x01(\tB\x14\xbaH\x11r\x0fR\x06activeR\x05draftR\x06status\"S\n" +
 	"\x1fCreateAIAssessmentLabelResponse\x120\n" +
