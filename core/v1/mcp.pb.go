@@ -101,10 +101,12 @@ func (x *ListMcpServersRequest) GetSearchFields() []string {
 }
 
 type McpServer struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Url           string                 `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name  string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Url   string                 `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	// Empty when the server isn't in a Space.
+	SpaceId       string `protobuf:"bytes,4,opt,name=space_id,json=spaceId,proto3" json:"space_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -156,6 +158,13 @@ func (x *McpServer) GetName() string {
 func (x *McpServer) GetUrl() string {
 	if x != nil {
 		return x.Url
+	}
+	return ""
+}
+
+func (x *McpServer) GetSpaceId() string {
+	if x != nil {
+		return x.SpaceId
 	}
 	return ""
 }
@@ -304,6 +313,7 @@ type CreateMcpServerRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Url           string                 `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	SpaceId       *string                `protobuf:"bytes,3,opt,name=space_id,json=spaceId,proto3,oneof" json:"space_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -348,6 +358,13 @@ func (x *CreateMcpServerRequest) GetName() string {
 func (x *CreateMcpServerRequest) GetUrl() string {
 	if x != nil {
 		return x.Url
+	}
+	return ""
+}
+
+func (x *CreateMcpServerRequest) GetSpaceId() string {
+	if x != nil && x.SpaceId != nil {
+		return *x.SpaceId
 	}
 	return ""
 }
@@ -748,11 +765,12 @@ const file_core_v1_mcp_proto_rawDesc = "" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x16\n" +
 	"\x06search\x18\x04 \x01(\tR\x06search\x12?\n" +
-	"\rsearch_fields\x18\x05 \x03(\tB\x1a\xbaH\x17\x92\x01\x14\"\x12r\x10R\x04nameR\bhostnameR\fsearchFields\"A\n" +
+	"\rsearch_fields\x18\x05 \x03(\tB\x1a\xbaH\x17\x92\x01\x14\"\x12r\x10R\x04nameR\bhostnameR\fsearchFields\"\\\n" +
 	"\tMcpServer\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
-	"\x03url\x18\x03 \x01(\tR\x03url\"\x89\x01\n" +
+	"\x03url\x18\x03 \x01(\tR\x03url\x12\x19\n" +
+	"\bspace_id\x18\x04 \x01(\tR\aspaceId\"\x89\x01\n" +
 	"\x16ListMcpServersResponse\x123\n" +
 	"\vmcp_servers\x18\x01 \x03(\v2\x12.core.v1.McpServerR\n" +
 	"mcpServers\x12:\n" +
@@ -761,10 +779,12 @@ const file_core_v1_mcp_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"I\n" +
 	"\x14GetMcpServerResponse\x121\n" +
 	"\n" +
-	"mcp_server\x18\x01 \x01(\v2\x12.core.v1.McpServerR\tmcpServer\"P\n" +
+	"mcp_server\x18\x01 \x01(\v2\x12.core.v1.McpServerR\tmcpServer\"\x86\x01\n" +
 	"\x16CreateMcpServerRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x19\n" +
-	"\x03url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\"L\n" +
+	"\x03url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\x12'\n" +
+	"\bspace_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\aspaceId\x88\x01\x01B\v\n" +
+	"\t_space_id\"L\n" +
 	"\x17CreateMcpServerResponse\x121\n" +
 	"\n" +
 	"mcp_server\x18\x01 \x01(\v2\x12.core.v1.McpServerR\tmcpServer\"i\n" +
@@ -865,6 +885,7 @@ func file_core_v1_mcp_proto_init() {
 		return
 	}
 	file_core_v1_list_metadata_proto_init()
+	file_core_v1_mcp_proto_msgTypes[5].OneofWrappers = []any{}
 	file_core_v1_mcp_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
