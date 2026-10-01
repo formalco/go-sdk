@@ -418,6 +418,7 @@ type UpdateMcpServerRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Url           string                 `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	SpaceId       *string                `protobuf:"bytes,4,opt,name=space_id,json=spaceId,proto3,oneof" json:"space_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -469,6 +470,13 @@ func (x *UpdateMcpServerRequest) GetName() string {
 func (x *UpdateMcpServerRequest) GetUrl() string {
 	if x != nil {
 		return x.Url
+	}
+	return ""
+}
+
+func (x *UpdateMcpServerRequest) GetSpaceId() string {
+	if x != nil && x.SpaceId != nil {
+		return *x.SpaceId
 	}
 	return ""
 }
@@ -787,11 +795,13 @@ const file_core_v1_mcp_proto_rawDesc = "" +
 	"\t_space_id\"L\n" +
 	"\x17CreateMcpServerResponse\x121\n" +
 	"\n" +
-	"mcp_server\x18\x01 \x01(\v2\x12.core.v1.McpServerR\tmcpServer\"i\n" +
+	"mcp_server\x18\x01 \x01(\v2\x12.core.v1.McpServerR\tmcpServer\"\x96\x01\n" +
 	"\x16UpdateMcpServerRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x19\n" +
-	"\x03url\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\"L\n" +
+	"\x03url\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\x12\x1e\n" +
+	"\bspace_id\x18\x04 \x01(\tH\x00R\aspaceId\x88\x01\x01B\v\n" +
+	"\t_space_id\"L\n" +
 	"\x17UpdateMcpServerResponse\x121\n" +
 	"\n" +
 	"mcp_server\x18\x01 \x01(\v2\x12.core.v1.McpServerR\tmcpServer\"1\n" +
@@ -886,6 +896,7 @@ func file_core_v1_mcp_proto_init() {
 	}
 	file_core_v1_list_metadata_proto_init()
 	file_core_v1_mcp_proto_msgTypes[5].OneofWrappers = []any{}
+	file_core_v1_mcp_proto_msgTypes[7].OneofWrappers = []any{}
 	file_core_v1_mcp_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
