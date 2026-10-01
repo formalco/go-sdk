@@ -653,6 +653,17 @@ func (c *ConnectorServiceClient) GetConnectorTokenEncryptionKey(ctx context.Cont
 	return res.Msg, nil
 }
 
+// Get connector VPN
+//
+// Get the Formal VPN settings of a connector. A connector without settings reports the VPN as disabled.
+func (c *ConnectorServiceClient) GetConnectorVpn(ctx context.Context, req *corev1.GetConnectorVpnRequest) (*corev1.GetConnectorVpnResponse, error) {
+	res, err := c.inner.GetConnectorVpn(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // List connector instances
 //
 // List all instances for a connector
@@ -702,6 +713,17 @@ func (c *ConnectorServiceClient) ListConnectorListeners(ctx context.Context, req
 // List all connector satellite links
 func (c *ConnectorServiceClient) ListConnectorSatelliteLinks(ctx context.Context, req *corev1.ListConnectorSatelliteLinksRequest) (*corev1.ListConnectorSatelliteLinksResponse, error) {
 	res, err := c.inner.ListConnectorSatelliteLinks(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List connector VPN regions
+//
+// List the cloud regions a connector can declare as its location for the Formal VPN.
+func (c *ConnectorServiceClient) ListConnectorVpnRegions(ctx context.Context, req *corev1.ListConnectorVpnRegionsRequest) (*corev1.ListConnectorVpnRegionsResponse, error) {
+	res, err := c.inner.ListConnectorVpnRegions(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -867,6 +889,17 @@ func (c *ConnectorServiceClient) UpdateConnectorListenerV2(ctx context.Context, 
 // Update a connector by sending the full object. All mutable fields are replaced.
 func (c *ConnectorServiceClient) UpdateConnectorV2(ctx context.Context, req *corev1.UpdateConnectorV2Request) (*corev1.UpdateConnectorV2Response, error) {
 	res, err := c.inner.UpdateConnectorV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update connector VPN
+//
+// Replace the Formal VPN settings of a connector.
+func (c *ConnectorServiceClient) UpdateConnectorVpn(ctx context.Context, req *corev1.UpdateConnectorVpnRequest) (*corev1.UpdateConnectorVpnResponse, error) {
+	res, err := c.inner.UpdateConnectorVpn(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

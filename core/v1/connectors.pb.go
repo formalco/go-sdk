@@ -5231,6 +5231,306 @@ func (x *CreateFederationTokenResponse) GetEndUserId() string {
 	return ""
 }
 
+type GetConnectorVpnRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConnectorId   string                 `protobuf:"bytes,1,opt,name=connector_id,json=connectorId,proto3" json:"connector_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetConnectorVpnRequest) Reset() {
+	*x = GetConnectorVpnRequest{}
+	mi := &file_core_v1_connectors_proto_msgTypes[99]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetConnectorVpnRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetConnectorVpnRequest) ProtoMessage() {}
+
+func (x *GetConnectorVpnRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_connectors_proto_msgTypes[99]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetConnectorVpnRequest.ProtoReflect.Descriptor instead.
+func (*GetConnectorVpnRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{99}
+}
+
+func (x *GetConnectorVpnRequest) GetConnectorId() string {
+	if x != nil {
+		return x.ConnectorId
+	}
+	return ""
+}
+
+type GetConnectorVpnResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConnectorVpn  *ConnectorVpn          `protobuf:"bytes,1,opt,name=connector_vpn,json=connectorVpn,proto3" json:"connector_vpn,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetConnectorVpnResponse) Reset() {
+	*x = GetConnectorVpnResponse{}
+	mi := &file_core_v1_connectors_proto_msgTypes[100]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetConnectorVpnResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetConnectorVpnResponse) ProtoMessage() {}
+
+func (x *GetConnectorVpnResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_connectors_proto_msgTypes[100]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetConnectorVpnResponse.ProtoReflect.Descriptor instead.
+func (*GetConnectorVpnResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{100}
+}
+
+func (x *GetConnectorVpnResponse) GetConnectorVpn() *ConnectorVpn {
+	if x != nil {
+		return x.ConnectorVpn
+	}
+	return nil
+}
+
+type UpdateConnectorVpnRequest struct {
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	ConnectorId string                 `protobuf:"bytes,1,opt,name=connector_id,json=connectorId,proto3" json:"connector_id,omitempty"`
+	Enabled     bool                   `protobuf:"varint,2,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	// Cloud provider hosting the connector, as returned by ListConnectorVpnRegions. Required when enabled.
+	CloudProvider string `protobuf:"bytes,3,opt,name=cloud_provider,json=cloudProvider,proto3" json:"cloud_provider,omitempty"`
+	// Region hosting the connector, as returned by ListConnectorVpnRegions. Required when enabled.
+	Region        string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateConnectorVpnRequest) Reset() {
+	*x = UpdateConnectorVpnRequest{}
+	mi := &file_core_v1_connectors_proto_msgTypes[101]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateConnectorVpnRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateConnectorVpnRequest) ProtoMessage() {}
+
+func (x *UpdateConnectorVpnRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_connectors_proto_msgTypes[101]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateConnectorVpnRequest.ProtoReflect.Descriptor instead.
+func (*UpdateConnectorVpnRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{101}
+}
+
+func (x *UpdateConnectorVpnRequest) GetConnectorId() string {
+	if x != nil {
+		return x.ConnectorId
+	}
+	return ""
+}
+
+func (x *UpdateConnectorVpnRequest) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+func (x *UpdateConnectorVpnRequest) GetCloudProvider() string {
+	if x != nil {
+		return x.CloudProvider
+	}
+	return ""
+}
+
+func (x *UpdateConnectorVpnRequest) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+type UpdateConnectorVpnResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConnectorVpn  *ConnectorVpn          `protobuf:"bytes,1,opt,name=connector_vpn,json=connectorVpn,proto3" json:"connector_vpn,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateConnectorVpnResponse) Reset() {
+	*x = UpdateConnectorVpnResponse{}
+	mi := &file_core_v1_connectors_proto_msgTypes[102]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateConnectorVpnResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateConnectorVpnResponse) ProtoMessage() {}
+
+func (x *UpdateConnectorVpnResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_connectors_proto_msgTypes[102]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateConnectorVpnResponse.ProtoReflect.Descriptor instead.
+func (*UpdateConnectorVpnResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{102}
+}
+
+func (x *UpdateConnectorVpnResponse) GetConnectorVpn() *ConnectorVpn {
+	if x != nil {
+		return x.ConnectorVpn
+	}
+	return nil
+}
+
+type ListConnectorVpnRegionsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Only return regions of this cloud provider.
+	CloudProvider string `protobuf:"bytes,1,opt,name=cloud_provider,json=cloudProvider,proto3" json:"cloud_provider,omitempty"`
+	// Case-insensitive substring matched against the region, city, and country.
+	Search        string `protobuf:"bytes,2,opt,name=search,proto3" json:"search,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListConnectorVpnRegionsRequest) Reset() {
+	*x = ListConnectorVpnRegionsRequest{}
+	mi := &file_core_v1_connectors_proto_msgTypes[103]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListConnectorVpnRegionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListConnectorVpnRegionsRequest) ProtoMessage() {}
+
+func (x *ListConnectorVpnRegionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_connectors_proto_msgTypes[103]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListConnectorVpnRegionsRequest.ProtoReflect.Descriptor instead.
+func (*ListConnectorVpnRegionsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{103}
+}
+
+func (x *ListConnectorVpnRegionsRequest) GetCloudProvider() string {
+	if x != nil {
+		return x.CloudProvider
+	}
+	return ""
+}
+
+func (x *ListConnectorVpnRegionsRequest) GetSearch() string {
+	if x != nil {
+		return x.Search
+	}
+	return ""
+}
+
+type ListConnectorVpnRegionsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Regions       []*ConnectorVpnRegion  `protobuf:"bytes,1,rep,name=regions,proto3" json:"regions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListConnectorVpnRegionsResponse) Reset() {
+	*x = ListConnectorVpnRegionsResponse{}
+	mi := &file_core_v1_connectors_proto_msgTypes[104]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListConnectorVpnRegionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListConnectorVpnRegionsResponse) ProtoMessage() {}
+
+func (x *ListConnectorVpnRegionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_connectors_proto_msgTypes[104]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListConnectorVpnRegionsResponse.ProtoReflect.Descriptor instead.
+func (*ListConnectorVpnRegionsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{104}
+}
+
+func (x *ListConnectorVpnRegionsResponse) GetRegions() []*ConnectorVpnRegion {
+	if x != nil {
+		return x.Regions
+	}
+	return nil
+}
+
 // V2 Update messages (full object replacement)
 type UpdateConnectorListenerV2Request struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
@@ -5241,7 +5541,7 @@ type UpdateConnectorListenerV2Request struct {
 
 func (x *UpdateConnectorListenerV2Request) Reset() {
 	*x = UpdateConnectorListenerV2Request{}
-	mi := &file_core_v1_connectors_proto_msgTypes[99]
+	mi := &file_core_v1_connectors_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5253,7 +5553,7 @@ func (x *UpdateConnectorListenerV2Request) String() string {
 func (*UpdateConnectorListenerV2Request) ProtoMessage() {}
 
 func (x *UpdateConnectorListenerV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[99]
+	mi := &file_core_v1_connectors_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5266,7 +5566,7 @@ func (x *UpdateConnectorListenerV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateConnectorListenerV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorListenerV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{99}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{105}
 }
 
 func (x *UpdateConnectorListenerV2Request) GetConnectorListener() *ConnectorListener {
@@ -5285,7 +5585,7 @@ type UpdateConnectorListenerV2Response struct {
 
 func (x *UpdateConnectorListenerV2Response) Reset() {
 	*x = UpdateConnectorListenerV2Response{}
-	mi := &file_core_v1_connectors_proto_msgTypes[100]
+	mi := &file_core_v1_connectors_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5297,7 +5597,7 @@ func (x *UpdateConnectorListenerV2Response) String() string {
 func (*UpdateConnectorListenerV2Response) ProtoMessage() {}
 
 func (x *UpdateConnectorListenerV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[100]
+	mi := &file_core_v1_connectors_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5310,7 +5610,7 @@ func (x *UpdateConnectorListenerV2Response) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use UpdateConnectorListenerV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorListenerV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{100}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{106}
 }
 
 func (x *UpdateConnectorListenerV2Response) GetConnectorListener() *ConnectorListener {
@@ -5329,7 +5629,7 @@ type UpdateConnectorListenerRuleV2Request struct {
 
 func (x *UpdateConnectorListenerRuleV2Request) Reset() {
 	*x = UpdateConnectorListenerRuleV2Request{}
-	mi := &file_core_v1_connectors_proto_msgTypes[101]
+	mi := &file_core_v1_connectors_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5341,7 +5641,7 @@ func (x *UpdateConnectorListenerRuleV2Request) String() string {
 func (*UpdateConnectorListenerRuleV2Request) ProtoMessage() {}
 
 func (x *UpdateConnectorListenerRuleV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[101]
+	mi := &file_core_v1_connectors_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5354,7 +5654,7 @@ func (x *UpdateConnectorListenerRuleV2Request) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use UpdateConnectorListenerRuleV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorListenerRuleV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{101}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{107}
 }
 
 func (x *UpdateConnectorListenerRuleV2Request) GetConnectorListenerRule() *ConnectorListenerRule {
@@ -5373,7 +5673,7 @@ type UpdateConnectorListenerRuleV2Response struct {
 
 func (x *UpdateConnectorListenerRuleV2Response) Reset() {
 	*x = UpdateConnectorListenerRuleV2Response{}
-	mi := &file_core_v1_connectors_proto_msgTypes[102]
+	mi := &file_core_v1_connectors_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5385,7 +5685,7 @@ func (x *UpdateConnectorListenerRuleV2Response) String() string {
 func (*UpdateConnectorListenerRuleV2Response) ProtoMessage() {}
 
 func (x *UpdateConnectorListenerRuleV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[102]
+	mi := &file_core_v1_connectors_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5398,7 +5698,7 @@ func (x *UpdateConnectorListenerRuleV2Response) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use UpdateConnectorListenerRuleV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorListenerRuleV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{102}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{108}
 }
 
 func (x *UpdateConnectorListenerRuleV2Response) GetConnectorListenerRule() *ConnectorListenerRule {
@@ -5417,7 +5717,7 @@ type UpdateConnectorListenerLinkV2Request struct {
 
 func (x *UpdateConnectorListenerLinkV2Request) Reset() {
 	*x = UpdateConnectorListenerLinkV2Request{}
-	mi := &file_core_v1_connectors_proto_msgTypes[103]
+	mi := &file_core_v1_connectors_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5429,7 +5729,7 @@ func (x *UpdateConnectorListenerLinkV2Request) String() string {
 func (*UpdateConnectorListenerLinkV2Request) ProtoMessage() {}
 
 func (x *UpdateConnectorListenerLinkV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[103]
+	mi := &file_core_v1_connectors_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5442,7 +5742,7 @@ func (x *UpdateConnectorListenerLinkV2Request) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use UpdateConnectorListenerLinkV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorListenerLinkV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{103}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{109}
 }
 
 func (x *UpdateConnectorListenerLinkV2Request) GetConnectorListenerLink() *ConnectorListenerLink {
@@ -5461,7 +5761,7 @@ type UpdateConnectorListenerLinkV2Response struct {
 
 func (x *UpdateConnectorListenerLinkV2Response) Reset() {
 	*x = UpdateConnectorListenerLinkV2Response{}
-	mi := &file_core_v1_connectors_proto_msgTypes[104]
+	mi := &file_core_v1_connectors_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5473,7 +5773,7 @@ func (x *UpdateConnectorListenerLinkV2Response) String() string {
 func (*UpdateConnectorListenerLinkV2Response) ProtoMessage() {}
 
 func (x *UpdateConnectorListenerLinkV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[104]
+	mi := &file_core_v1_connectors_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5486,7 +5786,7 @@ func (x *UpdateConnectorListenerLinkV2Response) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use UpdateConnectorListenerLinkV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorListenerLinkV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{104}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{110}
 }
 
 func (x *UpdateConnectorListenerLinkV2Response) GetConnectorListenerLink() *ConnectorListenerLink {
@@ -5507,7 +5807,7 @@ type UpdateConnectorHostnameV2Request struct {
 
 func (x *UpdateConnectorHostnameV2Request) Reset() {
 	*x = UpdateConnectorHostnameV2Request{}
-	mi := &file_core_v1_connectors_proto_msgTypes[105]
+	mi := &file_core_v1_connectors_proto_msgTypes[111]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5519,7 +5819,7 @@ func (x *UpdateConnectorHostnameV2Request) String() string {
 func (*UpdateConnectorHostnameV2Request) ProtoMessage() {}
 
 func (x *UpdateConnectorHostnameV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[105]
+	mi := &file_core_v1_connectors_proto_msgTypes[111]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5532,7 +5832,7 @@ func (x *UpdateConnectorHostnameV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateConnectorHostnameV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorHostnameV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{105}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{111}
 }
 
 func (x *UpdateConnectorHostnameV2Request) GetConnectorHostname() *ConnectorHostname {
@@ -5565,7 +5865,7 @@ type UpdateConnectorHostnameV2Response struct {
 
 func (x *UpdateConnectorHostnameV2Response) Reset() {
 	*x = UpdateConnectorHostnameV2Response{}
-	mi := &file_core_v1_connectors_proto_msgTypes[106]
+	mi := &file_core_v1_connectors_proto_msgTypes[112]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5577,7 +5877,7 @@ func (x *UpdateConnectorHostnameV2Response) String() string {
 func (*UpdateConnectorHostnameV2Response) ProtoMessage() {}
 
 func (x *UpdateConnectorHostnameV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[106]
+	mi := &file_core_v1_connectors_proto_msgTypes[112]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5590,7 +5890,7 @@ func (x *UpdateConnectorHostnameV2Response) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use UpdateConnectorHostnameV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorHostnameV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{106}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{112}
 }
 
 func (x *UpdateConnectorHostnameV2Response) GetConnectorHostname() *ConnectorHostname {
@@ -5609,7 +5909,7 @@ type UpdateConnectorConfigurationV2Request struct {
 
 func (x *UpdateConnectorConfigurationV2Request) Reset() {
 	*x = UpdateConnectorConfigurationV2Request{}
-	mi := &file_core_v1_connectors_proto_msgTypes[107]
+	mi := &file_core_v1_connectors_proto_msgTypes[113]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5621,7 +5921,7 @@ func (x *UpdateConnectorConfigurationV2Request) String() string {
 func (*UpdateConnectorConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateConnectorConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[107]
+	mi := &file_core_v1_connectors_proto_msgTypes[113]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5634,7 +5934,7 @@ func (x *UpdateConnectorConfigurationV2Request) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use UpdateConnectorConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{107}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{113}
 }
 
 func (x *UpdateConnectorConfigurationV2Request) GetConnectorConfiguration() *ConnectorConfiguration {
@@ -5653,7 +5953,7 @@ type UpdateConnectorConfigurationV2Response struct {
 
 func (x *UpdateConnectorConfigurationV2Response) Reset() {
 	*x = UpdateConnectorConfigurationV2Response{}
-	mi := &file_core_v1_connectors_proto_msgTypes[108]
+	mi := &file_core_v1_connectors_proto_msgTypes[114]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5665,7 +5965,7 @@ func (x *UpdateConnectorConfigurationV2Response) String() string {
 func (*UpdateConnectorConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateConnectorConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[108]
+	mi := &file_core_v1_connectors_proto_msgTypes[114]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5678,7 +5978,7 @@ func (x *UpdateConnectorConfigurationV2Response) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use UpdateConnectorConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{108}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *UpdateConnectorConfigurationV2Response) GetConnectorConfiguration() *ConnectorConfiguration {
@@ -5697,7 +5997,7 @@ type UpdateConnectorAiProviderV2Request struct {
 
 func (x *UpdateConnectorAiProviderV2Request) Reset() {
 	*x = UpdateConnectorAiProviderV2Request{}
-	mi := &file_core_v1_connectors_proto_msgTypes[109]
+	mi := &file_core_v1_connectors_proto_msgTypes[115]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5709,7 +6009,7 @@ func (x *UpdateConnectorAiProviderV2Request) String() string {
 func (*UpdateConnectorAiProviderV2Request) ProtoMessage() {}
 
 func (x *UpdateConnectorAiProviderV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[109]
+	mi := &file_core_v1_connectors_proto_msgTypes[115]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5722,7 +6022,7 @@ func (x *UpdateConnectorAiProviderV2Request) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use UpdateConnectorAiProviderV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorAiProviderV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{109}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{115}
 }
 
 func (x *UpdateConnectorAiProviderV2Request) GetConnectorAiProvider() *ConnectorAiProvider {
@@ -5741,7 +6041,7 @@ type UpdateConnectorAiProviderV2Response struct {
 
 func (x *UpdateConnectorAiProviderV2Response) Reset() {
 	*x = UpdateConnectorAiProviderV2Response{}
-	mi := &file_core_v1_connectors_proto_msgTypes[110]
+	mi := &file_core_v1_connectors_proto_msgTypes[116]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5753,7 +6053,7 @@ func (x *UpdateConnectorAiProviderV2Response) String() string {
 func (*UpdateConnectorAiProviderV2Response) ProtoMessage() {}
 
 func (x *UpdateConnectorAiProviderV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_connectors_proto_msgTypes[110]
+	mi := &file_core_v1_connectors_proto_msgTypes[116]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5766,7 +6066,7 @@ func (x *UpdateConnectorAiProviderV2Response) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use UpdateConnectorAiProviderV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateConnectorAiProviderV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_connectors_proto_rawDescGZIP(), []int{110}
+	return file_core_v1_connectors_proto_rawDescGZIP(), []int{116}
 }
 
 func (x *UpdateConnectorAiProviderV2Response) GetConnectorAiProvider() *ConnectorAiProvider {
@@ -6131,7 +6431,23 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"expires_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x12\x0e\n" +
 	"\x02id\x18\x04 \x01(\tR\x02id\x12#\n" +
 	"\vend_user_id\x18\x05 \x01(\tH\x00R\tendUserId\x88\x01\x01B\x0e\n" +
-	"\f_end_user_id\"u\n" +
+	"\f_end_user_id\"D\n" +
+	"\x16GetConnectorVpnRequest\x12*\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"U\n" +
+	"\x17GetConnectorVpnResponse\x12:\n" +
+	"\rconnector_vpn\x18\x01 \x01(\v2\x15.core.v1.ConnectorVpnR\fconnectorVpn\"\xa0\x01\n" +
+	"\x19UpdateConnectorVpnRequest\x12*\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12\x18\n" +
+	"\aenabled\x18\x02 \x01(\bR\aenabled\x12%\n" +
+	"\x0ecloud_provider\x18\x03 \x01(\tR\rcloudProvider\x12\x16\n" +
+	"\x06region\x18\x04 \x01(\tR\x06region\"X\n" +
+	"\x1aUpdateConnectorVpnResponse\x12:\n" +
+	"\rconnector_vpn\x18\x01 \x01(\v2\x15.core.v1.ConnectorVpnR\fconnectorVpn\"_\n" +
+	"\x1eListConnectorVpnRegionsRequest\x12%\n" +
+	"\x0ecloud_provider\x18\x01 \x01(\tR\rcloudProvider\x12\x16\n" +
+	"\x06search\x18\x02 \x01(\tR\x06search\"X\n" +
+	"\x1fListConnectorVpnRegionsResponse\x125\n" +
+	"\aregions\x18\x01 \x03(\v2\x1b.core.v1.ConnectorVpnRegionR\aregions\"u\n" +
 	" UpdateConnectorListenerV2Request\x12Q\n" +
 	"\x12connector_listener\x18\x01 \x01(\v2\x1a.core.v1.ConnectorListenerB\x06\xbaH\x03\xc8\x01\x01R\x11connectorListener\"n\n" +
 	"!UpdateConnectorListenerV2Response\x12I\n" +
@@ -6160,7 +6476,7 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\"UpdateConnectorAiProviderV2Request\x12X\n" +
 	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderB\x06\xbaH\x03\xc8\x01\x01R\x13connectorAiProvider\"w\n" +
 	"#UpdateConnectorAiProviderV2Response\x12P\n" +
-	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\xa2N\n" +
+	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\xfbQ\n" +
 	"\x10ConnectorService\x12\x89\x01\n" +
 	"\x0eListConnectors\x12\x1e.core.v1.ListConnectorsRequest\x1a\x1f.core.v1.ListConnectorsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.ConnectorService/ListConnectors\x90\x02\x01\x12\x81\x01\n" +
 	"\fGetConnector\x12\x1c.core.v1.GetConnectorRequest\x1a\x1d.core.v1.GetConnectorResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ConnectorService/GetConnector\x90\x02\x01\x12\x99\x01\n" +
@@ -6209,7 +6525,10 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x19DeleteConnectorAiProvider\x12).core.v1.DeleteConnectorAiProviderRequest\x1a*.core.v1.DeleteConnectorAiProviderResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/DeleteConnectorAiProvider\x12\xd2\x01\n" +
 	"!CreateConnectorTokenEncryptionKey\x121.core.v1.CreateConnectorTokenEncryptionKeyRequest\x1a2.core.v1.CreateConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ConnectorService/CreateConnectorTokenEncryptionKey\x12\xc9\x01\n" +
 	"\x1eGetConnectorTokenEncryptionKey\x12..core.v1.GetConnectorTokenEncryptionKeyRequest\x1a/.core.v1.GetConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ConnectorService/GetConnectorTokenEncryptionKey\x90\x02\x01\x12\xd2\x01\n" +
-	"!DeleteConnectorTokenEncryptionKey\x121.core.v1.DeleteConnectorTokenEncryptionKeyRequest\x1a2.core.v1.DeleteConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ConnectorService/DeleteConnectorTokenEncryptionKey\x12\xa2\x01\n" +
+	"!DeleteConnectorTokenEncryptionKey\x121.core.v1.DeleteConnectorTokenEncryptionKeyRequest\x1a2.core.v1.DeleteConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ConnectorService/DeleteConnectorTokenEncryptionKey\x12\x8d\x01\n" +
+	"\x0fGetConnectorVpn\x12\x1f.core.v1.GetConnectorVpnRequest\x1a .core.v1.GetConnectorVpnResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ConnectorService/GetConnectorVpn\x90\x02\x01\x12\x96\x01\n" +
+	"\x12UpdateConnectorVpn\x12\".core.v1.UpdateConnectorVpnRequest\x1a#.core.v1.UpdateConnectorVpnResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ConnectorService/UpdateConnectorVpn\x12\xad\x01\n" +
+	"\x17ListConnectorVpnRegions\x12'.core.v1.ListConnectorVpnRegionsRequest\x1a(.core.v1.ListConnectorVpnRegionsResponse\"?\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/ListConnectorVpnRegions\x90\x02\x01\x12\xa2\x01\n" +
 	"\x15CreateFederationToken\x12%.core.v1.CreateFederationTokenRequest\x1a&.core.v1.CreateFederationTokenResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ConnectorService/CreateFederationToken\x12\xb2\x01\n" +
 	"\x19UpdateConnectorListenerV2\x12).core.v1.UpdateConnectorListenerV2Request\x1a*.core.v1.UpdateConnectorListenerV2Response\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/UpdateConnectorListenerV2\x12\xc2\x01\n" +
 	"\x1dUpdateConnectorListenerRuleV2\x12-.core.v1.UpdateConnectorListenerRuleV2Request\x1a..core.v1.UpdateConnectorListenerRuleV2Response\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ConnectorService/UpdateConnectorListenerRuleV2\x12\xc2\x01\n" +
@@ -6231,7 +6550,7 @@ func file_core_v1_connectors_proto_rawDescGZIP() []byte {
 	return file_core_v1_connectors_proto_rawDescData
 }
 
-var file_core_v1_connectors_proto_msgTypes = make([]protoimpl.MessageInfo, 111)
+var file_core_v1_connectors_proto_msgTypes = make([]protoimpl.MessageInfo, 117)
 var file_core_v1_connectors_proto_goTypes = []any{
 	(*ListConnectorsRequest)(nil),                          // 0: core.v1.ListConnectorsRequest
 	(*ListConnectorsResponse)(nil),                         // 1: core.v1.ListConnectorsResponse
@@ -6332,212 +6651,229 @@ var file_core_v1_connectors_proto_goTypes = []any{
 	(*DeleteConnectorTokenEncryptionKeyResponse)(nil),      // 96: core.v1.DeleteConnectorTokenEncryptionKeyResponse
 	(*CreateFederationTokenRequest)(nil),                   // 97: core.v1.CreateFederationTokenRequest
 	(*CreateFederationTokenResponse)(nil),                  // 98: core.v1.CreateFederationTokenResponse
-	(*UpdateConnectorListenerV2Request)(nil),               // 99: core.v1.UpdateConnectorListenerV2Request
-	(*UpdateConnectorListenerV2Response)(nil),              // 100: core.v1.UpdateConnectorListenerV2Response
-	(*UpdateConnectorListenerRuleV2Request)(nil),           // 101: core.v1.UpdateConnectorListenerRuleV2Request
-	(*UpdateConnectorListenerRuleV2Response)(nil),          // 102: core.v1.UpdateConnectorListenerRuleV2Response
-	(*UpdateConnectorListenerLinkV2Request)(nil),           // 103: core.v1.UpdateConnectorListenerLinkV2Request
-	(*UpdateConnectorListenerLinkV2Response)(nil),          // 104: core.v1.UpdateConnectorListenerLinkV2Response
-	(*UpdateConnectorHostnameV2Request)(nil),               // 105: core.v1.UpdateConnectorHostnameV2Request
-	(*UpdateConnectorHostnameV2Response)(nil),              // 106: core.v1.UpdateConnectorHostnameV2Response
-	(*UpdateConnectorConfigurationV2Request)(nil),          // 107: core.v1.UpdateConnectorConfigurationV2Request
-	(*UpdateConnectorConfigurationV2Response)(nil),         // 108: core.v1.UpdateConnectorConfigurationV2Response
-	(*UpdateConnectorAiProviderV2Request)(nil),             // 109: core.v1.UpdateConnectorAiProviderV2Request
-	(*UpdateConnectorAiProviderV2Response)(nil),            // 110: core.v1.UpdateConnectorAiProviderV2Response
-	(*Filter)(nil),                      // 111: core.v1.Filter
-	(*Connector)(nil),                   // 112: core.v1.Connector
-	(*ListMetadata)(nil),                // 113: core.v1.ListMetadata
-	(*ConnectorListenerLink)(nil),       // 114: core.v1.ConnectorListenerLink
-	(*Instance)(nil),                    // 115: core.v1.Instance
-	(*InstanceRemoteShutdown)(nil),      // 116: core.v1.InstanceRemoteShutdown
-	(*ConnectorListener)(nil),           // 117: core.v1.ConnectorListener
-	(*ConnectorListenerRule)(nil),       // 118: core.v1.ConnectorListenerRule
-	(*ConnectorHostname)(nil),           // 119: core.v1.ConnectorHostname
-	(*durationpb.Duration)(nil),         // 120: google.protobuf.Duration
-	(*ConnectorConfiguration)(nil),      // 121: core.v1.ConnectorConfiguration
-	(*timestamppb.Timestamp)(nil),       // 122: google.protobuf.Timestamp
-	(*ConnectorAiProviderConfig)(nil),   // 123: core.v1.ConnectorAiProviderConfig
-	(*ConnectorAiProvider)(nil),         // 124: core.v1.ConnectorAiProvider
-	(*ConnectorTokenEncryptionKey)(nil), // 125: core.v1.ConnectorTokenEncryptionKey
+	(*GetConnectorVpnRequest)(nil),                         // 99: core.v1.GetConnectorVpnRequest
+	(*GetConnectorVpnResponse)(nil),                        // 100: core.v1.GetConnectorVpnResponse
+	(*UpdateConnectorVpnRequest)(nil),                      // 101: core.v1.UpdateConnectorVpnRequest
+	(*UpdateConnectorVpnResponse)(nil),                     // 102: core.v1.UpdateConnectorVpnResponse
+	(*ListConnectorVpnRegionsRequest)(nil),                 // 103: core.v1.ListConnectorVpnRegionsRequest
+	(*ListConnectorVpnRegionsResponse)(nil),                // 104: core.v1.ListConnectorVpnRegionsResponse
+	(*UpdateConnectorListenerV2Request)(nil),               // 105: core.v1.UpdateConnectorListenerV2Request
+	(*UpdateConnectorListenerV2Response)(nil),              // 106: core.v1.UpdateConnectorListenerV2Response
+	(*UpdateConnectorListenerRuleV2Request)(nil),           // 107: core.v1.UpdateConnectorListenerRuleV2Request
+	(*UpdateConnectorListenerRuleV2Response)(nil),          // 108: core.v1.UpdateConnectorListenerRuleV2Response
+	(*UpdateConnectorListenerLinkV2Request)(nil),           // 109: core.v1.UpdateConnectorListenerLinkV2Request
+	(*UpdateConnectorListenerLinkV2Response)(nil),          // 110: core.v1.UpdateConnectorListenerLinkV2Response
+	(*UpdateConnectorHostnameV2Request)(nil),               // 111: core.v1.UpdateConnectorHostnameV2Request
+	(*UpdateConnectorHostnameV2Response)(nil),              // 112: core.v1.UpdateConnectorHostnameV2Response
+	(*UpdateConnectorConfigurationV2Request)(nil),          // 113: core.v1.UpdateConnectorConfigurationV2Request
+	(*UpdateConnectorConfigurationV2Response)(nil),         // 114: core.v1.UpdateConnectorConfigurationV2Response
+	(*UpdateConnectorAiProviderV2Request)(nil),             // 115: core.v1.UpdateConnectorAiProviderV2Request
+	(*UpdateConnectorAiProviderV2Response)(nil),            // 116: core.v1.UpdateConnectorAiProviderV2Response
+	(*Filter)(nil),                      // 117: core.v1.Filter
+	(*Connector)(nil),                   // 118: core.v1.Connector
+	(*ListMetadata)(nil),                // 119: core.v1.ListMetadata
+	(*ConnectorListenerLink)(nil),       // 120: core.v1.ConnectorListenerLink
+	(*Instance)(nil),                    // 121: core.v1.Instance
+	(*InstanceRemoteShutdown)(nil),      // 122: core.v1.InstanceRemoteShutdown
+	(*ConnectorListener)(nil),           // 123: core.v1.ConnectorListener
+	(*ConnectorListenerRule)(nil),       // 124: core.v1.ConnectorListenerRule
+	(*ConnectorHostname)(nil),           // 125: core.v1.ConnectorHostname
+	(*durationpb.Duration)(nil),         // 126: google.protobuf.Duration
+	(*ConnectorConfiguration)(nil),      // 127: core.v1.ConnectorConfiguration
+	(*timestamppb.Timestamp)(nil),       // 128: google.protobuf.Timestamp
+	(*ConnectorAiProviderConfig)(nil),   // 129: core.v1.ConnectorAiProviderConfig
+	(*ConnectorAiProvider)(nil),         // 130: core.v1.ConnectorAiProvider
+	(*ConnectorTokenEncryptionKey)(nil), // 131: core.v1.ConnectorTokenEncryptionKey
+	(*ConnectorVpn)(nil),                // 132: core.v1.ConnectorVpn
+	(*ConnectorVpnRegion)(nil),          // 133: core.v1.ConnectorVpnRegion
 }
 var file_core_v1_connectors_proto_depIdxs = []int32{
-	111, // 0: core.v1.ListConnectorsRequest.filter:type_name -> core.v1.Filter
-	112, // 1: core.v1.ListConnectorsResponse.connectors:type_name -> core.v1.Connector
-	113, // 2: core.v1.ListConnectorsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	114, // 3: core.v1.ListConnectorListenerLinksResponse.links:type_name -> core.v1.ConnectorListenerLink
-	113, // 4: core.v1.ListConnectorListenerLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
-	112, // 5: core.v1.CreateConnectorResponse.connector:type_name -> core.v1.Connector
-	112, // 6: core.v1.UpdateConnectorResponse.connector:type_name -> core.v1.Connector
-	112, // 7: core.v1.UpdateConnectorV2Request.connector:type_name -> core.v1.Connector
-	112, // 8: core.v1.UpdateConnectorV2Response.connector:type_name -> core.v1.Connector
-	112, // 9: core.v1.GetConnectorResponse.Connector:type_name -> core.v1.Connector
-	115, // 10: core.v1.ListConnectorInstancesResponse.instances:type_name -> core.v1.Instance
-	113, // 11: core.v1.ListConnectorInstancesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	116, // 12: core.v1.CreateConnectorInstanceShutdownRequestResponse.instance_remote_shutdown:type_name -> core.v1.InstanceRemoteShutdown
-	117, // 13: core.v1.CreateConnectorListenerResponse.connector_listener:type_name -> core.v1.ConnectorListener
-	117, // 14: core.v1.GetConnectorListenerResponse.connector_listener:type_name -> core.v1.ConnectorListener
-	111, // 15: core.v1.ListConnectorListenersRequest.filter:type_name -> core.v1.Filter
-	117, // 16: core.v1.ListConnectorListenersResponse.connector_listeners:type_name -> core.v1.ConnectorListener
-	113, // 17: core.v1.ListConnectorListenersResponse.list_metadata:type_name -> core.v1.ListMetadata
-	118, // 18: core.v1.ListConnectorListenerRulesResponse.rules:type_name -> core.v1.ConnectorListenerRule
-	113, // 19: core.v1.ListConnectorListenerRulesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	117, // 20: core.v1.UpdateConnectorListenerResponse.connector_listener:type_name -> core.v1.ConnectorListener
-	118, // 21: core.v1.CreateConnectorListenerRuleResponse.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
-	118, // 22: core.v1.GetConnectorListenerRuleResponse.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
-	118, // 23: core.v1.UpdateConnectorListenerRuleResponse.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
-	114, // 24: core.v1.CreateConnectorListenerLinkResponse.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
-	114, // 25: core.v1.GetConnectorListenerLinkResponse.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
-	114, // 26: core.v1.UpdateConnectorListenerLinkResponse.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
-	119, // 27: core.v1.CreateConnectorHostnameResponse.connector_hostname:type_name -> core.v1.ConnectorHostname
-	119, // 28: core.v1.GetConnectorHostnameResponse.connector_hostname:type_name -> core.v1.ConnectorHostname
-	119, // 29: core.v1.UpdateConnectorHostnameResponse.connector_hostname:type_name -> core.v1.ConnectorHostname
-	120, // 30: core.v1.CreateConnectorConfigurationRequest.resources_health_checks_frequency:type_name -> google.protobuf.Duration
-	121, // 31: core.v1.CreateConnectorConfigurationResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
-	121, // 32: core.v1.GetConnectorConfigurationResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
-	121, // 33: core.v1.GetConnectorConfigurationByConnectorIdResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
-	120, // 34: core.v1.UpdateConnectorConfigurationRequest.resources_health_checks_frequency:type_name -> google.protobuf.Duration
-	121, // 35: core.v1.UpdateConnectorConfigurationResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
-	122, // 36: core.v1.ConnectorSatelliteLink.created_at:type_name -> google.protobuf.Timestamp
-	122, // 37: core.v1.ConnectorSatelliteLink.updated_at:type_name -> google.protobuf.Timestamp
+	117, // 0: core.v1.ListConnectorsRequest.filter:type_name -> core.v1.Filter
+	118, // 1: core.v1.ListConnectorsResponse.connectors:type_name -> core.v1.Connector
+	119, // 2: core.v1.ListConnectorsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	120, // 3: core.v1.ListConnectorListenerLinksResponse.links:type_name -> core.v1.ConnectorListenerLink
+	119, // 4: core.v1.ListConnectorListenerLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
+	118, // 5: core.v1.CreateConnectorResponse.connector:type_name -> core.v1.Connector
+	118, // 6: core.v1.UpdateConnectorResponse.connector:type_name -> core.v1.Connector
+	118, // 7: core.v1.UpdateConnectorV2Request.connector:type_name -> core.v1.Connector
+	118, // 8: core.v1.UpdateConnectorV2Response.connector:type_name -> core.v1.Connector
+	118, // 9: core.v1.GetConnectorResponse.Connector:type_name -> core.v1.Connector
+	121, // 10: core.v1.ListConnectorInstancesResponse.instances:type_name -> core.v1.Instance
+	119, // 11: core.v1.ListConnectorInstancesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	122, // 12: core.v1.CreateConnectorInstanceShutdownRequestResponse.instance_remote_shutdown:type_name -> core.v1.InstanceRemoteShutdown
+	123, // 13: core.v1.CreateConnectorListenerResponse.connector_listener:type_name -> core.v1.ConnectorListener
+	123, // 14: core.v1.GetConnectorListenerResponse.connector_listener:type_name -> core.v1.ConnectorListener
+	117, // 15: core.v1.ListConnectorListenersRequest.filter:type_name -> core.v1.Filter
+	123, // 16: core.v1.ListConnectorListenersResponse.connector_listeners:type_name -> core.v1.ConnectorListener
+	119, // 17: core.v1.ListConnectorListenersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	124, // 18: core.v1.ListConnectorListenerRulesResponse.rules:type_name -> core.v1.ConnectorListenerRule
+	119, // 19: core.v1.ListConnectorListenerRulesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	123, // 20: core.v1.UpdateConnectorListenerResponse.connector_listener:type_name -> core.v1.ConnectorListener
+	124, // 21: core.v1.CreateConnectorListenerRuleResponse.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
+	124, // 22: core.v1.GetConnectorListenerRuleResponse.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
+	124, // 23: core.v1.UpdateConnectorListenerRuleResponse.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
+	120, // 24: core.v1.CreateConnectorListenerLinkResponse.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
+	120, // 25: core.v1.GetConnectorListenerLinkResponse.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
+	120, // 26: core.v1.UpdateConnectorListenerLinkResponse.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
+	125, // 27: core.v1.CreateConnectorHostnameResponse.connector_hostname:type_name -> core.v1.ConnectorHostname
+	125, // 28: core.v1.GetConnectorHostnameResponse.connector_hostname:type_name -> core.v1.ConnectorHostname
+	125, // 29: core.v1.UpdateConnectorHostnameResponse.connector_hostname:type_name -> core.v1.ConnectorHostname
+	126, // 30: core.v1.CreateConnectorConfigurationRequest.resources_health_checks_frequency:type_name -> google.protobuf.Duration
+	127, // 31: core.v1.CreateConnectorConfigurationResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
+	127, // 32: core.v1.GetConnectorConfigurationResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
+	127, // 33: core.v1.GetConnectorConfigurationByConnectorIdResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
+	126, // 34: core.v1.UpdateConnectorConfigurationRequest.resources_health_checks_frequency:type_name -> google.protobuf.Duration
+	127, // 35: core.v1.UpdateConnectorConfigurationResponse.connector_configuration:type_name -> core.v1.ConnectorConfiguration
+	128, // 36: core.v1.ConnectorSatelliteLink.created_at:type_name -> google.protobuf.Timestamp
+	128, // 37: core.v1.ConnectorSatelliteLink.updated_at:type_name -> google.protobuf.Timestamp
 	68,  // 38: core.v1.CreateConnectorSatelliteLinkResponse.connector_satellite_link:type_name -> core.v1.ConnectorSatelliteLink
 	68,  // 39: core.v1.GetConnectorSatelliteLinkResponse.connector_satellite_link:type_name -> core.v1.ConnectorSatelliteLink
 	68,  // 40: core.v1.ListConnectorSatelliteLinksResponse.connector_satellite_links:type_name -> core.v1.ConnectorSatelliteLink
-	113, // 41: core.v1.ListConnectorSatelliteLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
-	123, // 42: core.v1.CreateConnectorAiProviderRequest.config:type_name -> core.v1.ConnectorAiProviderConfig
-	124, // 43: core.v1.CreateConnectorAiProviderResponse.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
-	124, // 44: core.v1.GetConnectorAiProviderResponse.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
-	123, // 45: core.v1.UpdateConnectorAiProviderRequest.config:type_name -> core.v1.ConnectorAiProviderConfig
-	124, // 46: core.v1.UpdateConnectorAiProviderResponse.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
-	125, // 47: core.v1.CreateConnectorTokenEncryptionKeyResponse.connector_token_encryption_key:type_name -> core.v1.ConnectorTokenEncryptionKey
-	125, // 48: core.v1.GetConnectorTokenEncryptionKeyResponse.connector_token_encryption_key:type_name -> core.v1.ConnectorTokenEncryptionKey
-	122, // 49: core.v1.CreateFederationTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
-	117, // 50: core.v1.UpdateConnectorListenerV2Request.connector_listener:type_name -> core.v1.ConnectorListener
-	117, // 51: core.v1.UpdateConnectorListenerV2Response.connector_listener:type_name -> core.v1.ConnectorListener
-	118, // 52: core.v1.UpdateConnectorListenerRuleV2Request.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
-	118, // 53: core.v1.UpdateConnectorListenerRuleV2Response.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
-	114, // 54: core.v1.UpdateConnectorListenerLinkV2Request.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
-	114, // 55: core.v1.UpdateConnectorListenerLinkV2Response.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
-	119, // 56: core.v1.UpdateConnectorHostnameV2Request.connector_hostname:type_name -> core.v1.ConnectorHostname
-	119, // 57: core.v1.UpdateConnectorHostnameV2Response.connector_hostname:type_name -> core.v1.ConnectorHostname
-	121, // 58: core.v1.UpdateConnectorConfigurationV2Request.connector_configuration:type_name -> core.v1.ConnectorConfiguration
-	121, // 59: core.v1.UpdateConnectorConfigurationV2Response.connector_configuration:type_name -> core.v1.ConnectorConfiguration
-	124, // 60: core.v1.UpdateConnectorAiProviderV2Request.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
-	124, // 61: core.v1.UpdateConnectorAiProviderV2Response.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
-	0,   // 62: core.v1.ConnectorService.ListConnectors:input_type -> core.v1.ListConnectorsRequest
-	10,  // 63: core.v1.ConnectorService.GetConnector:input_type -> core.v1.GetConnectorRequest
-	12,  // 64: core.v1.ConnectorService.GetConnectorApiKey:input_type -> core.v1.GetConnectorApiKeyRequest
-	14,  // 65: core.v1.ConnectorService.ListConnectorInstances:input_type -> core.v1.ListConnectorInstancesRequest
-	16,  // 66: core.v1.ConnectorService.CreateConnectorInstanceShutdownRequest:input_type -> core.v1.CreateConnectorInstanceShutdownRequestRequest
-	4,   // 67: core.v1.ConnectorService.CreateConnector:input_type -> core.v1.CreateConnectorRequest
-	6,   // 68: core.v1.ConnectorService.UpdateConnector:input_type -> core.v1.UpdateConnectorRequest
-	8,   // 69: core.v1.ConnectorService.UpdateConnectorV2:input_type -> core.v1.UpdateConnectorV2Request
-	18,  // 70: core.v1.ConnectorService.DeleteConnector:input_type -> core.v1.DeleteConnectorRequest
-	20,  // 71: core.v1.ConnectorService.CreateConnectorListener:input_type -> core.v1.CreateConnectorListenerRequest
-	22,  // 72: core.v1.ConnectorService.GetConnectorListener:input_type -> core.v1.GetConnectorListenerRequest
-	24,  // 73: core.v1.ConnectorService.ListConnectorListeners:input_type -> core.v1.ListConnectorListenersRequest
-	28,  // 74: core.v1.ConnectorService.UpdateConnectorListener:input_type -> core.v1.UpdateConnectorListenerRequest
-	30,  // 75: core.v1.ConnectorService.DeleteConnectorListener:input_type -> core.v1.DeleteConnectorListenerRequest
-	32,  // 76: core.v1.ConnectorService.CreateConnectorListenerRule:input_type -> core.v1.CreateConnectorListenerRuleRequest
-	34,  // 77: core.v1.ConnectorService.GetConnectorListenerRule:input_type -> core.v1.GetConnectorListenerRuleRequest
-	26,  // 78: core.v1.ConnectorService.ListConnectorListenerRules:input_type -> core.v1.ListConnectorListenerRulesRequest
-	36,  // 79: core.v1.ConnectorService.UpdateConnectorListenerRule:input_type -> core.v1.UpdateConnectorListenerRuleRequest
-	38,  // 80: core.v1.ConnectorService.DeleteConnectorListenerRule:input_type -> core.v1.DeleteConnectorListenerRuleRequest
-	40,  // 81: core.v1.ConnectorService.CreateConnectorListenerLink:input_type -> core.v1.CreateConnectorListenerLinkRequest
-	42,  // 82: core.v1.ConnectorService.GetConnectorListenerLink:input_type -> core.v1.GetConnectorListenerLinkRequest
-	2,   // 83: core.v1.ConnectorService.ListConnectorListenerLinks:input_type -> core.v1.ListConnectorListenerLinksRequest
-	44,  // 84: core.v1.ConnectorService.UpdateConnectorListenerLink:input_type -> core.v1.UpdateConnectorListenerLinkRequest
-	46,  // 85: core.v1.ConnectorService.DeleteConnectorListenerLink:input_type -> core.v1.DeleteConnectorListenerLinkRequest
-	48,  // 86: core.v1.ConnectorService.CreateConnectorHostname:input_type -> core.v1.CreateConnectorHostnameRequest
-	50,  // 87: core.v1.ConnectorService.GetConnectorHostname:input_type -> core.v1.GetConnectorHostnameRequest
-	52,  // 88: core.v1.ConnectorService.GetConnectorTLSCertificate:input_type -> core.v1.GetConnectorTLSCertificateRequest
-	54,  // 89: core.v1.ConnectorService.UpdateConnectorHostname:input_type -> core.v1.UpdateConnectorHostnameRequest
-	56,  // 90: core.v1.ConnectorService.DeleteConnectorHostname:input_type -> core.v1.DeleteConnectorHostnameRequest
-	58,  // 91: core.v1.ConnectorService.CreateConnectorConfiguration:input_type -> core.v1.CreateConnectorConfigurationRequest
-	60,  // 92: core.v1.ConnectorService.GetConnectorConfiguration:input_type -> core.v1.GetConnectorConfigurationRequest
-	62,  // 93: core.v1.ConnectorService.GetConnectorConfigurationByConnectorId:input_type -> core.v1.GetConnectorConfigurationByConnectorIdRequest
-	64,  // 94: core.v1.ConnectorService.UpdateConnectorConfiguration:input_type -> core.v1.UpdateConnectorConfigurationRequest
-	66,  // 95: core.v1.ConnectorService.DeleteConnectorConfiguration:input_type -> core.v1.DeleteConnectorConfigurationRequest
-	69,  // 96: core.v1.ConnectorService.CreateConnectorSatelliteLink:input_type -> core.v1.CreateConnectorSatelliteLinkRequest
-	77,  // 97: core.v1.ConnectorService.CreateConnectorCloudformationTemplate:input_type -> core.v1.CreateConnectorCloudformationTemplateRequest
-	79,  // 98: core.v1.ConnectorService.CreateConnectorHelmValues:input_type -> core.v1.CreateConnectorHelmValuesRequest
-	71,  // 99: core.v1.ConnectorService.GetConnectorSatelliteLink:input_type -> core.v1.GetConnectorSatelliteLinkRequest
-	73,  // 100: core.v1.ConnectorService.ListConnectorSatelliteLinks:input_type -> core.v1.ListConnectorSatelliteLinksRequest
-	75,  // 101: core.v1.ConnectorService.DeleteConnectorSatelliteLink:input_type -> core.v1.DeleteConnectorSatelliteLinkRequest
-	81,  // 102: core.v1.ConnectorService.GetConnectorSSHHostKey:input_type -> core.v1.GetConnectorSSHHostKeyRequest
-	83,  // 103: core.v1.ConnectorService.CreateConnectorAiProvider:input_type -> core.v1.CreateConnectorAiProviderRequest
-	85,  // 104: core.v1.ConnectorService.GetConnectorAiProvider:input_type -> core.v1.GetConnectorAiProviderRequest
-	87,  // 105: core.v1.ConnectorService.UpdateConnectorAiProvider:input_type -> core.v1.UpdateConnectorAiProviderRequest
-	89,  // 106: core.v1.ConnectorService.DeleteConnectorAiProvider:input_type -> core.v1.DeleteConnectorAiProviderRequest
-	91,  // 107: core.v1.ConnectorService.CreateConnectorTokenEncryptionKey:input_type -> core.v1.CreateConnectorTokenEncryptionKeyRequest
-	93,  // 108: core.v1.ConnectorService.GetConnectorTokenEncryptionKey:input_type -> core.v1.GetConnectorTokenEncryptionKeyRequest
-	95,  // 109: core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey:input_type -> core.v1.DeleteConnectorTokenEncryptionKeyRequest
-	97,  // 110: core.v1.ConnectorService.CreateFederationToken:input_type -> core.v1.CreateFederationTokenRequest
-	99,  // 111: core.v1.ConnectorService.UpdateConnectorListenerV2:input_type -> core.v1.UpdateConnectorListenerV2Request
-	101, // 112: core.v1.ConnectorService.UpdateConnectorListenerRuleV2:input_type -> core.v1.UpdateConnectorListenerRuleV2Request
-	103, // 113: core.v1.ConnectorService.UpdateConnectorListenerLinkV2:input_type -> core.v1.UpdateConnectorListenerLinkV2Request
-	105, // 114: core.v1.ConnectorService.UpdateConnectorHostnameV2:input_type -> core.v1.UpdateConnectorHostnameV2Request
-	107, // 115: core.v1.ConnectorService.UpdateConnectorConfigurationV2:input_type -> core.v1.UpdateConnectorConfigurationV2Request
-	109, // 116: core.v1.ConnectorService.UpdateConnectorAiProviderV2:input_type -> core.v1.UpdateConnectorAiProviderV2Request
-	1,   // 117: core.v1.ConnectorService.ListConnectors:output_type -> core.v1.ListConnectorsResponse
-	11,  // 118: core.v1.ConnectorService.GetConnector:output_type -> core.v1.GetConnectorResponse
-	13,  // 119: core.v1.ConnectorService.GetConnectorApiKey:output_type -> core.v1.GetConnectorApiKeyResponse
-	15,  // 120: core.v1.ConnectorService.ListConnectorInstances:output_type -> core.v1.ListConnectorInstancesResponse
-	17,  // 121: core.v1.ConnectorService.CreateConnectorInstanceShutdownRequest:output_type -> core.v1.CreateConnectorInstanceShutdownRequestResponse
-	5,   // 122: core.v1.ConnectorService.CreateConnector:output_type -> core.v1.CreateConnectorResponse
-	7,   // 123: core.v1.ConnectorService.UpdateConnector:output_type -> core.v1.UpdateConnectorResponse
-	9,   // 124: core.v1.ConnectorService.UpdateConnectorV2:output_type -> core.v1.UpdateConnectorV2Response
-	19,  // 125: core.v1.ConnectorService.DeleteConnector:output_type -> core.v1.DeleteConnectorResponse
-	21,  // 126: core.v1.ConnectorService.CreateConnectorListener:output_type -> core.v1.CreateConnectorListenerResponse
-	23,  // 127: core.v1.ConnectorService.GetConnectorListener:output_type -> core.v1.GetConnectorListenerResponse
-	25,  // 128: core.v1.ConnectorService.ListConnectorListeners:output_type -> core.v1.ListConnectorListenersResponse
-	29,  // 129: core.v1.ConnectorService.UpdateConnectorListener:output_type -> core.v1.UpdateConnectorListenerResponse
-	31,  // 130: core.v1.ConnectorService.DeleteConnectorListener:output_type -> core.v1.DeleteConnectorListenerResponse
-	33,  // 131: core.v1.ConnectorService.CreateConnectorListenerRule:output_type -> core.v1.CreateConnectorListenerRuleResponse
-	35,  // 132: core.v1.ConnectorService.GetConnectorListenerRule:output_type -> core.v1.GetConnectorListenerRuleResponse
-	27,  // 133: core.v1.ConnectorService.ListConnectorListenerRules:output_type -> core.v1.ListConnectorListenerRulesResponse
-	37,  // 134: core.v1.ConnectorService.UpdateConnectorListenerRule:output_type -> core.v1.UpdateConnectorListenerRuleResponse
-	39,  // 135: core.v1.ConnectorService.DeleteConnectorListenerRule:output_type -> core.v1.DeleteConnectorListenerRuleResponse
-	41,  // 136: core.v1.ConnectorService.CreateConnectorListenerLink:output_type -> core.v1.CreateConnectorListenerLinkResponse
-	43,  // 137: core.v1.ConnectorService.GetConnectorListenerLink:output_type -> core.v1.GetConnectorListenerLinkResponse
-	3,   // 138: core.v1.ConnectorService.ListConnectorListenerLinks:output_type -> core.v1.ListConnectorListenerLinksResponse
-	45,  // 139: core.v1.ConnectorService.UpdateConnectorListenerLink:output_type -> core.v1.UpdateConnectorListenerLinkResponse
-	47,  // 140: core.v1.ConnectorService.DeleteConnectorListenerLink:output_type -> core.v1.DeleteConnectorListenerLinkResponse
-	49,  // 141: core.v1.ConnectorService.CreateConnectorHostname:output_type -> core.v1.CreateConnectorHostnameResponse
-	51,  // 142: core.v1.ConnectorService.GetConnectorHostname:output_type -> core.v1.GetConnectorHostnameResponse
-	53,  // 143: core.v1.ConnectorService.GetConnectorTLSCertificate:output_type -> core.v1.GetConnectorTLSCertificateResponse
-	55,  // 144: core.v1.ConnectorService.UpdateConnectorHostname:output_type -> core.v1.UpdateConnectorHostnameResponse
-	57,  // 145: core.v1.ConnectorService.DeleteConnectorHostname:output_type -> core.v1.DeleteConnectorHostnameResponse
-	59,  // 146: core.v1.ConnectorService.CreateConnectorConfiguration:output_type -> core.v1.CreateConnectorConfigurationResponse
-	61,  // 147: core.v1.ConnectorService.GetConnectorConfiguration:output_type -> core.v1.GetConnectorConfigurationResponse
-	63,  // 148: core.v1.ConnectorService.GetConnectorConfigurationByConnectorId:output_type -> core.v1.GetConnectorConfigurationByConnectorIdResponse
-	65,  // 149: core.v1.ConnectorService.UpdateConnectorConfiguration:output_type -> core.v1.UpdateConnectorConfigurationResponse
-	67,  // 150: core.v1.ConnectorService.DeleteConnectorConfiguration:output_type -> core.v1.DeleteConnectorConfigurationResponse
-	70,  // 151: core.v1.ConnectorService.CreateConnectorSatelliteLink:output_type -> core.v1.CreateConnectorSatelliteLinkResponse
-	78,  // 152: core.v1.ConnectorService.CreateConnectorCloudformationTemplate:output_type -> core.v1.CreateConnectorCloudformationTemplateResponse
-	80,  // 153: core.v1.ConnectorService.CreateConnectorHelmValues:output_type -> core.v1.CreateConnectorHelmValuesResponse
-	72,  // 154: core.v1.ConnectorService.GetConnectorSatelliteLink:output_type -> core.v1.GetConnectorSatelliteLinkResponse
-	74,  // 155: core.v1.ConnectorService.ListConnectorSatelliteLinks:output_type -> core.v1.ListConnectorSatelliteLinksResponse
-	76,  // 156: core.v1.ConnectorService.DeleteConnectorSatelliteLink:output_type -> core.v1.DeleteConnectorSatelliteLinkResponse
-	82,  // 157: core.v1.ConnectorService.GetConnectorSSHHostKey:output_type -> core.v1.GetConnectorSSHHostKeyResponse
-	84,  // 158: core.v1.ConnectorService.CreateConnectorAiProvider:output_type -> core.v1.CreateConnectorAiProviderResponse
-	86,  // 159: core.v1.ConnectorService.GetConnectorAiProvider:output_type -> core.v1.GetConnectorAiProviderResponse
-	88,  // 160: core.v1.ConnectorService.UpdateConnectorAiProvider:output_type -> core.v1.UpdateConnectorAiProviderResponse
-	90,  // 161: core.v1.ConnectorService.DeleteConnectorAiProvider:output_type -> core.v1.DeleteConnectorAiProviderResponse
-	92,  // 162: core.v1.ConnectorService.CreateConnectorTokenEncryptionKey:output_type -> core.v1.CreateConnectorTokenEncryptionKeyResponse
-	94,  // 163: core.v1.ConnectorService.GetConnectorTokenEncryptionKey:output_type -> core.v1.GetConnectorTokenEncryptionKeyResponse
-	96,  // 164: core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey:output_type -> core.v1.DeleteConnectorTokenEncryptionKeyResponse
-	98,  // 165: core.v1.ConnectorService.CreateFederationToken:output_type -> core.v1.CreateFederationTokenResponse
-	100, // 166: core.v1.ConnectorService.UpdateConnectorListenerV2:output_type -> core.v1.UpdateConnectorListenerV2Response
-	102, // 167: core.v1.ConnectorService.UpdateConnectorListenerRuleV2:output_type -> core.v1.UpdateConnectorListenerRuleV2Response
-	104, // 168: core.v1.ConnectorService.UpdateConnectorListenerLinkV2:output_type -> core.v1.UpdateConnectorListenerLinkV2Response
-	106, // 169: core.v1.ConnectorService.UpdateConnectorHostnameV2:output_type -> core.v1.UpdateConnectorHostnameV2Response
-	108, // 170: core.v1.ConnectorService.UpdateConnectorConfigurationV2:output_type -> core.v1.UpdateConnectorConfigurationV2Response
-	110, // 171: core.v1.ConnectorService.UpdateConnectorAiProviderV2:output_type -> core.v1.UpdateConnectorAiProviderV2Response
-	117, // [117:172] is the sub-list for method output_type
-	62,  // [62:117] is the sub-list for method input_type
-	62,  // [62:62] is the sub-list for extension type_name
-	62,  // [62:62] is the sub-list for extension extendee
-	0,   // [0:62] is the sub-list for field type_name
+	119, // 41: core.v1.ListConnectorSatelliteLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
+	129, // 42: core.v1.CreateConnectorAiProviderRequest.config:type_name -> core.v1.ConnectorAiProviderConfig
+	130, // 43: core.v1.CreateConnectorAiProviderResponse.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
+	130, // 44: core.v1.GetConnectorAiProviderResponse.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
+	129, // 45: core.v1.UpdateConnectorAiProviderRequest.config:type_name -> core.v1.ConnectorAiProviderConfig
+	130, // 46: core.v1.UpdateConnectorAiProviderResponse.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
+	131, // 47: core.v1.CreateConnectorTokenEncryptionKeyResponse.connector_token_encryption_key:type_name -> core.v1.ConnectorTokenEncryptionKey
+	131, // 48: core.v1.GetConnectorTokenEncryptionKeyResponse.connector_token_encryption_key:type_name -> core.v1.ConnectorTokenEncryptionKey
+	128, // 49: core.v1.CreateFederationTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
+	132, // 50: core.v1.GetConnectorVpnResponse.connector_vpn:type_name -> core.v1.ConnectorVpn
+	132, // 51: core.v1.UpdateConnectorVpnResponse.connector_vpn:type_name -> core.v1.ConnectorVpn
+	133, // 52: core.v1.ListConnectorVpnRegionsResponse.regions:type_name -> core.v1.ConnectorVpnRegion
+	123, // 53: core.v1.UpdateConnectorListenerV2Request.connector_listener:type_name -> core.v1.ConnectorListener
+	123, // 54: core.v1.UpdateConnectorListenerV2Response.connector_listener:type_name -> core.v1.ConnectorListener
+	124, // 55: core.v1.UpdateConnectorListenerRuleV2Request.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
+	124, // 56: core.v1.UpdateConnectorListenerRuleV2Response.connector_listener_rule:type_name -> core.v1.ConnectorListenerRule
+	120, // 57: core.v1.UpdateConnectorListenerLinkV2Request.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
+	120, // 58: core.v1.UpdateConnectorListenerLinkV2Response.connector_listener_link:type_name -> core.v1.ConnectorListenerLink
+	125, // 59: core.v1.UpdateConnectorHostnameV2Request.connector_hostname:type_name -> core.v1.ConnectorHostname
+	125, // 60: core.v1.UpdateConnectorHostnameV2Response.connector_hostname:type_name -> core.v1.ConnectorHostname
+	127, // 61: core.v1.UpdateConnectorConfigurationV2Request.connector_configuration:type_name -> core.v1.ConnectorConfiguration
+	127, // 62: core.v1.UpdateConnectorConfigurationV2Response.connector_configuration:type_name -> core.v1.ConnectorConfiguration
+	130, // 63: core.v1.UpdateConnectorAiProviderV2Request.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
+	130, // 64: core.v1.UpdateConnectorAiProviderV2Response.connector_ai_provider:type_name -> core.v1.ConnectorAiProvider
+	0,   // 65: core.v1.ConnectorService.ListConnectors:input_type -> core.v1.ListConnectorsRequest
+	10,  // 66: core.v1.ConnectorService.GetConnector:input_type -> core.v1.GetConnectorRequest
+	12,  // 67: core.v1.ConnectorService.GetConnectorApiKey:input_type -> core.v1.GetConnectorApiKeyRequest
+	14,  // 68: core.v1.ConnectorService.ListConnectorInstances:input_type -> core.v1.ListConnectorInstancesRequest
+	16,  // 69: core.v1.ConnectorService.CreateConnectorInstanceShutdownRequest:input_type -> core.v1.CreateConnectorInstanceShutdownRequestRequest
+	4,   // 70: core.v1.ConnectorService.CreateConnector:input_type -> core.v1.CreateConnectorRequest
+	6,   // 71: core.v1.ConnectorService.UpdateConnector:input_type -> core.v1.UpdateConnectorRequest
+	8,   // 72: core.v1.ConnectorService.UpdateConnectorV2:input_type -> core.v1.UpdateConnectorV2Request
+	18,  // 73: core.v1.ConnectorService.DeleteConnector:input_type -> core.v1.DeleteConnectorRequest
+	20,  // 74: core.v1.ConnectorService.CreateConnectorListener:input_type -> core.v1.CreateConnectorListenerRequest
+	22,  // 75: core.v1.ConnectorService.GetConnectorListener:input_type -> core.v1.GetConnectorListenerRequest
+	24,  // 76: core.v1.ConnectorService.ListConnectorListeners:input_type -> core.v1.ListConnectorListenersRequest
+	28,  // 77: core.v1.ConnectorService.UpdateConnectorListener:input_type -> core.v1.UpdateConnectorListenerRequest
+	30,  // 78: core.v1.ConnectorService.DeleteConnectorListener:input_type -> core.v1.DeleteConnectorListenerRequest
+	32,  // 79: core.v1.ConnectorService.CreateConnectorListenerRule:input_type -> core.v1.CreateConnectorListenerRuleRequest
+	34,  // 80: core.v1.ConnectorService.GetConnectorListenerRule:input_type -> core.v1.GetConnectorListenerRuleRequest
+	26,  // 81: core.v1.ConnectorService.ListConnectorListenerRules:input_type -> core.v1.ListConnectorListenerRulesRequest
+	36,  // 82: core.v1.ConnectorService.UpdateConnectorListenerRule:input_type -> core.v1.UpdateConnectorListenerRuleRequest
+	38,  // 83: core.v1.ConnectorService.DeleteConnectorListenerRule:input_type -> core.v1.DeleteConnectorListenerRuleRequest
+	40,  // 84: core.v1.ConnectorService.CreateConnectorListenerLink:input_type -> core.v1.CreateConnectorListenerLinkRequest
+	42,  // 85: core.v1.ConnectorService.GetConnectorListenerLink:input_type -> core.v1.GetConnectorListenerLinkRequest
+	2,   // 86: core.v1.ConnectorService.ListConnectorListenerLinks:input_type -> core.v1.ListConnectorListenerLinksRequest
+	44,  // 87: core.v1.ConnectorService.UpdateConnectorListenerLink:input_type -> core.v1.UpdateConnectorListenerLinkRequest
+	46,  // 88: core.v1.ConnectorService.DeleteConnectorListenerLink:input_type -> core.v1.DeleteConnectorListenerLinkRequest
+	48,  // 89: core.v1.ConnectorService.CreateConnectorHostname:input_type -> core.v1.CreateConnectorHostnameRequest
+	50,  // 90: core.v1.ConnectorService.GetConnectorHostname:input_type -> core.v1.GetConnectorHostnameRequest
+	52,  // 91: core.v1.ConnectorService.GetConnectorTLSCertificate:input_type -> core.v1.GetConnectorTLSCertificateRequest
+	54,  // 92: core.v1.ConnectorService.UpdateConnectorHostname:input_type -> core.v1.UpdateConnectorHostnameRequest
+	56,  // 93: core.v1.ConnectorService.DeleteConnectorHostname:input_type -> core.v1.DeleteConnectorHostnameRequest
+	58,  // 94: core.v1.ConnectorService.CreateConnectorConfiguration:input_type -> core.v1.CreateConnectorConfigurationRequest
+	60,  // 95: core.v1.ConnectorService.GetConnectorConfiguration:input_type -> core.v1.GetConnectorConfigurationRequest
+	62,  // 96: core.v1.ConnectorService.GetConnectorConfigurationByConnectorId:input_type -> core.v1.GetConnectorConfigurationByConnectorIdRequest
+	64,  // 97: core.v1.ConnectorService.UpdateConnectorConfiguration:input_type -> core.v1.UpdateConnectorConfigurationRequest
+	66,  // 98: core.v1.ConnectorService.DeleteConnectorConfiguration:input_type -> core.v1.DeleteConnectorConfigurationRequest
+	69,  // 99: core.v1.ConnectorService.CreateConnectorSatelliteLink:input_type -> core.v1.CreateConnectorSatelliteLinkRequest
+	77,  // 100: core.v1.ConnectorService.CreateConnectorCloudformationTemplate:input_type -> core.v1.CreateConnectorCloudformationTemplateRequest
+	79,  // 101: core.v1.ConnectorService.CreateConnectorHelmValues:input_type -> core.v1.CreateConnectorHelmValuesRequest
+	71,  // 102: core.v1.ConnectorService.GetConnectorSatelliteLink:input_type -> core.v1.GetConnectorSatelliteLinkRequest
+	73,  // 103: core.v1.ConnectorService.ListConnectorSatelliteLinks:input_type -> core.v1.ListConnectorSatelliteLinksRequest
+	75,  // 104: core.v1.ConnectorService.DeleteConnectorSatelliteLink:input_type -> core.v1.DeleteConnectorSatelliteLinkRequest
+	81,  // 105: core.v1.ConnectorService.GetConnectorSSHHostKey:input_type -> core.v1.GetConnectorSSHHostKeyRequest
+	83,  // 106: core.v1.ConnectorService.CreateConnectorAiProvider:input_type -> core.v1.CreateConnectorAiProviderRequest
+	85,  // 107: core.v1.ConnectorService.GetConnectorAiProvider:input_type -> core.v1.GetConnectorAiProviderRequest
+	87,  // 108: core.v1.ConnectorService.UpdateConnectorAiProvider:input_type -> core.v1.UpdateConnectorAiProviderRequest
+	89,  // 109: core.v1.ConnectorService.DeleteConnectorAiProvider:input_type -> core.v1.DeleteConnectorAiProviderRequest
+	91,  // 110: core.v1.ConnectorService.CreateConnectorTokenEncryptionKey:input_type -> core.v1.CreateConnectorTokenEncryptionKeyRequest
+	93,  // 111: core.v1.ConnectorService.GetConnectorTokenEncryptionKey:input_type -> core.v1.GetConnectorTokenEncryptionKeyRequest
+	95,  // 112: core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey:input_type -> core.v1.DeleteConnectorTokenEncryptionKeyRequest
+	99,  // 113: core.v1.ConnectorService.GetConnectorVpn:input_type -> core.v1.GetConnectorVpnRequest
+	101, // 114: core.v1.ConnectorService.UpdateConnectorVpn:input_type -> core.v1.UpdateConnectorVpnRequest
+	103, // 115: core.v1.ConnectorService.ListConnectorVpnRegions:input_type -> core.v1.ListConnectorVpnRegionsRequest
+	97,  // 116: core.v1.ConnectorService.CreateFederationToken:input_type -> core.v1.CreateFederationTokenRequest
+	105, // 117: core.v1.ConnectorService.UpdateConnectorListenerV2:input_type -> core.v1.UpdateConnectorListenerV2Request
+	107, // 118: core.v1.ConnectorService.UpdateConnectorListenerRuleV2:input_type -> core.v1.UpdateConnectorListenerRuleV2Request
+	109, // 119: core.v1.ConnectorService.UpdateConnectorListenerLinkV2:input_type -> core.v1.UpdateConnectorListenerLinkV2Request
+	111, // 120: core.v1.ConnectorService.UpdateConnectorHostnameV2:input_type -> core.v1.UpdateConnectorHostnameV2Request
+	113, // 121: core.v1.ConnectorService.UpdateConnectorConfigurationV2:input_type -> core.v1.UpdateConnectorConfigurationV2Request
+	115, // 122: core.v1.ConnectorService.UpdateConnectorAiProviderV2:input_type -> core.v1.UpdateConnectorAiProviderV2Request
+	1,   // 123: core.v1.ConnectorService.ListConnectors:output_type -> core.v1.ListConnectorsResponse
+	11,  // 124: core.v1.ConnectorService.GetConnector:output_type -> core.v1.GetConnectorResponse
+	13,  // 125: core.v1.ConnectorService.GetConnectorApiKey:output_type -> core.v1.GetConnectorApiKeyResponse
+	15,  // 126: core.v1.ConnectorService.ListConnectorInstances:output_type -> core.v1.ListConnectorInstancesResponse
+	17,  // 127: core.v1.ConnectorService.CreateConnectorInstanceShutdownRequest:output_type -> core.v1.CreateConnectorInstanceShutdownRequestResponse
+	5,   // 128: core.v1.ConnectorService.CreateConnector:output_type -> core.v1.CreateConnectorResponse
+	7,   // 129: core.v1.ConnectorService.UpdateConnector:output_type -> core.v1.UpdateConnectorResponse
+	9,   // 130: core.v1.ConnectorService.UpdateConnectorV2:output_type -> core.v1.UpdateConnectorV2Response
+	19,  // 131: core.v1.ConnectorService.DeleteConnector:output_type -> core.v1.DeleteConnectorResponse
+	21,  // 132: core.v1.ConnectorService.CreateConnectorListener:output_type -> core.v1.CreateConnectorListenerResponse
+	23,  // 133: core.v1.ConnectorService.GetConnectorListener:output_type -> core.v1.GetConnectorListenerResponse
+	25,  // 134: core.v1.ConnectorService.ListConnectorListeners:output_type -> core.v1.ListConnectorListenersResponse
+	29,  // 135: core.v1.ConnectorService.UpdateConnectorListener:output_type -> core.v1.UpdateConnectorListenerResponse
+	31,  // 136: core.v1.ConnectorService.DeleteConnectorListener:output_type -> core.v1.DeleteConnectorListenerResponse
+	33,  // 137: core.v1.ConnectorService.CreateConnectorListenerRule:output_type -> core.v1.CreateConnectorListenerRuleResponse
+	35,  // 138: core.v1.ConnectorService.GetConnectorListenerRule:output_type -> core.v1.GetConnectorListenerRuleResponse
+	27,  // 139: core.v1.ConnectorService.ListConnectorListenerRules:output_type -> core.v1.ListConnectorListenerRulesResponse
+	37,  // 140: core.v1.ConnectorService.UpdateConnectorListenerRule:output_type -> core.v1.UpdateConnectorListenerRuleResponse
+	39,  // 141: core.v1.ConnectorService.DeleteConnectorListenerRule:output_type -> core.v1.DeleteConnectorListenerRuleResponse
+	41,  // 142: core.v1.ConnectorService.CreateConnectorListenerLink:output_type -> core.v1.CreateConnectorListenerLinkResponse
+	43,  // 143: core.v1.ConnectorService.GetConnectorListenerLink:output_type -> core.v1.GetConnectorListenerLinkResponse
+	3,   // 144: core.v1.ConnectorService.ListConnectorListenerLinks:output_type -> core.v1.ListConnectorListenerLinksResponse
+	45,  // 145: core.v1.ConnectorService.UpdateConnectorListenerLink:output_type -> core.v1.UpdateConnectorListenerLinkResponse
+	47,  // 146: core.v1.ConnectorService.DeleteConnectorListenerLink:output_type -> core.v1.DeleteConnectorListenerLinkResponse
+	49,  // 147: core.v1.ConnectorService.CreateConnectorHostname:output_type -> core.v1.CreateConnectorHostnameResponse
+	51,  // 148: core.v1.ConnectorService.GetConnectorHostname:output_type -> core.v1.GetConnectorHostnameResponse
+	53,  // 149: core.v1.ConnectorService.GetConnectorTLSCertificate:output_type -> core.v1.GetConnectorTLSCertificateResponse
+	55,  // 150: core.v1.ConnectorService.UpdateConnectorHostname:output_type -> core.v1.UpdateConnectorHostnameResponse
+	57,  // 151: core.v1.ConnectorService.DeleteConnectorHostname:output_type -> core.v1.DeleteConnectorHostnameResponse
+	59,  // 152: core.v1.ConnectorService.CreateConnectorConfiguration:output_type -> core.v1.CreateConnectorConfigurationResponse
+	61,  // 153: core.v1.ConnectorService.GetConnectorConfiguration:output_type -> core.v1.GetConnectorConfigurationResponse
+	63,  // 154: core.v1.ConnectorService.GetConnectorConfigurationByConnectorId:output_type -> core.v1.GetConnectorConfigurationByConnectorIdResponse
+	65,  // 155: core.v1.ConnectorService.UpdateConnectorConfiguration:output_type -> core.v1.UpdateConnectorConfigurationResponse
+	67,  // 156: core.v1.ConnectorService.DeleteConnectorConfiguration:output_type -> core.v1.DeleteConnectorConfigurationResponse
+	70,  // 157: core.v1.ConnectorService.CreateConnectorSatelliteLink:output_type -> core.v1.CreateConnectorSatelliteLinkResponse
+	78,  // 158: core.v1.ConnectorService.CreateConnectorCloudformationTemplate:output_type -> core.v1.CreateConnectorCloudformationTemplateResponse
+	80,  // 159: core.v1.ConnectorService.CreateConnectorHelmValues:output_type -> core.v1.CreateConnectorHelmValuesResponse
+	72,  // 160: core.v1.ConnectorService.GetConnectorSatelliteLink:output_type -> core.v1.GetConnectorSatelliteLinkResponse
+	74,  // 161: core.v1.ConnectorService.ListConnectorSatelliteLinks:output_type -> core.v1.ListConnectorSatelliteLinksResponse
+	76,  // 162: core.v1.ConnectorService.DeleteConnectorSatelliteLink:output_type -> core.v1.DeleteConnectorSatelliteLinkResponse
+	82,  // 163: core.v1.ConnectorService.GetConnectorSSHHostKey:output_type -> core.v1.GetConnectorSSHHostKeyResponse
+	84,  // 164: core.v1.ConnectorService.CreateConnectorAiProvider:output_type -> core.v1.CreateConnectorAiProviderResponse
+	86,  // 165: core.v1.ConnectorService.GetConnectorAiProvider:output_type -> core.v1.GetConnectorAiProviderResponse
+	88,  // 166: core.v1.ConnectorService.UpdateConnectorAiProvider:output_type -> core.v1.UpdateConnectorAiProviderResponse
+	90,  // 167: core.v1.ConnectorService.DeleteConnectorAiProvider:output_type -> core.v1.DeleteConnectorAiProviderResponse
+	92,  // 168: core.v1.ConnectorService.CreateConnectorTokenEncryptionKey:output_type -> core.v1.CreateConnectorTokenEncryptionKeyResponse
+	94,  // 169: core.v1.ConnectorService.GetConnectorTokenEncryptionKey:output_type -> core.v1.GetConnectorTokenEncryptionKeyResponse
+	96,  // 170: core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey:output_type -> core.v1.DeleteConnectorTokenEncryptionKeyResponse
+	100, // 171: core.v1.ConnectorService.GetConnectorVpn:output_type -> core.v1.GetConnectorVpnResponse
+	102, // 172: core.v1.ConnectorService.UpdateConnectorVpn:output_type -> core.v1.UpdateConnectorVpnResponse
+	104, // 173: core.v1.ConnectorService.ListConnectorVpnRegions:output_type -> core.v1.ListConnectorVpnRegionsResponse
+	98,  // 174: core.v1.ConnectorService.CreateFederationToken:output_type -> core.v1.CreateFederationTokenResponse
+	106, // 175: core.v1.ConnectorService.UpdateConnectorListenerV2:output_type -> core.v1.UpdateConnectorListenerV2Response
+	108, // 176: core.v1.ConnectorService.UpdateConnectorListenerRuleV2:output_type -> core.v1.UpdateConnectorListenerRuleV2Response
+	110, // 177: core.v1.ConnectorService.UpdateConnectorListenerLinkV2:output_type -> core.v1.UpdateConnectorListenerLinkV2Response
+	112, // 178: core.v1.ConnectorService.UpdateConnectorHostnameV2:output_type -> core.v1.UpdateConnectorHostnameV2Response
+	114, // 179: core.v1.ConnectorService.UpdateConnectorConfigurationV2:output_type -> core.v1.UpdateConnectorConfigurationV2Response
+	116, // 180: core.v1.ConnectorService.UpdateConnectorAiProviderV2:output_type -> core.v1.UpdateConnectorAiProviderV2Response
+	123, // [123:181] is the sub-list for method output_type
+	65,  // [65:123] is the sub-list for method input_type
+	65,  // [65:65] is the sub-list for extension type_name
+	65,  // [65:65] is the sub-list for extension extendee
+	0,   // [0:65] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_connectors_proto_init() }
@@ -6582,14 +6918,14 @@ func file_core_v1_connectors_proto_init() {
 		(*GetConnectorTokenEncryptionKeyRequest_Id)(nil),
 	}
 	file_core_v1_connectors_proto_msgTypes[98].OneofWrappers = []any{}
-	file_core_v1_connectors_proto_msgTypes[105].OneofWrappers = []any{}
+	file_core_v1_connectors_proto_msgTypes[111].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_connectors_proto_rawDesc), len(file_core_v1_connectors_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   111,
+			NumMessages:   117,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

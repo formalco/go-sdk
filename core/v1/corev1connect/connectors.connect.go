@@ -177,6 +177,15 @@ const (
 	// ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure is the fully-qualified name of the
 	// ConnectorService's DeleteConnectorTokenEncryptionKey RPC.
 	ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure = "/core.v1.ConnectorService/DeleteConnectorTokenEncryptionKey"
+	// ConnectorServiceGetConnectorVpnProcedure is the fully-qualified name of the ConnectorService's
+	// GetConnectorVpn RPC.
+	ConnectorServiceGetConnectorVpnProcedure = "/core.v1.ConnectorService/GetConnectorVpn"
+	// ConnectorServiceUpdateConnectorVpnProcedure is the fully-qualified name of the ConnectorService's
+	// UpdateConnectorVpn RPC.
+	ConnectorServiceUpdateConnectorVpnProcedure = "/core.v1.ConnectorService/UpdateConnectorVpn"
+	// ConnectorServiceListConnectorVpnRegionsProcedure is the fully-qualified name of the
+	// ConnectorService's ListConnectorVpnRegions RPC.
+	ConnectorServiceListConnectorVpnRegionsProcedure = "/core.v1.ConnectorService/ListConnectorVpnRegions"
 	// ConnectorServiceCreateFederationTokenProcedure is the fully-qualified name of the
 	// ConnectorService's CreateFederationToken RPC.
 	ConnectorServiceCreateFederationTokenProcedure = "/core.v1.ConnectorService/CreateFederationToken"
@@ -394,6 +403,18 @@ type ConnectorServiceClient interface {
 	//
 	// Delete a connector token encryption key by ID.
 	DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error)
+	// Get connector VPN
+	//
+	// Get the Formal VPN settings of a connector. A connector without settings reports the VPN as disabled.
+	GetConnectorVpn(context.Context, *connect.Request[v1.GetConnectorVpnRequest]) (*connect.Response[v1.GetConnectorVpnResponse], error)
+	// Update connector VPN
+	//
+	// Replace the Formal VPN settings of a connector.
+	UpdateConnectorVpn(context.Context, *connect.Request[v1.UpdateConnectorVpnRequest]) (*connect.Response[v1.UpdateConnectorVpnResponse], error)
+	// List connector VPN regions
+	//
+	// List the cloud regions a connector can declare as its location for the Formal VPN.
+	ListConnectorVpnRegions(context.Context, *connect.Request[v1.ListConnectorVpnRegionsRequest]) (*connect.Response[v1.ListConnectorVpnRegionsResponse], error)
 	// Create federation token
 	//
 	// Mint a short-lived federated connector credential for an OIDC-authenticated machine user.
@@ -742,6 +763,26 @@ func NewConnectorServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorTokenEncryptionKey")),
 			connect.WithClientOptions(opts...),
 		),
+		getConnectorVpn: connect.NewClient[v1.GetConnectorVpnRequest, v1.GetConnectorVpnResponse](
+			httpClient,
+			baseURL+ConnectorServiceGetConnectorVpnProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("GetConnectorVpn")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		updateConnectorVpn: connect.NewClient[v1.UpdateConnectorVpnRequest, v1.UpdateConnectorVpnResponse](
+			httpClient,
+			baseURL+ConnectorServiceUpdateConnectorVpnProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("UpdateConnectorVpn")),
+			connect.WithClientOptions(opts...),
+		),
+		listConnectorVpnRegions: connect.NewClient[v1.ListConnectorVpnRegionsRequest, v1.ListConnectorVpnRegionsResponse](
+			httpClient,
+			baseURL+ConnectorServiceListConnectorVpnRegionsProcedure,
+			connect.WithSchema(connectorServiceMethods.ByName("ListConnectorVpnRegions")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
 		createFederationToken: connect.NewClient[v1.CreateFederationTokenRequest, v1.CreateFederationTokenResponse](
 			httpClient,
 			baseURL+ConnectorServiceCreateFederationTokenProcedure,
@@ -837,6 +878,9 @@ type connectorServiceClient struct {
 	createConnectorTokenEncryptionKey      *connect.Client[v1.CreateConnectorTokenEncryptionKeyRequest, v1.CreateConnectorTokenEncryptionKeyResponse]
 	getConnectorTokenEncryptionKey         *connect.Client[v1.GetConnectorTokenEncryptionKeyRequest, v1.GetConnectorTokenEncryptionKeyResponse]
 	deleteConnectorTokenEncryptionKey      *connect.Client[v1.DeleteConnectorTokenEncryptionKeyRequest, v1.DeleteConnectorTokenEncryptionKeyResponse]
+	getConnectorVpn                        *connect.Client[v1.GetConnectorVpnRequest, v1.GetConnectorVpnResponse]
+	updateConnectorVpn                     *connect.Client[v1.UpdateConnectorVpnRequest, v1.UpdateConnectorVpnResponse]
+	listConnectorVpnRegions                *connect.Client[v1.ListConnectorVpnRegionsRequest, v1.ListConnectorVpnRegionsResponse]
 	createFederationToken                  *connect.Client[v1.CreateFederationTokenRequest, v1.CreateFederationTokenResponse]
 	updateConnectorListenerV2              *connect.Client[v1.UpdateConnectorListenerV2Request, v1.UpdateConnectorListenerV2Response]
 	updateConnectorListenerRuleV2          *connect.Client[v1.UpdateConnectorListenerRuleV2Request, v1.UpdateConnectorListenerRuleV2Response]
@@ -1091,6 +1135,21 @@ func (c *connectorServiceClient) DeleteConnectorTokenEncryptionKey(ctx context.C
 	return c.deleteConnectorTokenEncryptionKey.CallUnary(ctx, req)
 }
 
+// GetConnectorVpn calls core.v1.ConnectorService.GetConnectorVpn.
+func (c *connectorServiceClient) GetConnectorVpn(ctx context.Context, req *connect.Request[v1.GetConnectorVpnRequest]) (*connect.Response[v1.GetConnectorVpnResponse], error) {
+	return c.getConnectorVpn.CallUnary(ctx, req)
+}
+
+// UpdateConnectorVpn calls core.v1.ConnectorService.UpdateConnectorVpn.
+func (c *connectorServiceClient) UpdateConnectorVpn(ctx context.Context, req *connect.Request[v1.UpdateConnectorVpnRequest]) (*connect.Response[v1.UpdateConnectorVpnResponse], error) {
+	return c.updateConnectorVpn.CallUnary(ctx, req)
+}
+
+// ListConnectorVpnRegions calls core.v1.ConnectorService.ListConnectorVpnRegions.
+func (c *connectorServiceClient) ListConnectorVpnRegions(ctx context.Context, req *connect.Request[v1.ListConnectorVpnRegionsRequest]) (*connect.Response[v1.ListConnectorVpnRegionsResponse], error) {
+	return c.listConnectorVpnRegions.CallUnary(ctx, req)
+}
+
 // CreateFederationToken calls core.v1.ConnectorService.CreateFederationToken.
 func (c *connectorServiceClient) CreateFederationToken(ctx context.Context, req *connect.Request[v1.CreateFederationTokenRequest]) (*connect.Response[v1.CreateFederationTokenResponse], error) {
 	return c.createFederationToken.CallUnary(ctx, req)
@@ -1320,6 +1379,18 @@ type ConnectorServiceHandler interface {
 	//
 	// Delete a connector token encryption key by ID.
 	DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error)
+	// Get connector VPN
+	//
+	// Get the Formal VPN settings of a connector. A connector without settings reports the VPN as disabled.
+	GetConnectorVpn(context.Context, *connect.Request[v1.GetConnectorVpnRequest]) (*connect.Response[v1.GetConnectorVpnResponse], error)
+	// Update connector VPN
+	//
+	// Replace the Formal VPN settings of a connector.
+	UpdateConnectorVpn(context.Context, *connect.Request[v1.UpdateConnectorVpnRequest]) (*connect.Response[v1.UpdateConnectorVpnResponse], error)
+	// List connector VPN regions
+	//
+	// List the cloud regions a connector can declare as its location for the Formal VPN.
+	ListConnectorVpnRegions(context.Context, *connect.Request[v1.ListConnectorVpnRegionsRequest]) (*connect.Response[v1.ListConnectorVpnRegionsResponse], error)
 	// Create federation token
 	//
 	// Mint a short-lived federated connector credential for an OIDC-authenticated machine user.
@@ -1664,6 +1735,26 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 		connect.WithSchema(connectorServiceMethods.ByName("DeleteConnectorTokenEncryptionKey")),
 		connect.WithHandlerOptions(opts...),
 	)
+	connectorServiceGetConnectorVpnHandler := connect.NewUnaryHandler(
+		ConnectorServiceGetConnectorVpnProcedure,
+		svc.GetConnectorVpn,
+		connect.WithSchema(connectorServiceMethods.ByName("GetConnectorVpn")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	connectorServiceUpdateConnectorVpnHandler := connect.NewUnaryHandler(
+		ConnectorServiceUpdateConnectorVpnProcedure,
+		svc.UpdateConnectorVpn,
+		connect.WithSchema(connectorServiceMethods.ByName("UpdateConnectorVpn")),
+		connect.WithHandlerOptions(opts...),
+	)
+	connectorServiceListConnectorVpnRegionsHandler := connect.NewUnaryHandler(
+		ConnectorServiceListConnectorVpnRegionsProcedure,
+		svc.ListConnectorVpnRegions,
+		connect.WithSchema(connectorServiceMethods.ByName("ListConnectorVpnRegions")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
 	connectorServiceCreateFederationTokenHandler := connect.NewUnaryHandler(
 		ConnectorServiceCreateFederationTokenProcedure,
 		svc.CreateFederationToken,
@@ -1804,6 +1895,12 @@ func NewConnectorServiceHandler(svc ConnectorServiceHandler, opts ...connect.Han
 			connectorServiceGetConnectorTokenEncryptionKeyHandler.ServeHTTP(w, r)
 		case ConnectorServiceDeleteConnectorTokenEncryptionKeyProcedure:
 			connectorServiceDeleteConnectorTokenEncryptionKeyHandler.ServeHTTP(w, r)
+		case ConnectorServiceGetConnectorVpnProcedure:
+			connectorServiceGetConnectorVpnHandler.ServeHTTP(w, r)
+		case ConnectorServiceUpdateConnectorVpnProcedure:
+			connectorServiceUpdateConnectorVpnHandler.ServeHTTP(w, r)
+		case ConnectorServiceListConnectorVpnRegionsProcedure:
+			connectorServiceListConnectorVpnRegionsHandler.ServeHTTP(w, r)
 		case ConnectorServiceCreateFederationTokenProcedure:
 			connectorServiceCreateFederationTokenHandler.ServeHTTP(w, r)
 		case ConnectorServiceUpdateConnectorListenerV2Procedure:
@@ -2017,6 +2114,18 @@ func (UnimplementedConnectorServiceHandler) GetConnectorTokenEncryptionKey(conte
 
 func (UnimplementedConnectorServiceHandler) DeleteConnectorTokenEncryptionKey(context.Context, *connect.Request[v1.DeleteConnectorTokenEncryptionKeyRequest]) (*connect.Response[v1.DeleteConnectorTokenEncryptionKeyResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.DeleteConnectorTokenEncryptionKey is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) GetConnectorVpn(context.Context, *connect.Request[v1.GetConnectorVpnRequest]) (*connect.Response[v1.GetConnectorVpnResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.GetConnectorVpn is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) UpdateConnectorVpn(context.Context, *connect.Request[v1.UpdateConnectorVpnRequest]) (*connect.Response[v1.UpdateConnectorVpnResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.UpdateConnectorVpn is not implemented"))
+}
+
+func (UnimplementedConnectorServiceHandler) ListConnectorVpnRegions(context.Context, *connect.Request[v1.ListConnectorVpnRegionsRequest]) (*connect.Response[v1.ListConnectorVpnRegionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.ConnectorService.ListConnectorVpnRegions is not implemented"))
 }
 
 func (UnimplementedConnectorServiceHandler) CreateFederationToken(context.Context, *connect.Request[v1.CreateFederationTokenRequest]) (*connect.Response[v1.CreateFederationTokenResponse], error) {

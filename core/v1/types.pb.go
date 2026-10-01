@@ -3105,6 +3105,146 @@ func (x *ConnectorAiProvider) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+// Formal VPN settings of a connector.
+type ConnectorVpn struct {
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	ConnectorId string                 `protobuf:"bytes,1,opt,name=connector_id,json=connectorId,proto3" json:"connector_id,omitempty"`
+	Enabled     bool                   `protobuf:"varint,2,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	// Cloud provider hosting the connector. Formal VPN signaling runs in the region closest to it.
+	CloudProvider string `protobuf:"bytes,3,opt,name=cloud_provider,json=cloudProvider,proto3" json:"cloud_provider,omitempty"`
+	// Region hosting the connector.
+	Region        string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConnectorVpn) Reset() {
+	*x = ConnectorVpn{}
+	mi := &file_core_v1_types_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConnectorVpn) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConnectorVpn) ProtoMessage() {}
+
+func (x *ConnectorVpn) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_types_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConnectorVpn.ProtoReflect.Descriptor instead.
+func (*ConnectorVpn) Descriptor() ([]byte, []int) {
+	return file_core_v1_types_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *ConnectorVpn) GetConnectorId() string {
+	if x != nil {
+		return x.ConnectorId
+	}
+	return ""
+}
+
+func (x *ConnectorVpn) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+func (x *ConnectorVpn) GetCloudProvider() string {
+	if x != nil {
+		return x.CloudProvider
+	}
+	return ""
+}
+
+func (x *ConnectorVpn) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+// Cloud region a connector can declare as its location for the Formal VPN.
+type ConnectorVpnRegion struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CloudProvider string                 `protobuf:"bytes,1,opt,name=cloud_provider,json=cloudProvider,proto3" json:"cloud_provider,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	City          string                 `protobuf:"bytes,3,opt,name=city,proto3" json:"city,omitempty"`
+	Country       string                 `protobuf:"bytes,4,opt,name=country,proto3" json:"country,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConnectorVpnRegion) Reset() {
+	*x = ConnectorVpnRegion{}
+	mi := &file_core_v1_types_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConnectorVpnRegion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConnectorVpnRegion) ProtoMessage() {}
+
+func (x *ConnectorVpnRegion) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_types_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConnectorVpnRegion.ProtoReflect.Descriptor instead.
+func (*ConnectorVpnRegion) Descriptor() ([]byte, []int) {
+	return file_core_v1_types_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *ConnectorVpnRegion) GetCloudProvider() string {
+	if x != nil {
+		return x.CloudProvider
+	}
+	return ""
+}
+
+func (x *ConnectorVpnRegion) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+func (x *ConnectorVpnRegion) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
+}
+
+func (x *ConnectorVpnRegion) GetCountry() string {
+	if x != nil {
+		return x.Country
+	}
+	return ""
+}
+
 // KMS KEK used by a connector for HTTP policy token encryption (formalsealed).
 type ConnectorTokenEncryptionKey struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -3120,7 +3260,7 @@ type ConnectorTokenEncryptionKey struct {
 
 func (x *ConnectorTokenEncryptionKey) Reset() {
 	*x = ConnectorTokenEncryptionKey{}
-	mi := &file_core_v1_types_proto_msgTypes[37]
+	mi := &file_core_v1_types_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3132,7 +3272,7 @@ func (x *ConnectorTokenEncryptionKey) String() string {
 func (*ConnectorTokenEncryptionKey) ProtoMessage() {}
 
 func (x *ConnectorTokenEncryptionKey) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[37]
+	mi := &file_core_v1_types_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3145,7 +3285,7 @@ func (x *ConnectorTokenEncryptionKey) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConnectorTokenEncryptionKey.ProtoReflect.Descriptor instead.
 func (*ConnectorTokenEncryptionKey) Descriptor() ([]byte, []int) {
-	return file_core_v1_types_proto_rawDescGZIP(), []int{37}
+	return file_core_v1_types_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *ConnectorTokenEncryptionKey) GetId() string {
@@ -3201,7 +3341,7 @@ type User_Human struct {
 
 func (x *User_Human) Reset() {
 	*x = User_Human{}
-	mi := &file_core_v1_types_proto_msgTypes[38]
+	mi := &file_core_v1_types_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3213,7 +3353,7 @@ func (x *User_Human) String() string {
 func (*User_Human) ProtoMessage() {}
 
 func (x *User_Human) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[38]
+	mi := &file_core_v1_types_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3259,7 +3399,7 @@ type User_Machine struct {
 
 func (x *User_Machine) Reset() {
 	*x = User_Machine{}
-	mi := &file_core_v1_types_proto_msgTypes[39]
+	mi := &file_core_v1_types_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3271,7 +3411,7 @@ func (x *User_Machine) String() string {
 func (*User_Machine) ProtoMessage() {}
 
 func (x *User_Machine) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_types_proto_msgTypes[39]
+	mi := &file_core_v1_types_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3630,7 +3770,17 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xb1\x02\n" +
+	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x93\x01\n" +
+	"\fConnectorVpn\x12*\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12\x18\n" +
+	"\aenabled\x18\x02 \x01(\bR\aenabled\x12%\n" +
+	"\x0ecloud_provider\x18\x03 \x01(\tR\rcloudProvider\x12\x16\n" +
+	"\x06region\x18\x04 \x01(\tR\x06region\"\x81\x01\n" +
+	"\x12ConnectorVpnRegion\x12%\n" +
+	"\x0ecloud_provider\x18\x01 \x01(\tR\rcloudProvider\x12\x16\n" +
+	"\x06region\x18\x02 \x01(\tR\x06region\x12\x12\n" +
+	"\x04city\x18\x03 \x01(\tR\x04city\x12\x18\n" +
+	"\acountry\x18\x04 \x01(\tR\acountry\"\xb1\x02\n" +
 	"\x1bConnectorTokenEncryptionKey\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12*\n" +
 	"\fconnector_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12#\n" +
@@ -3655,7 +3805,7 @@ func file_core_v1_types_proto_rawDescGZIP() []byte {
 	return file_core_v1_types_proto_rawDescData
 }
 
-var file_core_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
+var file_core_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_core_v1_types_proto_goTypes = []any{
 	(*ResourceHealthCheck)(nil),             // 0: core.v1.ResourceHealthCheck
 	(*Space)(nil),                           // 1: core.v1.Space
@@ -3694,78 +3844,80 @@ var file_core_v1_types_proto_goTypes = []any{
 	(*AzureAiConfig)(nil),                   // 34: core.v1.AzureAiConfig
 	(*ConnectorAiProviderConfig)(nil),       // 35: core.v1.ConnectorAiProviderConfig
 	(*ConnectorAiProvider)(nil),             // 36: core.v1.ConnectorAiProvider
-	(*ConnectorTokenEncryptionKey)(nil),     // 37: core.v1.ConnectorTokenEncryptionKey
-	(*User_Human)(nil),                      // 38: core.v1.User.Human
-	(*User_Machine)(nil),                    // 39: core.v1.User.Machine
-	(*timestamppb.Timestamp)(nil),           // 40: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),             // 41: google.protobuf.Duration
+	(*ConnectorVpn)(nil),                    // 37: core.v1.ConnectorVpn
+	(*ConnectorVpnRegion)(nil),              // 38: core.v1.ConnectorVpnRegion
+	(*ConnectorTokenEncryptionKey)(nil),     // 39: core.v1.ConnectorTokenEncryptionKey
+	(*User_Human)(nil),                      // 40: core.v1.User.Human
+	(*User_Machine)(nil),                    // 41: core.v1.User.Machine
+	(*timestamppb.Timestamp)(nil),           // 42: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),             // 43: google.protobuf.Duration
 }
 var file_core_v1_types_proto_depIdxs = []int32{
-	40, // 0: core.v1.ResourceHealthCheck.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 1: core.v1.ResourceHealthCheck.created_at:type_name -> google.protobuf.Timestamp
-	40, // 2: core.v1.Space.created_at:type_name -> google.protobuf.Timestamp
-	40, // 3: core.v1.Space.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 0: core.v1.ResourceHealthCheck.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 1: core.v1.ResourceHealthCheck.created_at:type_name -> google.protobuf.Timestamp
+	42, // 2: core.v1.Space.created_at:type_name -> google.protobuf.Timestamp
+	42, // 3: core.v1.Space.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 4: core.v1.Resource.space:type_name -> core.v1.Space
-	40, // 5: core.v1.Resource.created_at:type_name -> google.protobuf.Timestamp
-	40, // 6: core.v1.Resource.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 5: core.v1.Resource.created_at:type_name -> google.protobuf.Timestamp
+	42, // 6: core.v1.Resource.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 7: core.v1.Resource.tags:type_name -> core.v1.ResourceTag
-	40, // 8: core.v1.Resource.native_users_v3_enabled_at:type_name -> google.protobuf.Timestamp
+	42, // 8: core.v1.Resource.native_users_v3_enabled_at:type_name -> google.protobuf.Timestamp
 	1,  // 9: core.v1.Connector.space:type_name -> core.v1.Space
-	40, // 10: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
-	40, // 11: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 12: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
-	40, // 13: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 10: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
+	42, // 11: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 12: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
+	42, // 13: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 14: core.v1.ConnectorListener.connector:type_name -> core.v1.Connector
 	5,  // 15: core.v1.ConnectorListenerRule.listener:type_name -> core.v1.ConnectorListener
-	40, // 16: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
-	40, // 17: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 16: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
+	42, // 17: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
 	5,  // 18: core.v1.ConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
 	4,  // 19: core.v1.ConnectorListenerLink.connector:type_name -> core.v1.Connector
-	40, // 20: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
-	40, // 21: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 20: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
+	42, // 21: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 22: core.v1.ConnectorHostname.connector:type_name -> core.v1.Connector
-	40, // 23: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
-	40, // 24: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 23: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
+	42, // 24: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 25: core.v1.ListConnectorListenerLink.connector:type_name -> core.v1.Connector
 	5,  // 26: core.v1.ListConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
-	40, // 27: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
-	40, // 28: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
-	40, // 29: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
+	42, // 27: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
+	42, // 28: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
+	42, // 29: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
 	17, // 30: core.v1.Owner.user:type_name -> core.v1.User
 	18, // 31: core.v1.Owner.group:type_name -> core.v1.Group
-	40, // 32: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 33: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 34: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 35: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 36: core.v1.ResourceSshHostKey.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 37: core.v1.ResourceSshHostKey.created_at:type_name -> google.protobuf.Timestamp
-	40, // 38: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 39: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	38, // 40: core.v1.User.human:type_name -> core.v1.User.Human
-	39, // 41: core.v1.User.machine:type_name -> core.v1.User.Machine
-	40, // 42: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
-	40, // 43: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	40, // 44: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 45: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
-	40, // 46: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 32: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	42, // 33: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 34: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 35: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	42, // 36: core.v1.ResourceSshHostKey.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 37: core.v1.ResourceSshHostKey.created_at:type_name -> google.protobuf.Timestamp
+	42, // 38: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 39: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	40, // 40: core.v1.User.human:type_name -> core.v1.User.Human
+	41, // 41: core.v1.User.machine:type_name -> core.v1.User.Machine
+	42, // 42: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
+	42, // 43: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	42, // 44: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 45: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
+	42, // 46: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
 	18, // 47: core.v1.UserGroupLink.group:type_name -> core.v1.Group
 	17, // 48: core.v1.UserGroupLink.user:type_name -> core.v1.User
-	40, // 49: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
-	40, // 50: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 49: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
+	42, // 50: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 51: core.v1.Satellite.space:type_name -> core.v1.Space
-	40, // 52: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
-	40, // 53: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 54: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
-	40, // 55: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
+	42, // 52: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
+	42, // 53: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 54: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
+	42, // 55: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
 	3,  // 56: core.v1.ResourceHostname.resource:type_name -> core.v1.Resource
-	40, // 57: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
-	40, // 58: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 59: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
-	40, // 60: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 61: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	41, // 62: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
-	40, // 63: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 64: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 57: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
+	42, // 58: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 59: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
+	42, // 60: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	42, // 61: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 62: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
+	42, // 63: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	42, // 64: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 65: core.v1.ResourceConnectorAccess.connector:type_name -> core.v1.Connector
 	28, // 66: core.v1.ConnectorAiProviderConfig.formal_ai_satellite:type_name -> core.v1.FormalAiSatelliteConfig
 	29, // 67: core.v1.ConnectorAiProviderConfig.gemini:type_name -> core.v1.GeminiConfig
@@ -3775,10 +3927,10 @@ var file_core_v1_types_proto_depIdxs = []int32{
 	33, // 71: core.v1.ConnectorAiProviderConfig.openai:type_name -> core.v1.OpenAiConfig
 	34, // 72: core.v1.ConnectorAiProviderConfig.azure_ai:type_name -> core.v1.AzureAiConfig
 	35, // 73: core.v1.ConnectorAiProvider.config:type_name -> core.v1.ConnectorAiProviderConfig
-	40, // 74: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
-	40, // 75: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 76: core.v1.ConnectorTokenEncryptionKey.created_at:type_name -> google.protobuf.Timestamp
-	40, // 77: core.v1.ConnectorTokenEncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 74: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
+	42, // 75: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 76: core.v1.ConnectorTokenEncryptionKey.created_at:type_name -> google.protobuf.Timestamp
+	42, // 77: core.v1.ConnectorTokenEncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
 	78, // [78:78] is the sub-list for method output_type
 	78, // [78:78] is the sub-list for method input_type
 	78, // [78:78] is the sub-list for extension type_name
@@ -3817,7 +3969,7 @@ func file_core_v1_types_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_types_proto_rawDesc), len(file_core_v1_types_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   40,
+			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
