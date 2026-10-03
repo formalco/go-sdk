@@ -181,6 +181,106 @@ func (x *AIAssessmentLabel) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type AIAssessmentCriterion struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Condition     string                 `protobuf:"bytes,3,opt,name=condition,proto3" json:"condition,omitempty"`
+	Kind          string                 `protobuf:"bytes,4,opt,name=kind,proto3" json:"kind,omitempty"`
+	Severity      string                 `protobuf:"bytes,5,opt,name=severity,proto3" json:"severity,omitempty"`
+	Enabled       bool                   `protobuf:"varint,6,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AIAssessmentCriterion) Reset() {
+	*x = AIAssessmentCriterion{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AIAssessmentCriterion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AIAssessmentCriterion) ProtoMessage() {}
+
+func (x *AIAssessmentCriterion) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AIAssessmentCriterion.ProtoReflect.Descriptor instead.
+func (*AIAssessmentCriterion) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AIAssessmentCriterion) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *AIAssessmentCriterion) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *AIAssessmentCriterion) GetCondition() string {
+	if x != nil {
+		return x.Condition
+	}
+	return ""
+}
+
+func (x *AIAssessmentCriterion) GetKind() string {
+	if x != nil {
+		return x.Kind
+	}
+	return ""
+}
+
+func (x *AIAssessmentCriterion) GetSeverity() string {
+	if x != nil {
+		return x.Severity
+	}
+	return ""
+}
+
+func (x *AIAssessmentCriterion) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+func (x *AIAssessmentCriterion) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *AIAssessmentCriterion) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
 type GetAIAssessmentSettingsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -189,7 +289,7 @@ type GetAIAssessmentSettingsRequest struct {
 
 func (x *GetAIAssessmentSettingsRequest) Reset() {
 	*x = GetAIAssessmentSettingsRequest{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[2]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -201,7 +301,7 @@ func (x *GetAIAssessmentSettingsRequest) String() string {
 func (*GetAIAssessmentSettingsRequest) ProtoMessage() {}
 
 func (x *GetAIAssessmentSettingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[2]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +314,7 @@ func (x *GetAIAssessmentSettingsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAIAssessmentSettingsRequest.ProtoReflect.Descriptor instead.
 func (*GetAIAssessmentSettingsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{2}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{3}
 }
 
 type GetAIAssessmentSettingsResponse struct {
@@ -226,7 +326,7 @@ type GetAIAssessmentSettingsResponse struct {
 
 func (x *GetAIAssessmentSettingsResponse) Reset() {
 	*x = GetAIAssessmentSettingsResponse{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[3]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -238,7 +338,7 @@ func (x *GetAIAssessmentSettingsResponse) String() string {
 func (*GetAIAssessmentSettingsResponse) ProtoMessage() {}
 
 func (x *GetAIAssessmentSettingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[3]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +351,7 @@ func (x *GetAIAssessmentSettingsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAIAssessmentSettingsResponse.ProtoReflect.Descriptor instead.
 func (*GetAIAssessmentSettingsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{3}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetAIAssessmentSettingsResponse) GetSettings() *AIAssessmentSettings {
@@ -270,7 +370,7 @@ type UpdateAIAssessmentSettingsRequest struct {
 
 func (x *UpdateAIAssessmentSettingsRequest) Reset() {
 	*x = UpdateAIAssessmentSettingsRequest{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[4]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -282,7 +382,7 @@ func (x *UpdateAIAssessmentSettingsRequest) String() string {
 func (*UpdateAIAssessmentSettingsRequest) ProtoMessage() {}
 
 func (x *UpdateAIAssessmentSettingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[4]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -295,7 +395,7 @@ func (x *UpdateAIAssessmentSettingsRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use UpdateAIAssessmentSettingsRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAIAssessmentSettingsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{4}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UpdateAIAssessmentSettingsRequest) GetEnabled() bool {
@@ -314,7 +414,7 @@ type UpdateAIAssessmentSettingsResponse struct {
 
 func (x *UpdateAIAssessmentSettingsResponse) Reset() {
 	*x = UpdateAIAssessmentSettingsResponse{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[5]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -326,7 +426,7 @@ func (x *UpdateAIAssessmentSettingsResponse) String() string {
 func (*UpdateAIAssessmentSettingsResponse) ProtoMessage() {}
 
 func (x *UpdateAIAssessmentSettingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[5]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -339,7 +439,7 @@ func (x *UpdateAIAssessmentSettingsResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use UpdateAIAssessmentSettingsResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAIAssessmentSettingsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{5}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UpdateAIAssessmentSettingsResponse) GetSettings() *AIAssessmentSettings {
@@ -361,7 +461,7 @@ type CreateAIAssessmentLabelRequest struct {
 
 func (x *CreateAIAssessmentLabelRequest) Reset() {
 	*x = CreateAIAssessmentLabelRequest{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[6]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -373,7 +473,7 @@ func (x *CreateAIAssessmentLabelRequest) String() string {
 func (*CreateAIAssessmentLabelRequest) ProtoMessage() {}
 
 func (x *CreateAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[6]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -386,7 +486,7 @@ func (x *CreateAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAIAssessmentLabelRequest.ProtoReflect.Descriptor instead.
 func (*CreateAIAssessmentLabelRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{6}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateAIAssessmentLabelRequest) GetName() string {
@@ -426,7 +526,7 @@ type CreateAIAssessmentLabelResponse struct {
 
 func (x *CreateAIAssessmentLabelResponse) Reset() {
 	*x = CreateAIAssessmentLabelResponse{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[7]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -438,7 +538,7 @@ func (x *CreateAIAssessmentLabelResponse) String() string {
 func (*CreateAIAssessmentLabelResponse) ProtoMessage() {}
 
 func (x *CreateAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[7]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -451,7 +551,7 @@ func (x *CreateAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAIAssessmentLabelResponse.ProtoReflect.Descriptor instead.
 func (*CreateAIAssessmentLabelResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{7}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CreateAIAssessmentLabelResponse) GetLabel() *AIAssessmentLabel {
@@ -472,7 +572,7 @@ type ListAIAssessmentLabelsRequest struct {
 
 func (x *ListAIAssessmentLabelsRequest) Reset() {
 	*x = ListAIAssessmentLabelsRequest{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[8]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -484,7 +584,7 @@ func (x *ListAIAssessmentLabelsRequest) String() string {
 func (*ListAIAssessmentLabelsRequest) ProtoMessage() {}
 
 func (x *ListAIAssessmentLabelsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[8]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -497,7 +597,7 @@ func (x *ListAIAssessmentLabelsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAIAssessmentLabelsRequest.ProtoReflect.Descriptor instead.
 func (*ListAIAssessmentLabelsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{8}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListAIAssessmentLabelsRequest) GetLimit() int32 {
@@ -531,7 +631,7 @@ type ListAIAssessmentLabelsResponse struct {
 
 func (x *ListAIAssessmentLabelsResponse) Reset() {
 	*x = ListAIAssessmentLabelsResponse{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[9]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -543,7 +643,7 @@ func (x *ListAIAssessmentLabelsResponse) String() string {
 func (*ListAIAssessmentLabelsResponse) ProtoMessage() {}
 
 func (x *ListAIAssessmentLabelsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[9]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -556,7 +656,7 @@ func (x *ListAIAssessmentLabelsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAIAssessmentLabelsResponse.ProtoReflect.Descriptor instead.
 func (*ListAIAssessmentLabelsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{9}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListAIAssessmentLabelsResponse) GetLabels() []*AIAssessmentLabel {
@@ -582,7 +682,7 @@ type GetAIAssessmentLabelRequest struct {
 
 func (x *GetAIAssessmentLabelRequest) Reset() {
 	*x = GetAIAssessmentLabelRequest{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[10]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -594,7 +694,7 @@ func (x *GetAIAssessmentLabelRequest) String() string {
 func (*GetAIAssessmentLabelRequest) ProtoMessage() {}
 
 func (x *GetAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[10]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -607,7 +707,7 @@ func (x *GetAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAIAssessmentLabelRequest.ProtoReflect.Descriptor instead.
 func (*GetAIAssessmentLabelRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{10}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetAIAssessmentLabelRequest) GetId() string {
@@ -626,7 +726,7 @@ type GetAIAssessmentLabelResponse struct {
 
 func (x *GetAIAssessmentLabelResponse) Reset() {
 	*x = GetAIAssessmentLabelResponse{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[11]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -638,7 +738,7 @@ func (x *GetAIAssessmentLabelResponse) String() string {
 func (*GetAIAssessmentLabelResponse) ProtoMessage() {}
 
 func (x *GetAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[11]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -651,7 +751,7 @@ func (x *GetAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAIAssessmentLabelResponse.ProtoReflect.Descriptor instead.
 func (*GetAIAssessmentLabelResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{11}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetAIAssessmentLabelResponse) GetLabel() *AIAssessmentLabel {
@@ -670,7 +770,7 @@ type UpdateAIAssessmentLabelRequest struct {
 
 func (x *UpdateAIAssessmentLabelRequest) Reset() {
 	*x = UpdateAIAssessmentLabelRequest{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[12]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -682,7 +782,7 @@ func (x *UpdateAIAssessmentLabelRequest) String() string {
 func (*UpdateAIAssessmentLabelRequest) ProtoMessage() {}
 
 func (x *UpdateAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[12]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -695,7 +795,7 @@ func (x *UpdateAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAIAssessmentLabelRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAIAssessmentLabelRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{12}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UpdateAIAssessmentLabelRequest) GetLabel() *AIAssessmentLabel {
@@ -714,7 +814,7 @@ type UpdateAIAssessmentLabelResponse struct {
 
 func (x *UpdateAIAssessmentLabelResponse) Reset() {
 	*x = UpdateAIAssessmentLabelResponse{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[13]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -726,7 +826,7 @@ func (x *UpdateAIAssessmentLabelResponse) String() string {
 func (*UpdateAIAssessmentLabelResponse) ProtoMessage() {}
 
 func (x *UpdateAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[13]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -739,7 +839,7 @@ func (x *UpdateAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAIAssessmentLabelResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAIAssessmentLabelResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateAIAssessmentLabelResponse) GetLabel() *AIAssessmentLabel {
@@ -758,7 +858,7 @@ type DeleteAIAssessmentLabelRequest struct {
 
 func (x *DeleteAIAssessmentLabelRequest) Reset() {
 	*x = DeleteAIAssessmentLabelRequest{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[14]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -770,7 +870,7 @@ func (x *DeleteAIAssessmentLabelRequest) String() string {
 func (*DeleteAIAssessmentLabelRequest) ProtoMessage() {}
 
 func (x *DeleteAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[14]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -783,7 +883,7 @@ func (x *DeleteAIAssessmentLabelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAIAssessmentLabelRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAIAssessmentLabelRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DeleteAIAssessmentLabelRequest) GetId() string {
@@ -802,7 +902,7 @@ type DeleteAIAssessmentLabelResponse struct {
 
 func (x *DeleteAIAssessmentLabelResponse) Reset() {
 	*x = DeleteAIAssessmentLabelResponse{}
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[15]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -814,7 +914,7 @@ func (x *DeleteAIAssessmentLabelResponse) String() string {
 func (*DeleteAIAssessmentLabelResponse) ProtoMessage() {}
 
 func (x *DeleteAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_ai_assessment_proto_msgTypes[15]
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -827,10 +927,506 @@ func (x *DeleteAIAssessmentLabelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAIAssessmentLabelResponse.ProtoReflect.Descriptor instead.
 func (*DeleteAIAssessmentLabelResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DeleteAIAssessmentLabelResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type CreateAIAssessmentCriterionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Condition     string                 `protobuf:"bytes,2,opt,name=condition,proto3" json:"condition,omitempty"`
+	Kind          string                 `protobuf:"bytes,3,opt,name=kind,proto3" json:"kind,omitempty"`
+	Severity      string                 `protobuf:"bytes,4,opt,name=severity,proto3" json:"severity,omitempty"`
+	Enabled       bool                   `protobuf:"varint,5,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAIAssessmentCriterionRequest) Reset() {
+	*x = CreateAIAssessmentCriterionRequest{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAIAssessmentCriterionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAIAssessmentCriterionRequest) ProtoMessage() {}
+
+func (x *CreateAIAssessmentCriterionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAIAssessmentCriterionRequest.ProtoReflect.Descriptor instead.
+func (*CreateAIAssessmentCriterionRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *CreateAIAssessmentCriterionRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateAIAssessmentCriterionRequest) GetCondition() string {
+	if x != nil {
+		return x.Condition
+	}
+	return ""
+}
+
+func (x *CreateAIAssessmentCriterionRequest) GetKind() string {
+	if x != nil {
+		return x.Kind
+	}
+	return ""
+}
+
+func (x *CreateAIAssessmentCriterionRequest) GetSeverity() string {
+	if x != nil {
+		return x.Severity
+	}
+	return ""
+}
+
+func (x *CreateAIAssessmentCriterionRequest) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+type CreateAIAssessmentCriterionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Criterion     *AIAssessmentCriterion `protobuf:"bytes,1,opt,name=criterion,proto3" json:"criterion,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAIAssessmentCriterionResponse) Reset() {
+	*x = CreateAIAssessmentCriterionResponse{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAIAssessmentCriterionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAIAssessmentCriterionResponse) ProtoMessage() {}
+
+func (x *CreateAIAssessmentCriterionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAIAssessmentCriterionResponse.ProtoReflect.Descriptor instead.
+func (*CreateAIAssessmentCriterionResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CreateAIAssessmentCriterionResponse) GetCriterion() *AIAssessmentCriterion {
+	if x != nil {
+		return x.Criterion
+	}
+	return nil
+}
+
+type ListAIAssessmentCriteriaRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Cursor        string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	Order         string                 `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAIAssessmentCriteriaRequest) Reset() {
+	*x = ListAIAssessmentCriteriaRequest{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAIAssessmentCriteriaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAIAssessmentCriteriaRequest) ProtoMessage() {}
+
+func (x *ListAIAssessmentCriteriaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAIAssessmentCriteriaRequest.ProtoReflect.Descriptor instead.
+func (*ListAIAssessmentCriteriaRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *ListAIAssessmentCriteriaRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListAIAssessmentCriteriaRequest) GetCursor() string {
+	if x != nil {
+		return x.Cursor
+	}
+	return ""
+}
+
+func (x *ListAIAssessmentCriteriaRequest) GetOrder() string {
+	if x != nil {
+		return x.Order
+	}
+	return ""
+}
+
+type ListAIAssessmentCriteriaResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Criteria      []*AIAssessmentCriterion `protobuf:"bytes,1,rep,name=criteria,proto3" json:"criteria,omitempty"`
+	ListMetadata  *ListMetadata            `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAIAssessmentCriteriaResponse) Reset() {
+	*x = ListAIAssessmentCriteriaResponse{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAIAssessmentCriteriaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAIAssessmentCriteriaResponse) ProtoMessage() {}
+
+func (x *ListAIAssessmentCriteriaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAIAssessmentCriteriaResponse.ProtoReflect.Descriptor instead.
+func (*ListAIAssessmentCriteriaResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ListAIAssessmentCriteriaResponse) GetCriteria() []*AIAssessmentCriterion {
+	if x != nil {
+		return x.Criteria
+	}
+	return nil
+}
+
+func (x *ListAIAssessmentCriteriaResponse) GetListMetadata() *ListMetadata {
+	if x != nil {
+		return x.ListMetadata
+	}
+	return nil
+}
+
+type GetAIAssessmentCriterionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAIAssessmentCriterionRequest) Reset() {
+	*x = GetAIAssessmentCriterionRequest{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAIAssessmentCriterionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAIAssessmentCriterionRequest) ProtoMessage() {}
+
+func (x *GetAIAssessmentCriterionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAIAssessmentCriterionRequest.ProtoReflect.Descriptor instead.
+func (*GetAIAssessmentCriterionRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetAIAssessmentCriterionRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetAIAssessmentCriterionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Criterion     *AIAssessmentCriterion `protobuf:"bytes,1,opt,name=criterion,proto3" json:"criterion,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAIAssessmentCriterionResponse) Reset() {
+	*x = GetAIAssessmentCriterionResponse{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAIAssessmentCriterionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAIAssessmentCriterionResponse) ProtoMessage() {}
+
+func (x *GetAIAssessmentCriterionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAIAssessmentCriterionResponse.ProtoReflect.Descriptor instead.
+func (*GetAIAssessmentCriterionResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetAIAssessmentCriterionResponse) GetCriterion() *AIAssessmentCriterion {
+	if x != nil {
+		return x.Criterion
+	}
+	return nil
+}
+
+type UpdateAIAssessmentCriterionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Criterion     *AIAssessmentCriterion `protobuf:"bytes,1,opt,name=criterion,proto3" json:"criterion,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAIAssessmentCriterionRequest) Reset() {
+	*x = UpdateAIAssessmentCriterionRequest{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAIAssessmentCriterionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAIAssessmentCriterionRequest) ProtoMessage() {}
+
+func (x *UpdateAIAssessmentCriterionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAIAssessmentCriterionRequest.ProtoReflect.Descriptor instead.
+func (*UpdateAIAssessmentCriterionRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *UpdateAIAssessmentCriterionRequest) GetCriterion() *AIAssessmentCriterion {
+	if x != nil {
+		return x.Criterion
+	}
+	return nil
+}
+
+type UpdateAIAssessmentCriterionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Criterion     *AIAssessmentCriterion `protobuf:"bytes,1,opt,name=criterion,proto3" json:"criterion,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAIAssessmentCriterionResponse) Reset() {
+	*x = UpdateAIAssessmentCriterionResponse{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAIAssessmentCriterionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAIAssessmentCriterionResponse) ProtoMessage() {}
+
+func (x *UpdateAIAssessmentCriterionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAIAssessmentCriterionResponse.ProtoReflect.Descriptor instead.
+func (*UpdateAIAssessmentCriterionResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *UpdateAIAssessmentCriterionResponse) GetCriterion() *AIAssessmentCriterion {
+	if x != nil {
+		return x.Criterion
+	}
+	return nil
+}
+
+type DeleteAIAssessmentCriterionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAIAssessmentCriterionRequest) Reset() {
+	*x = DeleteAIAssessmentCriterionRequest{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAIAssessmentCriterionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAIAssessmentCriterionRequest) ProtoMessage() {}
+
+func (x *DeleteAIAssessmentCriterionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAIAssessmentCriterionRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAIAssessmentCriterionRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *DeleteAIAssessmentCriterionRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type DeleteAIAssessmentCriterionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAIAssessmentCriterionResponse) Reset() {
+	*x = DeleteAIAssessmentCriterionResponse{}
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAIAssessmentCriterionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAIAssessmentCriterionResponse) ProtoMessage() {}
+
+func (x *DeleteAIAssessmentCriterionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_ai_assessment_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAIAssessmentCriterionResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAIAssessmentCriterionResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_ai_assessment_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *DeleteAIAssessmentCriterionResponse) GetId() string {
 	if x != nil {
 		return x.Id
 	}
@@ -858,7 +1454,18 @@ const file_core_v1_ai_assessment_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\" \n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\x86\x03\n" +
+	"\x15AIAssessmentCriterion\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12&\n" +
+	"\x04name\x18\x02 \x01(\tB\x12\xbaH\x0fr\r\x10\x01\x18\x80\x022\x06.*\\S.*R\x04name\x120\n" +
+	"\tcondition\x18\x03 \x01(\tB\x12\xbaH\x0fr\r\x10\x01\x18\xd0\x0f2\x06.*\\S.*R\tcondition\x12*\n" +
+	"\x04kind\x18\x04 \x01(\tB\x16\xbaH\x13r\x11R\x04riskR\talignmentR\x04kind\x12>\n" +
+	"\bseverity\x18\x05 \x01(\tB\"\xbaH\x1fr\x1dR\x03lowR\x06mediumR\x04highR\bcriticalR\bseverity\x12\x18\n" +
+	"\aenabled\x18\x06 \x01(\bR\aenabled\x129\n" +
+	"\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\" \n" +
 	"\x1eGetAIAssessmentSettingsRequest\"\\\n" +
 	"\x1fGetAIAssessmentSettingsResponse\x129\n" +
 	"\bsettings\x18\x01 \x01(\v2\x1d.core.v1.AIAssessmentSettingsR\bsettings\"=\n" +
@@ -893,7 +1500,35 @@ const file_core_v1_ai_assessment_proto_rawDesc = "" +
 	"\x1eDeleteAIAssessmentLabelRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\":\n" +
 	"\x1fDeleteAIAssessmentLabelResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xea\t\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x84\x02\n" +
+	"\"CreateAIAssessmentCriterionRequest\x12&\n" +
+	"\x04name\x18\x01 \x01(\tB\x12\xbaH\x0fr\r\x10\x01\x18\x80\x022\x06.*\\S.*R\x04name\x120\n" +
+	"\tcondition\x18\x02 \x01(\tB\x12\xbaH\x0fr\r\x10\x01\x18\xd0\x0f2\x06.*\\S.*R\tcondition\x12*\n" +
+	"\x04kind\x18\x03 \x01(\tB\x16\xbaH\x13r\x11R\x04riskR\talignmentR\x04kind\x12>\n" +
+	"\bseverity\x18\x04 \x01(\tB\"\xbaH\x1fr\x1dR\x03lowR\x06mediumR\x04highR\bcriticalR\bseverity\x12\x18\n" +
+	"\aenabled\x18\x05 \x01(\bR\aenabled\"c\n" +
+	"#CreateAIAssessmentCriterionResponse\x12<\n" +
+	"\tcriterion\x18\x01 \x01(\v2\x1e.core.v1.AIAssessmentCriterionR\tcriterion\"q\n" +
+	"\x1fListAIAssessmentCriteriaRequest\x12 \n" +
+	"\x05limit\x18\x01 \x01(\x05B\n" +
+	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
+	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\"\x9a\x01\n" +
+	" ListAIAssessmentCriteriaResponse\x12:\n" +
+	"\bcriteria\x18\x01 \x03(\v2\x1e.core.v1.AIAssessmentCriterionR\bcriteria\x12:\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\":\n" +
+	"\x1fGetAIAssessmentCriterionRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"`\n" +
+	" GetAIAssessmentCriterionResponse\x12<\n" +
+	"\tcriterion\x18\x01 \x01(\v2\x1e.core.v1.AIAssessmentCriterionR\tcriterion\"j\n" +
+	"\"UpdateAIAssessmentCriterionRequest\x12D\n" +
+	"\tcriterion\x18\x01 \x01(\v2\x1e.core.v1.AIAssessmentCriterionB\x06\xbaH\x03\xc8\x01\x01R\tcriterion\"c\n" +
+	"#UpdateAIAssessmentCriterionResponse\x12<\n" +
+	"\tcriterion\x18\x01 \x01(\v2\x1e.core.v1.AIAssessmentCriterionR\tcriterion\"=\n" +
+	"\"DeleteAIAssessmentCriterionRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\">\n" +
+	"#DeleteAIAssessmentCriterionResponse\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x98\x11\n" +
 	"\x13AIAssessmentService\x12\xb0\x01\n" +
 	"\x17GetAIAssessmentSettings\x12'.core.v1.GetAIAssessmentSettingsRequest\x1a(.core.v1.GetAIAssessmentSettingsResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/GetAIAssessmentSettings\x90\x02\x01\x12\xb9\x01\n" +
 	"\x1aUpdateAIAssessmentSettings\x12*.core.v1.UpdateAIAssessmentSettingsRequest\x1a+.core.v1.UpdateAIAssessmentSettingsResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.AIAssessmentService/UpdateAIAssessmentSettings\x12\xad\x01\n" +
@@ -901,7 +1536,12 @@ const file_core_v1_ai_assessment_proto_rawDesc = "" +
 	"\x16ListAIAssessmentLabels\x12&.core.v1.ListAIAssessmentLabelsRequest\x1a'.core.v1.ListAIAssessmentLabelsResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.AIAssessmentService/ListAIAssessmentLabels\x90\x02\x01\x12\xa4\x01\n" +
 	"\x14GetAIAssessmentLabel\x12$.core.v1.GetAIAssessmentLabelRequest\x1a%.core.v1.GetAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.AIAssessmentService/GetAIAssessmentLabel\x90\x02\x01\x12\xad\x01\n" +
 	"\x17UpdateAIAssessmentLabel\x12'.core.v1.UpdateAIAssessmentLabelRequest\x1a(.core.v1.UpdateAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/UpdateAIAssessmentLabel\x12\xad\x01\n" +
-	"\x17DeleteAIAssessmentLabel\x12'.core.v1.DeleteAIAssessmentLabelRequest\x1a(.core.v1.DeleteAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/DeleteAIAssessmentLabelB\x8b\x01\n" +
+	"\x17DeleteAIAssessmentLabel\x12'.core.v1.DeleteAIAssessmentLabelRequest\x1a(.core.v1.DeleteAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/DeleteAIAssessmentLabel\x12\xbd\x01\n" +
+	"\x1bCreateAIAssessmentCriterion\x12+.core.v1.CreateAIAssessmentCriterionRequest\x1a,.core.v1.CreateAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.AIAssessmentService/CreateAIAssessmentCriterion\x12\xb4\x01\n" +
+	"\x18ListAIAssessmentCriteria\x12(.core.v1.ListAIAssessmentCriteriaRequest\x1a).core.v1.ListAIAssessmentCriteriaResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.AIAssessmentService/ListAIAssessmentCriteria\x90\x02\x01\x12\xb4\x01\n" +
+	"\x18GetAIAssessmentCriterion\x12(.core.v1.GetAIAssessmentCriterionRequest\x1a).core.v1.GetAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.AIAssessmentService/GetAIAssessmentCriterion\x90\x02\x01\x12\xbd\x01\n" +
+	"\x1bUpdateAIAssessmentCriterion\x12+.core.v1.UpdateAIAssessmentCriterionRequest\x1a,.core.v1.UpdateAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.AIAssessmentService/UpdateAIAssessmentCriterion\x12\xbd\x01\n" +
+	"\x1bDeleteAIAssessmentCriterion\x12+.core.v1.DeleteAIAssessmentCriterionRequest\x1a,.core.v1.DeleteAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.AIAssessmentService/DeleteAIAssessmentCriterionB\x8b\x01\n" +
 	"\vcom.core.v1B\x11AiAssessmentProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (
@@ -916,59 +1556,88 @@ func file_core_v1_ai_assessment_proto_rawDescGZIP() []byte {
 	return file_core_v1_ai_assessment_proto_rawDescData
 }
 
-var file_core_v1_ai_assessment_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_core_v1_ai_assessment_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_core_v1_ai_assessment_proto_goTypes = []any{
-	(*AIAssessmentSettings)(nil),               // 0: core.v1.AIAssessmentSettings
-	(*AIAssessmentLabel)(nil),                  // 1: core.v1.AIAssessmentLabel
-	(*GetAIAssessmentSettingsRequest)(nil),     // 2: core.v1.GetAIAssessmentSettingsRequest
-	(*GetAIAssessmentSettingsResponse)(nil),    // 3: core.v1.GetAIAssessmentSettingsResponse
-	(*UpdateAIAssessmentSettingsRequest)(nil),  // 4: core.v1.UpdateAIAssessmentSettingsRequest
-	(*UpdateAIAssessmentSettingsResponse)(nil), // 5: core.v1.UpdateAIAssessmentSettingsResponse
-	(*CreateAIAssessmentLabelRequest)(nil),     // 6: core.v1.CreateAIAssessmentLabelRequest
-	(*CreateAIAssessmentLabelResponse)(nil),    // 7: core.v1.CreateAIAssessmentLabelResponse
-	(*ListAIAssessmentLabelsRequest)(nil),      // 8: core.v1.ListAIAssessmentLabelsRequest
-	(*ListAIAssessmentLabelsResponse)(nil),     // 9: core.v1.ListAIAssessmentLabelsResponse
-	(*GetAIAssessmentLabelRequest)(nil),        // 10: core.v1.GetAIAssessmentLabelRequest
-	(*GetAIAssessmentLabelResponse)(nil),       // 11: core.v1.GetAIAssessmentLabelResponse
-	(*UpdateAIAssessmentLabelRequest)(nil),     // 12: core.v1.UpdateAIAssessmentLabelRequest
-	(*UpdateAIAssessmentLabelResponse)(nil),    // 13: core.v1.UpdateAIAssessmentLabelResponse
-	(*DeleteAIAssessmentLabelRequest)(nil),     // 14: core.v1.DeleteAIAssessmentLabelRequest
-	(*DeleteAIAssessmentLabelResponse)(nil),    // 15: core.v1.DeleteAIAssessmentLabelResponse
-	(*timestamppb.Timestamp)(nil),              // 16: google.protobuf.Timestamp
-	(*ListMetadata)(nil),                       // 17: core.v1.ListMetadata
+	(*AIAssessmentSettings)(nil),                // 0: core.v1.AIAssessmentSettings
+	(*AIAssessmentLabel)(nil),                   // 1: core.v1.AIAssessmentLabel
+	(*AIAssessmentCriterion)(nil),               // 2: core.v1.AIAssessmentCriterion
+	(*GetAIAssessmentSettingsRequest)(nil),      // 3: core.v1.GetAIAssessmentSettingsRequest
+	(*GetAIAssessmentSettingsResponse)(nil),     // 4: core.v1.GetAIAssessmentSettingsResponse
+	(*UpdateAIAssessmentSettingsRequest)(nil),   // 5: core.v1.UpdateAIAssessmentSettingsRequest
+	(*UpdateAIAssessmentSettingsResponse)(nil),  // 6: core.v1.UpdateAIAssessmentSettingsResponse
+	(*CreateAIAssessmentLabelRequest)(nil),      // 7: core.v1.CreateAIAssessmentLabelRequest
+	(*CreateAIAssessmentLabelResponse)(nil),     // 8: core.v1.CreateAIAssessmentLabelResponse
+	(*ListAIAssessmentLabelsRequest)(nil),       // 9: core.v1.ListAIAssessmentLabelsRequest
+	(*ListAIAssessmentLabelsResponse)(nil),      // 10: core.v1.ListAIAssessmentLabelsResponse
+	(*GetAIAssessmentLabelRequest)(nil),         // 11: core.v1.GetAIAssessmentLabelRequest
+	(*GetAIAssessmentLabelResponse)(nil),        // 12: core.v1.GetAIAssessmentLabelResponse
+	(*UpdateAIAssessmentLabelRequest)(nil),      // 13: core.v1.UpdateAIAssessmentLabelRequest
+	(*UpdateAIAssessmentLabelResponse)(nil),     // 14: core.v1.UpdateAIAssessmentLabelResponse
+	(*DeleteAIAssessmentLabelRequest)(nil),      // 15: core.v1.DeleteAIAssessmentLabelRequest
+	(*DeleteAIAssessmentLabelResponse)(nil),     // 16: core.v1.DeleteAIAssessmentLabelResponse
+	(*CreateAIAssessmentCriterionRequest)(nil),  // 17: core.v1.CreateAIAssessmentCriterionRequest
+	(*CreateAIAssessmentCriterionResponse)(nil), // 18: core.v1.CreateAIAssessmentCriterionResponse
+	(*ListAIAssessmentCriteriaRequest)(nil),     // 19: core.v1.ListAIAssessmentCriteriaRequest
+	(*ListAIAssessmentCriteriaResponse)(nil),    // 20: core.v1.ListAIAssessmentCriteriaResponse
+	(*GetAIAssessmentCriterionRequest)(nil),     // 21: core.v1.GetAIAssessmentCriterionRequest
+	(*GetAIAssessmentCriterionResponse)(nil),    // 22: core.v1.GetAIAssessmentCriterionResponse
+	(*UpdateAIAssessmentCriterionRequest)(nil),  // 23: core.v1.UpdateAIAssessmentCriterionRequest
+	(*UpdateAIAssessmentCriterionResponse)(nil), // 24: core.v1.UpdateAIAssessmentCriterionResponse
+	(*DeleteAIAssessmentCriterionRequest)(nil),  // 25: core.v1.DeleteAIAssessmentCriterionRequest
+	(*DeleteAIAssessmentCriterionResponse)(nil), // 26: core.v1.DeleteAIAssessmentCriterionResponse
+	(*timestamppb.Timestamp)(nil),               // 27: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                        // 28: core.v1.ListMetadata
 }
 var file_core_v1_ai_assessment_proto_depIdxs = []int32{
-	16, // 0: core.v1.AIAssessmentSettings.created_at:type_name -> google.protobuf.Timestamp
-	16, // 1: core.v1.AIAssessmentSettings.updated_at:type_name -> google.protobuf.Timestamp
-	16, // 2: core.v1.AIAssessmentLabel.created_at:type_name -> google.protobuf.Timestamp
-	16, // 3: core.v1.AIAssessmentLabel.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 4: core.v1.GetAIAssessmentSettingsResponse.settings:type_name -> core.v1.AIAssessmentSettings
-	0,  // 5: core.v1.UpdateAIAssessmentSettingsResponse.settings:type_name -> core.v1.AIAssessmentSettings
-	1,  // 6: core.v1.CreateAIAssessmentLabelResponse.label:type_name -> core.v1.AIAssessmentLabel
-	1,  // 7: core.v1.ListAIAssessmentLabelsResponse.labels:type_name -> core.v1.AIAssessmentLabel
-	17, // 8: core.v1.ListAIAssessmentLabelsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	1,  // 9: core.v1.GetAIAssessmentLabelResponse.label:type_name -> core.v1.AIAssessmentLabel
-	1,  // 10: core.v1.UpdateAIAssessmentLabelRequest.label:type_name -> core.v1.AIAssessmentLabel
-	1,  // 11: core.v1.UpdateAIAssessmentLabelResponse.label:type_name -> core.v1.AIAssessmentLabel
-	2,  // 12: core.v1.AIAssessmentService.GetAIAssessmentSettings:input_type -> core.v1.GetAIAssessmentSettingsRequest
-	4,  // 13: core.v1.AIAssessmentService.UpdateAIAssessmentSettings:input_type -> core.v1.UpdateAIAssessmentSettingsRequest
-	6,  // 14: core.v1.AIAssessmentService.CreateAIAssessmentLabel:input_type -> core.v1.CreateAIAssessmentLabelRequest
-	8,  // 15: core.v1.AIAssessmentService.ListAIAssessmentLabels:input_type -> core.v1.ListAIAssessmentLabelsRequest
-	10, // 16: core.v1.AIAssessmentService.GetAIAssessmentLabel:input_type -> core.v1.GetAIAssessmentLabelRequest
-	12, // 17: core.v1.AIAssessmentService.UpdateAIAssessmentLabel:input_type -> core.v1.UpdateAIAssessmentLabelRequest
-	14, // 18: core.v1.AIAssessmentService.DeleteAIAssessmentLabel:input_type -> core.v1.DeleteAIAssessmentLabelRequest
-	3,  // 19: core.v1.AIAssessmentService.GetAIAssessmentSettings:output_type -> core.v1.GetAIAssessmentSettingsResponse
-	5,  // 20: core.v1.AIAssessmentService.UpdateAIAssessmentSettings:output_type -> core.v1.UpdateAIAssessmentSettingsResponse
-	7,  // 21: core.v1.AIAssessmentService.CreateAIAssessmentLabel:output_type -> core.v1.CreateAIAssessmentLabelResponse
-	9,  // 22: core.v1.AIAssessmentService.ListAIAssessmentLabels:output_type -> core.v1.ListAIAssessmentLabelsResponse
-	11, // 23: core.v1.AIAssessmentService.GetAIAssessmentLabel:output_type -> core.v1.GetAIAssessmentLabelResponse
-	13, // 24: core.v1.AIAssessmentService.UpdateAIAssessmentLabel:output_type -> core.v1.UpdateAIAssessmentLabelResponse
-	15, // 25: core.v1.AIAssessmentService.DeleteAIAssessmentLabel:output_type -> core.v1.DeleteAIAssessmentLabelResponse
-	19, // [19:26] is the sub-list for method output_type
-	12, // [12:19] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	27, // 0: core.v1.AIAssessmentSettings.created_at:type_name -> google.protobuf.Timestamp
+	27, // 1: core.v1.AIAssessmentSettings.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 2: core.v1.AIAssessmentLabel.created_at:type_name -> google.protobuf.Timestamp
+	27, // 3: core.v1.AIAssessmentLabel.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 4: core.v1.AIAssessmentCriterion.created_at:type_name -> google.protobuf.Timestamp
+	27, // 5: core.v1.AIAssessmentCriterion.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 6: core.v1.GetAIAssessmentSettingsResponse.settings:type_name -> core.v1.AIAssessmentSettings
+	0,  // 7: core.v1.UpdateAIAssessmentSettingsResponse.settings:type_name -> core.v1.AIAssessmentSettings
+	1,  // 8: core.v1.CreateAIAssessmentLabelResponse.label:type_name -> core.v1.AIAssessmentLabel
+	1,  // 9: core.v1.ListAIAssessmentLabelsResponse.labels:type_name -> core.v1.AIAssessmentLabel
+	28, // 10: core.v1.ListAIAssessmentLabelsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	1,  // 11: core.v1.GetAIAssessmentLabelResponse.label:type_name -> core.v1.AIAssessmentLabel
+	1,  // 12: core.v1.UpdateAIAssessmentLabelRequest.label:type_name -> core.v1.AIAssessmentLabel
+	1,  // 13: core.v1.UpdateAIAssessmentLabelResponse.label:type_name -> core.v1.AIAssessmentLabel
+	2,  // 14: core.v1.CreateAIAssessmentCriterionResponse.criterion:type_name -> core.v1.AIAssessmentCriterion
+	2,  // 15: core.v1.ListAIAssessmentCriteriaResponse.criteria:type_name -> core.v1.AIAssessmentCriterion
+	28, // 16: core.v1.ListAIAssessmentCriteriaResponse.list_metadata:type_name -> core.v1.ListMetadata
+	2,  // 17: core.v1.GetAIAssessmentCriterionResponse.criterion:type_name -> core.v1.AIAssessmentCriterion
+	2,  // 18: core.v1.UpdateAIAssessmentCriterionRequest.criterion:type_name -> core.v1.AIAssessmentCriterion
+	2,  // 19: core.v1.UpdateAIAssessmentCriterionResponse.criterion:type_name -> core.v1.AIAssessmentCriterion
+	3,  // 20: core.v1.AIAssessmentService.GetAIAssessmentSettings:input_type -> core.v1.GetAIAssessmentSettingsRequest
+	5,  // 21: core.v1.AIAssessmentService.UpdateAIAssessmentSettings:input_type -> core.v1.UpdateAIAssessmentSettingsRequest
+	7,  // 22: core.v1.AIAssessmentService.CreateAIAssessmentLabel:input_type -> core.v1.CreateAIAssessmentLabelRequest
+	9,  // 23: core.v1.AIAssessmentService.ListAIAssessmentLabels:input_type -> core.v1.ListAIAssessmentLabelsRequest
+	11, // 24: core.v1.AIAssessmentService.GetAIAssessmentLabel:input_type -> core.v1.GetAIAssessmentLabelRequest
+	13, // 25: core.v1.AIAssessmentService.UpdateAIAssessmentLabel:input_type -> core.v1.UpdateAIAssessmentLabelRequest
+	15, // 26: core.v1.AIAssessmentService.DeleteAIAssessmentLabel:input_type -> core.v1.DeleteAIAssessmentLabelRequest
+	17, // 27: core.v1.AIAssessmentService.CreateAIAssessmentCriterion:input_type -> core.v1.CreateAIAssessmentCriterionRequest
+	19, // 28: core.v1.AIAssessmentService.ListAIAssessmentCriteria:input_type -> core.v1.ListAIAssessmentCriteriaRequest
+	21, // 29: core.v1.AIAssessmentService.GetAIAssessmentCriterion:input_type -> core.v1.GetAIAssessmentCriterionRequest
+	23, // 30: core.v1.AIAssessmentService.UpdateAIAssessmentCriterion:input_type -> core.v1.UpdateAIAssessmentCriterionRequest
+	25, // 31: core.v1.AIAssessmentService.DeleteAIAssessmentCriterion:input_type -> core.v1.DeleteAIAssessmentCriterionRequest
+	4,  // 32: core.v1.AIAssessmentService.GetAIAssessmentSettings:output_type -> core.v1.GetAIAssessmentSettingsResponse
+	6,  // 33: core.v1.AIAssessmentService.UpdateAIAssessmentSettings:output_type -> core.v1.UpdateAIAssessmentSettingsResponse
+	8,  // 34: core.v1.AIAssessmentService.CreateAIAssessmentLabel:output_type -> core.v1.CreateAIAssessmentLabelResponse
+	10, // 35: core.v1.AIAssessmentService.ListAIAssessmentLabels:output_type -> core.v1.ListAIAssessmentLabelsResponse
+	12, // 36: core.v1.AIAssessmentService.GetAIAssessmentLabel:output_type -> core.v1.GetAIAssessmentLabelResponse
+	14, // 37: core.v1.AIAssessmentService.UpdateAIAssessmentLabel:output_type -> core.v1.UpdateAIAssessmentLabelResponse
+	16, // 38: core.v1.AIAssessmentService.DeleteAIAssessmentLabel:output_type -> core.v1.DeleteAIAssessmentLabelResponse
+	18, // 39: core.v1.AIAssessmentService.CreateAIAssessmentCriterion:output_type -> core.v1.CreateAIAssessmentCriterionResponse
+	20, // 40: core.v1.AIAssessmentService.ListAIAssessmentCriteria:output_type -> core.v1.ListAIAssessmentCriteriaResponse
+	22, // 41: core.v1.AIAssessmentService.GetAIAssessmentCriterion:output_type -> core.v1.GetAIAssessmentCriterionResponse
+	24, // 42: core.v1.AIAssessmentService.UpdateAIAssessmentCriterion:output_type -> core.v1.UpdateAIAssessmentCriterionResponse
+	26, // 43: core.v1.AIAssessmentService.DeleteAIAssessmentCriterion:output_type -> core.v1.DeleteAIAssessmentCriterionResponse
+	32, // [32:44] is the sub-list for method output_type
+	20, // [20:32] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_ai_assessment_proto_init() }
@@ -983,7 +1652,7 @@ func file_core_v1_ai_assessment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_ai_assessment_proto_rawDesc), len(file_core_v1_ai_assessment_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

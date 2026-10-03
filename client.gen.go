@@ -88,6 +88,14 @@ type AIAssessmentServiceClient struct {
 	inner corev1connect.AIAssessmentServiceClient
 }
 
+func (c *AIAssessmentServiceClient) CreateAIAssessmentCriterion(ctx context.Context, req *corev1.CreateAIAssessmentCriterionRequest) (*corev1.CreateAIAssessmentCriterionResponse, error) {
+	res, err := c.inner.CreateAIAssessmentCriterion(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Create AI assessment label
 //
 // Create a label that AI assessments can assign to LLM requests. Requires AI assessments to be enabled.
@@ -99,11 +107,27 @@ func (c *AIAssessmentServiceClient) CreateAIAssessmentLabel(ctx context.Context,
 	return res.Msg, nil
 }
 
+func (c *AIAssessmentServiceClient) DeleteAIAssessmentCriterion(ctx context.Context, req *corev1.DeleteAIAssessmentCriterionRequest) (*corev1.DeleteAIAssessmentCriterionResponse, error) {
+	res, err := c.inner.DeleteAIAssessmentCriterion(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete AI assessment label
 //
 // Delete a label that AI assessments can assign to LLM requests. Requires AI assessments to be enabled.
 func (c *AIAssessmentServiceClient) DeleteAIAssessmentLabel(ctx context.Context, req *corev1.DeleteAIAssessmentLabelRequest) (*corev1.DeleteAIAssessmentLabelResponse, error) {
 	res, err := c.inner.DeleteAIAssessmentLabel(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *AIAssessmentServiceClient) GetAIAssessmentCriterion(ctx context.Context, req *corev1.GetAIAssessmentCriterionRequest) (*corev1.GetAIAssessmentCriterionResponse, error) {
+	res, err := c.inner.GetAIAssessmentCriterion(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -132,11 +156,27 @@ func (c *AIAssessmentServiceClient) GetAIAssessmentSettings(ctx context.Context,
 	return res.Msg, nil
 }
 
+func (c *AIAssessmentServiceClient) ListAIAssessmentCriteria(ctx context.Context, req *corev1.ListAIAssessmentCriteriaRequest) (*corev1.ListAIAssessmentCriteriaResponse, error) {
+	res, err := c.inner.ListAIAssessmentCriteria(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // List AI assessment labels
 //
 // List the labels that AI assessments can assign to LLM requests
 func (c *AIAssessmentServiceClient) ListAIAssessmentLabels(ctx context.Context, req *corev1.ListAIAssessmentLabelsRequest) (*corev1.ListAIAssessmentLabelsResponse, error) {
 	res, err := c.inner.ListAIAssessmentLabels(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *AIAssessmentServiceClient) UpdateAIAssessmentCriterion(ctx context.Context, req *corev1.UpdateAIAssessmentCriterionRequest) (*corev1.UpdateAIAssessmentCriterionResponse, error) {
+	res, err := c.inner.UpdateAIAssessmentCriterion(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

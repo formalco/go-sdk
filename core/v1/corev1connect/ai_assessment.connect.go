@@ -54,6 +54,21 @@ const (
 	// AIAssessmentServiceDeleteAIAssessmentLabelProcedure is the fully-qualified name of the
 	// AIAssessmentService's DeleteAIAssessmentLabel RPC.
 	AIAssessmentServiceDeleteAIAssessmentLabelProcedure = "/core.v1.AIAssessmentService/DeleteAIAssessmentLabel"
+	// AIAssessmentServiceCreateAIAssessmentCriterionProcedure is the fully-qualified name of the
+	// AIAssessmentService's CreateAIAssessmentCriterion RPC.
+	AIAssessmentServiceCreateAIAssessmentCriterionProcedure = "/core.v1.AIAssessmentService/CreateAIAssessmentCriterion"
+	// AIAssessmentServiceListAIAssessmentCriteriaProcedure is the fully-qualified name of the
+	// AIAssessmentService's ListAIAssessmentCriteria RPC.
+	AIAssessmentServiceListAIAssessmentCriteriaProcedure = "/core.v1.AIAssessmentService/ListAIAssessmentCriteria"
+	// AIAssessmentServiceGetAIAssessmentCriterionProcedure is the fully-qualified name of the
+	// AIAssessmentService's GetAIAssessmentCriterion RPC.
+	AIAssessmentServiceGetAIAssessmentCriterionProcedure = "/core.v1.AIAssessmentService/GetAIAssessmentCriterion"
+	// AIAssessmentServiceUpdateAIAssessmentCriterionProcedure is the fully-qualified name of the
+	// AIAssessmentService's UpdateAIAssessmentCriterion RPC.
+	AIAssessmentServiceUpdateAIAssessmentCriterionProcedure = "/core.v1.AIAssessmentService/UpdateAIAssessmentCriterion"
+	// AIAssessmentServiceDeleteAIAssessmentCriterionProcedure is the fully-qualified name of the
+	// AIAssessmentService's DeleteAIAssessmentCriterion RPC.
+	AIAssessmentServiceDeleteAIAssessmentCriterionProcedure = "/core.v1.AIAssessmentService/DeleteAIAssessmentCriterion"
 )
 
 // AIAssessmentServiceClient is a client for the core.v1.AIAssessmentService service.
@@ -87,6 +102,11 @@ type AIAssessmentServiceClient interface {
 	//
 	// Delete a label that AI assessments can assign to LLM requests. Requires AI assessments to be enabled.
 	DeleteAIAssessmentLabel(context.Context, *connect.Request[v1.DeleteAIAssessmentLabelRequest]) (*connect.Response[v1.DeleteAIAssessmentLabelResponse], error)
+	CreateAIAssessmentCriterion(context.Context, *connect.Request[v1.CreateAIAssessmentCriterionRequest]) (*connect.Response[v1.CreateAIAssessmentCriterionResponse], error)
+	ListAIAssessmentCriteria(context.Context, *connect.Request[v1.ListAIAssessmentCriteriaRequest]) (*connect.Response[v1.ListAIAssessmentCriteriaResponse], error)
+	GetAIAssessmentCriterion(context.Context, *connect.Request[v1.GetAIAssessmentCriterionRequest]) (*connect.Response[v1.GetAIAssessmentCriterionResponse], error)
+	UpdateAIAssessmentCriterion(context.Context, *connect.Request[v1.UpdateAIAssessmentCriterionRequest]) (*connect.Response[v1.UpdateAIAssessmentCriterionResponse], error)
+	DeleteAIAssessmentCriterion(context.Context, *connect.Request[v1.DeleteAIAssessmentCriterionRequest]) (*connect.Response[v1.DeleteAIAssessmentCriterionResponse], error)
 }
 
 // NewAIAssessmentServiceClient constructs a client for the core.v1.AIAssessmentService service. By
@@ -145,18 +165,55 @@ func NewAIAssessmentServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(aIAssessmentServiceMethods.ByName("DeleteAIAssessmentLabel")),
 			connect.WithClientOptions(opts...),
 		),
+		createAIAssessmentCriterion: connect.NewClient[v1.CreateAIAssessmentCriterionRequest, v1.CreateAIAssessmentCriterionResponse](
+			httpClient,
+			baseURL+AIAssessmentServiceCreateAIAssessmentCriterionProcedure,
+			connect.WithSchema(aIAssessmentServiceMethods.ByName("CreateAIAssessmentCriterion")),
+			connect.WithClientOptions(opts...),
+		),
+		listAIAssessmentCriteria: connect.NewClient[v1.ListAIAssessmentCriteriaRequest, v1.ListAIAssessmentCriteriaResponse](
+			httpClient,
+			baseURL+AIAssessmentServiceListAIAssessmentCriteriaProcedure,
+			connect.WithSchema(aIAssessmentServiceMethods.ByName("ListAIAssessmentCriteria")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		getAIAssessmentCriterion: connect.NewClient[v1.GetAIAssessmentCriterionRequest, v1.GetAIAssessmentCriterionResponse](
+			httpClient,
+			baseURL+AIAssessmentServiceGetAIAssessmentCriterionProcedure,
+			connect.WithSchema(aIAssessmentServiceMethods.ByName("GetAIAssessmentCriterion")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		updateAIAssessmentCriterion: connect.NewClient[v1.UpdateAIAssessmentCriterionRequest, v1.UpdateAIAssessmentCriterionResponse](
+			httpClient,
+			baseURL+AIAssessmentServiceUpdateAIAssessmentCriterionProcedure,
+			connect.WithSchema(aIAssessmentServiceMethods.ByName("UpdateAIAssessmentCriterion")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteAIAssessmentCriterion: connect.NewClient[v1.DeleteAIAssessmentCriterionRequest, v1.DeleteAIAssessmentCriterionResponse](
+			httpClient,
+			baseURL+AIAssessmentServiceDeleteAIAssessmentCriterionProcedure,
+			connect.WithSchema(aIAssessmentServiceMethods.ByName("DeleteAIAssessmentCriterion")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // aIAssessmentServiceClient implements AIAssessmentServiceClient.
 type aIAssessmentServiceClient struct {
-	getAIAssessmentSettings    *connect.Client[v1.GetAIAssessmentSettingsRequest, v1.GetAIAssessmentSettingsResponse]
-	updateAIAssessmentSettings *connect.Client[v1.UpdateAIAssessmentSettingsRequest, v1.UpdateAIAssessmentSettingsResponse]
-	createAIAssessmentLabel    *connect.Client[v1.CreateAIAssessmentLabelRequest, v1.CreateAIAssessmentLabelResponse]
-	listAIAssessmentLabels     *connect.Client[v1.ListAIAssessmentLabelsRequest, v1.ListAIAssessmentLabelsResponse]
-	getAIAssessmentLabel       *connect.Client[v1.GetAIAssessmentLabelRequest, v1.GetAIAssessmentLabelResponse]
-	updateAIAssessmentLabel    *connect.Client[v1.UpdateAIAssessmentLabelRequest, v1.UpdateAIAssessmentLabelResponse]
-	deleteAIAssessmentLabel    *connect.Client[v1.DeleteAIAssessmentLabelRequest, v1.DeleteAIAssessmentLabelResponse]
+	getAIAssessmentSettings     *connect.Client[v1.GetAIAssessmentSettingsRequest, v1.GetAIAssessmentSettingsResponse]
+	updateAIAssessmentSettings  *connect.Client[v1.UpdateAIAssessmentSettingsRequest, v1.UpdateAIAssessmentSettingsResponse]
+	createAIAssessmentLabel     *connect.Client[v1.CreateAIAssessmentLabelRequest, v1.CreateAIAssessmentLabelResponse]
+	listAIAssessmentLabels      *connect.Client[v1.ListAIAssessmentLabelsRequest, v1.ListAIAssessmentLabelsResponse]
+	getAIAssessmentLabel        *connect.Client[v1.GetAIAssessmentLabelRequest, v1.GetAIAssessmentLabelResponse]
+	updateAIAssessmentLabel     *connect.Client[v1.UpdateAIAssessmentLabelRequest, v1.UpdateAIAssessmentLabelResponse]
+	deleteAIAssessmentLabel     *connect.Client[v1.DeleteAIAssessmentLabelRequest, v1.DeleteAIAssessmentLabelResponse]
+	createAIAssessmentCriterion *connect.Client[v1.CreateAIAssessmentCriterionRequest, v1.CreateAIAssessmentCriterionResponse]
+	listAIAssessmentCriteria    *connect.Client[v1.ListAIAssessmentCriteriaRequest, v1.ListAIAssessmentCriteriaResponse]
+	getAIAssessmentCriterion    *connect.Client[v1.GetAIAssessmentCriterionRequest, v1.GetAIAssessmentCriterionResponse]
+	updateAIAssessmentCriterion *connect.Client[v1.UpdateAIAssessmentCriterionRequest, v1.UpdateAIAssessmentCriterionResponse]
+	deleteAIAssessmentCriterion *connect.Client[v1.DeleteAIAssessmentCriterionRequest, v1.DeleteAIAssessmentCriterionResponse]
 }
 
 // GetAIAssessmentSettings calls core.v1.AIAssessmentService.GetAIAssessmentSettings.
@@ -194,6 +251,31 @@ func (c *aIAssessmentServiceClient) DeleteAIAssessmentLabel(ctx context.Context,
 	return c.deleteAIAssessmentLabel.CallUnary(ctx, req)
 }
 
+// CreateAIAssessmentCriterion calls core.v1.AIAssessmentService.CreateAIAssessmentCriterion.
+func (c *aIAssessmentServiceClient) CreateAIAssessmentCriterion(ctx context.Context, req *connect.Request[v1.CreateAIAssessmentCriterionRequest]) (*connect.Response[v1.CreateAIAssessmentCriterionResponse], error) {
+	return c.createAIAssessmentCriterion.CallUnary(ctx, req)
+}
+
+// ListAIAssessmentCriteria calls core.v1.AIAssessmentService.ListAIAssessmentCriteria.
+func (c *aIAssessmentServiceClient) ListAIAssessmentCriteria(ctx context.Context, req *connect.Request[v1.ListAIAssessmentCriteriaRequest]) (*connect.Response[v1.ListAIAssessmentCriteriaResponse], error) {
+	return c.listAIAssessmentCriteria.CallUnary(ctx, req)
+}
+
+// GetAIAssessmentCriterion calls core.v1.AIAssessmentService.GetAIAssessmentCriterion.
+func (c *aIAssessmentServiceClient) GetAIAssessmentCriterion(ctx context.Context, req *connect.Request[v1.GetAIAssessmentCriterionRequest]) (*connect.Response[v1.GetAIAssessmentCriterionResponse], error) {
+	return c.getAIAssessmentCriterion.CallUnary(ctx, req)
+}
+
+// UpdateAIAssessmentCriterion calls core.v1.AIAssessmentService.UpdateAIAssessmentCriterion.
+func (c *aIAssessmentServiceClient) UpdateAIAssessmentCriterion(ctx context.Context, req *connect.Request[v1.UpdateAIAssessmentCriterionRequest]) (*connect.Response[v1.UpdateAIAssessmentCriterionResponse], error) {
+	return c.updateAIAssessmentCriterion.CallUnary(ctx, req)
+}
+
+// DeleteAIAssessmentCriterion calls core.v1.AIAssessmentService.DeleteAIAssessmentCriterion.
+func (c *aIAssessmentServiceClient) DeleteAIAssessmentCriterion(ctx context.Context, req *connect.Request[v1.DeleteAIAssessmentCriterionRequest]) (*connect.Response[v1.DeleteAIAssessmentCriterionResponse], error) {
+	return c.deleteAIAssessmentCriterion.CallUnary(ctx, req)
+}
+
 // AIAssessmentServiceHandler is an implementation of the core.v1.AIAssessmentService service.
 type AIAssessmentServiceHandler interface {
 	// Get AI assessment settings
@@ -225,6 +307,11 @@ type AIAssessmentServiceHandler interface {
 	//
 	// Delete a label that AI assessments can assign to LLM requests. Requires AI assessments to be enabled.
 	DeleteAIAssessmentLabel(context.Context, *connect.Request[v1.DeleteAIAssessmentLabelRequest]) (*connect.Response[v1.DeleteAIAssessmentLabelResponse], error)
+	CreateAIAssessmentCriterion(context.Context, *connect.Request[v1.CreateAIAssessmentCriterionRequest]) (*connect.Response[v1.CreateAIAssessmentCriterionResponse], error)
+	ListAIAssessmentCriteria(context.Context, *connect.Request[v1.ListAIAssessmentCriteriaRequest]) (*connect.Response[v1.ListAIAssessmentCriteriaResponse], error)
+	GetAIAssessmentCriterion(context.Context, *connect.Request[v1.GetAIAssessmentCriterionRequest]) (*connect.Response[v1.GetAIAssessmentCriterionResponse], error)
+	UpdateAIAssessmentCriterion(context.Context, *connect.Request[v1.UpdateAIAssessmentCriterionRequest]) (*connect.Response[v1.UpdateAIAssessmentCriterionResponse], error)
+	DeleteAIAssessmentCriterion(context.Context, *connect.Request[v1.DeleteAIAssessmentCriterionRequest]) (*connect.Response[v1.DeleteAIAssessmentCriterionResponse], error)
 }
 
 // NewAIAssessmentServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -279,6 +366,38 @@ func NewAIAssessmentServiceHandler(svc AIAssessmentServiceHandler, opts ...conne
 		connect.WithSchema(aIAssessmentServiceMethods.ByName("DeleteAIAssessmentLabel")),
 		connect.WithHandlerOptions(opts...),
 	)
+	aIAssessmentServiceCreateAIAssessmentCriterionHandler := connect.NewUnaryHandler(
+		AIAssessmentServiceCreateAIAssessmentCriterionProcedure,
+		svc.CreateAIAssessmentCriterion,
+		connect.WithSchema(aIAssessmentServiceMethods.ByName("CreateAIAssessmentCriterion")),
+		connect.WithHandlerOptions(opts...),
+	)
+	aIAssessmentServiceListAIAssessmentCriteriaHandler := connect.NewUnaryHandler(
+		AIAssessmentServiceListAIAssessmentCriteriaProcedure,
+		svc.ListAIAssessmentCriteria,
+		connect.WithSchema(aIAssessmentServiceMethods.ByName("ListAIAssessmentCriteria")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	aIAssessmentServiceGetAIAssessmentCriterionHandler := connect.NewUnaryHandler(
+		AIAssessmentServiceGetAIAssessmentCriterionProcedure,
+		svc.GetAIAssessmentCriterion,
+		connect.WithSchema(aIAssessmentServiceMethods.ByName("GetAIAssessmentCriterion")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	aIAssessmentServiceUpdateAIAssessmentCriterionHandler := connect.NewUnaryHandler(
+		AIAssessmentServiceUpdateAIAssessmentCriterionProcedure,
+		svc.UpdateAIAssessmentCriterion,
+		connect.WithSchema(aIAssessmentServiceMethods.ByName("UpdateAIAssessmentCriterion")),
+		connect.WithHandlerOptions(opts...),
+	)
+	aIAssessmentServiceDeleteAIAssessmentCriterionHandler := connect.NewUnaryHandler(
+		AIAssessmentServiceDeleteAIAssessmentCriterionProcedure,
+		svc.DeleteAIAssessmentCriterion,
+		connect.WithSchema(aIAssessmentServiceMethods.ByName("DeleteAIAssessmentCriterion")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/core.v1.AIAssessmentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case AIAssessmentServiceGetAIAssessmentSettingsProcedure:
@@ -295,6 +414,16 @@ func NewAIAssessmentServiceHandler(svc AIAssessmentServiceHandler, opts ...conne
 			aIAssessmentServiceUpdateAIAssessmentLabelHandler.ServeHTTP(w, r)
 		case AIAssessmentServiceDeleteAIAssessmentLabelProcedure:
 			aIAssessmentServiceDeleteAIAssessmentLabelHandler.ServeHTTP(w, r)
+		case AIAssessmentServiceCreateAIAssessmentCriterionProcedure:
+			aIAssessmentServiceCreateAIAssessmentCriterionHandler.ServeHTTP(w, r)
+		case AIAssessmentServiceListAIAssessmentCriteriaProcedure:
+			aIAssessmentServiceListAIAssessmentCriteriaHandler.ServeHTTP(w, r)
+		case AIAssessmentServiceGetAIAssessmentCriterionProcedure:
+			aIAssessmentServiceGetAIAssessmentCriterionHandler.ServeHTTP(w, r)
+		case AIAssessmentServiceUpdateAIAssessmentCriterionProcedure:
+			aIAssessmentServiceUpdateAIAssessmentCriterionHandler.ServeHTTP(w, r)
+		case AIAssessmentServiceDeleteAIAssessmentCriterionProcedure:
+			aIAssessmentServiceDeleteAIAssessmentCriterionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -330,4 +459,24 @@ func (UnimplementedAIAssessmentServiceHandler) UpdateAIAssessmentLabel(context.C
 
 func (UnimplementedAIAssessmentServiceHandler) DeleteAIAssessmentLabel(context.Context, *connect.Request[v1.DeleteAIAssessmentLabelRequest]) (*connect.Response[v1.DeleteAIAssessmentLabelResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.AIAssessmentService.DeleteAIAssessmentLabel is not implemented"))
+}
+
+func (UnimplementedAIAssessmentServiceHandler) CreateAIAssessmentCriterion(context.Context, *connect.Request[v1.CreateAIAssessmentCriterionRequest]) (*connect.Response[v1.CreateAIAssessmentCriterionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.AIAssessmentService.CreateAIAssessmentCriterion is not implemented"))
+}
+
+func (UnimplementedAIAssessmentServiceHandler) ListAIAssessmentCriteria(context.Context, *connect.Request[v1.ListAIAssessmentCriteriaRequest]) (*connect.Response[v1.ListAIAssessmentCriteriaResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.AIAssessmentService.ListAIAssessmentCriteria is not implemented"))
+}
+
+func (UnimplementedAIAssessmentServiceHandler) GetAIAssessmentCriterion(context.Context, *connect.Request[v1.GetAIAssessmentCriterionRequest]) (*connect.Response[v1.GetAIAssessmentCriterionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.AIAssessmentService.GetAIAssessmentCriterion is not implemented"))
+}
+
+func (UnimplementedAIAssessmentServiceHandler) UpdateAIAssessmentCriterion(context.Context, *connect.Request[v1.UpdateAIAssessmentCriterionRequest]) (*connect.Response[v1.UpdateAIAssessmentCriterionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.AIAssessmentService.UpdateAIAssessmentCriterion is not implemented"))
+}
+
+func (UnimplementedAIAssessmentServiceHandler) DeleteAIAssessmentCriterion(context.Context, *connect.Request[v1.DeleteAIAssessmentCriterionRequest]) (*connect.Response[v1.DeleteAIAssessmentCriterionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.AIAssessmentService.DeleteAIAssessmentCriterion is not implemented"))
 }
