@@ -80,14 +80,11 @@ type DesktopServiceClient interface {
 	DeleteDesktopRoutingRule(context.Context, *connect.Request[v1.DeleteDesktopRoutingRuleRequest]) (*connect.Response[v1.DeleteDesktopRoutingRuleResponse], error)
 	// List users with desktop status
 	//
-	// List org users with their latest desktop device. latest_device is the same
-	// most-recent check-in ListUserDevices returns for that user, or unset if the
-	// user has no desktop heartbeat.
+	// List org users seen on a desktop device in the last 90 days, most recently seen first, with their latest device summary.
 	ListDesktopUsers(context.Context, *connect.Request[v1.ListDesktopUsersRequest]) (*connect.Response[v1.ListDesktopUsersResponse], error)
 	// List user devices
 	//
-	// List every distinct desktop device for a user. A user may have multiple
-	// hosts; each row is that host's latest heartbeat.
+	// List all desktop devices for a specific user.
 	ListUserDevices(context.Context, *connect.Request[v1.ListUserDevicesRequest]) (*connect.Response[v1.ListUserDevicesResponse], error)
 }
 
@@ -221,14 +218,11 @@ type DesktopServiceHandler interface {
 	DeleteDesktopRoutingRule(context.Context, *connect.Request[v1.DeleteDesktopRoutingRuleRequest]) (*connect.Response[v1.DeleteDesktopRoutingRuleResponse], error)
 	// List users with desktop status
 	//
-	// List org users with their latest desktop device. latest_device is the same
-	// most-recent check-in ListUserDevices returns for that user, or unset if the
-	// user has no desktop heartbeat.
+	// List org users seen on a desktop device in the last 90 days, most recently seen first, with their latest device summary.
 	ListDesktopUsers(context.Context, *connect.Request[v1.ListDesktopUsersRequest]) (*connect.Response[v1.ListDesktopUsersResponse], error)
 	// List user devices
 	//
-	// List every distinct desktop device for a user. A user may have multiple
-	// hosts; each row is that host's latest heartbeat.
+	// List all desktop devices for a specific user.
 	ListUserDevices(context.Context, *connect.Request[v1.ListUserDevicesRequest]) (*connect.Response[v1.ListUserDevicesResponse], error)
 }
 

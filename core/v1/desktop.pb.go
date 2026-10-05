@@ -669,10 +669,26 @@ func (*DeleteDesktopRoutingRuleResponse) Descriptor() ([]byte, []int) {
 }
 
 type ListDesktopUsersRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
-	Cursor        string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
-	Order         string                 `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Limit  int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Cursor string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	Order  string                 `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
+	// Matches user names, and device name, serial number, IP address, or device ID prefixes.
+	Search string `protobuf:"bytes,4,opt,name=search,proto3" json:"search,omitempty"`
+	SortBy string `protobuf:"bytes,5,opt,name=sort_by,json=sortBy,proto3" json:"sort_by,omitempty"`
+	// Latest released Endpoint version; users below it are outdated.
+	LatestVersion string `protobuf:"bytes,6,opt,name=latest_version,json=latestVersion,proto3" json:"latest_version,omitempty"`
+	// Keeps users of these types.
+	UserTypes []string `protobuf:"bytes,7,rep,name=user_types,json=userTypes,proto3" json:"user_types,omitempty"`
+	// Keeps users whose latest version is at least this, compared numerically per dotted segment.
+	MinVersion string `protobuf:"bytes,8,opt,name=min_version,json=minVersion,proto3" json:"min_version,omitempty"`
+	// Keeps users with a device that reported transparent proxy disabled in the last 7 days (false), or without one (true).
+	TransparentProxyEnabled *bool `protobuf:"varint,9,opt,name=transparent_proxy_enabled,json=transparentProxyEnabled,proto3,oneof" json:"transparent_proxy_enabled,omitempty"`
+	// Keeps users last seen between these many days ago, inclusive.
+	LastSeenMinDaysAgo *int32 `protobuf:"varint,10,opt,name=last_seen_min_days_ago,json=lastSeenMinDaysAgo,proto3,oneof" json:"last_seen_min_days_ago,omitempty"`
+	LastSeenMaxDaysAgo *int32 `protobuf:"varint,11,opt,name=last_seen_max_days_ago,json=lastSeenMaxDaysAgo,proto3,oneof" json:"last_seen_max_days_ago,omitempty"`
+	// Keeps users whose latest version is below this, compared numerically per dotted segment.
+	BelowVersion  string `protobuf:"bytes,12,opt,name=below_version,json=belowVersion,proto3" json:"below_version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -728,10 +744,74 @@ func (x *ListDesktopUsersRequest) GetOrder() string {
 	return ""
 }
 
+func (x *ListDesktopUsersRequest) GetSearch() string {
+	if x != nil {
+		return x.Search
+	}
+	return ""
+}
+
+func (x *ListDesktopUsersRequest) GetSortBy() string {
+	if x != nil {
+		return x.SortBy
+	}
+	return ""
+}
+
+func (x *ListDesktopUsersRequest) GetLatestVersion() string {
+	if x != nil {
+		return x.LatestVersion
+	}
+	return ""
+}
+
+func (x *ListDesktopUsersRequest) GetUserTypes() []string {
+	if x != nil {
+		return x.UserTypes
+	}
+	return nil
+}
+
+func (x *ListDesktopUsersRequest) GetMinVersion() string {
+	if x != nil {
+		return x.MinVersion
+	}
+	return ""
+}
+
+func (x *ListDesktopUsersRequest) GetTransparentProxyEnabled() bool {
+	if x != nil && x.TransparentProxyEnabled != nil {
+		return *x.TransparentProxyEnabled
+	}
+	return false
+}
+
+func (x *ListDesktopUsersRequest) GetLastSeenMinDaysAgo() int32 {
+	if x != nil && x.LastSeenMinDaysAgo != nil {
+		return *x.LastSeenMinDaysAgo
+	}
+	return 0
+}
+
+func (x *ListDesktopUsersRequest) GetLastSeenMaxDaysAgo() int32 {
+	if x != nil && x.LastSeenMaxDaysAgo != nil {
+		return *x.LastSeenMaxDaysAgo
+	}
+	return 0
+}
+
+func (x *ListDesktopUsersRequest) GetBelowVersion() string {
+	if x != nil {
+		return x.BelowVersion
+	}
+	return ""
+}
+
 type ListDesktopUsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*DesktopUserSummary  `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 	ListMetadata  *ListMetadata          `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
+	FleetSummary  *DesktopFleetSummary   `protobuf:"bytes,3,opt,name=fleet_summary,json=fleetSummary,proto3" json:"fleet_summary,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -780,6 +860,86 @@ func (x *ListDesktopUsersResponse) GetListMetadata() *ListMetadata {
 	return nil
 }
 
+func (x *ListDesktopUsersResponse) GetFleetSummary() *DesktopFleetSummary {
+	if x != nil {
+		return x.FleetSummary
+	}
+	return nil
+}
+
+// User counts across the whole org, independent of search, filters, and paging.
+type DesktopFleetSummary struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Users whose latest version is below the request's latest_version; zero when it is unset.
+	OutdatedUserCount int32 `protobuf:"varint,1,opt,name=outdated_user_count,json=outdatedUserCount,proto3" json:"outdated_user_count,omitempty"`
+	// Users with a device that reported transparent proxy disabled in the last 7 days.
+	ProxyDisabledUserCount int32 `protobuf:"varint,2,opt,name=proxy_disabled_user_count,json=proxyDisabledUserCount,proto3" json:"proxy_disabled_user_count,omitempty"`
+	// Users with no device check-in in the last 7 days.
+	InactiveUserCount int32 `protobuf:"varint,3,opt,name=inactive_user_count,json=inactiveUserCount,proto3" json:"inactive_user_count,omitempty"`
+	// Latest versions reported across users, newest first, for the version filters.
+	Versions      []string `protobuf:"bytes,4,rep,name=versions,proto3" json:"versions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopFleetSummary) Reset() {
+	*x = DesktopFleetSummary{}
+	mi := &file_core_v1_desktop_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopFleetSummary) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopFleetSummary) ProtoMessage() {}
+
+func (x *DesktopFleetSummary) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_desktop_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopFleetSummary.ProtoReflect.Descriptor instead.
+func (*DesktopFleetSummary) Descriptor() ([]byte, []int) {
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *DesktopFleetSummary) GetOutdatedUserCount() int32 {
+	if x != nil {
+		return x.OutdatedUserCount
+	}
+	return 0
+}
+
+func (x *DesktopFleetSummary) GetProxyDisabledUserCount() int32 {
+	if x != nil {
+		return x.ProxyDisabledUserCount
+	}
+	return 0
+}
+
+func (x *DesktopFleetSummary) GetInactiveUserCount() int32 {
+	if x != nil {
+		return x.InactiveUserCount
+	}
+	return 0
+}
+
+func (x *DesktopFleetSummary) GetVersions() []string {
+	if x != nil {
+		return x.Versions
+	}
+	return nil
+}
+
 type DesktopUserSummary struct {
 	state    protoimpl.MessageState `protogen:"open.v1"`
 	UserId   string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -788,13 +948,14 @@ type DesktopUserSummary struct {
 	// Same latest check-in as ListUserDevices for this user. Absent when the user
 	// has no desktop device.
 	LatestDevice  *DesktopDevice `protobuf:"bytes,4,opt,name=latest_device,json=latestDevice,proto3" json:"latest_device,omitempty"`
+	DeviceCount   int32          `protobuf:"varint,5,opt,name=device_count,json=deviceCount,proto3" json:"device_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DesktopUserSummary) Reset() {
 	*x = DesktopUserSummary{}
-	mi := &file_core_v1_desktop_proto_msgTypes[13]
+	mi := &file_core_v1_desktop_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -806,7 +967,7 @@ func (x *DesktopUserSummary) String() string {
 func (*DesktopUserSummary) ProtoMessage() {}
 
 func (x *DesktopUserSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[13]
+	mi := &file_core_v1_desktop_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -819,7 +980,7 @@ func (x *DesktopUserSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DesktopUserSummary.ProtoReflect.Descriptor instead.
 func (*DesktopUserSummary) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DesktopUserSummary) GetUserId() string {
@@ -850,6 +1011,13 @@ func (x *DesktopUserSummary) GetLatestDevice() *DesktopDevice {
 	return nil
 }
 
+func (x *DesktopUserSummary) GetDeviceCount() int32 {
+	if x != nil {
+		return x.DeviceCount
+	}
+	return 0
+}
+
 type ListUserDevicesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -861,7 +1029,7 @@ type ListUserDevicesRequest struct {
 
 func (x *ListUserDevicesRequest) Reset() {
 	*x = ListUserDevicesRequest{}
-	mi := &file_core_v1_desktop_proto_msgTypes[14]
+	mi := &file_core_v1_desktop_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -873,7 +1041,7 @@ func (x *ListUserDevicesRequest) String() string {
 func (*ListUserDevicesRequest) ProtoMessage() {}
 
 func (x *ListUserDevicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[14]
+	mi := &file_core_v1_desktop_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -886,7 +1054,7 @@ func (x *ListUserDevicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserDevicesRequest.ProtoReflect.Descriptor instead.
 func (*ListUserDevicesRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListUserDevicesRequest) GetUserId() string {
@@ -920,7 +1088,7 @@ type ListUserDevicesResponse struct {
 
 func (x *ListUserDevicesResponse) Reset() {
 	*x = ListUserDevicesResponse{}
-	mi := &file_core_v1_desktop_proto_msgTypes[15]
+	mi := &file_core_v1_desktop_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -932,7 +1100,7 @@ func (x *ListUserDevicesResponse) String() string {
 func (*ListUserDevicesResponse) ProtoMessage() {}
 
 func (x *ListUserDevicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[15]
+	mi := &file_core_v1_desktop_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -945,7 +1113,7 @@ func (x *ListUserDevicesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserDevicesResponse.ProtoReflect.Descriptor instead.
 func (*ListUserDevicesResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListUserDevicesResponse) GetDevices() []*DesktopDevice {
@@ -979,7 +1147,7 @@ type DesktopDevice struct {
 
 func (x *DesktopDevice) Reset() {
 	*x = DesktopDevice{}
-	mi := &file_core_v1_desktop_proto_msgTypes[16]
+	mi := &file_core_v1_desktop_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -991,7 +1159,7 @@ func (x *DesktopDevice) String() string {
 func (*DesktopDevice) ProtoMessage() {}
 
 func (x *DesktopDevice) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[16]
+	mi := &file_core_v1_desktop_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1004,7 +1172,7 @@ func (x *DesktopDevice) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DesktopDevice.ProtoReflect.Descriptor instead.
 func (*DesktopDevice) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DesktopDevice) GetDeviceId() string {
@@ -1082,7 +1250,7 @@ type DesktopTransparentProxyConfig struct {
 
 func (x *DesktopTransparentProxyConfig) Reset() {
 	*x = DesktopTransparentProxyConfig{}
-	mi := &file_core_v1_desktop_proto_msgTypes[17]
+	mi := &file_core_v1_desktop_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1094,7 +1262,7 @@ func (x *DesktopTransparentProxyConfig) String() string {
 func (*DesktopTransparentProxyConfig) ProtoMessage() {}
 
 func (x *DesktopTransparentProxyConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[17]
+	mi := &file_core_v1_desktop_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1107,7 +1275,7 @@ func (x *DesktopTransparentProxyConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DesktopTransparentProxyConfig.ProtoReflect.Descriptor instead.
 func (*DesktopTransparentProxyConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DesktopTransparentProxyConfig) GetEnable() bool {
@@ -1149,7 +1317,7 @@ type DesktopConfig struct {
 
 func (x *DesktopConfig) Reset() {
 	*x = DesktopConfig{}
-	mi := &file_core_v1_desktop_proto_msgTypes[18]
+	mi := &file_core_v1_desktop_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1161,7 +1329,7 @@ func (x *DesktopConfig) String() string {
 func (*DesktopConfig) ProtoMessage() {}
 
 func (x *DesktopConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[18]
+	mi := &file_core_v1_desktop_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1174,7 +1342,7 @@ func (x *DesktopConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DesktopConfig.ProtoReflect.Descriptor instead.
 func (*DesktopConfig) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DesktopConfig) GetAuthMode() string {
@@ -1213,7 +1381,7 @@ type DesktopDeviceHardwareInfo struct {
 
 func (x *DesktopDeviceHardwareInfo) Reset() {
 	*x = DesktopDeviceHardwareInfo{}
-	mi := &file_core_v1_desktop_proto_msgTypes[19]
+	mi := &file_core_v1_desktop_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1225,7 +1393,7 @@ func (x *DesktopDeviceHardwareInfo) String() string {
 func (*DesktopDeviceHardwareInfo) ProtoMessage() {}
 
 func (x *DesktopDeviceHardwareInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[19]
+	mi := &file_core_v1_desktop_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1238,7 +1406,7 @@ func (x *DesktopDeviceHardwareInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DesktopDeviceHardwareInfo.ProtoReflect.Descriptor instead.
 func (*DesktopDeviceHardwareInfo) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DesktopDeviceHardwareInfo) GetModelName() string {
@@ -1302,7 +1470,7 @@ type DesktopDeviceSoftwareInfo struct {
 
 func (x *DesktopDeviceSoftwareInfo) Reset() {
 	*x = DesktopDeviceSoftwareInfo{}
-	mi := &file_core_v1_desktop_proto_msgTypes[20]
+	mi := &file_core_v1_desktop_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1314,7 +1482,7 @@ func (x *DesktopDeviceSoftwareInfo) String() string {
 func (*DesktopDeviceSoftwareInfo) ProtoMessage() {}
 
 func (x *DesktopDeviceSoftwareInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_desktop_proto_msgTypes[20]
+	mi := &file_core_v1_desktop_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1327,7 +1495,7 @@ func (x *DesktopDeviceSoftwareInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DesktopDeviceSoftwareInfo.ProtoReflect.Descriptor instead.
 func (*DesktopDeviceSoftwareInfo) Descriptor() ([]byte, []int) {
-	return file_core_v1_desktop_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_desktop_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DesktopDeviceSoftwareInfo) GetSystemVersion() string {
@@ -1407,20 +1575,43 @@ const file_core_v1_desktop_proto_rawDesc = "" +
 	"\x04rule\x18\x01 \x01(\v2\x1b.core.v1.DesktopRoutingRuleR\x04rule\":\n" +
 	"\x1fDeleteDesktopRoutingRuleRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\"\n" +
-	" DeleteDesktopRoutingRuleResponse\"i\n" +
+	" DeleteDesktopRoutingRuleResponse\"\x90\x05\n" +
 	"\x17ListDesktopUsersRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
-	"\x05order\x18\x03 \x01(\tR\x05order\"\x89\x01\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12\x16\n" +
+	"\x06search\x18\x04 \x01(\tR\x06search\x12L\n" +
+	"\asort_by\x18\x05 \x01(\tB3\xbaH0r.R\x00R\n" +
+	"lastSeenAtR\vdeviceCountR\aversionR\bfullNameR\x06sortBy\x12%\n" +
+	"\x0elatest_version\x18\x06 \x01(\tR\rlatestVersion\x129\n" +
+	"\n" +
+	"user_types\x18\a \x03(\tB\x1a\xbaH\x17\x92\x01\x14\"\x12r\x10R\x05humanR\amachineR\tuserTypes\x12\x1f\n" +
+	"\vmin_version\x18\b \x01(\tR\n" +
+	"minVersion\x12?\n" +
+	"\x19transparent_proxy_enabled\x18\t \x01(\bH\x00R\x17transparentProxyEnabled\x88\x01\x01\x12@\n" +
+	"\x16last_seen_min_days_ago\x18\n" +
+	" \x01(\x05B\a\xbaH\x04\x1a\x02(\x00H\x01R\x12lastSeenMinDaysAgo\x88\x01\x01\x12@\n" +
+	"\x16last_seen_max_days_ago\x18\v \x01(\x05B\a\xbaH\x04\x1a\x02(\x00H\x02R\x12lastSeenMaxDaysAgo\x88\x01\x01\x12#\n" +
+	"\rbelow_version\x18\f \x01(\tR\fbelowVersionB\x1c\n" +
+	"\x1a_transparent_proxy_enabledB\x19\n" +
+	"\x17_last_seen_min_days_agoB\x19\n" +
+	"\x17_last_seen_max_days_ago\"\xcc\x01\n" +
 	"\x18ListDesktopUsersResponse\x121\n" +
 	"\x05users\x18\x01 \x03(\v2\x1b.core.v1.DesktopUserSummaryR\x05users\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x9b\x01\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\x12A\n" +
+	"\rfleet_summary\x18\x03 \x01(\v2\x1c.core.v1.DesktopFleetSummaryR\ffleetSummary\"\xcc\x01\n" +
+	"\x13DesktopFleetSummary\x12.\n" +
+	"\x13outdated_user_count\x18\x01 \x01(\x05R\x11outdatedUserCount\x129\n" +
+	"\x19proxy_disabled_user_count\x18\x02 \x01(\x05R\x16proxyDisabledUserCount\x12.\n" +
+	"\x13inactive_user_count\x18\x03 \x01(\x05R\x11inactiveUserCount\x12\x1a\n" +
+	"\bversions\x18\x04 \x03(\tR\bversions\"\xbe\x01\n" +
 	"\x12DesktopUserSummary\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\x12\x1b\n" +
 	"\tfull_name\x18\x03 \x01(\tR\bfullName\x12;\n" +
-	"\rlatest_device\x18\x04 \x01(\v2\x16.core.v1.DesktopDeviceR\flatestDevice\"s\n" +
+	"\rlatest_device\x18\x04 \x01(\v2\x16.core.v1.DesktopDeviceR\flatestDevice\x12!\n" +
+	"\fdevice_count\x18\x05 \x01(\x05R\vdeviceCount\"s\n" +
 	"\x16ListUserDevicesRequest\x12 \n" +
 	"\auser_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06userId\x12\x1f\n" +
 	"\x05limit\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18d \x00R\x05limit\x12\x16\n" +
@@ -1492,7 +1683,7 @@ func file_core_v1_desktop_proto_rawDescGZIP() []byte {
 	return file_core_v1_desktop_proto_rawDescData
 }
 
-var file_core_v1_desktop_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_core_v1_desktop_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_core_v1_desktop_proto_goTypes = []any{
 	(*DesktopRoutingRule)(nil),               // 0: core.v1.DesktopRoutingRule
 	(*GetDesktopRoutingRuleRequest)(nil),     // 1: core.v1.GetDesktopRoutingRuleRequest
@@ -1507,54 +1698,56 @@ var file_core_v1_desktop_proto_goTypes = []any{
 	(*DeleteDesktopRoutingRuleResponse)(nil), // 10: core.v1.DeleteDesktopRoutingRuleResponse
 	(*ListDesktopUsersRequest)(nil),          // 11: core.v1.ListDesktopUsersRequest
 	(*ListDesktopUsersResponse)(nil),         // 12: core.v1.ListDesktopUsersResponse
-	(*DesktopUserSummary)(nil),               // 13: core.v1.DesktopUserSummary
-	(*ListUserDevicesRequest)(nil),           // 14: core.v1.ListUserDevicesRequest
-	(*ListUserDevicesResponse)(nil),          // 15: core.v1.ListUserDevicesResponse
-	(*DesktopDevice)(nil),                    // 16: core.v1.DesktopDevice
-	(*DesktopTransparentProxyConfig)(nil),    // 17: core.v1.DesktopTransparentProxyConfig
-	(*DesktopConfig)(nil),                    // 18: core.v1.DesktopConfig
-	(*DesktopDeviceHardwareInfo)(nil),        // 19: core.v1.DesktopDeviceHardwareInfo
-	(*DesktopDeviceSoftwareInfo)(nil),        // 20: core.v1.DesktopDeviceSoftwareInfo
-	(*timestamppb.Timestamp)(nil),            // 21: google.protobuf.Timestamp
-	(*ListMetadata)(nil),                     // 22: core.v1.ListMetadata
+	(*DesktopFleetSummary)(nil),              // 13: core.v1.DesktopFleetSummary
+	(*DesktopUserSummary)(nil),               // 14: core.v1.DesktopUserSummary
+	(*ListUserDevicesRequest)(nil),           // 15: core.v1.ListUserDevicesRequest
+	(*ListUserDevicesResponse)(nil),          // 16: core.v1.ListUserDevicesResponse
+	(*DesktopDevice)(nil),                    // 17: core.v1.DesktopDevice
+	(*DesktopTransparentProxyConfig)(nil),    // 18: core.v1.DesktopTransparentProxyConfig
+	(*DesktopConfig)(nil),                    // 19: core.v1.DesktopConfig
+	(*DesktopDeviceHardwareInfo)(nil),        // 20: core.v1.DesktopDeviceHardwareInfo
+	(*DesktopDeviceSoftwareInfo)(nil),        // 21: core.v1.DesktopDeviceSoftwareInfo
+	(*timestamppb.Timestamp)(nil),            // 22: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                     // 23: core.v1.ListMetadata
 }
 var file_core_v1_desktop_proto_depIdxs = []int32{
-	21, // 0: core.v1.DesktopRoutingRule.created_at:type_name -> google.protobuf.Timestamp
-	21, // 1: core.v1.DesktopRoutingRule.updated_at:type_name -> google.protobuf.Timestamp
+	22, // 0: core.v1.DesktopRoutingRule.created_at:type_name -> google.protobuf.Timestamp
+	22, // 1: core.v1.DesktopRoutingRule.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: core.v1.GetDesktopRoutingRuleResponse.rule:type_name -> core.v1.DesktopRoutingRule
 	0,  // 3: core.v1.ListDesktopRoutingRulesResponse.rules:type_name -> core.v1.DesktopRoutingRule
-	22, // 4: core.v1.ListDesktopRoutingRulesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	23, // 4: core.v1.ListDesktopRoutingRulesResponse.list_metadata:type_name -> core.v1.ListMetadata
 	0,  // 5: core.v1.CreateDesktopRoutingRuleResponse.rule:type_name -> core.v1.DesktopRoutingRule
 	0,  // 6: core.v1.UpdateDesktopRoutingRuleResponse.rule:type_name -> core.v1.DesktopRoutingRule
-	13, // 7: core.v1.ListDesktopUsersResponse.users:type_name -> core.v1.DesktopUserSummary
-	22, // 8: core.v1.ListDesktopUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
-	16, // 9: core.v1.DesktopUserSummary.latest_device:type_name -> core.v1.DesktopDevice
-	16, // 10: core.v1.ListUserDevicesResponse.devices:type_name -> core.v1.DesktopDevice
-	22, // 11: core.v1.ListUserDevicesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	19, // 12: core.v1.DesktopDevice.hardware_info:type_name -> core.v1.DesktopDeviceHardwareInfo
-	20, // 13: core.v1.DesktopDevice.software_info:type_name -> core.v1.DesktopDeviceSoftwareInfo
-	21, // 14: core.v1.DesktopDevice.last_seen_at:type_name -> google.protobuf.Timestamp
-	18, // 15: core.v1.DesktopDevice.config:type_name -> core.v1.DesktopConfig
-	17, // 16: core.v1.DesktopConfig.transparent_proxy:type_name -> core.v1.DesktopTransparentProxyConfig
-	1,  // 17: core.v1.DesktopService.GetDesktopRoutingRule:input_type -> core.v1.GetDesktopRoutingRuleRequest
-	3,  // 18: core.v1.DesktopService.ListDesktopRoutingRules:input_type -> core.v1.ListDesktopRoutingRulesRequest
-	5,  // 19: core.v1.DesktopService.CreateDesktopRoutingRule:input_type -> core.v1.CreateDesktopRoutingRuleRequest
-	7,  // 20: core.v1.DesktopService.UpdateDesktopRoutingRule:input_type -> core.v1.UpdateDesktopRoutingRuleRequest
-	9,  // 21: core.v1.DesktopService.DeleteDesktopRoutingRule:input_type -> core.v1.DeleteDesktopRoutingRuleRequest
-	11, // 22: core.v1.DesktopService.ListDesktopUsers:input_type -> core.v1.ListDesktopUsersRequest
-	14, // 23: core.v1.DesktopService.ListUserDevices:input_type -> core.v1.ListUserDevicesRequest
-	2,  // 24: core.v1.DesktopService.GetDesktopRoutingRule:output_type -> core.v1.GetDesktopRoutingRuleResponse
-	4,  // 25: core.v1.DesktopService.ListDesktopRoutingRules:output_type -> core.v1.ListDesktopRoutingRulesResponse
-	6,  // 26: core.v1.DesktopService.CreateDesktopRoutingRule:output_type -> core.v1.CreateDesktopRoutingRuleResponse
-	8,  // 27: core.v1.DesktopService.UpdateDesktopRoutingRule:output_type -> core.v1.UpdateDesktopRoutingRuleResponse
-	10, // 28: core.v1.DesktopService.DeleteDesktopRoutingRule:output_type -> core.v1.DeleteDesktopRoutingRuleResponse
-	12, // 29: core.v1.DesktopService.ListDesktopUsers:output_type -> core.v1.ListDesktopUsersResponse
-	15, // 30: core.v1.DesktopService.ListUserDevices:output_type -> core.v1.ListUserDevicesResponse
-	24, // [24:31] is the sub-list for method output_type
-	17, // [17:24] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	14, // 7: core.v1.ListDesktopUsersResponse.users:type_name -> core.v1.DesktopUserSummary
+	23, // 8: core.v1.ListDesktopUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	13, // 9: core.v1.ListDesktopUsersResponse.fleet_summary:type_name -> core.v1.DesktopFleetSummary
+	17, // 10: core.v1.DesktopUserSummary.latest_device:type_name -> core.v1.DesktopDevice
+	17, // 11: core.v1.ListUserDevicesResponse.devices:type_name -> core.v1.DesktopDevice
+	23, // 12: core.v1.ListUserDevicesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	20, // 13: core.v1.DesktopDevice.hardware_info:type_name -> core.v1.DesktopDeviceHardwareInfo
+	21, // 14: core.v1.DesktopDevice.software_info:type_name -> core.v1.DesktopDeviceSoftwareInfo
+	22, // 15: core.v1.DesktopDevice.last_seen_at:type_name -> google.protobuf.Timestamp
+	19, // 16: core.v1.DesktopDevice.config:type_name -> core.v1.DesktopConfig
+	18, // 17: core.v1.DesktopConfig.transparent_proxy:type_name -> core.v1.DesktopTransparentProxyConfig
+	1,  // 18: core.v1.DesktopService.GetDesktopRoutingRule:input_type -> core.v1.GetDesktopRoutingRuleRequest
+	3,  // 19: core.v1.DesktopService.ListDesktopRoutingRules:input_type -> core.v1.ListDesktopRoutingRulesRequest
+	5,  // 20: core.v1.DesktopService.CreateDesktopRoutingRule:input_type -> core.v1.CreateDesktopRoutingRuleRequest
+	7,  // 21: core.v1.DesktopService.UpdateDesktopRoutingRule:input_type -> core.v1.UpdateDesktopRoutingRuleRequest
+	9,  // 22: core.v1.DesktopService.DeleteDesktopRoutingRule:input_type -> core.v1.DeleteDesktopRoutingRuleRequest
+	11, // 23: core.v1.DesktopService.ListDesktopUsers:input_type -> core.v1.ListDesktopUsersRequest
+	15, // 24: core.v1.DesktopService.ListUserDevices:input_type -> core.v1.ListUserDevicesRequest
+	2,  // 25: core.v1.DesktopService.GetDesktopRoutingRule:output_type -> core.v1.GetDesktopRoutingRuleResponse
+	4,  // 26: core.v1.DesktopService.ListDesktopRoutingRules:output_type -> core.v1.ListDesktopRoutingRulesResponse
+	6,  // 27: core.v1.DesktopService.CreateDesktopRoutingRule:output_type -> core.v1.CreateDesktopRoutingRuleResponse
+	8,  // 28: core.v1.DesktopService.UpdateDesktopRoutingRule:output_type -> core.v1.UpdateDesktopRoutingRuleResponse
+	10, // 29: core.v1.DesktopService.DeleteDesktopRoutingRule:output_type -> core.v1.DeleteDesktopRoutingRuleResponse
+	12, // 30: core.v1.DesktopService.ListDesktopUsers:output_type -> core.v1.ListDesktopUsersResponse
+	16, // 31: core.v1.DesktopService.ListUserDevices:output_type -> core.v1.ListUserDevicesResponse
+	25, // [25:32] is the sub-list for method output_type
+	18, // [18:25] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_desktop_proto_init() }
@@ -1563,15 +1756,16 @@ func file_core_v1_desktop_proto_init() {
 		return
 	}
 	file_core_v1_list_metadata_proto_init()
-	file_core_v1_desktop_proto_msgTypes[17].OneofWrappers = []any{}
+	file_core_v1_desktop_proto_msgTypes[11].OneofWrappers = []any{}
 	file_core_v1_desktop_proto_msgTypes[18].OneofWrappers = []any{}
+	file_core_v1_desktop_proto_msgTypes[19].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_desktop_proto_rawDesc), len(file_core_v1_desktop_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   21,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
