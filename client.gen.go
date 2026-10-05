@@ -997,7 +997,9 @@ func (c *DesktopServiceClient) ListDesktopRoutingRules(ctx context.Context, req 
 
 // List users with desktop status
 //
-// List org users with their latest desktop device summary.
+// List org users with their latest desktop device. latest_device is the same
+// most-recent check-in ListUserDevices returns for that user, or unset if the
+// user has no desktop heartbeat.
 func (c *DesktopServiceClient) ListDesktopUsers(ctx context.Context, req *corev1.ListDesktopUsersRequest) (*corev1.ListDesktopUsersResponse, error) {
 	res, err := c.inner.ListDesktopUsers(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -1008,7 +1010,8 @@ func (c *DesktopServiceClient) ListDesktopUsers(ctx context.Context, req *corev1
 
 // List user devices
 //
-// List all desktop devices for a specific user.
+// List every distinct desktop device for a user. A user may have multiple
+// hosts; each row is that host's latest heartbeat.
 func (c *DesktopServiceClient) ListUserDevices(ctx context.Context, req *corev1.ListUserDevicesRequest) (*corev1.ListUserDevicesResponse, error) {
 	res, err := c.inner.ListUserDevices(ctx, connect.NewRequest(req))
 	if err != nil {

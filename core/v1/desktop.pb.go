@@ -781,11 +781,13 @@ func (x *ListDesktopUsersResponse) GetListMetadata() *ListMetadata {
 }
 
 type DesktopUserSummary struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	FullName      string                 `protobuf:"bytes,3,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
-	LatestDevice  *DesktopDevice         `protobuf:"bytes,4,opt,name=latest_device,json=latestDevice,proto3" json:"latest_device,omitempty"`
+	state    protoimpl.MessageState `protogen:"open.v1"`
+	UserId   string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Type     string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
+	FullName string                 `protobuf:"bytes,3,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
+	// Same latest check-in as ListUserDevices for this user. Absent when the user
+	// has no desktop device.
+	LatestDevice  *DesktopDevice `protobuf:"bytes,4,opt,name=latest_device,json=latestDevice,proto3" json:"latest_device,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
