@@ -3610,12 +3610,12 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xb9\x02\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xcd\x02\n" +
 	"\x19ResourceDialConfiguration\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
 	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12B\n" +
-	"\vdial_method\x18\x03 \x01(\tB!\xbaH\x1er\x1cR\x03tcpR\fgcp_cloudsqlR\aaws_ssmR\n" +
+	"resourceId\x12V\n" +
+	"\vdial_method\x18\x03 \x01(\tB5\xbaH2r0R\x03tcpR\fgcp_cloudsqlR\x12gcp_connectgatewayR\aaws_ssmR\n" +
 	"dialMethod\x12\x1f\n" +
 	"\vdial_target\x18\x04 \x01(\tR\n" +
 	"dialTarget\x129\n" +
