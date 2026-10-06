@@ -3,6 +3,8 @@ package oidc
 import (
 	"context"
 	"errors"
+	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -45,6 +47,29 @@ func (s staticTokenSource) Token(context.Context) (Token, error) {
 		return Token{}, errors.New("oidc: token must not be empty")
 	}
 	return Token{JWT: s.jwt}, nil
+}
+
+type fileTokenSource struct {
+	path string
+}
+
+// File returns a TokenSource that reads a JWT from path on every call, so
+// tokens rotated in place (such as projected Kubernetes ServiceAccount tokens)
+// are picked up without a restart.
+func File(path string) TokenSource {
+	return fileTokenSource{path: path}
+}
+
+func (s fileTokenSource) Token(context.Context) (Token, error) {
+	contents, err := os.ReadFile(s.path)
+	if err != nil {
+		return Token{}, fmt.Errorf("oidc: read token file: %w", err)
+	}
+	jwt := strings.TrimSpace(string(contents))
+	if jwt == "" {
+		return Token{}, errors.New("oidc: token file must not be empty")
+	}
+	return Token{JWT: jwt}, nil
 }
 
 // ValidateAudience validates a Formal OIDC integration audience.
