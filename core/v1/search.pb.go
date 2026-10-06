@@ -289,19 +289,21 @@ const file_core_v1_search_proto_rawDesc = "" +
 	"\x19ListSearchResultsResponse\x122\n" +
 	"\x06groups\x18\x01 \x03(\v2\x1a.core.v1.SearchResultGroupR\x06groups\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount\"\xeb\x02\n" +
-	"\x11SearchResultGroup\x12\xe0\x01\n" +
-	"\bcategory\x18\x01 \x01(\tB\xc3\x01\xbaH\xbf\x01r\xbc\x01R\tconnectorR\bresourceR\x06policyR\n" +
-	"permissionR\tsatelliteR\vdata_loaderR\x05spaceR\x04userR\x05groupR\bworkflowR\x04formR\fnetwork_ruleR\x11log_configurationR\rcloud_accountR\x0eencryption_keyR\x04hookR\x0fmdm_integrationR\bcategory\x12!\n" +
+	"totalCount\"\xf7\x02\n" +
+	"\x11SearchResultGroup\x12\xec\x01\n" +
+	"\bcategory\x18\x01 \x01(\tB\xcf\x01\xbaH\xcb\x01r\xc8\x01R\tconnectorR\bresourceR\x06policyR\n" +
+	"permissionR\tsatelliteR\vdata_loaderR\x05spaceR\x04userR\x05groupR\bworkflowR\x04formR\fnetwork_ruleR\x11log_configurationR\rcloud_accountR\x0eencryption_keyR\x04hookR\x0fmdm_integrationR\n" +
+	"log_schemaR\bcategory\x12!\n" +
 	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12/\n" +
 	"\aresults\x18\x03 \x03(\v2\x15.core.v1.SearchResultR\aresults\x12\x1f\n" +
 	"\vtotal_count\x18\x04 \x01(\x05R\n" +
-	"totalCount\"\xce\x03\n" +
+	"totalCount\"\xda\x03\n" +
 	"\fSearchResult\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\xe0\x01\n" +
-	"\bcategory\x18\x03 \x01(\tB\xc3\x01\xbaH\xbf\x01r\xbc\x01R\tconnectorR\bresourceR\x06policyR\n" +
-	"permissionR\tsatelliteR\vdata_loaderR\x05spaceR\x04userR\x05groupR\bworkflowR\x04formR\fnetwork_ruleR\x11log_configurationR\rcloud_accountR\x0eencryption_keyR\x04hookR\x0fmdm_integrationR\bcategory\x129\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\xec\x01\n" +
+	"\bcategory\x18\x03 \x01(\tB\xcf\x01\xbaH\xcb\x01r\xc8\x01R\tconnectorR\bresourceR\x06policyR\n" +
+	"permissionR\tsatelliteR\vdata_loaderR\x05spaceR\x04userR\x05groupR\bworkflowR\x04formR\fnetwork_ruleR\x11log_configurationR\rcloud_accountR\x0eencryption_keyR\x04hookR\x0fmdm_integrationR\n" +
+	"log_schemaR\bcategory\x129\n" +
 	"\n" +
 	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12?\n" +
 	"\bmetadata\x18\x05 \x03(\v2#.core.v1.SearchResult.MetadataEntryR\bmetadata\x1a;\n" +
