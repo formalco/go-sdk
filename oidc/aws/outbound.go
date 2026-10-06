@@ -3,7 +3,6 @@ package aws
 import (
 	"context"
 	"errors"
-	"fmt"
 	"sync"
 	"time"
 
@@ -18,14 +17,12 @@ const (
 	signingAlgorithm        = "ES384"
 	tokenDurationSeconds    = int32(300)
 	minTokenDurationSeconds = int32(60)
-	sessionExpirySafetySkew = 2 * time.Second
 	tokenRenewalPercent     = 60
 )
 
 type tokenSource struct {
-	audience    string
-	client      *sts.Client
-	credentials awssdk.CredentialsProvider
+	audience string
+	client   *sts.Client
 
 	mu       sync.Mutex
 	cached   oidc.Token
@@ -41,15 +38,13 @@ func NewTokenSource(client *sts.Client, audience string) (oidc.TokenSource, erro
 	if err := oidc.ValidateAudience(audience); err != nil {
 		return nil, err
 	}
-	credentials := client.Options().Credentials
-	if credentials == nil {
+	if client.Options().Credentials == nil {
 		return nil, errors.New("oidc: STS client is missing credentials")
 	}
 
 	return &tokenSource{
-		audience:    audience,
-		client:      client,
-		credentials: credentials,
+		audience: audience,
+		client:   client,
 	}, nil
 }
 
@@ -77,21 +72,11 @@ func (s *tokenSource) Token(ctx context.Context) (oidc.Token, error) {
 	return token, nil
 }
 
+// mint lets STS bound the token by the signing session's real expiry. The credentials' cached
+// Expires is not usable for that: credential caches with an expiry window move it earlier.
 func (s *tokenSource) mint(ctx context.Context) (oidc.Token, error) {
-	creds, err := s.credentials.Retrieve(ctx)
-	if err != nil {
-		return oidc.Token{}, fmt.Errorf("retrieve AWS credentials: %w", err)
-	}
-	duration := durationSecondsForSession(creds, time.Now())
-	if duration == 0 {
-		return oidc.Token{}, fmt.Errorf(
-			"AWS session expires too soon to mint an OIDC token (need at least %d seconds remaining)",
-			minTokenDurationSeconds,
-		)
-	}
-
 	var lastErr error
-	for _, seconds := range durationAttempts(duration) {
+	for _, seconds := range []int32{tokenDurationSeconds, minTokenDurationSeconds} {
 		output, err := s.client.GetWebIdentityToken(ctx, &sts.GetWebIdentityTokenInput{
 			Audience:         []string{s.audience},
 			SigningAlgorithm: awssdk.String(signingAlgorithm),
@@ -120,28 +105,6 @@ func (s *tokenSource) mint(ctx context.Context) (oidc.Token, error) {
 		return oidc.Token{JWT: jwt, Expiry: expiry}, nil
 	}
 	return oidc.Token{}, lastErr
-}
-
-func durationSecondsForSession(credentials awssdk.Credentials, now time.Time) int32 {
-	if !credentials.CanExpire {
-		return tokenDurationSeconds
-	}
-
-	seconds := int64((credentials.Expires.Sub(now) - sessionExpirySafetySkew) / time.Second)
-	if seconds >= int64(tokenDurationSeconds) {
-		return tokenDurationSeconds
-	}
-	if seconds < int64(minTokenDurationSeconds) {
-		return 0
-	}
-	return int32(seconds)
-}
-
-func durationAttempts(preferred int32) []int32 {
-	if preferred <= minTokenDurationSeconds {
-		return []int32{minTokenDurationSeconds}
-	}
-	return []int32{preferred, minTokenDurationSeconds}
 }
 
 func isSessionDurationEscalation(err error) bool {
