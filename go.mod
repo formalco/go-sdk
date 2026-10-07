@@ -9,8 +9,8 @@ require (
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.23.3
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.14.1
 	github.com/aws/aws-sdk-go-v2 v1.47.1
-	github.com/aws/aws-sdk-go-v2/service/sts v1.51.1
-	github.com/aws/smithy-go v1.28.3
+	github.com/aws/aws-sdk-go-v2/service/sts v1.51.2
+	github.com/aws/smithy-go v1.28.4
 	github.com/formalco/typeid v0.1.0
 	github.com/samber/lo v1.53.0
 	github.com/samber/mo v1.17.0
