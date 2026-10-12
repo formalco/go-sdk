@@ -31,6 +31,7 @@ type Client struct {
 	LogsServiceClient                  *LogsServiceClient
 	McpServiceClient                   *McpServiceClient
 	NativeUserServiceClient            *NativeUserServiceClient
+	OAuthServiceClient                 *OAuthServiceClient
 	PermissionsServiceClient           *PermissionsServiceClient
 	PoliciesServiceClient              *PoliciesServiceClient
 	PolicyDataLoaderServiceClient      *PolicyDataLoaderServiceClient
@@ -68,6 +69,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		LogsServiceClient:                  &LogsServiceClient{inner: corev1connect.NewLogsServiceClient(httpClient, baseURL)},
 		McpServiceClient:                   &McpServiceClient{inner: corev1connect.NewMcpServiceClient(httpClient, baseURL)},
 		NativeUserServiceClient:            &NativeUserServiceClient{inner: corev1connect.NewNativeUserServiceClient(httpClient, baseURL)},
+		OAuthServiceClient:                 &OAuthServiceClient{inner: corev1connect.NewOAuthServiceClient(httpClient, baseURL)},
 		PermissionsServiceClient:           &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
 		PoliciesServiceClient:              &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
 		PolicyDataLoaderServiceClient:      &PolicyDataLoaderServiceClient{inner: corev1connect.NewPolicyDataLoaderServiceClient(httpClient, baseURL)},
@@ -2364,6 +2366,78 @@ func (c *NativeUserServiceClient) ListNativeUsersV3(ctx context.Context, req *co
 // credentials. The credential type cannot be changed.
 func (c *NativeUserServiceClient) UpdateNativeUserV3(ctx context.Context, req *corev1.UpdateNativeUserV3Request) (*corev1.UpdateNativeUserV3Response, error) {
 	res, err := c.inner.UpdateNativeUserV3(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// OAuthServiceClient is a client for the core.v1.OAuthService service.
+type OAuthServiceClient struct {
+	inner corev1connect.OAuthServiceClient
+}
+
+// Create OAuth client
+//
+// Register an OAuth client, such as Cursor or Devin, that signs users in to
+// the organization's OAuth-enabled MCP servers with a static client ID instead
+// of a client ID metadata document. A confidential client's secret is
+// returned only in this response.
+func (c *OAuthServiceClient) CreateOAuthClient(ctx context.Context, req *corev1.CreateOAuthClientRequest) (*corev1.CreateOAuthClientResponse, error) {
+	res, err := c.inner.CreateOAuthClient(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Create OAuth client secret
+//
+// Replace a confidential client's secret. The old secret stops working
+// immediately; existing grants are kept. The new secret is returned only in
+// this response.
+func (c *OAuthServiceClient) CreateOAuthClientSecret(ctx context.Context, req *corev1.CreateOAuthClientSecretRequest) (*corev1.CreateOAuthClientSecretResponse, error) {
+	res, err := c.inner.CreateOAuthClientSecret(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete OAuth client
+//
+// Delete a client and revoke every consent and refresh token issued to it.
+func (c *OAuthServiceClient) DeleteOAuthClient(ctx context.Context, req *corev1.DeleteOAuthClientRequest) (*corev1.DeleteOAuthClientResponse, error) {
+	res, err := c.inner.DeleteOAuthClient(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get OAuth client
+func (c *OAuthServiceClient) GetOAuthClient(ctx context.Context, req *corev1.GetOAuthClientRequest) (*corev1.GetOAuthClientResponse, error) {
+	res, err := c.inner.GetOAuthClient(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List OAuth clients
+func (c *OAuthServiceClient) ListOAuthClients(ctx context.Context, req *corev1.ListOAuthClientsRequest) (*corev1.ListOAuthClientsResponse, error) {
+	res, err := c.inner.ListOAuthClients(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update OAuth client
+//
+// Rename a client or replace its redirect URIs.
+func (c *OAuthServiceClient) UpdateOAuthClient(ctx context.Context, req *corev1.UpdateOAuthClientRequest) (*corev1.UpdateOAuthClientResponse, error) {
+	res, err := c.inner.UpdateOAuthClient(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
