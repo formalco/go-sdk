@@ -2931,10 +2931,13 @@ func (c *ResourceServiceClient) CreateResourceHostname(ctx context.Context, req 
 
 // Create resource OAuth settings
 //
-// Enable OAuth for an MCP server. OAuth clients can then connect to it through
-// the Connector, and, unless the upstream OAuth mode is "none", users can link
-// their own upstream accounts. No network discovery happens until a user
-// starts linking.
+// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. OAuth clients can then
+// connect to it through the Connector, and, unless the upstream OAuth mode is
+// "none", users can link their own upstream accounts, whose access tokens the
+// Connector sends upstream in place of native user credentials. Formal checks
+// that it can link accounts with the upstream's authorization server before
+// saving, except for MCP servers without an issuer, whose discovery waits
+// until a user starts linking.
 func (c *ResourceServiceClient) CreateResourceOAuthSettings(ctx context.Context, req *corev1.CreateResourceOAuthSettingsRequest) (*corev1.CreateResourceOAuthSettingsResponse, error) {
 	res, err := c.inner.CreateResourceOAuthSettings(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3086,8 +3089,8 @@ func (c *ResourceServiceClient) DeleteResourceNativeUserSelection(ctx context.Co
 
 // Delete resource OAuth settings
 //
-// Disable OAuth for an MCP server. Every pending link, every user's stored
-// grant, and every OAuth client's authorization for the server is deleted.
+// Disable OAuth for a resource. Every pending link, every user's stored grant,
+// and every OAuth client's authorization for the resource is deleted.
 func (c *ResourceServiceClient) DeleteResourceOAuthSettings(ctx context.Context, req *corev1.DeleteResourceOAuthSettingsRequest) (*corev1.DeleteResourceOAuthSettingsResponse, error) {
 	res, err := c.inner.DeleteResourceOAuthSettings(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3216,7 +3219,7 @@ func (c *ResourceServiceClient) GetResourceHostname(ctx context.Context, req *co
 
 // Get resource OAuth settings
 //
-// Get the OAuth settings of an MCP server
+// Get the OAuth settings of a resource
 func (c *ResourceServiceClient) GetResourceOAuthSettings(ctx context.Context, req *corev1.GetResourceOAuthSettingsRequest) (*corev1.GetResourceOAuthSettingsResponse, error) {
 	res, err := c.inner.GetResourceOAuthSettings(ctx, connect.NewRequest(req))
 	if err != nil {

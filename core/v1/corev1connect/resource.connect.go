@@ -486,19 +486,22 @@ type ResourceServiceClient interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable OAuth for an MCP server. OAuth clients can then connect to it through
-	// the Connector, and, unless the upstream OAuth mode is "none", users can link
-	// their own upstream accounts. No network discovery happens until a user
-	// starts linking.
+	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. OAuth clients can then
+	// connect to it through the Connector, and, unless the upstream OAuth mode is
+	// "none", users can link their own upstream accounts, whose access tokens the
+	// Connector sends upstream in place of native user credentials. Formal checks
+	// that it can link accounts with the upstream's authorization server before
+	// saving, except for MCP servers without an issuer, whose discovery waits
+	// until a user starts linking.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//
-	// Get the OAuth settings of an MCP server
+	// Get the OAuth settings of a resource
 	GetResourceOAuthSettings(context.Context, *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error)
 	// Delete resource OAuth settings
 	//
-	// Disable OAuth for an MCP server. Every pending link, every user's stored
-	// grant, and every OAuth client's authorization for the server is deleted.
+	// Disable OAuth for a resource. Every pending link, every user's stored grant,
+	// and every OAuth client's authorization for the resource is deleted.
 	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 
@@ -1611,19 +1614,22 @@ type ResourceServiceHandler interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable OAuth for an MCP server. OAuth clients can then connect to it through
-	// the Connector, and, unless the upstream OAuth mode is "none", users can link
-	// their own upstream accounts. No network discovery happens until a user
-	// starts linking.
+	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. OAuth clients can then
+	// connect to it through the Connector, and, unless the upstream OAuth mode is
+	// "none", users can link their own upstream accounts, whose access tokens the
+	// Connector sends upstream in place of native user credentials. Formal checks
+	// that it can link accounts with the upstream's authorization server before
+	// saving, except for MCP servers without an issuer, whose discovery waits
+	// until a user starts linking.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//
-	// Get the OAuth settings of an MCP server
+	// Get the OAuth settings of a resource
 	GetResourceOAuthSettings(context.Context, *connect.Request[v1.GetResourceOAuthSettingsRequest]) (*connect.Response[v1.GetResourceOAuthSettingsResponse], error)
 	// Delete resource OAuth settings
 	//
-	// Disable OAuth for an MCP server. Every pending link, every user's stored
-	// grant, and every OAuth client's authorization for the server is deleted.
+	// Disable OAuth for a resource. Every pending link, every user's stored grant,
+	// and every OAuth client's authorization for the resource is deleted.
 	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 

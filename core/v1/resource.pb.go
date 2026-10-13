@@ -139,8 +139,12 @@ type ResourceOAuthSettings struct {
 	ClientId string `protobuf:"bytes,7,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	// Whether the pre-registered client has a secret. The secret is never returned.
 	ClientSecretSet bool `protobuf:"varint,8,opt,name=client_secret_set,json=clientSecretSet,proto3" json:"client_secret_set,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	// The upstream authorization server's issuer. Set when the upstream publishes
+	// no protected resource metadata (RFC 9728); unset means the authorization
+	// server is discovered from the upstream itself.
+	Issuer        *string `protobuf:"bytes,9,opt,name=issuer,proto3,oneof" json:"issuer,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ResourceOAuthSettings) Reset() {
@@ -229,6 +233,13 @@ func (x *ResourceOAuthSettings) GetClientSecretSet() bool {
 	return false
 }
 
+func (x *ResourceOAuthSettings) GetIssuer() string {
+	if x != nil && x.Issuer != nil {
+		return *x.Issuer
+	}
+	return ""
+}
+
 type CreateResourceOAuthSettingsRequest struct {
 	state      protoimpl.MessageState `protogen:"open.v1"`
 	ResourceId string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
@@ -242,7 +253,17 @@ type CreateResourceOAuthSettingsRequest struct {
 	// The pre-registered client's secret. Empty registers a public client, which
 	// authenticates with PKCE alone. Must be empty unless upstream_oauth_mode is
 	// "pre_registered".
-	ClientSecret  string `protobuf:"bytes,5,opt,name=client_secret,json=clientSecret,proto3" json:"client_secret,omitempty"`
+	ClientSecret string `protobuf:"bytes,5,opt,name=client_secret,json=clientSecret,proto3" json:"client_secret,omitempty"`
+	// The upstream authorization server's issuer, such as
+	// "https://github.com/login/oauth" for the GitHub REST API. Set it when the
+	// upstream publishes no protected resource metadata (RFC 9728): Formal then
+	// reads the issuer's authorization server metadata (RFC 8414 or OpenID
+	// Connect Discovery) directly and sends no RFC 8707 resource parameter. It
+	// must use https, have no query or fragment, and match the issuer the
+	// metadata reports exactly. Must be unset when upstream_oauth_mode is "none".
+	// Creation fails with FAILED_PRECONDITION when Formal cannot link accounts
+	// with the authorization server in the requested mode.
+	Issuer        *string `protobuf:"bytes,6,opt,name=issuer,proto3,oneof" json:"issuer,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -308,6 +329,13 @@ func (x *CreateResourceOAuthSettingsRequest) GetClientId() string {
 func (x *CreateResourceOAuthSettingsRequest) GetClientSecret() string {
 	if x != nil {
 		return x.ClientSecret
+	}
+	return ""
+}
+
+func (x *CreateResourceOAuthSettingsRequest) GetIssuer() string {
+	if x != nil && x.Issuer != nil {
+		return *x.Issuer
 	}
 	return ""
 }
@@ -8492,7 +8520,7 @@ var File_core_v1_resource_proto protoreflect.FileDescriptor
 
 const file_core_v1_resource_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/resource.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/group.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x12core/v1/user.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe2\x02\n" +
+	"\x16core/v1/resource.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/group.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x12core/v1/user.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x03\n" +
 	"\x15ResourceOAuthSettings\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
 	"\vresource_id\x18\x02 \x01(\tR\n" +
@@ -8504,16 +8532,20 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1b\n" +
 	"\tclient_id\x18\a \x01(\tR\bclientId\x12*\n" +
-	"\x11client_secret_set\x18\b \x01(\bR\x0fclientSecretSet\"\x86\x03\n" +
+	"\x11client_secret_set\x18\b \x01(\bR\x0fclientSecretSet\x12\x1b\n" +
+	"\x06issuer\x18\t \x01(\tH\x00R\x06issuer\x88\x01\x01B\t\n" +
+	"\a_issuer\"\xbb\x03\n" +
 	"\"CreateResourceOAuthSettingsRequest\x12(\n" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"resourceId\x12Y\n" +
 	"\x13upstream_oauth_mode\x18\x02 \x01(\tB)\xbaH&r$R\x00R\x04autoR\x04cimdR\x0epre_registeredR\x04noneR\x11upstreamOauthMode\x12\\\n" +
 	"\x10requested_scopes\x18\x03 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\x12=\n" +
 	"\tclient_id\x18\x04 \x01(\tB\x1b\xbaH\x18r\x162\x14^[\\x21-\\x7E]{1,512}$H\x00R\bclientId\x88\x01\x01\x120\n" +
-	"\rclient_secret\x18\x05 \x01(\tB\v\xbaH\x05r\x03\x18\x80\b\x80\x01\x01R\fclientSecretB\f\n" +
+	"\rclient_secret\x18\x05 \x01(\tB\v\xbaH\x05r\x03\x18\x80\b\x80\x01\x01R\fclientSecret\x12(\n" +
+	"\x06issuer\x18\x06 \x01(\tB\v\xbaH\br\x06\x18\x80\x10\x88\x01\x01H\x01R\x06issuer\x88\x01\x01B\f\n" +
 	"\n" +
-	"_client_id\"}\n" +
+	"_client_idB\t\n" +
+	"\a_issuer\"}\n" +
 	"#CreateResourceOAuthSettingsResponse\x12V\n" +
 	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"K\n" +
 	"\x1fGetResourceOAuthSettingsRequest\x12(\n" +
@@ -9615,6 +9647,7 @@ func file_core_v1_resource_proto_init() {
 	file_core_v1_list_metadata_proto_init()
 	file_core_v1_types_proto_init()
 	file_core_v1_user_proto_init()
+	file_core_v1_resource_proto_msgTypes[0].OneofWrappers = []any{}
 	file_core_v1_resource_proto_msgTypes[1].OneofWrappers = []any{}
 	file_core_v1_resource_proto_msgTypes[9].OneofWrappers = []any{
 		(*GetResourceHealthCheckRequest_ResourceHealthCheckId)(nil),
