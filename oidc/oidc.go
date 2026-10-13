@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"github.com/samber/mo"
-
-	"github.com/formalco/typeid"
 )
 
 const integrationOIDCType = "integrationoidc"
+
+const typeIDSuffixAlphabet = "0123456789abcdefghjkmnpqrstvwxyz"
 
 // AudiencePrefix is the required prefix for Formal OIDC integration audiences.
 const AudiencePrefix = "oidc.formal.ai/"
@@ -81,10 +81,20 @@ func ValidateAudience(audience string) error {
 		return errors.New("oidc: audience must be a Formal OIDC integration audience")
 	}
 
-	integrationID := strings.TrimPrefix(audience, AudiencePrefix)
-	parsed, err := typeid.FromString(integrationID)
-	if err != nil || parsed.Type() != integrationOIDCType {
+	if !isOIDCIntegrationID(strings.TrimPrefix(audience, AudiencePrefix)) {
 		return errors.New("oidc: audience must contain a valid OIDC integration ID")
 	}
 	return nil
+}
+
+// isOIDCIntegrationID applies the TypeID spec's suffix rules locally because
+// sdk/go is published as a standalone module and cannot import common/typeid.
+func isOIDCIntegrationID(id string) bool {
+	suffix, ok := strings.CutPrefix(id, integrationOIDCType+"_")
+	if !ok || len(suffix) != 26 || suffix[0] > '7' {
+		return false
+	}
+	return !strings.ContainsFunc(suffix, func(r rune) bool {
+		return !strings.ContainsRune(typeIDSuffixAlphabet, r)
+	})
 }
