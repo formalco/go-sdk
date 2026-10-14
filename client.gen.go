@@ -28,6 +28,7 @@ type Client struct {
 	IntegrationOIDCServiceClient       *IntegrationOIDCServiceClient
 	IntegrationsLogServiceClient       *IntegrationsLogServiceClient
 	InventoryServiceClient             *InventoryServiceClient
+	LLMPricingServiceClient            *LLMPricingServiceClient
 	LogsServiceClient                  *LogsServiceClient
 	McpServiceClient                   *McpServiceClient
 	NativeUserServiceClient            *NativeUserServiceClient
@@ -66,6 +67,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		IntegrationOIDCServiceClient:       &IntegrationOIDCServiceClient{inner: corev1connect.NewIntegrationOIDCServiceClient(httpClient, baseURL)},
 		IntegrationsLogServiceClient:       &IntegrationsLogServiceClient{inner: corev1connect.NewIntegrationsLogServiceClient(httpClient, baseURL)},
 		InventoryServiceClient:             &InventoryServiceClient{inner: corev1connect.NewInventoryServiceClient(httpClient, baseURL)},
+		LLMPricingServiceClient:            &LLMPricingServiceClient{inner: corev1connect.NewLLMPricingServiceClient(httpClient, baseURL)},
 		LogsServiceClient:                  &LogsServiceClient{inner: corev1connect.NewLogsServiceClient(httpClient, baseURL)},
 		McpServiceClient:                   &McpServiceClient{inner: corev1connect.NewMcpServiceClient(httpClient, baseURL)},
 		NativeUserServiceClient:            &NativeUserServiceClient{inner: corev1connect.NewNativeUserServiceClient(httpClient, baseURL)},
@@ -1898,6 +1900,44 @@ func (c *InventoryServiceClient) UpdateInventoryObjectTags(ctx context.Context, 
 // Update an inventory tag name
 func (c *InventoryServiceClient) UpdateInventoryTag(ctx context.Context, req *corev1.UpdateInventoryTagRequest) (*corev1.UpdateInventoryTagResponse, error) {
 	res, err := c.inner.UpdateInventoryTag(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// LLMPricingServiceClient is a client for the core.v1.LLMPricingService service.
+type LLMPricingServiceClient struct {
+	inner corev1connect.LLMPricingServiceClient
+}
+
+// Delete LLM token price
+//
+// Delete the token price for an LLM provider, or for one of its models
+func (c *LLMPricingServiceClient) DeleteLLMTokenPrice(ctx context.Context, req *corev1.DeleteLLMTokenPriceRequest) (*corev1.DeleteLLMTokenPriceResponse, error) {
+	res, err := c.inner.DeleteLLMTokenPrice(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List LLM token prices
+//
+// List LLM token prices
+func (c *LLMPricingServiceClient) ListLLMTokenPrices(ctx context.Context, req *corev1.ListLLMTokenPricesRequest) (*corev1.ListLLMTokenPricesResponse, error) {
+	res, err := c.inner.ListLLMTokenPrices(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Set LLM token price
+//
+// Set the token price for an LLM provider, or for one of its models
+func (c *LLMPricingServiceClient) UpdateLLMTokenPrice(ctx context.Context, req *corev1.UpdateLLMTokenPriceRequest) (*corev1.UpdateLLMTokenPriceResponse, error) {
+	res, err := c.inner.UpdateLLMTokenPrice(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
