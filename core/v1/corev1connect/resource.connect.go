@@ -491,8 +491,7 @@ type ResourceServiceClient interface {
 	// "none", users can link their own upstream accounts, whose access tokens the
 	// Connector sends upstream in place of native user credentials. Formal checks
 	// that it can link accounts with the upstream's authorization server before
-	// saving, except for MCP servers without an issuer, whose discovery waits
-	// until a user starts linking.
+	// saving.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//
@@ -1619,8 +1618,7 @@ type ResourceServiceHandler interface {
 	// "none", users can link their own upstream accounts, whose access tokens the
 	// Connector sends upstream in place of native user credentials. Formal checks
 	// that it can link accounts with the upstream's authorization server before
-	// saving, except for MCP servers without an issuer, whose discovery waits
-	// until a user starts linking.
+	// saving.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//

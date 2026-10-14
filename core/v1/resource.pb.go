@@ -124,11 +124,12 @@ type ResourceOAuthSettings struct {
 	Id         string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	ResourceId string                 `protobuf:"bytes,2,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
 	// How Formal identifies itself to the upstream authorization server.
-	// "formal" uses Formal's app, which identifies itself with a Client ID
-	// Metadata Document. "pre_registered" uses a client the organization
-	// registered with the authorization server, such as a GitHub OAuth app.
-	// "none" links no upstream account: the Connector authenticates upstream with
-	// the user's native user.
+	// "formal" uses Formal's app: a client Formal registered with the
+	// authorization server when there is one, and otherwise its Client ID Metadata
+	// Document client. "pre_registered" uses a client the organization registered
+	// with the authorization server, such as a GitHub OAuth app. "none" links no
+	// upstream account: the Connector authenticates upstream with the user's
+	// native user.
 	UpstreamOauthMode string `protobuf:"bytes,3,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
 	// Empty means the scope parameter is omitted and the provider's defaults apply.
 	// Always empty when upstream_oauth_mode is "none".
