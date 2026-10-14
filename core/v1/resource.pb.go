@@ -244,7 +244,7 @@ func (x *ResourceOAuthSettings) GetIssuer() string {
 type CreateResourceOAuthSettingsRequest struct {
 	state      protoimpl.MessageState `protogen:"open.v1"`
 	ResourceId string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
-	// Defaults to "formal". "auto" and "cimd" are deprecated names for "formal".
+	// Defaults to "formal".
 	UpstreamOauthMode string `protobuf:"bytes,2,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
 	// Must be empty when upstream_oauth_mode is "none".
 	RequestedScopes []string `protobuf:"bytes,3,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
@@ -8535,11 +8535,11 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\tclient_id\x18\a \x01(\tR\bclientId\x12*\n" +
 	"\x11client_secret_set\x18\b \x01(\bR\x0fclientSecretSet\x12\x1b\n" +
 	"\x06issuer\x18\t \x01(\tH\x00R\x06issuer\x88\x01\x01B\t\n" +
-	"\a_issuer\"\xc3\x03\n" +
+	"\a_issuer\"\xb7\x03\n" +
 	"\"CreateResourceOAuthSettingsRequest\x12(\n" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12a\n" +
-	"\x13upstream_oauth_mode\x18\x02 \x01(\tB1\xbaH.r,R\x00R\x06formalR\x0epre_registeredR\x04noneR\x04autoR\x04cimdR\x11upstreamOauthMode\x12\\\n" +
+	"resourceId\x12U\n" +
+	"\x13upstream_oauth_mode\x18\x02 \x01(\tB%\xbaH\"r R\x00R\x06formalR\x0epre_registeredR\x04noneR\x11upstreamOauthMode\x12\\\n" +
 	"\x10requested_scopes\x18\x03 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\x12=\n" +
 	"\tclient_id\x18\x04 \x01(\tB\x1b\xbaH\x18r\x162\x14^[\\x21-\\x7E]{1,512}$H\x00R\bclientId\x88\x01\x01\x120\n" +
 	"\rclient_secret\x18\x05 \x01(\tB\v\xbaH\x05r\x03\x18\x80\b\x80\x01\x01R\fclientSecret\x12(\n" +
