@@ -523,9 +523,12 @@ type Azure struct {
 	AzureAllowBlobAccess        bool                   `protobuf:"varint,10,opt,name=azure_allow_blob_access,json=azureAllowBlobAccess,proto3" json:"azure_allow_blob_access,omitempty"`
 	AzureBlobStorageAccounts    []string               `protobuf:"bytes,11,rep,name=azure_blob_storage_accounts,json=azureBlobStorageAccounts,proto3" json:"azure_blob_storage_accounts,omitempty"`
 	AzureIssuer                 string                 `protobuf:"bytes,12,opt,name=azure_issuer,json=azureIssuer,proto3" json:"azure_issuer,omitempty"`
-	AzureRoleDefinitions        []string               `protobuf:"bytes,13,rep,name=azure_role_definitions,json=azureRoleDefinitions,proto3" json:"azure_role_definitions,omitempty"`
-	unknownFields               protoimpl.UnknownFields
-	sizeCache                   protoimpl.SizeCache
+	// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
+	AzureRoleDefinitions []string `protobuf:"bytes,13,rep,name=azure_role_definitions,json=azureRoleDefinitions,proto3" json:"azure_role_definitions,omitempty"` // superseded by azure_actions
+	AzureActions         []string `protobuf:"bytes,14,rep,name=azure_actions,json=azureActions,proto3" json:"azure_actions,omitempty"`
+	AzureDataActions     []string `protobuf:"bytes,15,rep,name=azure_data_actions,json=azureDataActions,proto3" json:"azure_data_actions,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
 }
 
 func (x *Azure) Reset() {
@@ -642,9 +645,24 @@ func (x *Azure) GetAzureIssuer() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
 func (x *Azure) GetAzureRoleDefinitions() []string {
 	if x != nil {
 		return x.AzureRoleDefinitions
+	}
+	return nil
+}
+
+func (x *Azure) GetAzureActions() []string {
+	if x != nil {
+		return x.AzureActions
+	}
+	return nil
+}
+
+func (x *Azure) GetAzureDataActions() []string {
+	if x != nil {
+		return x.AzureDataActions
 	}
 	return nil
 }
@@ -1772,14 +1790,17 @@ func (x *GetAzureCloudIntegrationSetupRequest) GetSecurityKey() string {
 }
 
 type GetAzureCloudIntegrationSetupResponse struct {
-	state               protoimpl.MessageState `protogen:"open.v1"`
-	Issuer              string                 `protobuf:"bytes,1,opt,name=issuer,proto3" json:"issuer,omitempty"`
-	Subject             string                 `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
-	Audience            string                 `protobuf:"bytes,3,opt,name=audience,proto3" json:"audience,omitempty"`
-	SubscriptionId      string                 `protobuf:"bytes,4,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
-	ResourceGroup       string                 `protobuf:"bytes,5,opt,name=resource_group,json=resourceGroup,proto3" json:"resource_group,omitempty"`
-	RoleDefinitions     []string               `protobuf:"bytes,6,rep,name=role_definitions,json=roleDefinitions,proto3" json:"role_definitions,omitempty"`
-	BlobStorageAccounts []string               `protobuf:"bytes,7,rep,name=blob_storage_accounts,json=blobStorageAccounts,proto3" json:"blob_storage_accounts,omitempty"`
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Issuer         string                 `protobuf:"bytes,1,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	Subject        string                 `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
+	Audience       string                 `protobuf:"bytes,3,opt,name=audience,proto3" json:"audience,omitempty"`
+	SubscriptionId string                 `protobuf:"bytes,4,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
+	ResourceGroup  string                 `protobuf:"bytes,5,opt,name=resource_group,json=resourceGroup,proto3" json:"resource_group,omitempty"`
+	// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
+	RoleDefinitions     []string `protobuf:"bytes,6,rep,name=role_definitions,json=roleDefinitions,proto3" json:"role_definitions,omitempty"` // superseded by actions
+	BlobStorageAccounts []string `protobuf:"bytes,7,rep,name=blob_storage_accounts,json=blobStorageAccounts,proto3" json:"blob_storage_accounts,omitempty"`
+	Actions             []string `protobuf:"bytes,8,rep,name=actions,proto3" json:"actions,omitempty"`
+	DataActions         []string `protobuf:"bytes,9,rep,name=data_actions,json=dataActions,proto3" json:"data_actions,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -1849,6 +1870,7 @@ func (x *GetAzureCloudIntegrationSetupResponse) GetResourceGroup() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in core/v1/integration_cloud.proto.
 func (x *GetAzureCloudIntegrationSetupResponse) GetRoleDefinitions() []string {
 	if x != nil {
 		return x.RoleDefinitions
@@ -1859,6 +1881,20 @@ func (x *GetAzureCloudIntegrationSetupResponse) GetRoleDefinitions() []string {
 func (x *GetAzureCloudIntegrationSetupResponse) GetBlobStorageAccounts() []string {
 	if x != nil {
 		return x.BlobStorageAccounts
+	}
+	return nil
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetActions() []string {
+	if x != nil {
+		return x.Actions
+	}
+	return nil
+}
+
+func (x *GetAzureCloudIntegrationSetupResponse) GetDataActions() []string {
+	if x != nil {
+		return x.DataActions
 	}
 	return nil
 }
@@ -2623,7 +2659,7 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	" \x01(\bR&gcpEnableComputeInstancesAutodiscovery\x12P\n" +
 	"%gcp_enable_gke_clusters_autodiscovery\x18\v \x01(\bR!gcpEnableGkeClustersAutodiscovery\x12\\\n" +
 	"+gcp_enable_cloudsql_instances_autodiscovery\x18\f \x01(\bR'gcpEnableCloudsqlInstancesAutodiscovery\x12'\n" +
-	"\x0fgcp_permissions\x18\r \x03(\tR\x0egcpPermissions\"\xae\x05\n" +
+	"\x0fgcp_permissions\x18\r \x03(\tR\x0egcpPermissions\"\x85\x06\n" +
 	"\x05Azure\x12&\n" +
 	"\x0fazure_tenant_id\x18\x01 \x01(\tR\razureTenantId\x12&\n" +
 	"\x0fazure_client_id\x18\x02 \x01(\tR\razureClientId\x122\n" +
@@ -2637,8 +2673,10 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x17azure_allow_blob_access\x18\n" +
 	" \x01(\bR\x14azureAllowBlobAccess\x12=\n" +
 	"\x1bazure_blob_storage_accounts\x18\v \x03(\tR\x18azureBlobStorageAccounts\x12!\n" +
-	"\fazure_issuer\x18\f \x01(\tR\vazureIssuer\x124\n" +
-	"\x16azure_role_definitions\x18\r \x03(\tR\x14azureRoleDefinitions\"\xd9\x10\n" +
+	"\fazure_issuer\x18\f \x01(\tR\vazureIssuer\x128\n" +
+	"\x16azure_role_definitions\x18\r \x03(\tB\x02\x18\x01R\x14azureRoleDefinitions\x12#\n" +
+	"\razure_actions\x18\x0e \x03(\tR\fazureActions\x12,\n" +
+	"\x12azure_data_actions\x18\x0f \x03(\tR\x10azureDataActions\"\xd9\x10\n" +
 	"\x1dCreateCloudIntegrationRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12!\n" +
 	"\fcloud_region\x18\x02 \x01(\tR\vcloudRegion\x12\x12\n" +
@@ -2816,15 +2854,17 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"$GetAzureCloudIntegrationSetupRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12-\n" +
 	"\fsecurity_key\x18\x02 \x01(\tB\n" +
-	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\vsecurityKey\"\xa4\x02\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\vsecurityKey\"\xe5\x02\n" +
 	"%GetAzureCloudIntegrationSetupResponse\x12\x16\n" +
 	"\x06issuer\x18\x01 \x01(\tR\x06issuer\x12\x18\n" +
 	"\asubject\x18\x02 \x01(\tR\asubject\x12\x1a\n" +
 	"\baudience\x18\x03 \x01(\tR\baudience\x12'\n" +
 	"\x0fsubscription_id\x18\x04 \x01(\tR\x0esubscriptionId\x12%\n" +
-	"\x0eresource_group\x18\x05 \x01(\tR\rresourceGroup\x12)\n" +
-	"\x10role_definitions\x18\x06 \x03(\tR\x0froleDefinitions\x122\n" +
-	"\x15blob_storage_accounts\x18\a \x03(\tR\x13blobStorageAccounts2\x85\x0f\n" +
+	"\x0eresource_group\x18\x05 \x01(\tR\rresourceGroup\x12-\n" +
+	"\x10role_definitions\x18\x06 \x03(\tB\x02\x18\x01R\x0froleDefinitions\x122\n" +
+	"\x15blob_storage_accounts\x18\a \x03(\tR\x13blobStorageAccounts\x12\x18\n" +
+	"\aactions\x18\b \x03(\tR\aactions\x12!\n" +
+	"\fdata_actions\x18\t \x03(\tR\vdataActions2\x85\x0f\n" +
 	"\x17IntegrationCloudService\x12\xa4\x01\n" +
 	"\x13GetIntegrationCloud\x12#.core.v1.GetIntegrationCloudRequest\x1a$.core.v1.GetIntegrationCloudResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.IntegrationCloudService/GetIntegrationCloud\x90\x02\x01\x12\xac\x01\n" +
 	"\x15ListIntegrationClouds\x12%.core.v1.ListIntegrationCloudsRequest\x1a&.core.v1.ListIntegrationCloudsResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.IntegrationCloudService/ListIntegrationClouds\x90\x02\x01\x12\xad\x01\n" +
