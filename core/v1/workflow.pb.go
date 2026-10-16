@@ -827,9 +827,12 @@ func (x *CreateWorkflowTriggerResponse) GetTriggered() bool {
 
 // Form messages
 type FormFieldOption struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Label         string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
-	Value         string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Label string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	Value string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	// CEL condition over earlier select, radio, multi_select and checkbox fields, referenced by field ID
+	// (e.g. `!field_resource.startsWith("prod-")`). The option is offered only when it evaluates to true.
+	VisibleIf     string `protobuf:"bytes,3,opt,name=visible_if,json=visibleIf,proto3" json:"visible_if,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -874,6 +877,13 @@ func (x *FormFieldOption) GetLabel() string {
 func (x *FormFieldOption) GetValue() string {
 	if x != nil {
 		return x.Value
+	}
+	return ""
+}
+
+func (x *FormFieldOption) GetVisibleIf() string {
+	if x != nil {
+		return x.VisibleIf
 	}
 	return ""
 }
@@ -1126,8 +1136,11 @@ type FormField struct {
 	// Optional configuration for select/multi_select/checkbox/radio fields
 	Config *FormFieldConfig `protobuf:"bytes,4,opt,name=config,proto3" json:"config,omitempty"`
 	// Whether the field can be left empty. Unanswered optional fields are submitted as "", or [] for multi_select and checkbox.
-	Optional      bool                 `protobuf:"varint,5,opt,name=optional,proto3" json:"optional,omitempty"`
-	Validation    *FormFieldValidation `protobuf:"bytes,6,opt,name=validation,proto3" json:"validation,omitempty"`
+	Optional   bool                 `protobuf:"varint,5,opt,name=optional,proto3" json:"optional,omitempty"`
+	Validation *FormFieldValidation `protobuf:"bytes,6,opt,name=validation,proto3" json:"validation,omitempty"`
+	// CEL condition over earlier select, radio, multi_select and checkbox fields, referenced by field ID.
+	// The field is shown only when it evaluates to true; hidden fields are submitted with an empty answer.
+	VisibleIf     string `protobuf:"bytes,7,opt,name=visible_if,json=visibleIf,proto3" json:"visible_if,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1202,6 +1215,13 @@ func (x *FormField) GetValidation() *FormFieldValidation {
 		return x.Validation
 	}
 	return nil
+}
+
+func (x *FormField) GetVisibleIf() string {
+	if x != nil {
+		return x.VisibleIf
+	}
+	return ""
 }
 
 type Form struct {
@@ -1954,10 +1974,12 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\apayload\x18\x02 \x01(\v2\x17.google.protobuf.StructR\apayload\"T\n" +
 	"\x1dCreateWorkflowTriggerResponse\x12\x15\n" +
 	"\x06run_id\x18\x01 \x01(\tR\x05runId\x12\x1c\n" +
-	"\ttriggered\x18\x02 \x01(\bR\ttriggered\"O\n" +
+	"\ttriggered\x18\x02 \x01(\bR\ttriggered\"n\n" +
 	"\x0fFormFieldOption\x12\x1d\n" +
 	"\x05label\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05label\x12\x1d\n" +
-	"\x05value\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05value\"<\n" +
+	"\x05value\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05value\x12\x1d\n" +
+	"\n" +
+	"visible_if\x18\x03 \x01(\tR\tvisibleIf\"<\n" +
 	"\x1dFormFieldOptionsSourceCommand\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"\xfc\x01\n" +
 	"\x16FormFieldOptionsSource\x12\x19\n" +
@@ -1971,7 +1993,7 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\x0eoptions_source\x18\x02 \x01(\v2\x1f.core.v1.FormFieldOptionsSourceR\roptionsSource\"L\n" +
 	"\x13FormFieldValidation\x12\x12\n" +
 	"\x04rule\x18\x01 \x01(\tR\x04rule\x12!\n" +
-	"\amessage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\amessage\"\xff\x01\n" +
+	"\amessage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\amessage\"\x9e\x02\n" +
 	"\tFormField\x12,\n" +
 	"\x02id\x18\x01 \x01(\tB\x1c\xbaH\x19r\x172\x15^field_[_a-zA-Z0-9]+$R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x1b\n" +
@@ -1980,7 +2002,9 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\boptional\x18\x05 \x01(\bR\boptional\x12<\n" +
 	"\n" +
 	"validation\x18\x06 \x01(\v2\x1c.core.v1.FormFieldValidationR\n" +
-	"validation\"\x94\x02\n" +
+	"validation\x12\x1d\n" +
+	"\n" +
+	"visible_if\x18\a \x01(\tR\tvisibleIf\"\x94\x02\n" +
 	"\x04Form\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
