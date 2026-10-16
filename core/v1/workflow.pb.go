@@ -1065,7 +1065,9 @@ type FormField struct {
 	// Type of form field: "string", "number", "timestamp", "email", "url", "date", "time", "select", "multi_select", "checkbox", "radio"
 	Type string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	// Optional configuration for select/multi_select/checkbox/radio fields
-	Config        *FormFieldConfig `protobuf:"bytes,4,opt,name=config,proto3" json:"config,omitempty"`
+	Config *FormFieldConfig `protobuf:"bytes,4,opt,name=config,proto3" json:"config,omitempty"`
+	// Whether the field can be left empty. Unanswered optional fields are submitted as "", or [] for multi_select and checkbox.
+	Optional      bool `protobuf:"varint,5,opt,name=optional,proto3" json:"optional,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1126,6 +1128,13 @@ func (x *FormField) GetConfig() *FormFieldConfig {
 		return x.Config
 	}
 	return nil
+}
+
+func (x *FormField) GetOptional() bool {
+	if x != nil {
+		return x.Optional
+	}
+	return false
 }
 
 type Form struct {
@@ -1892,12 +1901,13 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\ttransform\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\ttransform\"\x8d\x01\n" +
 	"\x0fFormFieldConfig\x122\n" +
 	"\aoptions\x18\x01 \x03(\v2\x18.core.v1.FormFieldOptionR\aoptions\x12F\n" +
-	"\x0eoptions_source\x18\x02 \x01(\v2\x1f.core.v1.FormFieldOptionsSourceR\roptionsSource\"\xa5\x01\n" +
+	"\x0eoptions_source\x18\x02 \x01(\v2\x1f.core.v1.FormFieldOptionsSourceR\roptionsSource\"\xc1\x01\n" +
 	"\tFormField\x12,\n" +
 	"\x02id\x18\x01 \x01(\tB\x1c\xbaH\x19r\x172\x15^field_[_a-zA-Z0-9]+$R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x1b\n" +
 	"\x04type\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04type\x120\n" +
-	"\x06config\x18\x04 \x01(\v2\x18.core.v1.FormFieldConfigR\x06config\"\x94\x02\n" +
+	"\x06config\x18\x04 \x01(\v2\x18.core.v1.FormFieldConfigR\x06config\x12\x1a\n" +
+	"\boptional\x18\x05 \x01(\bR\boptional\"\x94\x02\n" +
 	"\x04Form\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
