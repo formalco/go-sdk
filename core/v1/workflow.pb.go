@@ -1057,6 +1057,65 @@ func (x *FormFieldConfig) GetOptionsSource() *FormFieldOptionsSource {
 	return nil
 }
 
+// Checked by the server when the form is submitted, over the answers exactly as workflows receive
+// them in trigger.form_submission.submission.
+type FormFieldValidation struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// CEL expression that must evaluate to true; one that errors fails. Fields are variables named by
+	// their ID. An unanswered field is "", or [] for multi_select and checkbox, so a rule on an
+	// optional field must accept that, e.g. `field_hours == "" || field_hours <= 24`.
+	// e.g. `field_ticket.matches("^INC-[0-9]+$")` or `field_hours <= field_max_hours`
+	Rule string `protobuf:"bytes,1,opt,name=rule,proto3" json:"rule,omitempty"`
+	// Error shown when the rule does not hold. Slack shows it inline under the field.
+	Message       string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FormFieldValidation) Reset() {
+	*x = FormFieldValidation{}
+	mi := &file_core_v1_workflow_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FormFieldValidation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FormFieldValidation) ProtoMessage() {}
+
+func (x *FormFieldValidation) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FormFieldValidation.ProtoReflect.Descriptor instead.
+func (*FormFieldValidation) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *FormFieldValidation) GetRule() string {
+	if x != nil {
+		return x.Rule
+	}
+	return ""
+}
+
+func (x *FormFieldValidation) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 type FormField struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Unique ID for the field, must match pattern field_[a-zA-Z0-9]+
@@ -1067,14 +1126,15 @@ type FormField struct {
 	// Optional configuration for select/multi_select/checkbox/radio fields
 	Config *FormFieldConfig `protobuf:"bytes,4,opt,name=config,proto3" json:"config,omitempty"`
 	// Whether the field can be left empty. Unanswered optional fields are submitted as "", or [] for multi_select and checkbox.
-	Optional      bool `protobuf:"varint,5,opt,name=optional,proto3" json:"optional,omitempty"`
+	Optional      bool                 `protobuf:"varint,5,opt,name=optional,proto3" json:"optional,omitempty"`
+	Validation    *FormFieldValidation `protobuf:"bytes,6,opt,name=validation,proto3" json:"validation,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *FormField) Reset() {
 	*x = FormField{}
-	mi := &file_core_v1_workflow_proto_msgTypes[19]
+	mi := &file_core_v1_workflow_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1086,7 +1146,7 @@ func (x *FormField) String() string {
 func (*FormField) ProtoMessage() {}
 
 func (x *FormField) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[19]
+	mi := &file_core_v1_workflow_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1099,7 +1159,7 @@ func (x *FormField) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FormField.ProtoReflect.Descriptor instead.
 func (*FormField) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *FormField) GetId() string {
@@ -1137,6 +1197,13 @@ func (x *FormField) GetOptional() bool {
 	return false
 }
 
+func (x *FormField) GetValidation() *FormFieldValidation {
+	if x != nil {
+		return x.Validation
+	}
+	return nil
+}
+
 type Form struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1151,7 +1218,7 @@ type Form struct {
 
 func (x *Form) Reset() {
 	*x = Form{}
-	mi := &file_core_v1_workflow_proto_msgTypes[20]
+	mi := &file_core_v1_workflow_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1163,7 +1230,7 @@ func (x *Form) String() string {
 func (*Form) ProtoMessage() {}
 
 func (x *Form) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[20]
+	mi := &file_core_v1_workflow_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1176,7 +1243,7 @@ func (x *Form) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Form.ProtoReflect.Descriptor instead.
 func (*Form) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *Form) GetId() string {
@@ -1232,7 +1299,7 @@ type CreateFormRequest struct {
 
 func (x *CreateFormRequest) Reset() {
 	*x = CreateFormRequest{}
-	mi := &file_core_v1_workflow_proto_msgTypes[21]
+	mi := &file_core_v1_workflow_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1244,7 +1311,7 @@ func (x *CreateFormRequest) String() string {
 func (*CreateFormRequest) ProtoMessage() {}
 
 func (x *CreateFormRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[21]
+	mi := &file_core_v1_workflow_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1257,7 +1324,7 @@ func (x *CreateFormRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateFormRequest.ProtoReflect.Descriptor instead.
 func (*CreateFormRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{21}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CreateFormRequest) GetName() string {
@@ -1290,7 +1357,7 @@ type CreateFormResponse struct {
 
 func (x *CreateFormResponse) Reset() {
 	*x = CreateFormResponse{}
-	mi := &file_core_v1_workflow_proto_msgTypes[22]
+	mi := &file_core_v1_workflow_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1302,7 +1369,7 @@ func (x *CreateFormResponse) String() string {
 func (*CreateFormResponse) ProtoMessage() {}
 
 func (x *CreateFormResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[22]
+	mi := &file_core_v1_workflow_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1315,7 +1382,7 @@ func (x *CreateFormResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateFormResponse.ProtoReflect.Descriptor instead.
 func (*CreateFormResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{22}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CreateFormResponse) GetForm() *Form {
@@ -1334,7 +1401,7 @@ type GetFormRequest struct {
 
 func (x *GetFormRequest) Reset() {
 	*x = GetFormRequest{}
-	mi := &file_core_v1_workflow_proto_msgTypes[23]
+	mi := &file_core_v1_workflow_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1346,7 +1413,7 @@ func (x *GetFormRequest) String() string {
 func (*GetFormRequest) ProtoMessage() {}
 
 func (x *GetFormRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[23]
+	mi := &file_core_v1_workflow_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1359,7 +1426,7 @@ func (x *GetFormRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFormRequest.ProtoReflect.Descriptor instead.
 func (*GetFormRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{23}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetFormRequest) GetId() string {
@@ -1378,7 +1445,7 @@ type GetFormResponse struct {
 
 func (x *GetFormResponse) Reset() {
 	*x = GetFormResponse{}
-	mi := &file_core_v1_workflow_proto_msgTypes[24]
+	mi := &file_core_v1_workflow_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1390,7 +1457,7 @@ func (x *GetFormResponse) String() string {
 func (*GetFormResponse) ProtoMessage() {}
 
 func (x *GetFormResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[24]
+	mi := &file_core_v1_workflow_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1403,7 +1470,7 @@ func (x *GetFormResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFormResponse.ProtoReflect.Descriptor instead.
 func (*GetFormResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{24}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GetFormResponse) GetForm() *Form {
@@ -1426,7 +1493,7 @@ type ListFormsRequest struct {
 
 func (x *ListFormsRequest) Reset() {
 	*x = ListFormsRequest{}
-	mi := &file_core_v1_workflow_proto_msgTypes[25]
+	mi := &file_core_v1_workflow_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1438,7 +1505,7 @@ func (x *ListFormsRequest) String() string {
 func (*ListFormsRequest) ProtoMessage() {}
 
 func (x *ListFormsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[25]
+	mi := &file_core_v1_workflow_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1451,7 +1518,7 @@ func (x *ListFormsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListFormsRequest.ProtoReflect.Descriptor instead.
 func (*ListFormsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{25}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ListFormsRequest) GetLimit() int32 {
@@ -1499,7 +1566,7 @@ type ListFormsResponse struct {
 
 func (x *ListFormsResponse) Reset() {
 	*x = ListFormsResponse{}
-	mi := &file_core_v1_workflow_proto_msgTypes[26]
+	mi := &file_core_v1_workflow_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1511,7 +1578,7 @@ func (x *ListFormsResponse) String() string {
 func (*ListFormsResponse) ProtoMessage() {}
 
 func (x *ListFormsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[26]
+	mi := &file_core_v1_workflow_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1524,7 +1591,7 @@ func (x *ListFormsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListFormsResponse.ProtoReflect.Descriptor instead.
 func (*ListFormsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{26}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ListFormsResponse) GetForms() []*Form {
@@ -1553,7 +1620,7 @@ type UpdateFormRequest struct {
 
 func (x *UpdateFormRequest) Reset() {
 	*x = UpdateFormRequest{}
-	mi := &file_core_v1_workflow_proto_msgTypes[27]
+	mi := &file_core_v1_workflow_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1565,7 +1632,7 @@ func (x *UpdateFormRequest) String() string {
 func (*UpdateFormRequest) ProtoMessage() {}
 
 func (x *UpdateFormRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[27]
+	mi := &file_core_v1_workflow_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1578,7 +1645,7 @@ func (x *UpdateFormRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateFormRequest.ProtoReflect.Descriptor instead.
 func (*UpdateFormRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{27}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *UpdateFormRequest) GetId() string {
@@ -1618,7 +1685,7 @@ type UpdateFormResponse struct {
 
 func (x *UpdateFormResponse) Reset() {
 	*x = UpdateFormResponse{}
-	mi := &file_core_v1_workflow_proto_msgTypes[28]
+	mi := &file_core_v1_workflow_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1630,7 +1697,7 @@ func (x *UpdateFormResponse) String() string {
 func (*UpdateFormResponse) ProtoMessage() {}
 
 func (x *UpdateFormResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[28]
+	mi := &file_core_v1_workflow_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1643,7 +1710,7 @@ func (x *UpdateFormResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateFormResponse.ProtoReflect.Descriptor instead.
 func (*UpdateFormResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{28}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *UpdateFormResponse) GetForm() *Form {
@@ -1662,7 +1729,7 @@ type UpdateFormV2Request struct {
 
 func (x *UpdateFormV2Request) Reset() {
 	*x = UpdateFormV2Request{}
-	mi := &file_core_v1_workflow_proto_msgTypes[29]
+	mi := &file_core_v1_workflow_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1674,7 +1741,7 @@ func (x *UpdateFormV2Request) String() string {
 func (*UpdateFormV2Request) ProtoMessage() {}
 
 func (x *UpdateFormV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[29]
+	mi := &file_core_v1_workflow_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1687,7 +1754,7 @@ func (x *UpdateFormV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateFormV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateFormV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{29}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *UpdateFormV2Request) GetForm() *Form {
@@ -1706,7 +1773,7 @@ type UpdateFormV2Response struct {
 
 func (x *UpdateFormV2Response) Reset() {
 	*x = UpdateFormV2Response{}
-	mi := &file_core_v1_workflow_proto_msgTypes[30]
+	mi := &file_core_v1_workflow_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1718,7 +1785,7 @@ func (x *UpdateFormV2Response) String() string {
 func (*UpdateFormV2Response) ProtoMessage() {}
 
 func (x *UpdateFormV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[30]
+	mi := &file_core_v1_workflow_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1731,7 +1798,7 @@ func (x *UpdateFormV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateFormV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateFormV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{30}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *UpdateFormV2Response) GetForm() *Form {
@@ -1750,7 +1817,7 @@ type DeleteFormRequest struct {
 
 func (x *DeleteFormRequest) Reset() {
 	*x = DeleteFormRequest{}
-	mi := &file_core_v1_workflow_proto_msgTypes[31]
+	mi := &file_core_v1_workflow_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1762,7 +1829,7 @@ func (x *DeleteFormRequest) String() string {
 func (*DeleteFormRequest) ProtoMessage() {}
 
 func (x *DeleteFormRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[31]
+	mi := &file_core_v1_workflow_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1775,7 +1842,7 @@ func (x *DeleteFormRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteFormRequest.ProtoReflect.Descriptor instead.
 func (*DeleteFormRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{31}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *DeleteFormRequest) GetId() string {
@@ -1794,7 +1861,7 @@ type DeleteFormResponse struct {
 
 func (x *DeleteFormResponse) Reset() {
 	*x = DeleteFormResponse{}
-	mi := &file_core_v1_workflow_proto_msgTypes[32]
+	mi := &file_core_v1_workflow_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1806,7 +1873,7 @@ func (x *DeleteFormResponse) String() string {
 func (*DeleteFormResponse) ProtoMessage() {}
 
 func (x *DeleteFormResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_workflow_proto_msgTypes[32]
+	mi := &file_core_v1_workflow_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1819,7 +1886,7 @@ func (x *DeleteFormResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteFormResponse.ProtoReflect.Descriptor instead.
 func (*DeleteFormResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_workflow_proto_rawDescGZIP(), []int{32}
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *DeleteFormResponse) GetId() string {
@@ -1901,13 +1968,19 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\ttransform\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\ttransform\"\x8d\x01\n" +
 	"\x0fFormFieldConfig\x122\n" +
 	"\aoptions\x18\x01 \x03(\v2\x18.core.v1.FormFieldOptionR\aoptions\x12F\n" +
-	"\x0eoptions_source\x18\x02 \x01(\v2\x1f.core.v1.FormFieldOptionsSourceR\roptionsSource\"\xc1\x01\n" +
+	"\x0eoptions_source\x18\x02 \x01(\v2\x1f.core.v1.FormFieldOptionsSourceR\roptionsSource\"L\n" +
+	"\x13FormFieldValidation\x12\x12\n" +
+	"\x04rule\x18\x01 \x01(\tR\x04rule\x12!\n" +
+	"\amessage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\amessage\"\xff\x01\n" +
 	"\tFormField\x12,\n" +
 	"\x02id\x18\x01 \x01(\tB\x1c\xbaH\x19r\x172\x15^field_[_a-zA-Z0-9]+$R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x1b\n" +
 	"\x04type\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04type\x120\n" +
 	"\x06config\x18\x04 \x01(\v2\x18.core.v1.FormFieldConfigR\x06config\x12\x1a\n" +
-	"\boptional\x18\x05 \x01(\bR\boptional\"\x94\x02\n" +
+	"\boptional\x18\x05 \x01(\bR\boptional\x12<\n" +
+	"\n" +
+	"validation\x18\x06 \x01(\v2\x1c.core.v1.FormFieldValidationR\n" +
+	"validation\"\x94\x02\n" +
 	"\x04Form\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
@@ -1983,7 +2056,7 @@ func file_core_v1_workflow_proto_rawDescGZIP() []byte {
 	return file_core_v1_workflow_proto_rawDescData
 }
 
-var file_core_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_core_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_core_v1_workflow_proto_goTypes = []any{
 	(*Workflow)(nil),                      // 0: core.v1.Workflow
 	(*CreateWorkflowRequest)(nil),         // 1: core.v1.CreateWorkflowRequest
@@ -2004,83 +2077,85 @@ var file_core_v1_workflow_proto_goTypes = []any{
 	(*FormFieldOptionsSourceCommand)(nil), // 16: core.v1.FormFieldOptionsSourceCommand
 	(*FormFieldOptionsSource)(nil),        // 17: core.v1.FormFieldOptionsSource
 	(*FormFieldConfig)(nil),               // 18: core.v1.FormFieldConfig
-	(*FormField)(nil),                     // 19: core.v1.FormField
-	(*Form)(nil),                          // 20: core.v1.Form
-	(*CreateFormRequest)(nil),             // 21: core.v1.CreateFormRequest
-	(*CreateFormResponse)(nil),            // 22: core.v1.CreateFormResponse
-	(*GetFormRequest)(nil),                // 23: core.v1.GetFormRequest
-	(*GetFormResponse)(nil),               // 24: core.v1.GetFormResponse
-	(*ListFormsRequest)(nil),              // 25: core.v1.ListFormsRequest
-	(*ListFormsResponse)(nil),             // 26: core.v1.ListFormsResponse
-	(*UpdateFormRequest)(nil),             // 27: core.v1.UpdateFormRequest
-	(*UpdateFormResponse)(nil),            // 28: core.v1.UpdateFormResponse
-	(*UpdateFormV2Request)(nil),           // 29: core.v1.UpdateFormV2Request
-	(*UpdateFormV2Response)(nil),          // 30: core.v1.UpdateFormV2Response
-	(*DeleteFormRequest)(nil),             // 31: core.v1.DeleteFormRequest
-	(*DeleteFormResponse)(nil),            // 32: core.v1.DeleteFormResponse
-	(*timestamppb.Timestamp)(nil),         // 33: google.protobuf.Timestamp
-	(*ListMetadata)(nil),                  // 34: core.v1.ListMetadata
-	(*structpb.Struct)(nil),               // 35: google.protobuf.Struct
+	(*FormFieldValidation)(nil),           // 19: core.v1.FormFieldValidation
+	(*FormField)(nil),                     // 20: core.v1.FormField
+	(*Form)(nil),                          // 21: core.v1.Form
+	(*CreateFormRequest)(nil),             // 22: core.v1.CreateFormRequest
+	(*CreateFormResponse)(nil),            // 23: core.v1.CreateFormResponse
+	(*GetFormRequest)(nil),                // 24: core.v1.GetFormRequest
+	(*GetFormResponse)(nil),               // 25: core.v1.GetFormResponse
+	(*ListFormsRequest)(nil),              // 26: core.v1.ListFormsRequest
+	(*ListFormsResponse)(nil),             // 27: core.v1.ListFormsResponse
+	(*UpdateFormRequest)(nil),             // 28: core.v1.UpdateFormRequest
+	(*UpdateFormResponse)(nil),            // 29: core.v1.UpdateFormResponse
+	(*UpdateFormV2Request)(nil),           // 30: core.v1.UpdateFormV2Request
+	(*UpdateFormV2Response)(nil),          // 31: core.v1.UpdateFormV2Response
+	(*DeleteFormRequest)(nil),             // 32: core.v1.DeleteFormRequest
+	(*DeleteFormResponse)(nil),            // 33: core.v1.DeleteFormResponse
+	(*timestamppb.Timestamp)(nil),         // 34: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                  // 35: core.v1.ListMetadata
+	(*structpb.Struct)(nil),               // 36: google.protobuf.Struct
 }
 var file_core_v1_workflow_proto_depIdxs = []int32{
-	33, // 0: core.v1.Workflow.created_at:type_name -> google.protobuf.Timestamp
-	33, // 1: core.v1.Workflow.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 0: core.v1.Workflow.created_at:type_name -> google.protobuf.Timestamp
+	34, // 1: core.v1.Workflow.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: core.v1.CreateWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 3: core.v1.GetWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 4: core.v1.ListWorkflowsResponse.workflows:type_name -> core.v1.Workflow
-	34, // 5: core.v1.ListWorkflowsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	35, // 5: core.v1.ListWorkflowsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	0,  // 6: core.v1.UpdateWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 7: core.v1.UpdateWorkflowV2Request.workflow:type_name -> core.v1.Workflow
 	0,  // 8: core.v1.UpdateWorkflowV2Response.workflow:type_name -> core.v1.Workflow
-	35, // 9: core.v1.CreateWorkflowTriggerRequest.payload:type_name -> google.protobuf.Struct
+	36, // 9: core.v1.CreateWorkflowTriggerRequest.payload:type_name -> google.protobuf.Struct
 	16, // 10: core.v1.FormFieldOptionsSource.command:type_name -> core.v1.FormFieldOptionsSourceCommand
-	35, // 11: core.v1.FormFieldOptionsSource.input:type_name -> google.protobuf.Struct
+	36, // 11: core.v1.FormFieldOptionsSource.input:type_name -> google.protobuf.Struct
 	15, // 12: core.v1.FormFieldConfig.options:type_name -> core.v1.FormFieldOption
 	17, // 13: core.v1.FormFieldConfig.options_source:type_name -> core.v1.FormFieldOptionsSource
 	18, // 14: core.v1.FormField.config:type_name -> core.v1.FormFieldConfig
-	19, // 15: core.v1.Form.fields:type_name -> core.v1.FormField
-	33, // 16: core.v1.Form.created_at:type_name -> google.protobuf.Timestamp
-	33, // 17: core.v1.Form.updated_at:type_name -> google.protobuf.Timestamp
-	19, // 18: core.v1.CreateFormRequest.fields:type_name -> core.v1.FormField
-	20, // 19: core.v1.CreateFormResponse.form:type_name -> core.v1.Form
-	20, // 20: core.v1.GetFormResponse.form:type_name -> core.v1.Form
-	20, // 21: core.v1.ListFormsResponse.forms:type_name -> core.v1.Form
-	34, // 22: core.v1.ListFormsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	19, // 23: core.v1.UpdateFormRequest.fields:type_name -> core.v1.FormField
-	20, // 24: core.v1.UpdateFormResponse.form:type_name -> core.v1.Form
-	20, // 25: core.v1.UpdateFormV2Request.form:type_name -> core.v1.Form
-	20, // 26: core.v1.UpdateFormV2Response.form:type_name -> core.v1.Form
-	1,  // 27: core.v1.WorkflowService.CreateWorkflow:input_type -> core.v1.CreateWorkflowRequest
-	3,  // 28: core.v1.WorkflowService.GetWorkflow:input_type -> core.v1.GetWorkflowRequest
-	5,  // 29: core.v1.WorkflowService.ListWorkflows:input_type -> core.v1.ListWorkflowsRequest
-	7,  // 30: core.v1.WorkflowService.UpdateWorkflow:input_type -> core.v1.UpdateWorkflowRequest
-	9,  // 31: core.v1.WorkflowService.UpdateWorkflowV2:input_type -> core.v1.UpdateWorkflowV2Request
-	11, // 32: core.v1.WorkflowService.DeleteWorkflow:input_type -> core.v1.DeleteWorkflowRequest
-	13, // 33: core.v1.WorkflowService.CreateWorkflowTrigger:input_type -> core.v1.CreateWorkflowTriggerRequest
-	21, // 34: core.v1.WorkflowService.CreateForm:input_type -> core.v1.CreateFormRequest
-	23, // 35: core.v1.WorkflowService.GetForm:input_type -> core.v1.GetFormRequest
-	25, // 36: core.v1.WorkflowService.ListForms:input_type -> core.v1.ListFormsRequest
-	27, // 37: core.v1.WorkflowService.UpdateForm:input_type -> core.v1.UpdateFormRequest
-	29, // 38: core.v1.WorkflowService.UpdateFormV2:input_type -> core.v1.UpdateFormV2Request
-	31, // 39: core.v1.WorkflowService.DeleteForm:input_type -> core.v1.DeleteFormRequest
-	2,  // 40: core.v1.WorkflowService.CreateWorkflow:output_type -> core.v1.CreateWorkflowResponse
-	4,  // 41: core.v1.WorkflowService.GetWorkflow:output_type -> core.v1.GetWorkflowResponse
-	6,  // 42: core.v1.WorkflowService.ListWorkflows:output_type -> core.v1.ListWorkflowsResponse
-	8,  // 43: core.v1.WorkflowService.UpdateWorkflow:output_type -> core.v1.UpdateWorkflowResponse
-	10, // 44: core.v1.WorkflowService.UpdateWorkflowV2:output_type -> core.v1.UpdateWorkflowV2Response
-	12, // 45: core.v1.WorkflowService.DeleteWorkflow:output_type -> core.v1.DeleteWorkflowResponse
-	14, // 46: core.v1.WorkflowService.CreateWorkflowTrigger:output_type -> core.v1.CreateWorkflowTriggerResponse
-	22, // 47: core.v1.WorkflowService.CreateForm:output_type -> core.v1.CreateFormResponse
-	24, // 48: core.v1.WorkflowService.GetForm:output_type -> core.v1.GetFormResponse
-	26, // 49: core.v1.WorkflowService.ListForms:output_type -> core.v1.ListFormsResponse
-	28, // 50: core.v1.WorkflowService.UpdateForm:output_type -> core.v1.UpdateFormResponse
-	30, // 51: core.v1.WorkflowService.UpdateFormV2:output_type -> core.v1.UpdateFormV2Response
-	32, // 52: core.v1.WorkflowService.DeleteForm:output_type -> core.v1.DeleteFormResponse
-	40, // [40:53] is the sub-list for method output_type
-	27, // [27:40] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	19, // 15: core.v1.FormField.validation:type_name -> core.v1.FormFieldValidation
+	20, // 16: core.v1.Form.fields:type_name -> core.v1.FormField
+	34, // 17: core.v1.Form.created_at:type_name -> google.protobuf.Timestamp
+	34, // 18: core.v1.Form.updated_at:type_name -> google.protobuf.Timestamp
+	20, // 19: core.v1.CreateFormRequest.fields:type_name -> core.v1.FormField
+	21, // 20: core.v1.CreateFormResponse.form:type_name -> core.v1.Form
+	21, // 21: core.v1.GetFormResponse.form:type_name -> core.v1.Form
+	21, // 22: core.v1.ListFormsResponse.forms:type_name -> core.v1.Form
+	35, // 23: core.v1.ListFormsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	20, // 24: core.v1.UpdateFormRequest.fields:type_name -> core.v1.FormField
+	21, // 25: core.v1.UpdateFormResponse.form:type_name -> core.v1.Form
+	21, // 26: core.v1.UpdateFormV2Request.form:type_name -> core.v1.Form
+	21, // 27: core.v1.UpdateFormV2Response.form:type_name -> core.v1.Form
+	1,  // 28: core.v1.WorkflowService.CreateWorkflow:input_type -> core.v1.CreateWorkflowRequest
+	3,  // 29: core.v1.WorkflowService.GetWorkflow:input_type -> core.v1.GetWorkflowRequest
+	5,  // 30: core.v1.WorkflowService.ListWorkflows:input_type -> core.v1.ListWorkflowsRequest
+	7,  // 31: core.v1.WorkflowService.UpdateWorkflow:input_type -> core.v1.UpdateWorkflowRequest
+	9,  // 32: core.v1.WorkflowService.UpdateWorkflowV2:input_type -> core.v1.UpdateWorkflowV2Request
+	11, // 33: core.v1.WorkflowService.DeleteWorkflow:input_type -> core.v1.DeleteWorkflowRequest
+	13, // 34: core.v1.WorkflowService.CreateWorkflowTrigger:input_type -> core.v1.CreateWorkflowTriggerRequest
+	22, // 35: core.v1.WorkflowService.CreateForm:input_type -> core.v1.CreateFormRequest
+	24, // 36: core.v1.WorkflowService.GetForm:input_type -> core.v1.GetFormRequest
+	26, // 37: core.v1.WorkflowService.ListForms:input_type -> core.v1.ListFormsRequest
+	28, // 38: core.v1.WorkflowService.UpdateForm:input_type -> core.v1.UpdateFormRequest
+	30, // 39: core.v1.WorkflowService.UpdateFormV2:input_type -> core.v1.UpdateFormV2Request
+	32, // 40: core.v1.WorkflowService.DeleteForm:input_type -> core.v1.DeleteFormRequest
+	2,  // 41: core.v1.WorkflowService.CreateWorkflow:output_type -> core.v1.CreateWorkflowResponse
+	4,  // 42: core.v1.WorkflowService.GetWorkflow:output_type -> core.v1.GetWorkflowResponse
+	6,  // 43: core.v1.WorkflowService.ListWorkflows:output_type -> core.v1.ListWorkflowsResponse
+	8,  // 44: core.v1.WorkflowService.UpdateWorkflow:output_type -> core.v1.UpdateWorkflowResponse
+	10, // 45: core.v1.WorkflowService.UpdateWorkflowV2:output_type -> core.v1.UpdateWorkflowV2Response
+	12, // 46: core.v1.WorkflowService.DeleteWorkflow:output_type -> core.v1.DeleteWorkflowResponse
+	14, // 47: core.v1.WorkflowService.CreateWorkflowTrigger:output_type -> core.v1.CreateWorkflowTriggerResponse
+	23, // 48: core.v1.WorkflowService.CreateForm:output_type -> core.v1.CreateFormResponse
+	25, // 49: core.v1.WorkflowService.GetForm:output_type -> core.v1.GetFormResponse
+	27, // 50: core.v1.WorkflowService.ListForms:output_type -> core.v1.ListFormsResponse
+	29, // 51: core.v1.WorkflowService.UpdateForm:output_type -> core.v1.UpdateFormResponse
+	31, // 52: core.v1.WorkflowService.UpdateFormV2:output_type -> core.v1.UpdateFormV2Response
+	33, // 53: core.v1.WorkflowService.DeleteForm:output_type -> core.v1.DeleteFormResponse
+	41, // [41:54] is the sub-list for method output_type
+	28, // [28:41] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_workflow_proto_init() }
@@ -2097,7 +2172,7 @@ func file_core_v1_workflow_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_workflow_proto_rawDesc), len(file_core_v1_workflow_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   33,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
