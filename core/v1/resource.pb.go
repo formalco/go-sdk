@@ -131,8 +131,11 @@ type ResourceOAuthSettings struct {
 	// upstream account: the Connector authenticates upstream with the user's
 	// native user.
 	UpstreamOauthMode string `protobuf:"bytes,3,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
-	// Empty means the scope parameter is omitted and the provider's defaults apply.
-	// Always empty when upstream_oauth_mode is "none".
+	// Empty follows the MCP authorization spec's scope selection for an MCP server
+	// discovered through protected resource metadata: the scopes its 401
+	// challenge names, else its scopes_supported. Otherwise, or when the server
+	// advertises neither, the scope parameter is omitted and the provider's
+	// defaults apply. Always empty when upstream_oauth_mode is "none".
 	RequestedScopes []string               `protobuf:"bytes,4,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
 	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
