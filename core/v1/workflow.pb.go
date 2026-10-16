@@ -940,7 +940,8 @@ type FormFieldOptionsSource struct {
 	Command *FormFieldOptionsSourceCommand `protobuf:"bytes,2,opt,name=command,proto3" json:"command,omitempty"`
 	// The machine user whose temporary API key will authenticate the call
 	MachineUserId string `protobuf:"bytes,3,opt,name=machine_user_id,json=machineUserId,proto3" json:"machine_user_id,omitempty"`
-	// Input payload for the API call (supports ${{ query }} interpolation for search text)
+	// Input payload for the API call. Supports ${{ query }} for the search text and ${{ field_<id> }}
+	// for the answer to an earlier select or radio field with static options.
 	Input *structpb.Struct `protobuf:"bytes,4,opt,name=input,proto3" json:"input,omitempty"`
 	// CEL expression to transform the API response into [{value, text}] options
 	Transform     string `protobuf:"bytes,5,opt,name=transform,proto3" json:"transform,omitempty"`
