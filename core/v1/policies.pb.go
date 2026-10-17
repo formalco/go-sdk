@@ -255,10 +255,13 @@ func (x *Auth) GetBasic() *Auth_Basic {
 }
 
 type GetPolicyCodeValidityRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Code  string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	// Skip checking that each referenced hook exists and is active, for hooks that will be created
+	// before the policy (e.g. in the same Terraform apply). Static reference checks still apply.
+	IgnoreMissingHooks bool `protobuf:"varint,2,opt,name=ignore_missing_hooks,json=ignoreMissingHooks,proto3" json:"ignore_missing_hooks,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *GetPolicyCodeValidityRequest) Reset() {
@@ -296,6 +299,13 @@ func (x *GetPolicyCodeValidityRequest) GetCode() string {
 		return x.Code
 	}
 	return ""
+}
+
+func (x *GetPolicyCodeValidityRequest) GetIgnoreMissingHooks() bool {
+	if x != nil {
+		return x.IgnoreMissingHooks
+	}
+	return false
 }
 
 type GetPolicyCodeValidityResponse struct {
@@ -3454,9 +3464,10 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"\x05basic\x18\x02 \x01(\v2\x13.core.v1.Auth.BasicR\x05basic\x1aD\n" +
 	"\x05Basic\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1f\n" +
-	"\bpassword\x18\x02 \x01(\tB\x03\x80\x01\x01R\bpassword\";\n" +
+	"\bpassword\x18\x02 \x01(\tB\x03\x80\x01\x01R\bpassword\"m\n" +
 	"\x1cGetPolicyCodeValidityRequest\x12\x1b\n" +
-	"\x04code\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04code\"]\n" +
+	"\x04code\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04code\x120\n" +
+	"\x14ignore_missing_hooks\x18\x02 \x01(\bR\x12ignoreMissingHooks\"]\n" +
 	"\x1dGetPolicyCodeValidityResponse\x12\x14\n" +
 	"\x05valid\x18\x01 \x01(\bR\x05valid\x12\x10\n" +
 	"\x03ast\x18\x02 \x01(\tR\x03ast\x12\x14\n" +
