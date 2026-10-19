@@ -210,11 +210,14 @@ func (x *ListPermissionsRequest) GetFilter() *Filter {
 }
 
 type ListPermissionsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Permissions   []*Permission          `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	ListMetadata  *ListMetadata          `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	Permissions  []*Permission          `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	ListMetadata *ListMetadata          `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
+	// Number of permissions in the organization, ignoring search and filter.
+	PermissionCount int32 `protobuf:"varint,3,opt,name=permission_count,json=permissionCount,proto3" json:"permission_count,omitempty"`
+	MaxPermissions  int32 `protobuf:"varint,4,opt,name=max_permissions,json=maxPermissions,proto3" json:"max_permissions,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *ListPermissionsResponse) Reset() {
@@ -259,6 +262,20 @@ func (x *ListPermissionsResponse) GetListMetadata() *ListMetadata {
 		return x.ListMetadata
 	}
 	return nil
+}
+
+func (x *ListPermissionsResponse) GetPermissionCount() int32 {
+	if x != nil {
+		return x.PermissionCount
+	}
+	return 0
+}
+
+func (x *ListPermissionsResponse) GetMaxPermissions() int32 {
+	if x != nil {
+		return x.MaxPermissions
+	}
+	return 0
 }
 
 type GetPermissionRequest struct {
@@ -798,10 +815,12 @@ const file_core_v1_permissions_proto_rawDesc = "" +
 	"\x06search\x18\x04 \x01(\tR\x06search\x12N\n" +
 	"\rsearch_fields\x18\x05 \x03(\tB)\xbaH&\x92\x01#\"!r\x1fR\x02idR\x04nameR\vdescriptionR\x06statusR\fsearchFields\x12,\n" +
 	"\x06filter\x18\x06 \x01(\v2\x0f.core.v1.FilterH\x00R\x06filter\x88\x01\x01B\t\n" +
-	"\a_filter\"\x8c\x01\n" +
+	"\a_filter\"\xe0\x01\n" +
 	"\x17ListPermissionsResponse\x125\n" +
 	"\vpermissions\x18\x01 \x03(\v2\x13.core.v1.PermissionR\vpermissions\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"/\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\x12)\n" +
+	"\x10permission_count\x18\x03 \x01(\x05R\x0fpermissionCount\x12'\n" +
+	"\x0fmax_permissions\x18\x04 \x01(\x05R\x0emaxPermissions\"/\n" +
 	"\x14GetPermissionRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"L\n" +
 	"\x15GetPermissionResponse\x123\n" +
