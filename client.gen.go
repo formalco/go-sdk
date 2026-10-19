@@ -3544,6 +3544,21 @@ func (c *ResourceServiceClient) UpdateResourceNativeUsersV3Enabled(ctx context.C
 	return res.Msg, nil
 }
 
+// Update resource OAuth settings
+//
+// Change the requested scopes or client secret of a resource's OAuth settings.
+// The upstream OAuth mode, client ID, and issuer are fixed at creation.
+// Requested scopes apply to future links. Existing linked accounts, pending
+// links, and OAuth clients' authorizations are left as they are. An unset
+// client secret is kept; an empty one makes the client public.
+func (c *ResourceServiceClient) UpdateResourceOAuthSettings(ctx context.Context, req *corev1.UpdateResourceOAuthSettingsRequest) (*corev1.UpdateResourceOAuthSettingsResponse, error) {
+	res, err := c.inner.UpdateResourceOAuthSettings(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Update resource SSH host key
 //
 // Update a pinned upstream SSH host public key
