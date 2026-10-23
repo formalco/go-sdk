@@ -856,7 +856,7 @@ const file_core_v1_policy_data_loaders_proto_rawDesc = "" +
 	"\x03key\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12D\n" +
 	"\x0eworker_runtime\x18\x05 \x01(\tB\x1d\xbaH\x1ar\x18R\n" +
 	"python3.11R\n" +
-	"nodejs18.xR\rworkerRuntime\x12(\n" +
+	"nodejs24.xR\rworkerRuntime\x12(\n" +
 	"\vworker_code\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"workerCode\x120\n" +
 	"\x0fworker_schedule\x18\a \x01(\tB\a\xbaH\x04r\x02\x10\tR\x0eworkerSchedule\x12,\n" +
@@ -885,7 +885,7 @@ const file_core_v1_policy_data_loaders_proto_rawDesc = "" +
 	"\x03key\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12D\n" +
 	"\x0eworker_runtime\x18\x04 \x01(\tB\x1d\xbaH\x1ar\x18R\n" +
 	"python3.11R\n" +
-	"nodejs18.xR\rworkerRuntime\x12(\n" +
+	"nodejs24.xR\rworkerRuntime\x12(\n" +
 	"\vworker_code\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"workerCode\x120\n" +
 	"\x0fworker_schedule\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x10\tR\x0eworkerSchedule\x12,\n" +
@@ -908,7 +908,7 @@ const file_core_v1_policy_data_loaders_proto_rawDesc = "" +
 	"\x03key\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x02R\x03key\x88\x01\x01\x12I\n" +
 	"\x0eworker_runtime\x18\x05 \x01(\tB\x1d\xbaH\x1ar\x18R\n" +
 	"python3.11R\n" +
-	"nodejs18.xH\x03R\rworkerRuntime\x88\x01\x01\x12-\n" +
+	"nodejs24.xH\x03R\rworkerRuntime\x88\x01\x01\x12-\n" +
 	"\vworker_code\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x04R\n" +
 	"workerCode\x88\x01\x01\x125\n" +
 	"\x0fworker_schedule\x18\a \x01(\tB\a\xbaH\x04r\x02\x10\tH\x05R\x0eworkerSchedule\x88\x01\x01\x121\n" +
