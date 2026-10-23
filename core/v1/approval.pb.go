@@ -2233,9 +2233,9 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\x11policy_suspension\x18\x02 \x01(\v2\x1d.core.v1.UserPolicySuspensionH\x00R\x10policySuspension\x12P\n" +
 	"\x13mcp_registry_access\x18\x03 \x01(\v2\x1e.core.v1.UserMcpRegistryAccessH\x00R\x11mcpRegistryAccess\x12S\n" +
 	"\x14custom_policy_access\x18\x04 \x01(\v2\x1f.core.v1.UserCustomPolicyAccessH\x00R\x12customPolicyAccessB\r\n" +
-	"\x04kind\x12\x05\xbaH\x02\b\x01\"M\n" +
-	"\x13UserMcpServerCreate\x12\x1b\n" +
-	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x19\n" +
+	"\x04kind\x12\x05\xbaH\x02\b\x01\"_\n" +
+	"\x13UserMcpServerCreate\x12-\n" +
+	"\x04name\x18\x01 \x01(\tB\x19\xbaH\x16r\x14\x10\x03\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x12\x19\n" +
 	"\x03url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\"\xe1\x01\n" +
 	"\x14UserPolicySuspension\x127\n" +
 	"\bone_time\x18\x01 \x01(\v2\x1a.core.v1.UserOneTimeAccessH\x00R\aoneTime\x12=\n" +
