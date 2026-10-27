@@ -686,11 +686,1070 @@ func (x *DeleteOAuthClientResponse) GetId() string {
 	return ""
 }
 
+type OAuthConsent struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Id     string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	// Empty when the user has no name or email on record.
+	UserName  string `protobuf:"bytes,3,opt,name=user_name,json=userName,proto3" json:"user_name,omitempty"`
+	UserEmail string `protobuf:"bytes,4,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
+	// A client ID metadata document URL, or a registered client's ID (OAuthClient.id).
+	ClientId string `protobuf:"bytes,5,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	// The client's name at the user's latest approval: self-asserted by a
+	// metadata-document client, admin-entered for a registered client.
+	ClientName string `protobuf:"bytes,6,opt,name=client_name,json=clientName,proto3" json:"client_name,omitempty"`
+	// "cimd" or "pre_registered", as in access tokens and logs.
+	ClientType string `protobuf:"bytes,7,opt,name=client_type,json=clientType,proto3" json:"client_type,omitempty"`
+	// What the application can access as the user.
+	//
+	// Types that are valid to be assigned to Target:
+	//
+	//	*OAuthConsent_Resource
+	//	*OAuthConsent_FormalMcp
+	Target isOAuthConsent_Target `protobuf_oneof:"target"`
+	// When the user first approved the application.
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// When the user last approved the application.
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OAuthConsent) Reset() {
+	*x = OAuthConsent{}
+	mi := &file_core_v1_oauth_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OAuthConsent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OAuthConsent) ProtoMessage() {}
+
+func (x *OAuthConsent) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OAuthConsent.ProtoReflect.Descriptor instead.
+func (*OAuthConsent) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *OAuthConsent) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *OAuthConsent) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *OAuthConsent) GetUserName() string {
+	if x != nil {
+		return x.UserName
+	}
+	return ""
+}
+
+func (x *OAuthConsent) GetUserEmail() string {
+	if x != nil {
+		return x.UserEmail
+	}
+	return ""
+}
+
+func (x *OAuthConsent) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *OAuthConsent) GetClientName() string {
+	if x != nil {
+		return x.ClientName
+	}
+	return ""
+}
+
+func (x *OAuthConsent) GetClientType() string {
+	if x != nil {
+		return x.ClientType
+	}
+	return ""
+}
+
+func (x *OAuthConsent) GetTarget() isOAuthConsent_Target {
+	if x != nil {
+		return x.Target
+	}
+	return nil
+}
+
+func (x *OAuthConsent) GetResource() *OAuthConsentResource {
+	if x != nil {
+		if x, ok := x.Target.(*OAuthConsent_Resource); ok {
+			return x.Resource
+		}
+	}
+	return nil
+}
+
+func (x *OAuthConsent) GetFormalMcp() *OAuthConsentFormalMcp {
+	if x != nil {
+		if x, ok := x.Target.(*OAuthConsent_FormalMcp); ok {
+			return x.FormalMcp
+		}
+	}
+	return nil
+}
+
+func (x *OAuthConsent) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *OAuthConsent) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type isOAuthConsent_Target interface {
+	isOAuthConsent_Target()
+}
+
+type OAuthConsent_Resource struct {
+	Resource *OAuthConsentResource `protobuf:"bytes,8,opt,name=resource,proto3,oneof"`
+}
+
+type OAuthConsent_FormalMcp struct {
+	FormalMcp *OAuthConsentFormalMcp `protobuf:"bytes,9,opt,name=formal_mcp,json=formalMcp,proto3,oneof"`
+}
+
+func (*OAuthConsent_Resource) isOAuthConsent_Target() {}
+
+func (*OAuthConsent_FormalMcp) isOAuthConsent_Target() {}
+
+type OAuthConsentResource struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ResourceId    string                 `protobuf:"bytes,1,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	ResourceName  string                 `protobuf:"bytes,2,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OAuthConsentResource) Reset() {
+	*x = OAuthConsentResource{}
+	mi := &file_core_v1_oauth_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OAuthConsentResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OAuthConsentResource) ProtoMessage() {}
+
+func (x *OAuthConsentResource) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OAuthConsentResource.ProtoReflect.Descriptor instead.
+func (*OAuthConsentResource) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *OAuthConsentResource) GetResourceId() string {
+	if x != nil {
+		return x.ResourceId
+	}
+	return ""
+}
+
+func (x *OAuthConsentResource) GetResourceName() string {
+	if x != nil {
+		return x.ResourceName
+	}
+	return ""
+}
+
+type OAuthConsentFormalMcp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OAuthConsentFormalMcp) Reset() {
+	*x = OAuthConsentFormalMcp{}
+	mi := &file_core_v1_oauth_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OAuthConsentFormalMcp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OAuthConsentFormalMcp) ProtoMessage() {}
+
+func (x *OAuthConsentFormalMcp) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OAuthConsentFormalMcp.ProtoReflect.Descriptor instead.
+func (*OAuthConsentFormalMcp) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{15}
+}
+
+type ListOAuthConsentsRequest struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Limit  int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Cursor string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	// Unset filters match everything; set filters combine with AND.
+	UserId   *string `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	ClientId *string `protobuf:"bytes,4,opt,name=client_id,json=clientId,proto3,oneof" json:"client_id,omitempty"`
+	// Unset matches every target.
+	//
+	// Types that are valid to be assigned to Target:
+	//
+	//	*ListOAuthConsentsRequest_ResourceId
+	//	*ListOAuthConsentsRequest_FormalMcp
+	Target        isListOAuthConsentsRequest_Target `protobuf_oneof:"target"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListOAuthConsentsRequest) Reset() {
+	*x = ListOAuthConsentsRequest{}
+	mi := &file_core_v1_oauth_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListOAuthConsentsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListOAuthConsentsRequest) ProtoMessage() {}
+
+func (x *ListOAuthConsentsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListOAuthConsentsRequest.ProtoReflect.Descriptor instead.
+func (*ListOAuthConsentsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ListOAuthConsentsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListOAuthConsentsRequest) GetCursor() string {
+	if x != nil {
+		return x.Cursor
+	}
+	return ""
+}
+
+func (x *ListOAuthConsentsRequest) GetUserId() string {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return ""
+}
+
+func (x *ListOAuthConsentsRequest) GetClientId() string {
+	if x != nil && x.ClientId != nil {
+		return *x.ClientId
+	}
+	return ""
+}
+
+func (x *ListOAuthConsentsRequest) GetTarget() isListOAuthConsentsRequest_Target {
+	if x != nil {
+		return x.Target
+	}
+	return nil
+}
+
+func (x *ListOAuthConsentsRequest) GetResourceId() string {
+	if x != nil {
+		if x, ok := x.Target.(*ListOAuthConsentsRequest_ResourceId); ok {
+			return x.ResourceId
+		}
+	}
+	return ""
+}
+
+func (x *ListOAuthConsentsRequest) GetFormalMcp() *OAuthConsentFormalMcp {
+	if x != nil {
+		if x, ok := x.Target.(*ListOAuthConsentsRequest_FormalMcp); ok {
+			return x.FormalMcp
+		}
+	}
+	return nil
+}
+
+type isListOAuthConsentsRequest_Target interface {
+	isListOAuthConsentsRequest_Target()
+}
+
+type ListOAuthConsentsRequest_ResourceId struct {
+	ResourceId string `protobuf:"bytes,5,opt,name=resource_id,json=resourceId,proto3,oneof"`
+}
+
+type ListOAuthConsentsRequest_FormalMcp struct {
+	FormalMcp *OAuthConsentFormalMcp `protobuf:"bytes,6,opt,name=formal_mcp,json=formalMcp,proto3,oneof"`
+}
+
+func (*ListOAuthConsentsRequest_ResourceId) isListOAuthConsentsRequest_Target() {}
+
+func (*ListOAuthConsentsRequest_FormalMcp) isListOAuthConsentsRequest_Target() {}
+
+type ListOAuthConsentsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Consents      []*OAuthConsent        `protobuf:"bytes,1,rep,name=consents,proto3" json:"consents,omitempty"`
+	ListMetadata  *ListMetadata          `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListOAuthConsentsResponse) Reset() {
+	*x = ListOAuthConsentsResponse{}
+	mi := &file_core_v1_oauth_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListOAuthConsentsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListOAuthConsentsResponse) ProtoMessage() {}
+
+func (x *ListOAuthConsentsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListOAuthConsentsResponse.ProtoReflect.Descriptor instead.
+func (*ListOAuthConsentsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *ListOAuthConsentsResponse) GetConsents() []*OAuthConsent {
+	if x != nil {
+		return x.Consents
+	}
+	return nil
+}
+
+func (x *ListOAuthConsentsResponse) GetListMetadata() *ListMetadata {
+	if x != nil {
+		return x.ListMetadata
+	}
+	return nil
+}
+
+type GetOAuthConsentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOAuthConsentRequest) Reset() {
+	*x = GetOAuthConsentRequest{}
+	mi := &file_core_v1_oauth_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOAuthConsentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOAuthConsentRequest) ProtoMessage() {}
+
+func (x *GetOAuthConsentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOAuthConsentRequest.ProtoReflect.Descriptor instead.
+func (*GetOAuthConsentRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetOAuthConsentRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetOAuthConsentResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Consent       *OAuthConsent          `protobuf:"bytes,1,opt,name=consent,proto3" json:"consent,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOAuthConsentResponse) Reset() {
+	*x = GetOAuthConsentResponse{}
+	mi := &file_core_v1_oauth_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOAuthConsentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOAuthConsentResponse) ProtoMessage() {}
+
+func (x *GetOAuthConsentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOAuthConsentResponse.ProtoReflect.Descriptor instead.
+func (*GetOAuthConsentResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetOAuthConsentResponse) GetConsent() *OAuthConsent {
+	if x != nil {
+		return x.Consent
+	}
+	return nil
+}
+
+type DeleteOAuthConsentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteOAuthConsentRequest) Reset() {
+	*x = DeleteOAuthConsentRequest{}
+	mi := &file_core_v1_oauth_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteOAuthConsentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteOAuthConsentRequest) ProtoMessage() {}
+
+func (x *DeleteOAuthConsentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteOAuthConsentRequest.ProtoReflect.Descriptor instead.
+func (*DeleteOAuthConsentRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *DeleteOAuthConsentRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type DeleteOAuthConsentResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteOAuthConsentResponse) Reset() {
+	*x = DeleteOAuthConsentResponse{}
+	mi := &file_core_v1_oauth_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteOAuthConsentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteOAuthConsentResponse) ProtoMessage() {}
+
+func (x *DeleteOAuthConsentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteOAuthConsentResponse.ProtoReflect.Descriptor instead.
+func (*DeleteOAuthConsentResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *DeleteOAuthConsentResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type OAuthLink struct {
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	Id           string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId       string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserName     string                 `protobuf:"bytes,3,opt,name=user_name,json=userName,proto3" json:"user_name,omitempty"`
+	UserEmail    string                 `protobuf:"bytes,4,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
+	ResourceId   string                 `protobuf:"bytes,5,opt,name=resource_id,json=resourceId,proto3" json:"resource_id,omitempty"`
+	ResourceName string                 `protobuf:"bytes,6,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
+	// The upstream authorization server.
+	Issuer string `protobuf:"bytes,7,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	// The scopes the authorization server granted; empty when it did not say.
+	Scopes []string `protobuf:"bytes,8,rep,name=scopes,proto3" json:"scopes,omitempty"`
+	// How Formal identified itself to the authorization server: "cimd",
+	// "pre_registered", or "managed".
+	ClientSource string `protobuf:"bytes,9,opt,name=client_source,json=clientSource,proto3" json:"client_source,omitempty"`
+	// Whether Formal holds a refresh token and keeps the access token fresh.
+	Refreshable bool `protobuf:"varint,10,opt,name=refreshable,proto3" json:"refreshable,omitempty"`
+	// Whether the authorization server advertises a revocation endpoint.
+	Revocable bool                   `protobuf:"varint,11,opt,name=revocable,proto3" json:"revocable,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// When the current access token expires; unset when it does not expire.
+	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OAuthLink) Reset() {
+	*x = OAuthLink{}
+	mi := &file_core_v1_oauth_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OAuthLink) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OAuthLink) ProtoMessage() {}
+
+func (x *OAuthLink) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OAuthLink.ProtoReflect.Descriptor instead.
+func (*OAuthLink) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *OAuthLink) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetUserName() string {
+	if x != nil {
+		return x.UserName
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetUserEmail() string {
+	if x != nil {
+		return x.UserEmail
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetResourceId() string {
+	if x != nil {
+		return x.ResourceId
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetResourceName() string {
+	if x != nil {
+		return x.ResourceName
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetIssuer() string {
+	if x != nil {
+		return x.Issuer
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetScopes() []string {
+	if x != nil {
+		return x.Scopes
+	}
+	return nil
+}
+
+func (x *OAuthLink) GetClientSource() string {
+	if x != nil {
+		return x.ClientSource
+	}
+	return ""
+}
+
+func (x *OAuthLink) GetRefreshable() bool {
+	if x != nil {
+		return x.Refreshable
+	}
+	return false
+}
+
+func (x *OAuthLink) GetRevocable() bool {
+	if x != nil {
+		return x.Revocable
+	}
+	return false
+}
+
+func (x *OAuthLink) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *OAuthLink) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *OAuthLink) GetExpiresAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpiresAt
+	}
+	return nil
+}
+
+type ListOAuthLinksRequest struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Limit  int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Cursor string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	// Unset filters match everything; set filters combine with AND.
+	UserId        *string `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	ResourceId    *string `protobuf:"bytes,4,opt,name=resource_id,json=resourceId,proto3,oneof" json:"resource_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListOAuthLinksRequest) Reset() {
+	*x = ListOAuthLinksRequest{}
+	mi := &file_core_v1_oauth_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListOAuthLinksRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListOAuthLinksRequest) ProtoMessage() {}
+
+func (x *ListOAuthLinksRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListOAuthLinksRequest.ProtoReflect.Descriptor instead.
+func (*ListOAuthLinksRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *ListOAuthLinksRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListOAuthLinksRequest) GetCursor() string {
+	if x != nil {
+		return x.Cursor
+	}
+	return ""
+}
+
+func (x *ListOAuthLinksRequest) GetUserId() string {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return ""
+}
+
+func (x *ListOAuthLinksRequest) GetResourceId() string {
+	if x != nil && x.ResourceId != nil {
+		return *x.ResourceId
+	}
+	return ""
+}
+
+type ListOAuthLinksResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Links         []*OAuthLink           `protobuf:"bytes,1,rep,name=links,proto3" json:"links,omitempty"`
+	ListMetadata  *ListMetadata          `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListOAuthLinksResponse) Reset() {
+	*x = ListOAuthLinksResponse{}
+	mi := &file_core_v1_oauth_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListOAuthLinksResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListOAuthLinksResponse) ProtoMessage() {}
+
+func (x *ListOAuthLinksResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListOAuthLinksResponse.ProtoReflect.Descriptor instead.
+func (*ListOAuthLinksResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *ListOAuthLinksResponse) GetLinks() []*OAuthLink {
+	if x != nil {
+		return x.Links
+	}
+	return nil
+}
+
+func (x *ListOAuthLinksResponse) GetListMetadata() *ListMetadata {
+	if x != nil {
+		return x.ListMetadata
+	}
+	return nil
+}
+
+type GetOAuthLinkRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOAuthLinkRequest) Reset() {
+	*x = GetOAuthLinkRequest{}
+	mi := &file_core_v1_oauth_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOAuthLinkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOAuthLinkRequest) ProtoMessage() {}
+
+func (x *GetOAuthLinkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOAuthLinkRequest.ProtoReflect.Descriptor instead.
+func (*GetOAuthLinkRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *GetOAuthLinkRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetOAuthLinkResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Link          *OAuthLink             `protobuf:"bytes,1,opt,name=link,proto3" json:"link,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOAuthLinkResponse) Reset() {
+	*x = GetOAuthLinkResponse{}
+	mi := &file_core_v1_oauth_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOAuthLinkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOAuthLinkResponse) ProtoMessage() {}
+
+func (x *GetOAuthLinkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOAuthLinkResponse.ProtoReflect.Descriptor instead.
+func (*GetOAuthLinkResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *GetOAuthLinkResponse) GetLink() *OAuthLink {
+	if x != nil {
+		return x.Link
+	}
+	return nil
+}
+
+type DeleteOAuthLinkRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteOAuthLinkRequest) Reset() {
+	*x = DeleteOAuthLinkRequest{}
+	mi := &file_core_v1_oauth_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteOAuthLinkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteOAuthLinkRequest) ProtoMessage() {}
+
+func (x *DeleteOAuthLinkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteOAuthLinkRequest.ProtoReflect.Descriptor instead.
+func (*DeleteOAuthLinkRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *DeleteOAuthLinkRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type DeleteOAuthLinkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Whether the authorization server confirmed revoking the tokens. False when
+	// it has no revocation endpoint or revocation failed; the link is deleted
+	// either way.
+	ProviderRevoked bool `protobuf:"varint,2,opt,name=provider_revoked,json=providerRevoked,proto3" json:"provider_revoked,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *DeleteOAuthLinkResponse) Reset() {
+	*x = DeleteOAuthLinkResponse{}
+	mi := &file_core_v1_oauth_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteOAuthLinkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteOAuthLinkResponse) ProtoMessage() {}
+
+func (x *DeleteOAuthLinkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_oauth_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteOAuthLinkResponse.ProtoReflect.Descriptor instead.
+func (*DeleteOAuthLinkResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_oauth_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *DeleteOAuthLinkResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *DeleteOAuthLinkResponse) GetProviderRevoked() bool {
+	if x != nil {
+		return x.ProviderRevoked
+	}
+	return false
+}
+
 var File_core_v1_oauth_proto protoreflect.FileDescriptor
 
 const file_core_v1_oauth_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/oauth.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
+	"\x13core/v1/oauth.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
 	"\vOAuthClient\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
@@ -729,14 +1788,114 @@ const file_core_v1_oauth_proto_rawDesc = "" +
 	"\x18DeleteOAuthClientRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"+\n" +
 	"\x19DeleteOAuthClientResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id2\x82\a\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xd0\x03\n" +
+	"\fOAuthConsent\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n" +
+	"\tuser_name\x18\x03 \x01(\tR\buserName\x12\x1d\n" +
+	"\n" +
+	"user_email\x18\x04 \x01(\tR\tuserEmail\x12\x1b\n" +
+	"\tclient_id\x18\x05 \x01(\tR\bclientId\x12\x1f\n" +
+	"\vclient_name\x18\x06 \x01(\tR\n" +
+	"clientName\x12\x1f\n" +
+	"\vclient_type\x18\a \x01(\tR\n" +
+	"clientType\x12;\n" +
+	"\bresource\x18\b \x01(\v2\x1d.core.v1.OAuthConsentResourceH\x00R\bresource\x12?\n" +
+	"\n" +
+	"formal_mcp\x18\t \x01(\v2\x1e.core.v1.OAuthConsentFormalMcpH\x00R\tformalMcp\x129\n" +
+	"\n" +
+	"created_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\b\n" +
+	"\x06target\"\\\n" +
+	"\x14OAuthConsentResource\x12\x1f\n" +
+	"\vresource_id\x18\x01 \x01(\tR\n" +
+	"resourceId\x12#\n" +
+	"\rresource_name\x18\x02 \x01(\tR\fresourceName\"\x17\n" +
+	"\x15OAuthConsentFormalMcp\"\xb7\x02\n" +
+	"\x18ListOAuthConsentsRequest\x12 \n" +
+	"\x05limit\x18\x01 \x01(\x05B\n" +
+	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
+	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12%\n" +
+	"\auser_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x01R\x06userId\x88\x01\x01\x12)\n" +
+	"\tclient_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x02R\bclientId\x88\x01\x01\x12*\n" +
+	"\vresource_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
+	"resourceId\x12?\n" +
+	"\n" +
+	"formal_mcp\x18\x06 \x01(\v2\x1e.core.v1.OAuthConsentFormalMcpH\x00R\tformalMcpB\b\n" +
+	"\x06targetB\n" +
+	"\n" +
+	"\b_user_idB\f\n" +
+	"\n" +
+	"_client_id\"\x8a\x01\n" +
+	"\x19ListOAuthConsentsResponse\x121\n" +
+	"\bconsents\x18\x01 \x03(\v2\x15.core.v1.OAuthConsentR\bconsents\x12:\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"1\n" +
+	"\x16GetOAuthConsentRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"J\n" +
+	"\x17GetOAuthConsentResponse\x12/\n" +
+	"\aconsent\x18\x01 \x01(\v2\x15.core.v1.OAuthConsentR\aconsent\"4\n" +
+	"\x19DeleteOAuthConsentRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\",\n" +
+	"\x1aDeleteOAuthConsentResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xfc\x03\n" +
+	"\tOAuthLink\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n" +
+	"\tuser_name\x18\x03 \x01(\tR\buserName\x12\x1d\n" +
+	"\n" +
+	"user_email\x18\x04 \x01(\tR\tuserEmail\x12\x1f\n" +
+	"\vresource_id\x18\x05 \x01(\tR\n" +
+	"resourceId\x12#\n" +
+	"\rresource_name\x18\x06 \x01(\tR\fresourceName\x12\x16\n" +
+	"\x06issuer\x18\a \x01(\tR\x06issuer\x12\x16\n" +
+	"\x06scopes\x18\b \x03(\tR\x06scopes\x12#\n" +
+	"\rclient_source\x18\t \x01(\tR\fclientSource\x12 \n" +
+	"\vrefreshable\x18\n" +
+	" \x01(\bR\vrefreshable\x12\x1c\n" +
+	"\trevocable\x18\v \x01(\bR\trevocable\x129\n" +
+	"\n" +
+	"created_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"expires_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"\xc3\x01\n" +
+	"\x15ListOAuthLinksRequest\x12 \n" +
+	"\x05limit\x18\x01 \x01(\x05B\n" +
+	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
+	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12%\n" +
+	"\auser_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x06userId\x88\x01\x01\x12-\n" +
+	"\vresource_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x01R\n" +
+	"resourceId\x88\x01\x01B\n" +
+	"\n" +
+	"\b_user_idB\x0e\n" +
+	"\f_resource_id\"~\n" +
+	"\x16ListOAuthLinksResponse\x12(\n" +
+	"\x05links\x18\x01 \x03(\v2\x12.core.v1.OAuthLinkR\x05links\x12:\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\".\n" +
+	"\x13GetOAuthLinkRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\">\n" +
+	"\x14GetOAuthLinkResponse\x12&\n" +
+	"\x04link\x18\x01 \x01(\v2\x12.core.v1.OAuthLinkR\x04link\"1\n" +
+	"\x16DeleteOAuthLinkRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"T\n" +
+	"\x17DeleteOAuthLinkResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12)\n" +
+	"\x10provider_revoked\x18\x02 \x01(\bR\x0fproviderRevoked2\xc7\r\n" +
 	"\fOAuthService\x12\x8e\x01\n" +
 	"\x11CreateOAuthClient\x12!.core.v1.CreateOAuthClientRequest\x1a\".core.v1.CreateOAuthClientResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/CreateOAuthClient\x12\x85\x01\n" +
 	"\x0eGetOAuthClient\x12\x1e.core.v1.GetOAuthClientRequest\x1a\x1f.core.v1.GetOAuthClientResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.OAuthService/GetOAuthClient\x90\x02\x01\x12\x8d\x01\n" +
 	"\x10ListOAuthClients\x12 .core.v1.ListOAuthClientsRequest\x1a!.core.v1.ListOAuthClientsResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.OAuthService/ListOAuthClients\x90\x02\x01\x12\x8e\x01\n" +
 	"\x11UpdateOAuthClient\x12!.core.v1.UpdateOAuthClientRequest\x1a\".core.v1.UpdateOAuthClientResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/UpdateOAuthClient\x12\xa6\x01\n" +
 	"\x17CreateOAuthClientSecret\x12'.core.v1.CreateOAuthClientSecretRequest\x1a(.core.v1.CreateOAuthClientSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.OAuthService/CreateOAuthClientSecret\x12\x8e\x01\n" +
-	"\x11DeleteOAuthClient\x12!.core.v1.DeleteOAuthClientRequest\x1a\".core.v1.DeleteOAuthClientResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/DeleteOAuthClientB\x84\x01\n" +
+	"\x11DeleteOAuthClient\x12!.core.v1.DeleteOAuthClientRequest\x1a\".core.v1.DeleteOAuthClientResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/DeleteOAuthClient\x12\x91\x01\n" +
+	"\x11ListOAuthConsents\x12!.core.v1.ListOAuthConsentsRequest\x1a\".core.v1.ListOAuthConsentsResponse\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/ListOAuthConsents\x90\x02\x01\x12\x89\x01\n" +
+	"\x0fGetOAuthConsent\x12\x1f.core.v1.GetOAuthConsentRequest\x1a .core.v1.GetOAuthConsentResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.OAuthService/GetOAuthConsent\x90\x02\x01\x12\x92\x01\n" +
+	"\x12DeleteOAuthConsent\x12\".core.v1.DeleteOAuthConsentRequest\x1a#.core.v1.DeleteOAuthConsentResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.OAuthService/DeleteOAuthConsent\x12\x85\x01\n" +
+	"\x0eListOAuthLinks\x12\x1e.core.v1.ListOAuthLinksRequest\x1a\x1f.core.v1.ListOAuthLinksResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.OAuthService/ListOAuthLinks\x90\x02\x01\x12}\n" +
+	"\fGetOAuthLink\x12\x1c.core.v1.GetOAuthLinkRequest\x1a\x1d.core.v1.GetOAuthLinkResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.OAuthService/GetOAuthLink\x90\x02\x01\x12\x86\x01\n" +
+	"\x0fDeleteOAuthLink\x12\x1f.core.v1.DeleteOAuthLinkRequest\x1a .core.v1.DeleteOAuthLinkResponse\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.OAuthService/DeleteOAuthLinkB\x84\x01\n" +
 	"\vcom.core.v1B\n" +
 	"OauthProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
@@ -752,7 +1911,7 @@ func file_core_v1_oauth_proto_rawDescGZIP() []byte {
 	return file_core_v1_oauth_proto_rawDescData
 }
 
-var file_core_v1_oauth_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_core_v1_oauth_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_core_v1_oauth_proto_goTypes = []any{
 	(*OAuthClient)(nil),                     // 0: core.v1.OAuthClient
 	(*CreateOAuthClientRequest)(nil),        // 1: core.v1.CreateOAuthClientRequest
@@ -767,33 +1926,76 @@ var file_core_v1_oauth_proto_goTypes = []any{
 	(*CreateOAuthClientSecretResponse)(nil), // 10: core.v1.CreateOAuthClientSecretResponse
 	(*DeleteOAuthClientRequest)(nil),        // 11: core.v1.DeleteOAuthClientRequest
 	(*DeleteOAuthClientResponse)(nil),       // 12: core.v1.DeleteOAuthClientResponse
-	(*timestamppb.Timestamp)(nil),           // 13: google.protobuf.Timestamp
+	(*OAuthConsent)(nil),                    // 13: core.v1.OAuthConsent
+	(*OAuthConsentResource)(nil),            // 14: core.v1.OAuthConsentResource
+	(*OAuthConsentFormalMcp)(nil),           // 15: core.v1.OAuthConsentFormalMcp
+	(*ListOAuthConsentsRequest)(nil),        // 16: core.v1.ListOAuthConsentsRequest
+	(*ListOAuthConsentsResponse)(nil),       // 17: core.v1.ListOAuthConsentsResponse
+	(*GetOAuthConsentRequest)(nil),          // 18: core.v1.GetOAuthConsentRequest
+	(*GetOAuthConsentResponse)(nil),         // 19: core.v1.GetOAuthConsentResponse
+	(*DeleteOAuthConsentRequest)(nil),       // 20: core.v1.DeleteOAuthConsentRequest
+	(*DeleteOAuthConsentResponse)(nil),      // 21: core.v1.DeleteOAuthConsentResponse
+	(*OAuthLink)(nil),                       // 22: core.v1.OAuthLink
+	(*ListOAuthLinksRequest)(nil),           // 23: core.v1.ListOAuthLinksRequest
+	(*ListOAuthLinksResponse)(nil),          // 24: core.v1.ListOAuthLinksResponse
+	(*GetOAuthLinkRequest)(nil),             // 25: core.v1.GetOAuthLinkRequest
+	(*GetOAuthLinkResponse)(nil),            // 26: core.v1.GetOAuthLinkResponse
+	(*DeleteOAuthLinkRequest)(nil),          // 27: core.v1.DeleteOAuthLinkRequest
+	(*DeleteOAuthLinkResponse)(nil),         // 28: core.v1.DeleteOAuthLinkResponse
+	(*timestamppb.Timestamp)(nil),           // 29: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                    // 30: core.v1.ListMetadata
 }
 var file_core_v1_oauth_proto_depIdxs = []int32{
-	13, // 0: core.v1.OAuthClient.created_at:type_name -> google.protobuf.Timestamp
-	13, // 1: core.v1.OAuthClient.updated_at:type_name -> google.protobuf.Timestamp
+	29, // 0: core.v1.OAuthClient.created_at:type_name -> google.protobuf.Timestamp
+	29, // 1: core.v1.OAuthClient.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: core.v1.CreateOAuthClientResponse.oauth_client:type_name -> core.v1.OAuthClient
 	0,  // 3: core.v1.GetOAuthClientResponse.oauth_client:type_name -> core.v1.OAuthClient
 	0,  // 4: core.v1.ListOAuthClientsResponse.oauth_clients:type_name -> core.v1.OAuthClient
 	0,  // 5: core.v1.UpdateOAuthClientResponse.oauth_client:type_name -> core.v1.OAuthClient
 	0,  // 6: core.v1.CreateOAuthClientSecretResponse.oauth_client:type_name -> core.v1.OAuthClient
-	1,  // 7: core.v1.OAuthService.CreateOAuthClient:input_type -> core.v1.CreateOAuthClientRequest
-	3,  // 8: core.v1.OAuthService.GetOAuthClient:input_type -> core.v1.GetOAuthClientRequest
-	5,  // 9: core.v1.OAuthService.ListOAuthClients:input_type -> core.v1.ListOAuthClientsRequest
-	7,  // 10: core.v1.OAuthService.UpdateOAuthClient:input_type -> core.v1.UpdateOAuthClientRequest
-	9,  // 11: core.v1.OAuthService.CreateOAuthClientSecret:input_type -> core.v1.CreateOAuthClientSecretRequest
-	11, // 12: core.v1.OAuthService.DeleteOAuthClient:input_type -> core.v1.DeleteOAuthClientRequest
-	2,  // 13: core.v1.OAuthService.CreateOAuthClient:output_type -> core.v1.CreateOAuthClientResponse
-	4,  // 14: core.v1.OAuthService.GetOAuthClient:output_type -> core.v1.GetOAuthClientResponse
-	6,  // 15: core.v1.OAuthService.ListOAuthClients:output_type -> core.v1.ListOAuthClientsResponse
-	8,  // 16: core.v1.OAuthService.UpdateOAuthClient:output_type -> core.v1.UpdateOAuthClientResponse
-	10, // 17: core.v1.OAuthService.CreateOAuthClientSecret:output_type -> core.v1.CreateOAuthClientSecretResponse
-	12, // 18: core.v1.OAuthService.DeleteOAuthClient:output_type -> core.v1.DeleteOAuthClientResponse
-	13, // [13:19] is the sub-list for method output_type
-	7,  // [7:13] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	14, // 7: core.v1.OAuthConsent.resource:type_name -> core.v1.OAuthConsentResource
+	15, // 8: core.v1.OAuthConsent.formal_mcp:type_name -> core.v1.OAuthConsentFormalMcp
+	29, // 9: core.v1.OAuthConsent.created_at:type_name -> google.protobuf.Timestamp
+	29, // 10: core.v1.OAuthConsent.updated_at:type_name -> google.protobuf.Timestamp
+	15, // 11: core.v1.ListOAuthConsentsRequest.formal_mcp:type_name -> core.v1.OAuthConsentFormalMcp
+	13, // 12: core.v1.ListOAuthConsentsResponse.consents:type_name -> core.v1.OAuthConsent
+	30, // 13: core.v1.ListOAuthConsentsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	13, // 14: core.v1.GetOAuthConsentResponse.consent:type_name -> core.v1.OAuthConsent
+	29, // 15: core.v1.OAuthLink.created_at:type_name -> google.protobuf.Timestamp
+	29, // 16: core.v1.OAuthLink.updated_at:type_name -> google.protobuf.Timestamp
+	29, // 17: core.v1.OAuthLink.expires_at:type_name -> google.protobuf.Timestamp
+	22, // 18: core.v1.ListOAuthLinksResponse.links:type_name -> core.v1.OAuthLink
+	30, // 19: core.v1.ListOAuthLinksResponse.list_metadata:type_name -> core.v1.ListMetadata
+	22, // 20: core.v1.GetOAuthLinkResponse.link:type_name -> core.v1.OAuthLink
+	1,  // 21: core.v1.OAuthService.CreateOAuthClient:input_type -> core.v1.CreateOAuthClientRequest
+	3,  // 22: core.v1.OAuthService.GetOAuthClient:input_type -> core.v1.GetOAuthClientRequest
+	5,  // 23: core.v1.OAuthService.ListOAuthClients:input_type -> core.v1.ListOAuthClientsRequest
+	7,  // 24: core.v1.OAuthService.UpdateOAuthClient:input_type -> core.v1.UpdateOAuthClientRequest
+	9,  // 25: core.v1.OAuthService.CreateOAuthClientSecret:input_type -> core.v1.CreateOAuthClientSecretRequest
+	11, // 26: core.v1.OAuthService.DeleteOAuthClient:input_type -> core.v1.DeleteOAuthClientRequest
+	16, // 27: core.v1.OAuthService.ListOAuthConsents:input_type -> core.v1.ListOAuthConsentsRequest
+	18, // 28: core.v1.OAuthService.GetOAuthConsent:input_type -> core.v1.GetOAuthConsentRequest
+	20, // 29: core.v1.OAuthService.DeleteOAuthConsent:input_type -> core.v1.DeleteOAuthConsentRequest
+	23, // 30: core.v1.OAuthService.ListOAuthLinks:input_type -> core.v1.ListOAuthLinksRequest
+	25, // 31: core.v1.OAuthService.GetOAuthLink:input_type -> core.v1.GetOAuthLinkRequest
+	27, // 32: core.v1.OAuthService.DeleteOAuthLink:input_type -> core.v1.DeleteOAuthLinkRequest
+	2,  // 33: core.v1.OAuthService.CreateOAuthClient:output_type -> core.v1.CreateOAuthClientResponse
+	4,  // 34: core.v1.OAuthService.GetOAuthClient:output_type -> core.v1.GetOAuthClientResponse
+	6,  // 35: core.v1.OAuthService.ListOAuthClients:output_type -> core.v1.ListOAuthClientsResponse
+	8,  // 36: core.v1.OAuthService.UpdateOAuthClient:output_type -> core.v1.UpdateOAuthClientResponse
+	10, // 37: core.v1.OAuthService.CreateOAuthClientSecret:output_type -> core.v1.CreateOAuthClientSecretResponse
+	12, // 38: core.v1.OAuthService.DeleteOAuthClient:output_type -> core.v1.DeleteOAuthClientResponse
+	17, // 39: core.v1.OAuthService.ListOAuthConsents:output_type -> core.v1.ListOAuthConsentsResponse
+	19, // 40: core.v1.OAuthService.GetOAuthConsent:output_type -> core.v1.GetOAuthConsentResponse
+	21, // 41: core.v1.OAuthService.DeleteOAuthConsent:output_type -> core.v1.DeleteOAuthConsentResponse
+	24, // 42: core.v1.OAuthService.ListOAuthLinks:output_type -> core.v1.ListOAuthLinksResponse
+	26, // 43: core.v1.OAuthService.GetOAuthLink:output_type -> core.v1.GetOAuthLinkResponse
+	28, // 44: core.v1.OAuthService.DeleteOAuthLink:output_type -> core.v1.DeleteOAuthLinkResponse
+	33, // [33:45] is the sub-list for method output_type
+	21, // [21:33] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_oauth_proto_init() }
@@ -801,14 +2003,24 @@ func file_core_v1_oauth_proto_init() {
 	if File_core_v1_oauth_proto != nil {
 		return
 	}
+	file_core_v1_list_metadata_proto_init()
 	file_core_v1_oauth_proto_msgTypes[7].OneofWrappers = []any{}
+	file_core_v1_oauth_proto_msgTypes[13].OneofWrappers = []any{
+		(*OAuthConsent_Resource)(nil),
+		(*OAuthConsent_FormalMcp)(nil),
+	}
+	file_core_v1_oauth_proto_msgTypes[16].OneofWrappers = []any{
+		(*ListOAuthConsentsRequest_ResourceId)(nil),
+		(*ListOAuthConsentsRequest_FormalMcp)(nil),
+	}
+	file_core_v1_oauth_proto_msgTypes[23].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_oauth_proto_rawDesc), len(file_core_v1_oauth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

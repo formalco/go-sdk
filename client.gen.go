@@ -2455,6 +2455,33 @@ func (c *OAuthServiceClient) DeleteOAuthClient(ctx context.Context, req *corev1.
 	return res.Msg, nil
 }
 
+// Delete OAuth consent
+//
+// Revoke an application's access as a user, with its refresh tokens. The
+// Formal MCP rejects the application's access tokens immediately; Formal
+// resources accept access tokens already issued until they expire, within
+// 15 minutes.
+func (c *OAuthServiceClient) DeleteOAuthConsent(ctx context.Context, req *corev1.DeleteOAuthConsentRequest) (*corev1.DeleteOAuthConsentResponse, error) {
+	res, err := c.inner.DeleteOAuthConsent(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete OAuth link
+//
+// Unlink a user's upstream account. Formal asks the authorization server to
+// revoke the tokens when it supports revocation, then deletes them either
+// way. The user's OAuth consents are kept.
+func (c *OAuthServiceClient) DeleteOAuthLink(ctx context.Context, req *corev1.DeleteOAuthLinkRequest) (*corev1.DeleteOAuthLinkResponse, error) {
+	res, err := c.inner.DeleteOAuthLink(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Get OAuth client
 func (c *OAuthServiceClient) GetOAuthClient(ctx context.Context, req *corev1.GetOAuthClientRequest) (*corev1.GetOAuthClientResponse, error) {
 	res, err := c.inner.GetOAuthClient(ctx, connect.NewRequest(req))
@@ -2464,9 +2491,51 @@ func (c *OAuthServiceClient) GetOAuthClient(ctx context.Context, req *corev1.Get
 	return res.Msg, nil
 }
 
+// Get OAuth consent
+func (c *OAuthServiceClient) GetOAuthConsent(ctx context.Context, req *corev1.GetOAuthConsentRequest) (*corev1.GetOAuthConsentResponse, error) {
+	res, err := c.inner.GetOAuthConsent(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get OAuth link
+func (c *OAuthServiceClient) GetOAuthLink(ctx context.Context, req *corev1.GetOAuthLinkRequest) (*corev1.GetOAuthLinkResponse, error) {
+	res, err := c.inner.GetOAuthLink(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // List OAuth clients
 func (c *OAuthServiceClient) ListOAuthClients(ctx context.Context, req *corev1.ListOAuthClientsRequest) (*corev1.ListOAuthClientsResponse, error) {
 	res, err := c.inner.ListOAuthClients(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List OAuth consents
+//
+// List the applications users in the organization have authorized to act as
+// them, on a Formal resource or the Formal MCP.
+func (c *OAuthServiceClient) ListOAuthConsents(ctx context.Context, req *corev1.ListOAuthConsentsRequest) (*corev1.ListOAuthConsentsResponse, error) {
+	res, err := c.inner.ListOAuthConsents(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List OAuth links
+//
+// List the accounts users in the organization have linked at resources'
+// upstream authorization servers. Tokens are never returned.
+func (c *OAuthServiceClient) ListOAuthLinks(ctx context.Context, req *corev1.ListOAuthLinksRequest) (*corev1.ListOAuthLinksResponse, error) {
+	res, err := c.inner.ListOAuthLinks(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

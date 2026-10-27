@@ -51,6 +51,24 @@ const (
 	// OAuthServiceDeleteOAuthClientProcedure is the fully-qualified name of the OAuthService's
 	// DeleteOAuthClient RPC.
 	OAuthServiceDeleteOAuthClientProcedure = "/core.v1.OAuthService/DeleteOAuthClient"
+	// OAuthServiceListOAuthConsentsProcedure is the fully-qualified name of the OAuthService's
+	// ListOAuthConsents RPC.
+	OAuthServiceListOAuthConsentsProcedure = "/core.v1.OAuthService/ListOAuthConsents"
+	// OAuthServiceGetOAuthConsentProcedure is the fully-qualified name of the OAuthService's
+	// GetOAuthConsent RPC.
+	OAuthServiceGetOAuthConsentProcedure = "/core.v1.OAuthService/GetOAuthConsent"
+	// OAuthServiceDeleteOAuthConsentProcedure is the fully-qualified name of the OAuthService's
+	// DeleteOAuthConsent RPC.
+	OAuthServiceDeleteOAuthConsentProcedure = "/core.v1.OAuthService/DeleteOAuthConsent"
+	// OAuthServiceListOAuthLinksProcedure is the fully-qualified name of the OAuthService's
+	// ListOAuthLinks RPC.
+	OAuthServiceListOAuthLinksProcedure = "/core.v1.OAuthService/ListOAuthLinks"
+	// OAuthServiceGetOAuthLinkProcedure is the fully-qualified name of the OAuthService's GetOAuthLink
+	// RPC.
+	OAuthServiceGetOAuthLinkProcedure = "/core.v1.OAuthService/GetOAuthLink"
+	// OAuthServiceDeleteOAuthLinkProcedure is the fully-qualified name of the OAuthService's
+	// DeleteOAuthLink RPC.
+	OAuthServiceDeleteOAuthLinkProcedure = "/core.v1.OAuthService/DeleteOAuthLink"
 )
 
 // OAuthServiceClient is a client for the core.v1.OAuthService service.
@@ -80,6 +98,33 @@ type OAuthServiceClient interface {
 	//
 	// Delete a client and revoke every consent and refresh token issued to it.
 	DeleteOAuthClient(context.Context, *connect.Request[v1.DeleteOAuthClientRequest]) (*connect.Response[v1.DeleteOAuthClientResponse], error)
+	// List OAuth consents
+	//
+	// List the applications users in the organization have authorized to act as
+	// them, on a Formal resource or the Formal MCP.
+	ListOAuthConsents(context.Context, *connect.Request[v1.ListOAuthConsentsRequest]) (*connect.Response[v1.ListOAuthConsentsResponse], error)
+	// Get OAuth consent
+	GetOAuthConsent(context.Context, *connect.Request[v1.GetOAuthConsentRequest]) (*connect.Response[v1.GetOAuthConsentResponse], error)
+	// Delete OAuth consent
+	//
+	// Revoke an application's access as a user, with its refresh tokens. The
+	// Formal MCP rejects the application's access tokens immediately; Formal
+	// resources accept access tokens already issued until they expire, within
+	// 15 minutes.
+	DeleteOAuthConsent(context.Context, *connect.Request[v1.DeleteOAuthConsentRequest]) (*connect.Response[v1.DeleteOAuthConsentResponse], error)
+	// List OAuth links
+	//
+	// List the accounts users in the organization have linked at resources'
+	// upstream authorization servers. Tokens are never returned.
+	ListOAuthLinks(context.Context, *connect.Request[v1.ListOAuthLinksRequest]) (*connect.Response[v1.ListOAuthLinksResponse], error)
+	// Get OAuth link
+	GetOAuthLink(context.Context, *connect.Request[v1.GetOAuthLinkRequest]) (*connect.Response[v1.GetOAuthLinkResponse], error)
+	// Delete OAuth link
+	//
+	// Unlink a user's upstream account. Formal asks the authorization server to
+	// revoke the tokens when it supports revocation, then deletes them either
+	// way. The user's OAuth consents are kept.
+	DeleteOAuthLink(context.Context, *connect.Request[v1.DeleteOAuthLinkRequest]) (*connect.Response[v1.DeleteOAuthLinkResponse], error)
 }
 
 // NewOAuthServiceClient constructs a client for the core.v1.OAuthService service. By default, it
@@ -131,6 +176,46 @@ func NewOAuthServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(oAuthServiceMethods.ByName("DeleteOAuthClient")),
 			connect.WithClientOptions(opts...),
 		),
+		listOAuthConsents: connect.NewClient[v1.ListOAuthConsentsRequest, v1.ListOAuthConsentsResponse](
+			httpClient,
+			baseURL+OAuthServiceListOAuthConsentsProcedure,
+			connect.WithSchema(oAuthServiceMethods.ByName("ListOAuthConsents")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		getOAuthConsent: connect.NewClient[v1.GetOAuthConsentRequest, v1.GetOAuthConsentResponse](
+			httpClient,
+			baseURL+OAuthServiceGetOAuthConsentProcedure,
+			connect.WithSchema(oAuthServiceMethods.ByName("GetOAuthConsent")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		deleteOAuthConsent: connect.NewClient[v1.DeleteOAuthConsentRequest, v1.DeleteOAuthConsentResponse](
+			httpClient,
+			baseURL+OAuthServiceDeleteOAuthConsentProcedure,
+			connect.WithSchema(oAuthServiceMethods.ByName("DeleteOAuthConsent")),
+			connect.WithClientOptions(opts...),
+		),
+		listOAuthLinks: connect.NewClient[v1.ListOAuthLinksRequest, v1.ListOAuthLinksResponse](
+			httpClient,
+			baseURL+OAuthServiceListOAuthLinksProcedure,
+			connect.WithSchema(oAuthServiceMethods.ByName("ListOAuthLinks")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		getOAuthLink: connect.NewClient[v1.GetOAuthLinkRequest, v1.GetOAuthLinkResponse](
+			httpClient,
+			baseURL+OAuthServiceGetOAuthLinkProcedure,
+			connect.WithSchema(oAuthServiceMethods.ByName("GetOAuthLink")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		deleteOAuthLink: connect.NewClient[v1.DeleteOAuthLinkRequest, v1.DeleteOAuthLinkResponse](
+			httpClient,
+			baseURL+OAuthServiceDeleteOAuthLinkProcedure,
+			connect.WithSchema(oAuthServiceMethods.ByName("DeleteOAuthLink")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -142,6 +227,12 @@ type oAuthServiceClient struct {
 	updateOAuthClient       *connect.Client[v1.UpdateOAuthClientRequest, v1.UpdateOAuthClientResponse]
 	createOAuthClientSecret *connect.Client[v1.CreateOAuthClientSecretRequest, v1.CreateOAuthClientSecretResponse]
 	deleteOAuthClient       *connect.Client[v1.DeleteOAuthClientRequest, v1.DeleteOAuthClientResponse]
+	listOAuthConsents       *connect.Client[v1.ListOAuthConsentsRequest, v1.ListOAuthConsentsResponse]
+	getOAuthConsent         *connect.Client[v1.GetOAuthConsentRequest, v1.GetOAuthConsentResponse]
+	deleteOAuthConsent      *connect.Client[v1.DeleteOAuthConsentRequest, v1.DeleteOAuthConsentResponse]
+	listOAuthLinks          *connect.Client[v1.ListOAuthLinksRequest, v1.ListOAuthLinksResponse]
+	getOAuthLink            *connect.Client[v1.GetOAuthLinkRequest, v1.GetOAuthLinkResponse]
+	deleteOAuthLink         *connect.Client[v1.DeleteOAuthLinkRequest, v1.DeleteOAuthLinkResponse]
 }
 
 // CreateOAuthClient calls core.v1.OAuthService.CreateOAuthClient.
@@ -174,6 +265,36 @@ func (c *oAuthServiceClient) DeleteOAuthClient(ctx context.Context, req *connect
 	return c.deleteOAuthClient.CallUnary(ctx, req)
 }
 
+// ListOAuthConsents calls core.v1.OAuthService.ListOAuthConsents.
+func (c *oAuthServiceClient) ListOAuthConsents(ctx context.Context, req *connect.Request[v1.ListOAuthConsentsRequest]) (*connect.Response[v1.ListOAuthConsentsResponse], error) {
+	return c.listOAuthConsents.CallUnary(ctx, req)
+}
+
+// GetOAuthConsent calls core.v1.OAuthService.GetOAuthConsent.
+func (c *oAuthServiceClient) GetOAuthConsent(ctx context.Context, req *connect.Request[v1.GetOAuthConsentRequest]) (*connect.Response[v1.GetOAuthConsentResponse], error) {
+	return c.getOAuthConsent.CallUnary(ctx, req)
+}
+
+// DeleteOAuthConsent calls core.v1.OAuthService.DeleteOAuthConsent.
+func (c *oAuthServiceClient) DeleteOAuthConsent(ctx context.Context, req *connect.Request[v1.DeleteOAuthConsentRequest]) (*connect.Response[v1.DeleteOAuthConsentResponse], error) {
+	return c.deleteOAuthConsent.CallUnary(ctx, req)
+}
+
+// ListOAuthLinks calls core.v1.OAuthService.ListOAuthLinks.
+func (c *oAuthServiceClient) ListOAuthLinks(ctx context.Context, req *connect.Request[v1.ListOAuthLinksRequest]) (*connect.Response[v1.ListOAuthLinksResponse], error) {
+	return c.listOAuthLinks.CallUnary(ctx, req)
+}
+
+// GetOAuthLink calls core.v1.OAuthService.GetOAuthLink.
+func (c *oAuthServiceClient) GetOAuthLink(ctx context.Context, req *connect.Request[v1.GetOAuthLinkRequest]) (*connect.Response[v1.GetOAuthLinkResponse], error) {
+	return c.getOAuthLink.CallUnary(ctx, req)
+}
+
+// DeleteOAuthLink calls core.v1.OAuthService.DeleteOAuthLink.
+func (c *oAuthServiceClient) DeleteOAuthLink(ctx context.Context, req *connect.Request[v1.DeleteOAuthLinkRequest]) (*connect.Response[v1.DeleteOAuthLinkResponse], error) {
+	return c.deleteOAuthLink.CallUnary(ctx, req)
+}
+
 // OAuthServiceHandler is an implementation of the core.v1.OAuthService service.
 type OAuthServiceHandler interface {
 	// Create OAuth client
@@ -201,6 +322,33 @@ type OAuthServiceHandler interface {
 	//
 	// Delete a client and revoke every consent and refresh token issued to it.
 	DeleteOAuthClient(context.Context, *connect.Request[v1.DeleteOAuthClientRequest]) (*connect.Response[v1.DeleteOAuthClientResponse], error)
+	// List OAuth consents
+	//
+	// List the applications users in the organization have authorized to act as
+	// them, on a Formal resource or the Formal MCP.
+	ListOAuthConsents(context.Context, *connect.Request[v1.ListOAuthConsentsRequest]) (*connect.Response[v1.ListOAuthConsentsResponse], error)
+	// Get OAuth consent
+	GetOAuthConsent(context.Context, *connect.Request[v1.GetOAuthConsentRequest]) (*connect.Response[v1.GetOAuthConsentResponse], error)
+	// Delete OAuth consent
+	//
+	// Revoke an application's access as a user, with its refresh tokens. The
+	// Formal MCP rejects the application's access tokens immediately; Formal
+	// resources accept access tokens already issued until they expire, within
+	// 15 minutes.
+	DeleteOAuthConsent(context.Context, *connect.Request[v1.DeleteOAuthConsentRequest]) (*connect.Response[v1.DeleteOAuthConsentResponse], error)
+	// List OAuth links
+	//
+	// List the accounts users in the organization have linked at resources'
+	// upstream authorization servers. Tokens are never returned.
+	ListOAuthLinks(context.Context, *connect.Request[v1.ListOAuthLinksRequest]) (*connect.Response[v1.ListOAuthLinksResponse], error)
+	// Get OAuth link
+	GetOAuthLink(context.Context, *connect.Request[v1.GetOAuthLinkRequest]) (*connect.Response[v1.GetOAuthLinkResponse], error)
+	// Delete OAuth link
+	//
+	// Unlink a user's upstream account. Formal asks the authorization server to
+	// revoke the tokens when it supports revocation, then deletes them either
+	// way. The user's OAuth consents are kept.
+	DeleteOAuthLink(context.Context, *connect.Request[v1.DeleteOAuthLinkRequest]) (*connect.Response[v1.DeleteOAuthLinkResponse], error)
 }
 
 // NewOAuthServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -248,6 +396,46 @@ func NewOAuthServiceHandler(svc OAuthServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(oAuthServiceMethods.ByName("DeleteOAuthClient")),
 		connect.WithHandlerOptions(opts...),
 	)
+	oAuthServiceListOAuthConsentsHandler := connect.NewUnaryHandler(
+		OAuthServiceListOAuthConsentsProcedure,
+		svc.ListOAuthConsents,
+		connect.WithSchema(oAuthServiceMethods.ByName("ListOAuthConsents")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	oAuthServiceGetOAuthConsentHandler := connect.NewUnaryHandler(
+		OAuthServiceGetOAuthConsentProcedure,
+		svc.GetOAuthConsent,
+		connect.WithSchema(oAuthServiceMethods.ByName("GetOAuthConsent")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	oAuthServiceDeleteOAuthConsentHandler := connect.NewUnaryHandler(
+		OAuthServiceDeleteOAuthConsentProcedure,
+		svc.DeleteOAuthConsent,
+		connect.WithSchema(oAuthServiceMethods.ByName("DeleteOAuthConsent")),
+		connect.WithHandlerOptions(opts...),
+	)
+	oAuthServiceListOAuthLinksHandler := connect.NewUnaryHandler(
+		OAuthServiceListOAuthLinksProcedure,
+		svc.ListOAuthLinks,
+		connect.WithSchema(oAuthServiceMethods.ByName("ListOAuthLinks")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	oAuthServiceGetOAuthLinkHandler := connect.NewUnaryHandler(
+		OAuthServiceGetOAuthLinkProcedure,
+		svc.GetOAuthLink,
+		connect.WithSchema(oAuthServiceMethods.ByName("GetOAuthLink")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	oAuthServiceDeleteOAuthLinkHandler := connect.NewUnaryHandler(
+		OAuthServiceDeleteOAuthLinkProcedure,
+		svc.DeleteOAuthLink,
+		connect.WithSchema(oAuthServiceMethods.ByName("DeleteOAuthLink")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/core.v1.OAuthService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case OAuthServiceCreateOAuthClientProcedure:
@@ -262,6 +450,18 @@ func NewOAuthServiceHandler(svc OAuthServiceHandler, opts ...connect.HandlerOpti
 			oAuthServiceCreateOAuthClientSecretHandler.ServeHTTP(w, r)
 		case OAuthServiceDeleteOAuthClientProcedure:
 			oAuthServiceDeleteOAuthClientHandler.ServeHTTP(w, r)
+		case OAuthServiceListOAuthConsentsProcedure:
+			oAuthServiceListOAuthConsentsHandler.ServeHTTP(w, r)
+		case OAuthServiceGetOAuthConsentProcedure:
+			oAuthServiceGetOAuthConsentHandler.ServeHTTP(w, r)
+		case OAuthServiceDeleteOAuthConsentProcedure:
+			oAuthServiceDeleteOAuthConsentHandler.ServeHTTP(w, r)
+		case OAuthServiceListOAuthLinksProcedure:
+			oAuthServiceListOAuthLinksHandler.ServeHTTP(w, r)
+		case OAuthServiceGetOAuthLinkProcedure:
+			oAuthServiceGetOAuthLinkHandler.ServeHTTP(w, r)
+		case OAuthServiceDeleteOAuthLinkProcedure:
+			oAuthServiceDeleteOAuthLinkHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -293,4 +493,28 @@ func (UnimplementedOAuthServiceHandler) CreateOAuthClientSecret(context.Context,
 
 func (UnimplementedOAuthServiceHandler) DeleteOAuthClient(context.Context, *connect.Request[v1.DeleteOAuthClientRequest]) (*connect.Response[v1.DeleteOAuthClientResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.OAuthService.DeleteOAuthClient is not implemented"))
+}
+
+func (UnimplementedOAuthServiceHandler) ListOAuthConsents(context.Context, *connect.Request[v1.ListOAuthConsentsRequest]) (*connect.Response[v1.ListOAuthConsentsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.OAuthService.ListOAuthConsents is not implemented"))
+}
+
+func (UnimplementedOAuthServiceHandler) GetOAuthConsent(context.Context, *connect.Request[v1.GetOAuthConsentRequest]) (*connect.Response[v1.GetOAuthConsentResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.OAuthService.GetOAuthConsent is not implemented"))
+}
+
+func (UnimplementedOAuthServiceHandler) DeleteOAuthConsent(context.Context, *connect.Request[v1.DeleteOAuthConsentRequest]) (*connect.Response[v1.DeleteOAuthConsentResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.OAuthService.DeleteOAuthConsent is not implemented"))
+}
+
+func (UnimplementedOAuthServiceHandler) ListOAuthLinks(context.Context, *connect.Request[v1.ListOAuthLinksRequest]) (*connect.Response[v1.ListOAuthLinksResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.OAuthService.ListOAuthLinks is not implemented"))
+}
+
+func (UnimplementedOAuthServiceHandler) GetOAuthLink(context.Context, *connect.Request[v1.GetOAuthLinkRequest]) (*connect.Response[v1.GetOAuthLinkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.OAuthService.GetOAuthLink is not implemented"))
+}
+
+func (UnimplementedOAuthServiceHandler) DeleteOAuthLink(context.Context, *connect.Request[v1.DeleteOAuthLinkRequest]) (*connect.Response[v1.DeleteOAuthLinkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.OAuthService.DeleteOAuthLink is not implemented"))
 }
