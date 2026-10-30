@@ -36,6 +36,7 @@ type IntegrationMDM struct {
 	//	*IntegrationMDM_Fleet_
 	//	*IntegrationMDM_Jamf_
 	//	*IntegrationMDM_Mosyle_
+	//	*IntegrationMDM_Rippling_
 	Integration   isIntegrationMDM_Integration `protobuf_oneof:"integration"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -142,6 +143,15 @@ func (x *IntegrationMDM) GetMosyle() *IntegrationMDM_Mosyle {
 	return nil
 }
 
+func (x *IntegrationMDM) GetRippling() *IntegrationMDM_Rippling {
+	if x != nil {
+		if x, ok := x.Integration.(*IntegrationMDM_Rippling_); ok {
+			return x.Rippling
+		}
+	}
+	return nil
+}
+
 type isIntegrationMDM_Integration interface {
 	isIntegrationMDM_Integration()
 }
@@ -162,6 +172,10 @@ type IntegrationMDM_Mosyle_ struct {
 	Mosyle *IntegrationMDM_Mosyle `protobuf:"bytes,8,opt,name=mosyle,proto3,oneof"`
 }
 
+type IntegrationMDM_Rippling_ struct {
+	Rippling *IntegrationMDM_Rippling `protobuf:"bytes,9,opt,name=rippling,proto3,oneof"`
+}
+
 func (*IntegrationMDM_Kandji_) isIntegrationMDM_Integration() {}
 
 func (*IntegrationMDM_Fleet_) isIntegrationMDM_Integration() {}
@@ -169,6 +183,8 @@ func (*IntegrationMDM_Fleet_) isIntegrationMDM_Integration() {}
 func (*IntegrationMDM_Jamf_) isIntegrationMDM_Integration() {}
 
 func (*IntegrationMDM_Mosyle_) isIntegrationMDM_Integration() {}
+
+func (*IntegrationMDM_Rippling_) isIntegrationMDM_Integration() {}
 
 type MDMDevice struct {
 	state                              protoimpl.MessageState `protogen:"open.v1"`
@@ -247,6 +263,7 @@ type CreateIntegrationMDMRequest struct {
 	//	*CreateIntegrationMDMRequest_Fleet_
 	//	*CreateIntegrationMDMRequest_Jamf_
 	//	*CreateIntegrationMDMRequest_Mosyle_
+	//	*CreateIntegrationMDMRequest_Rippling_
 	Integration   isCreateIntegrationMDMRequest_Integration `protobuf_oneof:"integration"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -332,6 +349,15 @@ func (x *CreateIntegrationMDMRequest) GetMosyle() *CreateIntegrationMDMRequest_M
 	return nil
 }
 
+func (x *CreateIntegrationMDMRequest) GetRippling() *CreateIntegrationMDMRequest_Rippling {
+	if x != nil {
+		if x, ok := x.Integration.(*CreateIntegrationMDMRequest_Rippling_); ok {
+			return x.Rippling
+		}
+	}
+	return nil
+}
+
 type isCreateIntegrationMDMRequest_Integration interface {
 	isCreateIntegrationMDMRequest_Integration()
 }
@@ -352,6 +378,10 @@ type CreateIntegrationMDMRequest_Mosyle_ struct {
 	Mosyle *CreateIntegrationMDMRequest_Mosyle `protobuf:"bytes,5,opt,name=mosyle,proto3,oneof"`
 }
 
+type CreateIntegrationMDMRequest_Rippling_ struct {
+	Rippling *CreateIntegrationMDMRequest_Rippling `protobuf:"bytes,6,opt,name=rippling,proto3,oneof"`
+}
+
 func (*CreateIntegrationMDMRequest_Kandji_) isCreateIntegrationMDMRequest_Integration() {}
 
 func (*CreateIntegrationMDMRequest_Fleet_) isCreateIntegrationMDMRequest_Integration() {}
@@ -359,6 +389,8 @@ func (*CreateIntegrationMDMRequest_Fleet_) isCreateIntegrationMDMRequest_Integra
 func (*CreateIntegrationMDMRequest_Jamf_) isCreateIntegrationMDMRequest_Integration() {}
 
 func (*CreateIntegrationMDMRequest_Mosyle_) isCreateIntegrationMDMRequest_Integration() {}
+
+func (*CreateIntegrationMDMRequest_Rippling_) isCreateIntegrationMDMRequest_Integration() {}
 
 type CreateIntegrationMDMResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1044,6 +1076,42 @@ func (x *IntegrationMDM_Mosyle) GetApiUrl() string {
 	return ""
 }
 
+type IntegrationMDM_Rippling struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *IntegrationMDM_Rippling) Reset() {
+	*x = IntegrationMDM_Rippling{}
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IntegrationMDM_Rippling) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IntegrationMDM_Rippling) ProtoMessage() {}
+
+func (x *IntegrationMDM_Rippling) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IntegrationMDM_Rippling.ProtoReflect.Descriptor instead.
+func (*IntegrationMDM_Rippling) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_mdm_proto_rawDescGZIP(), []int{0, 4}
+}
+
 type CreateIntegrationMDMRequest_Kandji struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ApiKey        string                 `protobuf:"bytes,1,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
@@ -1054,7 +1122,7 @@ type CreateIntegrationMDMRequest_Kandji struct {
 
 func (x *CreateIntegrationMDMRequest_Kandji) Reset() {
 	*x = CreateIntegrationMDMRequest_Kandji{}
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[16]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1066,7 +1134,7 @@ func (x *CreateIntegrationMDMRequest_Kandji) String() string {
 func (*CreateIntegrationMDMRequest_Kandji) ProtoMessage() {}
 
 func (x *CreateIntegrationMDMRequest_Kandji) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[16]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1106,7 +1174,7 @@ type CreateIntegrationMDMRequest_Fleet struct {
 
 func (x *CreateIntegrationMDMRequest_Fleet) Reset() {
 	*x = CreateIntegrationMDMRequest_Fleet{}
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[17]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1118,7 +1186,7 @@ func (x *CreateIntegrationMDMRequest_Fleet) String() string {
 func (*CreateIntegrationMDMRequest_Fleet) ProtoMessage() {}
 
 func (x *CreateIntegrationMDMRequest_Fleet) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[17]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1159,7 +1227,7 @@ type CreateIntegrationMDMRequest_Jamf struct {
 
 func (x *CreateIntegrationMDMRequest_Jamf) Reset() {
 	*x = CreateIntegrationMDMRequest_Jamf{}
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[18]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1171,7 +1239,7 @@ func (x *CreateIntegrationMDMRequest_Jamf) String() string {
 func (*CreateIntegrationMDMRequest_Jamf) ProtoMessage() {}
 
 func (x *CreateIntegrationMDMRequest_Jamf) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[18]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1220,7 +1288,7 @@ type CreateIntegrationMDMRequest_Mosyle struct {
 
 func (x *CreateIntegrationMDMRequest_Mosyle) Reset() {
 	*x = CreateIntegrationMDMRequest_Mosyle{}
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[19]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1232,7 +1300,7 @@ func (x *CreateIntegrationMDMRequest_Mosyle) String() string {
 func (*CreateIntegrationMDMRequest_Mosyle) ProtoMessage() {}
 
 func (x *CreateIntegrationMDMRequest_Mosyle) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_mdm_proto_msgTypes[19]
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1276,11 +1344,55 @@ func (x *CreateIntegrationMDMRequest_Mosyle) GetApiUrl() string {
 	return ""
 }
 
+type CreateIntegrationMDMRequest_Rippling struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ApiKey        string                 `protobuf:"bytes,1,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateIntegrationMDMRequest_Rippling) Reset() {
+	*x = CreateIntegrationMDMRequest_Rippling{}
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateIntegrationMDMRequest_Rippling) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateIntegrationMDMRequest_Rippling) ProtoMessage() {}
+
+func (x *CreateIntegrationMDMRequest_Rippling) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_integration_mdm_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateIntegrationMDMRequest_Rippling.ProtoReflect.Descriptor instead.
+func (*CreateIntegrationMDMRequest_Rippling) Descriptor() ([]byte, []int) {
+	return file_core_v1_integration_mdm_proto_rawDescGZIP(), []int{2, 4}
+}
+
+func (x *CreateIntegrationMDMRequest_Rippling) GetApiKey() string {
+	if x != nil {
+		return x.ApiKey
+	}
+	return ""
+}
+
 var File_core_v1_integration_mdm_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_mdm_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcore/v1/integration_mdm.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb0\x05\n" +
+	"\x1dcore/v1/integration_mdm.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfc\x05\n" +
 	"\x0eIntegrationMDM\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12C\n" +
@@ -1291,7 +1403,8 @@ const file_core_v1_integration_mdm_proto_rawDesc = "" +
 	"\x06kandji\x18\x05 \x01(\v2\x1e.core.v1.IntegrationMDM.KandjiH\x00R\x06kandji\x125\n" +
 	"\x05fleet\x18\x06 \x01(\v2\x1d.core.v1.IntegrationMDM.FleetH\x00R\x05fleet\x122\n" +
 	"\x04jamf\x18\a \x01(\v2\x1c.core.v1.IntegrationMDM.JamfH\x00R\x04jamf\x128\n" +
-	"\x06mosyle\x18\b \x01(\v2\x1e.core.v1.IntegrationMDM.MosyleH\x00R\x06mosyle\x1a*\n" +
+	"\x06mosyle\x18\b \x01(\v2\x1e.core.v1.IntegrationMDM.MosyleH\x00R\x06mosyle\x12>\n" +
+	"\brippling\x18\t \x01(\v2 .core.v1.IntegrationMDM.RipplingH\x00R\brippling\x1a*\n" +
 	"\x06Kandji\x12 \n" +
 	"\aapi_url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiUrl\x1a)\n" +
 	"\x05Fleet\x12 \n" +
@@ -1301,20 +1414,23 @@ const file_core_v1_integration_mdm_proto_rawDesc = "" +
 	"\aapi_url\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiUrl\x1aI\n" +
 	"\x06Mosyle\x12\x1d\n" +
 	"\x05email\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05email\x12 \n" +
-	"\aapi_url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiUrlB\r\n" +
+	"\aapi_url\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiUrl\x1a\n" +
+	"\n" +
+	"\bRipplingB\r\n" +
 	"\vintegration\"\xb2\x01\n" +
 	"\tMDMDevice\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12#\n" +
 	"\rserial_number\x18\x02 \x01(\tR\fserialNumber\x12\x1d\n" +
 	"\n" +
 	"user_email\x18\x03 \x01(\tR\tuserEmail\x12Q\n" +
-	"%uploaded_tls_interception_certificate\x18\x04 \x01(\bR\"uploadedTlsInterceptionCertificate\"\x95\x06\n" +
+	"%uploaded_tls_interception_certificate\x18\x04 \x01(\bR\"uploadedTlsInterceptionCertificate\"\x93\a\n" +
 	"\x1bCreateIntegrationMDMRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12E\n" +
 	"\x06kandji\x18\x02 \x01(\v2+.core.v1.CreateIntegrationMDMRequest.KandjiH\x00R\x06kandji\x12B\n" +
 	"\x05fleet\x18\x03 \x01(\v2*.core.v1.CreateIntegrationMDMRequest.FleetH\x00R\x05fleet\x12?\n" +
 	"\x04jamf\x18\x04 \x01(\v2).core.v1.CreateIntegrationMDMRequest.JamfH\x00R\x04jamf\x12E\n" +
-	"\x06mosyle\x18\x05 \x01(\v2+.core.v1.CreateIntegrationMDMRequest.MosyleH\x00R\x06mosyle\x1aO\n" +
+	"\x06mosyle\x18\x05 \x01(\v2+.core.v1.CreateIntegrationMDMRequest.MosyleH\x00R\x06mosyle\x12K\n" +
+	"\brippling\x18\x06 \x01(\v2-.core.v1.CreateIntegrationMDMRequest.RipplingH\x00R\brippling\x1aO\n" +
 	"\x06Kandji\x12#\n" +
 	"\aapi_key\x18\x01 \x01(\tB\n" +
 	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\x12 \n" +
@@ -1334,7 +1450,10 @@ const file_core_v1_integration_mdm_proto_rawDesc = "" +
 	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\vaccessToken\x12&\n" +
 	"\bpassword\x18\x03 \x01(\tB\n" +
 	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\bpassword\x12 \n" +
-	"\aapi_url\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiUrlB\r\n" +
+	"\aapi_url\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06apiUrl\x1a/\n" +
+	"\bRippling\x12#\n" +
+	"\aapi_key\x18\x01 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKeyB\r\n" +
 	"\vintegration\"Y\n" +
 	"\x1cCreateIntegrationMDMResponse\x129\n" +
 	"\vintegration\x18\x01 \x01(\v2\x17.core.v1.IntegrationMDMR\vintegration\"3\n" +
@@ -1390,65 +1509,69 @@ func file_core_v1_integration_mdm_proto_rawDescGZIP() []byte {
 	return file_core_v1_integration_mdm_proto_rawDescData
 }
 
-var file_core_v1_integration_mdm_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_core_v1_integration_mdm_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_core_v1_integration_mdm_proto_goTypes = []any{
-	(*IntegrationMDM)(nil),                     // 0: core.v1.IntegrationMDM
-	(*MDMDevice)(nil),                          // 1: core.v1.MDMDevice
-	(*CreateIntegrationMDMRequest)(nil),        // 2: core.v1.CreateIntegrationMDMRequest
-	(*CreateIntegrationMDMResponse)(nil),       // 3: core.v1.CreateIntegrationMDMResponse
-	(*GetIntegrationMDMRequest)(nil),           // 4: core.v1.GetIntegrationMDMRequest
-	(*GetIntegrationMDMResponse)(nil),          // 5: core.v1.GetIntegrationMDMResponse
-	(*ListIntegrationsMDMRequest)(nil),         // 6: core.v1.ListIntegrationsMDMRequest
-	(*ListIntegrationsMDMResponse)(nil),        // 7: core.v1.ListIntegrationsMDMResponse
-	(*DeleteIntegrationMDMRequest)(nil),        // 8: core.v1.DeleteIntegrationMDMRequest
-	(*DeleteIntegrationMDMResponse)(nil),       // 9: core.v1.DeleteIntegrationMDMResponse
-	(*ListIntegrationMDMDevicesRequest)(nil),   // 10: core.v1.ListIntegrationMDMDevicesRequest
-	(*ListIntegrationMDMDevicesResponse)(nil),  // 11: core.v1.ListIntegrationMDMDevicesResponse
-	(*IntegrationMDM_Kandji)(nil),              // 12: core.v1.IntegrationMDM.Kandji
-	(*IntegrationMDM_Fleet)(nil),               // 13: core.v1.IntegrationMDM.Fleet
-	(*IntegrationMDM_Jamf)(nil),                // 14: core.v1.IntegrationMDM.Jamf
-	(*IntegrationMDM_Mosyle)(nil),              // 15: core.v1.IntegrationMDM.Mosyle
-	(*CreateIntegrationMDMRequest_Kandji)(nil), // 16: core.v1.CreateIntegrationMDMRequest.Kandji
-	(*CreateIntegrationMDMRequest_Fleet)(nil),  // 17: core.v1.CreateIntegrationMDMRequest.Fleet
-	(*CreateIntegrationMDMRequest_Jamf)(nil),   // 18: core.v1.CreateIntegrationMDMRequest.Jamf
-	(*CreateIntegrationMDMRequest_Mosyle)(nil), // 19: core.v1.CreateIntegrationMDMRequest.Mosyle
-	(*timestamppb.Timestamp)(nil),              // 20: google.protobuf.Timestamp
-	(*Filter)(nil),                             // 21: core.v1.Filter
-	(*ListMetadata)(nil),                       // 22: core.v1.ListMetadata
+	(*IntegrationMDM)(nil),                       // 0: core.v1.IntegrationMDM
+	(*MDMDevice)(nil),                            // 1: core.v1.MDMDevice
+	(*CreateIntegrationMDMRequest)(nil),          // 2: core.v1.CreateIntegrationMDMRequest
+	(*CreateIntegrationMDMResponse)(nil),         // 3: core.v1.CreateIntegrationMDMResponse
+	(*GetIntegrationMDMRequest)(nil),             // 4: core.v1.GetIntegrationMDMRequest
+	(*GetIntegrationMDMResponse)(nil),            // 5: core.v1.GetIntegrationMDMResponse
+	(*ListIntegrationsMDMRequest)(nil),           // 6: core.v1.ListIntegrationsMDMRequest
+	(*ListIntegrationsMDMResponse)(nil),          // 7: core.v1.ListIntegrationsMDMResponse
+	(*DeleteIntegrationMDMRequest)(nil),          // 8: core.v1.DeleteIntegrationMDMRequest
+	(*DeleteIntegrationMDMResponse)(nil),         // 9: core.v1.DeleteIntegrationMDMResponse
+	(*ListIntegrationMDMDevicesRequest)(nil),     // 10: core.v1.ListIntegrationMDMDevicesRequest
+	(*ListIntegrationMDMDevicesResponse)(nil),    // 11: core.v1.ListIntegrationMDMDevicesResponse
+	(*IntegrationMDM_Kandji)(nil),                // 12: core.v1.IntegrationMDM.Kandji
+	(*IntegrationMDM_Fleet)(nil),                 // 13: core.v1.IntegrationMDM.Fleet
+	(*IntegrationMDM_Jamf)(nil),                  // 14: core.v1.IntegrationMDM.Jamf
+	(*IntegrationMDM_Mosyle)(nil),                // 15: core.v1.IntegrationMDM.Mosyle
+	(*IntegrationMDM_Rippling)(nil),              // 16: core.v1.IntegrationMDM.Rippling
+	(*CreateIntegrationMDMRequest_Kandji)(nil),   // 17: core.v1.CreateIntegrationMDMRequest.Kandji
+	(*CreateIntegrationMDMRequest_Fleet)(nil),    // 18: core.v1.CreateIntegrationMDMRequest.Fleet
+	(*CreateIntegrationMDMRequest_Jamf)(nil),     // 19: core.v1.CreateIntegrationMDMRequest.Jamf
+	(*CreateIntegrationMDMRequest_Mosyle)(nil),   // 20: core.v1.CreateIntegrationMDMRequest.Mosyle
+	(*CreateIntegrationMDMRequest_Rippling)(nil), // 21: core.v1.CreateIntegrationMDMRequest.Rippling
+	(*timestamppb.Timestamp)(nil),                // 22: google.protobuf.Timestamp
+	(*Filter)(nil),                               // 23: core.v1.Filter
+	(*ListMetadata)(nil),                         // 24: core.v1.ListMetadata
 }
 var file_core_v1_integration_mdm_proto_depIdxs = []int32{
-	20, // 0: core.v1.IntegrationMDM.created_at:type_name -> google.protobuf.Timestamp
-	20, // 1: core.v1.IntegrationMDM.updated_at:type_name -> google.protobuf.Timestamp
+	22, // 0: core.v1.IntegrationMDM.created_at:type_name -> google.protobuf.Timestamp
+	22, // 1: core.v1.IntegrationMDM.updated_at:type_name -> google.protobuf.Timestamp
 	12, // 2: core.v1.IntegrationMDM.kandji:type_name -> core.v1.IntegrationMDM.Kandji
 	13, // 3: core.v1.IntegrationMDM.fleet:type_name -> core.v1.IntegrationMDM.Fleet
 	14, // 4: core.v1.IntegrationMDM.jamf:type_name -> core.v1.IntegrationMDM.Jamf
 	15, // 5: core.v1.IntegrationMDM.mosyle:type_name -> core.v1.IntegrationMDM.Mosyle
-	16, // 6: core.v1.CreateIntegrationMDMRequest.kandji:type_name -> core.v1.CreateIntegrationMDMRequest.Kandji
-	17, // 7: core.v1.CreateIntegrationMDMRequest.fleet:type_name -> core.v1.CreateIntegrationMDMRequest.Fleet
-	18, // 8: core.v1.CreateIntegrationMDMRequest.jamf:type_name -> core.v1.CreateIntegrationMDMRequest.Jamf
-	19, // 9: core.v1.CreateIntegrationMDMRequest.mosyle:type_name -> core.v1.CreateIntegrationMDMRequest.Mosyle
-	0,  // 10: core.v1.CreateIntegrationMDMResponse.integration:type_name -> core.v1.IntegrationMDM
-	0,  // 11: core.v1.GetIntegrationMDMResponse.integration:type_name -> core.v1.IntegrationMDM
-	21, // 12: core.v1.ListIntegrationsMDMRequest.filter:type_name -> core.v1.Filter
-	0,  // 13: core.v1.ListIntegrationsMDMResponse.integrations:type_name -> core.v1.IntegrationMDM
-	22, // 14: core.v1.ListIntegrationsMDMResponse.list_metadata:type_name -> core.v1.ListMetadata
-	1,  // 15: core.v1.ListIntegrationMDMDevicesResponse.devices:type_name -> core.v1.MDMDevice
-	22, // 16: core.v1.ListIntegrationMDMDevicesResponse.list_metadata:type_name -> core.v1.ListMetadata
-	2,  // 17: core.v1.IntegrationMDMService.CreateIntegrationMDM:input_type -> core.v1.CreateIntegrationMDMRequest
-	4,  // 18: core.v1.IntegrationMDMService.GetIntegrationMDM:input_type -> core.v1.GetIntegrationMDMRequest
-	6,  // 19: core.v1.IntegrationMDMService.ListIntegrationsMDM:input_type -> core.v1.ListIntegrationsMDMRequest
-	8,  // 20: core.v1.IntegrationMDMService.DeleteIntegrationMDM:input_type -> core.v1.DeleteIntegrationMDMRequest
-	10, // 21: core.v1.IntegrationMDMService.ListIntegrationMDMDevices:input_type -> core.v1.ListIntegrationMDMDevicesRequest
-	3,  // 22: core.v1.IntegrationMDMService.CreateIntegrationMDM:output_type -> core.v1.CreateIntegrationMDMResponse
-	5,  // 23: core.v1.IntegrationMDMService.GetIntegrationMDM:output_type -> core.v1.GetIntegrationMDMResponse
-	7,  // 24: core.v1.IntegrationMDMService.ListIntegrationsMDM:output_type -> core.v1.ListIntegrationsMDMResponse
-	9,  // 25: core.v1.IntegrationMDMService.DeleteIntegrationMDM:output_type -> core.v1.DeleteIntegrationMDMResponse
-	11, // 26: core.v1.IntegrationMDMService.ListIntegrationMDMDevices:output_type -> core.v1.ListIntegrationMDMDevicesResponse
-	22, // [22:27] is the sub-list for method output_type
-	17, // [17:22] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	16, // 6: core.v1.IntegrationMDM.rippling:type_name -> core.v1.IntegrationMDM.Rippling
+	17, // 7: core.v1.CreateIntegrationMDMRequest.kandji:type_name -> core.v1.CreateIntegrationMDMRequest.Kandji
+	18, // 8: core.v1.CreateIntegrationMDMRequest.fleet:type_name -> core.v1.CreateIntegrationMDMRequest.Fleet
+	19, // 9: core.v1.CreateIntegrationMDMRequest.jamf:type_name -> core.v1.CreateIntegrationMDMRequest.Jamf
+	20, // 10: core.v1.CreateIntegrationMDMRequest.mosyle:type_name -> core.v1.CreateIntegrationMDMRequest.Mosyle
+	21, // 11: core.v1.CreateIntegrationMDMRequest.rippling:type_name -> core.v1.CreateIntegrationMDMRequest.Rippling
+	0,  // 12: core.v1.CreateIntegrationMDMResponse.integration:type_name -> core.v1.IntegrationMDM
+	0,  // 13: core.v1.GetIntegrationMDMResponse.integration:type_name -> core.v1.IntegrationMDM
+	23, // 14: core.v1.ListIntegrationsMDMRequest.filter:type_name -> core.v1.Filter
+	0,  // 15: core.v1.ListIntegrationsMDMResponse.integrations:type_name -> core.v1.IntegrationMDM
+	24, // 16: core.v1.ListIntegrationsMDMResponse.list_metadata:type_name -> core.v1.ListMetadata
+	1,  // 17: core.v1.ListIntegrationMDMDevicesResponse.devices:type_name -> core.v1.MDMDevice
+	24, // 18: core.v1.ListIntegrationMDMDevicesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	2,  // 19: core.v1.IntegrationMDMService.CreateIntegrationMDM:input_type -> core.v1.CreateIntegrationMDMRequest
+	4,  // 20: core.v1.IntegrationMDMService.GetIntegrationMDM:input_type -> core.v1.GetIntegrationMDMRequest
+	6,  // 21: core.v1.IntegrationMDMService.ListIntegrationsMDM:input_type -> core.v1.ListIntegrationsMDMRequest
+	8,  // 22: core.v1.IntegrationMDMService.DeleteIntegrationMDM:input_type -> core.v1.DeleteIntegrationMDMRequest
+	10, // 23: core.v1.IntegrationMDMService.ListIntegrationMDMDevices:input_type -> core.v1.ListIntegrationMDMDevicesRequest
+	3,  // 24: core.v1.IntegrationMDMService.CreateIntegrationMDM:output_type -> core.v1.CreateIntegrationMDMResponse
+	5,  // 25: core.v1.IntegrationMDMService.GetIntegrationMDM:output_type -> core.v1.GetIntegrationMDMResponse
+	7,  // 26: core.v1.IntegrationMDMService.ListIntegrationsMDM:output_type -> core.v1.ListIntegrationsMDMResponse
+	9,  // 27: core.v1.IntegrationMDMService.DeleteIntegrationMDM:output_type -> core.v1.DeleteIntegrationMDMResponse
+	11, // 28: core.v1.IntegrationMDMService.ListIntegrationMDMDevices:output_type -> core.v1.ListIntegrationMDMDevicesResponse
+	24, // [24:29] is the sub-list for method output_type
+	19, // [19:24] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_integration_mdm_proto_init() }
@@ -1463,12 +1586,14 @@ func file_core_v1_integration_mdm_proto_init() {
 		(*IntegrationMDM_Fleet_)(nil),
 		(*IntegrationMDM_Jamf_)(nil),
 		(*IntegrationMDM_Mosyle_)(nil),
+		(*IntegrationMDM_Rippling_)(nil),
 	}
 	file_core_v1_integration_mdm_proto_msgTypes[2].OneofWrappers = []any{
 		(*CreateIntegrationMDMRequest_Kandji_)(nil),
 		(*CreateIntegrationMDMRequest_Fleet_)(nil),
 		(*CreateIntegrationMDMRequest_Jamf_)(nil),
 		(*CreateIntegrationMDMRequest_Mosyle_)(nil),
+		(*CreateIntegrationMDMRequest_Rippling_)(nil),
 	}
 	file_core_v1_integration_mdm_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
@@ -1477,7 +1602,7 @@ func file_core_v1_integration_mdm_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_integration_mdm_proto_rawDesc), len(file_core_v1_integration_mdm_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
