@@ -58,6 +58,9 @@ const (
 	// UserServiceGetBlockedUserProcedure is the fully-qualified name of the UserService's
 	// GetBlockedUser RPC.
 	UserServiceGetBlockedUserProcedure = "/core.v1.UserService/GetBlockedUser"
+	// UserServiceDeleteHumanUserSessionsProcedure is the fully-qualified name of the UserService's
+	// DeleteHumanUserSessions RPC.
+	UserServiceDeleteHumanUserSessionsProcedure = "/core.v1.UserService/DeleteHumanUserSessions"
 	// UserServiceGetMachineUserCredentialsProcedure is the fully-qualified name of the UserService's
 	// GetMachineUserCredentials RPC.
 	UserServiceGetMachineUserCredentialsProcedure = "/core.v1.UserService/GetMachineUserCredentials"
@@ -123,6 +126,11 @@ type UserServiceClient interface {
 	//
 	// Get a blocked user
 	GetBlockedUser(context.Context, *connect.Request[v1.GetBlockedUserRequest]) (*connect.Response[v1.GetBlockedUserResponse], error)
+	// Delete human user sessions
+	//
+	// Log every human user in the organization out of Formal Endpoint and revoke their
+	// connector access tokens, forcing them to authenticate again. Machine users are not affected.
+	DeleteHumanUserSessions(context.Context, *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error)
 	// Get machine user credentials
 	//
 	// Get a machine user credentials
@@ -227,6 +235,12 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
+		deleteHumanUserSessions: connect.NewClient[v1.DeleteHumanUserSessionsRequest, v1.DeleteHumanUserSessionsResponse](
+			httpClient,
+			baseURL+UserServiceDeleteHumanUserSessionsProcedure,
+			connect.WithSchema(userServiceMethods.ByName("DeleteHumanUserSessions")),
+			connect.WithClientOptions(opts...),
+		),
 		getMachineUserCredentials: connect.NewClient[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse](
 			httpClient,
 			baseURL+UserServiceGetMachineUserCredentialsProcedure,
@@ -286,6 +300,7 @@ type userServiceClient struct {
 	deleteBlockedUser         *connect.Client[v1.DeleteBlockedUserRequest, v1.DeleteBlockedUserResponse]
 	createBlockedUser         *connect.Client[v1.CreateBlockedUserRequest, v1.CreateBlockedUserResponse]
 	getBlockedUser            *connect.Client[v1.GetBlockedUserRequest, v1.GetBlockedUserResponse]
+	deleteHumanUserSessions   *connect.Client[v1.DeleteHumanUserSessionsRequest, v1.DeleteHumanUserSessionsResponse]
 	getMachineUserCredentials *connect.Client[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse]
 	createMachineUserPassword *connect.Client[v1.CreateMachineUserPasswordRequest, v1.CreateMachineUserPasswordResponse]
 	createUserKey             *connect.Client[v1.CreateUserKeyRequest, v1.CreateUserKeyResponse]
@@ -343,6 +358,11 @@ func (c *userServiceClient) CreateBlockedUser(ctx context.Context, req *connect.
 // GetBlockedUser calls core.v1.UserService.GetBlockedUser.
 func (c *userServiceClient) GetBlockedUser(ctx context.Context, req *connect.Request[v1.GetBlockedUserRequest]) (*connect.Response[v1.GetBlockedUserResponse], error) {
 	return c.getBlockedUser.CallUnary(ctx, req)
+}
+
+// DeleteHumanUserSessions calls core.v1.UserService.DeleteHumanUserSessions.
+func (c *userServiceClient) DeleteHumanUserSessions(ctx context.Context, req *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error) {
+	return c.deleteHumanUserSessions.CallUnary(ctx, req)
 }
 
 // GetMachineUserCredentials calls core.v1.UserService.GetMachineUserCredentials.
@@ -422,6 +442,11 @@ type UserServiceHandler interface {
 	//
 	// Get a blocked user
 	GetBlockedUser(context.Context, *connect.Request[v1.GetBlockedUserRequest]) (*connect.Response[v1.GetBlockedUserResponse], error)
+	// Delete human user sessions
+	//
+	// Log every human user in the organization out of Formal Endpoint and revoke their
+	// connector access tokens, forcing them to authenticate again. Machine users are not affected.
+	DeleteHumanUserSessions(context.Context, *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error)
 	// Get machine user credentials
 	//
 	// Get a machine user credentials
@@ -522,6 +547,12 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
+	userServiceDeleteHumanUserSessionsHandler := connect.NewUnaryHandler(
+		UserServiceDeleteHumanUserSessionsProcedure,
+		svc.DeleteHumanUserSessions,
+		connect.WithSchema(userServiceMethods.ByName("DeleteHumanUserSessions")),
+		connect.WithHandlerOptions(opts...),
+	)
 	userServiceGetMachineUserCredentialsHandler := connect.NewUnaryHandler(
 		UserServiceGetMachineUserCredentialsProcedure,
 		svc.GetMachineUserCredentials,
@@ -588,6 +619,8 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceCreateBlockedUserHandler.ServeHTTP(w, r)
 		case UserServiceGetBlockedUserProcedure:
 			userServiceGetBlockedUserHandler.ServeHTTP(w, r)
+		case UserServiceDeleteHumanUserSessionsProcedure:
+			userServiceDeleteHumanUserSessionsHandler.ServeHTTP(w, r)
 		case UserServiceGetMachineUserCredentialsProcedure:
 			userServiceGetMachineUserCredentialsHandler.ServeHTTP(w, r)
 		case UserServiceCreateMachineUserPasswordProcedure:
@@ -649,6 +682,10 @@ func (UnimplementedUserServiceHandler) CreateBlockedUser(context.Context, *conne
 
 func (UnimplementedUserServiceHandler) GetBlockedUser(context.Context, *connect.Request[v1.GetBlockedUserRequest]) (*connect.Response[v1.GetBlockedUserResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.GetBlockedUser is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) DeleteHumanUserSessions(context.Context, *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.DeleteHumanUserSessions is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) GetMachineUserCredentials(context.Context, *connect.Request[v1.GetMachineUserCredentialsRequest]) (*connect.Response[v1.GetMachineUserCredentialsResponse], error) {

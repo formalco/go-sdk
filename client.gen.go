@@ -4214,6 +4214,18 @@ func (c *UserServiceClient) DeleteBlockedUser(ctx context.Context, req *corev1.D
 	return res.Msg, nil
 }
 
+// Delete human user sessions
+//
+// Log every human user in the organization out of Formal Endpoint and revoke their
+// connector access tokens, forcing them to authenticate again. Machine users are not affected.
+func (c *UserServiceClient) DeleteHumanUserSessions(ctx context.Context, req *corev1.DeleteHumanUserSessionsRequest) (*corev1.DeleteHumanUserSessionsResponse, error) {
+	res, err := c.inner.DeleteHumanUserSessions(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Delete user
 //
 // Delete a user
