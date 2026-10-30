@@ -27,8 +27,7 @@ const (
 type LLMTokenPrice struct {
 	state    protoimpl.MessageState `protogen:"open.v1"`
 	Provider string                 `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
-	// Empty for the provider-wide default.
-	Model string `protobuf:"bytes,6,opt,name=model,proto3" json:"model,omitempty"`
+	Model    string                 `protobuf:"bytes,6,opt,name=model,proto3" json:"model,omitempty"`
 	// Other names the model is requested under.
 	Aliases []string `protobuf:"bytes,7,rep,name=aliases,proto3" json:"aliases,omitempty"`
 	// Applies to cached input tokens too.
@@ -232,8 +231,7 @@ type UpdateLLMTokenPriceRequest struct {
 	OutputUsdPerMillion float64                `protobuf:"fixed64,3,opt,name=output_usd_per_million,json=outputUsdPerMillion,proto3" json:"output_usd_per_million,omitempty"`
 	// Prices requests whose model contains this value or one of the aliases,
 	// such as "claude-sonnet-4-5" for "us.anthropic.claude-sonnet-4-5-20250929".
-	// The longest match wins; empty sets the provider-wide default for
-	// unmatched models.
+	// The longest match wins. Requests matching no price have no cost.
 	Model                   string   `protobuf:"bytes,4,opt,name=model,proto3" json:"model,omitempty"`
 	Aliases                 []string `protobuf:"bytes,5,rep,name=aliases,proto3" json:"aliases,omitempty"`
 	CacheReadUsdPerMillion  *float64 `protobuf:"fixed64,6,opt,name=cache_read_usd_per_million,json=cacheReadUsdPerMillion,proto3,oneof" json:"cache_read_usd_per_million,omitempty"`
@@ -485,12 +483,13 @@ const file_core_v1_llm_pricing_proto_rawDesc = "" +
 	"\x1a_reasoning_usd_per_million\"\x1b\n" +
 	"\x19ListLLMTokenPricesRequest\"L\n" +
 	"\x1aListLLMTokenPricesResponse\x12.\n" +
-	"\x06prices\x18\x01 \x03(\v2\x16.core.v1.LLMTokenPriceR\x06prices\"\xbc\x05\n" +
+	"\x06prices\x18\x01 \x03(\v2\x16.core.v1.LLMTokenPriceR\x06prices\"\xbe\x05\n" +
 	"\x1aUpdateLLMTokenPriceRequest\x12K\n" +
 	"\bprovider\x18\x01 \x01(\tB/\xbaH,r*R\x06openaiR\tanthropicR\x06cursorR\x06geminiR\x05devinR\bprovider\x12J\n" +
 	"\x15input_usd_per_million\x18\x02 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00R\x12inputUsdPerMillion\x12L\n" +
-	"\x16output_usd_per_million\x18\x03 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00R\x13outputUsdPerMillion\x12\x1e\n" +
-	"\x05model\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\xc8\x01R\x05model\x12+\n" +
+	"\x16output_usd_per_million\x18\x03 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00R\x13outputUsdPerMillion\x12 \n" +
+	"\x05model\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xc8\x01R\x05model\x12+\n" +
 	"\aaliases\x18\x05 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\xc8\x01R\aaliases\x12X\n" +
 	"\x1acache_read_usd_per_million\x18\x06 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\x16cacheReadUsdPerMillion\x88\x01\x01\x12Z\n" +
 	"\x1bcache_write_usd_per_million\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00H\x01R\x17cacheWriteUsdPerMillion\x88\x01\x01\x12W\n" +
