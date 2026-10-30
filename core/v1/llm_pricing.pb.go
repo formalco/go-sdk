@@ -31,17 +31,19 @@ type LLMTokenPrice struct {
 	// Other names the model is requested under.
 	Aliases []string `protobuf:"bytes,7,rep,name=aliases,proto3" json:"aliases,omitempty"`
 	// Applies to cached input tokens too.
-	InputUsdPerMillion float64 `protobuf:"fixed64,2,opt,name=input_usd_per_million,json=inputUsdPerMillion,proto3" json:"input_usd_per_million,omitempty"`
+	InputPerMillion float64 `protobuf:"fixed64,2,opt,name=input_per_million,json=inputPerMillion,proto3" json:"input_per_million,omitempty"`
 	// Applies to reasoning tokens too.
-	OutputUsdPerMillion float64                `protobuf:"fixed64,3,opt,name=output_usd_per_million,json=outputUsdPerMillion,proto3" json:"output_usd_per_million,omitempty"`
-	CreatedAt           *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt           *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// Unset prices fall back to input_usd_per_million or output_usd_per_million.
-	CacheReadUsdPerMillion  *float64 `protobuf:"fixed64,8,opt,name=cache_read_usd_per_million,json=cacheReadUsdPerMillion,proto3,oneof" json:"cache_read_usd_per_million,omitempty"`
-	CacheWriteUsdPerMillion *float64 `protobuf:"fixed64,9,opt,name=cache_write_usd_per_million,json=cacheWriteUsdPerMillion,proto3,oneof" json:"cache_write_usd_per_million,omitempty"`
-	ReasoningUsdPerMillion  *float64 `protobuf:"fixed64,10,opt,name=reasoning_usd_per_million,json=reasoningUsdPerMillion,proto3,oneof" json:"reasoning_usd_per_million,omitempty"` // Requests with more input tokens than this use the long-context prices.
-	unknownFields           protoimpl.UnknownFields
-	sizeCache               protoimpl.SizeCache
+	OutputPerMillion float64                `protobuf:"fixed64,3,opt,name=output_per_million,json=outputPerMillion,proto3" json:"output_per_million,omitempty"`
+	CreatedAt        *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt        *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Unset prices fall back to input_per_million or output_per_million.
+	CacheReadPerMillion  *float64 `protobuf:"fixed64,8,opt,name=cache_read_per_million,json=cacheReadPerMillion,proto3,oneof" json:"cache_read_per_million,omitempty"`
+	CacheWritePerMillion *float64 `protobuf:"fixed64,9,opt,name=cache_write_per_million,json=cacheWritePerMillion,proto3,oneof" json:"cache_write_per_million,omitempty"`
+	ReasoningPerMillion  *float64 `protobuf:"fixed64,10,opt,name=reasoning_per_million,json=reasoningPerMillion,proto3,oneof" json:"reasoning_per_million,omitempty"`
+	// ISO 4217 code all prices are in, such as "USD".
+	Currency      string `protobuf:"bytes,11,opt,name=currency,proto3" json:"currency,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *LLMTokenPrice) Reset() {
@@ -95,16 +97,16 @@ func (x *LLMTokenPrice) GetAliases() []string {
 	return nil
 }
 
-func (x *LLMTokenPrice) GetInputUsdPerMillion() float64 {
+func (x *LLMTokenPrice) GetInputPerMillion() float64 {
 	if x != nil {
-		return x.InputUsdPerMillion
+		return x.InputPerMillion
 	}
 	return 0
 }
 
-func (x *LLMTokenPrice) GetOutputUsdPerMillion() float64 {
+func (x *LLMTokenPrice) GetOutputPerMillion() float64 {
 	if x != nil {
-		return x.OutputUsdPerMillion
+		return x.OutputPerMillion
 	}
 	return 0
 }
@@ -123,25 +125,32 @@ func (x *LLMTokenPrice) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *LLMTokenPrice) GetCacheReadUsdPerMillion() float64 {
-	if x != nil && x.CacheReadUsdPerMillion != nil {
-		return *x.CacheReadUsdPerMillion
+func (x *LLMTokenPrice) GetCacheReadPerMillion() float64 {
+	if x != nil && x.CacheReadPerMillion != nil {
+		return *x.CacheReadPerMillion
 	}
 	return 0
 }
 
-func (x *LLMTokenPrice) GetCacheWriteUsdPerMillion() float64 {
-	if x != nil && x.CacheWriteUsdPerMillion != nil {
-		return *x.CacheWriteUsdPerMillion
+func (x *LLMTokenPrice) GetCacheWritePerMillion() float64 {
+	if x != nil && x.CacheWritePerMillion != nil {
+		return *x.CacheWritePerMillion
 	}
 	return 0
 }
 
-func (x *LLMTokenPrice) GetReasoningUsdPerMillion() float64 {
-	if x != nil && x.ReasoningUsdPerMillion != nil {
-		return *x.ReasoningUsdPerMillion
+func (x *LLMTokenPrice) GetReasoningPerMillion() float64 {
+	if x != nil && x.ReasoningPerMillion != nil {
+		return *x.ReasoningPerMillion
 	}
 	return 0
+}
+
+func (x *LLMTokenPrice) GetCurrency() string {
+	if x != nil {
+		return x.Currency
+	}
+	return ""
 }
 
 type ListLLMTokenPricesRequest struct {
@@ -225,20 +234,22 @@ func (x *ListLLMTokenPricesResponse) GetPrices() []*LLMTokenPrice {
 }
 
 type UpdateLLMTokenPriceRequest struct {
-	state               protoimpl.MessageState `protogen:"open.v1"`
-	Provider            string                 `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
-	InputUsdPerMillion  float64                `protobuf:"fixed64,2,opt,name=input_usd_per_million,json=inputUsdPerMillion,proto3" json:"input_usd_per_million,omitempty"`
-	OutputUsdPerMillion float64                `protobuf:"fixed64,3,opt,name=output_usd_per_million,json=outputUsdPerMillion,proto3" json:"output_usd_per_million,omitempty"`
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Provider         string                 `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
+	InputPerMillion  float64                `protobuf:"fixed64,2,opt,name=input_per_million,json=inputPerMillion,proto3" json:"input_per_million,omitempty"`
+	OutputPerMillion float64                `protobuf:"fixed64,3,opt,name=output_per_million,json=outputPerMillion,proto3" json:"output_per_million,omitempty"`
 	// Prices requests whose model contains this value or one of the aliases,
 	// such as "claude-sonnet-4-5" for "us.anthropic.claude-sonnet-4-5-20250929".
 	// The longest match wins. Requests matching no price have no cost.
-	Model                   string   `protobuf:"bytes,4,opt,name=model,proto3" json:"model,omitempty"`
-	Aliases                 []string `protobuf:"bytes,5,rep,name=aliases,proto3" json:"aliases,omitempty"`
-	CacheReadUsdPerMillion  *float64 `protobuf:"fixed64,6,opt,name=cache_read_usd_per_million,json=cacheReadUsdPerMillion,proto3,oneof" json:"cache_read_usd_per_million,omitempty"`
-	CacheWriteUsdPerMillion *float64 `protobuf:"fixed64,7,opt,name=cache_write_usd_per_million,json=cacheWriteUsdPerMillion,proto3,oneof" json:"cache_write_usd_per_million,omitempty"`
-	ReasoningUsdPerMillion  *float64 `protobuf:"fixed64,8,opt,name=reasoning_usd_per_million,json=reasoningUsdPerMillion,proto3,oneof" json:"reasoning_usd_per_million,omitempty"`
-	unknownFields           protoimpl.UnknownFields
-	sizeCache               protoimpl.SizeCache
+	Model                string   `protobuf:"bytes,4,opt,name=model,proto3" json:"model,omitempty"`
+	Aliases              []string `protobuf:"bytes,5,rep,name=aliases,proto3" json:"aliases,omitempty"`
+	CacheReadPerMillion  *float64 `protobuf:"fixed64,6,opt,name=cache_read_per_million,json=cacheReadPerMillion,proto3,oneof" json:"cache_read_per_million,omitempty"`
+	CacheWritePerMillion *float64 `protobuf:"fixed64,7,opt,name=cache_write_per_million,json=cacheWritePerMillion,proto3,oneof" json:"cache_write_per_million,omitempty"`
+	ReasoningPerMillion  *float64 `protobuf:"fixed64,8,opt,name=reasoning_per_million,json=reasoningPerMillion,proto3,oneof" json:"reasoning_per_million,omitempty"`
+	// ISO 4217 code the prices are in. Defaults to "USD"; nothing is converted.
+	Currency      string `protobuf:"bytes,9,opt,name=currency,proto3" json:"currency,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateLLMTokenPriceRequest) Reset() {
@@ -278,16 +289,16 @@ func (x *UpdateLLMTokenPriceRequest) GetProvider() string {
 	return ""
 }
 
-func (x *UpdateLLMTokenPriceRequest) GetInputUsdPerMillion() float64 {
+func (x *UpdateLLMTokenPriceRequest) GetInputPerMillion() float64 {
 	if x != nil {
-		return x.InputUsdPerMillion
+		return x.InputPerMillion
 	}
 	return 0
 }
 
-func (x *UpdateLLMTokenPriceRequest) GetOutputUsdPerMillion() float64 {
+func (x *UpdateLLMTokenPriceRequest) GetOutputPerMillion() float64 {
 	if x != nil {
-		return x.OutputUsdPerMillion
+		return x.OutputPerMillion
 	}
 	return 0
 }
@@ -306,25 +317,32 @@ func (x *UpdateLLMTokenPriceRequest) GetAliases() []string {
 	return nil
 }
 
-func (x *UpdateLLMTokenPriceRequest) GetCacheReadUsdPerMillion() float64 {
-	if x != nil && x.CacheReadUsdPerMillion != nil {
-		return *x.CacheReadUsdPerMillion
+func (x *UpdateLLMTokenPriceRequest) GetCacheReadPerMillion() float64 {
+	if x != nil && x.CacheReadPerMillion != nil {
+		return *x.CacheReadPerMillion
 	}
 	return 0
 }
 
-func (x *UpdateLLMTokenPriceRequest) GetCacheWriteUsdPerMillion() float64 {
-	if x != nil && x.CacheWriteUsdPerMillion != nil {
-		return *x.CacheWriteUsdPerMillion
+func (x *UpdateLLMTokenPriceRequest) GetCacheWritePerMillion() float64 {
+	if x != nil && x.CacheWritePerMillion != nil {
+		return *x.CacheWritePerMillion
 	}
 	return 0
 }
 
-func (x *UpdateLLMTokenPriceRequest) GetReasoningUsdPerMillion() float64 {
-	if x != nil && x.ReasoningUsdPerMillion != nil {
-		return *x.ReasoningUsdPerMillion
+func (x *UpdateLLMTokenPriceRequest) GetReasoningPerMillion() float64 {
+	if x != nil && x.ReasoningPerMillion != nil {
+		return *x.ReasoningPerMillion
 	}
 	return 0
+}
+
+func (x *UpdateLLMTokenPriceRequest) GetCurrency() string {
+	if x != nil {
+		return x.Currency
+	}
+	return ""
 }
 
 type UpdateLLMTokenPriceResponse struct {
@@ -463,40 +481,42 @@ var File_core_v1_llm_pricing_proto protoreflect.FileDescriptor
 
 const file_core_v1_llm_pricing_proto_rawDesc = "" +
 	"\n" +
-	"\x19core/v1/llm_pricing.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xda\x04\n" +
+	"\x19core/v1/llm_pricing.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x04\n" +
 	"\rLLMTokenPrice\x12\x1a\n" +
 	"\bprovider\x18\x01 \x01(\tR\bprovider\x12\x14\n" +
 	"\x05model\x18\x06 \x01(\tR\x05model\x12\x18\n" +
-	"\aaliases\x18\a \x03(\tR\aaliases\x121\n" +
-	"\x15input_usd_per_million\x18\x02 \x01(\x01R\x12inputUsdPerMillion\x123\n" +
-	"\x16output_usd_per_million\x18\x03 \x01(\x01R\x13outputUsdPerMillion\x129\n" +
+	"\aaliases\x18\a \x03(\tR\aaliases\x12*\n" +
+	"\x11input_per_million\x18\x02 \x01(\x01R\x0finputPerMillion\x12,\n" +
+	"\x12output_per_million\x18\x03 \x01(\x01R\x10outputPerMillion\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12?\n" +
-	"\x1acache_read_usd_per_million\x18\b \x01(\x01H\x00R\x16cacheReadUsdPerMillion\x88\x01\x01\x12A\n" +
-	"\x1bcache_write_usd_per_million\x18\t \x01(\x01H\x01R\x17cacheWriteUsdPerMillion\x88\x01\x01\x12>\n" +
-	"\x19reasoning_usd_per_million\x18\n" +
-	" \x01(\x01H\x02R\x16reasoningUsdPerMillion\x88\x01\x01B\x1d\n" +
-	"\x1b_cache_read_usd_per_millionB\x1e\n" +
-	"\x1c_cache_write_usd_per_millionB\x1c\n" +
-	"\x1a_reasoning_usd_per_million\"\x1b\n" +
+	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x128\n" +
+	"\x16cache_read_per_million\x18\b \x01(\x01H\x00R\x13cacheReadPerMillion\x88\x01\x01\x12:\n" +
+	"\x17cache_write_per_million\x18\t \x01(\x01H\x01R\x14cacheWritePerMillion\x88\x01\x01\x127\n" +
+	"\x15reasoning_per_million\x18\n" +
+	" \x01(\x01H\x02R\x13reasoningPerMillion\x88\x01\x01\x12\x1a\n" +
+	"\bcurrency\x18\v \x01(\tR\bcurrencyB\x19\n" +
+	"\x17_cache_read_per_millionB\x1a\n" +
+	"\x18_cache_write_per_millionB\x18\n" +
+	"\x16_reasoning_per_million\"\x1b\n" +
 	"\x19ListLLMTokenPricesRequest\"L\n" +
 	"\x1aListLLMTokenPricesResponse\x12.\n" +
-	"\x06prices\x18\x01 \x03(\v2\x16.core.v1.LLMTokenPriceR\x06prices\"\xbe\x05\n" +
+	"\x06prices\x18\x01 \x03(\v2\x16.core.v1.LLMTokenPriceR\x06prices\"\x9e\x05\n" +
 	"\x1aUpdateLLMTokenPriceRequest\x12K\n" +
-	"\bprovider\x18\x01 \x01(\tB/\xbaH,r*R\x06openaiR\tanthropicR\x06cursorR\x06geminiR\x05devinR\bprovider\x12J\n" +
-	"\x15input_usd_per_million\x18\x02 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00R\x12inputUsdPerMillion\x12L\n" +
-	"\x16output_usd_per_million\x18\x03 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00R\x13outputUsdPerMillion\x12 \n" +
+	"\bprovider\x18\x01 \x01(\tB/\xbaH,r*R\x06openaiR\tanthropicR\x06cursorR\x06geminiR\x05devinR\bprovider\x12<\n" +
+	"\x11input_per_million\x18\x02 \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00R\x0finputPerMillion\x12>\n" +
+	"\x12output_per_million\x18\x03 \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00R\x10outputPerMillion\x12 \n" +
 	"\x05model\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xc8\x01R\x05model\x12+\n" +
-	"\aaliases\x18\x05 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\xc8\x01R\aaliases\x12X\n" +
-	"\x1acache_read_usd_per_million\x18\x06 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\x16cacheReadUsdPerMillion\x88\x01\x01\x12Z\n" +
-	"\x1bcache_write_usd_per_million\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00H\x01R\x17cacheWriteUsdPerMillion\x88\x01\x01\x12W\n" +
-	"\x19reasoning_usd_per_million\x18\b \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x88\xc3@)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\x16reasoningUsdPerMillion\x88\x01\x01B\x1d\n" +
-	"\x1b_cache_read_usd_per_millionB\x1e\n" +
-	"\x1c_cache_write_usd_per_millionB\x1c\n" +
-	"\x1a_reasoning_usd_per_million\"K\n" +
+	"\aaliases\x18\x05 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\xc8\x01R\aaliases\x12J\n" +
+	"\x16cache_read_per_million\x18\x06 \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\x13cacheReadPerMillion\x88\x01\x01\x12L\n" +
+	"\x17cache_write_per_million\x18\a \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00H\x01R\x14cacheWritePerMillion\x88\x01\x01\x12I\n" +
+	"\x15reasoning_per_million\x18\b \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\x13reasoningPerMillion\x88\x01\x01\x120\n" +
+	"\bcurrency\x18\t \x01(\tB\x14\xbaH\x11r\x0f2\r^([A-Z]{3})?$R\bcurrencyB\x19\n" +
+	"\x17_cache_read_per_millionB\x1a\n" +
+	"\x18_cache_write_per_millionB\x18\n" +
+	"\x16_reasoning_per_million\"K\n" +
 	"\x1bUpdateLLMTokenPriceResponse\x12,\n" +
 	"\x05price\x18\x01 \x01(\v2\x16.core.v1.LLMTokenPriceR\x05price\"W\n" +
 	"\x1aDeleteLLMTokenPriceRequest\x12#\n" +
