@@ -4363,6 +4363,17 @@ func (c *WorkflowServiceClient) CreateWorkflow(ctx context.Context, req *corev1.
 	return res.Msg, nil
 }
 
+// Create workflow secret
+//
+// Store a secret that workflows reference as secrets.<name>. The value is encrypted at rest.
+func (c *WorkflowServiceClient) CreateWorkflowSecret(ctx context.Context, req *corev1.CreateWorkflowSecretRequest) (*corev1.CreateWorkflowSecretResponse, error) {
+	res, err := c.inner.CreateWorkflowSecret(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Create workflow trigger
 //
 // Trigger a workflow with api-request trigger type. The workflow's allow CEL expression is evaluated with the requesting user's context.
@@ -4396,6 +4407,17 @@ func (c *WorkflowServiceClient) DeleteWorkflow(ctx context.Context, req *corev1.
 	return res.Msg, nil
 }
 
+// Delete workflow secret
+//
+// Delete a workflow secret
+func (c *WorkflowServiceClient) DeleteWorkflowSecret(ctx context.Context, req *corev1.DeleteWorkflowSecretRequest) (*corev1.DeleteWorkflowSecretResponse, error) {
+	res, err := c.inner.DeleteWorkflowSecret(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Get form
 //
 // Get a form by ID
@@ -4423,6 +4445,17 @@ func (c *WorkflowServiceClient) GetWorkflow(ctx context.Context, req *corev1.Get
 // List all forms
 func (c *WorkflowServiceClient) ListForms(ctx context.Context, req *corev1.ListFormsRequest) (*corev1.ListFormsResponse, error) {
 	res, err := c.inner.ListForms(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List workflow secrets
+//
+// List the organization's workflow secrets. Values are never returned.
+func (c *WorkflowServiceClient) ListWorkflowSecrets(ctx context.Context, req *corev1.ListWorkflowSecretsRequest) (*corev1.ListWorkflowSecretsResponse, error) {
+	res, err := c.inner.ListWorkflowSecrets(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -4467,6 +4500,17 @@ func (c *WorkflowServiceClient) UpdateFormV2(ctx context.Context, req *corev1.Up
 // Update an existing workflow
 func (c *WorkflowServiceClient) UpdateWorkflow(ctx context.Context, req *corev1.UpdateWorkflowRequest) (*corev1.UpdateWorkflowResponse, error) {
 	res, err := c.inner.UpdateWorkflow(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update workflow secret
+//
+// Replace a workflow secret's value
+func (c *WorkflowServiceClient) UpdateWorkflowSecret(ctx context.Context, req *corev1.UpdateWorkflowSecretRequest) (*corev1.UpdateWorkflowSecretResponse, error) {
+	res, err := c.inner.UpdateWorkflowSecret(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

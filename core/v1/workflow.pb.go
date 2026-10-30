@@ -1917,6 +1917,508 @@ func (x *DeleteFormResponse) GetId() string {
 	return ""
 }
 
+type WorkflowSecret struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	WorkflowId    string                 `protobuf:"bytes,5,opt,name=workflow_id,json=workflowId,proto3" json:"workflow_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WorkflowSecret) Reset() {
+	*x = WorkflowSecret{}
+	mi := &file_core_v1_workflow_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WorkflowSecret) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WorkflowSecret) ProtoMessage() {}
+
+func (x *WorkflowSecret) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WorkflowSecret.ProtoReflect.Descriptor instead.
+func (*WorkflowSecret) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *WorkflowSecret) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *WorkflowSecret) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *WorkflowSecret) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *WorkflowSecret) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *WorkflowSecret) GetWorkflowId() string {
+	if x != nil {
+		return x.WorkflowId
+	}
+	return ""
+}
+
+type ListWorkflowSecretsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Cursor        string                 `protobuf:"bytes,2,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	Order         string                 `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
+	Search        string                 `protobuf:"bytes,4,opt,name=search,proto3" json:"search,omitempty"`
+	SearchFields  []string               `protobuf:"bytes,5,rep,name=search_fields,json=searchFields,proto3" json:"search_fields,omitempty"`
+	WorkflowId    string                 `protobuf:"bytes,6,opt,name=workflow_id,json=workflowId,proto3" json:"workflow_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListWorkflowSecretsRequest) Reset() {
+	*x = ListWorkflowSecretsRequest{}
+	mi := &file_core_v1_workflow_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListWorkflowSecretsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListWorkflowSecretsRequest) ProtoMessage() {}
+
+func (x *ListWorkflowSecretsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListWorkflowSecretsRequest.ProtoReflect.Descriptor instead.
+func (*ListWorkflowSecretsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *ListWorkflowSecretsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListWorkflowSecretsRequest) GetCursor() string {
+	if x != nil {
+		return x.Cursor
+	}
+	return ""
+}
+
+func (x *ListWorkflowSecretsRequest) GetOrder() string {
+	if x != nil {
+		return x.Order
+	}
+	return ""
+}
+
+func (x *ListWorkflowSecretsRequest) GetSearch() string {
+	if x != nil {
+		return x.Search
+	}
+	return ""
+}
+
+func (x *ListWorkflowSecretsRequest) GetSearchFields() []string {
+	if x != nil {
+		return x.SearchFields
+	}
+	return nil
+}
+
+func (x *ListWorkflowSecretsRequest) GetWorkflowId() string {
+	if x != nil {
+		return x.WorkflowId
+	}
+	return ""
+}
+
+type ListWorkflowSecretsResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	WorkflowSecrets []*WorkflowSecret      `protobuf:"bytes,1,rep,name=workflow_secrets,json=workflowSecrets,proto3" json:"workflow_secrets,omitempty"`
+	ListMetadata    *ListMetadata          `protobuf:"bytes,2,opt,name=list_metadata,json=listMetadata,proto3" json:"list_metadata,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ListWorkflowSecretsResponse) Reset() {
+	*x = ListWorkflowSecretsResponse{}
+	mi := &file_core_v1_workflow_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListWorkflowSecretsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListWorkflowSecretsResponse) ProtoMessage() {}
+
+func (x *ListWorkflowSecretsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListWorkflowSecretsResponse.ProtoReflect.Descriptor instead.
+func (*ListWorkflowSecretsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *ListWorkflowSecretsResponse) GetWorkflowSecrets() []*WorkflowSecret {
+	if x != nil {
+		return x.WorkflowSecrets
+	}
+	return nil
+}
+
+func (x *ListWorkflowSecretsResponse) GetListMetadata() *ListMetadata {
+	if x != nil {
+		return x.ListMetadata
+	}
+	return nil
+}
+
+type CreateWorkflowSecretRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Referenced in workflows as secrets.<name>, so it must be a valid identifier.
+	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	// The workflow that can reference the secret. Other workflows can't read it.
+	WorkflowId    string `protobuf:"bytes,3,opt,name=workflow_id,json=workflowId,proto3" json:"workflow_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateWorkflowSecretRequest) Reset() {
+	*x = CreateWorkflowSecretRequest{}
+	mi := &file_core_v1_workflow_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateWorkflowSecretRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateWorkflowSecretRequest) ProtoMessage() {}
+
+func (x *CreateWorkflowSecretRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateWorkflowSecretRequest.ProtoReflect.Descriptor instead.
+func (*CreateWorkflowSecretRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *CreateWorkflowSecretRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateWorkflowSecretRequest) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+func (x *CreateWorkflowSecretRequest) GetWorkflowId() string {
+	if x != nil {
+		return x.WorkflowId
+	}
+	return ""
+}
+
+type CreateWorkflowSecretResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	WorkflowSecret *WorkflowSecret        `protobuf:"bytes,1,opt,name=workflow_secret,json=workflowSecret,proto3" json:"workflow_secret,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateWorkflowSecretResponse) Reset() {
+	*x = CreateWorkflowSecretResponse{}
+	mi := &file_core_v1_workflow_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateWorkflowSecretResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateWorkflowSecretResponse) ProtoMessage() {}
+
+func (x *CreateWorkflowSecretResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateWorkflowSecretResponse.ProtoReflect.Descriptor instead.
+func (*CreateWorkflowSecretResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *CreateWorkflowSecretResponse) GetWorkflowSecret() *WorkflowSecret {
+	if x != nil {
+		return x.WorkflowSecret
+	}
+	return nil
+}
+
+type UpdateWorkflowSecretRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Value         string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateWorkflowSecretRequest) Reset() {
+	*x = UpdateWorkflowSecretRequest{}
+	mi := &file_core_v1_workflow_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateWorkflowSecretRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateWorkflowSecretRequest) ProtoMessage() {}
+
+func (x *UpdateWorkflowSecretRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateWorkflowSecretRequest.ProtoReflect.Descriptor instead.
+func (*UpdateWorkflowSecretRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *UpdateWorkflowSecretRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateWorkflowSecretRequest) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+type UpdateWorkflowSecretResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	WorkflowSecret *WorkflowSecret        `protobuf:"bytes,1,opt,name=workflow_secret,json=workflowSecret,proto3" json:"workflow_secret,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateWorkflowSecretResponse) Reset() {
+	*x = UpdateWorkflowSecretResponse{}
+	mi := &file_core_v1_workflow_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateWorkflowSecretResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateWorkflowSecretResponse) ProtoMessage() {}
+
+func (x *UpdateWorkflowSecretResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateWorkflowSecretResponse.ProtoReflect.Descriptor instead.
+func (*UpdateWorkflowSecretResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *UpdateWorkflowSecretResponse) GetWorkflowSecret() *WorkflowSecret {
+	if x != nil {
+		return x.WorkflowSecret
+	}
+	return nil
+}
+
+type DeleteWorkflowSecretRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteWorkflowSecretRequest) Reset() {
+	*x = DeleteWorkflowSecretRequest{}
+	mi := &file_core_v1_workflow_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteWorkflowSecretRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteWorkflowSecretRequest) ProtoMessage() {}
+
+func (x *DeleteWorkflowSecretRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteWorkflowSecretRequest.ProtoReflect.Descriptor instead.
+func (*DeleteWorkflowSecretRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *DeleteWorkflowSecretRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type DeleteWorkflowSecretResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteWorkflowSecretResponse) Reset() {
+	*x = DeleteWorkflowSecretResponse{}
+	mi := &file_core_v1_workflow_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteWorkflowSecretResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteWorkflowSecretResponse) ProtoMessage() {}
+
+func (x *DeleteWorkflowSecretResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_workflow_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteWorkflowSecretResponse.ProtoReflect.Descriptor instead.
+func (*DeleteWorkflowSecretResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_workflow_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *DeleteWorkflowSecretResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 var File_core_v1_workflow_proto protoreflect.FileDescriptor
 
 const file_core_v1_workflow_proto_rawDesc = "" +
@@ -2049,7 +2551,47 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\x11DeleteFormRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"-\n" +
 	"\x12DeleteFormResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xaa\r\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xe6\x01\n" +
+	"\x0eWorkflowSecret\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
+	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x129\n" +
+	"\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12(\n" +
+	"\vworkflow_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"workflowId\"\xe5\x01\n" +
+	"\x1aListWorkflowSecretsRequest\x12 \n" +
+	"\x05limit\x18\x01 \x01(\x05B\n" +
+	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
+	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12\x16\n" +
+	"\x06search\x18\x04 \x01(\tR\x06search\x125\n" +
+	"\rsearch_fields\x18\x05 \x03(\tB\x10\xbaH\r\x92\x01\n" +
+	"\"\br\x06R\x04nameR\fsearchFields\x12(\n" +
+	"\vworkflow_id\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"workflowId\"\x9d\x01\n" +
+	"\x1bListWorkflowSecretsResponse\x12B\n" +
+	"\x10workflow_secrets\x18\x01 \x03(\v2\x17.core.v1.WorkflowSecretR\x0fworkflowSecrets\x12:\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xa3\x01\n" +
+	"\x1bCreateWorkflowSecretRequest\x128\n" +
+	"\x04name\x18\x01 \x01(\tB$\xbaH!r\x1f\x10\x01\x18\x80\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x04name\x12 \n" +
+	"\x05value\x18\x02 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x05value\x12(\n" +
+	"\vworkflow_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"workflowId\"`\n" +
+	"\x1cCreateWorkflowSecretResponse\x12@\n" +
+	"\x0fworkflow_secret\x18\x01 \x01(\v2\x17.core.v1.WorkflowSecretR\x0eworkflowSecret\"X\n" +
+	"\x1bUpdateWorkflowSecretRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12 \n" +
+	"\x05value\x18\x02 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x05value\"`\n" +
+	"\x1cUpdateWorkflowSecretResponse\x12@\n" +
+	"\x0fworkflow_secret\x18\x01 \x01(\v2\x17.core.v1.WorkflowSecretR\x0eworkflowSecret\"6\n" +
+	"\x1bDeleteWorkflowSecretRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"7\n" +
+	"\x1cDeleteWorkflowSecretResponse\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xa9\x12\n" +
 	"\x0fWorkflowService\x12\x85\x01\n" +
 	"\x0eCreateWorkflow\x12\x1e.core.v1.CreateWorkflowRequest\x1a\x1f.core.v1.CreateWorkflowResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.WorkflowService/CreateWorkflow\x12|\n" +
 	"\vGetWorkflow\x12\x1b.core.v1.GetWorkflowRequest\x1a\x1c.core.v1.GetWorkflowResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.WorkflowService/GetWorkflow\x90\x02\x01\x12\x84\x01\n" +
@@ -2066,7 +2608,11 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"UpdateForm\x12\x1a.core.v1.UpdateFormRequest\x1a\x1b.core.v1.UpdateFormResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.WorkflowService/UpdateForm\x12}\n" +
 	"\fUpdateFormV2\x12\x1c.core.v1.UpdateFormV2Request\x1a\x1d.core.v1.UpdateFormV2Response\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.WorkflowService/UpdateFormV2\x12u\n" +
 	"\n" +
-	"DeleteForm\x12\x1a.core.v1.DeleteFormRequest\x1a\x1b.core.v1.DeleteFormResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.WorkflowService/DeleteFormB\x87\x01\n" +
+	"DeleteForm\x12\x1a.core.v1.DeleteFormRequest\x1a\x1b.core.v1.DeleteFormResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.WorkflowService/DeleteForm\x12\x9c\x01\n" +
+	"\x13ListWorkflowSecrets\x12#.core.v1.ListWorkflowSecretsRequest\x1a$.core.v1.ListWorkflowSecretsResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.WorkflowService/ListWorkflowSecrets\x90\x02\x01\x12\x9d\x01\n" +
+	"\x14CreateWorkflowSecret\x12$.core.v1.CreateWorkflowSecretRequest\x1a%.core.v1.CreateWorkflowSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.WorkflowService/CreateWorkflowSecret\x12\x9d\x01\n" +
+	"\x14UpdateWorkflowSecret\x12$.core.v1.UpdateWorkflowSecretRequest\x1a%.core.v1.UpdateWorkflowSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.WorkflowService/UpdateWorkflowSecret\x12\x9d\x01\n" +
+	"\x14DeleteWorkflowSecret\x12$.core.v1.DeleteWorkflowSecretRequest\x1a%.core.v1.DeleteWorkflowSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.WorkflowService/DeleteWorkflowSecretB\x87\x01\n" +
 	"\vcom.core.v1B\rWorkflowProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (
@@ -2081,7 +2627,7 @@ func file_core_v1_workflow_proto_rawDescGZIP() []byte {
 	return file_core_v1_workflow_proto_rawDescData
 }
 
-var file_core_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_core_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 43)
 var file_core_v1_workflow_proto_goTypes = []any{
 	(*Workflow)(nil),                      // 0: core.v1.Workflow
 	(*CreateWorkflowRequest)(nil),         // 1: core.v1.CreateWorkflowRequest
@@ -2117,70 +2663,93 @@ var file_core_v1_workflow_proto_goTypes = []any{
 	(*UpdateFormV2Response)(nil),          // 31: core.v1.UpdateFormV2Response
 	(*DeleteFormRequest)(nil),             // 32: core.v1.DeleteFormRequest
 	(*DeleteFormResponse)(nil),            // 33: core.v1.DeleteFormResponse
-	(*timestamppb.Timestamp)(nil),         // 34: google.protobuf.Timestamp
-	(*ListMetadata)(nil),                  // 35: core.v1.ListMetadata
-	(*structpb.Struct)(nil),               // 36: google.protobuf.Struct
+	(*WorkflowSecret)(nil),                // 34: core.v1.WorkflowSecret
+	(*ListWorkflowSecretsRequest)(nil),    // 35: core.v1.ListWorkflowSecretsRequest
+	(*ListWorkflowSecretsResponse)(nil),   // 36: core.v1.ListWorkflowSecretsResponse
+	(*CreateWorkflowSecretRequest)(nil),   // 37: core.v1.CreateWorkflowSecretRequest
+	(*CreateWorkflowSecretResponse)(nil),  // 38: core.v1.CreateWorkflowSecretResponse
+	(*UpdateWorkflowSecretRequest)(nil),   // 39: core.v1.UpdateWorkflowSecretRequest
+	(*UpdateWorkflowSecretResponse)(nil),  // 40: core.v1.UpdateWorkflowSecretResponse
+	(*DeleteWorkflowSecretRequest)(nil),   // 41: core.v1.DeleteWorkflowSecretRequest
+	(*DeleteWorkflowSecretResponse)(nil),  // 42: core.v1.DeleteWorkflowSecretResponse
+	(*timestamppb.Timestamp)(nil),         // 43: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                  // 44: core.v1.ListMetadata
+	(*structpb.Struct)(nil),               // 45: google.protobuf.Struct
 }
 var file_core_v1_workflow_proto_depIdxs = []int32{
-	34, // 0: core.v1.Workflow.created_at:type_name -> google.protobuf.Timestamp
-	34, // 1: core.v1.Workflow.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 0: core.v1.Workflow.created_at:type_name -> google.protobuf.Timestamp
+	43, // 1: core.v1.Workflow.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: core.v1.CreateWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 3: core.v1.GetWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 4: core.v1.ListWorkflowsResponse.workflows:type_name -> core.v1.Workflow
-	35, // 5: core.v1.ListWorkflowsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	44, // 5: core.v1.ListWorkflowsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	0,  // 6: core.v1.UpdateWorkflowResponse.workflow:type_name -> core.v1.Workflow
 	0,  // 7: core.v1.UpdateWorkflowV2Request.workflow:type_name -> core.v1.Workflow
 	0,  // 8: core.v1.UpdateWorkflowV2Response.workflow:type_name -> core.v1.Workflow
-	36, // 9: core.v1.CreateWorkflowTriggerRequest.payload:type_name -> google.protobuf.Struct
+	45, // 9: core.v1.CreateWorkflowTriggerRequest.payload:type_name -> google.protobuf.Struct
 	16, // 10: core.v1.FormFieldOptionsSource.command:type_name -> core.v1.FormFieldOptionsSourceCommand
-	36, // 11: core.v1.FormFieldOptionsSource.input:type_name -> google.protobuf.Struct
+	45, // 11: core.v1.FormFieldOptionsSource.input:type_name -> google.protobuf.Struct
 	15, // 12: core.v1.FormFieldConfig.options:type_name -> core.v1.FormFieldOption
 	17, // 13: core.v1.FormFieldConfig.options_source:type_name -> core.v1.FormFieldOptionsSource
 	18, // 14: core.v1.FormField.config:type_name -> core.v1.FormFieldConfig
 	19, // 15: core.v1.FormField.validation:type_name -> core.v1.FormFieldValidation
 	20, // 16: core.v1.Form.fields:type_name -> core.v1.FormField
-	34, // 17: core.v1.Form.created_at:type_name -> google.protobuf.Timestamp
-	34, // 18: core.v1.Form.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 17: core.v1.Form.created_at:type_name -> google.protobuf.Timestamp
+	43, // 18: core.v1.Form.updated_at:type_name -> google.protobuf.Timestamp
 	20, // 19: core.v1.CreateFormRequest.fields:type_name -> core.v1.FormField
 	21, // 20: core.v1.CreateFormResponse.form:type_name -> core.v1.Form
 	21, // 21: core.v1.GetFormResponse.form:type_name -> core.v1.Form
 	21, // 22: core.v1.ListFormsResponse.forms:type_name -> core.v1.Form
-	35, // 23: core.v1.ListFormsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	44, // 23: core.v1.ListFormsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	20, // 24: core.v1.UpdateFormRequest.fields:type_name -> core.v1.FormField
 	21, // 25: core.v1.UpdateFormResponse.form:type_name -> core.v1.Form
 	21, // 26: core.v1.UpdateFormV2Request.form:type_name -> core.v1.Form
 	21, // 27: core.v1.UpdateFormV2Response.form:type_name -> core.v1.Form
-	1,  // 28: core.v1.WorkflowService.CreateWorkflow:input_type -> core.v1.CreateWorkflowRequest
-	3,  // 29: core.v1.WorkflowService.GetWorkflow:input_type -> core.v1.GetWorkflowRequest
-	5,  // 30: core.v1.WorkflowService.ListWorkflows:input_type -> core.v1.ListWorkflowsRequest
-	7,  // 31: core.v1.WorkflowService.UpdateWorkflow:input_type -> core.v1.UpdateWorkflowRequest
-	9,  // 32: core.v1.WorkflowService.UpdateWorkflowV2:input_type -> core.v1.UpdateWorkflowV2Request
-	11, // 33: core.v1.WorkflowService.DeleteWorkflow:input_type -> core.v1.DeleteWorkflowRequest
-	13, // 34: core.v1.WorkflowService.CreateWorkflowTrigger:input_type -> core.v1.CreateWorkflowTriggerRequest
-	22, // 35: core.v1.WorkflowService.CreateForm:input_type -> core.v1.CreateFormRequest
-	24, // 36: core.v1.WorkflowService.GetForm:input_type -> core.v1.GetFormRequest
-	26, // 37: core.v1.WorkflowService.ListForms:input_type -> core.v1.ListFormsRequest
-	28, // 38: core.v1.WorkflowService.UpdateForm:input_type -> core.v1.UpdateFormRequest
-	30, // 39: core.v1.WorkflowService.UpdateFormV2:input_type -> core.v1.UpdateFormV2Request
-	32, // 40: core.v1.WorkflowService.DeleteForm:input_type -> core.v1.DeleteFormRequest
-	2,  // 41: core.v1.WorkflowService.CreateWorkflow:output_type -> core.v1.CreateWorkflowResponse
-	4,  // 42: core.v1.WorkflowService.GetWorkflow:output_type -> core.v1.GetWorkflowResponse
-	6,  // 43: core.v1.WorkflowService.ListWorkflows:output_type -> core.v1.ListWorkflowsResponse
-	8,  // 44: core.v1.WorkflowService.UpdateWorkflow:output_type -> core.v1.UpdateWorkflowResponse
-	10, // 45: core.v1.WorkflowService.UpdateWorkflowV2:output_type -> core.v1.UpdateWorkflowV2Response
-	12, // 46: core.v1.WorkflowService.DeleteWorkflow:output_type -> core.v1.DeleteWorkflowResponse
-	14, // 47: core.v1.WorkflowService.CreateWorkflowTrigger:output_type -> core.v1.CreateWorkflowTriggerResponse
-	23, // 48: core.v1.WorkflowService.CreateForm:output_type -> core.v1.CreateFormResponse
-	25, // 49: core.v1.WorkflowService.GetForm:output_type -> core.v1.GetFormResponse
-	27, // 50: core.v1.WorkflowService.ListForms:output_type -> core.v1.ListFormsResponse
-	29, // 51: core.v1.WorkflowService.UpdateForm:output_type -> core.v1.UpdateFormResponse
-	31, // 52: core.v1.WorkflowService.UpdateFormV2:output_type -> core.v1.UpdateFormV2Response
-	33, // 53: core.v1.WorkflowService.DeleteForm:output_type -> core.v1.DeleteFormResponse
-	41, // [41:54] is the sub-list for method output_type
-	28, // [28:41] is the sub-list for method input_type
-	28, // [28:28] is the sub-list for extension type_name
-	28, // [28:28] is the sub-list for extension extendee
-	0,  // [0:28] is the sub-list for field type_name
+	43, // 28: core.v1.WorkflowSecret.created_at:type_name -> google.protobuf.Timestamp
+	43, // 29: core.v1.WorkflowSecret.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 30: core.v1.ListWorkflowSecretsResponse.workflow_secrets:type_name -> core.v1.WorkflowSecret
+	44, // 31: core.v1.ListWorkflowSecretsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	34, // 32: core.v1.CreateWorkflowSecretResponse.workflow_secret:type_name -> core.v1.WorkflowSecret
+	34, // 33: core.v1.UpdateWorkflowSecretResponse.workflow_secret:type_name -> core.v1.WorkflowSecret
+	1,  // 34: core.v1.WorkflowService.CreateWorkflow:input_type -> core.v1.CreateWorkflowRequest
+	3,  // 35: core.v1.WorkflowService.GetWorkflow:input_type -> core.v1.GetWorkflowRequest
+	5,  // 36: core.v1.WorkflowService.ListWorkflows:input_type -> core.v1.ListWorkflowsRequest
+	7,  // 37: core.v1.WorkflowService.UpdateWorkflow:input_type -> core.v1.UpdateWorkflowRequest
+	9,  // 38: core.v1.WorkflowService.UpdateWorkflowV2:input_type -> core.v1.UpdateWorkflowV2Request
+	11, // 39: core.v1.WorkflowService.DeleteWorkflow:input_type -> core.v1.DeleteWorkflowRequest
+	13, // 40: core.v1.WorkflowService.CreateWorkflowTrigger:input_type -> core.v1.CreateWorkflowTriggerRequest
+	22, // 41: core.v1.WorkflowService.CreateForm:input_type -> core.v1.CreateFormRequest
+	24, // 42: core.v1.WorkflowService.GetForm:input_type -> core.v1.GetFormRequest
+	26, // 43: core.v1.WorkflowService.ListForms:input_type -> core.v1.ListFormsRequest
+	28, // 44: core.v1.WorkflowService.UpdateForm:input_type -> core.v1.UpdateFormRequest
+	30, // 45: core.v1.WorkflowService.UpdateFormV2:input_type -> core.v1.UpdateFormV2Request
+	32, // 46: core.v1.WorkflowService.DeleteForm:input_type -> core.v1.DeleteFormRequest
+	35, // 47: core.v1.WorkflowService.ListWorkflowSecrets:input_type -> core.v1.ListWorkflowSecretsRequest
+	37, // 48: core.v1.WorkflowService.CreateWorkflowSecret:input_type -> core.v1.CreateWorkflowSecretRequest
+	39, // 49: core.v1.WorkflowService.UpdateWorkflowSecret:input_type -> core.v1.UpdateWorkflowSecretRequest
+	41, // 50: core.v1.WorkflowService.DeleteWorkflowSecret:input_type -> core.v1.DeleteWorkflowSecretRequest
+	2,  // 51: core.v1.WorkflowService.CreateWorkflow:output_type -> core.v1.CreateWorkflowResponse
+	4,  // 52: core.v1.WorkflowService.GetWorkflow:output_type -> core.v1.GetWorkflowResponse
+	6,  // 53: core.v1.WorkflowService.ListWorkflows:output_type -> core.v1.ListWorkflowsResponse
+	8,  // 54: core.v1.WorkflowService.UpdateWorkflow:output_type -> core.v1.UpdateWorkflowResponse
+	10, // 55: core.v1.WorkflowService.UpdateWorkflowV2:output_type -> core.v1.UpdateWorkflowV2Response
+	12, // 56: core.v1.WorkflowService.DeleteWorkflow:output_type -> core.v1.DeleteWorkflowResponse
+	14, // 57: core.v1.WorkflowService.CreateWorkflowTrigger:output_type -> core.v1.CreateWorkflowTriggerResponse
+	23, // 58: core.v1.WorkflowService.CreateForm:output_type -> core.v1.CreateFormResponse
+	25, // 59: core.v1.WorkflowService.GetForm:output_type -> core.v1.GetFormResponse
+	27, // 60: core.v1.WorkflowService.ListForms:output_type -> core.v1.ListFormsResponse
+	29, // 61: core.v1.WorkflowService.UpdateForm:output_type -> core.v1.UpdateFormResponse
+	31, // 62: core.v1.WorkflowService.UpdateFormV2:output_type -> core.v1.UpdateFormV2Response
+	33, // 63: core.v1.WorkflowService.DeleteForm:output_type -> core.v1.DeleteFormResponse
+	36, // 64: core.v1.WorkflowService.ListWorkflowSecrets:output_type -> core.v1.ListWorkflowSecretsResponse
+	38, // 65: core.v1.WorkflowService.CreateWorkflowSecret:output_type -> core.v1.CreateWorkflowSecretResponse
+	40, // 66: core.v1.WorkflowService.UpdateWorkflowSecret:output_type -> core.v1.UpdateWorkflowSecretResponse
+	42, // 67: core.v1.WorkflowService.DeleteWorkflowSecret:output_type -> core.v1.DeleteWorkflowSecretResponse
+	51, // [51:68] is the sub-list for method output_type
+	34, // [34:51] is the sub-list for method input_type
+	34, // [34:34] is the sub-list for extension type_name
+	34, // [34:34] is the sub-list for extension extendee
+	0,  // [0:34] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_workflow_proto_init() }
@@ -2197,7 +2766,7 @@ func file_core_v1_workflow_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_workflow_proto_rawDesc), len(file_core_v1_workflow_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   34,
+			NumMessages:   43,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

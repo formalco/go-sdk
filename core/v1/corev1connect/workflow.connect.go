@@ -71,6 +71,18 @@ const (
 	// WorkflowServiceDeleteFormProcedure is the fully-qualified name of the WorkflowService's
 	// DeleteForm RPC.
 	WorkflowServiceDeleteFormProcedure = "/core.v1.WorkflowService/DeleteForm"
+	// WorkflowServiceListWorkflowSecretsProcedure is the fully-qualified name of the WorkflowService's
+	// ListWorkflowSecrets RPC.
+	WorkflowServiceListWorkflowSecretsProcedure = "/core.v1.WorkflowService/ListWorkflowSecrets"
+	// WorkflowServiceCreateWorkflowSecretProcedure is the fully-qualified name of the WorkflowService's
+	// CreateWorkflowSecret RPC.
+	WorkflowServiceCreateWorkflowSecretProcedure = "/core.v1.WorkflowService/CreateWorkflowSecret"
+	// WorkflowServiceUpdateWorkflowSecretProcedure is the fully-qualified name of the WorkflowService's
+	// UpdateWorkflowSecret RPC.
+	WorkflowServiceUpdateWorkflowSecretProcedure = "/core.v1.WorkflowService/UpdateWorkflowSecret"
+	// WorkflowServiceDeleteWorkflowSecretProcedure is the fully-qualified name of the WorkflowService's
+	// DeleteWorkflowSecret RPC.
+	WorkflowServiceDeleteWorkflowSecretProcedure = "/core.v1.WorkflowService/DeleteWorkflowSecret"
 )
 
 // WorkflowServiceClient is a client for the core.v1.WorkflowService service.
@@ -127,6 +139,22 @@ type WorkflowServiceClient interface {
 	//
 	// Delete a form
 	DeleteForm(context.Context, *connect.Request[v1.DeleteFormRequest]) (*connect.Response[v1.DeleteFormResponse], error)
+	// List workflow secrets
+	//
+	// List the organization's workflow secrets. Values are never returned.
+	ListWorkflowSecrets(context.Context, *connect.Request[v1.ListWorkflowSecretsRequest]) (*connect.Response[v1.ListWorkflowSecretsResponse], error)
+	// Create workflow secret
+	//
+	// Store a secret that workflows reference as secrets.<name>. The value is encrypted at rest.
+	CreateWorkflowSecret(context.Context, *connect.Request[v1.CreateWorkflowSecretRequest]) (*connect.Response[v1.CreateWorkflowSecretResponse], error)
+	// Update workflow secret
+	//
+	// Replace a workflow secret's value
+	UpdateWorkflowSecret(context.Context, *connect.Request[v1.UpdateWorkflowSecretRequest]) (*connect.Response[v1.UpdateWorkflowSecretResponse], error)
+	// Delete workflow secret
+	//
+	// Delete a workflow secret
+	DeleteWorkflowSecret(context.Context, *connect.Request[v1.DeleteWorkflowSecretRequest]) (*connect.Response[v1.DeleteWorkflowSecretResponse], error)
 }
 
 // NewWorkflowServiceClient constructs a client for the core.v1.WorkflowService service. By default,
@@ -222,6 +250,31 @@ func NewWorkflowServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(workflowServiceMethods.ByName("DeleteForm")),
 			connect.WithClientOptions(opts...),
 		),
+		listWorkflowSecrets: connect.NewClient[v1.ListWorkflowSecretsRequest, v1.ListWorkflowSecretsResponse](
+			httpClient,
+			baseURL+WorkflowServiceListWorkflowSecretsProcedure,
+			connect.WithSchema(workflowServiceMethods.ByName("ListWorkflowSecrets")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		createWorkflowSecret: connect.NewClient[v1.CreateWorkflowSecretRequest, v1.CreateWorkflowSecretResponse](
+			httpClient,
+			baseURL+WorkflowServiceCreateWorkflowSecretProcedure,
+			connect.WithSchema(workflowServiceMethods.ByName("CreateWorkflowSecret")),
+			connect.WithClientOptions(opts...),
+		),
+		updateWorkflowSecret: connect.NewClient[v1.UpdateWorkflowSecretRequest, v1.UpdateWorkflowSecretResponse](
+			httpClient,
+			baseURL+WorkflowServiceUpdateWorkflowSecretProcedure,
+			connect.WithSchema(workflowServiceMethods.ByName("UpdateWorkflowSecret")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteWorkflowSecret: connect.NewClient[v1.DeleteWorkflowSecretRequest, v1.DeleteWorkflowSecretResponse](
+			httpClient,
+			baseURL+WorkflowServiceDeleteWorkflowSecretProcedure,
+			connect.WithSchema(workflowServiceMethods.ByName("DeleteWorkflowSecret")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -240,6 +293,10 @@ type workflowServiceClient struct {
 	updateForm            *connect.Client[v1.UpdateFormRequest, v1.UpdateFormResponse]
 	updateFormV2          *connect.Client[v1.UpdateFormV2Request, v1.UpdateFormV2Response]
 	deleteForm            *connect.Client[v1.DeleteFormRequest, v1.DeleteFormResponse]
+	listWorkflowSecrets   *connect.Client[v1.ListWorkflowSecretsRequest, v1.ListWorkflowSecretsResponse]
+	createWorkflowSecret  *connect.Client[v1.CreateWorkflowSecretRequest, v1.CreateWorkflowSecretResponse]
+	updateWorkflowSecret  *connect.Client[v1.UpdateWorkflowSecretRequest, v1.UpdateWorkflowSecretResponse]
+	deleteWorkflowSecret  *connect.Client[v1.DeleteWorkflowSecretRequest, v1.DeleteWorkflowSecretResponse]
 }
 
 // CreateWorkflow calls core.v1.WorkflowService.CreateWorkflow.
@@ -307,6 +364,26 @@ func (c *workflowServiceClient) DeleteForm(ctx context.Context, req *connect.Req
 	return c.deleteForm.CallUnary(ctx, req)
 }
 
+// ListWorkflowSecrets calls core.v1.WorkflowService.ListWorkflowSecrets.
+func (c *workflowServiceClient) ListWorkflowSecrets(ctx context.Context, req *connect.Request[v1.ListWorkflowSecretsRequest]) (*connect.Response[v1.ListWorkflowSecretsResponse], error) {
+	return c.listWorkflowSecrets.CallUnary(ctx, req)
+}
+
+// CreateWorkflowSecret calls core.v1.WorkflowService.CreateWorkflowSecret.
+func (c *workflowServiceClient) CreateWorkflowSecret(ctx context.Context, req *connect.Request[v1.CreateWorkflowSecretRequest]) (*connect.Response[v1.CreateWorkflowSecretResponse], error) {
+	return c.createWorkflowSecret.CallUnary(ctx, req)
+}
+
+// UpdateWorkflowSecret calls core.v1.WorkflowService.UpdateWorkflowSecret.
+func (c *workflowServiceClient) UpdateWorkflowSecret(ctx context.Context, req *connect.Request[v1.UpdateWorkflowSecretRequest]) (*connect.Response[v1.UpdateWorkflowSecretResponse], error) {
+	return c.updateWorkflowSecret.CallUnary(ctx, req)
+}
+
+// DeleteWorkflowSecret calls core.v1.WorkflowService.DeleteWorkflowSecret.
+func (c *workflowServiceClient) DeleteWorkflowSecret(ctx context.Context, req *connect.Request[v1.DeleteWorkflowSecretRequest]) (*connect.Response[v1.DeleteWorkflowSecretResponse], error) {
+	return c.deleteWorkflowSecret.CallUnary(ctx, req)
+}
+
 // WorkflowServiceHandler is an implementation of the core.v1.WorkflowService service.
 type WorkflowServiceHandler interface {
 	// Create workflow
@@ -361,6 +438,22 @@ type WorkflowServiceHandler interface {
 	//
 	// Delete a form
 	DeleteForm(context.Context, *connect.Request[v1.DeleteFormRequest]) (*connect.Response[v1.DeleteFormResponse], error)
+	// List workflow secrets
+	//
+	// List the organization's workflow secrets. Values are never returned.
+	ListWorkflowSecrets(context.Context, *connect.Request[v1.ListWorkflowSecretsRequest]) (*connect.Response[v1.ListWorkflowSecretsResponse], error)
+	// Create workflow secret
+	//
+	// Store a secret that workflows reference as secrets.<name>. The value is encrypted at rest.
+	CreateWorkflowSecret(context.Context, *connect.Request[v1.CreateWorkflowSecretRequest]) (*connect.Response[v1.CreateWorkflowSecretResponse], error)
+	// Update workflow secret
+	//
+	// Replace a workflow secret's value
+	UpdateWorkflowSecret(context.Context, *connect.Request[v1.UpdateWorkflowSecretRequest]) (*connect.Response[v1.UpdateWorkflowSecretResponse], error)
+	// Delete workflow secret
+	//
+	// Delete a workflow secret
+	DeleteWorkflowSecret(context.Context, *connect.Request[v1.DeleteWorkflowSecretRequest]) (*connect.Response[v1.DeleteWorkflowSecretResponse], error)
 }
 
 // NewWorkflowServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -452,6 +545,31 @@ func NewWorkflowServiceHandler(svc WorkflowServiceHandler, opts ...connect.Handl
 		connect.WithSchema(workflowServiceMethods.ByName("DeleteForm")),
 		connect.WithHandlerOptions(opts...),
 	)
+	workflowServiceListWorkflowSecretsHandler := connect.NewUnaryHandler(
+		WorkflowServiceListWorkflowSecretsProcedure,
+		svc.ListWorkflowSecrets,
+		connect.WithSchema(workflowServiceMethods.ByName("ListWorkflowSecrets")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	workflowServiceCreateWorkflowSecretHandler := connect.NewUnaryHandler(
+		WorkflowServiceCreateWorkflowSecretProcedure,
+		svc.CreateWorkflowSecret,
+		connect.WithSchema(workflowServiceMethods.ByName("CreateWorkflowSecret")),
+		connect.WithHandlerOptions(opts...),
+	)
+	workflowServiceUpdateWorkflowSecretHandler := connect.NewUnaryHandler(
+		WorkflowServiceUpdateWorkflowSecretProcedure,
+		svc.UpdateWorkflowSecret,
+		connect.WithSchema(workflowServiceMethods.ByName("UpdateWorkflowSecret")),
+		connect.WithHandlerOptions(opts...),
+	)
+	workflowServiceDeleteWorkflowSecretHandler := connect.NewUnaryHandler(
+		WorkflowServiceDeleteWorkflowSecretProcedure,
+		svc.DeleteWorkflowSecret,
+		connect.WithSchema(workflowServiceMethods.ByName("DeleteWorkflowSecret")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/core.v1.WorkflowService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case WorkflowServiceCreateWorkflowProcedure:
@@ -480,6 +598,14 @@ func NewWorkflowServiceHandler(svc WorkflowServiceHandler, opts ...connect.Handl
 			workflowServiceUpdateFormV2Handler.ServeHTTP(w, r)
 		case WorkflowServiceDeleteFormProcedure:
 			workflowServiceDeleteFormHandler.ServeHTTP(w, r)
+		case WorkflowServiceListWorkflowSecretsProcedure:
+			workflowServiceListWorkflowSecretsHandler.ServeHTTP(w, r)
+		case WorkflowServiceCreateWorkflowSecretProcedure:
+			workflowServiceCreateWorkflowSecretHandler.ServeHTTP(w, r)
+		case WorkflowServiceUpdateWorkflowSecretProcedure:
+			workflowServiceUpdateWorkflowSecretHandler.ServeHTTP(w, r)
+		case WorkflowServiceDeleteWorkflowSecretProcedure:
+			workflowServiceDeleteWorkflowSecretHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -539,4 +665,20 @@ func (UnimplementedWorkflowServiceHandler) UpdateFormV2(context.Context, *connec
 
 func (UnimplementedWorkflowServiceHandler) DeleteForm(context.Context, *connect.Request[v1.DeleteFormRequest]) (*connect.Response[v1.DeleteFormResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.WorkflowService.DeleteForm is not implemented"))
+}
+
+func (UnimplementedWorkflowServiceHandler) ListWorkflowSecrets(context.Context, *connect.Request[v1.ListWorkflowSecretsRequest]) (*connect.Response[v1.ListWorkflowSecretsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.WorkflowService.ListWorkflowSecrets is not implemented"))
+}
+
+func (UnimplementedWorkflowServiceHandler) CreateWorkflowSecret(context.Context, *connect.Request[v1.CreateWorkflowSecretRequest]) (*connect.Response[v1.CreateWorkflowSecretResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.WorkflowService.CreateWorkflowSecret is not implemented"))
+}
+
+func (UnimplementedWorkflowServiceHandler) UpdateWorkflowSecret(context.Context, *connect.Request[v1.UpdateWorkflowSecretRequest]) (*connect.Response[v1.UpdateWorkflowSecretResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.WorkflowService.UpdateWorkflowSecret is not implemented"))
+}
+
+func (UnimplementedWorkflowServiceHandler) DeleteWorkflowSecret(context.Context, *connect.Request[v1.DeleteWorkflowSecretRequest]) (*connect.Response[v1.DeleteWorkflowSecretResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.WorkflowService.DeleteWorkflowSecret is not implemented"))
 }
