@@ -25,9 +25,11 @@ const (
 )
 
 type LLMTokenPrice struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Provider string                 `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
-	Model    string                 `protobuf:"bytes,6,opt,name=model,proto3" json:"model,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// "*" for the author's default.
+	Provider string `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
+	Author   string `protobuf:"bytes,12,opt,name=author,proto3" json:"author,omitempty"`
+	Model    string `protobuf:"bytes,6,opt,name=model,proto3" json:"model,omitempty"`
 	// Other names the model is requested under.
 	Aliases []string `protobuf:"bytes,7,rep,name=aliases,proto3" json:"aliases,omitempty"`
 	// Applies to cached input tokens too.
@@ -79,6 +81,13 @@ func (*LLMTokenPrice) Descriptor() ([]byte, []int) {
 func (x *LLMTokenPrice) GetProvider() string {
 	if x != nil {
 		return x.Provider
+	}
+	return ""
+}
+
+func (x *LLMTokenPrice) GetAuthor() string {
+	if x != nil {
+		return x.Author
 	}
 	return ""
 }
@@ -247,7 +256,9 @@ type UpdateLLMTokenPriceRequest struct {
 	CacheWritePerMillion *float64 `protobuf:"fixed64,7,opt,name=cache_write_per_million,json=cacheWritePerMillion,proto3,oneof" json:"cache_write_per_million,omitempty"`
 	ReasoningPerMillion  *float64 `protobuf:"fixed64,8,opt,name=reasoning_per_million,json=reasoningPerMillion,proto3,oneof" json:"reasoning_per_million,omitempty"`
 	// ISO 4217 code the prices are in. Defaults to "USD"; nothing is converted.
-	Currency      string `protobuf:"bytes,9,opt,name=currency,proto3" json:"currency,omitempty"`
+	Currency string `protobuf:"bytes,9,opt,name=currency,proto3" json:"currency,omitempty"`
+	// Inferred from the model when empty.
+	Author        string `protobuf:"bytes,10,opt,name=author,proto3" json:"author,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -341,6 +352,13 @@ func (x *UpdateLLMTokenPriceRequest) GetReasoningPerMillion() float64 {
 func (x *UpdateLLMTokenPriceRequest) GetCurrency() string {
 	if x != nil {
 		return x.Currency
+	}
+	return ""
+}
+
+func (x *UpdateLLMTokenPriceRequest) GetAuthor() string {
+	if x != nil {
+		return x.Author
 	}
 	return ""
 }
@@ -481,9 +499,10 @@ var File_core_v1_llm_pricing_proto protoreflect.FileDescriptor
 
 const file_core_v1_llm_pricing_proto_rawDesc = "" +
 	"\n" +
-	"\x19core/v1/llm_pricing.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x04\n" +
+	"\x19core/v1/llm_pricing.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdf\x04\n" +
 	"\rLLMTokenPrice\x12\x1a\n" +
-	"\bprovider\x18\x01 \x01(\tR\bprovider\x12\x14\n" +
+	"\bprovider\x18\x01 \x01(\tR\bprovider\x12\x16\n" +
+	"\x06author\x18\f \x01(\tR\x06author\x12\x14\n" +
 	"\x05model\x18\x06 \x01(\tR\x05model\x12\x18\n" +
 	"\aaliases\x18\a \x03(\tR\aaliases\x12*\n" +
 	"\x11input_per_million\x18\x02 \x01(\x01R\x0finputPerMillion\x12,\n" +
@@ -502,9 +521,9 @@ const file_core_v1_llm_pricing_proto_rawDesc = "" +
 	"\x16_reasoning_per_million\"\x1b\n" +
 	"\x19ListLLMTokenPricesRequest\"L\n" +
 	"\x1aListLLMTokenPricesResponse\x12.\n" +
-	"\x06prices\x18\x01 \x03(\v2\x16.core.v1.LLMTokenPriceR\x06prices\"\x9e\x05\n" +
-	"\x1aUpdateLLMTokenPriceRequest\x12K\n" +
-	"\bprovider\x18\x01 \x01(\tB/\xbaH,r*R\x06openaiR\tanthropicR\x06cursorR\x06geminiR\x05devinR\bprovider\x12<\n" +
+	"\x06prices\x18\x01 \x03(\v2\x16.core.v1.LLMTokenPriceR\x06prices\"\xc2\x05\n" +
+	"\x1aUpdateLLMTokenPriceRequest\x12N\n" +
+	"\bprovider\x18\x01 \x01(\tB2\xbaH/r-R\x01*R\x06openaiR\tanthropicR\x06cursorR\x06geminiR\x05devinR\bprovider\x12<\n" +
 	"\x11input_per_million\x18\x02 \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00R\x0finputPerMillion\x12>\n" +
 	"\x12output_per_million\x18\x03 \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00R\x10outputPerMillion\x12 \n" +
 	"\x05model\x18\x04 \x01(\tB\n" +
@@ -513,7 +532,9 @@ const file_core_v1_llm_pricing_proto_rawDesc = "" +
 	"\x16cache_read_per_million\x18\x06 \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\x13cacheReadPerMillion\x88\x01\x01\x12L\n" +
 	"\x17cache_write_per_million\x18\a \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00H\x01R\x14cacheWritePerMillion\x88\x01\x01\x12I\n" +
 	"\x15reasoning_per_million\x18\b \x01(\x01B\x10\xbaH\r\x12\v@\x01)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\x13reasoningPerMillion\x88\x01\x01\x120\n" +
-	"\bcurrency\x18\t \x01(\tB\x14\xbaH\x11r\x0f2\r^([A-Z]{3})?$R\bcurrencyB\x19\n" +
+	"\bcurrency\x18\t \x01(\tB\x14\xbaH\x11r\x0f2\r^([A-Z]{3})?$R\bcurrency\x12\x1f\n" +
+	"\x06author\x18\n" +
+	" \x01(\tB\a\xbaH\x04r\x02\x182R\x06authorB\x19\n" +
 	"\x17_cache_read_per_millionB\x1a\n" +
 	"\x18_cache_write_per_millionB\x18\n" +
 	"\x16_reasoning_per_million\"K\n" +
