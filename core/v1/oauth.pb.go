@@ -902,7 +902,10 @@ func (x *OAuthConsentResource) GetResourceName() string {
 }
 
 type OAuthConsentFormalMcp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// What the user lets the application do: read every app, write every app
+	// with writes and read the rest, or custom for a choice per app.
+	Access        string `protobuf:"bytes,1,opt,name=access,proto3" json:"access,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -935,6 +938,13 @@ func (x *OAuthConsentFormalMcp) ProtoReflect() protoreflect.Message {
 // Deprecated: Use OAuthConsentFormalMcp.ProtoReflect.Descriptor instead.
 func (*OAuthConsentFormalMcp) Descriptor() ([]byte, []int) {
 	return file_core_v1_oauth_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *OAuthConsentFormalMcp) GetAccess() string {
+	if x != nil {
+		return x.Access
+	}
+	return ""
 }
 
 type ListOAuthConsentsRequest struct {
@@ -1812,8 +1822,9 @@ const file_core_v1_oauth_proto_rawDesc = "" +
 	"\x14OAuthConsentResource\x12\x1f\n" +
 	"\vresource_id\x18\x01 \x01(\tR\n" +
 	"resourceId\x12#\n" +
-	"\rresource_name\x18\x02 \x01(\tR\fresourceName\"\x17\n" +
-	"\x15OAuthConsentFormalMcp\"\xb7\x02\n" +
+	"\rresource_name\x18\x02 \x01(\tR\fresourceName\"/\n" +
+	"\x15OAuthConsentFormalMcp\x12\x16\n" +
+	"\x06access\x18\x01 \x01(\tR\x06access\"\xb7\x02\n" +
 	"\x18ListOAuthConsentsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
