@@ -3098,10 +3098,10 @@ func (c *ResourceServiceClient) CreateResourceHostname(ctx context.Context, req 
 // can link their own upstream accounts. Formal checks that it can link
 // accounts with the upstream's authorization server before saving.
 //
-// Only the OAuth settings change. Connectors send each user's access token
-// upstream as a Bearer token until the resource has a native user labelled
-// "linked-account" with linked-account credentials; from then on, its native
-// user selection decides. Create that native user once these settings exist.
+// Only the OAuth settings change. The resource's native user selection
+// decides how each user's access token is sent upstream: create a native user
+// with linked-account credentials once these settings exist, and select it.
+// gRPC resources, which have no native users, send it as a Bearer token.
 func (c *ResourceServiceClient) CreateResourceOAuthSettings(ctx context.Context, req *corev1.CreateResourceOAuthSettingsRequest) (*corev1.CreateResourceOAuthSettingsResponse, error) {
 	res, err := c.inner.CreateResourceOAuthSettings(ctx, connect.NewRequest(req))
 	if err != nil {
