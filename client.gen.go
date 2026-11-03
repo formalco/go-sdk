@@ -33,6 +33,7 @@ type Client struct {
 	McpServiceClient                   *McpServiceClient
 	NativeUserServiceClient            *NativeUserServiceClient
 	OAuthServiceClient                 *OAuthServiceClient
+	OrgThemeServiceClient              *OrgThemeServiceClient
 	PermissionsServiceClient           *PermissionsServiceClient
 	PoliciesServiceClient              *PoliciesServiceClient
 	PolicyDataLoaderServiceClient      *PolicyDataLoaderServiceClient
@@ -72,6 +73,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		McpServiceClient:                   &McpServiceClient{inner: corev1connect.NewMcpServiceClient(httpClient, baseURL)},
 		NativeUserServiceClient:            &NativeUserServiceClient{inner: corev1connect.NewNativeUserServiceClient(httpClient, baseURL)},
 		OAuthServiceClient:                 &OAuthServiceClient{inner: corev1connect.NewOAuthServiceClient(httpClient, baseURL)},
+		OrgThemeServiceClient:              &OrgThemeServiceClient{inner: corev1connect.NewOrgThemeServiceClient(httpClient, baseURL)},
 		PermissionsServiceClient:           &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
 		PoliciesServiceClient:              &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
 		PolicyDataLoaderServiceClient:      &PolicyDataLoaderServiceClient{inner: corev1connect.NewPolicyDataLoaderServiceClient(httpClient, baseURL)},
@@ -2547,6 +2549,56 @@ func (c *OAuthServiceClient) ListOAuthLinks(ctx context.Context, req *corev1.Lis
 // Rename a client or replace its redirect URIs.
 func (c *OAuthServiceClient) UpdateOAuthClient(ctx context.Context, req *corev1.UpdateOAuthClientRequest) (*corev1.UpdateOAuthClientResponse, error) {
 	res, err := c.inner.UpdateOAuthClient(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// OrgThemeServiceClient is a client for the core.v1.OrgThemeService service.
+type OrgThemeServiceClient struct {
+	inner corev1connect.OrgThemeServiceClient
+}
+
+// Create the organization theme
+//
+// Create the organization's theme. Fails with already exists if the
+// organization has one.
+func (c *OrgThemeServiceClient) CreateOrgTheme(ctx context.Context, req *corev1.CreateOrgThemeRequest) (*corev1.CreateOrgThemeResponse, error) {
+	res, err := c.inner.CreateOrgTheme(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete the organization theme
+//
+// Delete the organization's theme. Its users see Formal's own branding again.
+func (c *OrgThemeServiceClient) DeleteOrgTheme(ctx context.Context, req *corev1.DeleteOrgThemeRequest) (*corev1.DeleteOrgThemeResponse, error) {
+	res, err := c.inner.DeleteOrgTheme(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get the organization theme
+//
+// Get the organization's theme. Not found when the organization has none.
+func (c *OrgThemeServiceClient) GetOrgTheme(ctx context.Context, req *corev1.GetOrgThemeRequest) (*corev1.GetOrgThemeResponse, error) {
+	res, err := c.inner.GetOrgTheme(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update the organization theme
+//
+// Replace the organization's display name and logo.
+func (c *OrgThemeServiceClient) UpdateOrgTheme(ctx context.Context, req *corev1.UpdateOrgThemeRequest) (*corev1.UpdateOrgThemeResponse, error) {
+	res, err := c.inner.UpdateOrgTheme(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
