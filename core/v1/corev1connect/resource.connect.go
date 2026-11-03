@@ -489,12 +489,16 @@ type ResourceServiceClient interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. OAuth clients can then
-	// connect to it through the Connector, and, unless the upstream OAuth mode is
-	// "none", users can link their own upstream accounts, whose access tokens the
-	// Connector sends upstream in place of native user credentials. Formal checks
-	// that it can link accounts with the upstream's authorization server before
-	// saving.
+	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. MCP, HTTP and LLM
+	// resources must use native users v3. OAuth clients can then connect to it
+	// through the Connector, and, unless the upstream OAuth mode is "none", users
+	// can link their own upstream accounts. Formal checks that it can link
+	// accounts with the upstream's authorization server before saving.
+	//
+	// Only the OAuth settings change. Connectors send each user's access token
+	// upstream as a Bearer token until the resource has a native user labelled
+	// "linked-account" with linked-account credentials; from then on, its native
+	// user selection decides. Create that native user once these settings exist.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//
@@ -511,7 +515,9 @@ type ResourceServiceClient interface {
 	// Delete resource OAuth settings
 	//
 	// Disable OAuth for a resource. Every pending link, every user's stored grant,
-	// and every OAuth client's authorization for the resource is deleted.
+	// and every OAuth client's authorization for the resource is deleted. Native
+	// users and the native user selection are left as they are, so clear a
+	// selection of a linked-account native user first.
 	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 
@@ -1636,12 +1642,16 @@ type ResourceServiceHandler interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. OAuth clients can then
-	// connect to it through the Connector, and, unless the upstream OAuth mode is
-	// "none", users can link their own upstream accounts, whose access tokens the
-	// Connector sends upstream in place of native user credentials. Formal checks
-	// that it can link accounts with the upstream's authorization server before
-	// saving.
+	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. MCP, HTTP and LLM
+	// resources must use native users v3. OAuth clients can then connect to it
+	// through the Connector, and, unless the upstream OAuth mode is "none", users
+	// can link their own upstream accounts. Formal checks that it can link
+	// accounts with the upstream's authorization server before saving.
+	//
+	// Only the OAuth settings change. Connectors send each user's access token
+	// upstream as a Bearer token until the resource has a native user labelled
+	// "linked-account" with linked-account credentials; from then on, its native
+	// user selection decides. Create that native user once these settings exist.
 	CreateResourceOAuthSettings(context.Context, *connect.Request[v1.CreateResourceOAuthSettingsRequest]) (*connect.Response[v1.CreateResourceOAuthSettingsResponse], error)
 	// Get resource OAuth settings
 	//
@@ -1658,7 +1668,9 @@ type ResourceServiceHandler interface {
 	// Delete resource OAuth settings
 	//
 	// Disable OAuth for a resource. Every pending link, every user's stored grant,
-	// and every OAuth client's authorization for the resource is deleted.
+	// and every OAuth client's authorization for the resource is deleted. Native
+	// users and the native user selection are left as they are, so clear a
+	// selection of a linked-account native user first.
 	DeleteResourceOAuthSettings(context.Context, *connect.Request[v1.DeleteResourceOAuthSettingsRequest]) (*connect.Response[v1.DeleteResourceOAuthSettingsResponse], error)
 }
 
