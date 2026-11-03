@@ -489,8 +489,8 @@ type ResourceServiceClient interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. MCP, HTTP and LLM
-	// resources must use native users v3. OAuth clients can then connect to it
+	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource on native users v3.
+	// OAuth clients can then connect to it
 	// through the Connector, and, unless the upstream OAuth mode is "none", users
 	// can link their own upstream accounts. Formal checks that it can link
 	// accounts with the upstream's authorization server before saving.
@@ -1642,8 +1642,8 @@ type ResourceServiceHandler interface {
 	ListResourceConnectorAccess(context.Context, *connect.Request[v1.ListResourceConnectorAccessRequest]) (*connect.Response[v1.ListResourceConnectorAccessResponse], error)
 	// Create resource OAuth settings
 	//
-	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource. MCP, HTTP and LLM
-	// resources must use native users v3. OAuth clients can then connect to it
+	// Enable OAuth for an MCP, HTTP, gRPC or LLM resource on native users v3.
+	// OAuth clients can then connect to it
 	// through the Connector, and, unless the upstream OAuth mode is "none", users
 	// can link their own upstream accounts. Formal checks that it can link
 	// accounts with the upstream's authorization server before saving.
