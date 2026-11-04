@@ -37,6 +37,7 @@ type Client struct {
 	PermissionsServiceClient           *PermissionsServiceClient
 	PoliciesServiceClient              *PoliciesServiceClient
 	PolicyDataLoaderServiceClient      *PolicyDataLoaderServiceClient
+	ReportServiceClient                *ReportServiceClient
 	ResourceServiceClient              *ResourceServiceClient
 	SatelliteServiceClient             *SatelliteServiceClient
 	ScenarioMonitoringServiceClient    *ScenarioMonitoringServiceClient
@@ -77,6 +78,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		PermissionsServiceClient:           &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
 		PoliciesServiceClient:              &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
 		PolicyDataLoaderServiceClient:      &PolicyDataLoaderServiceClient{inner: corev1connect.NewPolicyDataLoaderServiceClient(httpClient, baseURL)},
+		ReportServiceClient:                &ReportServiceClient{inner: corev1connect.NewReportServiceClient(httpClient, baseURL)},
 		ResourceServiceClient:              &ResourceServiceClient{inner: corev1connect.NewResourceServiceClient(httpClient, baseURL)},
 		SatelliteServiceClient:             &SatelliteServiceClient{inner: corev1connect.NewSatelliteServiceClient(httpClient, baseURL)},
 		ScenarioMonitoringServiceClient:    &ScenarioMonitoringServiceClient{inner: corev1connect.NewScenarioMonitoringServiceClient(httpClient, baseURL)},
@@ -2972,6 +2974,66 @@ func (c *PolicyDataLoaderServiceClient) UpdatePolicyDataLoader(ctx context.Conte
 // Update a policy data loader by sending the full object. All mutable fields are replaced.
 func (c *PolicyDataLoaderServiceClient) UpdatePolicyDataLoaderV2(ctx context.Context, req *corev1.UpdatePolicyDataLoaderV2Request) (*corev1.UpdatePolicyDataLoaderV2Response, error) {
 	res, err := c.inner.UpdatePolicyDataLoaderV2(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// ReportServiceClient is a client for the core.v1.ReportService service.
+type ReportServiceClient struct {
+	inner corev1connect.ReportServiceClient
+}
+
+// Create report
+//
+// Create a report from a complete definition.
+func (c *ReportServiceClient) CreateReport(ctx context.Context, req *corev1.CreateReportRequest) (*corev1.CreateReportResponse, error) {
+	res, err := c.inner.CreateReport(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete report
+//
+// Delete a report.
+func (c *ReportServiceClient) DeleteReport(ctx context.Context, req *corev1.DeleteReportRequest) (*corev1.DeleteReportResponse, error) {
+	res, err := c.inner.DeleteReport(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get report
+//
+// Get a report and its definition by ID.
+func (c *ReportServiceClient) GetReport(ctx context.Context, req *corev1.GetReportRequest) (*corev1.GetReportResponse, error) {
+	res, err := c.inner.GetReport(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List reports
+//
+// List the organization's reports with their definitions.
+func (c *ReportServiceClient) ListReports(ctx context.Context, req *corev1.ListReportsRequest) (*corev1.ListReportsResponse, error) {
+	res, err := c.inner.ListReports(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update report (full object replacement)
+//
+// Replace a report's name, description and definition.
+func (c *ReportServiceClient) UpdateReport(ctx context.Context, req *corev1.UpdateReportRequest) (*corev1.UpdateReportResponse, error) {
+	res, err := c.inner.UpdateReport(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
