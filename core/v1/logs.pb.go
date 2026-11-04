@@ -1732,13 +1732,12 @@ func (x *ListLogPolicyEvaluationInputsResponse) GetRowListMetadata() *ListMetada
 }
 
 // GroupByMetric adds one metric to every leaf bucket of a group-by aggregation.
-// "distinct" counts unique values of field, capped at distinct_limit buckets.
+// "distinct" is a HyperLogLog++ estimate of the field's unique values.
 type GroupByMetric struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	Field         string                 `protobuf:"bytes,3,opt,name=field,proto3" json:"field,omitempty"`
-	DistinctLimit *int32                 `protobuf:"varint,4,opt,name=distinct_limit,json=distinctLimit,proto3,oneof" json:"distinct_limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1792,13 +1791,6 @@ func (x *GroupByMetric) GetField() string {
 		return x.Field
 	}
 	return ""
-}
-
-func (x *GroupByMetric) GetDistinctLimit() int32 {
-	if x != nil && x.DistinctLimit != nil {
-		return *x.DistinctLimit
-	}
-	return 0
 }
 
 type GetGroupByAggregationRequest struct {
@@ -5875,14 +5867,11 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x18policy_evaluation_inputs\x18\x01 \x03(\v2\x17.google.protobuf.StructR\x16policyEvaluationInputs\x12R\n" +
 	"\x16policy_evaluation_rows\x18\x03 \x03(\v2\x1c.core.v1.PolicyEvaluationRowR\x14policyEvaluationRows\x12F\n" +
 	"\x11row_list_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataH\x00R\x0frowListMetadata\x88\x01\x01B\x14\n" +
-	"\x12_row_list_metadata\"\xcf\x01\n" +
+	"\x12_row_list_metadata\"\x9a\x01\n" +
 	"\rGroupByMetric\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x127\n" +
 	"\x04type\x18\x02 \x01(\tB#\xbaH r\x1eR\x03maxR\x03minR\x03sumR\x03avgR\bdistinctR\x04type\x12\x1d\n" +
-	"\x05field\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05field\x126\n" +
-	"\x0edistinct_limit\x18\x04 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\x90N \x00H\x00R\rdistinctLimit\x88\x01\x01B\x11\n" +
-	"\x0f_distinct_limit\"\xc5\x02\n" +
+	"\x05field\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05fieldJ\x04\b\x04\x10\x05R\x0edistinct_limit\"\xc5\x02\n" +
 	"\x1cGetGroupByAggregationRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x128\n" +
 	"\x0fstart_timestamp\x18\x02 \x01(\tB\x0f\xbaH\fr\n" +
@@ -6545,7 +6534,6 @@ func file_core_v1_logs_proto_init() {
 	file_core_v1_logs_proto_msgTypes[23].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[25].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[27].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[28].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[29].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[31].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[37].OneofWrappers = []any{}
