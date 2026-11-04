@@ -2046,6 +2046,218 @@ func (x *DeleteHumanUserSessionsResponse) GetDeletedAccessTokens() int64 {
 	return 0
 }
 
+type HumanSignInSettings struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	SignInsSuspended bool                   `protobuf:"varint,1,opt,name=sign_ins_suspended,json=signInsSuspended,proto3" json:"sign_ins_suspended,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *HumanSignInSettings) Reset() {
+	*x = HumanSignInSettings{}
+	mi := &file_core_v1_user_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HumanSignInSettings) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HumanSignInSettings) ProtoMessage() {}
+
+func (x *HumanSignInSettings) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HumanSignInSettings.ProtoReflect.Descriptor instead.
+func (*HumanSignInSettings) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *HumanSignInSettings) GetSignInsSuspended() bool {
+	if x != nil {
+		return x.SignInsSuspended
+	}
+	return false
+}
+
+type GetHumanSignInSettingsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetHumanSignInSettingsRequest) Reset() {
+	*x = GetHumanSignInSettingsRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetHumanSignInSettingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetHumanSignInSettingsRequest) ProtoMessage() {}
+
+func (x *GetHumanSignInSettingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetHumanSignInSettingsRequest.ProtoReflect.Descriptor instead.
+func (*GetHumanSignInSettingsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{38}
+}
+
+type GetHumanSignInSettingsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Settings      *HumanSignInSettings   `protobuf:"bytes,1,opt,name=settings,proto3" json:"settings,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetHumanSignInSettingsResponse) Reset() {
+	*x = GetHumanSignInSettingsResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetHumanSignInSettingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetHumanSignInSettingsResponse) ProtoMessage() {}
+
+func (x *GetHumanSignInSettingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetHumanSignInSettingsResponse.ProtoReflect.Descriptor instead.
+func (*GetHumanSignInSettingsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *GetHumanSignInSettingsResponse) GetSettings() *HumanSignInSettings {
+	if x != nil {
+		return x.Settings
+	}
+	return nil
+}
+
+type UpdateHumanSignInSettingsRequest struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	SignInsSuspended bool                   `protobuf:"varint,1,opt,name=sign_ins_suspended,json=signInsSuspended,proto3" json:"sign_ins_suspended,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *UpdateHumanSignInSettingsRequest) Reset() {
+	*x = UpdateHumanSignInSettingsRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateHumanSignInSettingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateHumanSignInSettingsRequest) ProtoMessage() {}
+
+func (x *UpdateHumanSignInSettingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateHumanSignInSettingsRequest.ProtoReflect.Descriptor instead.
+func (*UpdateHumanSignInSettingsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *UpdateHumanSignInSettingsRequest) GetSignInsSuspended() bool {
+	if x != nil {
+		return x.SignInsSuspended
+	}
+	return false
+}
+
+type UpdateHumanSignInSettingsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Settings      *HumanSignInSettings   `protobuf:"bytes,1,opt,name=settings,proto3" json:"settings,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateHumanSignInSettingsResponse) Reset() {
+	*x = UpdateHumanSignInSettingsResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateHumanSignInSettingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateHumanSignInSettingsResponse) ProtoMessage() {}
+
+func (x *UpdateHumanSignInSettingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateHumanSignInSettingsResponse.ProtoReflect.Descriptor instead.
+func (*UpdateHumanSignInSettingsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *UpdateHumanSignInSettingsResponse) GetSettings() *HumanSignInSettings {
+	if x != nil {
+		return x.Settings
+	}
+	return nil
+}
+
 var File_core_v1_user_proto protoreflect.FileDescriptor
 
 const file_core_v1_user_proto_rawDesc = "" +
@@ -2189,7 +2401,16 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\x1eDeleteHumanUserSessionsRequest\"\x91\x01\n" +
 	"\x1fDeleteHumanUserSessionsResponse\x12:\n" +
 	"\x19deleted_endpoint_sessions\x18\x01 \x01(\x03R\x17deletedEndpointSessions\x122\n" +
-	"\x15deleted_access_tokens\x18\x02 \x01(\x03R\x13deletedAccessTokens2\xf5\x13\n" +
+	"\x15deleted_access_tokens\x18\x02 \x01(\x03R\x13deletedAccessTokens\"C\n" +
+	"\x13HumanSignInSettings\x12,\n" +
+	"\x12sign_ins_suspended\x18\x01 \x01(\bR\x10signInsSuspended\"\x1f\n" +
+	"\x1dGetHumanSignInSettingsRequest\"Z\n" +
+	"\x1eGetHumanSignInSettingsResponse\x128\n" +
+	"\bsettings\x18\x01 \x01(\v2\x1c.core.v1.HumanSignInSettingsR\bsettings\"P\n" +
+	" UpdateHumanSignInSettingsRequest\x12,\n" +
+	"\x12sign_ins_suspended\x18\x01 \x01(\bR\x10signInsSuspended\"]\n" +
+	"!UpdateHumanSignInSettingsResponse\x128\n" +
+	"\bsettings\x18\x01 \x01(\v2\x1c.core.v1.HumanSignInSettingsR\bsettings2\xcc\x16\n" +
 	"\vUserService\x12q\n" +
 	"\n" +
 	"CreateUser\x12\x1a.core.v1.CreateUserRequest\x1a\x1b.core.v1.CreateUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/CreateUser\x12q\n" +
@@ -2204,7 +2425,9 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\x11DeleteBlockedUser\x12!.core.v1.DeleteBlockedUserRequest\x1a\".core.v1.DeleteBlockedUserResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.UserService/DeleteBlockedUser\x12\x8d\x01\n" +
 	"\x11CreateBlockedUser\x12!.core.v1.CreateBlockedUserRequest\x1a\".core.v1.CreateBlockedUserResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.UserService/CreateBlockedUser\x12\x84\x01\n" +
 	"\x0eGetBlockedUser\x12\x1e.core.v1.GetBlockedUserRequest\x1a\x1f.core.v1.GetBlockedUserResponse\"1\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.UserService/GetBlockedUser\x90\x02\x01\x12\xa5\x01\n" +
-	"\x17DeleteHumanUserSessions\x12'.core.v1.DeleteHumanUserSessionsRequest\x1a(.core.v1.DeleteHumanUserSessionsResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.UserService/DeleteHumanUserSessions\x12\xb0\x01\n" +
+	"\x17DeleteHumanUserSessions\x12'.core.v1.DeleteHumanUserSessionsRequest\x1a(.core.v1.DeleteHumanUserSessionsResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.UserService/DeleteHumanUserSessions\x12\xa4\x01\n" +
+	"\x16GetHumanSignInSettings\x12&.core.v1.GetHumanSignInSettingsRequest\x1a'.core.v1.GetHumanSignInSettingsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.UserService/GetHumanSignInSettings\x90\x02\x01\x12\xad\x01\n" +
+	"\x19UpdateHumanSignInSettings\x12).core.v1.UpdateHumanSignInSettingsRequest\x1a*.core.v1.UpdateHumanSignInSettingsResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/UpdateHumanSignInSettings\x12\xb0\x01\n" +
 	"\x19GetMachineUserCredentials\x12).core.v1.GetMachineUserCredentialsRequest\x1a*.core.v1.GetMachineUserCredentialsResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/GetMachineUserCredentials\x90\x02\x01\x12\xad\x01\n" +
 	"\x19CreateMachineUserPassword\x12).core.v1.CreateMachineUserPasswordRequest\x1a*.core.v1.CreateMachineUserPasswordResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/CreateMachineUserPassword\x12}\n" +
 	"\rCreateUserKey\x12\x1d.core.v1.CreateUserKeyRequest\x1a\x1e.core.v1.CreateUserKeyResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.UserService/CreateUserKey\x12\xa5\x01\n" +
@@ -2226,7 +2449,7 @@ func file_core_v1_user_proto_rawDescGZIP() []byte {
 	return file_core_v1_user_proto_rawDescData
 }
 
-var file_core_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
+var file_core_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_core_v1_user_proto_goTypes = []any{
 	(*ExternalId)(nil),                        // 0: core.v1.ExternalId
 	(*CreateUserRequest)(nil),                 // 1: core.v1.CreateUserRequest
@@ -2265,78 +2488,89 @@ var file_core_v1_user_proto_goTypes = []any{
 	(*CreateUserKeyResponse)(nil),             // 34: core.v1.CreateUserKeyResponse
 	(*DeleteHumanUserSessionsRequest)(nil),    // 35: core.v1.DeleteHumanUserSessionsRequest
 	(*DeleteHumanUserSessionsResponse)(nil),   // 36: core.v1.DeleteHumanUserSessionsResponse
-	(*timestamppb.Timestamp)(nil),             // 37: google.protobuf.Timestamp
-	(*User_Human)(nil),                        // 38: core.v1.User.Human
-	(*User_Machine)(nil),                      // 39: core.v1.User.Machine
-	(*User)(nil),                              // 40: core.v1.User
-	(*Filter)(nil),                            // 41: core.v1.Filter
-	(*ListMetadata)(nil),                      // 42: core.v1.ListMetadata
-	(*Group)(nil),                             // 43: core.v1.Group
+	(*HumanSignInSettings)(nil),               // 37: core.v1.HumanSignInSettings
+	(*GetHumanSignInSettingsRequest)(nil),     // 38: core.v1.GetHumanSignInSettingsRequest
+	(*GetHumanSignInSettingsResponse)(nil),    // 39: core.v1.GetHumanSignInSettingsResponse
+	(*UpdateHumanSignInSettingsRequest)(nil),  // 40: core.v1.UpdateHumanSignInSettingsRequest
+	(*UpdateHumanSignInSettingsResponse)(nil), // 41: core.v1.UpdateHumanSignInSettingsResponse
+	(*timestamppb.Timestamp)(nil),             // 42: google.protobuf.Timestamp
+	(*User_Human)(nil),                        // 43: core.v1.User.Human
+	(*User_Machine)(nil),                      // 44: core.v1.User.Machine
+	(*User)(nil),                              // 45: core.v1.User
+	(*Filter)(nil),                            // 46: core.v1.Filter
+	(*ListMetadata)(nil),                      // 47: core.v1.ListMetadata
+	(*Group)(nil),                             // 48: core.v1.Group
 }
 var file_core_v1_user_proto_depIdxs = []int32{
-	37, // 0: core.v1.ExternalId.created_at:type_name -> google.protobuf.Timestamp
-	37, // 1: core.v1.ExternalId.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 2: core.v1.CreateUserRequest.human:type_name -> core.v1.User.Human
-	39, // 3: core.v1.CreateUserRequest.machine:type_name -> core.v1.User.Machine
-	37, // 4: core.v1.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
-	40, // 5: core.v1.CreateUserResponse.user:type_name -> core.v1.User
-	41, // 6: core.v1.ListUsersRequest.filter:type_name -> core.v1.Filter
-	40, // 7: core.v1.ListUsersResponse.users:type_name -> core.v1.User
-	42, // 8: core.v1.ListUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
-	40, // 9: core.v1.GetUserResponse.user:type_name -> core.v1.User
-	40, // 10: core.v1.UpdateUserResponse.user:type_name -> core.v1.User
-	37, // 11: core.v1.UpdateUserExpiryRequest.expire_at:type_name -> google.protobuf.Timestamp
-	40, // 12: core.v1.UpdateUserV2Request.user:type_name -> core.v1.User
-	40, // 13: core.v1.UpdateUserV2Response.user:type_name -> core.v1.User
-	43, // 14: core.v1.CreateHumanUserPasswordResponse.groups:type_name -> core.v1.Group
-	37, // 15: core.v1.CreateHumanUserPasswordResponse.expires_at:type_name -> google.protobuf.Timestamp
-	37, // 16: core.v1.CreateHumanUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
-	37, // 17: core.v1.CreateMachineUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
+	42, // 0: core.v1.ExternalId.created_at:type_name -> google.protobuf.Timestamp
+	42, // 1: core.v1.ExternalId.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 2: core.v1.CreateUserRequest.human:type_name -> core.v1.User.Human
+	44, // 3: core.v1.CreateUserRequest.machine:type_name -> core.v1.User.Machine
+	42, // 4: core.v1.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
+	45, // 5: core.v1.CreateUserResponse.user:type_name -> core.v1.User
+	46, // 6: core.v1.ListUsersRequest.filter:type_name -> core.v1.Filter
+	45, // 7: core.v1.ListUsersResponse.users:type_name -> core.v1.User
+	47, // 8: core.v1.ListUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	45, // 9: core.v1.GetUserResponse.user:type_name -> core.v1.User
+	45, // 10: core.v1.UpdateUserResponse.user:type_name -> core.v1.User
+	42, // 11: core.v1.UpdateUserExpiryRequest.expire_at:type_name -> google.protobuf.Timestamp
+	45, // 12: core.v1.UpdateUserV2Request.user:type_name -> core.v1.User
+	45, // 13: core.v1.UpdateUserV2Response.user:type_name -> core.v1.User
+	48, // 14: core.v1.CreateHumanUserPasswordResponse.groups:type_name -> core.v1.Group
+	42, // 15: core.v1.CreateHumanUserPasswordResponse.expires_at:type_name -> google.protobuf.Timestamp
+	42, // 16: core.v1.CreateHumanUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
+	42, // 17: core.v1.CreateMachineUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
 	0,  // 18: core.v1.ListUserExternalIdsResponse.external_ids:type_name -> core.v1.ExternalId
-	42, // 19: core.v1.ListUserExternalIdsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	47, // 19: core.v1.ListUserExternalIdsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	0,  // 20: core.v1.CreateUserExternalIdResponse.external_id:type_name -> core.v1.ExternalId
-	37, // 21: core.v1.CreateUserKeyResponse.created_at:type_name -> google.protobuf.Timestamp
-	1,  // 22: core.v1.UserService.CreateUser:input_type -> core.v1.CreateUserRequest
-	7,  // 23: core.v1.UserService.DeleteUser:input_type -> core.v1.DeleteUserRequest
-	9,  // 24: core.v1.UserService.UpdateUser:input_type -> core.v1.UpdateUserRequest
-	11, // 25: core.v1.UserService.UpdateUserExpiry:input_type -> core.v1.UpdateUserExpiryRequest
-	13, // 26: core.v1.UserService.UpdateUserV2:input_type -> core.v1.UpdateUserV2Request
-	3,  // 27: core.v1.UserService.ListUsers:input_type -> core.v1.ListUsersRequest
-	5,  // 28: core.v1.UserService.GetUser:input_type -> core.v1.GetUserRequest
-	27, // 29: core.v1.UserService.DeleteBlockedUser:input_type -> core.v1.DeleteBlockedUserRequest
-	29, // 30: core.v1.UserService.CreateBlockedUser:input_type -> core.v1.CreateBlockedUserRequest
-	31, // 31: core.v1.UserService.GetBlockedUser:input_type -> core.v1.GetBlockedUserRequest
-	35, // 32: core.v1.UserService.DeleteHumanUserSessions:input_type -> core.v1.DeleteHumanUserSessionsRequest
-	15, // 33: core.v1.UserService.GetMachineUserCredentials:input_type -> core.v1.GetMachineUserCredentialsRequest
-	19, // 34: core.v1.UserService.CreateMachineUserPassword:input_type -> core.v1.CreateMachineUserPasswordRequest
-	33, // 35: core.v1.UserService.CreateUserKey:input_type -> core.v1.CreateUserKeyRequest
-	17, // 36: core.v1.UserService.CreateHumanUserPassword:input_type -> core.v1.CreateHumanUserPasswordRequest
-	21, // 37: core.v1.UserService.ListUserExternalIds:input_type -> core.v1.ListUserExternalIdsRequest
-	23, // 38: core.v1.UserService.CreateUserExternalId:input_type -> core.v1.CreateUserExternalIdRequest
-	25, // 39: core.v1.UserService.DeleteUserExternalId:input_type -> core.v1.DeleteUserExternalIdRequest
-	2,  // 40: core.v1.UserService.CreateUser:output_type -> core.v1.CreateUserResponse
-	8,  // 41: core.v1.UserService.DeleteUser:output_type -> core.v1.DeleteUserResponse
-	10, // 42: core.v1.UserService.UpdateUser:output_type -> core.v1.UpdateUserResponse
-	12, // 43: core.v1.UserService.UpdateUserExpiry:output_type -> core.v1.UpdateUserExpiryResponse
-	14, // 44: core.v1.UserService.UpdateUserV2:output_type -> core.v1.UpdateUserV2Response
-	4,  // 45: core.v1.UserService.ListUsers:output_type -> core.v1.ListUsersResponse
-	6,  // 46: core.v1.UserService.GetUser:output_type -> core.v1.GetUserResponse
-	28, // 47: core.v1.UserService.DeleteBlockedUser:output_type -> core.v1.DeleteBlockedUserResponse
-	30, // 48: core.v1.UserService.CreateBlockedUser:output_type -> core.v1.CreateBlockedUserResponse
-	32, // 49: core.v1.UserService.GetBlockedUser:output_type -> core.v1.GetBlockedUserResponse
-	36, // 50: core.v1.UserService.DeleteHumanUserSessions:output_type -> core.v1.DeleteHumanUserSessionsResponse
-	16, // 51: core.v1.UserService.GetMachineUserCredentials:output_type -> core.v1.GetMachineUserCredentialsResponse
-	20, // 52: core.v1.UserService.CreateMachineUserPassword:output_type -> core.v1.CreateMachineUserPasswordResponse
-	34, // 53: core.v1.UserService.CreateUserKey:output_type -> core.v1.CreateUserKeyResponse
-	18, // 54: core.v1.UserService.CreateHumanUserPassword:output_type -> core.v1.CreateHumanUserPasswordResponse
-	22, // 55: core.v1.UserService.ListUserExternalIds:output_type -> core.v1.ListUserExternalIdsResponse
-	24, // 56: core.v1.UserService.CreateUserExternalId:output_type -> core.v1.CreateUserExternalIdResponse
-	26, // 57: core.v1.UserService.DeleteUserExternalId:output_type -> core.v1.DeleteUserExternalIdResponse
-	40, // [40:58] is the sub-list for method output_type
-	22, // [22:40] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	42, // 21: core.v1.CreateUserKeyResponse.created_at:type_name -> google.protobuf.Timestamp
+	37, // 22: core.v1.GetHumanSignInSettingsResponse.settings:type_name -> core.v1.HumanSignInSettings
+	37, // 23: core.v1.UpdateHumanSignInSettingsResponse.settings:type_name -> core.v1.HumanSignInSettings
+	1,  // 24: core.v1.UserService.CreateUser:input_type -> core.v1.CreateUserRequest
+	7,  // 25: core.v1.UserService.DeleteUser:input_type -> core.v1.DeleteUserRequest
+	9,  // 26: core.v1.UserService.UpdateUser:input_type -> core.v1.UpdateUserRequest
+	11, // 27: core.v1.UserService.UpdateUserExpiry:input_type -> core.v1.UpdateUserExpiryRequest
+	13, // 28: core.v1.UserService.UpdateUserV2:input_type -> core.v1.UpdateUserV2Request
+	3,  // 29: core.v1.UserService.ListUsers:input_type -> core.v1.ListUsersRequest
+	5,  // 30: core.v1.UserService.GetUser:input_type -> core.v1.GetUserRequest
+	27, // 31: core.v1.UserService.DeleteBlockedUser:input_type -> core.v1.DeleteBlockedUserRequest
+	29, // 32: core.v1.UserService.CreateBlockedUser:input_type -> core.v1.CreateBlockedUserRequest
+	31, // 33: core.v1.UserService.GetBlockedUser:input_type -> core.v1.GetBlockedUserRequest
+	35, // 34: core.v1.UserService.DeleteHumanUserSessions:input_type -> core.v1.DeleteHumanUserSessionsRequest
+	38, // 35: core.v1.UserService.GetHumanSignInSettings:input_type -> core.v1.GetHumanSignInSettingsRequest
+	40, // 36: core.v1.UserService.UpdateHumanSignInSettings:input_type -> core.v1.UpdateHumanSignInSettingsRequest
+	15, // 37: core.v1.UserService.GetMachineUserCredentials:input_type -> core.v1.GetMachineUserCredentialsRequest
+	19, // 38: core.v1.UserService.CreateMachineUserPassword:input_type -> core.v1.CreateMachineUserPasswordRequest
+	33, // 39: core.v1.UserService.CreateUserKey:input_type -> core.v1.CreateUserKeyRequest
+	17, // 40: core.v1.UserService.CreateHumanUserPassword:input_type -> core.v1.CreateHumanUserPasswordRequest
+	21, // 41: core.v1.UserService.ListUserExternalIds:input_type -> core.v1.ListUserExternalIdsRequest
+	23, // 42: core.v1.UserService.CreateUserExternalId:input_type -> core.v1.CreateUserExternalIdRequest
+	25, // 43: core.v1.UserService.DeleteUserExternalId:input_type -> core.v1.DeleteUserExternalIdRequest
+	2,  // 44: core.v1.UserService.CreateUser:output_type -> core.v1.CreateUserResponse
+	8,  // 45: core.v1.UserService.DeleteUser:output_type -> core.v1.DeleteUserResponse
+	10, // 46: core.v1.UserService.UpdateUser:output_type -> core.v1.UpdateUserResponse
+	12, // 47: core.v1.UserService.UpdateUserExpiry:output_type -> core.v1.UpdateUserExpiryResponse
+	14, // 48: core.v1.UserService.UpdateUserV2:output_type -> core.v1.UpdateUserV2Response
+	4,  // 49: core.v1.UserService.ListUsers:output_type -> core.v1.ListUsersResponse
+	6,  // 50: core.v1.UserService.GetUser:output_type -> core.v1.GetUserResponse
+	28, // 51: core.v1.UserService.DeleteBlockedUser:output_type -> core.v1.DeleteBlockedUserResponse
+	30, // 52: core.v1.UserService.CreateBlockedUser:output_type -> core.v1.CreateBlockedUserResponse
+	32, // 53: core.v1.UserService.GetBlockedUser:output_type -> core.v1.GetBlockedUserResponse
+	36, // 54: core.v1.UserService.DeleteHumanUserSessions:output_type -> core.v1.DeleteHumanUserSessionsResponse
+	39, // 55: core.v1.UserService.GetHumanSignInSettings:output_type -> core.v1.GetHumanSignInSettingsResponse
+	41, // 56: core.v1.UserService.UpdateHumanSignInSettings:output_type -> core.v1.UpdateHumanSignInSettingsResponse
+	16, // 57: core.v1.UserService.GetMachineUserCredentials:output_type -> core.v1.GetMachineUserCredentialsResponse
+	20, // 58: core.v1.UserService.CreateMachineUserPassword:output_type -> core.v1.CreateMachineUserPasswordResponse
+	34, // 59: core.v1.UserService.CreateUserKey:output_type -> core.v1.CreateUserKeyResponse
+	18, // 60: core.v1.UserService.CreateHumanUserPassword:output_type -> core.v1.CreateHumanUserPasswordResponse
+	22, // 61: core.v1.UserService.ListUserExternalIds:output_type -> core.v1.ListUserExternalIdsResponse
+	24, // 62: core.v1.UserService.CreateUserExternalId:output_type -> core.v1.CreateUserExternalIdResponse
+	26, // 63: core.v1.UserService.DeleteUserExternalId:output_type -> core.v1.DeleteUserExternalIdResponse
+	44, // [44:64] is the sub-list for method output_type
+	24, // [24:44] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_user_proto_init() }
@@ -2364,7 +2598,7 @@ func file_core_v1_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_user_proto_rawDesc), len(file_core_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   37,
+			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

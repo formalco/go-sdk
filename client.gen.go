@@ -4379,6 +4379,17 @@ func (c *UserServiceClient) GetBlockedUser(ctx context.Context, req *corev1.GetB
 	return res.Msg, nil
 }
 
+// Get human sign-in settings
+//
+// Whether new human sign-ins are currently suspended for the organization.
+func (c *UserServiceClient) GetHumanSignInSettings(ctx context.Context, req *corev1.GetHumanSignInSettingsRequest) (*corev1.GetHumanSignInSettingsResponse, error) {
+	res, err := c.inner.GetHumanSignInSettings(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Get machine user credentials
 //
 // Get a machine user credentials
@@ -4417,6 +4428,18 @@ func (c *UserServiceClient) ListUserExternalIds(ctx context.Context, req *corev1
 // List all users
 func (c *UserServiceClient) ListUsers(ctx context.Context, req *corev1.ListUsersRequest) (*corev1.ListUsersResponse, error) {
 	res, err := c.inner.ListUsers(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update human sign-in settings
+//
+// Suspend or resume new human sign-ins (Formal Endpoint logins and access token creation) for the
+// organization. Existing sessions and tokens are not affected; use DeleteHumanUserSessions for that.
+func (c *UserServiceClient) UpdateHumanSignInSettings(ctx context.Context, req *corev1.UpdateHumanSignInSettingsRequest) (*corev1.UpdateHumanSignInSettingsResponse, error) {
+	res, err := c.inner.UpdateHumanSignInSettings(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
