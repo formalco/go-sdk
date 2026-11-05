@@ -1305,7 +1305,7 @@ type OAuthLink struct {
 	// The scopes the authorization server granted; empty when it did not say.
 	Scopes []string `protobuf:"bytes,8,rep,name=scopes,proto3" json:"scopes,omitempty"`
 	// How Formal identified itself to the authorization server: "cimd",
-	// "pre_registered", or "managed".
+	// "pre_registered", "managed", or "dcr".
 	ClientSource string `protobuf:"bytes,9,opt,name=client_source,json=clientSource,proto3" json:"client_source,omitempty"`
 	// Whether Formal holds a refresh token and keeps the access token fresh.
 	Refreshable bool `protobuf:"varint,10,opt,name=refreshable,proto3" json:"refreshable,omitempty"`

@@ -127,7 +127,9 @@ type ResourceOAuthSettings struct {
 	// "formal" uses Formal's app: a client Formal registered with the
 	// authorization server when there is one, and otherwise its Client ID Metadata
 	// Document client. "pre_registered" uses a client the organization registered
-	// with the authorization server, such as a GitHub OAuth app. "none" links no
+	// with the authorization server, such as a GitHub OAuth app. "dcr" uses a
+	// client Formal registered for these settings through dynamic client
+	// registration (RFC 7591) when they were created. "none" links no
 	// upstream account: the Connector authenticates upstream with the user's
 	// native user.
 	UpstreamOauthMode string `protobuf:"bytes,3,opt,name=upstream_oauth_mode,json=upstreamOauthMode,proto3" json:"upstream_oauth_mode,omitempty"`
@@ -139,10 +141,11 @@ type ResourceOAuthSettings struct {
 	RequestedScopes []string               `protobuf:"bytes,4,rep,name=requested_scopes,json=requestedScopes,proto3" json:"requested_scopes,omitempty"`
 	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// The pre-registered client's ID. Set only when upstream_oauth_mode is
-	// "pre_registered".
+	// The client's ID: the pre-registered client's when upstream_oauth_mode is
+	// "pre_registered", the dynamically registered client's when it is "dcr", and
+	// otherwise empty.
 	ClientId string `protobuf:"bytes,7,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
-	// Whether the pre-registered client has a secret. The secret is never returned.
+	// Whether the client has a secret. The secret is never returned.
 	ClientSecretSet bool `protobuf:"varint,8,opt,name=client_secret_set,json=clientSecretSet,proto3" json:"client_secret_set,omitempty"`
 	// The upstream authorization server's issuer. Set when the upstream publishes
 	// no protected resource metadata (RFC 9728); unset means the authorization
@@ -267,7 +270,11 @@ type CreateResourceOAuthSettingsRequest struct {
 	// must use https, have no query or fragment, and match the issuer the
 	// metadata reports exactly. Must be unset when upstream_oauth_mode is "none".
 	// Creation fails with FAILED_PRECONDITION when Formal cannot link accounts
-	// with the authorization server in the requested mode.
+	// with the authorization server in the requested mode. In mode "dcr",
+	// creation registers a client with the authorization server's
+	// registration_endpoint, and fails with FAILED_PRECONDITION when the server
+	// offers no registration or rejects it. Formal never registers again: replace
+	// the settings to register a new client, which unlinks every account.
 	Issuer        *string `protobuf:"bytes,6,opt,name=issuer,proto3,oneof" json:"issuer,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -8646,11 +8653,11 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\tclient_id\x18\a \x01(\tR\bclientId\x12*\n" +
 	"\x11client_secret_set\x18\b \x01(\bR\x0fclientSecretSet\x12\x1b\n" +
 	"\x06issuer\x18\t \x01(\tH\x00R\x06issuer\x88\x01\x01B\t\n" +
-	"\a_issuer\"\xb7\x03\n" +
+	"\a_issuer\"\xbc\x03\n" +
 	"\"CreateResourceOAuthSettingsRequest\x12(\n" +
 	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12U\n" +
-	"\x13upstream_oauth_mode\x18\x02 \x01(\tB%\xbaH\"r R\x00R\x06formalR\x0epre_registeredR\x04noneR\x11upstreamOauthMode\x12\\\n" +
+	"resourceId\x12Z\n" +
+	"\x13upstream_oauth_mode\x18\x02 \x01(\tB*\xbaH'r%R\x00R\x06formalR\x0epre_registeredR\x03dcrR\x04noneR\x11upstreamOauthMode\x12\\\n" +
 	"\x10requested_scopes\x18\x03 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\x12=\n" +
 	"\tclient_id\x18\x04 \x01(\tB\x1b\xbaH\x18r\x162\x14^[\\x21-\\x7E]{1,512}$H\x00R\bclientId\x88\x01\x01\x120\n" +
 	"\rclient_secret\x18\x05 \x01(\tB\v\xbaH\x05r\x03\x18\x80\b\x80\x01\x01R\fclientSecret\x12(\n" +
