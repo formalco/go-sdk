@@ -14,8 +14,8 @@ require (
 	github.com/samber/lo v1.53.0
 	github.com/samber/mo v1.17.0
 	github.com/spiffe/go-spiffe/v2 v2.9.0
-	github.com/tidwall/gjson v1.20.0
-	github.com/tidwall/sjson v1.2.6
+	github.com/tidwall/gjson v1.20.1
+	github.com/tidwall/sjson v1.2.7
 	google.golang.org/genproto/googleapis/api v0.0.0-20261104224025-d1e00e9f33ab
 	google.golang.org/protobuf v1.36.12
 )
