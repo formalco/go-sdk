@@ -4446,6 +4446,18 @@ func (c *UserServiceClient) UpdateHumanSignInSettings(ctx context.Context, req *
 	return res.Msg, nil
 }
 
+// Rotate every machine user's connector password in the organization
+//
+// All passwords change in one transaction or none do. Each previous password stops working as
+// soon as connectors receive the new one; the new passwords are returned once.
+func (c *UserServiceClient) UpdateMachineUserPasswords(ctx context.Context, req *corev1.UpdateMachineUserPasswordsRequest) (*corev1.UpdateMachineUserPasswordsResponse, error) {
+	res, err := c.inner.UpdateMachineUserPasswords(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Update user
 //
 // Update a user

@@ -61,6 +61,9 @@ const (
 	// UserServiceDeleteHumanUserSessionsProcedure is the fully-qualified name of the UserService's
 	// DeleteHumanUserSessions RPC.
 	UserServiceDeleteHumanUserSessionsProcedure = "/core.v1.UserService/DeleteHumanUserSessions"
+	// UserServiceUpdateMachineUserPasswordsProcedure is the fully-qualified name of the UserService's
+	// UpdateMachineUserPasswords RPC.
+	UserServiceUpdateMachineUserPasswordsProcedure = "/core.v1.UserService/UpdateMachineUserPasswords"
 	// UserServiceGetHumanSignInSettingsProcedure is the fully-qualified name of the UserService's
 	// GetHumanSignInSettings RPC.
 	UserServiceGetHumanSignInSettingsProcedure = "/core.v1.UserService/GetHumanSignInSettings"
@@ -137,6 +140,11 @@ type UserServiceClient interface {
 	// Log every human user in the organization out of Formal Endpoint and revoke their
 	// connector access tokens, forcing them to authenticate again. Machine users are not affected.
 	DeleteHumanUserSessions(context.Context, *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error)
+	// Rotate every machine user's connector password in the organization
+	//
+	// All passwords change in one transaction or none do. Each previous password stops working as
+	// soon as connectors receive the new one; the new passwords are returned once.
+	UpdateMachineUserPasswords(context.Context, *connect.Request[v1.UpdateMachineUserPasswordsRequest]) (*connect.Response[v1.UpdateMachineUserPasswordsResponse], error)
 	// Get human sign-in settings
 	//
 	// Whether new human sign-ins are currently suspended for the organization.
@@ -256,6 +264,12 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("DeleteHumanUserSessions")),
 			connect.WithClientOptions(opts...),
 		),
+		updateMachineUserPasswords: connect.NewClient[v1.UpdateMachineUserPasswordsRequest, v1.UpdateMachineUserPasswordsResponse](
+			httpClient,
+			baseURL+UserServiceUpdateMachineUserPasswordsProcedure,
+			connect.WithSchema(userServiceMethods.ByName("UpdateMachineUserPasswords")),
+			connect.WithClientOptions(opts...),
+		),
 		getHumanSignInSettings: connect.NewClient[v1.GetHumanSignInSettingsRequest, v1.GetHumanSignInSettingsResponse](
 			httpClient,
 			baseURL+UserServiceGetHumanSignInSettingsProcedure,
@@ -318,26 +332,27 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // userServiceClient implements UserServiceClient.
 type userServiceClient struct {
-	createUser                *connect.Client[v1.CreateUserRequest, v1.CreateUserResponse]
-	deleteUser                *connect.Client[v1.DeleteUserRequest, v1.DeleteUserResponse]
-	updateUser                *connect.Client[v1.UpdateUserRequest, v1.UpdateUserResponse]
-	updateUserExpiry          *connect.Client[v1.UpdateUserExpiryRequest, v1.UpdateUserExpiryResponse]
-	updateUserV2              *connect.Client[v1.UpdateUserV2Request, v1.UpdateUserV2Response]
-	listUsers                 *connect.Client[v1.ListUsersRequest, v1.ListUsersResponse]
-	getUser                   *connect.Client[v1.GetUserRequest, v1.GetUserResponse]
-	deleteBlockedUser         *connect.Client[v1.DeleteBlockedUserRequest, v1.DeleteBlockedUserResponse]
-	createBlockedUser         *connect.Client[v1.CreateBlockedUserRequest, v1.CreateBlockedUserResponse]
-	getBlockedUser            *connect.Client[v1.GetBlockedUserRequest, v1.GetBlockedUserResponse]
-	deleteHumanUserSessions   *connect.Client[v1.DeleteHumanUserSessionsRequest, v1.DeleteHumanUserSessionsResponse]
-	getHumanSignInSettings    *connect.Client[v1.GetHumanSignInSettingsRequest, v1.GetHumanSignInSettingsResponse]
-	updateHumanSignInSettings *connect.Client[v1.UpdateHumanSignInSettingsRequest, v1.UpdateHumanSignInSettingsResponse]
-	getMachineUserCredentials *connect.Client[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse]
-	createMachineUserPassword *connect.Client[v1.CreateMachineUserPasswordRequest, v1.CreateMachineUserPasswordResponse]
-	createUserKey             *connect.Client[v1.CreateUserKeyRequest, v1.CreateUserKeyResponse]
-	createHumanUserPassword   *connect.Client[v1.CreateHumanUserPasswordRequest, v1.CreateHumanUserPasswordResponse]
-	listUserExternalIds       *connect.Client[v1.ListUserExternalIdsRequest, v1.ListUserExternalIdsResponse]
-	createUserExternalId      *connect.Client[v1.CreateUserExternalIdRequest, v1.CreateUserExternalIdResponse]
-	deleteUserExternalId      *connect.Client[v1.DeleteUserExternalIdRequest, v1.DeleteUserExternalIdResponse]
+	createUser                 *connect.Client[v1.CreateUserRequest, v1.CreateUserResponse]
+	deleteUser                 *connect.Client[v1.DeleteUserRequest, v1.DeleteUserResponse]
+	updateUser                 *connect.Client[v1.UpdateUserRequest, v1.UpdateUserResponse]
+	updateUserExpiry           *connect.Client[v1.UpdateUserExpiryRequest, v1.UpdateUserExpiryResponse]
+	updateUserV2               *connect.Client[v1.UpdateUserV2Request, v1.UpdateUserV2Response]
+	listUsers                  *connect.Client[v1.ListUsersRequest, v1.ListUsersResponse]
+	getUser                    *connect.Client[v1.GetUserRequest, v1.GetUserResponse]
+	deleteBlockedUser          *connect.Client[v1.DeleteBlockedUserRequest, v1.DeleteBlockedUserResponse]
+	createBlockedUser          *connect.Client[v1.CreateBlockedUserRequest, v1.CreateBlockedUserResponse]
+	getBlockedUser             *connect.Client[v1.GetBlockedUserRequest, v1.GetBlockedUserResponse]
+	deleteHumanUserSessions    *connect.Client[v1.DeleteHumanUserSessionsRequest, v1.DeleteHumanUserSessionsResponse]
+	updateMachineUserPasswords *connect.Client[v1.UpdateMachineUserPasswordsRequest, v1.UpdateMachineUserPasswordsResponse]
+	getHumanSignInSettings     *connect.Client[v1.GetHumanSignInSettingsRequest, v1.GetHumanSignInSettingsResponse]
+	updateHumanSignInSettings  *connect.Client[v1.UpdateHumanSignInSettingsRequest, v1.UpdateHumanSignInSettingsResponse]
+	getMachineUserCredentials  *connect.Client[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse]
+	createMachineUserPassword  *connect.Client[v1.CreateMachineUserPasswordRequest, v1.CreateMachineUserPasswordResponse]
+	createUserKey              *connect.Client[v1.CreateUserKeyRequest, v1.CreateUserKeyResponse]
+	createHumanUserPassword    *connect.Client[v1.CreateHumanUserPasswordRequest, v1.CreateHumanUserPasswordResponse]
+	listUserExternalIds        *connect.Client[v1.ListUserExternalIdsRequest, v1.ListUserExternalIdsResponse]
+	createUserExternalId       *connect.Client[v1.CreateUserExternalIdRequest, v1.CreateUserExternalIdResponse]
+	deleteUserExternalId       *connect.Client[v1.DeleteUserExternalIdRequest, v1.DeleteUserExternalIdResponse]
 }
 
 // CreateUser calls core.v1.UserService.CreateUser.
@@ -393,6 +408,11 @@ func (c *userServiceClient) GetBlockedUser(ctx context.Context, req *connect.Req
 // DeleteHumanUserSessions calls core.v1.UserService.DeleteHumanUserSessions.
 func (c *userServiceClient) DeleteHumanUserSessions(ctx context.Context, req *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error) {
 	return c.deleteHumanUserSessions.CallUnary(ctx, req)
+}
+
+// UpdateMachineUserPasswords calls core.v1.UserService.UpdateMachineUserPasswords.
+func (c *userServiceClient) UpdateMachineUserPasswords(ctx context.Context, req *connect.Request[v1.UpdateMachineUserPasswordsRequest]) (*connect.Response[v1.UpdateMachineUserPasswordsResponse], error) {
+	return c.updateMachineUserPasswords.CallUnary(ctx, req)
 }
 
 // GetHumanSignInSettings calls core.v1.UserService.GetHumanSignInSettings.
@@ -487,6 +507,11 @@ type UserServiceHandler interface {
 	// Log every human user in the organization out of Formal Endpoint and revoke their
 	// connector access tokens, forcing them to authenticate again. Machine users are not affected.
 	DeleteHumanUserSessions(context.Context, *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error)
+	// Rotate every machine user's connector password in the organization
+	//
+	// All passwords change in one transaction or none do. Each previous password stops working as
+	// soon as connectors receive the new one; the new passwords are returned once.
+	UpdateMachineUserPasswords(context.Context, *connect.Request[v1.UpdateMachineUserPasswordsRequest]) (*connect.Response[v1.UpdateMachineUserPasswordsResponse], error)
 	// Get human sign-in settings
 	//
 	// Whether new human sign-ins are currently suspended for the organization.
@@ -602,6 +627,12 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(userServiceMethods.ByName("DeleteHumanUserSessions")),
 		connect.WithHandlerOptions(opts...),
 	)
+	userServiceUpdateMachineUserPasswordsHandler := connect.NewUnaryHandler(
+		UserServiceUpdateMachineUserPasswordsProcedure,
+		svc.UpdateMachineUserPasswords,
+		connect.WithSchema(userServiceMethods.ByName("UpdateMachineUserPasswords")),
+		connect.WithHandlerOptions(opts...),
+	)
 	userServiceGetHumanSignInSettingsHandler := connect.NewUnaryHandler(
 		UserServiceGetHumanSignInSettingsProcedure,
 		svc.GetHumanSignInSettings,
@@ -683,6 +714,8 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceGetBlockedUserHandler.ServeHTTP(w, r)
 		case UserServiceDeleteHumanUserSessionsProcedure:
 			userServiceDeleteHumanUserSessionsHandler.ServeHTTP(w, r)
+		case UserServiceUpdateMachineUserPasswordsProcedure:
+			userServiceUpdateMachineUserPasswordsHandler.ServeHTTP(w, r)
 		case UserServiceGetHumanSignInSettingsProcedure:
 			userServiceGetHumanSignInSettingsHandler.ServeHTTP(w, r)
 		case UserServiceUpdateHumanSignInSettingsProcedure:
@@ -752,6 +785,10 @@ func (UnimplementedUserServiceHandler) GetBlockedUser(context.Context, *connect.
 
 func (UnimplementedUserServiceHandler) DeleteHumanUserSessions(context.Context, *connect.Request[v1.DeleteHumanUserSessionsRequest]) (*connect.Response[v1.DeleteHumanUserSessionsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.DeleteHumanUserSessions is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) UpdateMachineUserPasswords(context.Context, *connect.Request[v1.UpdateMachineUserPasswordsRequest]) (*connect.Response[v1.UpdateMachineUserPasswordsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateMachineUserPasswords is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) GetHumanSignInSettings(context.Context, *connect.Request[v1.GetHumanSignInSettingsRequest]) (*connect.Response[v1.GetHumanSignInSettingsResponse], error) {
