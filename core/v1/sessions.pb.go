@@ -38,6 +38,7 @@ type SessionObject struct {
 	Resource        *SessionObject_Resource  `protobuf:"bytes,9,opt,name=resource,proto3" json:"resource,omitempty"`
 	Connector       *SessionObject_Connector `protobuf:"bytes,10,opt,name=connector,proto3" json:"connector,omitempty"`
 	ParentSessionId string                   `protobuf:"bytes,11,opt,name=parent_session_id,json=parentSessionId,proto3" json:"parent_session_id,omitempty"`
+	LastActiveTime  *timestamppb.Timestamp   `protobuf:"bytes,12,opt,name=last_active_time,json=lastActiveTime,proto3" json:"last_active_time,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -147,6 +148,13 @@ func (x *SessionObject) GetParentSessionId() string {
 		return x.ParentSessionId
 	}
 	return ""
+}
+
+func (x *SessionObject) GetLastActiveTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LastActiveTime
+	}
+	return nil
 }
 
 type ListSessionsResponse struct {
@@ -1637,7 +1645,7 @@ var File_core_v1_sessions_proto protoreflect.FileDescriptor
 
 const file_core_v1_sessions_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/sessions.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa5\v\n" +
+	"\x16core/v1/sessions.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xeb\v\n" +
 	"\rSessionObject\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
@@ -1651,7 +1659,8 @@ const file_core_v1_sessions_proto_rawDesc = "" +
 	"\bresource\x18\t \x01(\v2\x1f.core.v1.SessionObject.ResourceR\bresource\x12>\n" +
 	"\tconnector\x18\n" +
 	" \x01(\v2 .core.v1.SessionObject.ConnectorR\tconnector\x12*\n" +
-	"\x11parent_session_id\x18\v \x01(\tR\x0fparentSessionId\x1aa\n" +
+	"\x11parent_session_id\x18\v \x01(\tR\x0fparentSessionId\x12D\n" +
+	"\x10last_active_time\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\x0elastActiveTime\x1aa\n" +
 	"\aNetwork\x12*\n" +
 	"\x11client_ip_address\x18\x01 \x01(\tR\x0fclientIpAddress\x12*\n" +
 	"\x11server_ip_address\x18\x02 \x01(\tR\x0fserverIpAddress\x1aM\n" +
@@ -1837,67 +1846,68 @@ var file_core_v1_sessions_proto_depIdxs = []int32{
 	12, // 5: core.v1.SessionObject.user:type_name -> core.v1.SessionObject.User
 	13, // 6: core.v1.SessionObject.resource:type_name -> core.v1.SessionObject.Resource
 	14, // 7: core.v1.SessionObject.connector:type_name -> core.v1.SessionObject.Connector
-	0,  // 8: core.v1.ListSessionsResponse.sessions:type_name -> core.v1.SessionObject
-	18, // 9: core.v1.ListSessionsResponse.aggregations:type_name -> core.v1.ListSessionsResponse.Aggregations
-	24, // 10: core.v1.ListSessionsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	0,  // 11: core.v1.GetSessionResponse.session:type_name -> core.v1.SessionObject
-	25, // 12: core.v1.CreateSessionTerminationResponse.session_shutdown:type_name -> core.v1.SessionShutdown
-	0,  // 13: core.v1.ListSessionsV2Response.sessions:type_name -> core.v1.SessionObject
-	24, // 14: core.v1.ListSessionsV2Response.list_metadata:type_name -> core.v1.ListMetadata
-	18, // 15: core.v1.ListSessionAggregationsResponse.aggregations:type_name -> core.v1.ListSessionsResponse.Aggregations
-	15, // 16: core.v1.SessionObject.User.formal:type_name -> core.v1.SessionObject.User.Formal
-	16, // 17: core.v1.SessionObject.User.native:type_name -> core.v1.SessionObject.User.Native
-	17, // 18: core.v1.SessionObject.User.Formal.user:type_name -> core.v1.SessionObject.User.Formal.UserInfo
-	17, // 19: core.v1.SessionObject.User.Formal.end_user:type_name -> core.v1.SessionObject.User.Formal.UserInfo
-	21, // 20: core.v1.ListSessionsResponse.Aggregations.logs_over_time:type_name -> core.v1.ListSessionsResponse.DateBucket
-	19, // 21: core.v1.ListSessionsResponse.Aggregations.session_types:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 22: core.v1.ListSessionsResponse.Aggregations.session_ids:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 23: core.v1.ListSessionsResponse.Aggregations.session_client_ip_addresses:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 24: core.v1.ListSessionsResponse.Aggregations.session_server_ip_addresses:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 25: core.v1.ListSessionsResponse.Aggregations.query_fingerprints:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 26: core.v1.ListSessionsResponse.Aggregations.query_received:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 27: core.v1.ListSessionsResponse.Aggregations.query_sent:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 28: core.v1.ListSessionsResponse.Aggregations.resource_ids:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 29: core.v1.ListSessionsResponse.Aggregations.resource_names:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 30: core.v1.ListSessionsResponse.Aggregations.resource_types:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 31: core.v1.ListSessionsResponse.Aggregations.resource_hostnames:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 32: core.v1.ListSessionsResponse.Aggregations.resource_technologies:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 33: core.v1.ListSessionsResponse.Aggregations.connector_names:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 34: core.v1.ListSessionsResponse.Aggregations.connector_ids:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 35: core.v1.ListSessionsResponse.Aggregations.space_names:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 36: core.v1.ListSessionsResponse.Aggregations.space_ids:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 37: core.v1.ListSessionsResponse.Aggregations.user_types:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 38: core.v1.ListSessionsResponse.Aggregations.user_sub_types:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 39: core.v1.ListSessionsResponse.Aggregations.user_emails:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 40: core.v1.ListSessionsResponse.Aggregations.user_usernames:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 41: core.v1.ListSessionsResponse.Aggregations.user_ids:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 42: core.v1.ListSessionsResponse.Aggregations.end_user_types:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 43: core.v1.ListSessionsResponse.Aggregations.end_user_names:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 44: core.v1.ListSessionsResponse.Aggregations.end_user_emails:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 45: core.v1.ListSessionsResponse.Aggregations.triggered_policy_ids:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 46: core.v1.ListSessionsResponse.Aggregations.triggered_policy_names:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 47: core.v1.ListSessionsResponse.Aggregations.triggered_policy_statuses:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 48: core.v1.ListSessionsResponse.Aggregations.triggered_policy_types:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 49: core.v1.ListSessionsResponse.Aggregations.response_data_volumes:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 50: core.v1.ListSessionsResponse.Aggregations.response_returned_column_names:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 51: core.v1.ListSessionsResponse.Aggregations.response_returned_column_data_labels:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 52: core.v1.ListSessionsResponse.Aggregations.response_rows_sent:type_name -> core.v1.ListSessionsResponse.Bucket
-	19, // 53: core.v1.ListSessionsResponse.Aggregations.response_rows_received:type_name -> core.v1.ListSessionsResponse.Bucket
-	20, // 54: core.v1.ListSessionsResponse.GroupByBucket.buckets:type_name -> core.v1.ListSessionsResponse.GroupByBucket
-	20, // 55: core.v1.ListSessionsResponse.DateBucket.buckets:type_name -> core.v1.ListSessionsResponse.GroupByBucket
-	2,  // 56: core.v1.SessionsService.GetSession:input_type -> core.v1.GetSessionRequest
-	6,  // 57: core.v1.SessionsService.ListSessionsV2:input_type -> core.v1.ListSessionsV2Request
-	8,  // 58: core.v1.SessionsService.ListSessionAggregations:input_type -> core.v1.ListSessionAggregationsRequest
-	4,  // 59: core.v1.SessionsService.CreateSessionTermination:input_type -> core.v1.CreateSessionTerminationRequest
-	3,  // 60: core.v1.SessionsService.GetSession:output_type -> core.v1.GetSessionResponse
-	7,  // 61: core.v1.SessionsService.ListSessionsV2:output_type -> core.v1.ListSessionsV2Response
-	9,  // 62: core.v1.SessionsService.ListSessionAggregations:output_type -> core.v1.ListSessionAggregationsResponse
-	5,  // 63: core.v1.SessionsService.CreateSessionTermination:output_type -> core.v1.CreateSessionTerminationResponse
-	60, // [60:64] is the sub-list for method output_type
-	56, // [56:60] is the sub-list for method input_type
-	56, // [56:56] is the sub-list for extension type_name
-	56, // [56:56] is the sub-list for extension extendee
-	0,  // [0:56] is the sub-list for field type_name
+	22, // 8: core.v1.SessionObject.last_active_time:type_name -> google.protobuf.Timestamp
+	0,  // 9: core.v1.ListSessionsResponse.sessions:type_name -> core.v1.SessionObject
+	18, // 10: core.v1.ListSessionsResponse.aggregations:type_name -> core.v1.ListSessionsResponse.Aggregations
+	24, // 11: core.v1.ListSessionsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	0,  // 12: core.v1.GetSessionResponse.session:type_name -> core.v1.SessionObject
+	25, // 13: core.v1.CreateSessionTerminationResponse.session_shutdown:type_name -> core.v1.SessionShutdown
+	0,  // 14: core.v1.ListSessionsV2Response.sessions:type_name -> core.v1.SessionObject
+	24, // 15: core.v1.ListSessionsV2Response.list_metadata:type_name -> core.v1.ListMetadata
+	18, // 16: core.v1.ListSessionAggregationsResponse.aggregations:type_name -> core.v1.ListSessionsResponse.Aggregations
+	15, // 17: core.v1.SessionObject.User.formal:type_name -> core.v1.SessionObject.User.Formal
+	16, // 18: core.v1.SessionObject.User.native:type_name -> core.v1.SessionObject.User.Native
+	17, // 19: core.v1.SessionObject.User.Formal.user:type_name -> core.v1.SessionObject.User.Formal.UserInfo
+	17, // 20: core.v1.SessionObject.User.Formal.end_user:type_name -> core.v1.SessionObject.User.Formal.UserInfo
+	21, // 21: core.v1.ListSessionsResponse.Aggregations.logs_over_time:type_name -> core.v1.ListSessionsResponse.DateBucket
+	19, // 22: core.v1.ListSessionsResponse.Aggregations.session_types:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 23: core.v1.ListSessionsResponse.Aggregations.session_ids:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 24: core.v1.ListSessionsResponse.Aggregations.session_client_ip_addresses:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 25: core.v1.ListSessionsResponse.Aggregations.session_server_ip_addresses:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 26: core.v1.ListSessionsResponse.Aggregations.query_fingerprints:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 27: core.v1.ListSessionsResponse.Aggregations.query_received:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 28: core.v1.ListSessionsResponse.Aggregations.query_sent:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 29: core.v1.ListSessionsResponse.Aggregations.resource_ids:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 30: core.v1.ListSessionsResponse.Aggregations.resource_names:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 31: core.v1.ListSessionsResponse.Aggregations.resource_types:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 32: core.v1.ListSessionsResponse.Aggregations.resource_hostnames:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 33: core.v1.ListSessionsResponse.Aggregations.resource_technologies:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 34: core.v1.ListSessionsResponse.Aggregations.connector_names:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 35: core.v1.ListSessionsResponse.Aggregations.connector_ids:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 36: core.v1.ListSessionsResponse.Aggregations.space_names:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 37: core.v1.ListSessionsResponse.Aggregations.space_ids:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 38: core.v1.ListSessionsResponse.Aggregations.user_types:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 39: core.v1.ListSessionsResponse.Aggregations.user_sub_types:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 40: core.v1.ListSessionsResponse.Aggregations.user_emails:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 41: core.v1.ListSessionsResponse.Aggregations.user_usernames:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 42: core.v1.ListSessionsResponse.Aggregations.user_ids:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 43: core.v1.ListSessionsResponse.Aggregations.end_user_types:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 44: core.v1.ListSessionsResponse.Aggregations.end_user_names:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 45: core.v1.ListSessionsResponse.Aggregations.end_user_emails:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 46: core.v1.ListSessionsResponse.Aggregations.triggered_policy_ids:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 47: core.v1.ListSessionsResponse.Aggregations.triggered_policy_names:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 48: core.v1.ListSessionsResponse.Aggregations.triggered_policy_statuses:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 49: core.v1.ListSessionsResponse.Aggregations.triggered_policy_types:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 50: core.v1.ListSessionsResponse.Aggregations.response_data_volumes:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 51: core.v1.ListSessionsResponse.Aggregations.response_returned_column_names:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 52: core.v1.ListSessionsResponse.Aggregations.response_returned_column_data_labels:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 53: core.v1.ListSessionsResponse.Aggregations.response_rows_sent:type_name -> core.v1.ListSessionsResponse.Bucket
+	19, // 54: core.v1.ListSessionsResponse.Aggregations.response_rows_received:type_name -> core.v1.ListSessionsResponse.Bucket
+	20, // 55: core.v1.ListSessionsResponse.GroupByBucket.buckets:type_name -> core.v1.ListSessionsResponse.GroupByBucket
+	20, // 56: core.v1.ListSessionsResponse.DateBucket.buckets:type_name -> core.v1.ListSessionsResponse.GroupByBucket
+	2,  // 57: core.v1.SessionsService.GetSession:input_type -> core.v1.GetSessionRequest
+	6,  // 58: core.v1.SessionsService.ListSessionsV2:input_type -> core.v1.ListSessionsV2Request
+	8,  // 59: core.v1.SessionsService.ListSessionAggregations:input_type -> core.v1.ListSessionAggregationsRequest
+	4,  // 60: core.v1.SessionsService.CreateSessionTermination:input_type -> core.v1.CreateSessionTerminationRequest
+	3,  // 61: core.v1.SessionsService.GetSession:output_type -> core.v1.GetSessionResponse
+	7,  // 62: core.v1.SessionsService.ListSessionsV2:output_type -> core.v1.ListSessionsV2Response
+	9,  // 63: core.v1.SessionsService.ListSessionAggregations:output_type -> core.v1.ListSessionAggregationsResponse
+	5,  // 64: core.v1.SessionsService.CreateSessionTermination:output_type -> core.v1.CreateSessionTerminationResponse
+	61, // [61:65] is the sub-list for method output_type
+	57, // [57:61] is the sub-list for method input_type
+	57, // [57:57] is the sub-list for extension type_name
+	57, // [57:57] is the sub-list for extension extendee
+	0,  // [0:57] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_sessions_proto_init() }
