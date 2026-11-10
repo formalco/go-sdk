@@ -16,6 +16,7 @@ type Client struct {
 	ApprovalServiceClient              *ApprovalServiceClient
 	ChangeAuthorizationServiceClient   *ChangeAuthorizationServiceClient
 	ConnectorServiceClient             *ConnectorServiceClient
+	DashboardServiceClient             *DashboardServiceClient
 	DesktopServiceClient               *DesktopServiceClient
 	GraphServiceClient                 *GraphServiceClient
 	GroupServiceClient                 *GroupServiceClient
@@ -37,7 +38,6 @@ type Client struct {
 	PermissionsServiceClient           *PermissionsServiceClient
 	PoliciesServiceClient              *PoliciesServiceClient
 	PolicyDataLoaderServiceClient      *PolicyDataLoaderServiceClient
-	ReportServiceClient                *ReportServiceClient
 	ResourceServiceClient              *ResourceServiceClient
 	SatelliteServiceClient             *SatelliteServiceClient
 	ScenarioMonitoringServiceClient    *ScenarioMonitoringServiceClient
@@ -57,6 +57,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		ApprovalServiceClient:              &ApprovalServiceClient{inner: corev1connect.NewApprovalServiceClient(httpClient, baseURL)},
 		ChangeAuthorizationServiceClient:   &ChangeAuthorizationServiceClient{inner: corev1connect.NewChangeAuthorizationServiceClient(httpClient, baseURL)},
 		ConnectorServiceClient:             &ConnectorServiceClient{inner: corev1connect.NewConnectorServiceClient(httpClient, baseURL)},
+		DashboardServiceClient:             &DashboardServiceClient{inner: corev1connect.NewDashboardServiceClient(httpClient, baseURL)},
 		DesktopServiceClient:               &DesktopServiceClient{inner: corev1connect.NewDesktopServiceClient(httpClient, baseURL)},
 		GraphServiceClient:                 &GraphServiceClient{inner: corev1connect.NewGraphServiceClient(httpClient, baseURL)},
 		GroupServiceClient:                 &GroupServiceClient{inner: corev1connect.NewGroupServiceClient(httpClient, baseURL)},
@@ -78,7 +79,6 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		PermissionsServiceClient:           &PermissionsServiceClient{inner: corev1connect.NewPermissionsServiceClient(httpClient, baseURL)},
 		PoliciesServiceClient:              &PoliciesServiceClient{inner: corev1connect.NewPoliciesServiceClient(httpClient, baseURL)},
 		PolicyDataLoaderServiceClient:      &PolicyDataLoaderServiceClient{inner: corev1connect.NewPolicyDataLoaderServiceClient(httpClient, baseURL)},
-		ReportServiceClient:                &ReportServiceClient{inner: corev1connect.NewReportServiceClient(httpClient, baseURL)},
 		ResourceServiceClient:              &ResourceServiceClient{inner: corev1connect.NewResourceServiceClient(httpClient, baseURL)},
 		SatelliteServiceClient:             &SatelliteServiceClient{inner: corev1connect.NewSatelliteServiceClient(httpClient, baseURL)},
 		ScenarioMonitoringServiceClient:    &ScenarioMonitoringServiceClient{inner: corev1connect.NewScenarioMonitoringServiceClient(httpClient, baseURL)},
@@ -948,6 +948,66 @@ func (c *ConnectorServiceClient) UpdateConnectorV2(ctx context.Context, req *cor
 // Replace the Formal VPN settings of a connector.
 func (c *ConnectorServiceClient) UpdateConnectorVpn(ctx context.Context, req *corev1.UpdateConnectorVpnRequest) (*corev1.UpdateConnectorVpnResponse, error) {
 	res, err := c.inner.UpdateConnectorVpn(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// DashboardServiceClient is a client for the core.v1.DashboardService service.
+type DashboardServiceClient struct {
+	inner corev1connect.DashboardServiceClient
+}
+
+// Create dashboard
+//
+// Create a dashboard from a complete definition.
+func (c *DashboardServiceClient) CreateDashboard(ctx context.Context, req *corev1.CreateDashboardRequest) (*corev1.CreateDashboardResponse, error) {
+	res, err := c.inner.CreateDashboard(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete dashboard
+//
+// Delete a dashboard.
+func (c *DashboardServiceClient) DeleteDashboard(ctx context.Context, req *corev1.DeleteDashboardRequest) (*corev1.DeleteDashboardResponse, error) {
+	res, err := c.inner.DeleteDashboard(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get dashboard
+//
+// Get a dashboard and its definition by ID.
+func (c *DashboardServiceClient) GetDashboard(ctx context.Context, req *corev1.GetDashboardRequest) (*corev1.GetDashboardResponse, error) {
+	res, err := c.inner.GetDashboard(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List dashboards
+//
+// List the organization's dashboards with their definitions.
+func (c *DashboardServiceClient) ListDashboards(ctx context.Context, req *corev1.ListDashboardsRequest) (*corev1.ListDashboardsResponse, error) {
+	res, err := c.inner.ListDashboards(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update dashboard (full object replacement)
+//
+// Replace a dashboard's name, description and definition.
+func (c *DashboardServiceClient) UpdateDashboard(ctx context.Context, req *corev1.UpdateDashboardRequest) (*corev1.UpdateDashboardResponse, error) {
+	res, err := c.inner.UpdateDashboard(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -2974,66 +3034,6 @@ func (c *PolicyDataLoaderServiceClient) UpdatePolicyDataLoader(ctx context.Conte
 // Update a policy data loader by sending the full object. All mutable fields are replaced.
 func (c *PolicyDataLoaderServiceClient) UpdatePolicyDataLoaderV2(ctx context.Context, req *corev1.UpdatePolicyDataLoaderV2Request) (*corev1.UpdatePolicyDataLoaderV2Response, error) {
 	res, err := c.inner.UpdatePolicyDataLoaderV2(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
-// ReportServiceClient is a client for the core.v1.ReportService service.
-type ReportServiceClient struct {
-	inner corev1connect.ReportServiceClient
-}
-
-// Create report
-//
-// Create a report from a complete definition.
-func (c *ReportServiceClient) CreateReport(ctx context.Context, req *corev1.CreateReportRequest) (*corev1.CreateReportResponse, error) {
-	res, err := c.inner.CreateReport(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
-// Delete report
-//
-// Delete a report.
-func (c *ReportServiceClient) DeleteReport(ctx context.Context, req *corev1.DeleteReportRequest) (*corev1.DeleteReportResponse, error) {
-	res, err := c.inner.DeleteReport(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
-// Get report
-//
-// Get a report and its definition by ID.
-func (c *ReportServiceClient) GetReport(ctx context.Context, req *corev1.GetReportRequest) (*corev1.GetReportResponse, error) {
-	res, err := c.inner.GetReport(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
-// List reports
-//
-// List the organization's reports with their definitions.
-func (c *ReportServiceClient) ListReports(ctx context.Context, req *corev1.ListReportsRequest) (*corev1.ListReportsResponse, error) {
-	res, err := c.inner.ListReports(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
-// Update report (full object replacement)
-//
-// Replace a report's name, description and definition.
-func (c *ReportServiceClient) UpdateReport(ctx context.Context, req *corev1.UpdateReportRequest) (*corev1.UpdateReportResponse, error) {
-	res, err := c.inner.UpdateReport(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
