@@ -162,78 +162,6 @@ func (*BIIntegration_Metabase_) isBIIntegration_Type() {}
 
 func (*BIIntegration_Omni_) isBIIntegration_Type() {}
 
-type RefreshBIIntegrationsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RefreshBIIntegrationsRequest) Reset() {
-	*x = RefreshBIIntegrationsRequest{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RefreshBIIntegrationsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RefreshBIIntegrationsRequest) ProtoMessage() {}
-
-func (x *RefreshBIIntegrationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RefreshBIIntegrationsRequest.ProtoReflect.Descriptor instead.
-func (*RefreshBIIntegrationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{1}
-}
-
-type RefreshBIIntegrationsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RefreshBIIntegrationsResponse) Reset() {
-	*x = RefreshBIIntegrationsResponse{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RefreshBIIntegrationsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RefreshBIIntegrationsResponse) ProtoMessage() {}
-
-func (x *RefreshBIIntegrationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RefreshBIIntegrationsResponse.ProtoReflect.Descriptor instead.
-func (*RefreshBIIntegrationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{2}
-}
-
 type ListBIIntegrationsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
@@ -248,7 +176,7 @@ type ListBIIntegrationsRequest struct {
 
 func (x *ListBIIntegrationsRequest) Reset() {
 	*x = ListBIIntegrationsRequest{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[3]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -260,7 +188,7 @@ func (x *ListBIIntegrationsRequest) String() string {
 func (*ListBIIntegrationsRequest) ProtoMessage() {}
 
 func (x *ListBIIntegrationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[3]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -273,7 +201,7 @@ func (x *ListBIIntegrationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBIIntegrationsRequest.ProtoReflect.Descriptor instead.
 func (*ListBIIntegrationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{3}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListBIIntegrationsRequest) GetLimit() int32 {
@@ -328,7 +256,7 @@ type ListBIIntegrationsResponse struct {
 
 func (x *ListBIIntegrationsResponse) Reset() {
 	*x = ListBIIntegrationsResponse{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[4]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -340,7 +268,7 @@ func (x *ListBIIntegrationsResponse) String() string {
 func (*ListBIIntegrationsResponse) ProtoMessage() {}
 
 func (x *ListBIIntegrationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[4]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -353,7 +281,7 @@ func (x *ListBIIntegrationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBIIntegrationsResponse.ProtoReflect.Descriptor instead.
 func (*ListBIIntegrationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{4}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListBIIntegrationsResponse) GetIntegrations() []*BIIntegration {
@@ -379,7 +307,7 @@ type GetBIIntegrationRequest struct {
 
 func (x *GetBIIntegrationRequest) Reset() {
 	*x = GetBIIntegrationRequest{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[5]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -391,7 +319,7 @@ func (x *GetBIIntegrationRequest) String() string {
 func (*GetBIIntegrationRequest) ProtoMessage() {}
 
 func (x *GetBIIntegrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[5]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -404,7 +332,7 @@ func (x *GetBIIntegrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBIIntegrationRequest.ProtoReflect.Descriptor instead.
 func (*GetBIIntegrationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{5}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetBIIntegrationRequest) GetId() string {
@@ -423,7 +351,7 @@ type GetBIIntegrationResponse struct {
 
 func (x *GetBIIntegrationResponse) Reset() {
 	*x = GetBIIntegrationResponse{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[6]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -435,7 +363,7 @@ func (x *GetBIIntegrationResponse) String() string {
 func (*GetBIIntegrationResponse) ProtoMessage() {}
 
 func (x *GetBIIntegrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[6]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -448,7 +376,7 @@ func (x *GetBIIntegrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBIIntegrationResponse.ProtoReflect.Descriptor instead.
 func (*GetBIIntegrationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{6}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetBIIntegrationResponse) GetIntegration() *BIIntegration {
@@ -475,7 +403,7 @@ type CreateBIIntegrationRequest struct {
 
 func (x *CreateBIIntegrationRequest) Reset() {
 	*x = CreateBIIntegrationRequest{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[7]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -487,7 +415,7 @@ func (x *CreateBIIntegrationRequest) String() string {
 func (*CreateBIIntegrationRequest) ProtoMessage() {}
 
 func (x *CreateBIIntegrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[7]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -500,7 +428,7 @@ func (x *CreateBIIntegrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBIIntegrationRequest.ProtoReflect.Descriptor instead.
 func (*CreateBIIntegrationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{7}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateBIIntegrationRequest) GetName() string {
@@ -589,7 +517,7 @@ type CreateBIIntegrationResponse struct {
 
 func (x *CreateBIIntegrationResponse) Reset() {
 	*x = CreateBIIntegrationResponse{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[8]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -601,7 +529,7 @@ func (x *CreateBIIntegrationResponse) String() string {
 func (*CreateBIIntegrationResponse) ProtoMessage() {}
 
 func (x *CreateBIIntegrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[8]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -614,7 +542,7 @@ func (x *CreateBIIntegrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBIIntegrationResponse.ProtoReflect.Descriptor instead.
 func (*CreateBIIntegrationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{8}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateBIIntegrationResponse) GetIntegration() *BIIntegration {
@@ -633,7 +561,7 @@ type DeleteBIIntegrationRequest struct {
 
 func (x *DeleteBIIntegrationRequest) Reset() {
 	*x = DeleteBIIntegrationRequest{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[9]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -645,7 +573,7 @@ func (x *DeleteBIIntegrationRequest) String() string {
 func (*DeleteBIIntegrationRequest) ProtoMessage() {}
 
 func (x *DeleteBIIntegrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[9]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -658,7 +586,7 @@ func (x *DeleteBIIntegrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBIIntegrationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteBIIntegrationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{9}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DeleteBIIntegrationRequest) GetId() string {
@@ -677,7 +605,7 @@ type DeleteBIIntegrationResponse struct {
 
 func (x *DeleteBIIntegrationResponse) Reset() {
 	*x = DeleteBIIntegrationResponse{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[10]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -689,7 +617,7 @@ func (x *DeleteBIIntegrationResponse) String() string {
 func (*DeleteBIIntegrationResponse) ProtoMessage() {}
 
 func (x *DeleteBIIntegrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[10]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -702,7 +630,7 @@ func (x *DeleteBIIntegrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBIIntegrationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteBIIntegrationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{10}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DeleteBIIntegrationResponse) GetId() string {
@@ -723,7 +651,7 @@ type BIIntegration_Metabase struct {
 
 func (x *BIIntegration_Metabase) Reset() {
 	*x = BIIntegration_Metabase{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[11]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -735,7 +663,7 @@ func (x *BIIntegration_Metabase) String() string {
 func (*BIIntegration_Metabase) ProtoMessage() {}
 
 func (x *BIIntegration_Metabase) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[11]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -782,7 +710,7 @@ type BIIntegration_Fivetran struct {
 
 func (x *BIIntegration_Fivetran) Reset() {
 	*x = BIIntegration_Fivetran{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[12]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -794,7 +722,7 @@ func (x *BIIntegration_Fivetran) String() string {
 func (*BIIntegration_Fivetran) ProtoMessage() {}
 
 func (x *BIIntegration_Fivetran) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[12]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -832,7 +760,7 @@ type BIIntegration_Omni struct {
 
 func (x *BIIntegration_Omni) Reset() {
 	*x = BIIntegration_Omni{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[13]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -844,7 +772,7 @@ func (x *BIIntegration_Omni) String() string {
 func (*BIIntegration_Omni) ProtoMessage() {}
 
 func (x *BIIntegration_Omni) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[13]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -870,7 +798,7 @@ type CreateBIIntegrationRequest_Fivetran struct {
 
 func (x *CreateBIIntegrationRequest_Fivetran) Reset() {
 	*x = CreateBIIntegrationRequest_Fivetran{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[14]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -882,7 +810,7 @@ func (x *CreateBIIntegrationRequest_Fivetran) String() string {
 func (*CreateBIIntegrationRequest_Fivetran) ProtoMessage() {}
 
 func (x *CreateBIIntegrationRequest_Fivetran) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[14]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -895,7 +823,7 @@ func (x *CreateBIIntegrationRequest_Fivetran) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CreateBIIntegrationRequest_Fivetran.ProtoReflect.Descriptor instead.
 func (*CreateBIIntegrationRequest_Fivetran) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{7, 0}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{5, 0}
 }
 
 func (x *CreateBIIntegrationRequest_Fivetran) GetFivetranApiKey() string {
@@ -923,7 +851,7 @@ type CreateBIIntegrationRequest_Metabase struct {
 
 func (x *CreateBIIntegrationRequest_Metabase) Reset() {
 	*x = CreateBIIntegrationRequest_Metabase{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[15]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -935,7 +863,7 @@ func (x *CreateBIIntegrationRequest_Metabase) String() string {
 func (*CreateBIIntegrationRequest_Metabase) ProtoMessage() {}
 
 func (x *CreateBIIntegrationRequest_Metabase) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[15]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -948,7 +876,7 @@ func (x *CreateBIIntegrationRequest_Metabase) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CreateBIIntegrationRequest_Metabase.ProtoReflect.Descriptor instead.
 func (*CreateBIIntegrationRequest_Metabase) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{7, 1}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{5, 1}
 }
 
 func (x *CreateBIIntegrationRequest_Metabase) GetHostname() string {
@@ -980,7 +908,7 @@ type CreateBIIntegrationRequest_Omni struct {
 
 func (x *CreateBIIntegrationRequest_Omni) Reset() {
 	*x = CreateBIIntegrationRequest_Omni{}
-	mi := &file_core_v1_integration_bi_proto_msgTypes[16]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -992,7 +920,7 @@ func (x *CreateBIIntegrationRequest_Omni) String() string {
 func (*CreateBIIntegrationRequest_Omni) ProtoMessage() {}
 
 func (x *CreateBIIntegrationRequest_Omni) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_integration_bi_proto_msgTypes[16]
+	mi := &file_core_v1_integration_bi_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1005,7 +933,7 @@ func (x *CreateBIIntegrationRequest_Omni) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBIIntegrationRequest_Omni.ProtoReflect.Descriptor instead.
 func (*CreateBIIntegrationRequest_Omni) Descriptor() ([]byte, []int) {
-	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{7, 2}
+	return file_core_v1_integration_bi_proto_rawDescGZIP(), []int{5, 2}
 }
 
 var File_core_v1_integration_bi_proto protoreflect.FileDescriptor
@@ -1034,9 +962,7 @@ const file_core_v1_integration_bi_proto_rawDesc = "" +
 	"api_secret\x18\x02 \x01(\tB\n" +
 	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\tapiSecret\x1a\x06\n" +
 	"\x04OmniB\x06\n" +
-	"\x04type\"\x1e\n" +
-	"\x1cRefreshBIIntegrationsRequest\"\x1f\n" +
-	"\x1dRefreshBIIntegrationsResponse\"\xfd\x01\n" +
+	"\x04type\"\xfd\x01\n" +
 	"\x19ListBIIntegrationsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -1076,9 +1002,8 @@ const file_core_v1_integration_bi_proto_rawDesc = "" +
 	"\x1aDeleteBIIntegrationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"6\n" +
 	"\x1bDeleteBIIntegrationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xb9\x06\n" +
-	"\x14IntegrationBIService\x12\xa6\x01\n" +
-	"\x15RefreshBIIntegrations\x12%.core.v1.RefreshBIIntegrationsRequest\x1a&.core.v1.RefreshBIIntegrationsResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.IntegrationBIService/RefreshBIIntegrations\x12\x9d\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x90\x05\n" +
+	"\x14IntegrationBIService\x12\x9d\x01\n" +
 	"\x12ListBIIntegrations\x12\".core.v1.ListBIIntegrationsRequest\x1a#.core.v1.ListBIIntegrationsResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.IntegrationBIService/ListBIIntegrations\x90\x02\x01\x12\x95\x01\n" +
 	"\x10GetBIIntegration\x12 .core.v1.GetBIIntegrationRequest\x1a!.core.v1.GetBIIntegrationResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.IntegrationBIService/GetBIIntegration\x90\x02\x01\x12\x9e\x01\n" +
 	"\x13CreateBIIntegration\x12#.core.v1.CreateBIIntegrationRequest\x1a$.core.v1.CreateBIIntegrationResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.IntegrationBIService/CreateBIIntegration\x12\x9e\x01\n" +
@@ -1097,54 +1022,50 @@ func file_core_v1_integration_bi_proto_rawDescGZIP() []byte {
 	return file_core_v1_integration_bi_proto_rawDescData
 }
 
-var file_core_v1_integration_bi_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_core_v1_integration_bi_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_core_v1_integration_bi_proto_goTypes = []any{
 	(*BIIntegration)(nil),                       // 0: core.v1.BIIntegration
-	(*RefreshBIIntegrationsRequest)(nil),        // 1: core.v1.RefreshBIIntegrationsRequest
-	(*RefreshBIIntegrationsResponse)(nil),       // 2: core.v1.RefreshBIIntegrationsResponse
-	(*ListBIIntegrationsRequest)(nil),           // 3: core.v1.ListBIIntegrationsRequest
-	(*ListBIIntegrationsResponse)(nil),          // 4: core.v1.ListBIIntegrationsResponse
-	(*GetBIIntegrationRequest)(nil),             // 5: core.v1.GetBIIntegrationRequest
-	(*GetBIIntegrationResponse)(nil),            // 6: core.v1.GetBIIntegrationResponse
-	(*CreateBIIntegrationRequest)(nil),          // 7: core.v1.CreateBIIntegrationRequest
-	(*CreateBIIntegrationResponse)(nil),         // 8: core.v1.CreateBIIntegrationResponse
-	(*DeleteBIIntegrationRequest)(nil),          // 9: core.v1.DeleteBIIntegrationRequest
-	(*DeleteBIIntegrationResponse)(nil),         // 10: core.v1.DeleteBIIntegrationResponse
-	(*BIIntegration_Metabase)(nil),              // 11: core.v1.BIIntegration.Metabase
-	(*BIIntegration_Fivetran)(nil),              // 12: core.v1.BIIntegration.Fivetran
-	(*BIIntegration_Omni)(nil),                  // 13: core.v1.BIIntegration.Omni
-	(*CreateBIIntegrationRequest_Fivetran)(nil), // 14: core.v1.CreateBIIntegrationRequest.Fivetran
-	(*CreateBIIntegrationRequest_Metabase)(nil), // 15: core.v1.CreateBIIntegrationRequest.Metabase
-	(*CreateBIIntegrationRequest_Omni)(nil),     // 16: core.v1.CreateBIIntegrationRequest.Omni
-	(*timestamppb.Timestamp)(nil),               // 17: google.protobuf.Timestamp
-	(*Filter)(nil),                              // 18: core.v1.Filter
-	(*ListMetadata)(nil),                        // 19: core.v1.ListMetadata
+	(*ListBIIntegrationsRequest)(nil),           // 1: core.v1.ListBIIntegrationsRequest
+	(*ListBIIntegrationsResponse)(nil),          // 2: core.v1.ListBIIntegrationsResponse
+	(*GetBIIntegrationRequest)(nil),             // 3: core.v1.GetBIIntegrationRequest
+	(*GetBIIntegrationResponse)(nil),            // 4: core.v1.GetBIIntegrationResponse
+	(*CreateBIIntegrationRequest)(nil),          // 5: core.v1.CreateBIIntegrationRequest
+	(*CreateBIIntegrationResponse)(nil),         // 6: core.v1.CreateBIIntegrationResponse
+	(*DeleteBIIntegrationRequest)(nil),          // 7: core.v1.DeleteBIIntegrationRequest
+	(*DeleteBIIntegrationResponse)(nil),         // 8: core.v1.DeleteBIIntegrationResponse
+	(*BIIntegration_Metabase)(nil),              // 9: core.v1.BIIntegration.Metabase
+	(*BIIntegration_Fivetran)(nil),              // 10: core.v1.BIIntegration.Fivetran
+	(*BIIntegration_Omni)(nil),                  // 11: core.v1.BIIntegration.Omni
+	(*CreateBIIntegrationRequest_Fivetran)(nil), // 12: core.v1.CreateBIIntegrationRequest.Fivetran
+	(*CreateBIIntegrationRequest_Metabase)(nil), // 13: core.v1.CreateBIIntegrationRequest.Metabase
+	(*CreateBIIntegrationRequest_Omni)(nil),     // 14: core.v1.CreateBIIntegrationRequest.Omni
+	(*timestamppb.Timestamp)(nil),               // 15: google.protobuf.Timestamp
+	(*Filter)(nil),                              // 16: core.v1.Filter
+	(*ListMetadata)(nil),                        // 17: core.v1.ListMetadata
 }
 var file_core_v1_integration_bi_proto_depIdxs = []int32{
-	12, // 0: core.v1.BIIntegration.fivetran:type_name -> core.v1.BIIntegration.Fivetran
-	11, // 1: core.v1.BIIntegration.metabase:type_name -> core.v1.BIIntegration.Metabase
-	13, // 2: core.v1.BIIntegration.omni:type_name -> core.v1.BIIntegration.Omni
-	17, // 3: core.v1.BIIntegration.created_at:type_name -> google.protobuf.Timestamp
-	18, // 4: core.v1.ListBIIntegrationsRequest.filter:type_name -> core.v1.Filter
+	10, // 0: core.v1.BIIntegration.fivetran:type_name -> core.v1.BIIntegration.Fivetran
+	9,  // 1: core.v1.BIIntegration.metabase:type_name -> core.v1.BIIntegration.Metabase
+	11, // 2: core.v1.BIIntegration.omni:type_name -> core.v1.BIIntegration.Omni
+	15, // 3: core.v1.BIIntegration.created_at:type_name -> google.protobuf.Timestamp
+	16, // 4: core.v1.ListBIIntegrationsRequest.filter:type_name -> core.v1.Filter
 	0,  // 5: core.v1.ListBIIntegrationsResponse.integrations:type_name -> core.v1.BIIntegration
-	19, // 6: core.v1.ListBIIntegrationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	17, // 6: core.v1.ListBIIntegrationsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	0,  // 7: core.v1.GetBIIntegrationResponse.integration:type_name -> core.v1.BIIntegration
-	14, // 8: core.v1.CreateBIIntegrationRequest.fivetran:type_name -> core.v1.CreateBIIntegrationRequest.Fivetran
-	15, // 9: core.v1.CreateBIIntegrationRequest.metabase:type_name -> core.v1.CreateBIIntegrationRequest.Metabase
-	16, // 10: core.v1.CreateBIIntegrationRequest.omni:type_name -> core.v1.CreateBIIntegrationRequest.Omni
+	12, // 8: core.v1.CreateBIIntegrationRequest.fivetran:type_name -> core.v1.CreateBIIntegrationRequest.Fivetran
+	13, // 9: core.v1.CreateBIIntegrationRequest.metabase:type_name -> core.v1.CreateBIIntegrationRequest.Metabase
+	14, // 10: core.v1.CreateBIIntegrationRequest.omni:type_name -> core.v1.CreateBIIntegrationRequest.Omni
 	0,  // 11: core.v1.CreateBIIntegrationResponse.integration:type_name -> core.v1.BIIntegration
-	1,  // 12: core.v1.IntegrationBIService.RefreshBIIntegrations:input_type -> core.v1.RefreshBIIntegrationsRequest
-	3,  // 13: core.v1.IntegrationBIService.ListBIIntegrations:input_type -> core.v1.ListBIIntegrationsRequest
-	5,  // 14: core.v1.IntegrationBIService.GetBIIntegration:input_type -> core.v1.GetBIIntegrationRequest
-	7,  // 15: core.v1.IntegrationBIService.CreateBIIntegration:input_type -> core.v1.CreateBIIntegrationRequest
-	9,  // 16: core.v1.IntegrationBIService.DeleteBIIntegration:input_type -> core.v1.DeleteBIIntegrationRequest
-	2,  // 17: core.v1.IntegrationBIService.RefreshBIIntegrations:output_type -> core.v1.RefreshBIIntegrationsResponse
-	4,  // 18: core.v1.IntegrationBIService.ListBIIntegrations:output_type -> core.v1.ListBIIntegrationsResponse
-	6,  // 19: core.v1.IntegrationBIService.GetBIIntegration:output_type -> core.v1.GetBIIntegrationResponse
-	8,  // 20: core.v1.IntegrationBIService.CreateBIIntegration:output_type -> core.v1.CreateBIIntegrationResponse
-	10, // 21: core.v1.IntegrationBIService.DeleteBIIntegration:output_type -> core.v1.DeleteBIIntegrationResponse
-	17, // [17:22] is the sub-list for method output_type
-	12, // [12:17] is the sub-list for method input_type
+	1,  // 12: core.v1.IntegrationBIService.ListBIIntegrations:input_type -> core.v1.ListBIIntegrationsRequest
+	3,  // 13: core.v1.IntegrationBIService.GetBIIntegration:input_type -> core.v1.GetBIIntegrationRequest
+	5,  // 14: core.v1.IntegrationBIService.CreateBIIntegration:input_type -> core.v1.CreateBIIntegrationRequest
+	7,  // 15: core.v1.IntegrationBIService.DeleteBIIntegration:input_type -> core.v1.DeleteBIIntegrationRequest
+	2,  // 16: core.v1.IntegrationBIService.ListBIIntegrations:output_type -> core.v1.ListBIIntegrationsResponse
+	4,  // 17: core.v1.IntegrationBIService.GetBIIntegration:output_type -> core.v1.GetBIIntegrationResponse
+	6,  // 18: core.v1.IntegrationBIService.CreateBIIntegration:output_type -> core.v1.CreateBIIntegrationResponse
+	8,  // 19: core.v1.IntegrationBIService.DeleteBIIntegration:output_type -> core.v1.DeleteBIIntegrationResponse
+	16, // [16:20] is the sub-list for method output_type
+	12, // [12:16] is the sub-list for method input_type
 	12, // [12:12] is the sub-list for extension type_name
 	12, // [12:12] is the sub-list for extension extendee
 	0,  // [0:12] is the sub-list for field type_name
@@ -1162,8 +1083,8 @@ func file_core_v1_integration_bi_proto_init() {
 		(*BIIntegration_Metabase_)(nil),
 		(*BIIntegration_Omni_)(nil),
 	}
-	file_core_v1_integration_bi_proto_msgTypes[3].OneofWrappers = []any{}
-	file_core_v1_integration_bi_proto_msgTypes[7].OneofWrappers = []any{
+	file_core_v1_integration_bi_proto_msgTypes[1].OneofWrappers = []any{}
+	file_core_v1_integration_bi_proto_msgTypes[5].OneofWrappers = []any{
 		(*CreateBIIntegrationRequest_Fivetran_)(nil),
 		(*CreateBIIntegrationRequest_Metabase_)(nil),
 		(*CreateBIIntegrationRequest_Omni_)(nil),
@@ -1174,7 +1095,7 @@ func file_core_v1_integration_bi_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_integration_bi_proto_rawDesc), len(file_core_v1_integration_bi_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

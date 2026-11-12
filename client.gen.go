@@ -1483,17 +1483,6 @@ func (c *IntegrationBIServiceClient) ListBIIntegrations(ctx context.Context, req
 	return res.Msg, nil
 }
 
-// Refresh BI integrations
-//
-// Refresh all BI integrations
-func (c *IntegrationBIServiceClient) RefreshBIIntegrations(ctx context.Context, req *corev1.RefreshBIIntegrationsRequest) (*corev1.RefreshBIIntegrationsResponse, error) {
-	res, err := c.inner.RefreshBIIntegrations(ctx, connect.NewRequest(req))
-	if err != nil {
-		return nil, err
-	}
-	return res.Msg, nil
-}
-
 // IntegrationCloudServiceClient is a client for the core.v1.IntegrationCloudService service.
 type IntegrationCloudServiceClient struct {
 	inner corev1connect.IntegrationCloudServiceClient

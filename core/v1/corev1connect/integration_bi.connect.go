@@ -33,9 +33,6 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// IntegrationBIServiceRefreshBIIntegrationsProcedure is the fully-qualified name of the
-	// IntegrationBIService's RefreshBIIntegrations RPC.
-	IntegrationBIServiceRefreshBIIntegrationsProcedure = "/core.v1.IntegrationBIService/RefreshBIIntegrations"
 	// IntegrationBIServiceListBIIntegrationsProcedure is the fully-qualified name of the
 	// IntegrationBIService's ListBIIntegrations RPC.
 	IntegrationBIServiceListBIIntegrationsProcedure = "/core.v1.IntegrationBIService/ListBIIntegrations"
@@ -52,10 +49,6 @@ const (
 
 // IntegrationBIServiceClient is a client for the core.v1.IntegrationBIService service.
 type IntegrationBIServiceClient interface {
-	// Refresh BI integrations
-	//
-	// Refresh all BI integrations
-	RefreshBIIntegrations(context.Context, *connect.Request[v1.RefreshBIIntegrationsRequest]) (*connect.Response[v1.RefreshBIIntegrationsResponse], error)
 	// List BI integrations
 	//
 	// List all BI integrations
@@ -85,12 +78,6 @@ func NewIntegrationBIServiceClient(httpClient connect.HTTPClient, baseURL string
 	baseURL = strings.TrimRight(baseURL, "/")
 	integrationBIServiceMethods := v1.File_core_v1_integration_bi_proto.Services().ByName("IntegrationBIService").Methods()
 	return &integrationBIServiceClient{
-		refreshBIIntegrations: connect.NewClient[v1.RefreshBIIntegrationsRequest, v1.RefreshBIIntegrationsResponse](
-			httpClient,
-			baseURL+IntegrationBIServiceRefreshBIIntegrationsProcedure,
-			connect.WithSchema(integrationBIServiceMethods.ByName("RefreshBIIntegrations")),
-			connect.WithClientOptions(opts...),
-		),
 		listBIIntegrations: connect.NewClient[v1.ListBIIntegrationsRequest, v1.ListBIIntegrationsResponse](
 			httpClient,
 			baseURL+IntegrationBIServiceListBIIntegrationsProcedure,
@@ -122,16 +109,10 @@ func NewIntegrationBIServiceClient(httpClient connect.HTTPClient, baseURL string
 
 // integrationBIServiceClient implements IntegrationBIServiceClient.
 type integrationBIServiceClient struct {
-	refreshBIIntegrations *connect.Client[v1.RefreshBIIntegrationsRequest, v1.RefreshBIIntegrationsResponse]
-	listBIIntegrations    *connect.Client[v1.ListBIIntegrationsRequest, v1.ListBIIntegrationsResponse]
-	getBIIntegration      *connect.Client[v1.GetBIIntegrationRequest, v1.GetBIIntegrationResponse]
-	createBIIntegration   *connect.Client[v1.CreateBIIntegrationRequest, v1.CreateBIIntegrationResponse]
-	deleteBIIntegration   *connect.Client[v1.DeleteBIIntegrationRequest, v1.DeleteBIIntegrationResponse]
-}
-
-// RefreshBIIntegrations calls core.v1.IntegrationBIService.RefreshBIIntegrations.
-func (c *integrationBIServiceClient) RefreshBIIntegrations(ctx context.Context, req *connect.Request[v1.RefreshBIIntegrationsRequest]) (*connect.Response[v1.RefreshBIIntegrationsResponse], error) {
-	return c.refreshBIIntegrations.CallUnary(ctx, req)
+	listBIIntegrations  *connect.Client[v1.ListBIIntegrationsRequest, v1.ListBIIntegrationsResponse]
+	getBIIntegration    *connect.Client[v1.GetBIIntegrationRequest, v1.GetBIIntegrationResponse]
+	createBIIntegration *connect.Client[v1.CreateBIIntegrationRequest, v1.CreateBIIntegrationResponse]
+	deleteBIIntegration *connect.Client[v1.DeleteBIIntegrationRequest, v1.DeleteBIIntegrationResponse]
 }
 
 // ListBIIntegrations calls core.v1.IntegrationBIService.ListBIIntegrations.
@@ -156,10 +137,6 @@ func (c *integrationBIServiceClient) DeleteBIIntegration(ctx context.Context, re
 
 // IntegrationBIServiceHandler is an implementation of the core.v1.IntegrationBIService service.
 type IntegrationBIServiceHandler interface {
-	// Refresh BI integrations
-	//
-	// Refresh all BI integrations
-	RefreshBIIntegrations(context.Context, *connect.Request[v1.RefreshBIIntegrationsRequest]) (*connect.Response[v1.RefreshBIIntegrationsResponse], error)
 	// List BI integrations
 	//
 	// List all BI integrations
@@ -185,12 +162,6 @@ type IntegrationBIServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIntegrationBIServiceHandler(svc IntegrationBIServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	integrationBIServiceMethods := v1.File_core_v1_integration_bi_proto.Services().ByName("IntegrationBIService").Methods()
-	integrationBIServiceRefreshBIIntegrationsHandler := connect.NewUnaryHandler(
-		IntegrationBIServiceRefreshBIIntegrationsProcedure,
-		svc.RefreshBIIntegrations,
-		connect.WithSchema(integrationBIServiceMethods.ByName("RefreshBIIntegrations")),
-		connect.WithHandlerOptions(opts...),
-	)
 	integrationBIServiceListBIIntegrationsHandler := connect.NewUnaryHandler(
 		IntegrationBIServiceListBIIntegrationsProcedure,
 		svc.ListBIIntegrations,
@@ -219,8 +190,6 @@ func NewIntegrationBIServiceHandler(svc IntegrationBIServiceHandler, opts ...con
 	)
 	return "/core.v1.IntegrationBIService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case IntegrationBIServiceRefreshBIIntegrationsProcedure:
-			integrationBIServiceRefreshBIIntegrationsHandler.ServeHTTP(w, r)
 		case IntegrationBIServiceListBIIntegrationsProcedure:
 			integrationBIServiceListBIIntegrationsHandler.ServeHTTP(w, r)
 		case IntegrationBIServiceGetBIIntegrationProcedure:
@@ -237,10 +206,6 @@ func NewIntegrationBIServiceHandler(svc IntegrationBIServiceHandler, opts ...con
 
 // UnimplementedIntegrationBIServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIntegrationBIServiceHandler struct{}
-
-func (UnimplementedIntegrationBIServiceHandler) RefreshBIIntegrations(context.Context, *connect.Request[v1.RefreshBIIntegrationsRequest]) (*connect.Response[v1.RefreshBIIntegrationsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.IntegrationBIService.RefreshBIIntegrations is not implemented"))
-}
 
 func (UnimplementedIntegrationBIServiceHandler) ListBIIntegrations(context.Context, *connect.Request[v1.ListBIIntegrationsRequest]) (*connect.Response[v1.ListBIIntegrationsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.IntegrationBIService.ListBIIntegrations is not implemented"))
