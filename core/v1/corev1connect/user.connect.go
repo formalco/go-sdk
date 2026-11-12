@@ -70,6 +70,27 @@ const (
 	// UserServiceUpdateHumanSignInSettingsProcedure is the fully-qualified name of the UserService's
 	// UpdateHumanSignInSettings RPC.
 	UserServiceUpdateHumanSignInSettingsProcedure = "/core.v1.UserService/UpdateHumanSignInSettings"
+	// UserServiceGetSignInMethodsProcedure is the fully-qualified name of the UserService's
+	// GetSignInMethods RPC.
+	UserServiceGetSignInMethodsProcedure = "/core.v1.UserService/GetSignInMethods"
+	// UserServiceUpdateSignInMethodsProcedure is the fully-qualified name of the UserService's
+	// UpdateSignInMethods RPC.
+	UserServiceUpdateSignInMethodsProcedure = "/core.v1.UserService/UpdateSignInMethods"
+	// UserServiceListSSOConnectionsProcedure is the fully-qualified name of the UserService's
+	// ListSSOConnections RPC.
+	UserServiceListSSOConnectionsProcedure = "/core.v1.UserService/ListSSOConnections"
+	// UserServiceGetSSOConnectionProcedure is the fully-qualified name of the UserService's
+	// GetSSOConnection RPC.
+	UserServiceGetSSOConnectionProcedure = "/core.v1.UserService/GetSSOConnection"
+	// UserServiceCreateSSOConnectionProcedure is the fully-qualified name of the UserService's
+	// CreateSSOConnection RPC.
+	UserServiceCreateSSOConnectionProcedure = "/core.v1.UserService/CreateSSOConnection"
+	// UserServiceUpdateSSOConnectionClientSecretProcedure is the fully-qualified name of the
+	// UserService's UpdateSSOConnectionClientSecret RPC.
+	UserServiceUpdateSSOConnectionClientSecretProcedure = "/core.v1.UserService/UpdateSSOConnectionClientSecret"
+	// UserServiceDeleteSSOConnectionProcedure is the fully-qualified name of the UserService's
+	// DeleteSSOConnection RPC.
+	UserServiceDeleteSSOConnectionProcedure = "/core.v1.UserService/DeleteSSOConnection"
 	// UserServiceGetMachineUserCredentialsProcedure is the fully-qualified name of the UserService's
 	// GetMachineUserCredentials RPC.
 	UserServiceGetMachineUserCredentialsProcedure = "/core.v1.UserService/GetMachineUserCredentials"
@@ -154,6 +175,45 @@ type UserServiceClient interface {
 	// Suspend or resume new human sign-ins (Formal Endpoint logins and access token creation) for the
 	// organization. Existing sessions and tokens are not affected; use DeleteHumanUserSessions for that.
 	UpdateHumanSignInSettings(context.Context, *connect.Request[v1.UpdateHumanSignInSettingsRequest]) (*connect.Response[v1.UpdateHumanSignInSettingsResponse], error)
+	// Get sign-in methods
+	//
+	// How the organization's users sign in with Formal's own sign-in: emailed codes, its SSO connection,
+	// or both. Organizations that sign in through WorkOS keep their methods for when they switch.
+	GetSignInMethods(context.Context, *connect.Request[v1.GetSignInMethodsRequest]) (*connect.Response[v1.GetSignInMethodsResponse], error)
+	// Update sign-in methods
+	//
+	// Set how the organization's users sign in. Allowing SSO needs a connection with domains. Codes can't be
+	// turned off until someone has signed in through SSO, so a connection that doesn't work can't lock
+	// everyone out: allow both, sign in through SSO, then turn codes off.
+	UpdateSignInMethods(context.Context, *connect.Request[v1.UpdateSignInMethodsRequest]) (*connect.Response[v1.UpdateSignInMethodsResponse], error)
+	// List SSO connections
+	//
+	// The organization's SSO connections. A user whose email is on a connection's domains signs in through it
+	// when the organization's sign-in methods include SSO.
+	ListSSOConnections(context.Context, *connect.Request[v1.ListSSOConnectionsRequest]) (*connect.Response[v1.ListSSOConnectionsResponse], error)
+	// Get SSO connection
+	//
+	// Get an SSO connection. Its client secret is never returned.
+	GetSSOConnection(context.Context, *connect.Request[v1.GetSSOConnectionRequest]) (*connect.Response[v1.GetSSOConnectionResponse], error)
+	// Create SSO connection
+	//
+	// Connect the organization's identity provider over OIDC. The provider's discovery document is checked
+	// before the connection is saved. Register the returned redirect URI with the provider. Apart from its
+	// client secret, a connection can't be changed: to move to another identity provider, create another
+	// connection, sign in through it, then delete the old one.
+	CreateSSOConnection(context.Context, *connect.Request[v1.CreateSSOConnectionRequest]) (*connect.Response[v1.CreateSSOConnectionResponse], error)
+	// Update SSO connection client secret
+	//
+	// Replace an SSO connection's client secret, such as when the identity provider rotates it. Formal can't
+	// check it with the provider until someone signs in, so sign in through the connection afterwards to
+	// confirm it works.
+	UpdateSSOConnectionClientSecret(context.Context, *connect.Request[v1.UpdateSSOConnectionClientSecretRequest]) (*connect.Response[v1.UpdateSSOConnectionClientSecretResponse], error)
+	// Delete SSO connection
+	//
+	// Delete an SSO connection. Refused if the organization's users couldn't sign in without it: while the
+	// sign-in methods include SSO, another connection must have domains, and while they leave out codes,
+	// someone must have signed in through another connection.
+	DeleteSSOConnection(context.Context, *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error)
 	// Get machine user credentials
 	//
 	// Get a machine user credentials
@@ -283,6 +343,51 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("UpdateHumanSignInSettings")),
 			connect.WithClientOptions(opts...),
 		),
+		getSignInMethods: connect.NewClient[v1.GetSignInMethodsRequest, v1.GetSignInMethodsResponse](
+			httpClient,
+			baseURL+UserServiceGetSignInMethodsProcedure,
+			connect.WithSchema(userServiceMethods.ByName("GetSignInMethods")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		updateSignInMethods: connect.NewClient[v1.UpdateSignInMethodsRequest, v1.UpdateSignInMethodsResponse](
+			httpClient,
+			baseURL+UserServiceUpdateSignInMethodsProcedure,
+			connect.WithSchema(userServiceMethods.ByName("UpdateSignInMethods")),
+			connect.WithClientOptions(opts...),
+		),
+		listSSOConnections: connect.NewClient[v1.ListSSOConnectionsRequest, v1.ListSSOConnectionsResponse](
+			httpClient,
+			baseURL+UserServiceListSSOConnectionsProcedure,
+			connect.WithSchema(userServiceMethods.ByName("ListSSOConnections")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		getSSOConnection: connect.NewClient[v1.GetSSOConnectionRequest, v1.GetSSOConnectionResponse](
+			httpClient,
+			baseURL+UserServiceGetSSOConnectionProcedure,
+			connect.WithSchema(userServiceMethods.ByName("GetSSOConnection")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		createSSOConnection: connect.NewClient[v1.CreateSSOConnectionRequest, v1.CreateSSOConnectionResponse](
+			httpClient,
+			baseURL+UserServiceCreateSSOConnectionProcedure,
+			connect.WithSchema(userServiceMethods.ByName("CreateSSOConnection")),
+			connect.WithClientOptions(opts...),
+		),
+		updateSSOConnectionClientSecret: connect.NewClient[v1.UpdateSSOConnectionClientSecretRequest, v1.UpdateSSOConnectionClientSecretResponse](
+			httpClient,
+			baseURL+UserServiceUpdateSSOConnectionClientSecretProcedure,
+			connect.WithSchema(userServiceMethods.ByName("UpdateSSOConnectionClientSecret")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteSSOConnection: connect.NewClient[v1.DeleteSSOConnectionRequest, v1.DeleteSSOConnectionResponse](
+			httpClient,
+			baseURL+UserServiceDeleteSSOConnectionProcedure,
+			connect.WithSchema(userServiceMethods.ByName("DeleteSSOConnection")),
+			connect.WithClientOptions(opts...),
+		),
 		getMachineUserCredentials: connect.NewClient[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse](
 			httpClient,
 			baseURL+UserServiceGetMachineUserCredentialsProcedure,
@@ -332,27 +437,34 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // userServiceClient implements UserServiceClient.
 type userServiceClient struct {
-	createUser                 *connect.Client[v1.CreateUserRequest, v1.CreateUserResponse]
-	deleteUser                 *connect.Client[v1.DeleteUserRequest, v1.DeleteUserResponse]
-	updateUser                 *connect.Client[v1.UpdateUserRequest, v1.UpdateUserResponse]
-	updateUserExpiry           *connect.Client[v1.UpdateUserExpiryRequest, v1.UpdateUserExpiryResponse]
-	updateUserV2               *connect.Client[v1.UpdateUserV2Request, v1.UpdateUserV2Response]
-	listUsers                  *connect.Client[v1.ListUsersRequest, v1.ListUsersResponse]
-	getUser                    *connect.Client[v1.GetUserRequest, v1.GetUserResponse]
-	deleteBlockedUser          *connect.Client[v1.DeleteBlockedUserRequest, v1.DeleteBlockedUserResponse]
-	createBlockedUser          *connect.Client[v1.CreateBlockedUserRequest, v1.CreateBlockedUserResponse]
-	getBlockedUser             *connect.Client[v1.GetBlockedUserRequest, v1.GetBlockedUserResponse]
-	deleteHumanUserSessions    *connect.Client[v1.DeleteHumanUserSessionsRequest, v1.DeleteHumanUserSessionsResponse]
-	updateMachineUserPasswords *connect.Client[v1.UpdateMachineUserPasswordsRequest, v1.UpdateMachineUserPasswordsResponse]
-	getHumanSignInSettings     *connect.Client[v1.GetHumanSignInSettingsRequest, v1.GetHumanSignInSettingsResponse]
-	updateHumanSignInSettings  *connect.Client[v1.UpdateHumanSignInSettingsRequest, v1.UpdateHumanSignInSettingsResponse]
-	getMachineUserCredentials  *connect.Client[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse]
-	createMachineUserPassword  *connect.Client[v1.CreateMachineUserPasswordRequest, v1.CreateMachineUserPasswordResponse]
-	createUserKey              *connect.Client[v1.CreateUserKeyRequest, v1.CreateUserKeyResponse]
-	createHumanUserPassword    *connect.Client[v1.CreateHumanUserPasswordRequest, v1.CreateHumanUserPasswordResponse]
-	listUserExternalIds        *connect.Client[v1.ListUserExternalIdsRequest, v1.ListUserExternalIdsResponse]
-	createUserExternalId       *connect.Client[v1.CreateUserExternalIdRequest, v1.CreateUserExternalIdResponse]
-	deleteUserExternalId       *connect.Client[v1.DeleteUserExternalIdRequest, v1.DeleteUserExternalIdResponse]
+	createUser                      *connect.Client[v1.CreateUserRequest, v1.CreateUserResponse]
+	deleteUser                      *connect.Client[v1.DeleteUserRequest, v1.DeleteUserResponse]
+	updateUser                      *connect.Client[v1.UpdateUserRequest, v1.UpdateUserResponse]
+	updateUserExpiry                *connect.Client[v1.UpdateUserExpiryRequest, v1.UpdateUserExpiryResponse]
+	updateUserV2                    *connect.Client[v1.UpdateUserV2Request, v1.UpdateUserV2Response]
+	listUsers                       *connect.Client[v1.ListUsersRequest, v1.ListUsersResponse]
+	getUser                         *connect.Client[v1.GetUserRequest, v1.GetUserResponse]
+	deleteBlockedUser               *connect.Client[v1.DeleteBlockedUserRequest, v1.DeleteBlockedUserResponse]
+	createBlockedUser               *connect.Client[v1.CreateBlockedUserRequest, v1.CreateBlockedUserResponse]
+	getBlockedUser                  *connect.Client[v1.GetBlockedUserRequest, v1.GetBlockedUserResponse]
+	deleteHumanUserSessions         *connect.Client[v1.DeleteHumanUserSessionsRequest, v1.DeleteHumanUserSessionsResponse]
+	updateMachineUserPasswords      *connect.Client[v1.UpdateMachineUserPasswordsRequest, v1.UpdateMachineUserPasswordsResponse]
+	getHumanSignInSettings          *connect.Client[v1.GetHumanSignInSettingsRequest, v1.GetHumanSignInSettingsResponse]
+	updateHumanSignInSettings       *connect.Client[v1.UpdateHumanSignInSettingsRequest, v1.UpdateHumanSignInSettingsResponse]
+	getSignInMethods                *connect.Client[v1.GetSignInMethodsRequest, v1.GetSignInMethodsResponse]
+	updateSignInMethods             *connect.Client[v1.UpdateSignInMethodsRequest, v1.UpdateSignInMethodsResponse]
+	listSSOConnections              *connect.Client[v1.ListSSOConnectionsRequest, v1.ListSSOConnectionsResponse]
+	getSSOConnection                *connect.Client[v1.GetSSOConnectionRequest, v1.GetSSOConnectionResponse]
+	createSSOConnection             *connect.Client[v1.CreateSSOConnectionRequest, v1.CreateSSOConnectionResponse]
+	updateSSOConnectionClientSecret *connect.Client[v1.UpdateSSOConnectionClientSecretRequest, v1.UpdateSSOConnectionClientSecretResponse]
+	deleteSSOConnection             *connect.Client[v1.DeleteSSOConnectionRequest, v1.DeleteSSOConnectionResponse]
+	getMachineUserCredentials       *connect.Client[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse]
+	createMachineUserPassword       *connect.Client[v1.CreateMachineUserPasswordRequest, v1.CreateMachineUserPasswordResponse]
+	createUserKey                   *connect.Client[v1.CreateUserKeyRequest, v1.CreateUserKeyResponse]
+	createHumanUserPassword         *connect.Client[v1.CreateHumanUserPasswordRequest, v1.CreateHumanUserPasswordResponse]
+	listUserExternalIds             *connect.Client[v1.ListUserExternalIdsRequest, v1.ListUserExternalIdsResponse]
+	createUserExternalId            *connect.Client[v1.CreateUserExternalIdRequest, v1.CreateUserExternalIdResponse]
+	deleteUserExternalId            *connect.Client[v1.DeleteUserExternalIdRequest, v1.DeleteUserExternalIdResponse]
 }
 
 // CreateUser calls core.v1.UserService.CreateUser.
@@ -423,6 +535,41 @@ func (c *userServiceClient) GetHumanSignInSettings(ctx context.Context, req *con
 // UpdateHumanSignInSettings calls core.v1.UserService.UpdateHumanSignInSettings.
 func (c *userServiceClient) UpdateHumanSignInSettings(ctx context.Context, req *connect.Request[v1.UpdateHumanSignInSettingsRequest]) (*connect.Response[v1.UpdateHumanSignInSettingsResponse], error) {
 	return c.updateHumanSignInSettings.CallUnary(ctx, req)
+}
+
+// GetSignInMethods calls core.v1.UserService.GetSignInMethods.
+func (c *userServiceClient) GetSignInMethods(ctx context.Context, req *connect.Request[v1.GetSignInMethodsRequest]) (*connect.Response[v1.GetSignInMethodsResponse], error) {
+	return c.getSignInMethods.CallUnary(ctx, req)
+}
+
+// UpdateSignInMethods calls core.v1.UserService.UpdateSignInMethods.
+func (c *userServiceClient) UpdateSignInMethods(ctx context.Context, req *connect.Request[v1.UpdateSignInMethodsRequest]) (*connect.Response[v1.UpdateSignInMethodsResponse], error) {
+	return c.updateSignInMethods.CallUnary(ctx, req)
+}
+
+// ListSSOConnections calls core.v1.UserService.ListSSOConnections.
+func (c *userServiceClient) ListSSOConnections(ctx context.Context, req *connect.Request[v1.ListSSOConnectionsRequest]) (*connect.Response[v1.ListSSOConnectionsResponse], error) {
+	return c.listSSOConnections.CallUnary(ctx, req)
+}
+
+// GetSSOConnection calls core.v1.UserService.GetSSOConnection.
+func (c *userServiceClient) GetSSOConnection(ctx context.Context, req *connect.Request[v1.GetSSOConnectionRequest]) (*connect.Response[v1.GetSSOConnectionResponse], error) {
+	return c.getSSOConnection.CallUnary(ctx, req)
+}
+
+// CreateSSOConnection calls core.v1.UserService.CreateSSOConnection.
+func (c *userServiceClient) CreateSSOConnection(ctx context.Context, req *connect.Request[v1.CreateSSOConnectionRequest]) (*connect.Response[v1.CreateSSOConnectionResponse], error) {
+	return c.createSSOConnection.CallUnary(ctx, req)
+}
+
+// UpdateSSOConnectionClientSecret calls core.v1.UserService.UpdateSSOConnectionClientSecret.
+func (c *userServiceClient) UpdateSSOConnectionClientSecret(ctx context.Context, req *connect.Request[v1.UpdateSSOConnectionClientSecretRequest]) (*connect.Response[v1.UpdateSSOConnectionClientSecretResponse], error) {
+	return c.updateSSOConnectionClientSecret.CallUnary(ctx, req)
+}
+
+// DeleteSSOConnection calls core.v1.UserService.DeleteSSOConnection.
+func (c *userServiceClient) DeleteSSOConnection(ctx context.Context, req *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error) {
+	return c.deleteSSOConnection.CallUnary(ctx, req)
 }
 
 // GetMachineUserCredentials calls core.v1.UserService.GetMachineUserCredentials.
@@ -521,6 +668,45 @@ type UserServiceHandler interface {
 	// Suspend or resume new human sign-ins (Formal Endpoint logins and access token creation) for the
 	// organization. Existing sessions and tokens are not affected; use DeleteHumanUserSessions for that.
 	UpdateHumanSignInSettings(context.Context, *connect.Request[v1.UpdateHumanSignInSettingsRequest]) (*connect.Response[v1.UpdateHumanSignInSettingsResponse], error)
+	// Get sign-in methods
+	//
+	// How the organization's users sign in with Formal's own sign-in: emailed codes, its SSO connection,
+	// or both. Organizations that sign in through WorkOS keep their methods for when they switch.
+	GetSignInMethods(context.Context, *connect.Request[v1.GetSignInMethodsRequest]) (*connect.Response[v1.GetSignInMethodsResponse], error)
+	// Update sign-in methods
+	//
+	// Set how the organization's users sign in. Allowing SSO needs a connection with domains. Codes can't be
+	// turned off until someone has signed in through SSO, so a connection that doesn't work can't lock
+	// everyone out: allow both, sign in through SSO, then turn codes off.
+	UpdateSignInMethods(context.Context, *connect.Request[v1.UpdateSignInMethodsRequest]) (*connect.Response[v1.UpdateSignInMethodsResponse], error)
+	// List SSO connections
+	//
+	// The organization's SSO connections. A user whose email is on a connection's domains signs in through it
+	// when the organization's sign-in methods include SSO.
+	ListSSOConnections(context.Context, *connect.Request[v1.ListSSOConnectionsRequest]) (*connect.Response[v1.ListSSOConnectionsResponse], error)
+	// Get SSO connection
+	//
+	// Get an SSO connection. Its client secret is never returned.
+	GetSSOConnection(context.Context, *connect.Request[v1.GetSSOConnectionRequest]) (*connect.Response[v1.GetSSOConnectionResponse], error)
+	// Create SSO connection
+	//
+	// Connect the organization's identity provider over OIDC. The provider's discovery document is checked
+	// before the connection is saved. Register the returned redirect URI with the provider. Apart from its
+	// client secret, a connection can't be changed: to move to another identity provider, create another
+	// connection, sign in through it, then delete the old one.
+	CreateSSOConnection(context.Context, *connect.Request[v1.CreateSSOConnectionRequest]) (*connect.Response[v1.CreateSSOConnectionResponse], error)
+	// Update SSO connection client secret
+	//
+	// Replace an SSO connection's client secret, such as when the identity provider rotates it. Formal can't
+	// check it with the provider until someone signs in, so sign in through the connection afterwards to
+	// confirm it works.
+	UpdateSSOConnectionClientSecret(context.Context, *connect.Request[v1.UpdateSSOConnectionClientSecretRequest]) (*connect.Response[v1.UpdateSSOConnectionClientSecretResponse], error)
+	// Delete SSO connection
+	//
+	// Delete an SSO connection. Refused if the organization's users couldn't sign in without it: while the
+	// sign-in methods include SSO, another connection must have domains, and while they leave out codes,
+	// someone must have signed in through another connection.
+	DeleteSSOConnection(context.Context, *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error)
 	// Get machine user credentials
 	//
 	// Get a machine user credentials
@@ -646,6 +832,51 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(userServiceMethods.ByName("UpdateHumanSignInSettings")),
 		connect.WithHandlerOptions(opts...),
 	)
+	userServiceGetSignInMethodsHandler := connect.NewUnaryHandler(
+		UserServiceGetSignInMethodsProcedure,
+		svc.GetSignInMethods,
+		connect.WithSchema(userServiceMethods.ByName("GetSignInMethods")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceUpdateSignInMethodsHandler := connect.NewUnaryHandler(
+		UserServiceUpdateSignInMethodsProcedure,
+		svc.UpdateSignInMethods,
+		connect.WithSchema(userServiceMethods.ByName("UpdateSignInMethods")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceListSSOConnectionsHandler := connect.NewUnaryHandler(
+		UserServiceListSSOConnectionsProcedure,
+		svc.ListSSOConnections,
+		connect.WithSchema(userServiceMethods.ByName("ListSSOConnections")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceGetSSOConnectionHandler := connect.NewUnaryHandler(
+		UserServiceGetSSOConnectionProcedure,
+		svc.GetSSOConnection,
+		connect.WithSchema(userServiceMethods.ByName("GetSSOConnection")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceCreateSSOConnectionHandler := connect.NewUnaryHandler(
+		UserServiceCreateSSOConnectionProcedure,
+		svc.CreateSSOConnection,
+		connect.WithSchema(userServiceMethods.ByName("CreateSSOConnection")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceUpdateSSOConnectionClientSecretHandler := connect.NewUnaryHandler(
+		UserServiceUpdateSSOConnectionClientSecretProcedure,
+		svc.UpdateSSOConnectionClientSecret,
+		connect.WithSchema(userServiceMethods.ByName("UpdateSSOConnectionClientSecret")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceDeleteSSOConnectionHandler := connect.NewUnaryHandler(
+		UserServiceDeleteSSOConnectionProcedure,
+		svc.DeleteSSOConnection,
+		connect.WithSchema(userServiceMethods.ByName("DeleteSSOConnection")),
+		connect.WithHandlerOptions(opts...),
+	)
 	userServiceGetMachineUserCredentialsHandler := connect.NewUnaryHandler(
 		UserServiceGetMachineUserCredentialsProcedure,
 		svc.GetMachineUserCredentials,
@@ -720,6 +951,20 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceGetHumanSignInSettingsHandler.ServeHTTP(w, r)
 		case UserServiceUpdateHumanSignInSettingsProcedure:
 			userServiceUpdateHumanSignInSettingsHandler.ServeHTTP(w, r)
+		case UserServiceGetSignInMethodsProcedure:
+			userServiceGetSignInMethodsHandler.ServeHTTP(w, r)
+		case UserServiceUpdateSignInMethodsProcedure:
+			userServiceUpdateSignInMethodsHandler.ServeHTTP(w, r)
+		case UserServiceListSSOConnectionsProcedure:
+			userServiceListSSOConnectionsHandler.ServeHTTP(w, r)
+		case UserServiceGetSSOConnectionProcedure:
+			userServiceGetSSOConnectionHandler.ServeHTTP(w, r)
+		case UserServiceCreateSSOConnectionProcedure:
+			userServiceCreateSSOConnectionHandler.ServeHTTP(w, r)
+		case UserServiceUpdateSSOConnectionClientSecretProcedure:
+			userServiceUpdateSSOConnectionClientSecretHandler.ServeHTTP(w, r)
+		case UserServiceDeleteSSOConnectionProcedure:
+			userServiceDeleteSSOConnectionHandler.ServeHTTP(w, r)
 		case UserServiceGetMachineUserCredentialsProcedure:
 			userServiceGetMachineUserCredentialsHandler.ServeHTTP(w, r)
 		case UserServiceCreateMachineUserPasswordProcedure:
@@ -797,6 +1042,34 @@ func (UnimplementedUserServiceHandler) GetHumanSignInSettings(context.Context, *
 
 func (UnimplementedUserServiceHandler) UpdateHumanSignInSettings(context.Context, *connect.Request[v1.UpdateHumanSignInSettingsRequest]) (*connect.Response[v1.UpdateHumanSignInSettingsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateHumanSignInSettings is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) GetSignInMethods(context.Context, *connect.Request[v1.GetSignInMethodsRequest]) (*connect.Response[v1.GetSignInMethodsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.GetSignInMethods is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) UpdateSignInMethods(context.Context, *connect.Request[v1.UpdateSignInMethodsRequest]) (*connect.Response[v1.UpdateSignInMethodsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateSignInMethods is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) ListSSOConnections(context.Context, *connect.Request[v1.ListSSOConnectionsRequest]) (*connect.Response[v1.ListSSOConnectionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.ListSSOConnections is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) GetSSOConnection(context.Context, *connect.Request[v1.GetSSOConnectionRequest]) (*connect.Response[v1.GetSSOConnectionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.GetSSOConnection is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) CreateSSOConnection(context.Context, *connect.Request[v1.CreateSSOConnectionRequest]) (*connect.Response[v1.CreateSSOConnectionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.CreateSSOConnection is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) UpdateSSOConnectionClientSecret(context.Context, *connect.Request[v1.UpdateSSOConnectionClientSecretRequest]) (*connect.Response[v1.UpdateSSOConnectionClientSecretResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateSSOConnectionClientSecret is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) DeleteSSOConnection(context.Context, *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.DeleteSSOConnection is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) GetMachineUserCredentials(context.Context, *connect.Request[v1.GetMachineUserCredentialsRequest]) (*connect.Response[v1.GetMachineUserCredentialsResponse], error) {

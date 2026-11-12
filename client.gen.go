@@ -4279,6 +4279,20 @@ func (c *UserServiceClient) CreateMachineUserPassword(ctx context.Context, req *
 	return res.Msg, nil
 }
 
+// Create SSO connection
+//
+// Connect the organization's identity provider over OIDC. The provider's discovery document is checked
+// before the connection is saved. Register the returned redirect URI with the provider. Apart from its
+// client secret, a connection can't be changed: to move to another identity provider, create another
+// connection, sign in through it, then delete the old one.
+func (c *UserServiceClient) CreateSSOConnection(ctx context.Context, req *corev1.CreateSSOConnectionRequest) (*corev1.CreateSSOConnectionResponse, error) {
+	res, err := c.inner.CreateSSOConnection(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Create user
 //
 // Create a user
@@ -4329,6 +4343,19 @@ func (c *UserServiceClient) DeleteBlockedUser(ctx context.Context, req *corev1.D
 // connector access tokens, forcing them to authenticate again. Machine users are not affected.
 func (c *UserServiceClient) DeleteHumanUserSessions(ctx context.Context, req *corev1.DeleteHumanUserSessionsRequest) (*corev1.DeleteHumanUserSessionsResponse, error) {
 	res, err := c.inner.DeleteHumanUserSessions(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete SSO connection
+//
+// Delete an SSO connection. Refused if the organization's users couldn't sign in without it: while the
+// sign-in methods include SSO, another connection must have domains, and while they leave out codes,
+// someone must have signed in through another connection.
+func (c *UserServiceClient) DeleteSSOConnection(ctx context.Context, req *corev1.DeleteSSOConnectionRequest) (*corev1.DeleteSSOConnectionResponse, error) {
+	res, err := c.inner.DeleteSSOConnection(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -4390,11 +4417,46 @@ func (c *UserServiceClient) GetMachineUserCredentials(ctx context.Context, req *
 	return res.Msg, nil
 }
 
+// Get SSO connection
+//
+// Get an SSO connection. Its client secret is never returned.
+func (c *UserServiceClient) GetSSOConnection(ctx context.Context, req *corev1.GetSSOConnectionRequest) (*corev1.GetSSOConnectionResponse, error) {
+	res, err := c.inner.GetSSOConnection(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get sign-in methods
+//
+// How the organization's users sign in with Formal's own sign-in: emailed codes, its SSO connection,
+// or both. Organizations that sign in through WorkOS keep their methods for when they switch.
+func (c *UserServiceClient) GetSignInMethods(ctx context.Context, req *corev1.GetSignInMethodsRequest) (*corev1.GetSignInMethodsResponse, error) {
+	res, err := c.inner.GetSignInMethods(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Get user
 //
 // Get a user
 func (c *UserServiceClient) GetUser(ctx context.Context, req *corev1.GetUserRequest) (*corev1.GetUserResponse, error) {
 	res, err := c.inner.GetUser(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// List SSO connections
+//
+// The organization's SSO connections. A user whose email is on a connection's domains signs in through it
+// when the organization's sign-in methods include SSO.
+func (c *UserServiceClient) ListSSOConnections(ctx context.Context, req *corev1.ListSSOConnectionsRequest) (*corev1.ListSSOConnectionsResponse, error) {
+	res, err := c.inner.ListSSOConnections(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
@@ -4441,6 +4503,32 @@ func (c *UserServiceClient) UpdateHumanSignInSettings(ctx context.Context, req *
 // soon as connectors receive the new one; the new passwords are returned once.
 func (c *UserServiceClient) UpdateMachineUserPasswords(ctx context.Context, req *corev1.UpdateMachineUserPasswordsRequest) (*corev1.UpdateMachineUserPasswordsResponse, error) {
 	res, err := c.inner.UpdateMachineUserPasswords(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update SSO connection client secret
+//
+// Replace an SSO connection's client secret, such as when the identity provider rotates it. Formal can't
+// check it with the provider until someone signs in, so sign in through the connection afterwards to
+// confirm it works.
+func (c *UserServiceClient) UpdateSSOConnectionClientSecret(ctx context.Context, req *corev1.UpdateSSOConnectionClientSecretRequest) (*corev1.UpdateSSOConnectionClientSecretResponse, error) {
+	res, err := c.inner.UpdateSSOConnectionClientSecret(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Update sign-in methods
+//
+// Set how the organization's users sign in. Allowing SSO needs a connection with domains. Codes can't be
+// turned off until someone has signed in through SSO, so a connection that doesn't work can't lock
+// everyone out: allow both, sign in through SSO, then turn codes off.
+func (c *UserServiceClient) UpdateSignInMethods(ctx context.Context, req *corev1.UpdateSignInMethodsRequest) (*corev1.UpdateSignInMethodsResponse, error) {
+	res, err := c.inner.UpdateSignInMethods(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

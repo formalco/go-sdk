@@ -2392,6 +2392,853 @@ func (x *UpdateHumanSignInSettingsResponse) GetSettings() *HumanSignInSettings {
 	return nil
 }
 
+type GetSignInMethodsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSignInMethodsRequest) Reset() {
+	*x = GetSignInMethodsRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSignInMethodsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSignInMethodsRequest) ProtoMessage() {}
+
+func (x *GetSignInMethodsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSignInMethodsRequest.ProtoReflect.Descriptor instead.
+func (*GetSignInMethodsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{45}
+}
+
+type GetSignInMethodsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Each is email_code or sso.
+	Methods       []string `protobuf:"bytes,1,rep,name=methods,proto3" json:"methods,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSignInMethodsResponse) Reset() {
+	*x = GetSignInMethodsResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSignInMethodsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSignInMethodsResponse) ProtoMessage() {}
+
+func (x *GetSignInMethodsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSignInMethodsResponse.ProtoReflect.Descriptor instead.
+func (*GetSignInMethodsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *GetSignInMethodsResponse) GetMethods() []string {
+	if x != nil {
+		return x.Methods
+	}
+	return nil
+}
+
+type UpdateSignInMethodsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// At least one of email_code and sso.
+	Methods       []string `protobuf:"bytes,1,rep,name=methods,proto3" json:"methods,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSignInMethodsRequest) Reset() {
+	*x = UpdateSignInMethodsRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSignInMethodsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSignInMethodsRequest) ProtoMessage() {}
+
+func (x *UpdateSignInMethodsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSignInMethodsRequest.ProtoReflect.Descriptor instead.
+func (*UpdateSignInMethodsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *UpdateSignInMethodsRequest) GetMethods() []string {
+	if x != nil {
+		return x.Methods
+	}
+	return nil
+}
+
+type UpdateSignInMethodsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Methods       []string               `protobuf:"bytes,1,rep,name=methods,proto3" json:"methods,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSignInMethodsResponse) Reset() {
+	*x = UpdateSignInMethodsResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSignInMethodsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSignInMethodsResponse) ProtoMessage() {}
+
+func (x *UpdateSignInMethodsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSignInMethodsResponse.ProtoReflect.Descriptor instead.
+func (*UpdateSignInMethodsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *UpdateSignInMethodsResponse) GetMethods() []string {
+	if x != nil {
+		return x.Methods
+	}
+	return nil
+}
+
+type SSOConnection struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Part of the redirect URI, so it can't change.
+	ProviderId  string `protobuf:"bytes,2,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`
+	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	// The identity provider's issuer, which its discovery document and ID tokens must match exactly.
+	Issuer string `protobuf:"bytes,4,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	// The email domains, and their subdomains, whose users sign in through this connection. A user's first
+	// sign-in links them to the Formal user with that email only on these domains. In Formal cloud, Formal
+	// sets them.
+	Domains []string `protobuf:"bytes,5,rep,name=domains,proto3" json:"domains,omitempty"`
+	// Where the identity provider sends users back; register it with the provider.
+	RedirectUri string `protobuf:"bytes,6,opt,name=redirect_uri,json=redirectUri,proto3" json:"redirect_uri,omitempty"`
+	// Types that are valid to be assigned to Protocol:
+	//
+	//	*SSOConnection_Oidc
+	Protocol      isSSOConnection_Protocol `protobuf_oneof:"protocol"`
+	CreatedAt     *timestamppb.Timestamp   `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp   `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SSOConnection) Reset() {
+	*x = SSOConnection{}
+	mi := &file_core_v1_user_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SSOConnection) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SSOConnection) ProtoMessage() {}
+
+func (x *SSOConnection) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SSOConnection.ProtoReflect.Descriptor instead.
+func (*SSOConnection) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *SSOConnection) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *SSOConnection) GetProviderId() string {
+	if x != nil {
+		return x.ProviderId
+	}
+	return ""
+}
+
+func (x *SSOConnection) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *SSOConnection) GetIssuer() string {
+	if x != nil {
+		return x.Issuer
+	}
+	return ""
+}
+
+func (x *SSOConnection) GetDomains() []string {
+	if x != nil {
+		return x.Domains
+	}
+	return nil
+}
+
+func (x *SSOConnection) GetRedirectUri() string {
+	if x != nil {
+		return x.RedirectUri
+	}
+	return ""
+}
+
+func (x *SSOConnection) GetProtocol() isSSOConnection_Protocol {
+	if x != nil {
+		return x.Protocol
+	}
+	return nil
+}
+
+func (x *SSOConnection) GetOidc() *OIDCConnectionSettings {
+	if x != nil {
+		if x, ok := x.Protocol.(*SSOConnection_Oidc); ok {
+			return x.Oidc
+		}
+	}
+	return nil
+}
+
+func (x *SSOConnection) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *SSOConnection) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type isSSOConnection_Protocol interface {
+	isSSOConnection_Protocol()
+}
+
+type SSOConnection_Oidc struct {
+	Oidc *OIDCConnectionSettings `protobuf:"bytes,7,opt,name=oidc,proto3,oneof"`
+}
+
+func (*SSOConnection_Oidc) isSSOConnection_Protocol() {}
+
+type OIDCConnectionSettings struct {
+	state    protoimpl.MessageState `protogen:"open.v1"`
+	ClientId string                 `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	// Write-only: required to create a connection, and never returned.
+	ClientSecret  string `protobuf:"bytes,2,opt,name=client_secret,json=clientSecret,proto3" json:"client_secret,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OIDCConnectionSettings) Reset() {
+	*x = OIDCConnectionSettings{}
+	mi := &file_core_v1_user_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OIDCConnectionSettings) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OIDCConnectionSettings) ProtoMessage() {}
+
+func (x *OIDCConnectionSettings) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OIDCConnectionSettings.ProtoReflect.Descriptor instead.
+func (*OIDCConnectionSettings) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *OIDCConnectionSettings) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *OIDCConnectionSettings) GetClientSecret() string {
+	if x != nil {
+		return x.ClientSecret
+	}
+	return ""
+}
+
+type ListSSOConnectionsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSSOConnectionsRequest) Reset() {
+	*x = ListSSOConnectionsRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSSOConnectionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSSOConnectionsRequest) ProtoMessage() {}
+
+func (x *ListSSOConnectionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSSOConnectionsRequest.ProtoReflect.Descriptor instead.
+func (*ListSSOConnectionsRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{51}
+}
+
+type ListSSOConnectionsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Connections   []*SSOConnection       `protobuf:"bytes,1,rep,name=connections,proto3" json:"connections,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSSOConnectionsResponse) Reset() {
+	*x = ListSSOConnectionsResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSSOConnectionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSSOConnectionsResponse) ProtoMessage() {}
+
+func (x *ListSSOConnectionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSSOConnectionsResponse.ProtoReflect.Descriptor instead.
+func (*ListSSOConnectionsResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *ListSSOConnectionsResponse) GetConnections() []*SSOConnection {
+	if x != nil {
+		return x.Connections
+	}
+	return nil
+}
+
+type GetSSOConnectionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSSOConnectionRequest) Reset() {
+	*x = GetSSOConnectionRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSSOConnectionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSSOConnectionRequest) ProtoMessage() {}
+
+func (x *GetSSOConnectionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSSOConnectionRequest.ProtoReflect.Descriptor instead.
+func (*GetSSOConnectionRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *GetSSOConnectionRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetSSOConnectionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Connection    *SSOConnection         `protobuf:"bytes,1,opt,name=connection,proto3" json:"connection,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSSOConnectionResponse) Reset() {
+	*x = GetSSOConnectionResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[54]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSSOConnectionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSSOConnectionResponse) ProtoMessage() {}
+
+func (x *GetSSOConnectionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[54]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSSOConnectionResponse.ProtoReflect.Descriptor instead.
+func (*GetSSOConnectionResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{54}
+}
+
+func (x *GetSSOConnectionResponse) GetConnection() *SSOConnection {
+	if x != nil {
+		return x.Connection
+	}
+	return nil
+}
+
+type CreateSSOConnectionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Up to 64 lowercase letters, digits and hyphens, unique across Formal.
+	ProviderId  string `protobuf:"bytes,1,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	Issuer      string `protobuf:"bytes,3,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	// Self-hosted only; in Formal cloud, Formal sets them.
+	Domains []string `protobuf:"bytes,4,rep,name=domains,proto3" json:"domains,omitempty"`
+	// Types that are valid to be assigned to Protocol:
+	//
+	//	*CreateSSOConnectionRequest_Oidc
+	Protocol      isCreateSSOConnectionRequest_Protocol `protobuf_oneof:"protocol"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSSOConnectionRequest) Reset() {
+	*x = CreateSSOConnectionRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[55]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSSOConnectionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSSOConnectionRequest) ProtoMessage() {}
+
+func (x *CreateSSOConnectionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[55]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSSOConnectionRequest.ProtoReflect.Descriptor instead.
+func (*CreateSSOConnectionRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{55}
+}
+
+func (x *CreateSSOConnectionRequest) GetProviderId() string {
+	if x != nil {
+		return x.ProviderId
+	}
+	return ""
+}
+
+func (x *CreateSSOConnectionRequest) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *CreateSSOConnectionRequest) GetIssuer() string {
+	if x != nil {
+		return x.Issuer
+	}
+	return ""
+}
+
+func (x *CreateSSOConnectionRequest) GetDomains() []string {
+	if x != nil {
+		return x.Domains
+	}
+	return nil
+}
+
+func (x *CreateSSOConnectionRequest) GetProtocol() isCreateSSOConnectionRequest_Protocol {
+	if x != nil {
+		return x.Protocol
+	}
+	return nil
+}
+
+func (x *CreateSSOConnectionRequest) GetOidc() *OIDCConnectionSettings {
+	if x != nil {
+		if x, ok := x.Protocol.(*CreateSSOConnectionRequest_Oidc); ok {
+			return x.Oidc
+		}
+	}
+	return nil
+}
+
+type isCreateSSOConnectionRequest_Protocol interface {
+	isCreateSSOConnectionRequest_Protocol()
+}
+
+type CreateSSOConnectionRequest_Oidc struct {
+	Oidc *OIDCConnectionSettings `protobuf:"bytes,5,opt,name=oidc,proto3,oneof"`
+}
+
+func (*CreateSSOConnectionRequest_Oidc) isCreateSSOConnectionRequest_Protocol() {}
+
+type CreateSSOConnectionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Connection    *SSOConnection         `protobuf:"bytes,1,opt,name=connection,proto3" json:"connection,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSSOConnectionResponse) Reset() {
+	*x = CreateSSOConnectionResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSSOConnectionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSSOConnectionResponse) ProtoMessage() {}
+
+func (x *CreateSSOConnectionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSSOConnectionResponse.ProtoReflect.Descriptor instead.
+func (*CreateSSOConnectionResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *CreateSSOConnectionResponse) GetConnection() *SSOConnection {
+	if x != nil {
+		return x.Connection
+	}
+	return nil
+}
+
+type UpdateSSOConnectionClientSecretRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ClientSecret  string                 `protobuf:"bytes,2,opt,name=client_secret,json=clientSecret,proto3" json:"client_secret,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSSOConnectionClientSecretRequest) Reset() {
+	*x = UpdateSSOConnectionClientSecretRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSSOConnectionClientSecretRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSSOConnectionClientSecretRequest) ProtoMessage() {}
+
+func (x *UpdateSSOConnectionClientSecretRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSSOConnectionClientSecretRequest.ProtoReflect.Descriptor instead.
+func (*UpdateSSOConnectionClientSecretRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *UpdateSSOConnectionClientSecretRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateSSOConnectionClientSecretRequest) GetClientSecret() string {
+	if x != nil {
+		return x.ClientSecret
+	}
+	return ""
+}
+
+type UpdateSSOConnectionClientSecretResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Connection    *SSOConnection         `protobuf:"bytes,1,opt,name=connection,proto3" json:"connection,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSSOConnectionClientSecretResponse) Reset() {
+	*x = UpdateSSOConnectionClientSecretResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSSOConnectionClientSecretResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSSOConnectionClientSecretResponse) ProtoMessage() {}
+
+func (x *UpdateSSOConnectionClientSecretResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSSOConnectionClientSecretResponse.ProtoReflect.Descriptor instead.
+func (*UpdateSSOConnectionClientSecretResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *UpdateSSOConnectionClientSecretResponse) GetConnection() *SSOConnection {
+	if x != nil {
+		return x.Connection
+	}
+	return nil
+}
+
+type DeleteSSOConnectionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSSOConnectionRequest) Reset() {
+	*x = DeleteSSOConnectionRequest{}
+	mi := &file_core_v1_user_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSSOConnectionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSSOConnectionRequest) ProtoMessage() {}
+
+func (x *DeleteSSOConnectionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSSOConnectionRequest.ProtoReflect.Descriptor instead.
+func (*DeleteSSOConnectionRequest) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *DeleteSSOConnectionRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type DeleteSSOConnectionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSSOConnectionResponse) Reset() {
+	*x = DeleteSSOConnectionResponse{}
+	mi := &file_core_v1_user_proto_msgTypes[60]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSSOConnectionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSSOConnectionResponse) ProtoMessage() {}
+
+func (x *DeleteSSOConnectionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_user_proto_msgTypes[60]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSSOConnectionResponse.ProtoReflect.Descriptor instead.
+func (*DeleteSSOConnectionResponse) Descriptor() ([]byte, []int) {
+	return file_core_v1_user_proto_rawDescGZIP(), []int{60}
+}
+
 var File_core_v1_user_proto protoreflect.FileDescriptor
 
 const file_core_v1_user_proto_rawDesc = "" +
@@ -2551,7 +3398,64 @@ const file_core_v1_user_proto_rawDesc = "" +
 	" UpdateHumanSignInSettingsRequest\x12,\n" +
 	"\x12sign_ins_suspended\x18\x01 \x01(\bR\x10signInsSuspended\"]\n" +
 	"!UpdateHumanSignInSettingsResponse\x128\n" +
-	"\bsettings\x18\x01 \x01(\v2\x1c.core.v1.HumanSignInSettingsR\bsettings2\x80\x18\n" +
+	"\bsettings\x18\x01 \x01(\v2\x1c.core.v1.HumanSignInSettingsR\bsettings\"\x19\n" +
+	"\x17GetSignInMethodsRequest\"4\n" +
+	"\x18GetSignInMethodsResponse\x12\x18\n" +
+	"\amethods\x18\x01 \x03(\tR\amethods\"@\n" +
+	"\x1aUpdateSignInMethodsRequest\x12\"\n" +
+	"\amethods\x18\x01 \x03(\tB\b\xbaH\x05\x92\x01\x02\b\x01R\amethods\"7\n" +
+	"\x1bUpdateSignInMethodsResponse\x12\x18\n" +
+	"\amethods\x18\x01 \x03(\tR\amethods\"\xf1\x02\n" +
+	"\rSSOConnection\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vprovider_id\x18\x02 \x01(\tR\n" +
+	"providerId\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12\x16\n" +
+	"\x06issuer\x18\x04 \x01(\tR\x06issuer\x12\x18\n" +
+	"\adomains\x18\x05 \x03(\tR\adomains\x12!\n" +
+	"\fredirect_uri\x18\x06 \x01(\tR\vredirectUri\x125\n" +
+	"\x04oidc\x18\a \x01(\v2\x1f.core.v1.OIDCConnectionSettingsH\x00R\x04oidc\x129\n" +
+	"\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\n" +
+	"\n" +
+	"\bprotocol\"h\n" +
+	"\x16OIDCConnectionSettings\x12$\n" +
+	"\tclient_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bclientId\x12(\n" +
+	"\rclient_secret\x18\x02 \x01(\tB\x03\x80\x01\x01R\fclientSecret\"\x1b\n" +
+	"\x19ListSSOConnectionsRequest\"V\n" +
+	"\x1aListSSOConnectionsResponse\x128\n" +
+	"\vconnections\x18\x01 \x03(\v2\x16.core.v1.SSOConnectionR\vconnections\"2\n" +
+	"\x17GetSSOConnectionRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"R\n" +
+	"\x18GetSSOConnectionResponse\x126\n" +
+	"\n" +
+	"connection\x18\x01 \x01(\v2\x16.core.v1.SSOConnectionR\n" +
+	"connection\"\xf7\x01\n" +
+	"\x1aCreateSSOConnectionRequest\x12(\n" +
+	"\vprovider_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"providerId\x12*\n" +
+	"\fdisplay_name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vdisplayName\x12\x1f\n" +
+	"\x06issuer\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06issuer\x12\x18\n" +
+	"\adomains\x18\x04 \x03(\tR\adomains\x125\n" +
+	"\x04oidc\x18\x05 \x01(\v2\x1f.core.v1.OIDCConnectionSettingsH\x00R\x04oidcB\x11\n" +
+	"\bprotocol\x12\x05\xbaH\x02\b\x01\"U\n" +
+	"\x1bCreateSSOConnectionResponse\x126\n" +
+	"\n" +
+	"connection\x18\x01 \x01(\v2\x16.core.v1.SSOConnectionR\n" +
+	"connection\"r\n" +
+	"&UpdateSSOConnectionClientSecretRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12/\n" +
+	"\rclient_secret\x18\x02 \x01(\tB\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\fclientSecret\"a\n" +
+	"'UpdateSSOConnectionClientSecretResponse\x126\n" +
+	"\n" +
+	"connection\x18\x01 \x01(\v2\x16.core.v1.SSOConnectionR\n" +
+	"connection\"5\n" +
+	"\x1aDeleteSSOConnectionRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x1d\n" +
+	"\x1bDeleteSSOConnectionResponse2\xc5 \n" +
 	"\vUserService\x12q\n" +
 	"\n" +
 	"CreateUser\x12\x1a.core.v1.CreateUserRequest\x1a\x1b.core.v1.CreateUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/CreateUser\x12q\n" +
@@ -2569,7 +3473,14 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\x17DeleteHumanUserSessions\x12'.core.v1.DeleteHumanUserSessionsRequest\x1a(.core.v1.DeleteHumanUserSessionsResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.UserService/DeleteHumanUserSessions\x12\xb1\x01\n" +
 	"\x1aUpdateMachineUserPasswords\x12*.core.v1.UpdateMachineUserPasswordsRequest\x1a+.core.v1.UpdateMachineUserPasswordsResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.UserService/UpdateMachineUserPasswords\x12\xa4\x01\n" +
 	"\x16GetHumanSignInSettings\x12&.core.v1.GetHumanSignInSettingsRequest\x1a'.core.v1.GetHumanSignInSettingsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.UserService/GetHumanSignInSettings\x90\x02\x01\x12\xad\x01\n" +
-	"\x19UpdateHumanSignInSettings\x12).core.v1.UpdateHumanSignInSettingsRequest\x1a*.core.v1.UpdateHumanSignInSettingsResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/UpdateHumanSignInSettings\x12\xb0\x01\n" +
+	"\x19UpdateHumanSignInSettings\x12).core.v1.UpdateHumanSignInSettingsRequest\x1a*.core.v1.UpdateHumanSignInSettingsResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/UpdateHumanSignInSettings\x12\x8c\x01\n" +
+	"\x10GetSignInMethods\x12 .core.v1.GetSignInMethodsRequest\x1a!.core.v1.GetSignInMethodsResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.UserService/GetSignInMethods\x90\x02\x01\x12\x95\x01\n" +
+	"\x13UpdateSignInMethods\x12#.core.v1.UpdateSignInMethodsRequest\x1a$.core.v1.UpdateSignInMethodsResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.UserService/UpdateSignInMethods\x12\x94\x01\n" +
+	"\x12ListSSOConnections\x12\".core.v1.ListSSOConnectionsRequest\x1a#.core.v1.ListSSOConnectionsResponse\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.UserService/ListSSOConnections\x90\x02\x01\x12\x8c\x01\n" +
+	"\x10GetSSOConnection\x12 .core.v1.GetSSOConnectionRequest\x1a!.core.v1.GetSSOConnectionResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.UserService/GetSSOConnection\x90\x02\x01\x12\x95\x01\n" +
+	"\x13CreateSSOConnection\x12#.core.v1.CreateSSOConnectionRequest\x1a$.core.v1.CreateSSOConnectionResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.UserService/CreateSSOConnection\x12\xc5\x01\n" +
+	"\x1fUpdateSSOConnectionClientSecret\x12/.core.v1.UpdateSSOConnectionClientSecretRequest\x1a0.core.v1.UpdateSSOConnectionClientSecretResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.UserService/UpdateSSOConnectionClientSecret\x12\x95\x01\n" +
+	"\x13DeleteSSOConnection\x12#.core.v1.DeleteSSOConnectionRequest\x1a$.core.v1.DeleteSSOConnectionResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.UserService/DeleteSSOConnection\x12\xb0\x01\n" +
 	"\x19GetMachineUserCredentials\x12).core.v1.GetMachineUserCredentialsRequest\x1a*.core.v1.GetMachineUserCredentialsResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/GetMachineUserCredentials\x90\x02\x01\x12\xad\x01\n" +
 	"\x19CreateMachineUserPassword\x12).core.v1.CreateMachineUserPasswordRequest\x1a*.core.v1.CreateMachineUserPasswordResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/CreateMachineUserPassword\x12}\n" +
 	"\rCreateUserKey\x12\x1d.core.v1.CreateUserKeyRequest\x1a\x1e.core.v1.CreateUserKeyResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.UserService/CreateUserKey\x12\xa5\x01\n" +
@@ -2591,134 +3502,172 @@ func file_core_v1_user_proto_rawDescGZIP() []byte {
 	return file_core_v1_user_proto_rawDescData
 }
 
-var file_core_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 45)
+var file_core_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 61)
 var file_core_v1_user_proto_goTypes = []any{
-	(*ExternalId)(nil),                         // 0: core.v1.ExternalId
-	(*CreateUserRequest)(nil),                  // 1: core.v1.CreateUserRequest
-	(*CreateUserResponse)(nil),                 // 2: core.v1.CreateUserResponse
-	(*ListUsersRequest)(nil),                   // 3: core.v1.ListUsersRequest
-	(*ListUsersResponse)(nil),                  // 4: core.v1.ListUsersResponse
-	(*GetUserRequest)(nil),                     // 5: core.v1.GetUserRequest
-	(*GetUserResponse)(nil),                    // 6: core.v1.GetUserResponse
-	(*DeleteUserRequest)(nil),                  // 7: core.v1.DeleteUserRequest
-	(*DeleteUserResponse)(nil),                 // 8: core.v1.DeleteUserResponse
-	(*UpdateUserRequest)(nil),                  // 9: core.v1.UpdateUserRequest
-	(*UpdateUserResponse)(nil),                 // 10: core.v1.UpdateUserResponse
-	(*UpdateUserExpiryRequest)(nil),            // 11: core.v1.UpdateUserExpiryRequest
-	(*UpdateUserExpiryResponse)(nil),           // 12: core.v1.UpdateUserExpiryResponse
-	(*UpdateUserV2Request)(nil),                // 13: core.v1.UpdateUserV2Request
-	(*UpdateUserV2Response)(nil),               // 14: core.v1.UpdateUserV2Response
-	(*GetMachineUserCredentialsRequest)(nil),   // 15: core.v1.GetMachineUserCredentialsRequest
-	(*GetMachineUserCredentialsResponse)(nil),  // 16: core.v1.GetMachineUserCredentialsResponse
-	(*CreateHumanUserPasswordRequest)(nil),     // 17: core.v1.CreateHumanUserPasswordRequest
-	(*CreateHumanUserPasswordResponse)(nil),    // 18: core.v1.CreateHumanUserPasswordResponse
-	(*CreateMachineUserPasswordRequest)(nil),   // 19: core.v1.CreateMachineUserPasswordRequest
-	(*CreateMachineUserPasswordResponse)(nil),  // 20: core.v1.CreateMachineUserPasswordResponse
-	(*ListUserExternalIdsRequest)(nil),         // 21: core.v1.ListUserExternalIdsRequest
-	(*ListUserExternalIdsResponse)(nil),        // 22: core.v1.ListUserExternalIdsResponse
-	(*CreateUserExternalIdRequest)(nil),        // 23: core.v1.CreateUserExternalIdRequest
-	(*CreateUserExternalIdResponse)(nil),       // 24: core.v1.CreateUserExternalIdResponse
-	(*DeleteUserExternalIdRequest)(nil),        // 25: core.v1.DeleteUserExternalIdRequest
-	(*DeleteUserExternalIdResponse)(nil),       // 26: core.v1.DeleteUserExternalIdResponse
-	(*DeleteBlockedUserRequest)(nil),           // 27: core.v1.DeleteBlockedUserRequest
-	(*DeleteBlockedUserResponse)(nil),          // 28: core.v1.DeleteBlockedUserResponse
-	(*CreateBlockedUserRequest)(nil),           // 29: core.v1.CreateBlockedUserRequest
-	(*CreateBlockedUserResponse)(nil),          // 30: core.v1.CreateBlockedUserResponse
-	(*GetBlockedUserRequest)(nil),              // 31: core.v1.GetBlockedUserRequest
-	(*GetBlockedUserResponse)(nil),             // 32: core.v1.GetBlockedUserResponse
-	(*CreateUserKeyRequest)(nil),               // 33: core.v1.CreateUserKeyRequest
-	(*CreateUserKeyResponse)(nil),              // 34: core.v1.CreateUserKeyResponse
-	(*DeleteHumanUserSessionsRequest)(nil),     // 35: core.v1.DeleteHumanUserSessionsRequest
-	(*DeleteHumanUserSessionsResponse)(nil),    // 36: core.v1.DeleteHumanUserSessionsResponse
-	(*HumanSignInSettings)(nil),                // 37: core.v1.HumanSignInSettings
-	(*UpdateMachineUserPasswordsRequest)(nil),  // 38: core.v1.UpdateMachineUserPasswordsRequest
-	(*UpdateMachineUserPasswordsResponse)(nil), // 39: core.v1.UpdateMachineUserPasswordsResponse
-	(*MachineUserPassword)(nil),                // 40: core.v1.MachineUserPassword
-	(*GetHumanSignInSettingsRequest)(nil),      // 41: core.v1.GetHumanSignInSettingsRequest
-	(*GetHumanSignInSettingsResponse)(nil),     // 42: core.v1.GetHumanSignInSettingsResponse
-	(*UpdateHumanSignInSettingsRequest)(nil),   // 43: core.v1.UpdateHumanSignInSettingsRequest
-	(*UpdateHumanSignInSettingsResponse)(nil),  // 44: core.v1.UpdateHumanSignInSettingsResponse
-	(*timestamppb.Timestamp)(nil),              // 45: google.protobuf.Timestamp
-	(*User_Human)(nil),                         // 46: core.v1.User.Human
-	(*User_Machine)(nil),                       // 47: core.v1.User.Machine
-	(*User)(nil),                               // 48: core.v1.User
-	(*Filter)(nil),                             // 49: core.v1.Filter
-	(*ListMetadata)(nil),                       // 50: core.v1.ListMetadata
-	(*Group)(nil),                              // 51: core.v1.Group
+	(*ExternalId)(nil),                              // 0: core.v1.ExternalId
+	(*CreateUserRequest)(nil),                       // 1: core.v1.CreateUserRequest
+	(*CreateUserResponse)(nil),                      // 2: core.v1.CreateUserResponse
+	(*ListUsersRequest)(nil),                        // 3: core.v1.ListUsersRequest
+	(*ListUsersResponse)(nil),                       // 4: core.v1.ListUsersResponse
+	(*GetUserRequest)(nil),                          // 5: core.v1.GetUserRequest
+	(*GetUserResponse)(nil),                         // 6: core.v1.GetUserResponse
+	(*DeleteUserRequest)(nil),                       // 7: core.v1.DeleteUserRequest
+	(*DeleteUserResponse)(nil),                      // 8: core.v1.DeleteUserResponse
+	(*UpdateUserRequest)(nil),                       // 9: core.v1.UpdateUserRequest
+	(*UpdateUserResponse)(nil),                      // 10: core.v1.UpdateUserResponse
+	(*UpdateUserExpiryRequest)(nil),                 // 11: core.v1.UpdateUserExpiryRequest
+	(*UpdateUserExpiryResponse)(nil),                // 12: core.v1.UpdateUserExpiryResponse
+	(*UpdateUserV2Request)(nil),                     // 13: core.v1.UpdateUserV2Request
+	(*UpdateUserV2Response)(nil),                    // 14: core.v1.UpdateUserV2Response
+	(*GetMachineUserCredentialsRequest)(nil),        // 15: core.v1.GetMachineUserCredentialsRequest
+	(*GetMachineUserCredentialsResponse)(nil),       // 16: core.v1.GetMachineUserCredentialsResponse
+	(*CreateHumanUserPasswordRequest)(nil),          // 17: core.v1.CreateHumanUserPasswordRequest
+	(*CreateHumanUserPasswordResponse)(nil),         // 18: core.v1.CreateHumanUserPasswordResponse
+	(*CreateMachineUserPasswordRequest)(nil),        // 19: core.v1.CreateMachineUserPasswordRequest
+	(*CreateMachineUserPasswordResponse)(nil),       // 20: core.v1.CreateMachineUserPasswordResponse
+	(*ListUserExternalIdsRequest)(nil),              // 21: core.v1.ListUserExternalIdsRequest
+	(*ListUserExternalIdsResponse)(nil),             // 22: core.v1.ListUserExternalIdsResponse
+	(*CreateUserExternalIdRequest)(nil),             // 23: core.v1.CreateUserExternalIdRequest
+	(*CreateUserExternalIdResponse)(nil),            // 24: core.v1.CreateUserExternalIdResponse
+	(*DeleteUserExternalIdRequest)(nil),             // 25: core.v1.DeleteUserExternalIdRequest
+	(*DeleteUserExternalIdResponse)(nil),            // 26: core.v1.DeleteUserExternalIdResponse
+	(*DeleteBlockedUserRequest)(nil),                // 27: core.v1.DeleteBlockedUserRequest
+	(*DeleteBlockedUserResponse)(nil),               // 28: core.v1.DeleteBlockedUserResponse
+	(*CreateBlockedUserRequest)(nil),                // 29: core.v1.CreateBlockedUserRequest
+	(*CreateBlockedUserResponse)(nil),               // 30: core.v1.CreateBlockedUserResponse
+	(*GetBlockedUserRequest)(nil),                   // 31: core.v1.GetBlockedUserRequest
+	(*GetBlockedUserResponse)(nil),                  // 32: core.v1.GetBlockedUserResponse
+	(*CreateUserKeyRequest)(nil),                    // 33: core.v1.CreateUserKeyRequest
+	(*CreateUserKeyResponse)(nil),                   // 34: core.v1.CreateUserKeyResponse
+	(*DeleteHumanUserSessionsRequest)(nil),          // 35: core.v1.DeleteHumanUserSessionsRequest
+	(*DeleteHumanUserSessionsResponse)(nil),         // 36: core.v1.DeleteHumanUserSessionsResponse
+	(*HumanSignInSettings)(nil),                     // 37: core.v1.HumanSignInSettings
+	(*UpdateMachineUserPasswordsRequest)(nil),       // 38: core.v1.UpdateMachineUserPasswordsRequest
+	(*UpdateMachineUserPasswordsResponse)(nil),      // 39: core.v1.UpdateMachineUserPasswordsResponse
+	(*MachineUserPassword)(nil),                     // 40: core.v1.MachineUserPassword
+	(*GetHumanSignInSettingsRequest)(nil),           // 41: core.v1.GetHumanSignInSettingsRequest
+	(*GetHumanSignInSettingsResponse)(nil),          // 42: core.v1.GetHumanSignInSettingsResponse
+	(*UpdateHumanSignInSettingsRequest)(nil),        // 43: core.v1.UpdateHumanSignInSettingsRequest
+	(*UpdateHumanSignInSettingsResponse)(nil),       // 44: core.v1.UpdateHumanSignInSettingsResponse
+	(*GetSignInMethodsRequest)(nil),                 // 45: core.v1.GetSignInMethodsRequest
+	(*GetSignInMethodsResponse)(nil),                // 46: core.v1.GetSignInMethodsResponse
+	(*UpdateSignInMethodsRequest)(nil),              // 47: core.v1.UpdateSignInMethodsRequest
+	(*UpdateSignInMethodsResponse)(nil),             // 48: core.v1.UpdateSignInMethodsResponse
+	(*SSOConnection)(nil),                           // 49: core.v1.SSOConnection
+	(*OIDCConnectionSettings)(nil),                  // 50: core.v1.OIDCConnectionSettings
+	(*ListSSOConnectionsRequest)(nil),               // 51: core.v1.ListSSOConnectionsRequest
+	(*ListSSOConnectionsResponse)(nil),              // 52: core.v1.ListSSOConnectionsResponse
+	(*GetSSOConnectionRequest)(nil),                 // 53: core.v1.GetSSOConnectionRequest
+	(*GetSSOConnectionResponse)(nil),                // 54: core.v1.GetSSOConnectionResponse
+	(*CreateSSOConnectionRequest)(nil),              // 55: core.v1.CreateSSOConnectionRequest
+	(*CreateSSOConnectionResponse)(nil),             // 56: core.v1.CreateSSOConnectionResponse
+	(*UpdateSSOConnectionClientSecretRequest)(nil),  // 57: core.v1.UpdateSSOConnectionClientSecretRequest
+	(*UpdateSSOConnectionClientSecretResponse)(nil), // 58: core.v1.UpdateSSOConnectionClientSecretResponse
+	(*DeleteSSOConnectionRequest)(nil),              // 59: core.v1.DeleteSSOConnectionRequest
+	(*DeleteSSOConnectionResponse)(nil),             // 60: core.v1.DeleteSSOConnectionResponse
+	(*timestamppb.Timestamp)(nil),                   // 61: google.protobuf.Timestamp
+	(*User_Human)(nil),                              // 62: core.v1.User.Human
+	(*User_Machine)(nil),                            // 63: core.v1.User.Machine
+	(*User)(nil),                                    // 64: core.v1.User
+	(*Filter)(nil),                                  // 65: core.v1.Filter
+	(*ListMetadata)(nil),                            // 66: core.v1.ListMetadata
+	(*Group)(nil),                                   // 67: core.v1.Group
 }
 var file_core_v1_user_proto_depIdxs = []int32{
-	45, // 0: core.v1.ExternalId.created_at:type_name -> google.protobuf.Timestamp
-	45, // 1: core.v1.ExternalId.updated_at:type_name -> google.protobuf.Timestamp
-	46, // 2: core.v1.CreateUserRequest.human:type_name -> core.v1.User.Human
-	47, // 3: core.v1.CreateUserRequest.machine:type_name -> core.v1.User.Machine
-	45, // 4: core.v1.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
-	48, // 5: core.v1.CreateUserResponse.user:type_name -> core.v1.User
-	49, // 6: core.v1.ListUsersRequest.filter:type_name -> core.v1.Filter
-	48, // 7: core.v1.ListUsersResponse.users:type_name -> core.v1.User
-	50, // 8: core.v1.ListUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
-	48, // 9: core.v1.GetUserResponse.user:type_name -> core.v1.User
-	48, // 10: core.v1.UpdateUserResponse.user:type_name -> core.v1.User
-	45, // 11: core.v1.UpdateUserExpiryRequest.expire_at:type_name -> google.protobuf.Timestamp
-	48, // 12: core.v1.UpdateUserV2Request.user:type_name -> core.v1.User
-	48, // 13: core.v1.UpdateUserV2Response.user:type_name -> core.v1.User
-	51, // 14: core.v1.CreateHumanUserPasswordResponse.groups:type_name -> core.v1.Group
-	45, // 15: core.v1.CreateHumanUserPasswordResponse.expires_at:type_name -> google.protobuf.Timestamp
-	45, // 16: core.v1.CreateHumanUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
-	45, // 17: core.v1.CreateMachineUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
+	61, // 0: core.v1.ExternalId.created_at:type_name -> google.protobuf.Timestamp
+	61, // 1: core.v1.ExternalId.updated_at:type_name -> google.protobuf.Timestamp
+	62, // 2: core.v1.CreateUserRequest.human:type_name -> core.v1.User.Human
+	63, // 3: core.v1.CreateUserRequest.machine:type_name -> core.v1.User.Machine
+	61, // 4: core.v1.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
+	64, // 5: core.v1.CreateUserResponse.user:type_name -> core.v1.User
+	65, // 6: core.v1.ListUsersRequest.filter:type_name -> core.v1.Filter
+	64, // 7: core.v1.ListUsersResponse.users:type_name -> core.v1.User
+	66, // 8: core.v1.ListUsersResponse.list_metadata:type_name -> core.v1.ListMetadata
+	64, // 9: core.v1.GetUserResponse.user:type_name -> core.v1.User
+	64, // 10: core.v1.UpdateUserResponse.user:type_name -> core.v1.User
+	61, // 11: core.v1.UpdateUserExpiryRequest.expire_at:type_name -> google.protobuf.Timestamp
+	64, // 12: core.v1.UpdateUserV2Request.user:type_name -> core.v1.User
+	64, // 13: core.v1.UpdateUserV2Response.user:type_name -> core.v1.User
+	67, // 14: core.v1.CreateHumanUserPasswordResponse.groups:type_name -> core.v1.Group
+	61, // 15: core.v1.CreateHumanUserPasswordResponse.expires_at:type_name -> google.protobuf.Timestamp
+	61, // 16: core.v1.CreateHumanUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
+	61, // 17: core.v1.CreateMachineUserPasswordResponse.created_at:type_name -> google.protobuf.Timestamp
 	0,  // 18: core.v1.ListUserExternalIdsResponse.external_ids:type_name -> core.v1.ExternalId
-	50, // 19: core.v1.ListUserExternalIdsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	66, // 19: core.v1.ListUserExternalIdsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	0,  // 20: core.v1.CreateUserExternalIdResponse.external_id:type_name -> core.v1.ExternalId
-	45, // 21: core.v1.CreateUserKeyResponse.created_at:type_name -> google.protobuf.Timestamp
+	61, // 21: core.v1.CreateUserKeyResponse.created_at:type_name -> google.protobuf.Timestamp
 	40, // 22: core.v1.UpdateMachineUserPasswordsResponse.passwords:type_name -> core.v1.MachineUserPassword
 	37, // 23: core.v1.GetHumanSignInSettingsResponse.settings:type_name -> core.v1.HumanSignInSettings
 	37, // 24: core.v1.UpdateHumanSignInSettingsResponse.settings:type_name -> core.v1.HumanSignInSettings
-	1,  // 25: core.v1.UserService.CreateUser:input_type -> core.v1.CreateUserRequest
-	7,  // 26: core.v1.UserService.DeleteUser:input_type -> core.v1.DeleteUserRequest
-	9,  // 27: core.v1.UserService.UpdateUser:input_type -> core.v1.UpdateUserRequest
-	11, // 28: core.v1.UserService.UpdateUserExpiry:input_type -> core.v1.UpdateUserExpiryRequest
-	13, // 29: core.v1.UserService.UpdateUserV2:input_type -> core.v1.UpdateUserV2Request
-	3,  // 30: core.v1.UserService.ListUsers:input_type -> core.v1.ListUsersRequest
-	5,  // 31: core.v1.UserService.GetUser:input_type -> core.v1.GetUserRequest
-	27, // 32: core.v1.UserService.DeleteBlockedUser:input_type -> core.v1.DeleteBlockedUserRequest
-	29, // 33: core.v1.UserService.CreateBlockedUser:input_type -> core.v1.CreateBlockedUserRequest
-	31, // 34: core.v1.UserService.GetBlockedUser:input_type -> core.v1.GetBlockedUserRequest
-	35, // 35: core.v1.UserService.DeleteHumanUserSessions:input_type -> core.v1.DeleteHumanUserSessionsRequest
-	38, // 36: core.v1.UserService.UpdateMachineUserPasswords:input_type -> core.v1.UpdateMachineUserPasswordsRequest
-	41, // 37: core.v1.UserService.GetHumanSignInSettings:input_type -> core.v1.GetHumanSignInSettingsRequest
-	43, // 38: core.v1.UserService.UpdateHumanSignInSettings:input_type -> core.v1.UpdateHumanSignInSettingsRequest
-	15, // 39: core.v1.UserService.GetMachineUserCredentials:input_type -> core.v1.GetMachineUserCredentialsRequest
-	19, // 40: core.v1.UserService.CreateMachineUserPassword:input_type -> core.v1.CreateMachineUserPasswordRequest
-	33, // 41: core.v1.UserService.CreateUserKey:input_type -> core.v1.CreateUserKeyRequest
-	17, // 42: core.v1.UserService.CreateHumanUserPassword:input_type -> core.v1.CreateHumanUserPasswordRequest
-	21, // 43: core.v1.UserService.ListUserExternalIds:input_type -> core.v1.ListUserExternalIdsRequest
-	23, // 44: core.v1.UserService.CreateUserExternalId:input_type -> core.v1.CreateUserExternalIdRequest
-	25, // 45: core.v1.UserService.DeleteUserExternalId:input_type -> core.v1.DeleteUserExternalIdRequest
-	2,  // 46: core.v1.UserService.CreateUser:output_type -> core.v1.CreateUserResponse
-	8,  // 47: core.v1.UserService.DeleteUser:output_type -> core.v1.DeleteUserResponse
-	10, // 48: core.v1.UserService.UpdateUser:output_type -> core.v1.UpdateUserResponse
-	12, // 49: core.v1.UserService.UpdateUserExpiry:output_type -> core.v1.UpdateUserExpiryResponse
-	14, // 50: core.v1.UserService.UpdateUserV2:output_type -> core.v1.UpdateUserV2Response
-	4,  // 51: core.v1.UserService.ListUsers:output_type -> core.v1.ListUsersResponse
-	6,  // 52: core.v1.UserService.GetUser:output_type -> core.v1.GetUserResponse
-	28, // 53: core.v1.UserService.DeleteBlockedUser:output_type -> core.v1.DeleteBlockedUserResponse
-	30, // 54: core.v1.UserService.CreateBlockedUser:output_type -> core.v1.CreateBlockedUserResponse
-	32, // 55: core.v1.UserService.GetBlockedUser:output_type -> core.v1.GetBlockedUserResponse
-	36, // 56: core.v1.UserService.DeleteHumanUserSessions:output_type -> core.v1.DeleteHumanUserSessionsResponse
-	39, // 57: core.v1.UserService.UpdateMachineUserPasswords:output_type -> core.v1.UpdateMachineUserPasswordsResponse
-	42, // 58: core.v1.UserService.GetHumanSignInSettings:output_type -> core.v1.GetHumanSignInSettingsResponse
-	44, // 59: core.v1.UserService.UpdateHumanSignInSettings:output_type -> core.v1.UpdateHumanSignInSettingsResponse
-	16, // 60: core.v1.UserService.GetMachineUserCredentials:output_type -> core.v1.GetMachineUserCredentialsResponse
-	20, // 61: core.v1.UserService.CreateMachineUserPassword:output_type -> core.v1.CreateMachineUserPasswordResponse
-	34, // 62: core.v1.UserService.CreateUserKey:output_type -> core.v1.CreateUserKeyResponse
-	18, // 63: core.v1.UserService.CreateHumanUserPassword:output_type -> core.v1.CreateHumanUserPasswordResponse
-	22, // 64: core.v1.UserService.ListUserExternalIds:output_type -> core.v1.ListUserExternalIdsResponse
-	24, // 65: core.v1.UserService.CreateUserExternalId:output_type -> core.v1.CreateUserExternalIdResponse
-	26, // 66: core.v1.UserService.DeleteUserExternalId:output_type -> core.v1.DeleteUserExternalIdResponse
-	46, // [46:67] is the sub-list for method output_type
-	25, // [25:46] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	50, // 25: core.v1.SSOConnection.oidc:type_name -> core.v1.OIDCConnectionSettings
+	61, // 26: core.v1.SSOConnection.created_at:type_name -> google.protobuf.Timestamp
+	61, // 27: core.v1.SSOConnection.updated_at:type_name -> google.protobuf.Timestamp
+	49, // 28: core.v1.ListSSOConnectionsResponse.connections:type_name -> core.v1.SSOConnection
+	49, // 29: core.v1.GetSSOConnectionResponse.connection:type_name -> core.v1.SSOConnection
+	50, // 30: core.v1.CreateSSOConnectionRequest.oidc:type_name -> core.v1.OIDCConnectionSettings
+	49, // 31: core.v1.CreateSSOConnectionResponse.connection:type_name -> core.v1.SSOConnection
+	49, // 32: core.v1.UpdateSSOConnectionClientSecretResponse.connection:type_name -> core.v1.SSOConnection
+	1,  // 33: core.v1.UserService.CreateUser:input_type -> core.v1.CreateUserRequest
+	7,  // 34: core.v1.UserService.DeleteUser:input_type -> core.v1.DeleteUserRequest
+	9,  // 35: core.v1.UserService.UpdateUser:input_type -> core.v1.UpdateUserRequest
+	11, // 36: core.v1.UserService.UpdateUserExpiry:input_type -> core.v1.UpdateUserExpiryRequest
+	13, // 37: core.v1.UserService.UpdateUserV2:input_type -> core.v1.UpdateUserV2Request
+	3,  // 38: core.v1.UserService.ListUsers:input_type -> core.v1.ListUsersRequest
+	5,  // 39: core.v1.UserService.GetUser:input_type -> core.v1.GetUserRequest
+	27, // 40: core.v1.UserService.DeleteBlockedUser:input_type -> core.v1.DeleteBlockedUserRequest
+	29, // 41: core.v1.UserService.CreateBlockedUser:input_type -> core.v1.CreateBlockedUserRequest
+	31, // 42: core.v1.UserService.GetBlockedUser:input_type -> core.v1.GetBlockedUserRequest
+	35, // 43: core.v1.UserService.DeleteHumanUserSessions:input_type -> core.v1.DeleteHumanUserSessionsRequest
+	38, // 44: core.v1.UserService.UpdateMachineUserPasswords:input_type -> core.v1.UpdateMachineUserPasswordsRequest
+	41, // 45: core.v1.UserService.GetHumanSignInSettings:input_type -> core.v1.GetHumanSignInSettingsRequest
+	43, // 46: core.v1.UserService.UpdateHumanSignInSettings:input_type -> core.v1.UpdateHumanSignInSettingsRequest
+	45, // 47: core.v1.UserService.GetSignInMethods:input_type -> core.v1.GetSignInMethodsRequest
+	47, // 48: core.v1.UserService.UpdateSignInMethods:input_type -> core.v1.UpdateSignInMethodsRequest
+	51, // 49: core.v1.UserService.ListSSOConnections:input_type -> core.v1.ListSSOConnectionsRequest
+	53, // 50: core.v1.UserService.GetSSOConnection:input_type -> core.v1.GetSSOConnectionRequest
+	55, // 51: core.v1.UserService.CreateSSOConnection:input_type -> core.v1.CreateSSOConnectionRequest
+	57, // 52: core.v1.UserService.UpdateSSOConnectionClientSecret:input_type -> core.v1.UpdateSSOConnectionClientSecretRequest
+	59, // 53: core.v1.UserService.DeleteSSOConnection:input_type -> core.v1.DeleteSSOConnectionRequest
+	15, // 54: core.v1.UserService.GetMachineUserCredentials:input_type -> core.v1.GetMachineUserCredentialsRequest
+	19, // 55: core.v1.UserService.CreateMachineUserPassword:input_type -> core.v1.CreateMachineUserPasswordRequest
+	33, // 56: core.v1.UserService.CreateUserKey:input_type -> core.v1.CreateUserKeyRequest
+	17, // 57: core.v1.UserService.CreateHumanUserPassword:input_type -> core.v1.CreateHumanUserPasswordRequest
+	21, // 58: core.v1.UserService.ListUserExternalIds:input_type -> core.v1.ListUserExternalIdsRequest
+	23, // 59: core.v1.UserService.CreateUserExternalId:input_type -> core.v1.CreateUserExternalIdRequest
+	25, // 60: core.v1.UserService.DeleteUserExternalId:input_type -> core.v1.DeleteUserExternalIdRequest
+	2,  // 61: core.v1.UserService.CreateUser:output_type -> core.v1.CreateUserResponse
+	8,  // 62: core.v1.UserService.DeleteUser:output_type -> core.v1.DeleteUserResponse
+	10, // 63: core.v1.UserService.UpdateUser:output_type -> core.v1.UpdateUserResponse
+	12, // 64: core.v1.UserService.UpdateUserExpiry:output_type -> core.v1.UpdateUserExpiryResponse
+	14, // 65: core.v1.UserService.UpdateUserV2:output_type -> core.v1.UpdateUserV2Response
+	4,  // 66: core.v1.UserService.ListUsers:output_type -> core.v1.ListUsersResponse
+	6,  // 67: core.v1.UserService.GetUser:output_type -> core.v1.GetUserResponse
+	28, // 68: core.v1.UserService.DeleteBlockedUser:output_type -> core.v1.DeleteBlockedUserResponse
+	30, // 69: core.v1.UserService.CreateBlockedUser:output_type -> core.v1.CreateBlockedUserResponse
+	32, // 70: core.v1.UserService.GetBlockedUser:output_type -> core.v1.GetBlockedUserResponse
+	36, // 71: core.v1.UserService.DeleteHumanUserSessions:output_type -> core.v1.DeleteHumanUserSessionsResponse
+	39, // 72: core.v1.UserService.UpdateMachineUserPasswords:output_type -> core.v1.UpdateMachineUserPasswordsResponse
+	42, // 73: core.v1.UserService.GetHumanSignInSettings:output_type -> core.v1.GetHumanSignInSettingsResponse
+	44, // 74: core.v1.UserService.UpdateHumanSignInSettings:output_type -> core.v1.UpdateHumanSignInSettingsResponse
+	46, // 75: core.v1.UserService.GetSignInMethods:output_type -> core.v1.GetSignInMethodsResponse
+	48, // 76: core.v1.UserService.UpdateSignInMethods:output_type -> core.v1.UpdateSignInMethodsResponse
+	52, // 77: core.v1.UserService.ListSSOConnections:output_type -> core.v1.ListSSOConnectionsResponse
+	54, // 78: core.v1.UserService.GetSSOConnection:output_type -> core.v1.GetSSOConnectionResponse
+	56, // 79: core.v1.UserService.CreateSSOConnection:output_type -> core.v1.CreateSSOConnectionResponse
+	58, // 80: core.v1.UserService.UpdateSSOConnectionClientSecret:output_type -> core.v1.UpdateSSOConnectionClientSecretResponse
+	60, // 81: core.v1.UserService.DeleteSSOConnection:output_type -> core.v1.DeleteSSOConnectionResponse
+	16, // 82: core.v1.UserService.GetMachineUserCredentials:output_type -> core.v1.GetMachineUserCredentialsResponse
+	20, // 83: core.v1.UserService.CreateMachineUserPassword:output_type -> core.v1.CreateMachineUserPasswordResponse
+	34, // 84: core.v1.UserService.CreateUserKey:output_type -> core.v1.CreateUserKeyResponse
+	18, // 85: core.v1.UserService.CreateHumanUserPassword:output_type -> core.v1.CreateHumanUserPasswordResponse
+	22, // 86: core.v1.UserService.ListUserExternalIds:output_type -> core.v1.ListUserExternalIdsResponse
+	24, // 87: core.v1.UserService.CreateUserExternalId:output_type -> core.v1.CreateUserExternalIdResponse
+	26, // 88: core.v1.UserService.DeleteUserExternalId:output_type -> core.v1.DeleteUserExternalIdResponse
+	61, // [61:89] is the sub-list for method output_type
+	33, // [33:61] is the sub-list for method input_type
+	33, // [33:33] is the sub-list for extension type_name
+	33, // [33:33] is the sub-list for extension extendee
+	0,  // [0:33] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_user_proto_init() }
@@ -2740,13 +3689,19 @@ func file_core_v1_user_proto_init() {
 		(*CreateHumanUserPasswordRequest_Email)(nil),
 		(*CreateHumanUserPasswordRequest_Id)(nil),
 	}
+	file_core_v1_user_proto_msgTypes[49].OneofWrappers = []any{
+		(*SSOConnection_Oidc)(nil),
+	}
+	file_core_v1_user_proto_msgTypes[55].OneofWrappers = []any{
+		(*CreateSSOConnectionRequest_Oidc)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_user_proto_rawDesc), len(file_core_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   45,
+			NumMessages:   61,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
