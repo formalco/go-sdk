@@ -6345,11 +6345,11 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xd4\x01\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xc3\x01\n" +
 	"#CreateConnectorSatelliteLinkRequest\x12*\n" +
 	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12*\n" +
-	"\fsatellite_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsatelliteId\x12U\n" +
-	"\x0esatellite_type\x18\x03 \x01(\tB.\xbaH+r)R\x0fdata_classifierR\x12policy_data_loaderR\x02aiR\rsatelliteType\"\x81\x01\n" +
+	"\fsatellite_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsatelliteId\x12D\n" +
+	"\x0esatellite_type\x18\x03 \x01(\tB\x1d\xbaH\x1ar\x18R\x12policy_data_loaderR\x02aiR\rsatelliteType\"\x81\x01\n" +
 	"$CreateConnectorSatelliteLinkResponse\x12Y\n" +
 	"\x18connector_satellite_link\x18\x01 \x01(\v2\x1f.core.v1.ConnectorSatelliteLinkR\x16connectorSatelliteLink\";\n" +
 	" GetConnectorSatelliteLinkRequest\x12\x17\n" +

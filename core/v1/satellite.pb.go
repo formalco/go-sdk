@@ -2498,12 +2498,12 @@ const file_core_v1_satellite_proto_rawDesc = "" +
 	"\x05order\x18\x04 \x01(\tR\x05order\"\x96\x01\n" +
 	"\x1eListSatelliteInstancesResponse\x128\n" +
 	"\tinstances\x18\x01 \x03(\v2\x1a.core.v1.SatelliteInstanceR\tinstances\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x80\x02\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xef\x01\n" +
 	"\x16CreateSatelliteRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x125\n" +
 	"\x16termination_protection\x18\x02 \x01(\bR\x15terminationProtection\x12\x1e\n" +
-	"\bspace_id\x18\x03 \x01(\tH\x00R\aspaceId\x88\x01\x01\x12e\n" +
-	"\x0esatellite_type\x18\x04 \x01(\tB>\xbaH;r9R\x0edata_discoveryR\x0fdata_classifierR\x12policy_data_loaderR\x02aiR\rsatelliteTypeB\v\n" +
+	"\bspace_id\x18\x03 \x01(\tH\x00R\aspaceId\x88\x01\x01\x12T\n" +
+	"\x0esatellite_type\x18\x04 \x01(\tB-\xbaH*r(R\x0edata_discoveryR\x12policy_data_loaderR\x02aiR\rsatelliteTypeB\v\n" +
 	"\t_space_id\"K\n" +
 	"\x17CreateSatelliteResponse\x120\n" +
 	"\tsatellite\x18\x01 \x01(\v2\x12.core.v1.SatelliteR\tsatellite\".\n" +
