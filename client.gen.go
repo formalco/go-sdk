@@ -4282,9 +4282,9 @@ func (c *UserServiceClient) CreateMachineUserPassword(ctx context.Context, req *
 // Create SSO connection
 //
 // Connect the organization's identity provider over OIDC. The provider's discovery document is checked
-// before the connection is saved. Register the returned redirect URI with the provider. Apart from its
-// client secret, a connection can't be changed: to move to another identity provider, create another
-// connection, sign in through it, then delete the old one.
+// before the connection is saved, and it's enabled. Register the returned redirect URI with the provider.
+// Apart from its client secret, a connection can't be changed: to move to another identity provider,
+// create another connection, sign in through its login URL, then disable or delete the old one.
 func (c *UserServiceClient) CreateSSOConnection(ctx context.Context, req *corev1.CreateSSOConnectionRequest) (*corev1.CreateSSOConnectionResponse, error) {
 	res, err := c.inner.CreateSSOConnection(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -4352,8 +4352,8 @@ func (c *UserServiceClient) DeleteHumanUserSessions(ctx context.Context, req *co
 // Delete SSO connection
 //
 // Delete an SSO connection. Refused if the organization's users couldn't sign in without it: while the
-// sign-in methods include SSO, another connection must have domains, and while they leave out codes,
-// someone must have signed in through another connection.
+// sign-in methods include SSO, another enabled connection must have domains, and while they leave out
+// codes, someone must have signed in through another enabled connection.
 func (c *UserServiceClient) DeleteSSOConnection(ctx context.Context, req *corev1.DeleteSSOConnectionRequest) (*corev1.DeleteSSOConnectionResponse, error) {
 	res, err := c.inner.DeleteSSOConnection(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -4453,8 +4453,8 @@ func (c *UserServiceClient) GetUser(ctx context.Context, req *corev1.GetUserRequ
 
 // List SSO connections
 //
-// The organization's SSO connections. A user whose email is on a connection's domains signs in through it
-// when the organization's sign-in methods include SSO.
+// The organization's SSO connections. A user whose email is on an enabled connection's domains signs in
+// through it when the organization's sign-in methods include SSO.
 func (c *UserServiceClient) ListSSOConnections(ctx context.Context, req *corev1.ListSSOConnectionsRequest) (*corev1.ListSSOConnectionsResponse, error) {
 	res, err := c.inner.ListSSOConnections(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -4522,9 +4522,21 @@ func (c *UserServiceClient) UpdateSSOConnectionClientSecret(ctx context.Context,
 	return res.Msg, nil
 }
 
+// Update SSO connection enabled
+//
+// Enable or disable an SSO connection. A disabled connection keeps its settings, but nobody signs in
+// through it, including sign-ins already in progress. Disabling is refused whenever deleting would be.
+func (c *UserServiceClient) UpdateSSOConnectionEnabled(ctx context.Context, req *corev1.UpdateSSOConnectionEnabledRequest) (*corev1.UpdateSSOConnectionEnabledResponse, error) {
+	res, err := c.inner.UpdateSSOConnectionEnabled(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // Update sign-in methods
 //
-// Set how the organization's users sign in. Allowing SSO needs a connection with domains. Codes can't be
+// Set how the organization's users sign in. Allowing SSO needs an enabled connection with domains. Codes can't be
 // turned off until someone has signed in through SSO, so a connection that doesn't work can't lock
 // everyone out: allow both, sign in through SSO, then turn codes off.
 func (c *UserServiceClient) UpdateSignInMethods(ctx context.Context, req *corev1.UpdateSignInMethodsRequest) (*corev1.UpdateSignInMethodsResponse, error) {

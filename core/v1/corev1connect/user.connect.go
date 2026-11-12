@@ -88,6 +88,9 @@ const (
 	// UserServiceUpdateSSOConnectionClientSecretProcedure is the fully-qualified name of the
 	// UserService's UpdateSSOConnectionClientSecret RPC.
 	UserServiceUpdateSSOConnectionClientSecretProcedure = "/core.v1.UserService/UpdateSSOConnectionClientSecret"
+	// UserServiceUpdateSSOConnectionEnabledProcedure is the fully-qualified name of the UserService's
+	// UpdateSSOConnectionEnabled RPC.
+	UserServiceUpdateSSOConnectionEnabledProcedure = "/core.v1.UserService/UpdateSSOConnectionEnabled"
 	// UserServiceDeleteSSOConnectionProcedure is the fully-qualified name of the UserService's
 	// DeleteSSOConnection RPC.
 	UserServiceDeleteSSOConnectionProcedure = "/core.v1.UserService/DeleteSSOConnection"
@@ -182,14 +185,14 @@ type UserServiceClient interface {
 	GetSignInMethods(context.Context, *connect.Request[v1.GetSignInMethodsRequest]) (*connect.Response[v1.GetSignInMethodsResponse], error)
 	// Update sign-in methods
 	//
-	// Set how the organization's users sign in. Allowing SSO needs a connection with domains. Codes can't be
+	// Set how the organization's users sign in. Allowing SSO needs an enabled connection with domains. Codes can't be
 	// turned off until someone has signed in through SSO, so a connection that doesn't work can't lock
 	// everyone out: allow both, sign in through SSO, then turn codes off.
 	UpdateSignInMethods(context.Context, *connect.Request[v1.UpdateSignInMethodsRequest]) (*connect.Response[v1.UpdateSignInMethodsResponse], error)
 	// List SSO connections
 	//
-	// The organization's SSO connections. A user whose email is on a connection's domains signs in through it
-	// when the organization's sign-in methods include SSO.
+	// The organization's SSO connections. A user whose email is on an enabled connection's domains signs in
+	// through it when the organization's sign-in methods include SSO.
 	ListSSOConnections(context.Context, *connect.Request[v1.ListSSOConnectionsRequest]) (*connect.Response[v1.ListSSOConnectionsResponse], error)
 	// Get SSO connection
 	//
@@ -198,9 +201,9 @@ type UserServiceClient interface {
 	// Create SSO connection
 	//
 	// Connect the organization's identity provider over OIDC. The provider's discovery document is checked
-	// before the connection is saved. Register the returned redirect URI with the provider. Apart from its
-	// client secret, a connection can't be changed: to move to another identity provider, create another
-	// connection, sign in through it, then delete the old one.
+	// before the connection is saved, and it's enabled. Register the returned redirect URI with the provider.
+	// Apart from its client secret, a connection can't be changed: to move to another identity provider,
+	// create another connection, sign in through its login URL, then disable or delete the old one.
 	CreateSSOConnection(context.Context, *connect.Request[v1.CreateSSOConnectionRequest]) (*connect.Response[v1.CreateSSOConnectionResponse], error)
 	// Update SSO connection client secret
 	//
@@ -208,11 +211,16 @@ type UserServiceClient interface {
 	// check it with the provider until someone signs in, so sign in through the connection afterwards to
 	// confirm it works.
 	UpdateSSOConnectionClientSecret(context.Context, *connect.Request[v1.UpdateSSOConnectionClientSecretRequest]) (*connect.Response[v1.UpdateSSOConnectionClientSecretResponse], error)
+	// Update SSO connection enabled
+	//
+	// Enable or disable an SSO connection. A disabled connection keeps its settings, but nobody signs in
+	// through it, including sign-ins already in progress. Disabling is refused whenever deleting would be.
+	UpdateSSOConnectionEnabled(context.Context, *connect.Request[v1.UpdateSSOConnectionEnabledRequest]) (*connect.Response[v1.UpdateSSOConnectionEnabledResponse], error)
 	// Delete SSO connection
 	//
 	// Delete an SSO connection. Refused if the organization's users couldn't sign in without it: while the
-	// sign-in methods include SSO, another connection must have domains, and while they leave out codes,
-	// someone must have signed in through another connection.
+	// sign-in methods include SSO, another enabled connection must have domains, and while they leave out
+	// codes, someone must have signed in through another enabled connection.
 	DeleteSSOConnection(context.Context, *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error)
 	// Get machine user credentials
 	//
@@ -382,6 +390,12 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("UpdateSSOConnectionClientSecret")),
 			connect.WithClientOptions(opts...),
 		),
+		updateSSOConnectionEnabled: connect.NewClient[v1.UpdateSSOConnectionEnabledRequest, v1.UpdateSSOConnectionEnabledResponse](
+			httpClient,
+			baseURL+UserServiceUpdateSSOConnectionEnabledProcedure,
+			connect.WithSchema(userServiceMethods.ByName("UpdateSSOConnectionEnabled")),
+			connect.WithClientOptions(opts...),
+		),
 		deleteSSOConnection: connect.NewClient[v1.DeleteSSOConnectionRequest, v1.DeleteSSOConnectionResponse](
 			httpClient,
 			baseURL+UserServiceDeleteSSOConnectionProcedure,
@@ -457,6 +471,7 @@ type userServiceClient struct {
 	getSSOConnection                *connect.Client[v1.GetSSOConnectionRequest, v1.GetSSOConnectionResponse]
 	createSSOConnection             *connect.Client[v1.CreateSSOConnectionRequest, v1.CreateSSOConnectionResponse]
 	updateSSOConnectionClientSecret *connect.Client[v1.UpdateSSOConnectionClientSecretRequest, v1.UpdateSSOConnectionClientSecretResponse]
+	updateSSOConnectionEnabled      *connect.Client[v1.UpdateSSOConnectionEnabledRequest, v1.UpdateSSOConnectionEnabledResponse]
 	deleteSSOConnection             *connect.Client[v1.DeleteSSOConnectionRequest, v1.DeleteSSOConnectionResponse]
 	getMachineUserCredentials       *connect.Client[v1.GetMachineUserCredentialsRequest, v1.GetMachineUserCredentialsResponse]
 	createMachineUserPassword       *connect.Client[v1.CreateMachineUserPasswordRequest, v1.CreateMachineUserPasswordResponse]
@@ -567,6 +582,11 @@ func (c *userServiceClient) UpdateSSOConnectionClientSecret(ctx context.Context,
 	return c.updateSSOConnectionClientSecret.CallUnary(ctx, req)
 }
 
+// UpdateSSOConnectionEnabled calls core.v1.UserService.UpdateSSOConnectionEnabled.
+func (c *userServiceClient) UpdateSSOConnectionEnabled(ctx context.Context, req *connect.Request[v1.UpdateSSOConnectionEnabledRequest]) (*connect.Response[v1.UpdateSSOConnectionEnabledResponse], error) {
+	return c.updateSSOConnectionEnabled.CallUnary(ctx, req)
+}
+
 // DeleteSSOConnection calls core.v1.UserService.DeleteSSOConnection.
 func (c *userServiceClient) DeleteSSOConnection(ctx context.Context, req *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error) {
 	return c.deleteSSOConnection.CallUnary(ctx, req)
@@ -675,14 +695,14 @@ type UserServiceHandler interface {
 	GetSignInMethods(context.Context, *connect.Request[v1.GetSignInMethodsRequest]) (*connect.Response[v1.GetSignInMethodsResponse], error)
 	// Update sign-in methods
 	//
-	// Set how the organization's users sign in. Allowing SSO needs a connection with domains. Codes can't be
+	// Set how the organization's users sign in. Allowing SSO needs an enabled connection with domains. Codes can't be
 	// turned off until someone has signed in through SSO, so a connection that doesn't work can't lock
 	// everyone out: allow both, sign in through SSO, then turn codes off.
 	UpdateSignInMethods(context.Context, *connect.Request[v1.UpdateSignInMethodsRequest]) (*connect.Response[v1.UpdateSignInMethodsResponse], error)
 	// List SSO connections
 	//
-	// The organization's SSO connections. A user whose email is on a connection's domains signs in through it
-	// when the organization's sign-in methods include SSO.
+	// The organization's SSO connections. A user whose email is on an enabled connection's domains signs in
+	// through it when the organization's sign-in methods include SSO.
 	ListSSOConnections(context.Context, *connect.Request[v1.ListSSOConnectionsRequest]) (*connect.Response[v1.ListSSOConnectionsResponse], error)
 	// Get SSO connection
 	//
@@ -691,9 +711,9 @@ type UserServiceHandler interface {
 	// Create SSO connection
 	//
 	// Connect the organization's identity provider over OIDC. The provider's discovery document is checked
-	// before the connection is saved. Register the returned redirect URI with the provider. Apart from its
-	// client secret, a connection can't be changed: to move to another identity provider, create another
-	// connection, sign in through it, then delete the old one.
+	// before the connection is saved, and it's enabled. Register the returned redirect URI with the provider.
+	// Apart from its client secret, a connection can't be changed: to move to another identity provider,
+	// create another connection, sign in through its login URL, then disable or delete the old one.
 	CreateSSOConnection(context.Context, *connect.Request[v1.CreateSSOConnectionRequest]) (*connect.Response[v1.CreateSSOConnectionResponse], error)
 	// Update SSO connection client secret
 	//
@@ -701,11 +721,16 @@ type UserServiceHandler interface {
 	// check it with the provider until someone signs in, so sign in through the connection afterwards to
 	// confirm it works.
 	UpdateSSOConnectionClientSecret(context.Context, *connect.Request[v1.UpdateSSOConnectionClientSecretRequest]) (*connect.Response[v1.UpdateSSOConnectionClientSecretResponse], error)
+	// Update SSO connection enabled
+	//
+	// Enable or disable an SSO connection. A disabled connection keeps its settings, but nobody signs in
+	// through it, including sign-ins already in progress. Disabling is refused whenever deleting would be.
+	UpdateSSOConnectionEnabled(context.Context, *connect.Request[v1.UpdateSSOConnectionEnabledRequest]) (*connect.Response[v1.UpdateSSOConnectionEnabledResponse], error)
 	// Delete SSO connection
 	//
 	// Delete an SSO connection. Refused if the organization's users couldn't sign in without it: while the
-	// sign-in methods include SSO, another connection must have domains, and while they leave out codes,
-	// someone must have signed in through another connection.
+	// sign-in methods include SSO, another enabled connection must have domains, and while they leave out
+	// codes, someone must have signed in through another enabled connection.
 	DeleteSSOConnection(context.Context, *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error)
 	// Get machine user credentials
 	//
@@ -871,6 +896,12 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(userServiceMethods.ByName("UpdateSSOConnectionClientSecret")),
 		connect.WithHandlerOptions(opts...),
 	)
+	userServiceUpdateSSOConnectionEnabledHandler := connect.NewUnaryHandler(
+		UserServiceUpdateSSOConnectionEnabledProcedure,
+		svc.UpdateSSOConnectionEnabled,
+		connect.WithSchema(userServiceMethods.ByName("UpdateSSOConnectionEnabled")),
+		connect.WithHandlerOptions(opts...),
+	)
 	userServiceDeleteSSOConnectionHandler := connect.NewUnaryHandler(
 		UserServiceDeleteSSOConnectionProcedure,
 		svc.DeleteSSOConnection,
@@ -963,6 +994,8 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceCreateSSOConnectionHandler.ServeHTTP(w, r)
 		case UserServiceUpdateSSOConnectionClientSecretProcedure:
 			userServiceUpdateSSOConnectionClientSecretHandler.ServeHTTP(w, r)
+		case UserServiceUpdateSSOConnectionEnabledProcedure:
+			userServiceUpdateSSOConnectionEnabledHandler.ServeHTTP(w, r)
 		case UserServiceDeleteSSOConnectionProcedure:
 			userServiceDeleteSSOConnectionHandler.ServeHTTP(w, r)
 		case UserServiceGetMachineUserCredentialsProcedure:
@@ -1066,6 +1099,10 @@ func (UnimplementedUserServiceHandler) CreateSSOConnection(context.Context, *con
 
 func (UnimplementedUserServiceHandler) UpdateSSOConnectionClientSecret(context.Context, *connect.Request[v1.UpdateSSOConnectionClientSecretRequest]) (*connect.Response[v1.UpdateSSOConnectionClientSecretResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateSSOConnectionClientSecret is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) UpdateSSOConnectionEnabled(context.Context, *connect.Request[v1.UpdateSSOConnectionEnabledRequest]) (*connect.Response[v1.UpdateSSOConnectionEnabledResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.UserService.UpdateSSOConnectionEnabled is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) DeleteSSOConnection(context.Context, *connect.Request[v1.DeleteSSOConnectionRequest]) (*connect.Response[v1.DeleteSSOConnectionResponse], error) {
