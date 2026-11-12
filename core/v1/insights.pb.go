@@ -754,7 +754,9 @@ type ListInsightsRequest struct {
 	// Zero-based offset for pagination (default 0).
 	Offset int32 `protobuf:"varint,7,opt,name=offset,proto3" json:"offset,omitempty"`
 	// Column to sort by: "created_at" (default), "severity", "category_id", "first_seen_at", "last_seen_at", "title".
-	SortBy        string `protobuf:"bytes,8,opt,name=sort_by,json=sortBy,proto3" json:"sort_by,omitempty"`
+	SortBy        string   `protobuf:"bytes,8,opt,name=sort_by,json=sortBy,proto3" json:"sort_by,omitempty"`
+	Search        string   `protobuf:"bytes,9,opt,name=search,proto3" json:"search,omitempty"`
+	SearchFields  []string `protobuf:"bytes,10,rep,name=search_fields,json=searchFields,proto3" json:"search_fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -843,6 +845,20 @@ func (x *ListInsightsRequest) GetSortBy() string {
 		return x.SortBy
 	}
 	return ""
+}
+
+func (x *ListInsightsRequest) GetSearch() string {
+	if x != nil {
+		return x.Search
+	}
+	return ""
+}
+
+func (x *ListInsightsRequest) GetSearchFields() []string {
+	if x != nil {
+		return x.SearchFields
+	}
+	return nil
 }
 
 type ListInsightsResponse struct {
@@ -1737,7 +1753,7 @@ const file_core_v1_insights_proto_rawDesc = "" +
 	"\x13evaluation_complete\x18\x05 \x01(\bR\x12evaluationComplete\x12*\n" +
 	"\x11focus_category_id\x18\x06 \x01(\tR\x0ffocusCategoryIdB\x10\n" +
 	"\x0e_error_messageB\x0f\n" +
-	"\r_completed_at\"\xad\x02\n" +
+	"\r_completed_at\"\x8a\x03\n" +
 	"\x13ListInsightsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x1b\n" +
@@ -1747,7 +1763,10 @@ const file_core_v1_insights_proto_rawDesc = "" +
 	"\aoutcome\x18\x05 \x01(\tH\x03R\aoutcome\x88\x01\x01\x12\x14\n" +
 	"\x05order\x18\x06 \x01(\tR\x05order\x12\x16\n" +
 	"\x06offset\x18\a \x01(\x05R\x06offset\x12\x17\n" +
-	"\asort_by\x18\b \x01(\tR\x06sortByB\t\n" +
+	"\asort_by\x18\b \x01(\tR\x06sortBy\x12\x16\n" +
+	"\x06search\x18\t \x01(\tR\x06search\x12C\n" +
+	"\rsearch_fields\x18\n" +
+	" \x03(\tB\x1e\xbaH\x1b\x92\x01\x18\"\x16r\x14R\x05titleR\vdescriptionR\fsearchFieldsB\t\n" +
 	"\a_statusB\v\n" +
 	"\t_severityB\v\n" +
 	"\t_categoryB\n" +
