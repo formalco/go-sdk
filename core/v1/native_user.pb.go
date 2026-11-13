@@ -24,14 +24,262 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// SecretValue is either a literal value or the name of an environment variable.
-// In core API responses, literal values are redacted; environment variable names are not.
+// AWS Secrets Manager secret, as either the plain secret ARN or the extended
+// ECS-style ARN:
+//
+//	arn:<partition>:secretsmanager:<region>:<account>:secret:<name>-<suffix>
+//	arn:<partition>:secretsmanager:<region>:<account>:secret:<name>-<suffix>:<json-key>:<version-stage>:<version-id>
+//
+// The plain ARN reads AWSCURRENT. In the extended form each trailing field may be
+// empty; version-stage and version-id are mutually exclusive, and json-key
+// selects a top-level key of a JSON secret.
+type AWSSecretsManagerSecret struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Arn           string                 `protobuf:"bytes,1,opt,name=arn,proto3" json:"arn,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AWSSecretsManagerSecret) Reset() {
+	*x = AWSSecretsManagerSecret{}
+	mi := &file_core_v1_native_user_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AWSSecretsManagerSecret) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AWSSecretsManagerSecret) ProtoMessage() {}
+
+func (x *AWSSecretsManagerSecret) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_native_user_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AWSSecretsManagerSecret.ProtoReflect.Descriptor instead.
+func (*AWSSecretsManagerSecret) Descriptor() ([]byte, []int) {
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AWSSecretsManagerSecret) GetArn() string {
+	if x != nil {
+		return x.Arn
+	}
+	return ""
+}
+
+// GCP Secret Manager secret version, as projects/*/secrets/*/versions/* or
+// projects/*/locations/*/secrets/*/versions/*.
+type GCPSecretManagerSecret struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GCPSecretManagerSecret) Reset() {
+	*x = GCPSecretManagerSecret{}
+	mi := &file_core_v1_native_user_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GCPSecretManagerSecret) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GCPSecretManagerSecret) ProtoMessage() {}
+
+func (x *GCPSecretManagerSecret) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_native_user_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GCPSecretManagerSecret.ProtoReflect.Descriptor instead.
+func (*GCPSecretManagerSecret) Descriptor() ([]byte, []int) {
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GCPSecretManagerSecret) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+// Azure Key Vault secret identifier, as
+// https://<vault-name>.vault.azure.net/secrets/<name>[/<version>]. Omitting the
+// version reads the latest version.
+type AzureKeyVaultSecret struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AzureKeyVaultSecret) Reset() {
+	*x = AzureKeyVaultSecret{}
+	mi := &file_core_v1_native_user_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AzureKeyVaultSecret) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AzureKeyVaultSecret) ProtoMessage() {}
+
+func (x *AzureKeyVaultSecret) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_native_user_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AzureKeyVaultSecret.ProtoReflect.Descriptor instead.
+func (*AzureKeyVaultSecret) Descriptor() ([]byte, []int) {
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AzureKeyVaultSecret) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+// A reference to a secret held in a cloud secret manager, resolved on the
+// connector.
+type SecretManagerReference struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Secret:
+	//
+	//	*SecretManagerReference_AwsSecret
+	//	*SecretManagerReference_GcpSecret
+	//	*SecretManagerReference_AzureSecret
+	Secret        isSecretManagerReference_Secret `protobuf_oneof:"secret"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SecretManagerReference) Reset() {
+	*x = SecretManagerReference{}
+	mi := &file_core_v1_native_user_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SecretManagerReference) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SecretManagerReference) ProtoMessage() {}
+
+func (x *SecretManagerReference) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_native_user_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SecretManagerReference.ProtoReflect.Descriptor instead.
+func (*SecretManagerReference) Descriptor() ([]byte, []int) {
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SecretManagerReference) GetSecret() isSecretManagerReference_Secret {
+	if x != nil {
+		return x.Secret
+	}
+	return nil
+}
+
+func (x *SecretManagerReference) GetAwsSecret() *AWSSecretsManagerSecret {
+	if x != nil {
+		if x, ok := x.Secret.(*SecretManagerReference_AwsSecret); ok {
+			return x.AwsSecret
+		}
+	}
+	return nil
+}
+
+func (x *SecretManagerReference) GetGcpSecret() *GCPSecretManagerSecret {
+	if x != nil {
+		if x, ok := x.Secret.(*SecretManagerReference_GcpSecret); ok {
+			return x.GcpSecret
+		}
+	}
+	return nil
+}
+
+func (x *SecretManagerReference) GetAzureSecret() *AzureKeyVaultSecret {
+	if x != nil {
+		if x, ok := x.Secret.(*SecretManagerReference_AzureSecret); ok {
+			return x.AzureSecret
+		}
+	}
+	return nil
+}
+
+type isSecretManagerReference_Secret interface {
+	isSecretManagerReference_Secret()
+}
+
+type SecretManagerReference_AwsSecret struct {
+	AwsSecret *AWSSecretsManagerSecret `protobuf:"bytes,1,opt,name=aws_secret,json=awsSecret,proto3,oneof"`
+}
+
+type SecretManagerReference_GcpSecret struct {
+	GcpSecret *GCPSecretManagerSecret `protobuf:"bytes,2,opt,name=gcp_secret,json=gcpSecret,proto3,oneof"`
+}
+
+type SecretManagerReference_AzureSecret struct {
+	AzureSecret *AzureKeyVaultSecret `protobuf:"bytes,3,opt,name=azure_secret,json=azureSecret,proto3,oneof"`
+}
+
+func (*SecretManagerReference_AwsSecret) isSecretManagerReference_Secret() {}
+
+func (*SecretManagerReference_GcpSecret) isSecretManagerReference_Secret() {}
+
+func (*SecretManagerReference_AzureSecret) isSecretManagerReference_Secret() {}
+
+// SecretValue is a literal value, the name of an environment variable, or a
+// secret manager reference. In core API responses, literal values are redacted;
+// environment variable names and secret manager references are not.
 type SecretValue struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Source:
 	//
 	//	*SecretValue_Literal
 	//	*SecretValue_EnvironmentVariable
+	//	*SecretValue_SecretManager
 	Source        isSecretValue_Source `protobuf_oneof:"source"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -39,7 +287,7 @@ type SecretValue struct {
 
 func (x *SecretValue) Reset() {
 	*x = SecretValue{}
-	mi := &file_core_v1_native_user_proto_msgTypes[0]
+	mi := &file_core_v1_native_user_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -51,7 +299,7 @@ func (x *SecretValue) String() string {
 func (*SecretValue) ProtoMessage() {}
 
 func (x *SecretValue) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[0]
+	mi := &file_core_v1_native_user_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +312,7 @@ func (x *SecretValue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SecretValue.ProtoReflect.Descriptor instead.
 func (*SecretValue) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{0}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SecretValue) GetSource() isSecretValue_Source {
@@ -92,6 +340,15 @@ func (x *SecretValue) GetEnvironmentVariable() string {
 	return ""
 }
 
+func (x *SecretValue) GetSecretManager() *SecretManagerReference {
+	if x != nil {
+		if x, ok := x.Source.(*SecretValue_SecretManager); ok {
+			return x.SecretManager
+		}
+	}
+	return nil
+}
+
 type isSecretValue_Source interface {
 	isSecretValue_Source()
 }
@@ -104,9 +361,15 @@ type SecretValue_EnvironmentVariable struct {
 	EnvironmentVariable string `protobuf:"bytes,2,opt,name=environment_variable,json=environmentVariable,proto3,oneof"`
 }
 
+type SecretValue_SecretManager struct {
+	SecretManager *SecretManagerReference `protobuf:"bytes,3,opt,name=secret_manager,json=secretManager,proto3,oneof"`
+}
+
 func (*SecretValue_Literal) isSecretValue_Source() {}
 
 func (*SecretValue_EnvironmentVariable) isSecretValue_Source() {}
+
+func (*SecretValue_SecretManager) isSecretValue_Source() {}
 
 // Generic username and password auth, e.g. Postgres or MySQL.
 type UnauthenticatedNativeUserV3 struct {
@@ -117,7 +380,7 @@ type UnauthenticatedNativeUserV3 struct {
 
 func (x *UnauthenticatedNativeUserV3) Reset() {
 	*x = UnauthenticatedNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[1]
+	mi := &file_core_v1_native_user_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -129,7 +392,7 @@ func (x *UnauthenticatedNativeUserV3) String() string {
 func (*UnauthenticatedNativeUserV3) ProtoMessage() {}
 
 func (x *UnauthenticatedNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[1]
+	mi := &file_core_v1_native_user_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -142,7 +405,7 @@ func (x *UnauthenticatedNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnauthenticatedNativeUserV3.ProtoReflect.Descriptor instead.
 func (*UnauthenticatedNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{1}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{5}
 }
 
 // Sends the credentials the client sent to the upstream resource.
@@ -154,7 +417,7 @@ type PassthroughNativeUserV3 struct {
 
 func (x *PassthroughNativeUserV3) Reset() {
 	*x = PassthroughNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[2]
+	mi := &file_core_v1_native_user_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -166,7 +429,7 @@ func (x *PassthroughNativeUserV3) String() string {
 func (*PassthroughNativeUserV3) ProtoMessage() {}
 
 func (x *PassthroughNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[2]
+	mi := &file_core_v1_native_user_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -179,7 +442,7 @@ func (x *PassthroughNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PassthroughNativeUserV3.ProtoReflect.Descriptor instead.
 func (*PassthroughNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{2}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{6}
 }
 
 type BasicNativeUserV3 struct {
@@ -192,7 +455,7 @@ type BasicNativeUserV3 struct {
 
 func (x *BasicNativeUserV3) Reset() {
 	*x = BasicNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[3]
+	mi := &file_core_v1_native_user_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -204,7 +467,7 @@ func (x *BasicNativeUserV3) String() string {
 func (*BasicNativeUserV3) ProtoMessage() {}
 
 func (x *BasicNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[3]
+	mi := &file_core_v1_native_user_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -217,7 +480,7 @@ func (x *BasicNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BasicNativeUserV3.ProtoReflect.Descriptor instead.
 func (*BasicNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{3}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *BasicNativeUserV3) GetUsername() string {
@@ -244,7 +507,7 @@ type AWSIAMNativeUserV3 struct {
 
 func (x *AWSIAMNativeUserV3) Reset() {
 	*x = AWSIAMNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[4]
+	mi := &file_core_v1_native_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -256,7 +519,7 @@ func (x *AWSIAMNativeUserV3) String() string {
 func (*AWSIAMNativeUserV3) ProtoMessage() {}
 
 func (x *AWSIAMNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[4]
+	mi := &file_core_v1_native_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -269,7 +532,7 @@ func (x *AWSIAMNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AWSIAMNativeUserV3.ProtoReflect.Descriptor instead.
 func (*AWSIAMNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{4}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *AWSIAMNativeUserV3) GetUsername() string {
@@ -290,7 +553,7 @@ type AWSIAMRoleNativeUserV3 struct {
 
 func (x *AWSIAMRoleNativeUserV3) Reset() {
 	*x = AWSIAMRoleNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[5]
+	mi := &file_core_v1_native_user_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -302,7 +565,7 @@ func (x *AWSIAMRoleNativeUserV3) String() string {
 func (*AWSIAMRoleNativeUserV3) ProtoMessage() {}
 
 func (x *AWSIAMRoleNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[5]
+	mi := &file_core_v1_native_user_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -315,7 +578,7 @@ func (x *AWSIAMRoleNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AWSIAMRoleNativeUserV3.ProtoReflect.Descriptor instead.
 func (*AWSIAMRoleNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{5}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *AWSIAMRoleNativeUserV3) GetUsername() string {
@@ -342,7 +605,7 @@ type GCPIAMNativeUserV3 struct {
 
 func (x *GCPIAMNativeUserV3) Reset() {
 	*x = GCPIAMNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[6]
+	mi := &file_core_v1_native_user_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -354,7 +617,7 @@ func (x *GCPIAMNativeUserV3) String() string {
 func (*GCPIAMNativeUserV3) ProtoMessage() {}
 
 func (x *GCPIAMNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[6]
+	mi := &file_core_v1_native_user_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -367,7 +630,7 @@ func (x *GCPIAMNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GCPIAMNativeUserV3.ProtoReflect.Descriptor instead.
 func (*GCPIAMNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{6}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GCPIAMNativeUserV3) GetUsername() string {
@@ -387,7 +650,7 @@ type AzureIAMNativeUserV3 struct {
 
 func (x *AzureIAMNativeUserV3) Reset() {
 	*x = AzureIAMNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[7]
+	mi := &file_core_v1_native_user_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -399,7 +662,7 @@ func (x *AzureIAMNativeUserV3) String() string {
 func (*AzureIAMNativeUserV3) ProtoMessage() {}
 
 func (x *AzureIAMNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[7]
+	mi := &file_core_v1_native_user_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -412,7 +675,7 @@ func (x *AzureIAMNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AzureIAMNativeUserV3.ProtoReflect.Descriptor instead.
 func (*AzureIAMNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{7}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AzureIAMNativeUserV3) GetUsername() string {
@@ -432,7 +695,7 @@ type KubernetesPathNativeUserV3 struct {
 
 func (x *KubernetesPathNativeUserV3) Reset() {
 	*x = KubernetesPathNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[8]
+	mi := &file_core_v1_native_user_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -444,7 +707,7 @@ func (x *KubernetesPathNativeUserV3) String() string {
 func (*KubernetesPathNativeUserV3) ProtoMessage() {}
 
 func (x *KubernetesPathNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[8]
+	mi := &file_core_v1_native_user_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -457,7 +720,7 @@ func (x *KubernetesPathNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KubernetesPathNativeUserV3.ProtoReflect.Descriptor instead.
 func (*KubernetesPathNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{8}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *KubernetesPathNativeUserV3) GetKubeconfigPath() *SecretValue {
@@ -477,7 +740,7 @@ type KubernetesInlineNativeUserV3 struct {
 
 func (x *KubernetesInlineNativeUserV3) Reset() {
 	*x = KubernetesInlineNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[9]
+	mi := &file_core_v1_native_user_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -489,7 +752,7 @@ func (x *KubernetesInlineNativeUserV3) String() string {
 func (*KubernetesInlineNativeUserV3) ProtoMessage() {}
 
 func (x *KubernetesInlineNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[9]
+	mi := &file_core_v1_native_user_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -502,7 +765,7 @@ func (x *KubernetesInlineNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KubernetesInlineNativeUserV3.ProtoReflect.Descriptor instead.
 func (*KubernetesInlineNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{9}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *KubernetesInlineNativeUserV3) GetKubeconfig() *SecretValue {
@@ -524,7 +787,7 @@ type SSHKeyNativeUserV3 struct {
 
 func (x *SSHKeyNativeUserV3) Reset() {
 	*x = SSHKeyNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[10]
+	mi := &file_core_v1_native_user_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -536,7 +799,7 @@ func (x *SSHKeyNativeUserV3) String() string {
 func (*SSHKeyNativeUserV3) ProtoMessage() {}
 
 func (x *SSHKeyNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[10]
+	mi := &file_core_v1_native_user_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -549,7 +812,7 @@ func (x *SSHKeyNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SSHKeyNativeUserV3.ProtoReflect.Descriptor instead.
 func (*SSHKeyNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{10}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SSHKeyNativeUserV3) GetUsername() string {
@@ -584,7 +847,7 @@ type SnowflakeKeyNativeUserV3 struct {
 
 func (x *SnowflakeKeyNativeUserV3) Reset() {
 	*x = SnowflakeKeyNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[11]
+	mi := &file_core_v1_native_user_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -596,7 +859,7 @@ func (x *SnowflakeKeyNativeUserV3) String() string {
 func (*SnowflakeKeyNativeUserV3) ProtoMessage() {}
 
 func (x *SnowflakeKeyNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[11]
+	mi := &file_core_v1_native_user_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -609,7 +872,7 @@ func (x *SnowflakeKeyNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SnowflakeKeyNativeUserV3.ProtoReflect.Descriptor instead.
 func (*SnowflakeKeyNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{11}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SnowflakeKeyNativeUserV3) GetUsername() string {
@@ -638,7 +901,7 @@ type HTTPBasicNativeUserV3 struct {
 
 func (x *HTTPBasicNativeUserV3) Reset() {
 	*x = HTTPBasicNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[12]
+	mi := &file_core_v1_native_user_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -650,7 +913,7 @@ func (x *HTTPBasicNativeUserV3) String() string {
 func (*HTTPBasicNativeUserV3) ProtoMessage() {}
 
 func (x *HTTPBasicNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[12]
+	mi := &file_core_v1_native_user_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -663,7 +926,7 @@ func (x *HTTPBasicNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTTPBasicNativeUserV3.ProtoReflect.Descriptor instead.
 func (*HTTPBasicNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{12}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *HTTPBasicNativeUserV3) GetHeader() string {
@@ -698,7 +961,7 @@ type HTTPBearerNativeUserV3 struct {
 
 func (x *HTTPBearerNativeUserV3) Reset() {
 	*x = HTTPBearerNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[13]
+	mi := &file_core_v1_native_user_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -710,7 +973,7 @@ func (x *HTTPBearerNativeUserV3) String() string {
 func (*HTTPBearerNativeUserV3) ProtoMessage() {}
 
 func (x *HTTPBearerNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[13]
+	mi := &file_core_v1_native_user_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -723,7 +986,7 @@ func (x *HTTPBearerNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTTPBearerNativeUserV3.ProtoReflect.Descriptor instead.
 func (*HTTPBearerNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *HTTPBearerNativeUserV3) GetHeader() string {
@@ -751,7 +1014,7 @@ type HTTPAPIKeyHeaderNativeUserV3 struct {
 
 func (x *HTTPAPIKeyHeaderNativeUserV3) Reset() {
 	*x = HTTPAPIKeyHeaderNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[14]
+	mi := &file_core_v1_native_user_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -763,7 +1026,7 @@ func (x *HTTPAPIKeyHeaderNativeUserV3) String() string {
 func (*HTTPAPIKeyHeaderNativeUserV3) ProtoMessage() {}
 
 func (x *HTTPAPIKeyHeaderNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[14]
+	mi := &file_core_v1_native_user_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -776,7 +1039,7 @@ func (x *HTTPAPIKeyHeaderNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTTPAPIKeyHeaderNativeUserV3.ProtoReflect.Descriptor instead.
 func (*HTTPAPIKeyHeaderNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *HTTPAPIKeyHeaderNativeUserV3) GetKey() string {
@@ -804,7 +1067,7 @@ type HTTPAPIKeyQueryNativeUserV3 struct {
 
 func (x *HTTPAPIKeyQueryNativeUserV3) Reset() {
 	*x = HTTPAPIKeyQueryNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[15]
+	mi := &file_core_v1_native_user_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -816,7 +1079,7 @@ func (x *HTTPAPIKeyQueryNativeUserV3) String() string {
 func (*HTTPAPIKeyQueryNativeUserV3) ProtoMessage() {}
 
 func (x *HTTPAPIKeyQueryNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[15]
+	mi := &file_core_v1_native_user_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -829,7 +1092,7 @@ func (x *HTTPAPIKeyQueryNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HTTPAPIKeyQueryNativeUserV3.ProtoReflect.Descriptor instead.
 func (*HTTPAPIKeyQueryNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *HTTPAPIKeyQueryNativeUserV3) GetKey() string {
@@ -855,13 +1118,16 @@ type HookNativeUserV3 struct {
 	OutputType              string                 `protobuf:"bytes,2,opt,name=output_type,json=outputType,proto3" json:"output_type,omitempty"`
 	AllowlistedEnvVariables []string               `protobuf:"bytes,3,rep,name=allowlisted_env_variables,json=allowlistedEnvVariables,proto3" json:"allowlisted_env_variables,omitempty"`
 	AllowlistedNetworkHosts []string               `protobuf:"bytes,4,rep,name=allowlisted_network_hosts,json=allowlistedNetworkHosts,proto3" json:"allowlisted_network_hosts,omitempty"`
-	unknownFields           protoimpl.UnknownFields
-	sizeCache               protoimpl.SizeCache
+	// Secret manager references resolved on the connector and passed to the hook
+	// as its fourth argument, keyed by name.
+	Secrets       map[string]*SecretManagerReference `protobuf:"bytes,5,rep,name=secrets,proto3" json:"secrets,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *HookNativeUserV3) Reset() {
 	*x = HookNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[16]
+	mi := &file_core_v1_native_user_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -873,7 +1139,7 @@ func (x *HookNativeUserV3) String() string {
 func (*HookNativeUserV3) ProtoMessage() {}
 
 func (x *HookNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[16]
+	mi := &file_core_v1_native_user_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -886,7 +1152,7 @@ func (x *HookNativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HookNativeUserV3.ProtoReflect.Descriptor instead.
 func (*HookNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *HookNativeUserV3) GetHook() string {
@@ -917,6 +1183,13 @@ func (x *HookNativeUserV3) GetAllowlistedNetworkHosts() []string {
 	return nil
 }
 
+func (x *HookNativeUserV3) GetSecrets() map[string]*SecretManagerReference {
+	if x != nil {
+		return x.Secrets
+	}
+	return nil
+}
+
 // Linked account credentials send the requesting user's linked upstream OAuth
 // token as the secret of an HTTP credential, so no secret is stored. The
 // resource must have OAuth settings with an upstream mode.
@@ -930,7 +1203,7 @@ type LinkedAccountHTTPBasicNativeUserV3 struct {
 
 func (x *LinkedAccountHTTPBasicNativeUserV3) Reset() {
 	*x = LinkedAccountHTTPBasicNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[17]
+	mi := &file_core_v1_native_user_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -942,7 +1215,7 @@ func (x *LinkedAccountHTTPBasicNativeUserV3) String() string {
 func (*LinkedAccountHTTPBasicNativeUserV3) ProtoMessage() {}
 
 func (x *LinkedAccountHTTPBasicNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[17]
+	mi := &file_core_v1_native_user_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -955,7 +1228,7 @@ func (x *LinkedAccountHTTPBasicNativeUserV3) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use LinkedAccountHTTPBasicNativeUserV3.ProtoReflect.Descriptor instead.
 func (*LinkedAccountHTTPBasicNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *LinkedAccountHTTPBasicNativeUserV3) GetHeader() string {
@@ -981,7 +1254,7 @@ type LinkedAccountHTTPBearerNativeUserV3 struct {
 
 func (x *LinkedAccountHTTPBearerNativeUserV3) Reset() {
 	*x = LinkedAccountHTTPBearerNativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[18]
+	mi := &file_core_v1_native_user_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -993,7 +1266,7 @@ func (x *LinkedAccountHTTPBearerNativeUserV3) String() string {
 func (*LinkedAccountHTTPBearerNativeUserV3) ProtoMessage() {}
 
 func (x *LinkedAccountHTTPBearerNativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[18]
+	mi := &file_core_v1_native_user_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1006,7 +1279,7 @@ func (x *LinkedAccountHTTPBearerNativeUserV3) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use LinkedAccountHTTPBearerNativeUserV3.ProtoReflect.Descriptor instead.
 func (*LinkedAccountHTTPBearerNativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *LinkedAccountHTTPBearerNativeUserV3) GetHeader() string {
@@ -1046,7 +1319,7 @@ type NativeUserV3Credentials struct {
 
 func (x *NativeUserV3Credentials) Reset() {
 	*x = NativeUserV3Credentials{}
-	mi := &file_core_v1_native_user_proto_msgTypes[19]
+	mi := &file_core_v1_native_user_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1058,7 +1331,7 @@ func (x *NativeUserV3Credentials) String() string {
 func (*NativeUserV3Credentials) ProtoMessage() {}
 
 func (x *NativeUserV3Credentials) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[19]
+	mi := &file_core_v1_native_user_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1071,7 +1344,7 @@ func (x *NativeUserV3Credentials) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NativeUserV3Credentials.ProtoReflect.Descriptor instead.
 func (*NativeUserV3Credentials) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{19}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *NativeUserV3Credentials) GetValue() isNativeUserV3Credentials_Value {
@@ -1371,7 +1644,7 @@ type NativeUserV3 struct {
 
 func (x *NativeUserV3) Reset() {
 	*x = NativeUserV3{}
-	mi := &file_core_v1_native_user_proto_msgTypes[20]
+	mi := &file_core_v1_native_user_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1383,7 +1656,7 @@ func (x *NativeUserV3) String() string {
 func (*NativeUserV3) ProtoMessage() {}
 
 func (x *NativeUserV3) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[20]
+	mi := &file_core_v1_native_user_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1396,7 +1669,7 @@ func (x *NativeUserV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NativeUserV3.ProtoReflect.Descriptor instead.
 func (*NativeUserV3) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{20}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *NativeUserV3) GetId() string {
@@ -1461,7 +1734,7 @@ type CreateNativeUserV3Request struct {
 
 func (x *CreateNativeUserV3Request) Reset() {
 	*x = CreateNativeUserV3Request{}
-	mi := &file_core_v1_native_user_proto_msgTypes[21]
+	mi := &file_core_v1_native_user_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1473,7 +1746,7 @@ func (x *CreateNativeUserV3Request) String() string {
 func (*CreateNativeUserV3Request) ProtoMessage() {}
 
 func (x *CreateNativeUserV3Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[21]
+	mi := &file_core_v1_native_user_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1486,7 +1759,7 @@ func (x *CreateNativeUserV3Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNativeUserV3Request.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserV3Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{21}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CreateNativeUserV3Request) GetResourceId() string {
@@ -1526,7 +1799,7 @@ type CreateNativeUserV3Response struct {
 
 func (x *CreateNativeUserV3Response) Reset() {
 	*x = CreateNativeUserV3Response{}
-	mi := &file_core_v1_native_user_proto_msgTypes[22]
+	mi := &file_core_v1_native_user_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1538,7 +1811,7 @@ func (x *CreateNativeUserV3Response) String() string {
 func (*CreateNativeUserV3Response) ProtoMessage() {}
 
 func (x *CreateNativeUserV3Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[22]
+	mi := &file_core_v1_native_user_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1551,7 +1824,7 @@ func (x *CreateNativeUserV3Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNativeUserV3Response.ProtoReflect.Descriptor instead.
 func (*CreateNativeUserV3Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{22}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *CreateNativeUserV3Response) GetNativeUser() *NativeUserV3 {
@@ -1578,7 +1851,7 @@ type UpdateNativeUserV3Request struct {
 
 func (x *UpdateNativeUserV3Request) Reset() {
 	*x = UpdateNativeUserV3Request{}
-	mi := &file_core_v1_native_user_proto_msgTypes[23]
+	mi := &file_core_v1_native_user_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1590,7 +1863,7 @@ func (x *UpdateNativeUserV3Request) String() string {
 func (*UpdateNativeUserV3Request) ProtoMessage() {}
 
 func (x *UpdateNativeUserV3Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[23]
+	mi := &file_core_v1_native_user_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1603,7 +1876,7 @@ func (x *UpdateNativeUserV3Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNativeUserV3Request.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserV3Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{23}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *UpdateNativeUserV3Request) GetId() string {
@@ -1643,7 +1916,7 @@ type UpdateNativeUserV3Response struct {
 
 func (x *UpdateNativeUserV3Response) Reset() {
 	*x = UpdateNativeUserV3Response{}
-	mi := &file_core_v1_native_user_proto_msgTypes[24]
+	mi := &file_core_v1_native_user_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1655,7 +1928,7 @@ func (x *UpdateNativeUserV3Response) String() string {
 func (*UpdateNativeUserV3Response) ProtoMessage() {}
 
 func (x *UpdateNativeUserV3Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[24]
+	mi := &file_core_v1_native_user_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1668,7 +1941,7 @@ func (x *UpdateNativeUserV3Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNativeUserV3Response.ProtoReflect.Descriptor instead.
 func (*UpdateNativeUserV3Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{24}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *UpdateNativeUserV3Response) GetNativeUser() *NativeUserV3 {
@@ -1687,7 +1960,7 @@ type GetNativeUserV3Request struct {
 
 func (x *GetNativeUserV3Request) Reset() {
 	*x = GetNativeUserV3Request{}
-	mi := &file_core_v1_native_user_proto_msgTypes[25]
+	mi := &file_core_v1_native_user_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1699,7 +1972,7 @@ func (x *GetNativeUserV3Request) String() string {
 func (*GetNativeUserV3Request) ProtoMessage() {}
 
 func (x *GetNativeUserV3Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[25]
+	mi := &file_core_v1_native_user_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1712,7 +1985,7 @@ func (x *GetNativeUserV3Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNativeUserV3Request.ProtoReflect.Descriptor instead.
 func (*GetNativeUserV3Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{25}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GetNativeUserV3Request) GetId() string {
@@ -1731,7 +2004,7 @@ type GetNativeUserV3Response struct {
 
 func (x *GetNativeUserV3Response) Reset() {
 	*x = GetNativeUserV3Response{}
-	mi := &file_core_v1_native_user_proto_msgTypes[26]
+	mi := &file_core_v1_native_user_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1743,7 +2016,7 @@ func (x *GetNativeUserV3Response) String() string {
 func (*GetNativeUserV3Response) ProtoMessage() {}
 
 func (x *GetNativeUserV3Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[26]
+	mi := &file_core_v1_native_user_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1756,7 +2029,7 @@ func (x *GetNativeUserV3Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNativeUserV3Response.ProtoReflect.Descriptor instead.
 func (*GetNativeUserV3Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{26}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GetNativeUserV3Response) GetNativeUser() *NativeUserV3 {
@@ -1778,7 +2051,7 @@ type ListNativeUsersV3Request struct {
 
 func (x *ListNativeUsersV3Request) Reset() {
 	*x = ListNativeUsersV3Request{}
-	mi := &file_core_v1_native_user_proto_msgTypes[27]
+	mi := &file_core_v1_native_user_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1790,7 +2063,7 @@ func (x *ListNativeUsersV3Request) String() string {
 func (*ListNativeUsersV3Request) ProtoMessage() {}
 
 func (x *ListNativeUsersV3Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[27]
+	mi := &file_core_v1_native_user_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1803,7 +2076,7 @@ func (x *ListNativeUsersV3Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNativeUsersV3Request.ProtoReflect.Descriptor instead.
 func (*ListNativeUsersV3Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{27}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ListNativeUsersV3Request) GetLimit() int32 {
@@ -1844,7 +2117,7 @@ type ListNativeUsersV3Response struct {
 
 func (x *ListNativeUsersV3Response) Reset() {
 	*x = ListNativeUsersV3Response{}
-	mi := &file_core_v1_native_user_proto_msgTypes[28]
+	mi := &file_core_v1_native_user_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1856,7 +2129,7 @@ func (x *ListNativeUsersV3Response) String() string {
 func (*ListNativeUsersV3Response) ProtoMessage() {}
 
 func (x *ListNativeUsersV3Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[28]
+	mi := &file_core_v1_native_user_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1869,7 +2142,7 @@ func (x *ListNativeUsersV3Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNativeUsersV3Response.ProtoReflect.Descriptor instead.
 func (*ListNativeUsersV3Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{28}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ListNativeUsersV3Response) GetNativeUsers() []*NativeUserV3 {
@@ -1895,7 +2168,7 @@ type DeleteNativeUserV3Request struct {
 
 func (x *DeleteNativeUserV3Request) Reset() {
 	*x = DeleteNativeUserV3Request{}
-	mi := &file_core_v1_native_user_proto_msgTypes[29]
+	mi := &file_core_v1_native_user_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1907,7 +2180,7 @@ func (x *DeleteNativeUserV3Request) String() string {
 func (*DeleteNativeUserV3Request) ProtoMessage() {}
 
 func (x *DeleteNativeUserV3Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[29]
+	mi := &file_core_v1_native_user_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1920,7 +2193,7 @@ func (x *DeleteNativeUserV3Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteNativeUserV3Request.ProtoReflect.Descriptor instead.
 func (*DeleteNativeUserV3Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{29}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *DeleteNativeUserV3Request) GetId() string {
@@ -1939,7 +2212,7 @@ type DeleteNativeUserV3Response struct {
 
 func (x *DeleteNativeUserV3Response) Reset() {
 	*x = DeleteNativeUserV3Response{}
-	mi := &file_core_v1_native_user_proto_msgTypes[30]
+	mi := &file_core_v1_native_user_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1951,7 +2224,7 @@ func (x *DeleteNativeUserV3Response) String() string {
 func (*DeleteNativeUserV3Response) ProtoMessage() {}
 
 func (x *DeleteNativeUserV3Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_native_user_proto_msgTypes[30]
+	mi := &file_core_v1_native_user_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1964,7 +2237,7 @@ func (x *DeleteNativeUserV3Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteNativeUserV3Response.ProtoReflect.Descriptor instead.
 func (*DeleteNativeUserV3Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_native_user_proto_rawDescGZIP(), []int{30}
+	return file_core_v1_native_user_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *DeleteNativeUserV3Response) GetId() string {
@@ -1978,11 +2251,25 @@ var File_core_v1_native_user_proto protoreflect.FileDescriptor
 
 const file_core_v1_native_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19core/v1/native_user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x84\x01\n" +
+	"\x19core/v1/native_user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"4\n" +
+	"\x17AWSSecretsManagerSecret\x12\x19\n" +
+	"\x03arn\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03arn\"5\n" +
+	"\x16GCPSecretManagerSecret\x12\x1b\n" +
+	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"0\n" +
+	"\x13AzureKeyVaultSecret\x12\x19\n" +
+	"\x03url\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03url\"\xf1\x01\n" +
+	"\x16SecretManagerReference\x12A\n" +
+	"\n" +
+	"aws_secret\x18\x01 \x01(\v2 .core.v1.AWSSecretsManagerSecretH\x00R\tawsSecret\x12@\n" +
+	"\n" +
+	"gcp_secret\x18\x02 \x01(\v2\x1f.core.v1.GCPSecretManagerSecretH\x00R\tgcpSecret\x12A\n" +
+	"\fazure_secret\x18\x03 \x01(\v2\x1c.core.v1.AzureKeyVaultSecretH\x00R\vazureSecretB\x0f\n" +
+	"\x06secret\x12\x05\xbaH\x02\b\x01\"\xce\x01\n" +
 	"\vSecretValue\x12&\n" +
 	"\aliteral\x18\x01 \x01(\tB\n" +
 	"\xbaH\x04r\x02\x10\x01\x80\x01\x01H\x00R\aliteral\x12<\n" +
-	"\x14environment_variable\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x13environmentVariableB\x0f\n" +
+	"\x14environment_variable\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x13environmentVariable\x12H\n" +
+	"\x0esecret_manager\x18\x03 \x01(\v2\x1f.core.v1.SecretManagerReferenceH\x00R\rsecretManagerB\x0f\n" +
 	"\x06source\x12\x05\xbaH\x02\b\x01\"\x1d\n" +
 	"\x1bUnauthenticatedNativeUserV3\"\x19\n" +
 	"\x17PassthroughNativeUserV3\"r\n" +
@@ -2023,14 +2310,18 @@ const file_core_v1_native_user_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"l\n" +
 	"\x1bHTTPAPIKeyQueryNativeUserV3\x12\x19\n" +
 	"\x03key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x122\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"\xca\x03\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.core.v1.SecretValueB\x06\xbaH\x03\xc8\x01\x01R\x05value\"\x96\x05\n" +
 	"\x10HookNativeUserV3\x12\x1b\n" +
 	"\x04hook\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04hook\x12\xea\x01\n" +
 	"\voutput_type\x18\x02 \x01(\tB\xc8\x01\xbaH\xc4\x01r\xc1\x01R\x0funauthenticatedR\x05basicR\aaws_iamR\faws_iam_roleR\agcp_iamR\tazure_iamR\x0fkubernetes_pathR\x11kubernetes_inlineR\assh_keyR\rsnowflake_keyR\n" +
 	"http_basicR\vhttp_bearerR\x13http_api_key_headerR\x12http_api_key_queryR\n" +
 	"outputType\x12b\n" +
 	"\x19allowlisted_env_variables\x18\x03 \x03(\tB&\xbaH#\x92\x01 \"\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x17allowlistedEnvVariables\x12H\n" +
-	"\x19allowlisted_network_hosts\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\"j\n" +
+	"\x19allowlisted_network_hosts\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\x12m\n" +
+	"\asecrets\x18\x05 \x03(\v2&.core.v1.HookNativeUserV3.SecretsEntryB+\xbaH(\x9a\x01%\"\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$*\x03\xc8\x01\x01R\asecrets\x1a[\n" +
+	"\fSecretsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x125\n" +
+	"\x05value\x18\x02 \x01(\v2\x1f.core.v1.SecretManagerReferenceR\x05value:\x028\x01\"j\n" +
 	"\"LinkedAccountHTTPBasicNativeUserV3\x12\x1f\n" +
 	"\x06header\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06header\x12#\n" +
 	"\busername\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\busername\"F\n" +
@@ -2130,96 +2421,107 @@ func file_core_v1_native_user_proto_rawDescGZIP() []byte {
 	return file_core_v1_native_user_proto_rawDescData
 }
 
-var file_core_v1_native_user_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_core_v1_native_user_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
 var file_core_v1_native_user_proto_goTypes = []any{
-	(*SecretValue)(nil),                         // 0: core.v1.SecretValue
-	(*UnauthenticatedNativeUserV3)(nil),         // 1: core.v1.UnauthenticatedNativeUserV3
-	(*PassthroughNativeUserV3)(nil),             // 2: core.v1.PassthroughNativeUserV3
-	(*BasicNativeUserV3)(nil),                   // 3: core.v1.BasicNativeUserV3
-	(*AWSIAMNativeUserV3)(nil),                  // 4: core.v1.AWSIAMNativeUserV3
-	(*AWSIAMRoleNativeUserV3)(nil),              // 5: core.v1.AWSIAMRoleNativeUserV3
-	(*GCPIAMNativeUserV3)(nil),                  // 6: core.v1.GCPIAMNativeUserV3
-	(*AzureIAMNativeUserV3)(nil),                // 7: core.v1.AzureIAMNativeUserV3
-	(*KubernetesPathNativeUserV3)(nil),          // 8: core.v1.KubernetesPathNativeUserV3
-	(*KubernetesInlineNativeUserV3)(nil),        // 9: core.v1.KubernetesInlineNativeUserV3
-	(*SSHKeyNativeUserV3)(nil),                  // 10: core.v1.SSHKeyNativeUserV3
-	(*SnowflakeKeyNativeUserV3)(nil),            // 11: core.v1.SnowflakeKeyNativeUserV3
-	(*HTTPBasicNativeUserV3)(nil),               // 12: core.v1.HTTPBasicNativeUserV3
-	(*HTTPBearerNativeUserV3)(nil),              // 13: core.v1.HTTPBearerNativeUserV3
-	(*HTTPAPIKeyHeaderNativeUserV3)(nil),        // 14: core.v1.HTTPAPIKeyHeaderNativeUserV3
-	(*HTTPAPIKeyQueryNativeUserV3)(nil),         // 15: core.v1.HTTPAPIKeyQueryNativeUserV3
-	(*HookNativeUserV3)(nil),                    // 16: core.v1.HookNativeUserV3
-	(*LinkedAccountHTTPBasicNativeUserV3)(nil),  // 17: core.v1.LinkedAccountHTTPBasicNativeUserV3
-	(*LinkedAccountHTTPBearerNativeUserV3)(nil), // 18: core.v1.LinkedAccountHTTPBearerNativeUserV3
-	(*NativeUserV3Credentials)(nil),             // 19: core.v1.NativeUserV3Credentials
-	(*NativeUserV3)(nil),                        // 20: core.v1.NativeUserV3
-	(*CreateNativeUserV3Request)(nil),           // 21: core.v1.CreateNativeUserV3Request
-	(*CreateNativeUserV3Response)(nil),          // 22: core.v1.CreateNativeUserV3Response
-	(*UpdateNativeUserV3Request)(nil),           // 23: core.v1.UpdateNativeUserV3Request
-	(*UpdateNativeUserV3Response)(nil),          // 24: core.v1.UpdateNativeUserV3Response
-	(*GetNativeUserV3Request)(nil),              // 25: core.v1.GetNativeUserV3Request
-	(*GetNativeUserV3Response)(nil),             // 26: core.v1.GetNativeUserV3Response
-	(*ListNativeUsersV3Request)(nil),            // 27: core.v1.ListNativeUsersV3Request
-	(*ListNativeUsersV3Response)(nil),           // 28: core.v1.ListNativeUsersV3Response
-	(*DeleteNativeUserV3Request)(nil),           // 29: core.v1.DeleteNativeUserV3Request
-	(*DeleteNativeUserV3Response)(nil),          // 30: core.v1.DeleteNativeUserV3Response
-	(*timestamppb.Timestamp)(nil),               // 31: google.protobuf.Timestamp
-	(*ListMetadata)(nil),                        // 32: core.v1.ListMetadata
+	(*AWSSecretsManagerSecret)(nil),             // 0: core.v1.AWSSecretsManagerSecret
+	(*GCPSecretManagerSecret)(nil),              // 1: core.v1.GCPSecretManagerSecret
+	(*AzureKeyVaultSecret)(nil),                 // 2: core.v1.AzureKeyVaultSecret
+	(*SecretManagerReference)(nil),              // 3: core.v1.SecretManagerReference
+	(*SecretValue)(nil),                         // 4: core.v1.SecretValue
+	(*UnauthenticatedNativeUserV3)(nil),         // 5: core.v1.UnauthenticatedNativeUserV3
+	(*PassthroughNativeUserV3)(nil),             // 6: core.v1.PassthroughNativeUserV3
+	(*BasicNativeUserV3)(nil),                   // 7: core.v1.BasicNativeUserV3
+	(*AWSIAMNativeUserV3)(nil),                  // 8: core.v1.AWSIAMNativeUserV3
+	(*AWSIAMRoleNativeUserV3)(nil),              // 9: core.v1.AWSIAMRoleNativeUserV3
+	(*GCPIAMNativeUserV3)(nil),                  // 10: core.v1.GCPIAMNativeUserV3
+	(*AzureIAMNativeUserV3)(nil),                // 11: core.v1.AzureIAMNativeUserV3
+	(*KubernetesPathNativeUserV3)(nil),          // 12: core.v1.KubernetesPathNativeUserV3
+	(*KubernetesInlineNativeUserV3)(nil),        // 13: core.v1.KubernetesInlineNativeUserV3
+	(*SSHKeyNativeUserV3)(nil),                  // 14: core.v1.SSHKeyNativeUserV3
+	(*SnowflakeKeyNativeUserV3)(nil),            // 15: core.v1.SnowflakeKeyNativeUserV3
+	(*HTTPBasicNativeUserV3)(nil),               // 16: core.v1.HTTPBasicNativeUserV3
+	(*HTTPBearerNativeUserV3)(nil),              // 17: core.v1.HTTPBearerNativeUserV3
+	(*HTTPAPIKeyHeaderNativeUserV3)(nil),        // 18: core.v1.HTTPAPIKeyHeaderNativeUserV3
+	(*HTTPAPIKeyQueryNativeUserV3)(nil),         // 19: core.v1.HTTPAPIKeyQueryNativeUserV3
+	(*HookNativeUserV3)(nil),                    // 20: core.v1.HookNativeUserV3
+	(*LinkedAccountHTTPBasicNativeUserV3)(nil),  // 21: core.v1.LinkedAccountHTTPBasicNativeUserV3
+	(*LinkedAccountHTTPBearerNativeUserV3)(nil), // 22: core.v1.LinkedAccountHTTPBearerNativeUserV3
+	(*NativeUserV3Credentials)(nil),             // 23: core.v1.NativeUserV3Credentials
+	(*NativeUserV3)(nil),                        // 24: core.v1.NativeUserV3
+	(*CreateNativeUserV3Request)(nil),           // 25: core.v1.CreateNativeUserV3Request
+	(*CreateNativeUserV3Response)(nil),          // 26: core.v1.CreateNativeUserV3Response
+	(*UpdateNativeUserV3Request)(nil),           // 27: core.v1.UpdateNativeUserV3Request
+	(*UpdateNativeUserV3Response)(nil),          // 28: core.v1.UpdateNativeUserV3Response
+	(*GetNativeUserV3Request)(nil),              // 29: core.v1.GetNativeUserV3Request
+	(*GetNativeUserV3Response)(nil),             // 30: core.v1.GetNativeUserV3Response
+	(*ListNativeUsersV3Request)(nil),            // 31: core.v1.ListNativeUsersV3Request
+	(*ListNativeUsersV3Response)(nil),           // 32: core.v1.ListNativeUsersV3Response
+	(*DeleteNativeUserV3Request)(nil),           // 33: core.v1.DeleteNativeUserV3Request
+	(*DeleteNativeUserV3Response)(nil),          // 34: core.v1.DeleteNativeUserV3Response
+	nil,                                         // 35: core.v1.HookNativeUserV3.SecretsEntry
+	(*timestamppb.Timestamp)(nil),               // 36: google.protobuf.Timestamp
+	(*ListMetadata)(nil),                        // 37: core.v1.ListMetadata
 }
 var file_core_v1_native_user_proto_depIdxs = []int32{
-	0,  // 0: core.v1.BasicNativeUserV3.password:type_name -> core.v1.SecretValue
-	0,  // 1: core.v1.KubernetesPathNativeUserV3.kubeconfig_path:type_name -> core.v1.SecretValue
-	0,  // 2: core.v1.KubernetesInlineNativeUserV3.kubeconfig:type_name -> core.v1.SecretValue
-	0,  // 3: core.v1.SSHKeyNativeUserV3.key:type_name -> core.v1.SecretValue
-	0,  // 4: core.v1.SSHKeyNativeUserV3.certificate:type_name -> core.v1.SecretValue
-	0,  // 5: core.v1.SnowflakeKeyNativeUserV3.key:type_name -> core.v1.SecretValue
-	0,  // 6: core.v1.HTTPBasicNativeUserV3.password:type_name -> core.v1.SecretValue
-	0,  // 7: core.v1.HTTPBearerNativeUserV3.token:type_name -> core.v1.SecretValue
-	0,  // 8: core.v1.HTTPAPIKeyHeaderNativeUserV3.value:type_name -> core.v1.SecretValue
-	0,  // 9: core.v1.HTTPAPIKeyQueryNativeUserV3.value:type_name -> core.v1.SecretValue
-	3,  // 10: core.v1.NativeUserV3Credentials.basic:type_name -> core.v1.BasicNativeUserV3
-	4,  // 11: core.v1.NativeUserV3Credentials.aws_iam:type_name -> core.v1.AWSIAMNativeUserV3
-	6,  // 12: core.v1.NativeUserV3Credentials.gcp_iam:type_name -> core.v1.GCPIAMNativeUserV3
-	8,  // 13: core.v1.NativeUserV3Credentials.kubernetes_path:type_name -> core.v1.KubernetesPathNativeUserV3
-	9,  // 14: core.v1.NativeUserV3Credentials.kubernetes_inline:type_name -> core.v1.KubernetesInlineNativeUserV3
-	10, // 15: core.v1.NativeUserV3Credentials.ssh_key:type_name -> core.v1.SSHKeyNativeUserV3
-	11, // 16: core.v1.NativeUserV3Credentials.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUserV3
-	12, // 17: core.v1.NativeUserV3Credentials.http_basic:type_name -> core.v1.HTTPBasicNativeUserV3
-	13, // 18: core.v1.NativeUserV3Credentials.http_bearer:type_name -> core.v1.HTTPBearerNativeUserV3
-	14, // 19: core.v1.NativeUserV3Credentials.http_api_key_header:type_name -> core.v1.HTTPAPIKeyHeaderNativeUserV3
-	15, // 20: core.v1.NativeUserV3Credentials.http_api_key_query:type_name -> core.v1.HTTPAPIKeyQueryNativeUserV3
-	16, // 21: core.v1.NativeUserV3Credentials.hook:type_name -> core.v1.HookNativeUserV3
-	7,  // 22: core.v1.NativeUserV3Credentials.azure_iam:type_name -> core.v1.AzureIAMNativeUserV3
-	5,  // 23: core.v1.NativeUserV3Credentials.aws_iam_role:type_name -> core.v1.AWSIAMRoleNativeUserV3
-	1,  // 24: core.v1.NativeUserV3Credentials.unauthenticated:type_name -> core.v1.UnauthenticatedNativeUserV3
-	17, // 25: core.v1.NativeUserV3Credentials.linked_http_basic:type_name -> core.v1.LinkedAccountHTTPBasicNativeUserV3
-	18, // 26: core.v1.NativeUserV3Credentials.linked_http_bearer:type_name -> core.v1.LinkedAccountHTTPBearerNativeUserV3
-	2,  // 27: core.v1.NativeUserV3Credentials.passthrough:type_name -> core.v1.PassthroughNativeUserV3
-	19, // 28: core.v1.NativeUserV3.credentials:type_name -> core.v1.NativeUserV3Credentials
-	31, // 29: core.v1.NativeUserV3.created_at:type_name -> google.protobuf.Timestamp
-	31, // 30: core.v1.NativeUserV3.updated_at:type_name -> google.protobuf.Timestamp
-	19, // 31: core.v1.CreateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
-	20, // 32: core.v1.CreateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
-	19, // 33: core.v1.UpdateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
-	20, // 34: core.v1.UpdateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
-	20, // 35: core.v1.GetNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
-	20, // 36: core.v1.ListNativeUsersV3Response.native_users:type_name -> core.v1.NativeUserV3
-	32, // 37: core.v1.ListNativeUsersV3Response.list_metadata:type_name -> core.v1.ListMetadata
-	21, // 38: core.v1.NativeUserService.CreateNativeUserV3:input_type -> core.v1.CreateNativeUserV3Request
-	27, // 39: core.v1.NativeUserService.ListNativeUsersV3:input_type -> core.v1.ListNativeUsersV3Request
-	25, // 40: core.v1.NativeUserService.GetNativeUserV3:input_type -> core.v1.GetNativeUserV3Request
-	23, // 41: core.v1.NativeUserService.UpdateNativeUserV3:input_type -> core.v1.UpdateNativeUserV3Request
-	29, // 42: core.v1.NativeUserService.DeleteNativeUserV3:input_type -> core.v1.DeleteNativeUserV3Request
-	22, // 43: core.v1.NativeUserService.CreateNativeUserV3:output_type -> core.v1.CreateNativeUserV3Response
-	28, // 44: core.v1.NativeUserService.ListNativeUsersV3:output_type -> core.v1.ListNativeUsersV3Response
-	26, // 45: core.v1.NativeUserService.GetNativeUserV3:output_type -> core.v1.GetNativeUserV3Response
-	24, // 46: core.v1.NativeUserService.UpdateNativeUserV3:output_type -> core.v1.UpdateNativeUserV3Response
-	30, // 47: core.v1.NativeUserService.DeleteNativeUserV3:output_type -> core.v1.DeleteNativeUserV3Response
-	43, // [43:48] is the sub-list for method output_type
-	38, // [38:43] is the sub-list for method input_type
-	38, // [38:38] is the sub-list for extension type_name
-	38, // [38:38] is the sub-list for extension extendee
-	0,  // [0:38] is the sub-list for field type_name
+	0,  // 0: core.v1.SecretManagerReference.aws_secret:type_name -> core.v1.AWSSecretsManagerSecret
+	1,  // 1: core.v1.SecretManagerReference.gcp_secret:type_name -> core.v1.GCPSecretManagerSecret
+	2,  // 2: core.v1.SecretManagerReference.azure_secret:type_name -> core.v1.AzureKeyVaultSecret
+	3,  // 3: core.v1.SecretValue.secret_manager:type_name -> core.v1.SecretManagerReference
+	4,  // 4: core.v1.BasicNativeUserV3.password:type_name -> core.v1.SecretValue
+	4,  // 5: core.v1.KubernetesPathNativeUserV3.kubeconfig_path:type_name -> core.v1.SecretValue
+	4,  // 6: core.v1.KubernetesInlineNativeUserV3.kubeconfig:type_name -> core.v1.SecretValue
+	4,  // 7: core.v1.SSHKeyNativeUserV3.key:type_name -> core.v1.SecretValue
+	4,  // 8: core.v1.SSHKeyNativeUserV3.certificate:type_name -> core.v1.SecretValue
+	4,  // 9: core.v1.SnowflakeKeyNativeUserV3.key:type_name -> core.v1.SecretValue
+	4,  // 10: core.v1.HTTPBasicNativeUserV3.password:type_name -> core.v1.SecretValue
+	4,  // 11: core.v1.HTTPBearerNativeUserV3.token:type_name -> core.v1.SecretValue
+	4,  // 12: core.v1.HTTPAPIKeyHeaderNativeUserV3.value:type_name -> core.v1.SecretValue
+	4,  // 13: core.v1.HTTPAPIKeyQueryNativeUserV3.value:type_name -> core.v1.SecretValue
+	35, // 14: core.v1.HookNativeUserV3.secrets:type_name -> core.v1.HookNativeUserV3.SecretsEntry
+	7,  // 15: core.v1.NativeUserV3Credentials.basic:type_name -> core.v1.BasicNativeUserV3
+	8,  // 16: core.v1.NativeUserV3Credentials.aws_iam:type_name -> core.v1.AWSIAMNativeUserV3
+	10, // 17: core.v1.NativeUserV3Credentials.gcp_iam:type_name -> core.v1.GCPIAMNativeUserV3
+	12, // 18: core.v1.NativeUserV3Credentials.kubernetes_path:type_name -> core.v1.KubernetesPathNativeUserV3
+	13, // 19: core.v1.NativeUserV3Credentials.kubernetes_inline:type_name -> core.v1.KubernetesInlineNativeUserV3
+	14, // 20: core.v1.NativeUserV3Credentials.ssh_key:type_name -> core.v1.SSHKeyNativeUserV3
+	15, // 21: core.v1.NativeUserV3Credentials.snowflake_key:type_name -> core.v1.SnowflakeKeyNativeUserV3
+	16, // 22: core.v1.NativeUserV3Credentials.http_basic:type_name -> core.v1.HTTPBasicNativeUserV3
+	17, // 23: core.v1.NativeUserV3Credentials.http_bearer:type_name -> core.v1.HTTPBearerNativeUserV3
+	18, // 24: core.v1.NativeUserV3Credentials.http_api_key_header:type_name -> core.v1.HTTPAPIKeyHeaderNativeUserV3
+	19, // 25: core.v1.NativeUserV3Credentials.http_api_key_query:type_name -> core.v1.HTTPAPIKeyQueryNativeUserV3
+	20, // 26: core.v1.NativeUserV3Credentials.hook:type_name -> core.v1.HookNativeUserV3
+	11, // 27: core.v1.NativeUserV3Credentials.azure_iam:type_name -> core.v1.AzureIAMNativeUserV3
+	9,  // 28: core.v1.NativeUserV3Credentials.aws_iam_role:type_name -> core.v1.AWSIAMRoleNativeUserV3
+	5,  // 29: core.v1.NativeUserV3Credentials.unauthenticated:type_name -> core.v1.UnauthenticatedNativeUserV3
+	21, // 30: core.v1.NativeUserV3Credentials.linked_http_basic:type_name -> core.v1.LinkedAccountHTTPBasicNativeUserV3
+	22, // 31: core.v1.NativeUserV3Credentials.linked_http_bearer:type_name -> core.v1.LinkedAccountHTTPBearerNativeUserV3
+	6,  // 32: core.v1.NativeUserV3Credentials.passthrough:type_name -> core.v1.PassthroughNativeUserV3
+	23, // 33: core.v1.NativeUserV3.credentials:type_name -> core.v1.NativeUserV3Credentials
+	36, // 34: core.v1.NativeUserV3.created_at:type_name -> google.protobuf.Timestamp
+	36, // 35: core.v1.NativeUserV3.updated_at:type_name -> google.protobuf.Timestamp
+	23, // 36: core.v1.CreateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
+	24, // 37: core.v1.CreateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
+	23, // 38: core.v1.UpdateNativeUserV3Request.credentials:type_name -> core.v1.NativeUserV3Credentials
+	24, // 39: core.v1.UpdateNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
+	24, // 40: core.v1.GetNativeUserV3Response.native_user:type_name -> core.v1.NativeUserV3
+	24, // 41: core.v1.ListNativeUsersV3Response.native_users:type_name -> core.v1.NativeUserV3
+	37, // 42: core.v1.ListNativeUsersV3Response.list_metadata:type_name -> core.v1.ListMetadata
+	3,  // 43: core.v1.HookNativeUserV3.SecretsEntry.value:type_name -> core.v1.SecretManagerReference
+	25, // 44: core.v1.NativeUserService.CreateNativeUserV3:input_type -> core.v1.CreateNativeUserV3Request
+	31, // 45: core.v1.NativeUserService.ListNativeUsersV3:input_type -> core.v1.ListNativeUsersV3Request
+	29, // 46: core.v1.NativeUserService.GetNativeUserV3:input_type -> core.v1.GetNativeUserV3Request
+	27, // 47: core.v1.NativeUserService.UpdateNativeUserV3:input_type -> core.v1.UpdateNativeUserV3Request
+	33, // 48: core.v1.NativeUserService.DeleteNativeUserV3:input_type -> core.v1.DeleteNativeUserV3Request
+	26, // 49: core.v1.NativeUserService.CreateNativeUserV3:output_type -> core.v1.CreateNativeUserV3Response
+	32, // 50: core.v1.NativeUserService.ListNativeUsersV3:output_type -> core.v1.ListNativeUsersV3Response
+	30, // 51: core.v1.NativeUserService.GetNativeUserV3:output_type -> core.v1.GetNativeUserV3Response
+	28, // 52: core.v1.NativeUserService.UpdateNativeUserV3:output_type -> core.v1.UpdateNativeUserV3Response
+	34, // 53: core.v1.NativeUserService.DeleteNativeUserV3:output_type -> core.v1.DeleteNativeUserV3Response
+	49, // [49:54] is the sub-list for method output_type
+	44, // [44:49] is the sub-list for method input_type
+	44, // [44:44] is the sub-list for extension type_name
+	44, // [44:44] is the sub-list for extension extendee
+	0,  // [0:44] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_native_user_proto_init() }
@@ -2229,11 +2531,17 @@ func file_core_v1_native_user_proto_init() {
 	}
 	file_core_v1_list_metadata_proto_init()
 	file_core_v1_permission_target_proto_init()
-	file_core_v1_native_user_proto_msgTypes[0].OneofWrappers = []any{
+	file_core_v1_native_user_proto_msgTypes[3].OneofWrappers = []any{
+		(*SecretManagerReference_AwsSecret)(nil),
+		(*SecretManagerReference_GcpSecret)(nil),
+		(*SecretManagerReference_AzureSecret)(nil),
+	}
+	file_core_v1_native_user_proto_msgTypes[4].OneofWrappers = []any{
 		(*SecretValue_Literal)(nil),
 		(*SecretValue_EnvironmentVariable)(nil),
+		(*SecretValue_SecretManager)(nil),
 	}
-	file_core_v1_native_user_proto_msgTypes[19].OneofWrappers = []any{
+	file_core_v1_native_user_proto_msgTypes[23].OneofWrappers = []any{
 		(*NativeUserV3Credentials_Basic)(nil),
 		(*NativeUserV3Credentials_AwsIam)(nil),
 		(*NativeUserV3Credentials_GcpIam)(nil),
@@ -2253,14 +2561,14 @@ func file_core_v1_native_user_proto_init() {
 		(*NativeUserV3Credentials_LinkedHttpBearer)(nil),
 		(*NativeUserV3Credentials_Passthrough)(nil),
 	}
-	file_core_v1_native_user_proto_msgTypes[23].OneofWrappers = []any{}
+	file_core_v1_native_user_proto_msgTypes[27].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_native_user_proto_rawDesc), len(file_core_v1_native_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   31,
+			NumMessages:   36,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
