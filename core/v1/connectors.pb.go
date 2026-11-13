@@ -6080,7 +6080,7 @@ var File_core_v1_connectors_proto protoreflect.FileDescriptor
 
 const file_core_v1_connectors_proto_rawDesc = "" +
 	"\n" +
-	"\x18core/v1/connectors.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\x02\n" +
+	"\x18core/v1/connectors.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa6\x02\n" +
 	"\x15ListConnectorsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -6088,8 +6088,8 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x16\n" +
 	"\x06search\x18\x04 \x01(\tR\x06search\x129\n" +
 	"\rsearch_fields\x18\x05 \x03(\tB\x14\xbaH\x11\x92\x01\x0e\"\fr\n" +
-	"R\x02idR\x04nameR\fsearchFields\x12\x1e\n" +
-	"\bspace_id\x18\x06 \x01(\tH\x00R\aspaceId\x88\x01\x01\x12,\n" +
+	"R\x02idR\x04nameR\fsearchFields\x12$\n" +
+	"\bspace_id\x18\x06 \x01(\tB\x04\xe0\xf9\x18\x01H\x00R\aspaceId\x88\x01\x01\x12,\n" +
 	"\x06filter\x18\a \x01(\v2\x0f.core.v1.FilterH\x01R\x06filter\x88\x01\x01B\v\n" +
 	"\t_space_idB\t\n" +
 	"\a_filter\"\x88\x01\n" +
@@ -6097,10 +6097,10 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\n" +
 	"connectors\x18\x01 \x03(\v2\x12.core.v1.ConnectorR\n" +
 	"connectors\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xd3\x01\n" +
-	"!ListConnectorListenerLinksRequest\x12,\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\vconnectorId\x12*\n" +
-	"\vlistener_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xdb\x01\n" +
+	"!ListConnectorListenerLinksRequest\x120\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fH\x00R\vconnectorId\x12.\n" +
+	"\vlistener_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10H\x00R\n" +
 	"listenerId\x12 \n" +
 	"\x05limit\x18\x03 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -6109,18 +6109,18 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x02id\"\x96\x01\n" +
 	"\"ListConnectorListenerLinksResponse\x124\n" +
 	"\x05links\x18\x01 \x03(\v2\x1e.core.v1.ConnectorListenerLinkR\x05links\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xab\x01\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xb1\x01\n" +
 	"\x16CreateConnectorRequest\x12-\n" +
 	"\x04name\x18\x01 \x01(\tB\x19\xbaH\x16r\x14\x10\x03\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x125\n" +
-	"\x16termination_protection\x18\x02 \x01(\bR\x15terminationProtection\x12\x1e\n" +
-	"\bspace_id\x18\x03 \x01(\tH\x00R\aspaceId\x88\x01\x01B\v\n" +
+	"\x16termination_protection\x18\x02 \x01(\bR\x15terminationProtection\x12$\n" +
+	"\bspace_id\x18\x03 \x01(\tB\x04\xe0\xf9\x18\x01H\x00R\aspaceId\x88\x01\x01B\v\n" +
 	"\t_space_id\"K\n" +
 	"\x17CreateConnectorResponse\x120\n" +
-	"\tconnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorR\tconnector\"\xac\x01\n" +
-	"\x16UpdateConnectorRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12:\n" +
-	"\x16termination_protection\x18\x02 \x01(\bH\x00R\x15terminationProtection\x88\x01\x01\x12\x1e\n" +
-	"\bspace_id\x18\x03 \x01(\tH\x01R\aspaceId\x88\x01\x01B\x19\n" +
+	"\tconnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorR\tconnector\"\xb8\x01\n" +
+	"\x16UpdateConnectorRequest\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\tB\x04\xe0\xf9\x18\x0fR\x02id\x12:\n" +
+	"\x16termination_protection\x18\x02 \x01(\bH\x00R\x15terminationProtection\x88\x01\x01\x12$\n" +
+	"\bspace_id\x18\x03 \x01(\tB\x04\xe0\xf9\x18\x01H\x01R\aspaceId\x88\x01\x01B\x19\n" +
 	"\x17_termination_protectionB\v\n" +
 	"\t_space_id\"K\n" +
 	"\x17UpdateConnectorResponse\x120\n" +
@@ -6128,45 +6128,45 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x18UpdateConnectorV2Request\x128\n" +
 	"\tconnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorB\x06\xbaH\x03\xc8\x01\x01R\tconnector\"M\n" +
 	"\x19UpdateConnectorV2Response\x120\n" +
-	"\tconnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorR\tconnector\".\n" +
-	"\x13GetConnectorRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"H\n" +
+	"\tconnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorR\tconnector\"2\n" +
+	"\x13GetConnectorRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\x02id\"H\n" +
 	"\x14GetConnectorResponse\x120\n" +
-	"\tConnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorR\tConnector\"4\n" +
-	"\x19GetConnectorApiKeyRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"@\n" +
+	"\tConnector\x18\x01 \x01(\v2\x12.core.v1.ConnectorR\tConnector\"8\n" +
+	"\x19GetConnectorApiKeyRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\x02id\"@\n" +
 	"\x1aGetConnectorApiKeyResponse\x12\"\n" +
 	"\x06secret\x18\x01 \x01(\tB\n" +
-	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06secret\"\x88\x01\n" +
-	"\x1dListConnectorInstancesRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12 \n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06secret\"\x8c\x01\n" +
+	"\x1dListConnectorInstancesRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\x02id\x12 \n" +
 	"\x05limit\x18\x02 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x03 \x01(\tR\x06cursor\x12\x14\n" +
 	"\x05order\x18\x04 \x01(\tR\x05order\"\x8d\x01\n" +
 	"\x1eListConnectorInstancesResponse\x12/\n" +
 	"\tinstances\x18\x01 \x03(\v2\x11.core.v1.InstanceR\tinstances\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x85\x01\n" +
-	"-CreateConnectorInstanceShutdownRequestRequest\x12(\n" +
-	"\vinstance_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"instanceId\x12*\n" +
-	"\fconnector_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"\x8b\x01\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x8d\x01\n" +
+	"-CreateConnectorInstanceShutdownRequestRequest\x12,\n" +
+	"\vinstance_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\n" +
+	"instanceId\x12.\n" +
+	"\fconnector_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\"\x8b\x01\n" +
 	".CreateConnectorInstanceShutdownRequestResponse\x12Y\n" +
-	"\x18instance_remote_shutdown\x18\x01 \x01(\v2\x1f.core.v1.InstanceRemoteShutdownR\x16instanceRemoteShutdown\"1\n" +
-	"\x16DeleteConnectorRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"2\n" +
+	"\x18instance_remote_shutdown\x18\x01 \x01(\v2\x1f.core.v1.InstanceRemoteShutdownR\x16instanceRemoteShutdown\"5\n" +
+	"\x16DeleteConnectorRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\x02id\"2\n" +
 	"\x17DeleteConnectorResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xd7\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xdb\x01\n" +
 	"\x1eCreateConnectorListenerRequest\x12\x1f\n" +
 	"\x04port\x18\x01 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00R\x04port\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x125\n" +
-	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\x12/\n" +
-	"\fconnector_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\vconnectorId\x88\x01\x01B\x0f\n" +
+	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\x123\n" +
+	"\fconnector_id\x18\x04 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fH\x00R\vconnectorId\x88\x01\x01B\x0f\n" +
 	"\r_connector_id\"l\n" +
 	"\x1fCreateConnectorListenerResponse\x12I\n" +
-	"\x12connector_listener\x18\x01 \x01(\v2\x1a.core.v1.ConnectorListenerR\x11connectorListener\"6\n" +
-	"\x1bGetConnectorListenerRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"i\n" +
+	"\x12connector_listener\x18\x01 \x01(\v2\x1a.core.v1.ConnectorListenerR\x11connectorListener\":\n" +
+	"\x1bGetConnectorListenerRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10R\x02id\"i\n" +
 	"\x1cGetConnectorListenerResponse\x12I\n" +
 	"\x12connector_listener\x18\x01 \x01(\v2\x1a.core.v1.ConnectorListenerR\x11connectorListener\"\xfb\x01\n" +
 	"\x1dListConnectorListenersRequest\x12 \n" +
@@ -6181,75 +6181,76 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\a_filter\"\xa9\x01\n" +
 	"\x1eListConnectorListenersResponse\x12K\n" +
 	"\x13connector_listeners\x18\x01 \x03(\v2\x1a.core.v1.ConnectorListenerR\x12connectorListeners\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xb0\x01\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xb4\x01\n" +
 	"!ListConnectorListenerRulesRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
-	"\x05order\x18\x03 \x01(\tR\x05order\x12;\n" +
-	"\x15connector_listener_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x13connectorListenerId\"\x96\x01\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12?\n" +
+	"\x15connector_listener_id\x18\x04 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10R\x13connectorListenerId\"\x96\x01\n" +
 	"\"ListConnectorListenerRulesResponse\x124\n" +
 	"\x05rules\x18\x01 \x03(\v2\x1e.core.v1.ConnectorListenerRuleR\x05rules\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x81\x02\n" +
-	"\x1eUpdateConnectorListenerRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12$\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x89\x02\n" +
+	"\x1eUpdateConnectorListenerRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10R\x02id\x12$\n" +
 	"\x04port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00H\x00R\x04port\x88\x01\x01\x12:\n" +
-	"\x16termination_protection\x18\x04 \x01(\bH\x01R\x15terminationProtection\x88\x01\x01\x12/\n" +
-	"\fconnector_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x02R\vconnectorId\x88\x01\x01B\a\n" +
+	"\x16termination_protection\x18\x04 \x01(\bH\x01R\x15terminationProtection\x88\x01\x01\x123\n" +
+	"\fconnector_id\x18\x05 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fH\x02R\vconnectorId\x88\x01\x01B\a\n" +
 	"\x05_portB\x19\n" +
 	"\x17_termination_protectionB\x0f\n" +
 	"\r_connector_id\"l\n" +
 	"\x1fUpdateConnectorListenerResponse\x12I\n" +
-	"\x12connector_listener\x18\x01 \x01(\v2\x1a.core.v1.ConnectorListenerR\x11connectorListener\"9\n" +
-	"\x1eDeleteConnectorListenerRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\":\n" +
+	"\x12connector_listener\x18\x01 \x01(\v2\x1a.core.v1.ConnectorListenerR\x11connectorListener\"=\n" +
+	"\x1eDeleteConnectorListenerRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10R\x02id\":\n" +
 	"\x1fDeleteConnectorListenerResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xa0\x03\n" +
-	"\"CreateConnectorListenerRuleRequest\x12;\n" +
-	"\x15connector_listener_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x13connectorListenerId\x124\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xba\x03\n" +
+	"\"CreateConnectorListenerRuleRequest\x12?\n" +
+	"\x15connector_listener_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10R\x13connectorListenerId\x124\n" +
 	"\x04type\x18\x02 \x01(\tB \xbaH\x1dr\x1bR\n" +
-	"technologyR\x03anyR\bresourceR\x04type\x12\xcf\x01\n" +
-	"\x04rule\x18\x03 \x01(\tB\xba\x01\xbaH\xb6\x01r\xb3\x012\xb0\x01^(any|resource_.*|datastore_.*|aws|bigquery|clickhouse|dynamodb|gcp|grpc|http|kubernetes|llm|mariadb|mcp|mongodb|mysql|postgres|rdp|redis|redshift|s3|snowflake|socket|ssh|web)$R\x04rule\x125\n" +
+	"technologyR\x03anyR\bresourceR\x04type\x12\xe5\x01\n" +
+	"\x04rule\x18\x03 \x01(\tB\xd0\x01\xbaH\xb6\x01r\xb3\x012\xb0\x01^(any|resource_.*|datastore_.*|aws|bigquery|clickhouse|dynamodb|gcp|grpc|http|kubernetes|llm|mariadb|mcp|mongodb|mysql|postgres|rdp|redis|redshift|s3|snowflake|socket|ssh|web)$\xfa\xf9\x18\x12\n" +
+	"\x04type\x12\bresource\x18\x02R\x04rule\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\"}\n" +
 	"#CreateConnectorListenerRuleResponse\x12V\n" +
-	"\x17connector_listener_rule\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerRuleR\x15connectorListenerRule\":\n" +
-	"\x1fGetConnectorListenerRuleRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"z\n" +
+	"\x17connector_listener_rule\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerRuleR\x15connectorListenerRule\">\n" +
+	"\x1fGetConnectorListenerRuleRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x11R\x02id\"z\n" +
 	" GetConnectorListenerRuleResponse\x12V\n" +
-	"\x17connector_listener_rule\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerRuleR\x15connectorListenerRule\"\x94\x01\n" +
-	"\"UpdateConnectorListenerRuleRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12:\n" +
+	"\x17connector_listener_rule\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerRuleR\x15connectorListenerRule\"\x98\x01\n" +
+	"\"UpdateConnectorListenerRuleRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x11R\x02id\x12:\n" +
 	"\x16termination_protection\x18\x02 \x01(\bH\x00R\x15terminationProtection\x88\x01\x01B\x19\n" +
 	"\x17_termination_protection\"}\n" +
 	"#UpdateConnectorListenerRuleResponse\x12V\n" +
-	"\x17connector_listener_rule\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerRuleR\x15connectorListenerRule\"=\n" +
-	"\"DeleteConnectorListenerRuleRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\">\n" +
+	"\x17connector_listener_rule\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerRuleR\x15connectorListenerRule\"A\n" +
+	"\"DeleteConnectorListenerRuleRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x11R\x02id\">\n" +
 	"#DeleteConnectorListenerRuleResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xc4\x01\n" +
-	"\"CreateConnectorListenerLinkRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12;\n" +
-	"\x15connector_listener_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x13connectorListenerId\x125\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xcc\x01\n" +
+	"\"CreateConnectorListenerLinkRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12?\n" +
+	"\x15connector_listener_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10R\x13connectorListenerId\x125\n" +
 	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\"}\n" +
 	"#CreateConnectorListenerLinkResponse\x12V\n" +
-	"\x17connector_listener_link\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerLinkR\x15connectorListenerLink\":\n" +
-	"\x1fGetConnectorListenerLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"z\n" +
+	"\x17connector_listener_link\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerLinkR\x15connectorListenerLink\">\n" +
+	"\x1fGetConnectorListenerLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x12R\x02id\"z\n" +
 	" GetConnectorListenerLinkResponse\x12V\n" +
-	"\x17connector_listener_link\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerLinkR\x15connectorListenerLink\"\x94\x01\n" +
-	"\"UpdateConnectorListenerLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12:\n" +
+	"\x17connector_listener_link\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerLinkR\x15connectorListenerLink\"\x98\x01\n" +
+	"\"UpdateConnectorListenerLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x12R\x02id\x12:\n" +
 	"\x16termination_protection\x18\x04 \x01(\bH\x00R\x15terminationProtection\x88\x01\x01B\x19\n" +
 	"\x17_termination_protection\"}\n" +
 	"#UpdateConnectorListenerLinkResponse\x12V\n" +
-	"\x17connector_listener_link\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerLinkR\x15connectorListenerLink\"=\n" +
-	"\"DeleteConnectorListenerLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\">\n" +
+	"\x17connector_listener_link\x18\x01 \x01(\v2\x1e.core.v1.ConnectorListenerLinkR\x15connectorListenerLink\"A\n" +
+	"\"DeleteConnectorListenerLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x12R\x02id\">\n" +
 	"#DeleteConnectorListenerLinkResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xdf\x02\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xe3\x02\n" +
 	"\x1eCreateConnectorHostnameRequest\x12#\n" +
-	"\bhostname\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12*\n" +
-	"\fconnector_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12\x1f\n" +
+	"\bhostname\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12.\n" +
+	"\fconnector_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12\x1f\n" +
 	"\vmanaged_tls\x18\x03 \x01(\bR\n" +
 	"managedTls\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\x12\x1d\n" +
@@ -6261,23 +6262,23 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\f_certificateB\x0e\n" +
 	"\f_private_key\"l\n" +
 	"\x1fCreateConnectorHostnameResponse\x12I\n" +
-	"\x12connector_hostname\x18\x01 \x01(\v2\x1a.core.v1.ConnectorHostnameR\x11connectorHostname\"}\n" +
-	"\x1bGetConnectorHostnameRequest\x12,\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\vconnectorId\x12*\n" +
-	"\vhostname_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
+	"\x12connector_hostname\x18\x01 \x01(\v2\x1a.core.v1.ConnectorHostnameR\x11connectorHostname\"\x85\x01\n" +
+	"\x1bGetConnectorHostnameRequest\x120\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fH\x00R\vconnectorId\x12.\n" +
+	"\vhostname_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x13H\x00R\n" +
 	"hostnameIdB\x04\n" +
 	"\x02id\"i\n" +
 	"\x1cGetConnectorHostnameResponse\x12I\n" +
-	"\x12connector_hostname\x18\x01 \x01(\v2\x1a.core.v1.ConnectorHostnameR\x11connectorHostname\"z\n" +
-	"!GetConnectorTLSCertificateRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x02id\x12,\n" +
-	"\fconnector_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\vconnectorIdB\f\n" +
+	"\x12connector_hostname\x18\x01 \x01(\v2\x1a.core.v1.ConnectorHostnameR\x11connectorHostname\"\x82\x01\n" +
+	"!GetConnectorTLSCertificateRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x18H\x00R\x02id\x120\n" +
+	"\fconnector_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fH\x00R\vconnectorIdB\f\n" +
 	"\n" +
 	"identifier\"B\n" +
 	"\"GetConnectorTLSCertificateResponse\x12\x1c\n" +
-	"\tfullchain\x18\x01 \x01(\tR\tfullchain\"\x9e\x03\n" +
-	"\x1eUpdateConnectorHostnameRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1f\n" +
+	"\tfullchain\x18\x01 \x01(\tR\tfullchain\"\xa2\x03\n" +
+	"\x1eUpdateConnectorHostnameRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x13R\x02id\x12\x1f\n" +
 	"\bhostname\x18\x02 \x01(\tH\x00R\bhostname\x88\x01\x01\x12$\n" +
 	"\vmanaged_tls\x18\x03 \x01(\bH\x01R\n" +
 	"managedTls\x88\x01\x01\x12:\n" +
@@ -6294,13 +6295,13 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\f_certificateB\x0e\n" +
 	"\f_private_key\"l\n" +
 	"\x1fUpdateConnectorHostnameResponse\x12I\n" +
-	"\x12connector_hostname\x18\x01 \x01(\v2\x1a.core.v1.ConnectorHostnameR\x11connectorHostname\"9\n" +
-	"\x1eDeleteConnectorHostnameRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\":\n" +
+	"\x12connector_hostname\x18\x01 \x01(\v2\x1a.core.v1.ConnectorHostnameR\x11connectorHostname\"=\n" +
+	"\x1eDeleteConnectorHostnameRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x13R\x02id\":\n" +
 	"\x1fDeleteConnectorHostnameResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xec\x03\n" +
-	"#CreateConnectorConfigurationRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12J\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xf0\x03\n" +
+	"#CreateConnectorConfigurationRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12J\n" +
 	"\tlog_level\x18\x02 \x01(\tB-\xbaH*r(R\x05debugR\x04infoR\x04warnR\x05errorR\x05fatalR\x05panicR\blogLevel\x129\n" +
 	"\x16otel_endpoint_hostname\x18\x03 \x01(\tH\x00R\x14otelEndpointHostname\x88\x01\x01\x12>\n" +
 	"\x12otel_endpoint_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00H\x01R\x10otelEndpointPort\x88\x01\x01\x12z\n" +
@@ -6310,17 +6311,17 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x13_otel_endpoint_portB$\n" +
 	"\"_resources_health_checks_frequency\"\x80\x01\n" +
 	"$CreateConnectorConfigurationResponse\x12X\n" +
-	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\";\n" +
-	" GetConnectorConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"}\n" +
+	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\"?\n" +
+	" GetConnectorConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x14R\x02id\"}\n" +
 	"!GetConnectorConfigurationResponse\x12X\n" +
-	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\"[\n" +
-	"-GetConnectorConfigurationByConnectorIdRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"\x8a\x01\n" +
+	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\"_\n" +
+	"-GetConnectorConfigurationByConnectorIdRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\"\x8a\x01\n" +
 	".GetConnectorConfigurationByConnectorIdResponse\x12X\n" +
-	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\"\xbd\x03\n" +
-	"#UpdateConnectorConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12 \n" +
+	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\"\xc1\x03\n" +
+	"#UpdateConnectorConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x14R\x02id\x12 \n" +
 	"\tlog_level\x18\x02 \x01(\tH\x00R\blogLevel\x88\x01\x01\x129\n" +
 	"\x16otel_endpoint_hostname\x18\x03 \x01(\tH\x01R\x14otelEndpointHostname\x88\x01\x01\x12>\n" +
 	"\x12otel_endpoint_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00H\x02R\x10otelEndpointPort\x88\x01\x01\x12z\n" +
@@ -6332,9 +6333,9 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x13_otel_endpoint_portB$\n" +
 	"\"_resources_health_checks_frequency\"\x80\x01\n" +
 	"$UpdateConnectorConfigurationResponse\x12X\n" +
-	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\">\n" +
-	"#DeleteConnectorConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"?\n" +
+	"\x17connector_configuration\x18\x01 \x01(\v2\x1f.core.v1.ConnectorConfigurationR\x16connectorConfiguration\"B\n" +
+	"#DeleteConnectorConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x14R\x02id\"?\n" +
 	"$DeleteConnectorConfigurationResponse\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xea\x02\n" +
 	"\x16ConnectorSatelliteLink\x12\x17\n" +
@@ -6345,83 +6346,83 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xc3\x01\n" +
-	"#CreateConnectorSatelliteLinkRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12*\n" +
-	"\fsatellite_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsatelliteId\x12D\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xcb\x01\n" +
+	"#CreateConnectorSatelliteLinkRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12.\n" +
+	"\fsatellite_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x19R\vsatelliteId\x12D\n" +
 	"\x0esatellite_type\x18\x03 \x01(\tB\x1d\xbaH\x1ar\x18R\x12policy_data_loaderR\x02aiR\rsatelliteType\"\x81\x01\n" +
 	"$CreateConnectorSatelliteLinkResponse\x12Y\n" +
-	"\x18connector_satellite_link\x18\x01 \x01(\v2\x1f.core.v1.ConnectorSatelliteLinkR\x16connectorSatelliteLink\";\n" +
-	" GetConnectorSatelliteLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"~\n" +
+	"\x18connector_satellite_link\x18\x01 \x01(\v2\x1f.core.v1.ConnectorSatelliteLinkR\x16connectorSatelliteLink\"?\n" +
+	" GetConnectorSatelliteLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x15R\x02id\"~\n" +
 	"!GetConnectorSatelliteLinkResponse\x12Y\n" +
-	"\x18connector_satellite_link\x18\x01 \x01(\v2\x1f.core.v1.ConnectorSatelliteLinkR\x16connectorSatelliteLink\"\xd0\x01\n" +
+	"\x18connector_satellite_link\x18\x01 \x01(\v2\x1f.core.v1.ConnectorSatelliteLinkR\x16connectorSatelliteLink\"\xdc\x01\n" +
 	"\"ListConnectorSatelliteLinksRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
-	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12&\n" +
-	"\fconnector_id\x18\x03 \x01(\tH\x00R\vconnectorId\x88\x01\x01\x12&\n" +
-	"\fsatellite_id\x18\x04 \x01(\tH\x01R\vsatelliteId\x88\x01\x01B\x0f\n" +
+	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12,\n" +
+	"\fconnector_id\x18\x03 \x01(\tB\x04\xe0\xf9\x18\x0fH\x00R\vconnectorId\x88\x01\x01\x12,\n" +
+	"\fsatellite_id\x18\x04 \x01(\tB\x04\xe0\xf9\x18\x19H\x01R\vsatelliteId\x88\x01\x01B\x0f\n" +
 	"\r_connector_idB\x0f\n" +
 	"\r_satellite_id\"\xbe\x01\n" +
 	"#ListConnectorSatelliteLinksResponse\x12[\n" +
 	"\x19connector_satellite_links\x18\x01 \x03(\v2\x1f.core.v1.ConnectorSatelliteLinkR\x17connectorSatelliteLinks\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\">\n" +
-	"#DeleteConnectorSatelliteLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"?\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"B\n" +
+	"#DeleteConnectorSatelliteLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x15R\x02id\"?\n" +
 	"$DeleteConnectorSatelliteLinkResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"Z\n" +
-	",CreateConnectorCloudformationTemplateRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"^\n" +
+	",CreateConnectorCloudformationTemplateRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\"R\n" +
 	"-CreateConnectorCloudformationTemplateResponse\x12!\n" +
-	"\ftemplate_url\x18\x01 \x01(\tR\vtemplateUrl\"\x8d\x01\n" +
-	" CreateConnectorHelmValuesRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12=\n" +
+	"\ftemplate_url\x18\x01 \x01(\tR\vtemplateUrl\"\x91\x01\n" +
+	" CreateConnectorHelmValuesRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12=\n" +
 	"\x0ecloud_provider\x18\x02 \x01(\tB\x16\xbaH\x13r\x11R\x03awsR\x03gcpR\x05azureR\rcloudProvider\"B\n" +
 	"!CreateConnectorHelmValuesResponse\x12\x1d\n" +
 	"\n" +
-	"values_url\x18\x01 \x01(\tR\tvaluesUrl\"K\n" +
-	"\x1dGetConnectorSSHHostKeyRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"n\n" +
+	"values_url\x18\x01 \x01(\tR\tvaluesUrl\"O\n" +
+	"\x1dGetConnectorSSHHostKeyRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\"n\n" +
 	"\x1eGetConnectorSSHHostKeyResponse\x12\x1d\n" +
 	"\n" +
 	"public_key\x18\x01 \x01(\tR\tpublicKey\x12-\n" +
-	"\x12fingerprint_sha256\x18\x02 \x01(\tR\x11fingerprintSha256\"\x92\x01\n" +
-	" CreateConnectorAiProviderRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12B\n" +
+	"\x12fingerprint_sha256\x18\x02 \x01(\tR\x11fingerprintSha256\"\x96\x01\n" +
+	" CreateConnectorAiProviderRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12B\n" +
 	"\x06config\x18\x02 \x01(\v2\".core.v1.ConnectorAiProviderConfigB\x06\xbaH\x03\xc8\x01\x01R\x06config\"u\n" +
 	"!CreateConnectorAiProviderResponse\x12P\n" +
-	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider\"\x7f\n" +
-	"\x1dGetConnectorAiProviderRequest\x12*\n" +
-	"\vprovider_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
-	"providerId\x12,\n" +
-	"\fconnector_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\vconnectorIdB\x04\n" +
+	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider\"\x87\x01\n" +
+	"\x1dGetConnectorAiProviderRequest\x12.\n" +
+	"\vprovider_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x16H\x00R\n" +
+	"providerId\x120\n" +
+	"\fconnector_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fH\x00R\vconnectorIdB\x04\n" +
 	"\x02id\"r\n" +
 	"\x1eGetConnectorAiProviderResponse\x12P\n" +
-	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider\"\x7f\n" +
-	" UpdateConnectorAiProviderRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12B\n" +
+	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider\"\x83\x01\n" +
+	" UpdateConnectorAiProviderRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x16R\x02id\x12B\n" +
 	"\x06config\x18\x02 \x01(\v2\".core.v1.ConnectorAiProviderConfigB\x06\xbaH\x03\xc8\x01\x01R\x06config\"u\n" +
 	"!UpdateConnectorAiProviderResponse\x12P\n" +
-	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider\";\n" +
-	" DeleteConnectorAiProviderRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"#\n" +
-	"!DeleteConnectorAiProviderResponse\"\xbe\x01\n" +
-	"(CreateConnectorTokenEncryptionKeyRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12F\n" +
-	"\bprovider\x18\x02 \x01(\tB*\xbaH'r%\x10\x01R\aaws-kmsR\agcp-kmsR\x0fazure-key-vaultR\bprovider\x12\x1e\n" +
-	"\x06key_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05keyId\"\x96\x01\n" +
+	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider\"?\n" +
+	" DeleteConnectorAiProviderRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x16R\x02id\"#\n" +
+	"!DeleteConnectorAiProviderResponse\"\xc6\x01\n" +
+	"(CreateConnectorTokenEncryptionKeyRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12F\n" +
+	"\bprovider\x18\x02 \x01(\tB*\xbaH'r%\x10\x01R\aaws-kmsR\agcp-kmsR\x0fazure-key-vaultR\bprovider\x12\"\n" +
+	"\x06key_id\x18\x03 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\x05keyId\"\x96\x01\n" +
 	")CreateConnectorTokenEncryptionKeyResponse\x12i\n" +
-	"\x1econnector_token_encryption_key\x18\x01 \x01(\v2$.core.v1.ConnectorTokenEncryptionKeyR\x1bconnectorTokenEncryptionKey\"~\n" +
-	"%GetConnectorTokenEncryptionKeyRequest\x12,\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\vconnectorId\x12\x19\n" +
-	"\x02id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x02idB\f\n" +
+	"\x1econnector_token_encryption_key\x18\x01 \x01(\v2$.core.v1.ConnectorTokenEncryptionKeyR\x1bconnectorTokenEncryptionKey\"\x86\x01\n" +
+	"%GetConnectorTokenEncryptionKeyRequest\x120\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fH\x00R\vconnectorId\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x17H\x00R\x02idB\f\n" +
 	"\n" +
 	"identifier\"\x93\x01\n" +
 	"&GetConnectorTokenEncryptionKeyResponse\x12i\n" +
-	"\x1econnector_token_encryption_key\x18\x01 \x01(\v2$.core.v1.ConnectorTokenEncryptionKeyR\x1bconnectorTokenEncryptionKey\"C\n" +
-	"(DeleteConnectorTokenEncryptionKeyRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"+\n" +
+	"\x1econnector_token_encryption_key\x18\x01 \x01(\v2$.core.v1.ConnectorTokenEncryptionKeyR\x1bconnectorTokenEncryptionKey\"G\n" +
+	"(DeleteConnectorTokenEncryptionKeyRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x17R\x02id\"+\n" +
 	")DeleteConnectorTokenEncryptionKeyResponse\"\x1e\n" +
 	"\x1cCreateFederationTokenRequest\"\xd1\x01\n" +
 	"\x1dCreateFederationTokenResponse\x12\x14\n" +
@@ -6431,13 +6432,13 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"expires_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x12\x0e\n" +
 	"\x02id\x18\x04 \x01(\tR\x02id\x12#\n" +
 	"\vend_user_id\x18\x05 \x01(\tH\x00R\tendUserId\x88\x01\x01B\x0e\n" +
-	"\f_end_user_id\"D\n" +
-	"\x16GetConnectorVpnRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\"U\n" +
+	"\f_end_user_id\"H\n" +
+	"\x16GetConnectorVpnRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\"U\n" +
 	"\x17GetConnectorVpnResponse\x12:\n" +
-	"\rconnector_vpn\x18\x01 \x01(\v2\x15.core.v1.ConnectorVpnR\fconnectorVpn\"\xa0\x01\n" +
-	"\x19UpdateConnectorVpnRequest\x12*\n" +
-	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12\x18\n" +
+	"\rconnector_vpn\x18\x01 \x01(\v2\x15.core.v1.ConnectorVpnR\fconnectorVpn\"\xa4\x01\n" +
+	"\x19UpdateConnectorVpnRequest\x12.\n" +
+	"\fconnector_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12\x18\n" +
 	"\aenabled\x18\x02 \x01(\bR\aenabled\x12%\n" +
 	"\x0ecloud_provider\x18\x03 \x01(\tR\rcloudProvider\x12\x16\n" +
 	"\x06region\x18\x04 \x01(\tR\x06region\"X\n" +
@@ -6476,7 +6477,7 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\"UpdateConnectorAiProviderV2Request\x12X\n" +
 	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderB\x06\xbaH\x03\xc8\x01\x01R\x13connectorAiProvider\"w\n" +
 	"#UpdateConnectorAiProviderV2Response\x12P\n" +
-	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\xfbQ\n" +
+	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\x87R\n" +
 	"\x10ConnectorService\x12\x89\x01\n" +
 	"\x0eListConnectors\x12\x1e.core.v1.ListConnectorsRequest\x1a\x1f.core.v1.ListConnectorsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.ConnectorService/ListConnectors\x90\x02\x01\x12\x81\x01\n" +
 	"\fGetConnector\x12\x1c.core.v1.GetConnectorRequest\x1a\x1d.core.v1.GetConnectorResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ConnectorService/GetConnector\x90\x02\x01\x12\x99\x01\n" +
@@ -6488,8 +6489,8 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x11UpdateConnectorV2\x12!.core.v1.UpdateConnectorV2Request\x1a\".core.v1.UpdateConnectorV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ConnectorService/UpdateConnectorV2\x12\x8a\x01\n" +
 	"\x0fDeleteConnector\x12\x1f.core.v1.DeleteConnectorRequest\x1a .core.v1.DeleteConnectorResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ConnectorService/DeleteConnector\x12\xaa\x01\n" +
 	"\x17CreateConnectorListener\x12'.core.v1.CreateConnectorListenerRequest\x1a(.core.v1.CreateConnectorListenerResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/CreateConnectorListener\x12\xa1\x01\n" +
-	"\x14GetConnectorListener\x12$.core.v1.GetConnectorListenerRequest\x1a%.core.v1.GetConnectorListenerResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ConnectorService/GetConnectorListener\x90\x02\x01\x12\xa9\x01\n" +
-	"\x16ListConnectorListeners\x12&.core.v1.ListConnectorListenersRequest\x1a'.core.v1.ListConnectorListenersResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ConnectorService/ListConnectorListeners\x90\x02\x01\x12\xaa\x01\n" +
+	"\x14GetConnectorListener\x12$.core.v1.GetConnectorListenerRequest\x1a%.core.v1.GetConnectorListenerResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ConnectorService/GetConnectorListener\x90\x02\x01\x12\xad\x01\n" +
+	"\x16ListConnectorListeners\x12&.core.v1.ListConnectorListenersRequest\x1a'.core.v1.ListConnectorListenersResponse\"B\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ConnectorService/ListConnectorListeners\x90\x02\x01\x12\xaa\x01\n" +
 	"\x17UpdateConnectorListener\x12'.core.v1.UpdateConnectorListenerRequest\x1a(.core.v1.UpdateConnectorListenerResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/UpdateConnectorListener\x12\xaa\x01\n" +
 	"\x17DeleteConnectorListener\x12'.core.v1.DeleteConnectorListenerRequest\x1a(.core.v1.DeleteConnectorListenerResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/DeleteConnectorListener\x12\xba\x01\n" +
 	"\x1bCreateConnectorListenerRule\x12+.core.v1.CreateConnectorListenerRuleRequest\x1a,.core.v1.CreateConnectorListenerRuleResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/CreateConnectorListenerRule\x12\xb1\x01\n" +
@@ -6527,9 +6528,9 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\x1eGetConnectorTokenEncryptionKey\x12..core.v1.GetConnectorTokenEncryptionKeyRequest\x1a/.core.v1.GetConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ConnectorService/GetConnectorTokenEncryptionKey\x90\x02\x01\x12\xd2\x01\n" +
 	"!DeleteConnectorTokenEncryptionKey\x121.core.v1.DeleteConnectorTokenEncryptionKeyRequest\x1a2.core.v1.DeleteConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ConnectorService/DeleteConnectorTokenEncryptionKey\x12\x8d\x01\n" +
 	"\x0fGetConnectorVpn\x12\x1f.core.v1.GetConnectorVpnRequest\x1a .core.v1.GetConnectorVpnResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ConnectorService/GetConnectorVpn\x90\x02\x01\x12\x96\x01\n" +
-	"\x12UpdateConnectorVpn\x12\".core.v1.UpdateConnectorVpnRequest\x1a#.core.v1.UpdateConnectorVpnResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ConnectorService/UpdateConnectorVpn\x12\xad\x01\n" +
-	"\x17ListConnectorVpnRegions\x12'.core.v1.ListConnectorVpnRegionsRequest\x1a(.core.v1.ListConnectorVpnRegionsResponse\"?\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/ListConnectorVpnRegions\x90\x02\x01\x12\xa2\x01\n" +
-	"\x15CreateFederationToken\x12%.core.v1.CreateFederationTokenRequest\x1a&.core.v1.CreateFederationTokenResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ConnectorService/CreateFederationToken\x12\xb2\x01\n" +
+	"\x12UpdateConnectorVpn\x12\".core.v1.UpdateConnectorVpnRequest\x1a#.core.v1.UpdateConnectorVpnResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ConnectorService/UpdateConnectorVpn\x12\xb1\x01\n" +
+	"\x17ListConnectorVpnRegions\x12'.core.v1.ListConnectorVpnRegionsRequest\x1a(.core.v1.ListConnectorVpnRegionsResponse\"C\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/ListConnectorVpnRegions\x90\x02\x01\x12\xa6\x01\n" +
+	"\x15CreateFederationToken\x12%.core.v1.CreateFederationTokenRequest\x1a&.core.v1.CreateFederationTokenResponse\">\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ConnectorService/CreateFederationToken\x12\xb2\x01\n" +
 	"\x19UpdateConnectorListenerV2\x12).core.v1.UpdateConnectorListenerV2Request\x1a*.core.v1.UpdateConnectorListenerV2Response\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/UpdateConnectorListenerV2\x12\xc2\x01\n" +
 	"\x1dUpdateConnectorListenerRuleV2\x12-.core.v1.UpdateConnectorListenerRuleV2Request\x1a..core.v1.UpdateConnectorListenerRuleV2Response\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ConnectorService/UpdateConnectorListenerRuleV2\x12\xc2\x01\n" +
 	"\x1dUpdateConnectorListenerLinkV2\x12-.core.v1.UpdateConnectorListenerLinkV2Request\x1a..core.v1.UpdateConnectorListenerLinkV2Response\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ConnectorService/UpdateConnectorListenerLinkV2\x12\xb2\x01\n" +
@@ -6883,6 +6884,7 @@ func file_core_v1_connectors_proto_init() {
 	}
 	file_core_v1_filter_proto_init()
 	file_core_v1_list_metadata_proto_init()
+	file_core_v1_permission_target_proto_init()
 	file_core_v1_types_proto_init()
 	file_core_v1_connectors_proto_msgTypes[0].OneofWrappers = []any{}
 	file_core_v1_connectors_proto_msgTypes[2].OneofWrappers = []any{

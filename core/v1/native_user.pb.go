@@ -1978,7 +1978,7 @@ var File_core_v1_native_user_proto protoreflect.FileDescriptor
 
 const file_core_v1_native_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19core/v1/native_user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x84\x01\n" +
+	"\x19core/v1/native_user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x84\x01\n" +
 	"\vSecretValue\x12&\n" +
 	"\aliteral\x18\x01 \x01(\tB\n" +
 	"\xbaH\x04r\x02\x10\x01\x80\x01\x01H\x00R\aliteral\x12<\n" +
@@ -2071,18 +2071,18 @@ const file_core_v1_native_user_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xe7\x01\n" +
-	"\x19CreateNativeUserV3Request\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xeb\x01\n" +
+	"\x19CreateNativeUserV3Request\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12\x1d\n" +
 	"\x05label\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05label\x125\n" +
 	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\x12J\n" +
 	"\vcredentials\x18\x04 \x01(\v2 .core.v1.NativeUserV3CredentialsB\x06\xbaH\x03\xc8\x01\x01R\vcredentials\"T\n" +
 	"\x1aCreateNativeUserV3Response\x126\n" +
 	"\vnative_user\x18\x01 \x01(\v2\x15.core.v1.NativeUserV3R\n" +
-	"nativeUser\"\xfd\x01\n" +
-	"\x19UpdateNativeUserV3Request\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\"\n" +
+	"nativeUser\"\x81\x02\n" +
+	"\x19UpdateNativeUserV3Request\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\rR\x02id\x12\"\n" +
 	"\x05label\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x05label\x88\x01\x01\x12:\n" +
 	"\x16termination_protection\x18\x03 \x01(\bH\x01R\x15terminationProtection\x88\x01\x01\x12B\n" +
 	"\vcredentials\x18\x04 \x01(\v2 .core.v1.NativeUserV3CredentialsR\vcredentialsB\b\n" +
@@ -2090,24 +2090,24 @@ const file_core_v1_native_user_proto_rawDesc = "" +
 	"\x17_termination_protection\"T\n" +
 	"\x1aUpdateNativeUserV3Response\x126\n" +
 	"\vnative_user\x18\x01 \x01(\v2\x15.core.v1.NativeUserV3R\n" +
-	"nativeUser\"1\n" +
-	"\x16GetNativeUserV3Request\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"Q\n" +
+	"nativeUser\"5\n" +
+	"\x16GetNativeUserV3Request\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\rR\x02id\"Q\n" +
 	"\x17GetNativeUserV3Response\x126\n" +
 	"\vnative_user\x18\x01 \x01(\v2\x15.core.v1.NativeUserV3R\n" +
-	"nativeUser\"\x94\x01\n" +
+	"nativeUser\"\x98\x01\n" +
 	"\x18ListNativeUsersV3Request\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
-	"\x05order\x18\x03 \x01(\tR\x05order\x12(\n" +
-	"\vresource_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12,\n" +
+	"\vresource_id\x18\x04 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"\x91\x01\n" +
 	"\x19ListNativeUsersV3Response\x128\n" +
 	"\fnative_users\x18\x01 \x03(\v2\x15.core.v1.NativeUserV3R\vnativeUsers\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"4\n" +
-	"\x19DeleteNativeUserV3Request\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"5\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"8\n" +
+	"\x19DeleteNativeUserV3Request\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\rR\x02id\"5\n" +
 	"\x1aDeleteNativeUserV3Response\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x8b\x06\n" +
 	"\x11NativeUserService\x12\x97\x01\n" +
@@ -2228,6 +2228,7 @@ func file_core_v1_native_user_proto_init() {
 		return
 	}
 	file_core_v1_list_metadata_proto_init()
+	file_core_v1_permission_target_proto_init()
 	file_core_v1_native_user_proto_msgTypes[0].OneofWrappers = []any{
 		(*SecretValue_Literal)(nil),
 		(*SecretValue_EnvironmentVariable)(nil),

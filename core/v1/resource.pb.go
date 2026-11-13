@@ -8639,7 +8639,7 @@ var File_core_v1_resource_proto protoreflect.FileDescriptor
 
 const file_core_v1_resource_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/resource.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/group.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x12core/v1/user.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x03\n" +
+	"\x16core/v1/resource.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/group.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x13core/v1/types.proto\x1a\x12core/v1/user.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x03\n" +
 	"\x15ResourceOAuthSettings\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
 	"\vresource_id\x18\x02 \x01(\tR\n" +
@@ -8653,65 +8653,65 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\tclient_id\x18\a \x01(\tR\bclientId\x12*\n" +
 	"\x11client_secret_set\x18\b \x01(\bR\x0fclientSecretSet\x12\x1b\n" +
 	"\x06issuer\x18\t \x01(\tH\x00R\x06issuer\x88\x01\x01B\t\n" +
-	"\a_issuer\"\xbc\x03\n" +
-	"\"CreateResourceOAuthSettingsRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\a_issuer\"\xc4\x03\n" +
+	"\"CreateResourceOAuthSettingsRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12Z\n" +
 	"\x13upstream_oauth_mode\x18\x02 \x01(\tB*\xbaH'r%R\x00R\x06formalR\x0epre_registeredR\x03dcrR\x04noneR\x11upstreamOauthMode\x12\\\n" +
-	"\x10requested_scopes\x18\x03 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\x12=\n" +
-	"\tclient_id\x18\x04 \x01(\tB\x1b\xbaH\x18r\x162\x14^[\\x21-\\x7E]{1,512}$H\x00R\bclientId\x88\x01\x01\x120\n" +
+	"\x10requested_scopes\x18\x03 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\x12A\n" +
+	"\tclient_id\x18\x04 \x01(\tB\x1f\xbaH\x18r\x162\x14^[\\x21-\\x7E]{1,512}$\xe8\xf9\x18\x01H\x00R\bclientId\x88\x01\x01\x120\n" +
 	"\rclient_secret\x18\x05 \x01(\tB\v\xbaH\x05r\x03\x18\x80\b\x80\x01\x01R\fclientSecret\x12(\n" +
 	"\x06issuer\x18\x06 \x01(\tB\v\xbaH\br\x06\x18\x80\x10\x88\x01\x01H\x01R\x06issuer\x88\x01\x01B\f\n" +
 	"\n" +
 	"_client_idB\t\n" +
 	"\a_issuer\"}\n" +
 	"#CreateResourceOAuthSettingsResponse\x12V\n" +
-	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"\xf5\x01\n" +
-	"\"UpdateResourceOAuthSettingsRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"\xf9\x01\n" +
+	"\"UpdateResourceOAuthSettingsRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12\\\n" +
 	"\x10requested_scopes\x18\x02 \x03(\tB1\xbaH.\x92\x01+\x102\x18\x01\"%r#2!^[\\x21\\x23-\\x5B\\x5D-\\x7E]{1,256}$R\x0frequestedScopes\x125\n" +
 	"\rclient_secret\x18\x03 \x01(\tB\v\xbaH\x05r\x03\x18\x80\b\x80\x01\x01H\x00R\fclientSecret\x88\x01\x01B\x10\n" +
 	"\x0e_client_secret\"}\n" +
 	"#UpdateResourceOAuthSettingsResponse\x12V\n" +
-	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"K\n" +
-	"\x1fGetResourceOAuthSettingsRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"O\n" +
+	"\x1fGetResourceOAuthSettingsRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"z\n" +
 	" GetResourceOAuthSettingsResponse\x12V\n" +
-	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"N\n" +
-	"\"DeleteResourceOAuthSettingsRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x17resource_oauth_settings\x18\x01 \x01(\v2\x1e.core.v1.ResourceOAuthSettingsR\x15resourceOauthSettings\"R\n" +
+	"\"DeleteResourceOAuthSettingsRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"F\n" +
 	"#DeleteResourceOAuthSettingsResponse\x12\x1f\n" +
 	"\vresource_id\x18\x01 \x01(\tR\n" +
-	"resourceId\"\xb1\x01\n" +
-	" CreateResourceHealthCheckRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"resourceId\"\xb5\x01\n" +
+	" CreateResourceHealthCheckRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12,\n" +
 	"\rdatabase_name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fdatabaseName\x125\n" +
 	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\"u\n" +
 	"!CreateResourceHealthCheckResponse\x12P\n" +
-	"\x15resource_health_check\x18\x01 \x01(\v2\x1c.core.v1.ResourceHealthCheckR\x13resourceHealthCheck\"\x95\x01\n" +
-	"\x1dGetResourceHealthCheckRequest\x12B\n" +
-	"\x18resource_health_check_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x15resourceHealthCheckId\x12*\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
+	"\x15resource_health_check\x18\x01 \x01(\v2\x1c.core.v1.ResourceHealthCheckR\x13resourceHealthCheck\"\x9d\x01\n" +
+	"\x1dGetResourceHealthCheckRequest\x12F\n" +
+	"\x18resource_health_check_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\aH\x00R\x15resourceHealthCheckId\x12.\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02H\x00R\n" +
 	"resourceIdB\x04\n" +
 	"\x02id\"r\n" +
 	"\x1eGetResourceHealthCheckResponse\x12P\n" +
-	"\x15resource_health_check\x18\x01 \x01(\v2\x1c.core.v1.ResourceHealthCheckR\x13resourceHealthCheck\"\xce\x01\n" +
-	" UpdateResourceHealthCheckRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
+	"\x15resource_health_check\x18\x01 \x01(\v2\x1c.core.v1.ResourceHealthCheckR\x13resourceHealthCheck\"\xd2\x01\n" +
+	" UpdateResourceHealthCheckRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\aR\x02id\x12(\n" +
 	"\rdatabase_name\x18\x02 \x01(\tH\x00R\fdatabaseName\x88\x01\x01\x12:\n" +
 	"\x16termination_protection\x18\x03 \x01(\bH\x01R\x15terminationProtection\x88\x01\x01B\x10\n" +
 	"\x0e_database_nameB\x19\n" +
 	"\x17_termination_protection\"u\n" +
 	"!UpdateResourceHealthCheckResponse\x12P\n" +
-	"\x15resource_health_check\x18\x01 \x01(\v2\x1c.core.v1.ResourceHealthCheckR\x13resourceHealthCheck\";\n" +
-	" DeleteResourceHealthCheckRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"<\n" +
+	"\x15resource_health_check\x18\x01 \x01(\v2\x1c.core.v1.ResourceHealthCheckR\x13resourceHealthCheck\"?\n" +
+	" DeleteResourceHealthCheckRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\aR\x02id\"<\n" +
 	"!DeleteResourceHealthCheckResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x85\x05\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x8b\x05\n" +
 	"\x15CreateResourceRequest\x12-\n" +
 	"\x04name\x18\x01 \x01(\tB\x19\xbaH\x16r\x14\x10\x03\x18\x80\x022\r^[0-9a-z\\-]+$R\x04name\x12#\n" +
 	"\bhostname\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12\x1f\n" +
@@ -8722,8 +8722,8 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"kubernetesR\x03llmR\amariadbR\x03mcpR\amongodbR\x05mysqlR\bpostgresR\x03rdpR\x05redisR\bredshiftR\x02s3R\tsnowflakeR\x06socketR\x03sshR\x03webR\n" +
 	"technology\x12 \n" +
 	"\venvironment\x18\x05 \x01(\tR\venvironment\x125\n" +
-	"\x16termination_protection\x18\x06 \x01(\bR\x15terminationProtection\x12\x1e\n" +
-	"\bspace_id\x18\a \x01(\tH\x00R\aspaceId\x88\x01\x01\x12(\n" +
+	"\x16termination_protection\x18\x06 \x01(\bR\x15terminationProtection\x12$\n" +
+	"\bspace_id\x18\a \x01(\tB\x04\xe0\xf9\x18\x01H\x00R\aspaceId\x88\x01\x01\x12(\n" +
 	"\x04tags\x18\b \x03(\v2\x14.core.v1.ResourceTagR\x04tags\x12\x18\n" +
 	"\aaliases\x18\t \x03(\tR\aaliases\x12>\n" +
 	"\x19native_user_selection_cel\x18\n" +
@@ -8731,11 +8731,11 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\t_space_idB\x1c\n" +
 	"\x1a_native_user_selection_cel\"G\n" +
 	"\x16CreateResourceResponse\x12-\n" +
-	"\bresource\x18\x01 \x01(\v2\x11.core.v1.ResourceR\bresource\"-\n" +
-	"\x12GetResourceRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"D\n" +
+	"\bresource\x18\x01 \x01(\v2\x11.core.v1.ResourceR\bresource\"1\n" +
+	"\x12GetResourceRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\x02id\"D\n" +
 	"\x13GetResourceResponse\x12-\n" +
-	"\bresource\x18\x01 \x01(\v2\x11.core.v1.ResourceR\bresource\"\xc4\x02\n" +
+	"\bresource\x18\x01 \x01(\v2\x11.core.v1.ResourceR\bresource\"\xca\x02\n" +
 	"\x14ListResourcesRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -8744,33 +8744,33 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x06search\x18\x04 \x01(\tR\x06search\x12^\n" +
 	"\rsearch_fields\x18\x05 \x03(\tB9\xbaH6\x92\x013\"1r/R\x04nameR\bhostnameR\x04portR\n" +
 	"technologyR\venvironmentR\fsearchFields\x12,\n" +
-	"\x06filter\x18\x06 \x01(\v2\x0f.core.v1.FilterH\x00R\x06filter\x88\x01\x01\x12\x1e\n" +
-	"\bspace_id\x18\a \x01(\tH\x01R\aspaceId\x88\x01\x01B\t\n" +
+	"\x06filter\x18\x06 \x01(\v2\x0f.core.v1.FilterH\x00R\x06filter\x88\x01\x01\x12$\n" +
+	"\bspace_id\x18\a \x01(\tB\x04\xe0\xf9\x18\x01H\x01R\aspaceId\x88\x01\x01B\t\n" +
 	"\a_filterB\v\n" +
 	"\t_space_id\"\x84\x01\n" +
 	"\x15ListResourcesResponse\x12/\n" +
 	"\tresources\x18\x01 \x03(\v2\x11.core.v1.ResourceR\tresources\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"0\n" +
-	"\x15DeleteResourceRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"1\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"4\n" +
+	"\x15DeleteResourceRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\x02id\"1\n" +
 	"\x16DeleteResourceResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"w\n" +
-	")UpdateResourceNativeUsersV3EnabledRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12%\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"{\n" +
+	")UpdateResourceNativeUsersV3EnabledRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\x02id\x12%\n" +
 	"\aenabled\x18\x02 \x01(\bB\x06\xbaH\x03\xc8\x01\x01H\x00R\aenabled\x88\x01\x01B\n" +
 	"\n" +
 	"\b_enabled\"\x84\x01\n" +
 	"*UpdateResourceNativeUsersV3EnabledResponse\x12V\n" +
-	"\x1anative_users_v3_enabled_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x16nativeUsersV3EnabledAt\"C\n" +
-	"(DeleteResourceNativeUserSelectionRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"D\n" +
+	"\x1anative_users_v3_enabled_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x16nativeUsersV3EnabledAt\"G\n" +
+	"(DeleteResourceNativeUserSelectionRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\x02id\"D\n" +
 	")DeleteResourceNativeUserSelectionResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xcf\x05\n" +
-	"\x15UpdateResourceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x122\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xdb\x05\n" +
+	"\x15UpdateResourceRequest\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\tB\x04\xe0\xf9\x18\x02R\x02id\x122\n" +
 	"\x04name\x18\x02 \x01(\tB\x19\xbaH\x16r\x14\x10\x03\x18\x80\x022\r^[0-9a-z\\-]+$H\x00R\x04name\x88\x01\x01\x12:\n" +
-	"\x16termination_protection\x18\x03 \x01(\bH\x01R\x15terminationProtection\x88\x01\x01\x12\x1e\n" +
-	"\bspace_id\x18\x04 \x01(\tH\x02R\aspaceId\x88\x01\x01\x12(\n" +
+	"\x16termination_protection\x18\x03 \x01(\bH\x01R\x15terminationProtection\x88\x01\x01\x12$\n" +
+	"\bspace_id\x18\x04 \x01(\tB\x04\xe0\xf9\x18\x01H\x02R\aspaceId\x88\x01\x01\x12(\n" +
 	"\bhostname\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x03R\bhostname\x88\x01\x01\x12$\n" +
 	"\x04port\x18\x06 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00H\x04R\x04port\x88\x01\x01\x12I\n" +
 	"\x04tags\x18\a \x01(\v20.core.v1.UpdateResourceRequest.UpdateResourceTagH\x05R\x04tags\x88\x01\x01\x12Q\n" +
@@ -8829,11 +8829,11 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\blocation\x18\x01 \x01(\x0e2\x1b.core.v1.HTTPAPIKeyLocationR\blocation\x12\x19\n" +
 	"\x03key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12 \n" +
 	"\x05value\x18\x03 \x01(\tB\n" +
-	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x05value\"\xd8\x06\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x05value\"\xe0\x06\n" +
 	"\n" +
-	"NativeUser\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"NativeUser\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\fR\x02id\x12,\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12\x1a\n" +
 	"\busername\x18\x03 \x01(\tR\busername\x12\x1b\n" +
 	"\x06secret\x18\x04 \x01(\tB\x03\x80\x01\x01R\x06secret\x120\n" +
@@ -8857,9 +8857,9 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
 	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAtB\x06\n" +
-	"\x04type\"\xc3\x03\n" +
-	"\x0eNativeUserLink\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12#\n" +
+	"\x04type\"\xc7\x03\n" +
+	"\x0eNativeUserLink\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0eR\x02id\x12#\n" +
 	"\x04user\x18\x02 \x01(\v2\r.core.v1.UserH\x00R\x04user\x12&\n" +
 	"\x05group\x18\x03 \x01(\v2\x0e.core.v1.GroupH\x00R\x05group\x12H\n" +
 	"\x11resource_hostname\x18\b \x01(\v2\x19.core.v1.ResourceHostnameH\x00R\x10resourceHostname\x124\n" +
@@ -8871,9 +8871,9 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAtB\n" +
 	"\n" +
-	"\bidentity\"\xe9\x01\n" +
-	"\x17CreateNativeUserRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\bidentity\"\xed\x01\n" +
+	"\x17CreateNativeUserRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12#\n" +
 	"\busername\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\busername\x12\"\n" +
 	"\x06secret\x18\x03 \x01(\tB\n" +
@@ -8882,9 +8882,9 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x16termination_protection\x18\x05 \x01(\bR\x15terminationProtection\"P\n" +
 	"\x18CreateNativeUserResponse\x124\n" +
 	"\vnative_user\x18\x01 \x01(\v2\x13.core.v1.NativeUserR\n" +
-	"nativeUser\"\x92\x05\n" +
-	"\x19CreateNativeUserV2Request\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"nativeUser\"\x96\x05\n" +
+	"\x19CreateNativeUserV2Request\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12$\n" +
 	"\x0euse_as_default\x18\x02 \x01(\bR\fuseAsDefault\x125\n" +
 	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\x120\n" +
@@ -8905,28 +8905,28 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x04type\x12\x05\xbaH\x02\b\x01\"R\n" +
 	"\x1aCreateNativeUserV2Response\x124\n" +
 	"\vnative_user\x18\x01 \x01(\v2\x13.core.v1.NativeUserR\n" +
-	"nativeUser\"\x92\x01\n" +
+	"nativeUser\"\x96\x01\n" +
 	"\x16ListNativeUsersRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
-	"\x05order\x18\x03 \x01(\tR\x05order\x12(\n" +
-	"\vresource_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12,\n" +
+	"\vresource_id\x18\x04 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"\x8d\x01\n" +
 	"\x17ListNativeUsersResponse\x126\n" +
 	"\fnative_users\x18\x01 \x03(\v2\x13.core.v1.NativeUserR\vnativeUsers\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"/\n" +
-	"\x14GetNativeUserRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"M\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"3\n" +
+	"\x14GetNativeUserRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\fR\x02id\"M\n" +
 	"\x15GetNativeUserResponse\x124\n" +
 	"\vnative_user\x18\x01 \x01(\v2\x13.core.v1.NativeUserR\n" +
-	"nativeUser\"2\n" +
-	"\x17DeleteNativeUserRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"3\n" +
+	"nativeUser\"6\n" +
+	"\x17DeleteNativeUserRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\fR\x02id\"3\n" +
 	"\x18DeleteNativeUserResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xf4\x01\n" +
-	"\x17UpdateNativeUserRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12 \n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xf8\x01\n" +
+	"\x17UpdateNativeUserRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\fR\x02id\x12 \n" +
 	"\x06secret\x18\x02 \x01(\tB\x03\x80\x01\x01H\x00R\x06secret\x88\x01\x01\x12)\n" +
 	"\x0euse_as_default\x18\x03 \x01(\bH\x01R\fuseAsDefault\x88\x01\x01\x12:\n" +
 	"\x16termination_protection\x18\x04 \x01(\bH\x02R\x15terminationProtection\x88\x01\x01B\t\n" +
@@ -8934,9 +8934,9 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x0f_use_as_defaultB\x19\n" +
 	"\x17_termination_protection\"3\n" +
 	"\x18UpdateNativeUserResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xb9\x05\n" +
-	"\x19UpdateNativeUserV2Request\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12)\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xbd\x05\n" +
+	"\x19UpdateNativeUserV2Request\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\fR\x02id\x12)\n" +
 	"\x0euse_as_default\x18\x02 \x01(\bH\x01R\fuseAsDefault\x88\x01\x01\x12:\n" +
 	"\x16termination_protection\x18\x03 \x01(\bH\x02R\x15terminationProtection\x88\x01\x01\x120\n" +
 	"\x05basic\x18\x04 \x01(\v2\x18.core.v1.BasicNativeUserH\x00R\x05basic\x12*\n" +
@@ -8957,83 +8957,84 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x0f_use_as_defaultB\x19\n" +
 	"\x17_termination_protection\"5\n" +
 	"\x1aUpdateNativeUserV2Response\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x81\x02\n" +
-	"#CreateNativeUserIdentityLinkRequest\x12-\n" +
-	"\x0enative_user_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fnativeUserId\x12(\n" +
-	"\videntity_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xad\x02\n" +
+	"#CreateNativeUserIdentityLinkRequest\x121\n" +
+	"\x0enative_user_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\fR\fnativeUserId\x12P\n" +
+	"\videntity_id\x18\x02 \x01(\tB/\xbaH\x04r\x02\x10\x01\xfa\xf9\x18$\n" +
+	"\ridentity_type\x12\x11resource_hostname\x18\x03R\n" +
 	"identityId\x12J\n" +
 	"\ridentity_type\x18\x03 \x01(\tB%\xbaH\"r R\x04userR\x05groupR\x11resource_hostnameR\fidentityType\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\"S\n" +
 	"$CreateNativeUserIdentityLinkResponse\x12+\n" +
-	"\x04link\x18\x01 \x01(\v2\x17.core.v1.NativeUserLinkR\x04link\";\n" +
-	" GetNativeUserIdentityLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"P\n" +
+	"\x04link\x18\x01 \x01(\v2\x17.core.v1.NativeUserLinkR\x04link\"?\n" +
+	" GetNativeUserIdentityLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0eR\x02id\"P\n" +
 	"!GetNativeUserIdentityLinkResponse\x12+\n" +
-	"\x04link\x18\x01 \x01(\v2\x17.core.v1.NativeUserLinkR\x04link\"\xc8\x01\n" +
+	"\x04link\x18\x01 \x01(\v2\x17.core.v1.NativeUserLinkR\x04link\"\xcc\x01\n" +
 	"\"ListNativeUserIdentityLinksRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
-	"\x05order\x18\x03 \x01(\tR\x05order\x12-\n" +
-	"\x0enative_user_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fnativeUserId\x12#\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x121\n" +
+	"\x0enative_user_id\x18\x04 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\fR\fnativeUserId\x12#\n" +
 	"\ridentity_type\x18\x05 \x01(\tR\fidentityType\"\x90\x01\n" +
 	"#ListNativeUserIdentityLinksResponse\x12-\n" +
 	"\x05links\x18\x01 \x03(\v2\x17.core.v1.NativeUserLinkR\x05links\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\">\n" +
-	"#DeleteNativeUserIdentityLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"?\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"B\n" +
+	"#DeleteNativeUserIdentityLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0eR\x02id\"?\n" +
 	"$DeleteNativeUserIdentityLinkResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x95\x01\n" +
-	"#UpdateNativeUserIdentityLinkRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12:\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x99\x01\n" +
+	"#UpdateNativeUserIdentityLinkRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0eR\x02id\x12:\n" +
 	"\x16termination_protection\x18\x02 \x01(\bH\x00R\x15terminationProtection\x88\x01\x01B\x19\n" +
 	"\x17_termination_protection\"?\n" +
 	"$UpdateNativeUserIdentityLinkResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xaa\x01\n" +
-	"$GetDataDiscoveryConfigurationRequest\x12P\n" +
-	"\x1fdata_discovery_configuration_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x1cdataDiscoveryConfigurationId\x12*\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xb2\x01\n" +
+	"$GetDataDiscoveryConfigurationRequest\x12T\n" +
+	"\x1fdata_discovery_configuration_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\vH\x00R\x1cdataDiscoveryConfigurationId\x12.\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02H\x00R\n" +
 	"resourceIdB\x04\n" +
 	"\x02id\"\x8e\x01\n" +
 	"%GetDataDiscoveryConfigurationResponse\x12e\n" +
-	"\x1cdata_discovery_configuration\x18\x01 \x01(\v2#.core.v1.DataDiscoveryConfigurationR\x1adataDiscoveryConfiguration\"\xa2\x01\n" +
+	"\x1cdata_discovery_configuration\x18\x01 \x01(\v2#.core.v1.DataDiscoveryConfigurationR\x1adataDiscoveryConfiguration\"\xa6\x01\n" +
 	"&ListDataDiscoveryConfigurationsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
 	"\x06cursor\x18\x02 \x01(\tR\x06cursor\x12\x14\n" +
-	"\x05order\x18\x03 \x01(\tR\x05order\x12(\n" +
-	"\vresource_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12,\n" +
+	"\vresource_id\x18\x04 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"\xce\x01\n" +
 	"'ListDataDiscoveryConfigurationsResponse\x12g\n" +
 	"\x1ddata_discovery_configurations\x18\x01 \x03(\v2#.core.v1.DataDiscoveryConfigurationR\x1bdataDiscoveryConfigurations\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xb0\x02\n" +
-	"'CreateDataDiscoveryConfigurationRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12-\n" +
-	"\x0enative_user_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fnativeUserId\x12\x1a\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xb8\x02\n" +
+	"'CreateDataDiscoveryConfigurationRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
+	"resourceId\x121\n" +
+	"\x0enative_user_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\fnativeUserId\x12\x1a\n" +
 	"\bdatabase\x18\x03 \x01(\tR\bdatabase\x12#\n" +
 	"\bschedule\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bschedule\x12I\n" +
 	"\x0fdeletion_policy\x18\x05 \x01(\tB \xbaH\x1dr\x1bR\x06deleteR\x11mark_for_deletionR\x0edeletionPolicy\x12\x17\n" +
 	"\x04path\x18\x06 \x01(\tH\x00R\x04path\x88\x01\x01B\a\n" +
 	"\x05_path\"\x91\x01\n" +
 	"(CreateDataDiscoveryConfigurationResponse\x12e\n" +
-	"\x1cdata_discovery_configuration\x18\x01 \x01(\v2#.core.v1.DataDiscoveryConfigurationR\x1adataDiscoveryConfiguration\"\x96\x02\n" +
-	"'UpdateDataDiscoveryConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12$\n" +
-	"\x0enative_user_id\x18\x02 \x01(\tR\fnativeUserId\x12\x1a\n" +
+	"\x1cdata_discovery_configuration\x18\x01 \x01(\v2#.core.v1.DataDiscoveryConfigurationR\x1adataDiscoveryConfiguration\"\xa0\x02\n" +
+	"'UpdateDataDiscoveryConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\vR\x02id\x12*\n" +
+	"\x0enative_user_id\x18\x02 \x01(\tB\x04\xe8\xf9\x18\x01R\fnativeUserId\x12\x1a\n" +
 	"\bdatabase\x18\x03 \x01(\tR\bdatabase\x12#\n" +
 	"\bschedule\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bschedule\x12I\n" +
 	"\x0fdeletion_policy\x18\x06 \x01(\tB \xbaH\x1dr\x1bR\x06deleteR\x11mark_for_deletionR\x0edeletionPolicy\x12\x17\n" +
 	"\x04path\x18\a \x01(\tH\x00R\x04path\x88\x01\x01B\a\n" +
 	"\x05_path\"C\n" +
 	"(UpdateDataDiscoveryConfigurationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"B\n" +
-	"'DeleteDataDiscoveryConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"C\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"F\n" +
+	"'DeleteDataDiscoveryConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\vR\x02id\"C\n" +
 	"(DeleteDataDiscoveryConfigurationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xdf\x03\n" +
-	"%CreateResourceTlsConfigurationRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xe3\x03\n" +
+	"%CreateResourceTlsConfigurationRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12i\n" +
 	"\n" +
 	"tls_config\x18\x02 \x01(\tBJ\xbaHGrER\adisableR\x14insecure-skip-verifyR\x17insecure-verify-ca-onlyR\vverify-fullR\ttlsConfig\x12A\n" +
@@ -9044,16 +9045,16 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x16tls_client_cert_is_env\x18\a \x01(\bR\x12tlsClientCertIsEnv\x120\n" +
 	"\x15tls_client_key_is_env\x18\b \x01(\bR\x11tlsClientKeyIsEnv\"\x89\x01\n" +
 	"&CreateResourceTlsConfigurationResponse\x12_\n" +
-	"\x1aresource_tls_configuration\x18\x01 \x01(\v2!.core.v1.ResourceTlsConfigurationR\x18resourceTlsConfiguration\"\xa4\x01\n" +
-	"\"GetResourceTlsConfigurationRequest\x12L\n" +
-	"\x1dresource_tls_configuration_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x1aresourceTlsConfigurationId\x12*\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
+	"\x1aresource_tls_configuration\x18\x01 \x01(\v2!.core.v1.ResourceTlsConfigurationR\x18resourceTlsConfiguration\"\xac\x01\n" +
+	"\"GetResourceTlsConfigurationRequest\x12P\n" +
+	"\x1dresource_tls_configuration_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x06H\x00R\x1aresourceTlsConfigurationId\x12.\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02H\x00R\n" +
 	"resourceIdB\x04\n" +
 	"\x02id\"\x86\x01\n" +
 	"#GetResourceTlsConfigurationResponse\x12_\n" +
-	"\x1aresource_tls_configuration\x18\x01 \x01(\v2!.core.v1.ResourceTlsConfigurationR\x18resourceTlsConfiguration\"\xbe\x04\n" +
-	"%UpdateResourceTlsConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12i\n" +
+	"\x1aresource_tls_configuration\x18\x01 \x01(\v2!.core.v1.ResourceTlsConfigurationR\x18resourceTlsConfiguration\"\xc2\x04\n" +
+	"%UpdateResourceTlsConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x06R\x02id\x12i\n" +
 	"\n" +
 	"tls_config\x18\x02 \x01(\tBJ\xbaHGrER\adisableR\x14insecure-skip-verifyR\x17insecure-verify-ca-onlyR\vverify-fullR\ttlsConfig\x12A\n" +
 	"\x0ftls_min_version\x18\x03 \x01(\tB\x19\xbaH\x16r\x14R\x00R\aTLSv1.2R\aTLSv1.3R\rtlsMinVersion\x12*\n" +
@@ -9067,49 +9068,49 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x17_tls_client_cert_is_envB\x18\n" +
 	"\x16_tls_client_key_is_env\"\x89\x01\n" +
 	"&UpdateResourceTlsConfigurationResponse\x12_\n" +
-	"\x1aresource_tls_configuration\x18\x01 \x01(\v2!.core.v1.ResourceTlsConfigurationR\x18resourceTlsConfiguration\"@\n" +
-	"%DeleteResourceTlsConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"A\n" +
+	"\x1aresource_tls_configuration\x18\x01 \x01(\v2!.core.v1.ResourceTlsConfigurationR\x18resourceTlsConfiguration\"D\n" +
+	"%DeleteResourceTlsConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x06R\x02id\"A\n" +
 	"&DeleteResourceTlsConfigurationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"s\n" +
-	"\x1fCreateResourceSshHostKeyRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"w\n" +
+	"\x1fCreateResourceSshHostKeyRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12&\n" +
 	"\n" +
 	"public_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tpublicKey\"r\n" +
 	" CreateResourceSshHostKeyResponse\x12N\n" +
-	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\"7\n" +
-	"\x1cGetResourceSshHostKeyRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"o\n" +
+	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\";\n" +
+	"\x1cGetResourceSshHostKeyRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\bR\x02id\"o\n" +
 	"\x1dGetResourceSshHostKeyResponse\x12N\n" +
-	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\"J\n" +
-	"\x1eListResourceSshHostKeysRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\"N\n" +
+	"\x1eListResourceSshHostKeysRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"s\n" +
 	"\x1fListResourceSshHostKeysResponse\x12P\n" +
-	"\x16resource_ssh_host_keys\x18\x01 \x03(\v2\x1b.core.v1.ResourceSshHostKeyR\x13resourceSshHostKeys\"b\n" +
-	"\x1fUpdateResourceSshHostKeyRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12&\n" +
+	"\x16resource_ssh_host_keys\x18\x01 \x03(\v2\x1b.core.v1.ResourceSshHostKeyR\x13resourceSshHostKeys\"f\n" +
+	"\x1fUpdateResourceSshHostKeyRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\bR\x02id\x12&\n" +
 	"\n" +
 	"public_key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tpublicKey\"r\n" +
 	" UpdateResourceSshHostKeyResponse\x12N\n" +
-	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\":\n" +
-	"\x1fDeleteResourceSshHostKeyRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\";\n" +
+	"\x15resource_ssh_host_key\x18\x01 \x01(\v2\x1b.core.v1.ResourceSshHostKeyR\x12resourceSshHostKey\">\n" +
+	"\x1fDeleteResourceSshHostKeyRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\bR\x02id\";\n" +
 	" DeleteResourceSshHostKeyResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xcb\x01\n" +
-	"&CreateResourceDialConfigurationRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xcf\x01\n" +
+	"&CreateResourceDialConfigurationRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12V\n" +
 	"\vdial_method\x18\x02 \x01(\tB5\xbaH2r0R\x03tcpR\fgcp_cloudsqlR\x12gcp_connectgatewayR\aaws_ssmR\n" +
 	"dialMethod\x12\x1f\n" +
 	"\vdial_target\x18\x03 \x01(\tR\n" +
 	"dialTarget\"\x8d\x01\n" +
 	"'CreateResourceDialConfigurationResponse\x12b\n" +
-	"\x1bresource_dial_configuration\x18\x01 \x01(\v2\".core.v1.ResourceDialConfigurationR\x19resourceDialConfiguration\"\xa7\x01\n" +
-	"#GetResourceDialConfigurationRequest\x12N\n" +
-	"\x1eresource_dial_configuration_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\x1bresourceDialConfigurationId\x12*\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01H\x00R\n" +
+	"\x1bresource_dial_configuration\x18\x01 \x01(\v2\".core.v1.ResourceDialConfigurationR\x19resourceDialConfiguration\"\xaf\x01\n" +
+	"#GetResourceDialConfigurationRequest\x12R\n" +
+	"\x1eresource_dial_configuration_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\tH\x00R\x1bresourceDialConfigurationId\x12.\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02H\x00R\n" +
 	"resourceIdB\x04\n" +
 	"\x02id\"\x8a\x01\n" +
 	"$GetResourceDialConfigurationResponse\x12b\n" +
@@ -9117,30 +9118,30 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"&UpdateResourceDialConfigurationRequest\x12j\n" +
 	"\x1bresource_dial_configuration\x18\x01 \x01(\v2\".core.v1.ResourceDialConfigurationB\x06\xbaH\x03\xc8\x01\x01R\x19resourceDialConfiguration\"\x8d\x01\n" +
 	"'UpdateResourceDialConfigurationResponse\x12b\n" +
-	"\x1bresource_dial_configuration\x18\x01 \x01(\v2\".core.v1.ResourceDialConfigurationR\x19resourceDialConfiguration\"A\n" +
-	"&DeleteResourceDialConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"B\n" +
+	"\x1bresource_dial_configuration\x18\x01 \x01(\v2\".core.v1.ResourceDialConfigurationR\x19resourceDialConfiguration\"E\n" +
+	"&DeleteResourceDialConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\tR\x02id\"B\n" +
 	"'DeleteResourceDialConfigurationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xc2\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xc6\x01\n" +
 	"\x1dCreateResourceHostnameRequest\x12#\n" +
-	"\bhostname\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12(\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\bhostname\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12,\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12\x1b\n" +
 	"\x04name\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\"h\n" +
 	"\x1eCreateResourceHostnameResponse\x12F\n" +
-	"\x11resource_hostname\x18\x01 \x01(\v2\x19.core.v1.ResourceHostnameR\x10resourceHostname\"5\n" +
-	"\x1aGetResourceHostnameRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"e\n" +
+	"\x11resource_hostname\x18\x01 \x01(\v2\x19.core.v1.ResourceHostnameR\x10resourceHostname\"9\n" +
+	"\x1aGetResourceHostnameRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x03R\x02id\"e\n" +
 	"\x1bGetResourceHostnameResponse\x12F\n" +
-	"\x11resource_hostname\x18\x01 \x01(\v2\x19.core.v1.ResourceHostnameR\x10resourceHostname\"H\n" +
-	"\x1cListResourceHostnamesRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x11resource_hostname\x18\x01 \x01(\v2\x19.core.v1.ResourceHostnameR\x10resourceHostname\"L\n" +
+	"\x1cListResourceHostnamesRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"i\n" +
 	"\x1dListResourceHostnamesResponse\x12H\n" +
-	"\x12resource_hostnames\x18\x01 \x03(\v2\x19.core.v1.ResourceHostnameR\x11resourceHostnames\"\xdf\x01\n" +
-	"\x1dUpdateResourceHostnameRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1f\n" +
+	"\x12resource_hostnames\x18\x01 \x03(\v2\x19.core.v1.ResourceHostnameR\x11resourceHostnames\"\xe3\x01\n" +
+	"\x1dUpdateResourceHostnameRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x03R\x02id\x12\x1f\n" +
 	"\bhostname\x18\x02 \x01(\tH\x00R\bhostname\x88\x01\x01\x12\x17\n" +
 	"\x04name\x18\x03 \x01(\tH\x01R\x04name\x88\x01\x01\x12:\n" +
 	"\x16termination_protection\x18\x04 \x01(\bH\x02R\x15terminationProtection\x88\x01\x01B\v\n" +
@@ -9148,13 +9149,13 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x05_nameB\x19\n" +
 	"\x17_termination_protection\"h\n" +
 	"\x1eUpdateResourceHostnameResponse\x12F\n" +
-	"\x11resource_hostname\x18\x01 \x01(\v2\x19.core.v1.ResourceHostnameR\x10resourceHostname\"8\n" +
-	"\x1dDeleteResourceHostnameRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"9\n" +
+	"\x11resource_hostname\x18\x01 \x01(\v2\x19.core.v1.ResourceHostnameR\x10resourceHostname\"<\n" +
+	"\x1dDeleteResourceHostnameRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x03R\x02id\"9\n" +
 	"\x1eDeleteResourceHostnameResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xb5\x03\n" +
-	",CreateResourceClassifierConfigurationRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\xb9\x03\n" +
+	",CreateResourceClassifierConfigurationRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12;\n" +
 	"\n" +
 	"preference\x18\x02 \x01(\tB\x1b\xbaH\x18r\x16R\x03nlpR\x03llmR\x04noneR\x04bothR\n" +
@@ -9173,14 +9174,15 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\"\xe2\x01\n" +
 	",ListResourceClassifierConfigurationsResponse\x12v\n" +
 	"\"resource_classifier_configurations\x18\x01 \x03(\v2(.core.v1.ResourceClassifierConfigurationR resourceClassifierConfigurations\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"U\n" +
-	")GetResourceClassifierConfigurationRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"Y\n" +
+	")GetResourceClassifierConfigurationRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"\xa2\x01\n" +
 	"*GetResourceClassifierConfigurationResponse\x12t\n" +
-	"!resource_classifier_configuration\x18\x01 \x01(\v2(.core.v1.ResourceClassifierConfigurationR\x1fresourceClassifierConfiguration\"\xd3\x03\n" +
-	",UpdateResourceClassifierConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12@\n" +
+	"!resource_classifier_configuration\x18\x01 \x01(\v2(.core.v1.ResourceClassifierConfigurationR\x1fresourceClassifierConfiguration\"\xd7\x03\n" +
+	",UpdateResourceClassifierConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\n" +
+	"R\x02id\x12@\n" +
 	"\n" +
 	"preference\x18\x02 \x01(\tB\x1b\xbaH\x18r\x16R\x03nlpR\x03llmR\x04noneR\x04bothH\x00R\n" +
 	"preference\x88\x01\x01\x12H\n" +
@@ -9192,28 +9194,29 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1c_ai_analysis_timeout_secondsB\x14\n" +
 	"\x12_ai_analysis_scope\"\xa5\x01\n" +
 	"-UpdateResourceClassifierConfigurationResponse\x12t\n" +
-	"!resource_classifier_configuration\x18\x01 \x01(\v2(.core.v1.ResourceClassifierConfigurationR\x1fresourceClassifierConfiguration\"G\n" +
-	",DeleteResourceClassifierConfigurationRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"H\n" +
+	"!resource_classifier_configuration\x18\x01 \x01(\v2(.core.v1.ResourceClassifierConfigurationR\x1fresourceClassifierConfiguration\"K\n" +
+	",DeleteResourceClassifierConfigurationRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\n" +
+	"R\x02id\"H\n" +
 	"-DeleteResourceClassifierConfigurationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"N\n" +
-	"\"ListResourceConnectorAccessRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"R\n" +
+	"\"ListResourceConnectorAccessRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\"\x83\x01\n" +
 	"#ListResourceConnectorAccessResponse\x12\\\n" +
-	"\x19resource_connector_access\x18\x01 \x03(\v2 .core.v1.ResourceConnectorAccessR\x17resourceConnectorAccess\"~\n" +
-	"\x18CreateResourceTagRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x19resource_connector_access\x18\x01 \x03(\v2 .core.v1.ResourceConnectorAccessR\x17resourceConnectorAccess\"\x82\x01\n" +
+	"\x18CreateResourceTagRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12\x19\n" +
 	"\x03key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12\x1d\n" +
 	"\x05value\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05value\"C\n" +
 	"\x19CreateResourceTagResponse\x12&\n" +
-	"\x03tag\x18\x01 \x01(\v2\x14.core.v1.ResourceTagR\x03tag\"3\n" +
-	"\x18DeleteResourceTagRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x1b\n" +
-	"\x19DeleteResourceTagResponse\"~\n" +
-	"\x18UpdateResourceTagRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x03tag\x18\x01 \x01(\v2\x14.core.v1.ResourceTagR\x03tag\"7\n" +
+	"\x18DeleteResourceTagRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x04R\x02id\"\x1b\n" +
+	"\x19DeleteResourceTagResponse\"\x82\x01\n" +
+	"\x18UpdateResourceTagRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12\x19\n" +
 	"\x03key\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12\x1d\n" +
 	"\x05value\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05value\"C\n" +
@@ -9242,22 +9245,22 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	".UpdateResourceClassifierConfigurationV2Request\x12|\n" +
 	"!resource_classifier_configuration\x18\x01 \x01(\v2(.core.v1.ResourceClassifierConfigurationB\x06\xbaH\x03\xc8\x01\x01R\x1fresourceClassifierConfiguration\"\xa7\x01\n" +
 	"/UpdateResourceClassifierConfigurationV2Response\x12t\n" +
-	"!resource_classifier_configuration\x18\x01 \x01(\v2(.core.v1.ResourceClassifierConfigurationR\x1fresourceClassifierConfiguration\"T\n" +
-	"\x1aUpdateResourceAliasRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1d\n" +
+	"!resource_classifier_configuration\x18\x01 \x01(\v2(.core.v1.ResourceClassifierConfigurationR\x1fresourceClassifierConfiguration\"X\n" +
+	"\x1aUpdateResourceAliasRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x05R\x02id\x12\x1d\n" +
 	"\x05alias\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05alias\"C\n" +
 	"\x1bUpdateResourceAliasResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05alias\x18\x02 \x01(\tR\x05alias\"e\n" +
-	"\x1aCreateResourceAliasRequest\x12(\n" +
-	"\vresource_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x05alias\x18\x02 \x01(\tR\x05alias\"i\n" +
+	"\x1aCreateResourceAliasRequest\x12,\n" +
+	"\vresource_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12\x1d\n" +
 	"\x05alias\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05alias\"C\n" +
 	"\x1bCreateResourceAliasResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05alias\x18\x02 \x01(\tR\x05alias\"5\n" +
-	"\x1aDeleteResourceAliasRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x1d\n" +
+	"\x05alias\x18\x02 \x01(\tR\x05alias\"9\n" +
+	"\x1aDeleteResourceAliasRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x05R\x02id\"\x1d\n" +
 	"\x1bDeleteResourceAliasResponse*o\n" +
 	"\x11IAMNativeUserType\x12\x1c\n" +
 	"\x18IAM_NATIVE_USER_TYPE_AWS\x10\x00\x12\x1c\n" +
@@ -9265,7 +9268,7 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1aIAM_NATIVE_USER_TYPE_AZURE\x10\x02*a\n" +
 	"\x12HTTPAPIKeyLocation\x12 \n" +
 	"\x1cHTTP_API_KEY_LOCATION_HEADER\x10\x00\x12)\n" +
-	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xada\n" +
+	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xb1a\n" +
 	"\x0fResourceService\x12|\n" +
 	"\vGetResource\x12\x1b.core.v1.GetResourceRequest\x1a\x1c.core.v1.GetResourceResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.ResourceService/GetResource\x90\x02\x01\x12\x84\x01\n" +
 	"\rListResources\x12\x1d.core.v1.ListResourcesRequest\x1a\x1e.core.v1.ListResourcesResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/ListResources\x90\x02\x01\x12\x85\x01\n" +
@@ -9319,8 +9322,8 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x16UpdateResourceHostname\x12&.core.v1.UpdateResourceHostnameRequest\x1a'.core.v1.UpdateResourceHostnameResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/UpdateResourceHostname\x12\xad\x01\n" +
 	"\x18UpdateResourceHostnameV2\x12(.core.v1.UpdateResourceHostnameV2Request\x1a).core.v1.UpdateResourceHostnameV2Response\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/UpdateResourceHostnameV2\x12\xa5\x01\n" +
 	"\x16DeleteResourceHostname\x12&.core.v1.DeleteResourceHostnameRequest\x1a'.core.v1.DeleteResourceHostnameResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/DeleteResourceHostname\x12\xe1\x01\n" +
-	"%CreateResourceClassifierConfiguration\x125.core.v1.CreateResourceClassifierConfigurationRequest\x1a6.core.v1.CreateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/CreateResourceClassifierConfiguration\x12\xe0\x01\n" +
-	"$ListResourceClassifierConfigurations\x124.core.v1.ListResourceClassifierConfigurationsRequest\x1a5.core.v1.ListResourceClassifierConfigurationsResponse\"K\x82\xd3\xe4\x93\x02B:\x01*\"=/core.v1.ResourceService/ListResourceClassifierConfigurations\x90\x02\x01\x12\xd8\x01\n" +
+	"%CreateResourceClassifierConfiguration\x125.core.v1.CreateResourceClassifierConfigurationRequest\x1a6.core.v1.CreateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/CreateResourceClassifierConfiguration\x12\xe4\x01\n" +
+	"$ListResourceClassifierConfigurations\x124.core.v1.ListResourceClassifierConfigurationsRequest\x1a5.core.v1.ListResourceClassifierConfigurationsResponse\"O\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x02B:\x01*\"=/core.v1.ResourceService/ListResourceClassifierConfigurations\x90\x02\x01\x12\xd8\x01\n" +
 	"\"GetResourceClassifierConfiguration\x122.core.v1.GetResourceClassifierConfigurationRequest\x1a3.core.v1.GetResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/GetResourceClassifierConfiguration\x90\x02\x01\x12\xe1\x01\n" +
 	"%UpdateResourceClassifierConfiguration\x125.core.v1.UpdateResourceClassifierConfigurationRequest\x1a6.core.v1.UpdateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/UpdateResourceClassifierConfiguration\x12\xe9\x01\n" +
 	"'UpdateResourceClassifierConfigurationV2\x127.core.v1.UpdateResourceClassifierConfigurationV2Request\x1a8.core.v1.UpdateResourceClassifierConfigurationV2Response\"K\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.ResourceService/UpdateResourceClassifierConfigurationV2\x12\xe1\x01\n" +
@@ -9778,6 +9781,7 @@ func file_core_v1_resource_proto_init() {
 	file_core_v1_filter_proto_init()
 	file_core_v1_group_proto_init()
 	file_core_v1_list_metadata_proto_init()
+	file_core_v1_permission_target_proto_init()
 	file_core_v1_types_proto_init()
 	file_core_v1_user_proto_init()
 	file_core_v1_resource_proto_msgTypes[0].OneofWrappers = []any{}

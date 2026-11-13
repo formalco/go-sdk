@@ -3438,21 +3438,21 @@ var File_core_v1_types_proto protoreflect.FileDescriptor
 
 const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/types.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xea\x02\n" +
-	"\x13ResourceHealthCheck\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12\x1e\n" +
-	"\x06org_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05orgId\x12\x1e\n" +
+	"\x13core/v1/types.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf6\x02\n" +
+	"\x13ResourceHealthCheck\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\aR\x02id\x12,\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
+	"resourceId\x12\"\n" +
+	"\x06org_id\x18\x03 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\x05orgId\x12\x1e\n" +
 	"\bdatabase\x18\x04 \x01(\tB\x02\x18\x01R\bdatabase\x125\n" +
 	"\x16termination_protection\x18\a \x01(\bR\x15terminationProtection\x129\n" +
 	"\n" +
 	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12#\n" +
-	"\rdatabase_name\x18\b \x01(\tR\fdatabaseName\"\xa0\x02\n" +
-	"\x05Space\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
+	"\rdatabase_name\x18\b \x01(\tR\fdatabaseName\"\xa4\x02\n" +
+	"\x05Space\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\x12C\n" +
@@ -3463,9 +3463,9 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\vResourceTag\x12\x19\n" +
 	"\x03key\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03key\x12\x1d\n" +
 	"\x05value\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05value\x12\x0e\n" +
-	"\x02id\x18\x03 \x01(\tR\x02id\"\xaa\a\n" +
-	"\bResource\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
+	"\x02id\x18\x03 \x01(\tR\x02id\"\xb4\a\n" +
+	"\bResource\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\xcc\x01\n" +
 	"\n" +
 	"technology\x18\x03 \x01(\tB\xab\x01\xbaH\xa7\x01r\xa4\x01R\x03sshR\bpostgresR\bredshiftR\x05mysqlR\amongodbR\tsnowflakeR\x04httpR\x02s3R\bdynamodbR\bbigqueryR\n" +
@@ -3475,9 +3475,9 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\bhostname\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12\x1f\n" +
 	"\x04port\x18\x05 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00R\x04port\x12 \n" +
 	"\venvironment\x18\x06 \x01(\tR\venvironment\x125\n" +
-	"\x16termination_protection\x18\a \x01(\bR\x15terminationProtection\x12\x19\n" +
+	"\x16termination_protection\x18\a \x01(\bR\x15terminationProtection\x12\x1f\n" +
 	"\bspace_id\x18\n" +
-	" \x01(\tR\aspaceId\x12$\n" +
+	" \x01(\tB\x04\xe0\xf9\x18\x01R\aspaceId\x12$\n" +
 	"\x05space\x18\v \x01(\v2\x0e.core.v1.SpaceR\x05space\x12C\n" +
 	"\n" +
 	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
@@ -3488,19 +3488,19 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\aaliases\x18\x0e \x03(\tR\aaliases\x12>\n" +
 	"\x19native_user_selection_cel\x18\x0f \x01(\tH\x00R\x16nativeUserSelectionCel\x88\x01\x01\x12V\n" +
 	"\x1anative_users_v3_enabled_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\x16nativeUsersV3EnabledAtB\x1c\n" +
-	"\x1a_native_user_selection_cel\"\xc3\x02\n" +
-	"\tConnector\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
+	"\x1a_native_user_selection_cel\"\xcd\x02\n" +
+	"\tConnector\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x125\n" +
-	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\x12\x19\n" +
-	"\bspace_id\x18\x06 \x01(\tR\aspaceId\x12$\n" +
+	"\x16termination_protection\x18\x03 \x01(\bR\x15terminationProtection\x12\x1f\n" +
+	"\bspace_id\x18\x06 \x01(\tB\x04\xe0\xf9\x18\x01R\aspaceId\x12$\n" +
 	"\x05space\x18\a \x01(\v2\x0e.core.v1.SpaceR\x05space\x12C\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xf0\x02\n" +
-	"\x11ConnectorListener\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
+	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xf4\x02\n" +
+	"\x11ConnectorListener\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x10R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x1f\n" +
 	"\x04port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00R\x04port\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\x12C\n" +
@@ -3510,9 +3510,9 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x125\n" +
 	"\tconnector\x18\a \x01(\v2\x12.core.v1.ConnectorH\x00R\tconnector\x88\x01\x01B\f\n" +
 	"\n" +
-	"_connector\"\xfc\x02\n" +
-	"\x15ConnectorListenerRule\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x126\n" +
+	"_connector\"\x80\x03\n" +
+	"\x15ConnectorListenerRule\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x11R\x02id\x126\n" +
 	"\blistener\x18\x02 \x01(\v2\x1a.core.v1.ConnectorListenerR\blistener\x124\n" +
 	"\x04type\x18\x03 \x01(\tB \xbaH\x1dr\x1bR\n" +
 	"technologyR\x03anyR\bresourceR\x04type\x12\x1b\n" +
@@ -3521,18 +3521,18 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xdb\x02\n" +
-	"\x15ConnectorListenerLink\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x126\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xdf\x02\n" +
+	"\x15ConnectorListenerLink\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x12R\x02id\x126\n" +
 	"\blistener\x18\x02 \x01(\v2\x1a.core.v1.ConnectorListenerR\blistener\x120\n" +
 	"\tconnector\x18\x03 \x01(\v2\x12.core.v1.ConnectorR\tconnector\x125\n" +
 	"\x16termination_protection\x18\x04 \x01(\bR\x15terminationProtection\x12C\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xab\x04\n" +
-	"\x11ConnectorHostname\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12#\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xaf\x04\n" +
+	"\x11ConnectorHostname\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x13R\x02id\x12#\n" +
 	"\bhostname\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12\x1f\n" +
 	"\vmanaged_tls\x18\x03 \x01(\bR\n" +
 	"managedTls\x120\n" +
@@ -3569,12 +3569,12 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\x05Owner\x12#\n" +
 	"\x04user\x18\x01 \x01(\v2\r.core.v1.UserH\x00R\x04user\x12&\n" +
 	"\x05group\x18\x02 \x01(\v2\x0e.core.v1.GroupH\x00R\x05groupB\x0e\n" +
-	"\x05owner\x12\x05\xbaH\x02\b\x01\"\xc6\x03\n" +
-	"\x1aDataDiscoveryConfiguration\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"resourceId\x12-\n" +
-	"\x0enative_user_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fnativeUserId\x12\x1a\n" +
+	"\x05owner\x12\x05\xbaH\x02\b\x01\"\xd2\x03\n" +
+	"\x1aDataDiscoveryConfiguration\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\vR\x02id\x12,\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
+	"resourceId\x121\n" +
+	"\x0enative_user_id\x18\x03 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\fnativeUserId\x12\x1a\n" +
 	"\bdatabase\x18\x04 \x01(\tR\bdatabase\x12#\n" +
 	"\bschedule\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bschedule\x12I\n" +
 	"\x0fdeletion_policy\x18\x06 \x01(\tB \xbaH\x1dr\x1bR\x06deleteR\x11mark_for_deletionR\x0edeletionPolicy\x12C\n" +
@@ -3583,10 +3583,10 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12\x17\n" +
 	"\x04path\x18\t \x01(\tH\x00R\x04path\x88\x01\x01B\a\n" +
-	"\x05_path\"\xc6\x04\n" +
-	"\x18ResourceTlsConfiguration\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"\x05_path\"\xce\x04\n" +
+	"\x18ResourceTlsConfiguration\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x06R\x02id\x12,\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12N\n" +
 	"\n" +
 	"tls_config\x18\x03 \x01(\tB/\xbaH,r*R\arequireR\adisableR\tverify-caR\vverify-fullR\ttlsConfig\x12A\n" +
@@ -3610,10 +3610,10 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xcd\x02\n" +
-	"\x19ResourceDialConfiguration\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xd5\x02\n" +
+	"\x19ResourceDialConfiguration\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\tR\x02id\x12,\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12V\n" +
 	"\vdial_method\x18\x03 \x01(\tB5\xbaH2r0R\x03tcpR\fgcp_cloudsqlR\x12gcp_connectgatewayR\aaws_ssmR\n" +
 	"dialMethod\x12\x1f\n" +
@@ -3622,9 +3622,9 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xae\x05\n" +
-	"\x04User\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xb2\x05\n" +
+	"\x04User\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\x02id\x12(\n" +
 	"\vdb_username\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
 	"dbUsername\x12)\n" +
 	"\x04type\x18\x03 \x01(\tB\x15\xbaH\x12r\x10R\amachineR\x05humanR\x04type\x12+\n" +
@@ -3646,12 +3646,12 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x1a&\n" +
 	"\aMachine\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04nameB\x06\n" +
-	"\x04info\"\xc6\x02\n" +
-	"\x05Group\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
+	"\x04info\"\xd0\x02\n" +
+	"\x05Group\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12$\n" +
-	"\x0edsync_group_id\x18\x04 \x01(\tR\fdsyncGroupId\x125\n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12*\n" +
+	"\x0edsync_group_id\x18\x04 \x01(\tB\x04\xe8\xf9\x18\x01R\fdsyncGroupId\x125\n" +
 	"\x16termination_protection\x18\x05 \x01(\bR\x15terminationProtection\x12C\n" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
@@ -3683,9 +3683,9 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\aversion\x18\x02 \x01(\tR\aversion\x129\n" +
 	"\n" +
 	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x127\n" +
-	"\tlast_ping\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\blastPing\"\xdd\x02\n" +
-	"\x10ResourceHostname\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
+	"\tlast_ping\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\blastPing\"\xe1\x02\n" +
+	"\x10ResourceHostname\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x03R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12#\n" +
 	"\bhostname\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bhostname\x12-\n" +
 	"\bresource\x18\x04 \x01(\v2\x11.core.v1.ResourceR\bresource\x125\n" +
@@ -3702,10 +3702,10 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\x12!\n" +
 	"\fconnector_id\x18\x02 \x01(\tR\vconnectorId\x12C\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\"\xec\x03\n" +
-	"\x16ConnectorConfiguration\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12*\n" +
-	"\fconnector_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12\x1b\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\"\xf4\x03\n" +
+	"\x16ConnectorConfiguration\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x14R\x02id\x12.\n" +
+	"\fconnector_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x0fR\vconnectorId\x12\x1b\n" +
 	"\tlog_level\x18\x03 \x01(\tR\blogLevel\x12C\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
@@ -3714,10 +3714,11 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\x16otel_endpoint_hostname\x18\x06 \x01(\tR\x14otelEndpointHostname\x129\n" +
 	"\x12otel_endpoint_port\x18\a \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03 \x00R\x10otelEndpointPort\x12u\n" +
 	"!resources_health_checks_frequency\x18\b \x01(\v2\x19.google.protobuf.DurationB\x0f\xbaH\f\xaa\x01\t\"\x03\b\x90\x1c2\x02\b\n" +
-	"R\x1eresourcesHealthChecksFrequency\"\xe4\x03\n" +
-	"\x1fResourceClassifierConfiguration\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
-	"\vresource_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
+	"R\x1eresourcesHealthChecksFrequency\"\xec\x03\n" +
+	"\x1fResourceClassifierConfiguration\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\n" +
+	"R\x02id\x12,\n" +
+	"\vresource_id\x18\x02 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\x02R\n" +
 	"resourceId\x12;\n" +
 	"\n" +
 	"preference\x18\x03 \x01(\tB\x1b\xbaH\x18r\x16R\x03nlpR\x03llmR\x04noneR\x04bothR\n" +
@@ -3736,9 +3737,9 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\x17FormalAiSatelliteConfig\"3\n" +
 	"\fGeminiConfig\x12#\n" +
 	"\aapi_key\x18\x01 \x01(\tB\n" +
-	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\"f\n" +
-	"\x14GoogleVertexAiConfig\x12-\n" +
-	"\x0egcp_project_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fgcpProjectId\x12\x1f\n" +
+	"\xbaH\x04r\x02\x10\x01\x80\x01\x01R\x06apiKey\"j\n" +
+	"\x14GoogleVertexAiConfig\x121\n" +
+	"\x0egcp_project_id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\fgcpProjectId\x12\x1f\n" +
 	"\x06region\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06region\"6\n" +
 	"\x0fAnthropicConfig\x12#\n" +
 	"\aapi_key\x18\x01 \x01(\tB\n" +
@@ -3762,10 +3763,10 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\x06openai\x18\x06 \x01(\v2\x15.core.v1.OpenAiConfigH\x00R\x06openai\x123\n" +
 	"\bazure_ai\x18\a \x01(\v2\x16.core.v1.AzureAiConfigH\x00R\aazureAiB\n" +
 	"\n" +
-	"\bprovider\"\xfa\x01\n" +
-	"\x13ConnectorAiProvider\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
-	"\fconnector_id\x18\x02 \x01(\tR\vconnectorId\x12:\n" +
+	"\bprovider\"\x86\x02\n" +
+	"\x13ConnectorAiProvider\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\tB\x04\xe0\xf9\x18\x16R\x02id\x12'\n" +
+	"\fconnector_id\x18\x02 \x01(\tB\x04\xe0\xf9\x18\x0fR\vconnectorId\x12:\n" +
 	"\x06config\x18\x03 \x01(\v2\".core.v1.ConnectorAiProviderConfigR\x06config\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
@@ -3943,6 +3944,7 @@ func file_core_v1_types_proto_init() {
 	if File_core_v1_types_proto != nil {
 		return
 	}
+	file_core_v1_permission_target_proto_init()
 	file_core_v1_types_proto_msgTypes[3].OneofWrappers = []any{}
 	file_core_v1_types_proto_msgTypes[5].OneofWrappers = []any{}
 	file_core_v1_types_proto_msgTypes[12].OneofWrappers = []any{
