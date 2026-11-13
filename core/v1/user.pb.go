@@ -2563,18 +2563,17 @@ func (x *UpdateSignInMethodsResponse) GetMethods() []string {
 }
 
 type SSOConnection struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Part of the redirect URI, so it can't change.
-	ProviderId  string `protobuf:"bytes,2,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`
-	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	Id          string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	DisplayName string                 `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// The identity provider's issuer, which its discovery document and ID tokens must match exactly.
 	Issuer string `protobuf:"bytes,4,opt,name=issuer,proto3" json:"issuer,omitempty"`
 	// The email domains, and their subdomains, whose users sign in through this connection. A user's first
 	// sign-in links them to the Formal user with that email only on these domains. In Formal cloud, Formal
 	// sets them.
 	Domains []string `protobuf:"bytes,5,rep,name=domains,proto3" json:"domains,omitempty"`
-	// Where the identity provider sends users back; register it with the provider.
+	// Where the identity provider sends users back; register it with the provider. Every connection in the
+	// organization has the same one.
 	RedirectUri string `protobuf:"bytes,6,opt,name=redirect_uri,json=redirectUri,proto3" json:"redirect_uri,omitempty"`
 	// Types that are valid to be assigned to Protocol:
 	//
@@ -2623,13 +2622,6 @@ func (*SSOConnection) Descriptor() ([]byte, []int) {
 func (x *SSOConnection) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *SSOConnection) GetProviderId() string {
-	if x != nil {
-		return x.ProviderId
 	}
 	return ""
 }
@@ -2931,11 +2923,9 @@ func (x *GetSSOConnectionResponse) GetConnection() *SSOConnection {
 }
 
 type CreateSSOConnectionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Up to 64 lowercase letters, digits and hyphens, unique across Formal.
-	ProviderId  string `protobuf:"bytes,1,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`
-	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	Issuer      string `protobuf:"bytes,3,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	DisplayName string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	Issuer      string                 `protobuf:"bytes,3,opt,name=issuer,proto3" json:"issuer,omitempty"`
 	// Self-hosted only; in Formal cloud, Formal sets them.
 	Domains []string `protobuf:"bytes,4,rep,name=domains,proto3" json:"domains,omitempty"`
 	// Types that are valid to be assigned to Protocol:
@@ -2974,13 +2964,6 @@ func (x *CreateSSOConnectionRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateSSOConnectionRequest.ProtoReflect.Descriptor instead.
 func (*CreateSSOConnectionRequest) Descriptor() ([]byte, []int) {
 	return file_core_v1_user_proto_rawDescGZIP(), []int{55}
-}
-
-func (x *CreateSSOConnectionRequest) GetProviderId() string {
-	if x != nil {
-		return x.ProviderId
-	}
-	return ""
 }
 
 func (x *CreateSSOConnectionRequest) GetDisplayName() string {
@@ -3512,11 +3495,9 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\x1aUpdateSignInMethodsRequest\x12\"\n" +
 	"\amethods\x18\x01 \x03(\tB\b\xbaH\x05\x92\x01\x02\b\x01R\amethods\"7\n" +
 	"\x1bUpdateSignInMethodsResponse\x12\x18\n" +
-	"\amethods\x18\x01 \x03(\tR\amethods\"\x8b\x03\n" +
+	"\amethods\x18\x01 \x03(\tR\amethods\"\xfd\x02\n" +
 	"\rSSOConnection\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
-	"\vprovider_id\x18\x02 \x01(\tR\n" +
-	"providerId\x12!\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12\x16\n" +
 	"\x06issuer\x18\x04 \x01(\tR\x06issuer\x12\x18\n" +
 	"\adomains\x18\x05 \x03(\tR\adomains\x12!\n" +
@@ -3529,7 +3510,7 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\aenabled\x18\n" +
 	" \x01(\bR\aenabledB\n" +
 	"\n" +
-	"\bprotocol\"h\n" +
+	"\bprotocolJ\x04\b\x02\x10\x03R\vprovider_id\"h\n" +
 	"\x16OIDCConnectionSettings\x12$\n" +
 	"\tclient_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bclientId\x12(\n" +
 	"\rclient_secret\x18\x02 \x01(\tB\x03\x80\x01\x01R\fclientSecret\"\x1b\n" +
@@ -3541,15 +3522,13 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"\x18GetSSOConnectionResponse\x126\n" +
 	"\n" +
 	"connection\x18\x01 \x01(\v2\x16.core.v1.SSOConnectionR\n" +
-	"connection\"\xf7\x01\n" +
-	"\x1aCreateSSOConnectionRequest\x12(\n" +
-	"\vprovider_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
-	"providerId\x12*\n" +
+	"connection\"\xe0\x01\n" +
+	"\x1aCreateSSOConnectionRequest\x12*\n" +
 	"\fdisplay_name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vdisplayName\x12\x1f\n" +
 	"\x06issuer\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06issuer\x12\x18\n" +
 	"\adomains\x18\x04 \x03(\tR\adomains\x125\n" +
 	"\x04oidc\x18\x05 \x01(\v2\x1f.core.v1.OIDCConnectionSettingsH\x00R\x04oidcB\x11\n" +
-	"\bprotocol\x12\x05\xbaH\x02\b\x01\"U\n" +
+	"\bprotocol\x12\x05\xbaH\x02\b\x01J\x04\b\x01\x10\x02R\vprovider_id\"U\n" +
 	"\x1bCreateSSOConnectionResponse\x126\n" +
 	"\n" +
 	"connection\x18\x01 \x01(\v2\x16.core.v1.SSOConnectionR\n" +
