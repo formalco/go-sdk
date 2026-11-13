@@ -42,6 +42,9 @@ const (
 	// IntegrationMDMServiceListIntegrationsMDMProcedure is the fully-qualified name of the
 	// IntegrationMDMService's ListIntegrationsMDM RPC.
 	IntegrationMDMServiceListIntegrationsMDMProcedure = "/core.v1.IntegrationMDMService/ListIntegrationsMDM"
+	// IntegrationMDMServiceUpdateIntegrationMDMProcedure is the fully-qualified name of the
+	// IntegrationMDMService's UpdateIntegrationMDM RPC.
+	IntegrationMDMServiceUpdateIntegrationMDMProcedure = "/core.v1.IntegrationMDMService/UpdateIntegrationMDM"
 	// IntegrationMDMServiceDeleteIntegrationMDMProcedure is the fully-qualified name of the
 	// IntegrationMDMService's DeleteIntegrationMDM RPC.
 	IntegrationMDMServiceDeleteIntegrationMDMProcedure = "/core.v1.IntegrationMDMService/DeleteIntegrationMDM"
@@ -64,6 +67,10 @@ type IntegrationMDMServiceClient interface {
 	//
 	// List all integrations MDM
 	ListIntegrationsMDM(context.Context, *connect.Request[v1.ListIntegrationsMDMRequest]) (*connect.Response[v1.ListIntegrationsMDMResponse], error)
+	// Update integration MDM
+	//
+	// Update an integration MDM's settings
+	UpdateIntegrationMDM(context.Context, *connect.Request[v1.UpdateIntegrationMDMRequest]) (*connect.Response[v1.UpdateIntegrationMDMResponse], error)
 	// Delete integration MDM
 	//
 	// Delete an integration MDM
@@ -105,6 +112,12 @@ func NewIntegrationMDMServiceClient(httpClient connect.HTTPClient, baseURL strin
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
+		updateIntegrationMDM: connect.NewClient[v1.UpdateIntegrationMDMRequest, v1.UpdateIntegrationMDMResponse](
+			httpClient,
+			baseURL+IntegrationMDMServiceUpdateIntegrationMDMProcedure,
+			connect.WithSchema(integrationMDMServiceMethods.ByName("UpdateIntegrationMDM")),
+			connect.WithClientOptions(opts...),
+		),
 		deleteIntegrationMDM: connect.NewClient[v1.DeleteIntegrationMDMRequest, v1.DeleteIntegrationMDMResponse](
 			httpClient,
 			baseURL+IntegrationMDMServiceDeleteIntegrationMDMProcedure,
@@ -126,6 +139,7 @@ type integrationMDMServiceClient struct {
 	createIntegrationMDM      *connect.Client[v1.CreateIntegrationMDMRequest, v1.CreateIntegrationMDMResponse]
 	getIntegrationMDM         *connect.Client[v1.GetIntegrationMDMRequest, v1.GetIntegrationMDMResponse]
 	listIntegrationsMDM       *connect.Client[v1.ListIntegrationsMDMRequest, v1.ListIntegrationsMDMResponse]
+	updateIntegrationMDM      *connect.Client[v1.UpdateIntegrationMDMRequest, v1.UpdateIntegrationMDMResponse]
 	deleteIntegrationMDM      *connect.Client[v1.DeleteIntegrationMDMRequest, v1.DeleteIntegrationMDMResponse]
 	listIntegrationMDMDevices *connect.Client[v1.ListIntegrationMDMDevicesRequest, v1.ListIntegrationMDMDevicesResponse]
 }
@@ -143,6 +157,11 @@ func (c *integrationMDMServiceClient) GetIntegrationMDM(ctx context.Context, req
 // ListIntegrationsMDM calls core.v1.IntegrationMDMService.ListIntegrationsMDM.
 func (c *integrationMDMServiceClient) ListIntegrationsMDM(ctx context.Context, req *connect.Request[v1.ListIntegrationsMDMRequest]) (*connect.Response[v1.ListIntegrationsMDMResponse], error) {
 	return c.listIntegrationsMDM.CallUnary(ctx, req)
+}
+
+// UpdateIntegrationMDM calls core.v1.IntegrationMDMService.UpdateIntegrationMDM.
+func (c *integrationMDMServiceClient) UpdateIntegrationMDM(ctx context.Context, req *connect.Request[v1.UpdateIntegrationMDMRequest]) (*connect.Response[v1.UpdateIntegrationMDMResponse], error) {
+	return c.updateIntegrationMDM.CallUnary(ctx, req)
 }
 
 // DeleteIntegrationMDM calls core.v1.IntegrationMDMService.DeleteIntegrationMDM.
@@ -169,6 +188,10 @@ type IntegrationMDMServiceHandler interface {
 	//
 	// List all integrations MDM
 	ListIntegrationsMDM(context.Context, *connect.Request[v1.ListIntegrationsMDMRequest]) (*connect.Response[v1.ListIntegrationsMDMResponse], error)
+	// Update integration MDM
+	//
+	// Update an integration MDM's settings
+	UpdateIntegrationMDM(context.Context, *connect.Request[v1.UpdateIntegrationMDMRequest]) (*connect.Response[v1.UpdateIntegrationMDMResponse], error)
 	// Delete integration MDM
 	//
 	// Delete an integration MDM
@@ -206,6 +229,12 @@ func NewIntegrationMDMServiceHandler(svc IntegrationMDMServiceHandler, opts ...c
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
+	integrationMDMServiceUpdateIntegrationMDMHandler := connect.NewUnaryHandler(
+		IntegrationMDMServiceUpdateIntegrationMDMProcedure,
+		svc.UpdateIntegrationMDM,
+		connect.WithSchema(integrationMDMServiceMethods.ByName("UpdateIntegrationMDM")),
+		connect.WithHandlerOptions(opts...),
+	)
 	integrationMDMServiceDeleteIntegrationMDMHandler := connect.NewUnaryHandler(
 		IntegrationMDMServiceDeleteIntegrationMDMProcedure,
 		svc.DeleteIntegrationMDM,
@@ -227,6 +256,8 @@ func NewIntegrationMDMServiceHandler(svc IntegrationMDMServiceHandler, opts ...c
 			integrationMDMServiceGetIntegrationMDMHandler.ServeHTTP(w, r)
 		case IntegrationMDMServiceListIntegrationsMDMProcedure:
 			integrationMDMServiceListIntegrationsMDMHandler.ServeHTTP(w, r)
+		case IntegrationMDMServiceUpdateIntegrationMDMProcedure:
+			integrationMDMServiceUpdateIntegrationMDMHandler.ServeHTTP(w, r)
 		case IntegrationMDMServiceDeleteIntegrationMDMProcedure:
 			integrationMDMServiceDeleteIntegrationMDMHandler.ServeHTTP(w, r)
 		case IntegrationMDMServiceListIntegrationMDMDevicesProcedure:
@@ -250,6 +281,10 @@ func (UnimplementedIntegrationMDMServiceHandler) GetIntegrationMDM(context.Conte
 
 func (UnimplementedIntegrationMDMServiceHandler) ListIntegrationsMDM(context.Context, *connect.Request[v1.ListIntegrationsMDMRequest]) (*connect.Response[v1.ListIntegrationsMDMResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.IntegrationMDMService.ListIntegrationsMDM is not implemented"))
+}
+
+func (UnimplementedIntegrationMDMServiceHandler) UpdateIntegrationMDM(context.Context, *connect.Request[v1.UpdateIntegrationMDMRequest]) (*connect.Response[v1.UpdateIntegrationMDMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("core.v1.IntegrationMDMService.UpdateIntegrationMDM is not implemented"))
 }
 
 func (UnimplementedIntegrationMDMServiceHandler) DeleteIntegrationMDM(context.Context, *connect.Request[v1.DeleteIntegrationMDMRequest]) (*connect.Response[v1.DeleteIntegrationMDMResponse], error) {

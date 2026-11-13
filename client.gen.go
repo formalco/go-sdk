@@ -1658,6 +1658,17 @@ func (c *IntegrationMDMServiceClient) ListIntegrationsMDM(ctx context.Context, r
 	return res.Msg, nil
 }
 
+// Update integration MDM
+//
+// Update an integration MDM's settings
+func (c *IntegrationMDMServiceClient) UpdateIntegrationMDM(ctx context.Context, req *corev1.UpdateIntegrationMDMRequest) (*corev1.UpdateIntegrationMDMResponse, error) {
+	res, err := c.inner.UpdateIntegrationMDM(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
 // IntegrationOIDCServiceClient is a client for the core.v1.IntegrationOIDCService service.
 type IntegrationOIDCServiceClient struct {
 	inner corev1connect.IntegrationOIDCServiceClient
