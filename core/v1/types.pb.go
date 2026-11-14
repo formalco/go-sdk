@@ -24,6 +24,61 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Where the Formal infrastructure that routes a connector's VPN signaling and relayed traffic may
+// be hosted. No limit gives the best performance and availability. A limit can be used to satisfy
+// regulatory requirements on where traffic is routed.
+type ConnectorVpnAllowedRegions int32
+
+const (
+	// No limit: the closest infrastructure, wherever it is hosted.
+	ConnectorVpnAllowedRegions_CONNECTOR_VPN_ALLOWED_REGIONS_UNSPECIFIED ConnectorVpnAllowedRegions = 0
+	// Only infrastructure hosted in the United States.
+	ConnectorVpnAllowedRegions_CONNECTOR_VPN_ALLOWED_REGIONS_US_ONLY ConnectorVpnAllowedRegions = 1
+	// Only infrastructure hosted in the European Union.
+	ConnectorVpnAllowedRegions_CONNECTOR_VPN_ALLOWED_REGIONS_EU_ONLY ConnectorVpnAllowedRegions = 2
+)
+
+// Enum value maps for ConnectorVpnAllowedRegions.
+var (
+	ConnectorVpnAllowedRegions_name = map[int32]string{
+		0: "CONNECTOR_VPN_ALLOWED_REGIONS_UNSPECIFIED",
+		1: "CONNECTOR_VPN_ALLOWED_REGIONS_US_ONLY",
+		2: "CONNECTOR_VPN_ALLOWED_REGIONS_EU_ONLY",
+	}
+	ConnectorVpnAllowedRegions_value = map[string]int32{
+		"CONNECTOR_VPN_ALLOWED_REGIONS_UNSPECIFIED": 0,
+		"CONNECTOR_VPN_ALLOWED_REGIONS_US_ONLY":     1,
+		"CONNECTOR_VPN_ALLOWED_REGIONS_EU_ONLY":     2,
+	}
+)
+
+func (x ConnectorVpnAllowedRegions) Enum() *ConnectorVpnAllowedRegions {
+	p := new(ConnectorVpnAllowedRegions)
+	*p = x
+	return p
+}
+
+func (x ConnectorVpnAllowedRegions) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ConnectorVpnAllowedRegions) Descriptor() protoreflect.EnumDescriptor {
+	return file_core_v1_types_proto_enumTypes[0].Descriptor()
+}
+
+func (ConnectorVpnAllowedRegions) Type() protoreflect.EnumType {
+	return &file_core_v1_types_proto_enumTypes[0]
+}
+
+func (x ConnectorVpnAllowedRegions) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ConnectorVpnAllowedRegions.Descriptor instead.
+func (ConnectorVpnAllowedRegions) EnumDescriptor() ([]byte, []int) {
+	return file_core_v1_types_proto_rawDescGZIP(), []int{0}
+}
+
 type ResourceHealthCheck struct {
 	state      protoimpl.MessageState `protogen:"open.v1"`
 	Id         string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -3113,9 +3168,11 @@ type ConnectorVpn struct {
 	// Cloud provider hosting the connector. Formal VPN signaling runs in the region closest to it.
 	CloudProvider string `protobuf:"bytes,3,opt,name=cloud_provider,json=cloudProvider,proto3" json:"cloud_provider,omitempty"`
 	// Region hosting the connector.
-	Region        string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Region string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
+	// Where the Formal infrastructure carrying the connector's VPN traffic may be hosted.
+	AllowedRegions ConnectorVpnAllowedRegions `protobuf:"varint,5,opt,name=allowed_regions,json=allowedRegions,proto3,enum=core.v1.ConnectorVpnAllowedRegions" json:"allowed_regions,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ConnectorVpn) Reset() {
@@ -3174,6 +3231,13 @@ func (x *ConnectorVpn) GetRegion() string {
 		return x.Region
 	}
 	return ""
+}
+
+func (x *ConnectorVpn) GetAllowedRegions() ConnectorVpnAllowedRegions {
+	if x != nil {
+		return x.AllowedRegions
+	}
+	return ConnectorVpnAllowedRegions_CONNECTOR_VPN_ALLOWED_REGIONS_UNSPECIFIED
 }
 
 // Cloud region a connector can declare as its location for the Formal VPN.
@@ -3771,12 +3835,13 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x93\x01\n" +
+	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xe1\x01\n" +
 	"\fConnectorVpn\x12*\n" +
 	"\fconnector_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vconnectorId\x12\x18\n" +
 	"\aenabled\x18\x02 \x01(\bR\aenabled\x12%\n" +
 	"\x0ecloud_provider\x18\x03 \x01(\tR\rcloudProvider\x12\x16\n" +
-	"\x06region\x18\x04 \x01(\tR\x06region\"\x81\x01\n" +
+	"\x06region\x18\x04 \x01(\tR\x06region\x12L\n" +
+	"\x0fallowed_regions\x18\x05 \x01(\x0e2#.core.v1.ConnectorVpnAllowedRegionsR\x0eallowedRegions\"\x81\x01\n" +
 	"\x12ConnectorVpnRegion\x12%\n" +
 	"\x0ecloud_provider\x18\x01 \x01(\tR\rcloudProvider\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x12\x12\n" +
@@ -3790,7 +3855,11 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAtB\x84\x01\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt*\xa1\x01\n" +
+	"\x1aConnectorVpnAllowedRegions\x12-\n" +
+	")CONNECTOR_VPN_ALLOWED_REGIONS_UNSPECIFIED\x10\x00\x12)\n" +
+	"%CONNECTOR_VPN_ALLOWED_REGIONS_US_ONLY\x10\x01\x12)\n" +
+	"%CONNECTOR_VPN_ALLOWED_REGIONS_EU_ONLY\x10\x02B\x84\x01\n" +
 	"\vcom.core.v1B\n" +
 	"TypesProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
@@ -3806,137 +3875,140 @@ func file_core_v1_types_proto_rawDescGZIP() []byte {
 	return file_core_v1_types_proto_rawDescData
 }
 
+var file_core_v1_types_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_core_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_core_v1_types_proto_goTypes = []any{
-	(*ResourceHealthCheck)(nil),             // 0: core.v1.ResourceHealthCheck
-	(*Space)(nil),                           // 1: core.v1.Space
-	(*ResourceTag)(nil),                     // 2: core.v1.ResourceTag
-	(*Resource)(nil),                        // 3: core.v1.Resource
-	(*Connector)(nil),                       // 4: core.v1.Connector
-	(*ConnectorListener)(nil),               // 5: core.v1.ConnectorListener
-	(*ConnectorListenerRule)(nil),           // 6: core.v1.ConnectorListenerRule
-	(*ConnectorListenerLink)(nil),           // 7: core.v1.ConnectorListenerLink
-	(*ConnectorHostname)(nil),               // 8: core.v1.ConnectorHostname
-	(*ListConnectorListenerLink)(nil),       // 9: core.v1.ListConnectorListenerLink
-	(*Instance)(nil),                        // 10: core.v1.Instance
-	(*InstanceRemoteShutdown)(nil),          // 11: core.v1.InstanceRemoteShutdown
-	(*Owner)(nil),                           // 12: core.v1.Owner
-	(*DataDiscoveryConfiguration)(nil),      // 13: core.v1.DataDiscoveryConfiguration
-	(*ResourceTlsConfiguration)(nil),        // 14: core.v1.ResourceTlsConfiguration
-	(*ResourceSshHostKey)(nil),              // 15: core.v1.ResourceSshHostKey
-	(*ResourceDialConfiguration)(nil),       // 16: core.v1.ResourceDialConfiguration
-	(*User)(nil),                            // 17: core.v1.User
-	(*Group)(nil),                           // 18: core.v1.Group
-	(*UserGroupLink)(nil),                   // 19: core.v1.UserGroupLink
-	(*Satellite)(nil),                       // 20: core.v1.Satellite
-	(*SatelliteInstance)(nil),               // 21: core.v1.SatelliteInstance
-	(*ResourceHostname)(nil),                // 22: core.v1.ResourceHostname
-	(*ErrorObject)(nil),                     // 23: core.v1.ErrorObject
-	(*SessionShutdown)(nil),                 // 24: core.v1.SessionShutdown
-	(*ConnectorConfiguration)(nil),          // 25: core.v1.ConnectorConfiguration
-	(*ResourceClassifierConfiguration)(nil), // 26: core.v1.ResourceClassifierConfiguration
-	(*ResourceConnectorAccess)(nil),         // 27: core.v1.ResourceConnectorAccess
-	(*FormalAiSatelliteConfig)(nil),         // 28: core.v1.FormalAiSatelliteConfig
-	(*GeminiConfig)(nil),                    // 29: core.v1.GeminiConfig
-	(*GoogleVertexAiConfig)(nil),            // 30: core.v1.GoogleVertexAiConfig
-	(*AnthropicConfig)(nil),                 // 31: core.v1.AnthropicConfig
-	(*AwsBedrockConfig)(nil),                // 32: core.v1.AwsBedrockConfig
-	(*OpenAiConfig)(nil),                    // 33: core.v1.OpenAiConfig
-	(*AzureAiConfig)(nil),                   // 34: core.v1.AzureAiConfig
-	(*ConnectorAiProviderConfig)(nil),       // 35: core.v1.ConnectorAiProviderConfig
-	(*ConnectorAiProvider)(nil),             // 36: core.v1.ConnectorAiProvider
-	(*ConnectorVpn)(nil),                    // 37: core.v1.ConnectorVpn
-	(*ConnectorVpnRegion)(nil),              // 38: core.v1.ConnectorVpnRegion
-	(*ConnectorTokenEncryptionKey)(nil),     // 39: core.v1.ConnectorTokenEncryptionKey
-	(*User_Human)(nil),                      // 40: core.v1.User.Human
-	(*User_Machine)(nil),                    // 41: core.v1.User.Machine
-	(*timestamppb.Timestamp)(nil),           // 42: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),             // 43: google.protobuf.Duration
+	(ConnectorVpnAllowedRegions)(0),         // 0: core.v1.ConnectorVpnAllowedRegions
+	(*ResourceHealthCheck)(nil),             // 1: core.v1.ResourceHealthCheck
+	(*Space)(nil),                           // 2: core.v1.Space
+	(*ResourceTag)(nil),                     // 3: core.v1.ResourceTag
+	(*Resource)(nil),                        // 4: core.v1.Resource
+	(*Connector)(nil),                       // 5: core.v1.Connector
+	(*ConnectorListener)(nil),               // 6: core.v1.ConnectorListener
+	(*ConnectorListenerRule)(nil),           // 7: core.v1.ConnectorListenerRule
+	(*ConnectorListenerLink)(nil),           // 8: core.v1.ConnectorListenerLink
+	(*ConnectorHostname)(nil),               // 9: core.v1.ConnectorHostname
+	(*ListConnectorListenerLink)(nil),       // 10: core.v1.ListConnectorListenerLink
+	(*Instance)(nil),                        // 11: core.v1.Instance
+	(*InstanceRemoteShutdown)(nil),          // 12: core.v1.InstanceRemoteShutdown
+	(*Owner)(nil),                           // 13: core.v1.Owner
+	(*DataDiscoveryConfiguration)(nil),      // 14: core.v1.DataDiscoveryConfiguration
+	(*ResourceTlsConfiguration)(nil),        // 15: core.v1.ResourceTlsConfiguration
+	(*ResourceSshHostKey)(nil),              // 16: core.v1.ResourceSshHostKey
+	(*ResourceDialConfiguration)(nil),       // 17: core.v1.ResourceDialConfiguration
+	(*User)(nil),                            // 18: core.v1.User
+	(*Group)(nil),                           // 19: core.v1.Group
+	(*UserGroupLink)(nil),                   // 20: core.v1.UserGroupLink
+	(*Satellite)(nil),                       // 21: core.v1.Satellite
+	(*SatelliteInstance)(nil),               // 22: core.v1.SatelliteInstance
+	(*ResourceHostname)(nil),                // 23: core.v1.ResourceHostname
+	(*ErrorObject)(nil),                     // 24: core.v1.ErrorObject
+	(*SessionShutdown)(nil),                 // 25: core.v1.SessionShutdown
+	(*ConnectorConfiguration)(nil),          // 26: core.v1.ConnectorConfiguration
+	(*ResourceClassifierConfiguration)(nil), // 27: core.v1.ResourceClassifierConfiguration
+	(*ResourceConnectorAccess)(nil),         // 28: core.v1.ResourceConnectorAccess
+	(*FormalAiSatelliteConfig)(nil),         // 29: core.v1.FormalAiSatelliteConfig
+	(*GeminiConfig)(nil),                    // 30: core.v1.GeminiConfig
+	(*GoogleVertexAiConfig)(nil),            // 31: core.v1.GoogleVertexAiConfig
+	(*AnthropicConfig)(nil),                 // 32: core.v1.AnthropicConfig
+	(*AwsBedrockConfig)(nil),                // 33: core.v1.AwsBedrockConfig
+	(*OpenAiConfig)(nil),                    // 34: core.v1.OpenAiConfig
+	(*AzureAiConfig)(nil),                   // 35: core.v1.AzureAiConfig
+	(*ConnectorAiProviderConfig)(nil),       // 36: core.v1.ConnectorAiProviderConfig
+	(*ConnectorAiProvider)(nil),             // 37: core.v1.ConnectorAiProvider
+	(*ConnectorVpn)(nil),                    // 38: core.v1.ConnectorVpn
+	(*ConnectorVpnRegion)(nil),              // 39: core.v1.ConnectorVpnRegion
+	(*ConnectorTokenEncryptionKey)(nil),     // 40: core.v1.ConnectorTokenEncryptionKey
+	(*User_Human)(nil),                      // 41: core.v1.User.Human
+	(*User_Machine)(nil),                    // 42: core.v1.User.Machine
+	(*timestamppb.Timestamp)(nil),           // 43: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),             // 44: google.protobuf.Duration
 }
 var file_core_v1_types_proto_depIdxs = []int32{
-	42, // 0: core.v1.ResourceHealthCheck.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 1: core.v1.ResourceHealthCheck.created_at:type_name -> google.protobuf.Timestamp
-	42, // 2: core.v1.Space.created_at:type_name -> google.protobuf.Timestamp
-	42, // 3: core.v1.Space.updated_at:type_name -> google.protobuf.Timestamp
-	1,  // 4: core.v1.Resource.space:type_name -> core.v1.Space
-	42, // 5: core.v1.Resource.created_at:type_name -> google.protobuf.Timestamp
-	42, // 6: core.v1.Resource.updated_at:type_name -> google.protobuf.Timestamp
-	2,  // 7: core.v1.Resource.tags:type_name -> core.v1.ResourceTag
-	42, // 8: core.v1.Resource.native_users_v3_enabled_at:type_name -> google.protobuf.Timestamp
-	1,  // 9: core.v1.Connector.space:type_name -> core.v1.Space
-	42, // 10: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
-	42, // 11: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 12: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
-	42, // 13: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 14: core.v1.ConnectorListener.connector:type_name -> core.v1.Connector
-	5,  // 15: core.v1.ConnectorListenerRule.listener:type_name -> core.v1.ConnectorListener
-	42, // 16: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
-	42, // 17: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
-	5,  // 18: core.v1.ConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
-	4,  // 19: core.v1.ConnectorListenerLink.connector:type_name -> core.v1.Connector
-	42, // 20: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
-	42, // 21: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 22: core.v1.ConnectorHostname.connector:type_name -> core.v1.Connector
-	42, // 23: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
-	42, // 24: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 25: core.v1.ListConnectorListenerLink.connector:type_name -> core.v1.Connector
-	5,  // 26: core.v1.ListConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
-	42, // 27: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
-	42, // 28: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
-	42, // 29: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
-	17, // 30: core.v1.Owner.user:type_name -> core.v1.User
-	18, // 31: core.v1.Owner.group:type_name -> core.v1.Group
-	42, // 32: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	42, // 33: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 34: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 35: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	42, // 36: core.v1.ResourceSshHostKey.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 37: core.v1.ResourceSshHostKey.created_at:type_name -> google.protobuf.Timestamp
-	42, // 38: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 39: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	40, // 40: core.v1.User.human:type_name -> core.v1.User.Human
-	41, // 41: core.v1.User.machine:type_name -> core.v1.User.Machine
-	42, // 42: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
-	42, // 43: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	42, // 44: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 45: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
-	42, // 46: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
-	18, // 47: core.v1.UserGroupLink.group:type_name -> core.v1.Group
-	17, // 48: core.v1.UserGroupLink.user:type_name -> core.v1.User
-	42, // 49: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
-	42, // 50: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
-	1,  // 51: core.v1.Satellite.space:type_name -> core.v1.Space
-	42, // 52: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
-	42, // 53: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 54: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
-	42, // 55: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
-	3,  // 56: core.v1.ResourceHostname.resource:type_name -> core.v1.Resource
-	42, // 57: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
-	42, // 58: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 59: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
-	42, // 60: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	42, // 61: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	43, // 62: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
-	42, // 63: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	42, // 64: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 65: core.v1.ResourceConnectorAccess.connector:type_name -> core.v1.Connector
-	28, // 66: core.v1.ConnectorAiProviderConfig.formal_ai_satellite:type_name -> core.v1.FormalAiSatelliteConfig
-	29, // 67: core.v1.ConnectorAiProviderConfig.gemini:type_name -> core.v1.GeminiConfig
-	30, // 68: core.v1.ConnectorAiProviderConfig.google_vertex_ai:type_name -> core.v1.GoogleVertexAiConfig
-	31, // 69: core.v1.ConnectorAiProviderConfig.anthropic:type_name -> core.v1.AnthropicConfig
-	32, // 70: core.v1.ConnectorAiProviderConfig.aws_bedrock:type_name -> core.v1.AwsBedrockConfig
-	33, // 71: core.v1.ConnectorAiProviderConfig.openai:type_name -> core.v1.OpenAiConfig
-	34, // 72: core.v1.ConnectorAiProviderConfig.azure_ai:type_name -> core.v1.AzureAiConfig
-	35, // 73: core.v1.ConnectorAiProvider.config:type_name -> core.v1.ConnectorAiProviderConfig
-	42, // 74: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
-	42, // 75: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
-	42, // 76: core.v1.ConnectorTokenEncryptionKey.created_at:type_name -> google.protobuf.Timestamp
-	42, // 77: core.v1.ConnectorTokenEncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
-	78, // [78:78] is the sub-list for method output_type
-	78, // [78:78] is the sub-list for method input_type
-	78, // [78:78] is the sub-list for extension type_name
-	78, // [78:78] is the sub-list for extension extendee
-	0,  // [0:78] is the sub-list for field type_name
+	43, // 0: core.v1.ResourceHealthCheck.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 1: core.v1.ResourceHealthCheck.created_at:type_name -> google.protobuf.Timestamp
+	43, // 2: core.v1.Space.created_at:type_name -> google.protobuf.Timestamp
+	43, // 3: core.v1.Space.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 4: core.v1.Resource.space:type_name -> core.v1.Space
+	43, // 5: core.v1.Resource.created_at:type_name -> google.protobuf.Timestamp
+	43, // 6: core.v1.Resource.updated_at:type_name -> google.protobuf.Timestamp
+	3,  // 7: core.v1.Resource.tags:type_name -> core.v1.ResourceTag
+	43, // 8: core.v1.Resource.native_users_v3_enabled_at:type_name -> google.protobuf.Timestamp
+	2,  // 9: core.v1.Connector.space:type_name -> core.v1.Space
+	43, // 10: core.v1.Connector.created_at:type_name -> google.protobuf.Timestamp
+	43, // 11: core.v1.Connector.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 12: core.v1.ConnectorListener.created_at:type_name -> google.protobuf.Timestamp
+	43, // 13: core.v1.ConnectorListener.updated_at:type_name -> google.protobuf.Timestamp
+	5,  // 14: core.v1.ConnectorListener.connector:type_name -> core.v1.Connector
+	6,  // 15: core.v1.ConnectorListenerRule.listener:type_name -> core.v1.ConnectorListener
+	43, // 16: core.v1.ConnectorListenerRule.created_at:type_name -> google.protobuf.Timestamp
+	43, // 17: core.v1.ConnectorListenerRule.updated_at:type_name -> google.protobuf.Timestamp
+	6,  // 18: core.v1.ConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
+	5,  // 19: core.v1.ConnectorListenerLink.connector:type_name -> core.v1.Connector
+	43, // 20: core.v1.ConnectorListenerLink.created_at:type_name -> google.protobuf.Timestamp
+	43, // 21: core.v1.ConnectorListenerLink.updated_at:type_name -> google.protobuf.Timestamp
+	5,  // 22: core.v1.ConnectorHostname.connector:type_name -> core.v1.Connector
+	43, // 23: core.v1.ConnectorHostname.created_at:type_name -> google.protobuf.Timestamp
+	43, // 24: core.v1.ConnectorHostname.updated_at:type_name -> google.protobuf.Timestamp
+	5,  // 25: core.v1.ListConnectorListenerLink.connector:type_name -> core.v1.Connector
+	6,  // 26: core.v1.ListConnectorListenerLink.listener:type_name -> core.v1.ConnectorListener
+	43, // 27: core.v1.Instance.last_seen:type_name -> google.protobuf.Timestamp
+	43, // 28: core.v1.Instance.start_time:type_name -> google.protobuf.Timestamp
+	43, // 29: core.v1.InstanceRemoteShutdown.created_at:type_name -> google.protobuf.Timestamp
+	18, // 30: core.v1.Owner.user:type_name -> core.v1.User
+	19, // 31: core.v1.Owner.group:type_name -> core.v1.Group
+	43, // 32: core.v1.DataDiscoveryConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	43, // 33: core.v1.DataDiscoveryConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 34: core.v1.ResourceTlsConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 35: core.v1.ResourceTlsConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	43, // 36: core.v1.ResourceSshHostKey.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 37: core.v1.ResourceSshHostKey.created_at:type_name -> google.protobuf.Timestamp
+	43, // 38: core.v1.ResourceDialConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 39: core.v1.ResourceDialConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	41, // 40: core.v1.User.human:type_name -> core.v1.User.Human
+	42, // 41: core.v1.User.machine:type_name -> core.v1.User.Machine
+	43, // 42: core.v1.User.expire_at:type_name -> google.protobuf.Timestamp
+	43, // 43: core.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	43, // 44: core.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 45: core.v1.Group.created_at:type_name -> google.protobuf.Timestamp
+	43, // 46: core.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
+	19, // 47: core.v1.UserGroupLink.group:type_name -> core.v1.Group
+	18, // 48: core.v1.UserGroupLink.user:type_name -> core.v1.User
+	43, // 49: core.v1.UserGroupLink.created_at:type_name -> google.protobuf.Timestamp
+	43, // 50: core.v1.UserGroupLink.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 51: core.v1.Satellite.space:type_name -> core.v1.Space
+	43, // 52: core.v1.Satellite.created_at:type_name -> google.protobuf.Timestamp
+	43, // 53: core.v1.Satellite.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 54: core.v1.SatelliteInstance.start_time:type_name -> google.protobuf.Timestamp
+	43, // 55: core.v1.SatelliteInstance.last_ping:type_name -> google.protobuf.Timestamp
+	4,  // 56: core.v1.ResourceHostname.resource:type_name -> core.v1.Resource
+	43, // 57: core.v1.ResourceHostname.created_at:type_name -> google.protobuf.Timestamp
+	43, // 58: core.v1.ResourceHostname.updated_at:type_name -> google.protobuf.Timestamp
+	43, // 59: core.v1.SessionShutdown.created_at:type_name -> google.protobuf.Timestamp
+	43, // 60: core.v1.ConnectorConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	43, // 61: core.v1.ConnectorConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	44, // 62: core.v1.ConnectorConfiguration.resources_health_checks_frequency:type_name -> google.protobuf.Duration
+	43, // 63: core.v1.ResourceClassifierConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	43, // 64: core.v1.ResourceClassifierConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	5,  // 65: core.v1.ResourceConnectorAccess.connector:type_name -> core.v1.Connector
+	29, // 66: core.v1.ConnectorAiProviderConfig.formal_ai_satellite:type_name -> core.v1.FormalAiSatelliteConfig
+	30, // 67: core.v1.ConnectorAiProviderConfig.gemini:type_name -> core.v1.GeminiConfig
+	31, // 68: core.v1.ConnectorAiProviderConfig.google_vertex_ai:type_name -> core.v1.GoogleVertexAiConfig
+	32, // 69: core.v1.ConnectorAiProviderConfig.anthropic:type_name -> core.v1.AnthropicConfig
+	33, // 70: core.v1.ConnectorAiProviderConfig.aws_bedrock:type_name -> core.v1.AwsBedrockConfig
+	34, // 71: core.v1.ConnectorAiProviderConfig.openai:type_name -> core.v1.OpenAiConfig
+	35, // 72: core.v1.ConnectorAiProviderConfig.azure_ai:type_name -> core.v1.AzureAiConfig
+	36, // 73: core.v1.ConnectorAiProvider.config:type_name -> core.v1.ConnectorAiProviderConfig
+	43, // 74: core.v1.ConnectorAiProvider.created_at:type_name -> google.protobuf.Timestamp
+	43, // 75: core.v1.ConnectorAiProvider.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 76: core.v1.ConnectorVpn.allowed_regions:type_name -> core.v1.ConnectorVpnAllowedRegions
+	43, // 77: core.v1.ConnectorTokenEncryptionKey.created_at:type_name -> google.protobuf.Timestamp
+	43, // 78: core.v1.ConnectorTokenEncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
+	79, // [79:79] is the sub-list for method output_type
+	79, // [79:79] is the sub-list for method input_type
+	79, // [79:79] is the sub-list for extension type_name
+	79, // [79:79] is the sub-list for extension extendee
+	0,  // [0:79] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_types_proto_init() }
@@ -3970,13 +4042,14 @@ func file_core_v1_types_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_types_proto_rawDesc), len(file_core_v1_types_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_core_v1_types_proto_goTypes,
 		DependencyIndexes: file_core_v1_types_proto_depIdxs,
+		EnumInfos:         file_core_v1_types_proto_enumTypes,
 		MessageInfos:      file_core_v1_types_proto_msgTypes,
 	}.Build()
 	File_core_v1_types_proto = out.File
