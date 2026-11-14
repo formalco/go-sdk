@@ -69,7 +69,7 @@ type IntegrationMDMServiceClient interface {
 	ListIntegrationsMDM(context.Context, *connect.Request[v1.ListIntegrationsMDMRequest]) (*connect.Response[v1.ListIntegrationsMDMResponse], error)
 	// Update integration MDM
 	//
-	// Update an integration MDM's settings
+	// Update an integration MDM's settings. A request with only `id` starts a device sync.
 	UpdateIntegrationMDM(context.Context, *connect.Request[v1.UpdateIntegrationMDMRequest]) (*connect.Response[v1.UpdateIntegrationMDMResponse], error)
 	// Delete integration MDM
 	//
@@ -190,7 +190,7 @@ type IntegrationMDMServiceHandler interface {
 	ListIntegrationsMDM(context.Context, *connect.Request[v1.ListIntegrationsMDMRequest]) (*connect.Response[v1.ListIntegrationsMDMResponse], error)
 	// Update integration MDM
 	//
-	// Update an integration MDM's settings
+	// Update an integration MDM's settings. A request with only `id` starts a device sync.
 	UpdateIntegrationMDM(context.Context, *connect.Request[v1.UpdateIntegrationMDMRequest]) (*connect.Response[v1.UpdateIntegrationMDMResponse], error)
 	// Delete integration MDM
 	//

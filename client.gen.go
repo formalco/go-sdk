@@ -1660,7 +1660,7 @@ func (c *IntegrationMDMServiceClient) ListIntegrationsMDM(ctx context.Context, r
 
 // Update integration MDM
 //
-// Update an integration MDM's settings
+// Update an integration MDM's settings. A request with only `id` starts a device sync.
 func (c *IntegrationMDMServiceClient) UpdateIntegrationMDM(ctx context.Context, req *corev1.UpdateIntegrationMDMRequest) (*corev1.UpdateIntegrationMDMResponse, error) {
 	res, err := c.inner.UpdateIntegrationMDM(ctx, connect.NewRequest(req))
 	if err != nil {

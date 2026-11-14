@@ -1636,13 +1636,13 @@ const file_core_v1_integration_mdm_proto_rawDesc = "" +
 	"\a_filter\"\x96\x01\n" +
 	"\x1bListIntegrationsMDMResponse\x12;\n" +
 	"\fintegrations\x18\x01 \x03(\v2\x17.core.v1.IntegrationMDMR\fintegrations\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xba\x01\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xb3\x01\n" +
 	"\x1bUpdateIntegrationMDMRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12E\n" +
 	"\x06kandji\x18\x02 \x01(\v2+.core.v1.UpdateIntegrationMDMRequest.KandjiH\x00R\x06kandji\x1a%\n" +
 	"\x06Kandji\x12\x1b\n" +
-	"\ttag_write\x18\x01 \x01(\bR\btagWriteB\x14\n" +
-	"\vintegration\x12\x05\xbaH\x02\b\x01\"\x1e\n" +
+	"\ttag_write\x18\x01 \x01(\bR\btagWriteB\r\n" +
+	"\vintegration\"\x1e\n" +
 	"\x1cUpdateIntegrationMDMResponse\"6\n" +
 	"\x1bDeleteIntegrationMDMRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"7\n" +
