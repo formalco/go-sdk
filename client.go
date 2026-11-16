@@ -107,7 +107,7 @@ type apiKeyTransport struct {
 func (t *apiKeyTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	req = req.Clone(req.Context())
 	req.Header.Set("X-Api-Key", t.apiKey)
-	req.Header.Set("X-Formal-API-Version", defaultAPIVersion)
+	setDefaultHeaders(req)
 	return t.base.RoundTrip(req)
 }
 
@@ -133,9 +133,14 @@ func (t *oidcTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 
 	req = req.Clone(req.Context())
 	req.Header.Set("Authorization", "Bearer "+token.JWT)
-	req.Header.Set("X-Formal-API-Version", defaultAPIVersion)
+	setDefaultHeaders(req)
 	if sendIntegrationIDHeader {
 		req.Header.Set(oidc.IntegrationIDHeader, headerIntegrationID)
 	}
 	return t.base.RoundTrip(req)
+}
+
+func setDefaultHeaders(req *http.Request) {
+	req.Header.Set("X-Formal-API-Version", defaultAPIVersion)
+	req.Header.Set("User-Agent", strings.TrimSpace(userAgent+" "+req.Header.Get("User-Agent")))
 }
