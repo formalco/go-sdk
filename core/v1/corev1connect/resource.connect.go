@@ -280,54 +280,80 @@ type ResourceServiceClient interface {
 	// DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
 	//
 	// DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
+	//
+	// Deprecated: do not use.
 	CreateNativeUser(context.Context, *connect.Request[v1.CreateNativeUserRequest]) (*connect.Response[v1.CreateNativeUserResponse], error)
 	// Create a native user
 	//
 	// Create a native user
+	//
+	// Deprecated: do not use.
 	CreateNativeUserV2(context.Context, *connect.Request[v1.CreateNativeUserV2Request]) (*connect.Response[v1.CreateNativeUserV2Response], error)
 	// Get native user
 	//
 	// Get a native user
+	//
+	// Deprecated: do not use.
 	GetNativeUser(context.Context, *connect.Request[v1.GetNativeUserRequest]) (*connect.Response[v1.GetNativeUserResponse], error)
 	// List native users
 	//
 	// List all native users
+	//
+	// Deprecated: do not use.
 	ListNativeUsers(context.Context, *connect.Request[v1.ListNativeUsersRequest]) (*connect.Response[v1.ListNativeUsersResponse], error)
 	// Delete native user
 	//
 	// Delete a native user
+	//
+	// Deprecated: do not use.
 	DeleteNativeUser(context.Context, *connect.Request[v1.DeleteNativeUserRequest]) (*connect.Response[v1.DeleteNativeUserResponse], error)
 	// DEPRECATED: Update native user. Use UpdateNativeUserV2 instead.
 	//
 	// DEPRECATED: Update a native user. Use UpdateNativeUserV2 instead.
+	//
+	// Deprecated: do not use.
 	UpdateNativeUser(context.Context, *connect.Request[v1.UpdateNativeUserRequest]) (*connect.Response[v1.UpdateNativeUserResponse], error)
 	// Update native user
 	//
 	// Update a native user
+	//
+	// Deprecated: do not use.
 	UpdateNativeUserV2(context.Context, *connect.Request[v1.UpdateNativeUserV2Request]) (*connect.Response[v1.UpdateNativeUserV2Response], error)
 	// Create native user identity link
 	//
 	// Create a native user identity link
+	//
+	// Deprecated: do not use.
 	CreateNativeUserIdentityLink(context.Context, *connect.Request[v1.CreateNativeUserIdentityLinkRequest]) (*connect.Response[v1.CreateNativeUserIdentityLinkResponse], error)
 	// Get native user identity link
 	//
 	// Get a native user identity link
+	//
+	// Deprecated: do not use.
 	GetNativeUserIdentityLink(context.Context, *connect.Request[v1.GetNativeUserIdentityLinkRequest]) (*connect.Response[v1.GetNativeUserIdentityLinkResponse], error)
 	// List native user identity links
 	//
 	// List all native user identity links
+	//
+	// Deprecated: do not use.
 	ListNativeUserIdentityLinks(context.Context, *connect.Request[v1.ListNativeUserIdentityLinksRequest]) (*connect.Response[v1.ListNativeUserIdentityLinksResponse], error)
 	// Update native user identity link
 	//
 	// Update a native user identity link
+	//
+	// Deprecated: do not use.
 	UpdateNativeUserIdentityLink(context.Context, *connect.Request[v1.UpdateNativeUserIdentityLinkRequest]) (*connect.Response[v1.UpdateNativeUserIdentityLinkResponse], error)
 	// Update native user identity link (full object replacement)
 	//
 	// Update a native user identity link by sending the full object. All mutable fields are replaced.
+	//
+	// Deprecated: do not use.
 	UpdateNativeUserIdentityLinkV2(context.Context, *connect.Request[v1.UpdateNativeUserIdentityLinkV2Request]) (*connect.Response[v1.UpdateNativeUserIdentityLinkV2Response], error)
 	// Delete native user identity link
 	//
 	// Delete a native user identity link
+	//
+	// Deprecated: do not use.
 	DeleteNativeUserIdentityLink(context.Context, *connect.Request[v1.DeleteNativeUserIdentityLinkRequest]) (*connect.Response[v1.DeleteNativeUserIdentityLinkResponse], error)
 	// Get data discovery configuration
 	//
@@ -1084,66 +1110,92 @@ func (c *resourceServiceClient) DeleteResourceNativeUserSelection(ctx context.Co
 }
 
 // CreateNativeUser calls core.v1.ResourceService.CreateNativeUser.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) CreateNativeUser(ctx context.Context, req *connect.Request[v1.CreateNativeUserRequest]) (*connect.Response[v1.CreateNativeUserResponse], error) {
 	return c.createNativeUser.CallUnary(ctx, req)
 }
 
 // CreateNativeUserV2 calls core.v1.ResourceService.CreateNativeUserV2.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) CreateNativeUserV2(ctx context.Context, req *connect.Request[v1.CreateNativeUserV2Request]) (*connect.Response[v1.CreateNativeUserV2Response], error) {
 	return c.createNativeUserV2.CallUnary(ctx, req)
 }
 
 // GetNativeUser calls core.v1.ResourceService.GetNativeUser.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) GetNativeUser(ctx context.Context, req *connect.Request[v1.GetNativeUserRequest]) (*connect.Response[v1.GetNativeUserResponse], error) {
 	return c.getNativeUser.CallUnary(ctx, req)
 }
 
 // ListNativeUsers calls core.v1.ResourceService.ListNativeUsers.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) ListNativeUsers(ctx context.Context, req *connect.Request[v1.ListNativeUsersRequest]) (*connect.Response[v1.ListNativeUsersResponse], error) {
 	return c.listNativeUsers.CallUnary(ctx, req)
 }
 
 // DeleteNativeUser calls core.v1.ResourceService.DeleteNativeUser.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) DeleteNativeUser(ctx context.Context, req *connect.Request[v1.DeleteNativeUserRequest]) (*connect.Response[v1.DeleteNativeUserResponse], error) {
 	return c.deleteNativeUser.CallUnary(ctx, req)
 }
 
 // UpdateNativeUser calls core.v1.ResourceService.UpdateNativeUser.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) UpdateNativeUser(ctx context.Context, req *connect.Request[v1.UpdateNativeUserRequest]) (*connect.Response[v1.UpdateNativeUserResponse], error) {
 	return c.updateNativeUser.CallUnary(ctx, req)
 }
 
 // UpdateNativeUserV2 calls core.v1.ResourceService.UpdateNativeUserV2.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) UpdateNativeUserV2(ctx context.Context, req *connect.Request[v1.UpdateNativeUserV2Request]) (*connect.Response[v1.UpdateNativeUserV2Response], error) {
 	return c.updateNativeUserV2.CallUnary(ctx, req)
 }
 
 // CreateNativeUserIdentityLink calls core.v1.ResourceService.CreateNativeUserIdentityLink.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) CreateNativeUserIdentityLink(ctx context.Context, req *connect.Request[v1.CreateNativeUserIdentityLinkRequest]) (*connect.Response[v1.CreateNativeUserIdentityLinkResponse], error) {
 	return c.createNativeUserIdentityLink.CallUnary(ctx, req)
 }
 
 // GetNativeUserIdentityLink calls core.v1.ResourceService.GetNativeUserIdentityLink.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) GetNativeUserIdentityLink(ctx context.Context, req *connect.Request[v1.GetNativeUserIdentityLinkRequest]) (*connect.Response[v1.GetNativeUserIdentityLinkResponse], error) {
 	return c.getNativeUserIdentityLink.CallUnary(ctx, req)
 }
 
 // ListNativeUserIdentityLinks calls core.v1.ResourceService.ListNativeUserIdentityLinks.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) ListNativeUserIdentityLinks(ctx context.Context, req *connect.Request[v1.ListNativeUserIdentityLinksRequest]) (*connect.Response[v1.ListNativeUserIdentityLinksResponse], error) {
 	return c.listNativeUserIdentityLinks.CallUnary(ctx, req)
 }
 
 // UpdateNativeUserIdentityLink calls core.v1.ResourceService.UpdateNativeUserIdentityLink.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) UpdateNativeUserIdentityLink(ctx context.Context, req *connect.Request[v1.UpdateNativeUserIdentityLinkRequest]) (*connect.Response[v1.UpdateNativeUserIdentityLinkResponse], error) {
 	return c.updateNativeUserIdentityLink.CallUnary(ctx, req)
 }
 
 // UpdateNativeUserIdentityLinkV2 calls core.v1.ResourceService.UpdateNativeUserIdentityLinkV2.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) UpdateNativeUserIdentityLinkV2(ctx context.Context, req *connect.Request[v1.UpdateNativeUserIdentityLinkV2Request]) (*connect.Response[v1.UpdateNativeUserIdentityLinkV2Response], error) {
 	return c.updateNativeUserIdentityLinkV2.CallUnary(ctx, req)
 }
 
 // DeleteNativeUserIdentityLink calls core.v1.ResourceService.DeleteNativeUserIdentityLink.
+//
+// Deprecated: do not use.
 func (c *resourceServiceClient) DeleteNativeUserIdentityLink(ctx context.Context, req *connect.Request[v1.DeleteNativeUserIdentityLinkRequest]) (*connect.Response[v1.DeleteNativeUserIdentityLinkResponse], error) {
 	return c.deleteNativeUserIdentityLink.CallUnary(ctx, req)
 }
@@ -1433,54 +1485,80 @@ type ResourceServiceHandler interface {
 	// DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
 	//
 	// DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
+	//
+	// Deprecated: do not use.
 	CreateNativeUser(context.Context, *connect.Request[v1.CreateNativeUserRequest]) (*connect.Response[v1.CreateNativeUserResponse], error)
 	// Create a native user
 	//
 	// Create a native user
+	//
+	// Deprecated: do not use.
 	CreateNativeUserV2(context.Context, *connect.Request[v1.CreateNativeUserV2Request]) (*connect.Response[v1.CreateNativeUserV2Response], error)
 	// Get native user
 	//
 	// Get a native user
+	//
+	// Deprecated: do not use.
 	GetNativeUser(context.Context, *connect.Request[v1.GetNativeUserRequest]) (*connect.Response[v1.GetNativeUserResponse], error)
 	// List native users
 	//
 	// List all native users
+	//
+	// Deprecated: do not use.
 	ListNativeUsers(context.Context, *connect.Request[v1.ListNativeUsersRequest]) (*connect.Response[v1.ListNativeUsersResponse], error)
 	// Delete native user
 	//
 	// Delete a native user
+	//
+	// Deprecated: do not use.
 	DeleteNativeUser(context.Context, *connect.Request[v1.DeleteNativeUserRequest]) (*connect.Response[v1.DeleteNativeUserResponse], error)
 	// DEPRECATED: Update native user. Use UpdateNativeUserV2 instead.
 	//
 	// DEPRECATED: Update a native user. Use UpdateNativeUserV2 instead.
+	//
+	// Deprecated: do not use.
 	UpdateNativeUser(context.Context, *connect.Request[v1.UpdateNativeUserRequest]) (*connect.Response[v1.UpdateNativeUserResponse], error)
 	// Update native user
 	//
 	// Update a native user
+	//
+	// Deprecated: do not use.
 	UpdateNativeUserV2(context.Context, *connect.Request[v1.UpdateNativeUserV2Request]) (*connect.Response[v1.UpdateNativeUserV2Response], error)
 	// Create native user identity link
 	//
 	// Create a native user identity link
+	//
+	// Deprecated: do not use.
 	CreateNativeUserIdentityLink(context.Context, *connect.Request[v1.CreateNativeUserIdentityLinkRequest]) (*connect.Response[v1.CreateNativeUserIdentityLinkResponse], error)
 	// Get native user identity link
 	//
 	// Get a native user identity link
+	//
+	// Deprecated: do not use.
 	GetNativeUserIdentityLink(context.Context, *connect.Request[v1.GetNativeUserIdentityLinkRequest]) (*connect.Response[v1.GetNativeUserIdentityLinkResponse], error)
 	// List native user identity links
 	//
 	// List all native user identity links
+	//
+	// Deprecated: do not use.
 	ListNativeUserIdentityLinks(context.Context, *connect.Request[v1.ListNativeUserIdentityLinksRequest]) (*connect.Response[v1.ListNativeUserIdentityLinksResponse], error)
 	// Update native user identity link
 	//
 	// Update a native user identity link
+	//
+	// Deprecated: do not use.
 	UpdateNativeUserIdentityLink(context.Context, *connect.Request[v1.UpdateNativeUserIdentityLinkRequest]) (*connect.Response[v1.UpdateNativeUserIdentityLinkResponse], error)
 	// Update native user identity link (full object replacement)
 	//
 	// Update a native user identity link by sending the full object. All mutable fields are replaced.
+	//
+	// Deprecated: do not use.
 	UpdateNativeUserIdentityLinkV2(context.Context, *connect.Request[v1.UpdateNativeUserIdentityLinkV2Request]) (*connect.Response[v1.UpdateNativeUserIdentityLinkV2Response], error)
 	// Delete native user identity link
 	//
 	// Delete a native user identity link
+	//
+	// Deprecated: do not use.
 	DeleteNativeUserIdentityLink(context.Context, *connect.Request[v1.DeleteNativeUserIdentityLinkRequest]) (*connect.Response[v1.DeleteNativeUserIdentityLinkResponse], error)
 	// Get data discovery configuration
 	//

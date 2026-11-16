@@ -406,7 +406,9 @@ func (c *ConnectorServiceClient) CreateConnectorListener(ctx context.Context, re
 
 // Create connector listener link
 //
-// Create a connector listener link
+// # Create a connector listener link
+//
+// Deprecated: do not use.
 func (c *ConnectorServiceClient) CreateConnectorListenerLink(ctx context.Context, req *corev1.CreateConnectorListenerLinkRequest) (*corev1.CreateConnectorListenerLinkResponse, error) {
 	res, err := c.inner.CreateConnectorListenerLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -516,7 +518,9 @@ func (c *ConnectorServiceClient) DeleteConnectorListener(ctx context.Context, re
 
 // Delete connector listener link
 //
-// Delete a connector listener link
+// # Delete a connector listener link
+//
+// Deprecated: do not use.
 func (c *ConnectorServiceClient) DeleteConnectorListenerLink(ctx context.Context, req *corev1.DeleteConnectorListenerLinkRequest) (*corev1.DeleteConnectorListenerLinkResponse, error) {
 	res, err := c.inner.DeleteConnectorListenerLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -637,7 +641,9 @@ func (c *ConnectorServiceClient) GetConnectorListener(ctx context.Context, req *
 
 // Get connector listener link
 //
-// Get a connector listener link
+// # Get a connector listener link
+//
+// Deprecated: do not use.
 func (c *ConnectorServiceClient) GetConnectorListenerLink(ctx context.Context, req *corev1.GetConnectorListenerLinkRequest) (*corev1.GetConnectorListenerLinkResponse, error) {
 	res, err := c.inner.GetConnectorListenerLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -725,7 +731,9 @@ func (c *ConnectorServiceClient) ListConnectorInstances(ctx context.Context, req
 
 // List connector listener links
 //
-// List all links for a connector listener
+// # List all links for a connector listener
+//
+// Deprecated: do not use.
 func (c *ConnectorServiceClient) ListConnectorListenerLinks(ctx context.Context, req *corev1.ListConnectorListenerLinksRequest) (*corev1.ListConnectorListenerLinksResponse, error) {
 	res, err := c.inner.ListConnectorListenerLinks(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -879,7 +887,9 @@ func (c *ConnectorServiceClient) UpdateConnectorListener(ctx context.Context, re
 
 // Update connector listener link
 //
-// Update a connector listener link
+// # Update a connector listener link
+//
+// Deprecated: do not use.
 func (c *ConnectorServiceClient) UpdateConnectorListenerLink(ctx context.Context, req *corev1.UpdateConnectorListenerLinkRequest) (*corev1.UpdateConnectorListenerLinkResponse, error) {
 	res, err := c.inner.UpdateConnectorListenerLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -891,6 +901,8 @@ func (c *ConnectorServiceClient) UpdateConnectorListenerLink(ctx context.Context
 // Update connector listener link (full object replacement)
 //
 // Update a connector listener link by sending the full object. All mutable fields are replaced.
+//
+// Deprecated: do not use.
 func (c *ConnectorServiceClient) UpdateConnectorListenerLinkV2(ctx context.Context, req *corev1.UpdateConnectorListenerLinkV2Request) (*corev1.UpdateConnectorListenerLinkV2Response, error) {
 	res, err := c.inner.UpdateConnectorListenerLinkV2(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3059,6 +3071,8 @@ func (c *ResourceServiceClient) CreateDataDiscoveryConfiguration(ctx context.Con
 // DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
 //
 // DEPRECATED: Create a native user. Use CreateNativeUserV2 instead.
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) CreateNativeUser(ctx context.Context, req *corev1.CreateNativeUserRequest) (*corev1.CreateNativeUserResponse, error) {
 	res, err := c.inner.CreateNativeUser(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3069,7 +3083,9 @@ func (c *ResourceServiceClient) CreateNativeUser(ctx context.Context, req *corev
 
 // Create native user identity link
 //
-// Create a native user identity link
+// # Create a native user identity link
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) CreateNativeUserIdentityLink(ctx context.Context, req *corev1.CreateNativeUserIdentityLinkRequest) (*corev1.CreateNativeUserIdentityLinkResponse, error) {
 	res, err := c.inner.CreateNativeUserIdentityLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3080,7 +3096,9 @@ func (c *ResourceServiceClient) CreateNativeUserIdentityLink(ctx context.Context
 
 // Create a native user
 //
-// Create a native user
+// # Create a native user
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) CreateNativeUserV2(ctx context.Context, req *corev1.CreateNativeUserV2Request) (*corev1.CreateNativeUserV2Response, error) {
 	res, err := c.inner.CreateNativeUserV2(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3218,7 +3236,9 @@ func (c *ResourceServiceClient) DeleteDataDiscoveryConfiguration(ctx context.Con
 
 // Delete native user
 //
-// Delete a native user
+// # Delete a native user
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) DeleteNativeUser(ctx context.Context, req *corev1.DeleteNativeUserRequest) (*corev1.DeleteNativeUserResponse, error) {
 	res, err := c.inner.DeleteNativeUser(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3229,7 +3249,9 @@ func (c *ResourceServiceClient) DeleteNativeUser(ctx context.Context, req *corev
 
 // Delete native user identity link
 //
-// Delete a native user identity link
+// # Delete a native user identity link
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) DeleteNativeUserIdentityLink(ctx context.Context, req *corev1.DeleteNativeUserIdentityLinkRequest) (*corev1.DeleteNativeUserIdentityLinkResponse, error) {
 	res, err := c.inner.DeleteNativeUserIdentityLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3373,7 +3395,9 @@ func (c *ResourceServiceClient) GetDataDiscoveryConfiguration(ctx context.Contex
 
 // Get native user
 //
-// Get a native user
+// # Get a native user
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) GetNativeUser(ctx context.Context, req *corev1.GetNativeUserRequest) (*corev1.GetNativeUserResponse, error) {
 	res, err := c.inner.GetNativeUser(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3384,7 +3408,9 @@ func (c *ResourceServiceClient) GetNativeUser(ctx context.Context, req *corev1.G
 
 // Get native user identity link
 //
-// Get a native user identity link
+// # Get a native user identity link
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) GetNativeUserIdentityLink(ctx context.Context, req *corev1.GetNativeUserIdentityLinkRequest) (*corev1.GetNativeUserIdentityLinkResponse, error) {
 	res, err := c.inner.GetNativeUserIdentityLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3491,7 +3517,9 @@ func (c *ResourceServiceClient) ListDataDiscoveryConfigurations(ctx context.Cont
 
 // List native user identity links
 //
-// List all native user identity links
+// # List all native user identity links
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) ListNativeUserIdentityLinks(ctx context.Context, req *corev1.ListNativeUserIdentityLinksRequest) (*corev1.ListNativeUserIdentityLinksResponse, error) {
 	res, err := c.inner.ListNativeUserIdentityLinks(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3502,7 +3530,9 @@ func (c *ResourceServiceClient) ListNativeUserIdentityLinks(ctx context.Context,
 
 // List native users
 //
-// List all native users
+// # List all native users
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) ListNativeUsers(ctx context.Context, req *corev1.ListNativeUsersRequest) (*corev1.ListNativeUsersResponse, error) {
 	res, err := c.inner.ListNativeUsers(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3585,6 +3615,8 @@ func (c *ResourceServiceClient) UpdateDataDiscoveryConfigurationV2(ctx context.C
 // DEPRECATED: Update native user. Use UpdateNativeUserV2 instead.
 //
 // DEPRECATED: Update a native user. Use UpdateNativeUserV2 instead.
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) UpdateNativeUser(ctx context.Context, req *corev1.UpdateNativeUserRequest) (*corev1.UpdateNativeUserResponse, error) {
 	res, err := c.inner.UpdateNativeUser(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3595,7 +3627,9 @@ func (c *ResourceServiceClient) UpdateNativeUser(ctx context.Context, req *corev
 
 // Update native user identity link
 //
-// Update a native user identity link
+// # Update a native user identity link
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) UpdateNativeUserIdentityLink(ctx context.Context, req *corev1.UpdateNativeUserIdentityLinkRequest) (*corev1.UpdateNativeUserIdentityLinkResponse, error) {
 	res, err := c.inner.UpdateNativeUserIdentityLink(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3607,6 +3641,8 @@ func (c *ResourceServiceClient) UpdateNativeUserIdentityLink(ctx context.Context
 // Update native user identity link (full object replacement)
 //
 // Update a native user identity link by sending the full object. All mutable fields are replaced.
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) UpdateNativeUserIdentityLinkV2(ctx context.Context, req *corev1.UpdateNativeUserIdentityLinkV2Request) (*corev1.UpdateNativeUserIdentityLinkV2Response, error) {
 	res, err := c.inner.UpdateNativeUserIdentityLinkV2(ctx, connect.NewRequest(req))
 	if err != nil {
@@ -3617,7 +3653,9 @@ func (c *ResourceServiceClient) UpdateNativeUserIdentityLinkV2(ctx context.Conte
 
 // Update native user
 //
-// Update a native user
+// # Update a native user
+//
+// Deprecated: do not use.
 func (c *ResourceServiceClient) UpdateNativeUserV2(ctx context.Context, req *corev1.UpdateNativeUserV2Request) (*corev1.UpdateNativeUserV2Response, error) {
 	res, err := c.inner.UpdateNativeUserV2(ctx, connect.NewRequest(req))
 	if err != nil {

@@ -9268,7 +9268,7 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1aIAM_NATIVE_USER_TYPE_AZURE\x10\x02*a\n" +
 	"\x12HTTPAPIKeyLocation\x12 \n" +
 	"\x1cHTTP_API_KEY_LOCATION_HEADER\x10\x00\x12)\n" +
-	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xb1a\n" +
+	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xd8a\n" +
 	"\x0fResourceService\x12|\n" +
 	"\vGetResource\x12\x1b.core.v1.GetResourceRequest\x1a\x1c.core.v1.GetResourceResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.ResourceService/GetResource\x90\x02\x01\x12\x84\x01\n" +
 	"\rListResources\x12\x1d.core.v1.ListResourcesRequest\x1a\x1e.core.v1.ListResourcesResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/ListResources\x90\x02\x01\x12\x85\x01\n" +
@@ -9277,20 +9277,20 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x10UpdateResourceV2\x12 .core.v1.UpdateResourceV2Request\x1a!.core.v1.UpdateResourceV2Response\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/UpdateResourceV2\x12\x85\x01\n" +
 	"\x0eDeleteResource\x12\x1e.core.v1.DeleteResourceRequest\x1a\x1f.core.v1.DeleteResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/DeleteResource\x12\xd5\x01\n" +
 	"\"UpdateResourceNativeUsersV3Enabled\x122.core.v1.UpdateResourceNativeUsersV3EnabledRequest\x1a3.core.v1.UpdateResourceNativeUsersV3EnabledResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/UpdateResourceNativeUsersV3Enabled\x12\xd1\x01\n" +
-	"!DeleteResourceNativeUserSelection\x121.core.v1.DeleteResourceNativeUserSelectionRequest\x1a2.core.v1.DeleteResourceNativeUserSelectionResponse\"E\x82\xd3\xe4\x93\x02?:\x01*\":/core.v1.ResourceService/DeleteResourceNativeUserSelection\x12\x8d\x01\n" +
-	"\x10CreateNativeUser\x12 .core.v1.CreateNativeUserRequest\x1a!.core.v1.CreateNativeUserResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/CreateNativeUser\x12\x95\x01\n" +
-	"\x12CreateNativeUserV2\x12\".core.v1.CreateNativeUserV2Request\x1a#.core.v1.CreateNativeUserV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ResourceService/CreateNativeUserV2\x12\x84\x01\n" +
-	"\rGetNativeUser\x12\x1d.core.v1.GetNativeUserRequest\x1a\x1e.core.v1.GetNativeUserResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/GetNativeUser\x90\x02\x01\x12\x8c\x01\n" +
-	"\x0fListNativeUsers\x12\x1f.core.v1.ListNativeUsersRequest\x1a .core.v1.ListNativeUsersResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.ResourceService/ListNativeUsers\x90\x02\x01\x12\x8d\x01\n" +
-	"\x10DeleteNativeUser\x12 .core.v1.DeleteNativeUserRequest\x1a!.core.v1.DeleteNativeUserResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/DeleteNativeUser\x12\x8d\x01\n" +
-	"\x10UpdateNativeUser\x12 .core.v1.UpdateNativeUserRequest\x1a!.core.v1.UpdateNativeUserResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/UpdateNativeUser\x12\x95\x01\n" +
-	"\x12UpdateNativeUserV2\x12\".core.v1.UpdateNativeUserV2Request\x1a#.core.v1.UpdateNativeUserV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ResourceService/UpdateNativeUserV2\x12\xbd\x01\n" +
-	"\x1cCreateNativeUserIdentityLink\x12,.core.v1.CreateNativeUserIdentityLinkRequest\x1a-.core.v1.CreateNativeUserIdentityLinkResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/CreateNativeUserIdentityLink\x12\xb4\x01\n" +
-	"\x19GetNativeUserIdentityLink\x12).core.v1.GetNativeUserIdentityLinkRequest\x1a*.core.v1.GetNativeUserIdentityLinkResponse\"@\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ResourceService/GetNativeUserIdentityLink\x90\x02\x01\x12\xbc\x01\n" +
-	"\x1bListNativeUserIdentityLinks\x12+.core.v1.ListNativeUserIdentityLinksRequest\x1a,.core.v1.ListNativeUserIdentityLinksResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/ListNativeUserIdentityLinks\x90\x02\x01\x12\xbd\x01\n" +
-	"\x1cUpdateNativeUserIdentityLink\x12,.core.v1.UpdateNativeUserIdentityLinkRequest\x1a-.core.v1.UpdateNativeUserIdentityLinkResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/UpdateNativeUserIdentityLink\x12\xc5\x01\n" +
-	"\x1eUpdateNativeUserIdentityLinkV2\x12..core.v1.UpdateNativeUserIdentityLinkV2Request\x1a/.core.v1.UpdateNativeUserIdentityLinkV2Response\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/UpdateNativeUserIdentityLinkV2\x12\xbd\x01\n" +
-	"\x1cDeleteNativeUserIdentityLink\x12,.core.v1.DeleteNativeUserIdentityLinkRequest\x1a-.core.v1.DeleteNativeUserIdentityLinkResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/DeleteNativeUserIdentityLink\x12\xc4\x01\n" +
+	"!DeleteResourceNativeUserSelection\x121.core.v1.DeleteResourceNativeUserSelectionRequest\x1a2.core.v1.DeleteResourceNativeUserSelectionResponse\"E\x82\xd3\xe4\x93\x02?:\x01*\":/core.v1.ResourceService/DeleteResourceNativeUserSelection\x12\x90\x01\n" +
+	"\x10CreateNativeUser\x12 .core.v1.CreateNativeUserRequest\x1a!.core.v1.CreateNativeUserResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/CreateNativeUser\x88\x02\x01\x12\x98\x01\n" +
+	"\x12CreateNativeUserV2\x12\".core.v1.CreateNativeUserV2Request\x1a#.core.v1.CreateNativeUserV2Response\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ResourceService/CreateNativeUserV2\x88\x02\x01\x12\x87\x01\n" +
+	"\rGetNativeUser\x12\x1d.core.v1.GetNativeUserRequest\x1a\x1e.core.v1.GetNativeUserResponse\"7\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/GetNativeUser\x88\x02\x01\x90\x02\x01\x12\x8f\x01\n" +
+	"\x0fListNativeUsers\x12\x1f.core.v1.ListNativeUsersRequest\x1a .core.v1.ListNativeUsersResponse\"9\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.ResourceService/ListNativeUsers\x88\x02\x01\x90\x02\x01\x12\x90\x01\n" +
+	"\x10DeleteNativeUser\x12 .core.v1.DeleteNativeUserRequest\x1a!.core.v1.DeleteNativeUserResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/DeleteNativeUser\x88\x02\x01\x12\x90\x01\n" +
+	"\x10UpdateNativeUser\x12 .core.v1.UpdateNativeUserRequest\x1a!.core.v1.UpdateNativeUserResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/UpdateNativeUser\x88\x02\x01\x12\x98\x01\n" +
+	"\x12UpdateNativeUserV2\x12\".core.v1.UpdateNativeUserV2Request\x1a#.core.v1.UpdateNativeUserV2Response\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ResourceService/UpdateNativeUserV2\x88\x02\x01\x12\xc0\x01\n" +
+	"\x1cCreateNativeUserIdentityLink\x12,.core.v1.CreateNativeUserIdentityLinkRequest\x1a-.core.v1.CreateNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/CreateNativeUserIdentityLink\x88\x02\x01\x12\xb7\x01\n" +
+	"\x19GetNativeUserIdentityLink\x12).core.v1.GetNativeUserIdentityLinkRequest\x1a*.core.v1.GetNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ResourceService/GetNativeUserIdentityLink\x88\x02\x01\x90\x02\x01\x12\xbf\x01\n" +
+	"\x1bListNativeUserIdentityLinks\x12+.core.v1.ListNativeUserIdentityLinksRequest\x1a,.core.v1.ListNativeUserIdentityLinksResponse\"E\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/ListNativeUserIdentityLinks\x88\x02\x01\x90\x02\x01\x12\xc0\x01\n" +
+	"\x1cUpdateNativeUserIdentityLink\x12,.core.v1.UpdateNativeUserIdentityLinkRequest\x1a-.core.v1.UpdateNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/UpdateNativeUserIdentityLink\x88\x02\x01\x12\xc8\x01\n" +
+	"\x1eUpdateNativeUserIdentityLinkV2\x12..core.v1.UpdateNativeUserIdentityLinkV2Request\x1a/.core.v1.UpdateNativeUserIdentityLinkV2Response\"E\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/UpdateNativeUserIdentityLinkV2\x88\x02\x01\x12\xc0\x01\n" +
+	"\x1cDeleteNativeUserIdentityLink\x12,.core.v1.DeleteNativeUserIdentityLinkRequest\x1a-.core.v1.DeleteNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/DeleteNativeUserIdentityLink\x88\x02\x01\x12\xc4\x01\n" +
 	"\x1dGetDataDiscoveryConfiguration\x12-.core.v1.GetDataDiscoveryConfigurationRequest\x1a..core.v1.GetDataDiscoveryConfigurationResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ResourceService/GetDataDiscoveryConfiguration\x90\x02\x01\x12\xcc\x01\n" +
 	"\x1fListDataDiscoveryConfigurations\x12/.core.v1.ListDataDiscoveryConfigurationsRequest\x1a0.core.v1.ListDataDiscoveryConfigurationsResponse\"F\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ResourceService/ListDataDiscoveryConfigurations\x90\x02\x01\x12\xcd\x01\n" +
 	" CreateDataDiscoveryConfiguration\x120.core.v1.CreateDataDiscoveryConfigurationRequest\x1a1.core.v1.CreateDataDiscoveryConfigurationResponse\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.ResourceService/CreateDataDiscoveryConfiguration\x12\xcd\x01\n" +

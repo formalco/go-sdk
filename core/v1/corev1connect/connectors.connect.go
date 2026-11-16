@@ -290,22 +290,32 @@ type ConnectorServiceClient interface {
 	// Create connector listener link
 	//
 	// Create a connector listener link
+	//
+	// Deprecated: do not use.
 	CreateConnectorListenerLink(context.Context, *connect.Request[v1.CreateConnectorListenerLinkRequest]) (*connect.Response[v1.CreateConnectorListenerLinkResponse], error)
 	// Get connector listener link
 	//
 	// Get a connector listener link
+	//
+	// Deprecated: do not use.
 	GetConnectorListenerLink(context.Context, *connect.Request[v1.GetConnectorListenerLinkRequest]) (*connect.Response[v1.GetConnectorListenerLinkResponse], error)
 	// List connector listener links
 	//
 	// List all links for a connector listener
+	//
+	// Deprecated: do not use.
 	ListConnectorListenerLinks(context.Context, *connect.Request[v1.ListConnectorListenerLinksRequest]) (*connect.Response[v1.ListConnectorListenerLinksResponse], error)
 	// Update connector listener link
 	//
 	// Update a connector listener link
+	//
+	// Deprecated: do not use.
 	UpdateConnectorListenerLink(context.Context, *connect.Request[v1.UpdateConnectorListenerLinkRequest]) (*connect.Response[v1.UpdateConnectorListenerLinkResponse], error)
 	// Delete connector listener link
 	//
 	// Delete a connector listener link
+	//
+	// Deprecated: do not use.
 	DeleteConnectorListenerLink(context.Context, *connect.Request[v1.DeleteConnectorListenerLinkRequest]) (*connect.Response[v1.DeleteConnectorListenerLinkResponse], error)
 	// Create connector hostname
 	//
@@ -430,6 +440,8 @@ type ConnectorServiceClient interface {
 	// Update connector listener link (full object replacement)
 	//
 	// Update a connector listener link by sending the full object. All mutable fields are replaced.
+	//
+	// Deprecated: do not use.
 	UpdateConnectorListenerLinkV2(context.Context, *connect.Request[v1.UpdateConnectorListenerLinkV2Request]) (*connect.Response[v1.UpdateConnectorListenerLinkV2Response], error)
 	// Update connector hostname (full object replacement)
 	//
@@ -987,26 +999,36 @@ func (c *connectorServiceClient) DeleteConnectorListenerRule(ctx context.Context
 }
 
 // CreateConnectorListenerLink calls core.v1.ConnectorService.CreateConnectorListenerLink.
+//
+// Deprecated: do not use.
 func (c *connectorServiceClient) CreateConnectorListenerLink(ctx context.Context, req *connect.Request[v1.CreateConnectorListenerLinkRequest]) (*connect.Response[v1.CreateConnectorListenerLinkResponse], error) {
 	return c.createConnectorListenerLink.CallUnary(ctx, req)
 }
 
 // GetConnectorListenerLink calls core.v1.ConnectorService.GetConnectorListenerLink.
+//
+// Deprecated: do not use.
 func (c *connectorServiceClient) GetConnectorListenerLink(ctx context.Context, req *connect.Request[v1.GetConnectorListenerLinkRequest]) (*connect.Response[v1.GetConnectorListenerLinkResponse], error) {
 	return c.getConnectorListenerLink.CallUnary(ctx, req)
 }
 
 // ListConnectorListenerLinks calls core.v1.ConnectorService.ListConnectorListenerLinks.
+//
+// Deprecated: do not use.
 func (c *connectorServiceClient) ListConnectorListenerLinks(ctx context.Context, req *connect.Request[v1.ListConnectorListenerLinksRequest]) (*connect.Response[v1.ListConnectorListenerLinksResponse], error) {
 	return c.listConnectorListenerLinks.CallUnary(ctx, req)
 }
 
 // UpdateConnectorListenerLink calls core.v1.ConnectorService.UpdateConnectorListenerLink.
+//
+// Deprecated: do not use.
 func (c *connectorServiceClient) UpdateConnectorListenerLink(ctx context.Context, req *connect.Request[v1.UpdateConnectorListenerLinkRequest]) (*connect.Response[v1.UpdateConnectorListenerLinkResponse], error) {
 	return c.updateConnectorListenerLink.CallUnary(ctx, req)
 }
 
 // DeleteConnectorListenerLink calls core.v1.ConnectorService.DeleteConnectorListenerLink.
+//
+// Deprecated: do not use.
 func (c *connectorServiceClient) DeleteConnectorListenerLink(ctx context.Context, req *connect.Request[v1.DeleteConnectorListenerLinkRequest]) (*connect.Response[v1.DeleteConnectorListenerLinkResponse], error) {
 	return c.deleteConnectorListenerLink.CallUnary(ctx, req)
 }
@@ -1166,6 +1188,8 @@ func (c *connectorServiceClient) UpdateConnectorListenerRuleV2(ctx context.Conte
 }
 
 // UpdateConnectorListenerLinkV2 calls core.v1.ConnectorService.UpdateConnectorListenerLinkV2.
+//
+// Deprecated: do not use.
 func (c *connectorServiceClient) UpdateConnectorListenerLinkV2(ctx context.Context, req *connect.Request[v1.UpdateConnectorListenerLinkV2Request]) (*connect.Response[v1.UpdateConnectorListenerLinkV2Response], error) {
 	return c.updateConnectorListenerLinkV2.CallUnary(ctx, req)
 }
@@ -1266,22 +1290,32 @@ type ConnectorServiceHandler interface {
 	// Create connector listener link
 	//
 	// Create a connector listener link
+	//
+	// Deprecated: do not use.
 	CreateConnectorListenerLink(context.Context, *connect.Request[v1.CreateConnectorListenerLinkRequest]) (*connect.Response[v1.CreateConnectorListenerLinkResponse], error)
 	// Get connector listener link
 	//
 	// Get a connector listener link
+	//
+	// Deprecated: do not use.
 	GetConnectorListenerLink(context.Context, *connect.Request[v1.GetConnectorListenerLinkRequest]) (*connect.Response[v1.GetConnectorListenerLinkResponse], error)
 	// List connector listener links
 	//
 	// List all links for a connector listener
+	//
+	// Deprecated: do not use.
 	ListConnectorListenerLinks(context.Context, *connect.Request[v1.ListConnectorListenerLinksRequest]) (*connect.Response[v1.ListConnectorListenerLinksResponse], error)
 	// Update connector listener link
 	//
 	// Update a connector listener link
+	//
+	// Deprecated: do not use.
 	UpdateConnectorListenerLink(context.Context, *connect.Request[v1.UpdateConnectorListenerLinkRequest]) (*connect.Response[v1.UpdateConnectorListenerLinkResponse], error)
 	// Delete connector listener link
 	//
 	// Delete a connector listener link
+	//
+	// Deprecated: do not use.
 	DeleteConnectorListenerLink(context.Context, *connect.Request[v1.DeleteConnectorListenerLinkRequest]) (*connect.Response[v1.DeleteConnectorListenerLinkResponse], error)
 	// Create connector hostname
 	//
@@ -1406,6 +1440,8 @@ type ConnectorServiceHandler interface {
 	// Update connector listener link (full object replacement)
 	//
 	// Update a connector listener link by sending the full object. All mutable fields are replaced.
+	//
+	// Deprecated: do not use.
 	UpdateConnectorListenerLinkV2(context.Context, *connect.Request[v1.UpdateConnectorListenerLinkV2Request]) (*connect.Response[v1.UpdateConnectorListenerLinkV2Response], error)
 	// Update connector hostname (full object replacement)
 	//
