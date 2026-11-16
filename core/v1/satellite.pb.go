@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -2489,7 +2488,7 @@ var File_core_v1_satellite_proto protoreflect.FileDescriptor
 
 const file_core_v1_satellite_proto_rawDesc = "" +
 	"\n" +
-	"\x17core/v1/satellite.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9b\x01\n" +
+	"\x17core/v1/satellite.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9b\x01\n" +
 	"\x1dListSatelliteInstancesRequest\x12*\n" +
 	"\fsatellite_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsatelliteId\x12 \n" +
 	"\x05limit\x18\x02 \x01(\x05B\n" +
@@ -2640,27 +2639,27 @@ const file_core_v1_satellite_proto_rawDesc = "" +
 	"\fsatellite_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vsatelliteId\"K\n" +
 	"!CreateSatelliteHelmValuesResponse\x12&\n" +
 	"\n" +
-	"values_url\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tvaluesUrl2\xfd\x17\n" +
-	"\x10SatelliteService\x12\x8a\x01\n" +
-	"\x0fCreateSatellite\x12\x1f.core.v1.CreateSatelliteRequest\x1a .core.v1.CreateSatelliteResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.SatelliteService/CreateSatellite\x12\x8a\x01\n" +
-	"\x0fUpdateSatellite\x12\x1f.core.v1.UpdateSatelliteRequest\x1a .core.v1.UpdateSatelliteResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.SatelliteService/UpdateSatellite\x12\x92\x01\n" +
-	"\x11UpdateSatelliteV2\x12!.core.v1.UpdateSatelliteV2Request\x1a\".core.v1.UpdateSatelliteV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.SatelliteService/UpdateSatelliteV2\x12\x8a\x01\n" +
-	"\x0fDeleteSatellite\x12\x1f.core.v1.DeleteSatelliteRequest\x1a .core.v1.DeleteSatelliteResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.SatelliteService/DeleteSatellite\x12\x89\x01\n" +
-	"\x0eListSatellites\x12\x1e.core.v1.ListSatellitesRequest\x1a\x1f.core.v1.ListSatellitesResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.SatelliteService/ListSatellites\x90\x02\x01\x12\x81\x01\n" +
-	"\fGetSatellite\x12\x1c.core.v1.GetSatelliteRequest\x1a\x1d.core.v1.GetSatelliteResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.SatelliteService/GetSatellite\x90\x02\x01\x12\x99\x01\n" +
-	"\x12GetSatelliteApiKey\x12\".core.v1.GetSatelliteApiKeyRequest\x1a#.core.v1.GetSatelliteApiKeyResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.SatelliteService/GetSatelliteApiKey\x90\x02\x01\x12\xa9\x01\n" +
-	"\x16ListSatelliteInstances\x12&.core.v1.ListSatelliteInstancesRequest\x1a'.core.v1.ListSatelliteInstancesResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.SatelliteService/ListSatelliteInstances\x90\x02\x01\x12\xaa\x01\n" +
-	"\x17CreateSatelliteHostname\x12'.core.v1.CreateSatelliteHostnameRequest\x1a(.core.v1.CreateSatelliteHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.SatelliteService/CreateSatelliteHostname\x12\xaa\x01\n" +
-	"\x17UpdateSatelliteHostname\x12'.core.v1.UpdateSatelliteHostnameRequest\x1a(.core.v1.UpdateSatelliteHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.SatelliteService/UpdateSatelliteHostname\x12\xb2\x01\n" +
-	"\x19UpdateSatelliteHostnameV2\x12).core.v1.UpdateSatelliteHostnameV2Request\x1a*.core.v1.UpdateSatelliteHostnameV2Response\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.SatelliteService/UpdateSatelliteHostnameV2\x12\xa1\x01\n" +
-	"\x14GetSatelliteHostname\x12$.core.v1.GetSatelliteHostnameRequest\x1a%.core.v1.GetSatelliteHostnameResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.SatelliteService/GetSatelliteHostname\x90\x02\x01\x12\xd5\x01\n" +
-	"!GetSatelliteHostnameBySatelliteId\x121.core.v1.GetSatelliteHostnameBySatelliteIdRequest\x1a2.core.v1.GetSatelliteHostnameBySatelliteIdResponse\"I\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.SatelliteService/GetSatelliteHostnameBySatelliteId\x90\x02\x01\x12\xaa\x01\n" +
-	"\x17DeleteSatelliteHostname\x12'.core.v1.DeleteSatelliteHostnameRequest\x1a(.core.v1.DeleteSatelliteHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.SatelliteService/DeleteSatelliteHostname\x12\x9a\x01\n" +
-	"\x13CreateSatelliteLink\x12#.core.v1.CreateSatelliteLinkRequest\x1a$.core.v1.CreateSatelliteLinkResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.SatelliteService/CreateSatelliteLink\x12\x91\x01\n" +
-	"\x10GetSatelliteLink\x12 .core.v1.GetSatelliteLinkRequest\x1a!.core.v1.GetSatelliteLinkResponse\"8\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.SatelliteService/GetSatelliteLink\x90\x02\x01\x12\x99\x01\n" +
-	"\x12ListSatelliteLinks\x12\".core.v1.ListSatelliteLinksRequest\x1a#.core.v1.ListSatelliteLinksResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.SatelliteService/ListSatelliteLinks\x90\x02\x01\x12\x9a\x01\n" +
-	"\x13DeleteSatelliteLink\x12#.core.v1.DeleteSatelliteLinkRequest\x1a$.core.v1.DeleteSatelliteLinkResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.SatelliteService/DeleteSatelliteLink\x12\xb2\x01\n" +
-	"\x19CreateSatelliteHelmValues\x12).core.v1.CreateSatelliteHelmValuesRequest\x1a*.core.v1.CreateSatelliteHelmValuesResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.SatelliteService/CreateSatelliteHelmValuesB\x88\x01\n" +
+	"values_url\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tvaluesUrl2\xb8\x0f\n" +
+	"\x10SatelliteService\x12V\n" +
+	"\x0fCreateSatellite\x12\x1f.core.v1.CreateSatelliteRequest\x1a .core.v1.CreateSatelliteResponse\"\x00\x12V\n" +
+	"\x0fUpdateSatellite\x12\x1f.core.v1.UpdateSatelliteRequest\x1a .core.v1.UpdateSatelliteResponse\"\x00\x12\\\n" +
+	"\x11UpdateSatelliteV2\x12!.core.v1.UpdateSatelliteV2Request\x1a\".core.v1.UpdateSatelliteV2Response\"\x00\x12V\n" +
+	"\x0fDeleteSatellite\x12\x1f.core.v1.DeleteSatelliteRequest\x1a .core.v1.DeleteSatelliteResponse\"\x00\x12V\n" +
+	"\x0eListSatellites\x12\x1e.core.v1.ListSatellitesRequest\x1a\x1f.core.v1.ListSatellitesResponse\"\x03\x90\x02\x01\x12P\n" +
+	"\fGetSatellite\x12\x1c.core.v1.GetSatelliteRequest\x1a\x1d.core.v1.GetSatelliteResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x12GetSatelliteApiKey\x12\".core.v1.GetSatelliteApiKeyRequest\x1a#.core.v1.GetSatelliteApiKeyResponse\"\x03\x90\x02\x01\x12n\n" +
+	"\x16ListSatelliteInstances\x12&.core.v1.ListSatelliteInstancesRequest\x1a'.core.v1.ListSatelliteInstancesResponse\"\x03\x90\x02\x01\x12n\n" +
+	"\x17CreateSatelliteHostname\x12'.core.v1.CreateSatelliteHostnameRequest\x1a(.core.v1.CreateSatelliteHostnameResponse\"\x00\x12n\n" +
+	"\x17UpdateSatelliteHostname\x12'.core.v1.UpdateSatelliteHostnameRequest\x1a(.core.v1.UpdateSatelliteHostnameResponse\"\x00\x12t\n" +
+	"\x19UpdateSatelliteHostnameV2\x12).core.v1.UpdateSatelliteHostnameV2Request\x1a*.core.v1.UpdateSatelliteHostnameV2Response\"\x00\x12h\n" +
+	"\x14GetSatelliteHostname\x12$.core.v1.GetSatelliteHostnameRequest\x1a%.core.v1.GetSatelliteHostnameResponse\"\x03\x90\x02\x01\x12\x8f\x01\n" +
+	"!GetSatelliteHostnameBySatelliteId\x121.core.v1.GetSatelliteHostnameBySatelliteIdRequest\x1a2.core.v1.GetSatelliteHostnameBySatelliteIdResponse\"\x03\x90\x02\x01\x12n\n" +
+	"\x17DeleteSatelliteHostname\x12'.core.v1.DeleteSatelliteHostnameRequest\x1a(.core.v1.DeleteSatelliteHostnameResponse\"\x00\x12b\n" +
+	"\x13CreateSatelliteLink\x12#.core.v1.CreateSatelliteLinkRequest\x1a$.core.v1.CreateSatelliteLinkResponse\"\x00\x12\\\n" +
+	"\x10GetSatelliteLink\x12 .core.v1.GetSatelliteLinkRequest\x1a!.core.v1.GetSatelliteLinkResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x12ListSatelliteLinks\x12\".core.v1.ListSatelliteLinksRequest\x1a#.core.v1.ListSatelliteLinksResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13DeleteSatelliteLink\x12#.core.v1.DeleteSatelliteLinkRequest\x1a$.core.v1.DeleteSatelliteLinkResponse\"\x00\x12t\n" +
+	"\x19CreateSatelliteHelmValues\x12).core.v1.CreateSatelliteHelmValuesRequest\x1a*.core.v1.CreateSatelliteHelmValuesResponse\"\x00B\x88\x01\n" +
 	"\vcom.core.v1B\x0eSatelliteProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1476,7 +1475,7 @@ var File_core_v1_dashboard_proto protoreflect.FileDescriptor
 
 const file_core_v1_dashboard_proto_rawDesc = "" +
 	"\n" +
-	"\x17core/v1/dashboard.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x02\n" +
+	"\x17core/v1/dashboard.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x02\n" +
 	"\tDashboard\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -1609,13 +1608,13 @@ const file_core_v1_dashboard_proto_rawDesc = "" +
 	"$DASHBOARD_AI_DIMENSION_POLICY_ACTION\x10\b\x12)\n" +
 	"%DASHBOARD_AI_DIMENSION_OWASP_CATEGORY\x10\t\x12&\n" +
 	"\"DASHBOARD_AI_DIMENSION_POLICY_NAME\x10\n" +
-	"2\xc9\x05\n" +
-	"\x10DashboardService\x12\x8a\x01\n" +
-	"\x0fCreateDashboard\x12\x1f.core.v1.CreateDashboardRequest\x1a .core.v1.CreateDashboardResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.DashboardService/CreateDashboard\x12\x81\x01\n" +
-	"\fGetDashboard\x12\x1c.core.v1.GetDashboardRequest\x1a\x1d.core.v1.GetDashboardResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.DashboardService/GetDashboard\x90\x02\x01\x12\x89\x01\n" +
-	"\x0eListDashboards\x12\x1e.core.v1.ListDashboardsRequest\x1a\x1f.core.v1.ListDashboardsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.DashboardService/ListDashboards\x90\x02\x01\x12\x8a\x01\n" +
-	"\x0fUpdateDashboard\x12\x1f.core.v1.UpdateDashboardRequest\x1a .core.v1.UpdateDashboardResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.DashboardService/UpdateDashboard\x12\x8a\x01\n" +
-	"\x0fDeleteDashboard\x12\x1f.core.v1.DeleteDashboardRequest\x1a .core.v1.DeleteDashboardResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.DashboardService/DeleteDashboardB\x88\x01\n" +
+	"2\xc4\x03\n" +
+	"\x10DashboardService\x12V\n" +
+	"\x0fCreateDashboard\x12\x1f.core.v1.CreateDashboardRequest\x1a .core.v1.CreateDashboardResponse\"\x00\x12P\n" +
+	"\fGetDashboard\x12\x1c.core.v1.GetDashboardRequest\x1a\x1d.core.v1.GetDashboardResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0eListDashboards\x12\x1e.core.v1.ListDashboardsRequest\x1a\x1f.core.v1.ListDashboardsResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0fUpdateDashboard\x12\x1f.core.v1.UpdateDashboardRequest\x1a .core.v1.UpdateDashboardResponse\"\x00\x12V\n" +
+	"\x0fDeleteDashboard\x12\x1f.core.v1.DeleteDashboardRequest\x1a .core.v1.DeleteDashboardResponse\"\x00B\x88\x01\n" +
 	"\vcom.core.v1B\x0eDashboardProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -8639,7 +8638,7 @@ var File_core_v1_resource_proto protoreflect.FileDescriptor
 
 const file_core_v1_resource_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/resource.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/group.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x13core/v1/types.proto\x1a\x12core/v1/user.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x03\n" +
+	"\x16core/v1/resource.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/group.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x13core/v1/types.proto\x1a\x12core/v1/user.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x03\n" +
 	"\x15ResourceOAuthSettings\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
 	"\vresource_id\x18\x02 \x01(\tR\n" +
@@ -9268,77 +9267,77 @@ const file_core_v1_resource_proto_rawDesc = "" +
 	"\x1aIAM_NATIVE_USER_TYPE_AZURE\x10\x02*a\n" +
 	"\x12HTTPAPIKeyLocation\x12 \n" +
 	"\x1cHTTP_API_KEY_LOCATION_HEADER\x10\x00\x12)\n" +
-	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xd8a\n" +
-	"\x0fResourceService\x12|\n" +
-	"\vGetResource\x12\x1b.core.v1.GetResourceRequest\x1a\x1c.core.v1.GetResourceResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.ResourceService/GetResource\x90\x02\x01\x12\x84\x01\n" +
-	"\rListResources\x12\x1d.core.v1.ListResourcesRequest\x1a\x1e.core.v1.ListResourcesResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/ListResources\x90\x02\x01\x12\x85\x01\n" +
-	"\x0eCreateResource\x12\x1e.core.v1.CreateResourceRequest\x1a\x1f.core.v1.CreateResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/CreateResource\x12\x85\x01\n" +
-	"\x0eUpdateResource\x12\x1e.core.v1.UpdateResourceRequest\x1a\x1f.core.v1.UpdateResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/UpdateResource\x12\x8d\x01\n" +
-	"\x10UpdateResourceV2\x12 .core.v1.UpdateResourceV2Request\x1a!.core.v1.UpdateResourceV2Response\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/UpdateResourceV2\x12\x85\x01\n" +
-	"\x0eDeleteResource\x12\x1e.core.v1.DeleteResourceRequest\x1a\x1f.core.v1.DeleteResourceResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.ResourceService/DeleteResource\x12\xd5\x01\n" +
-	"\"UpdateResourceNativeUsersV3Enabled\x122.core.v1.UpdateResourceNativeUsersV3EnabledRequest\x1a3.core.v1.UpdateResourceNativeUsersV3EnabledResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/UpdateResourceNativeUsersV3Enabled\x12\xd1\x01\n" +
-	"!DeleteResourceNativeUserSelection\x121.core.v1.DeleteResourceNativeUserSelectionRequest\x1a2.core.v1.DeleteResourceNativeUserSelectionResponse\"E\x82\xd3\xe4\x93\x02?:\x01*\":/core.v1.ResourceService/DeleteResourceNativeUserSelection\x12\x90\x01\n" +
-	"\x10CreateNativeUser\x12 .core.v1.CreateNativeUserRequest\x1a!.core.v1.CreateNativeUserResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/CreateNativeUser\x88\x02\x01\x12\x98\x01\n" +
-	"\x12CreateNativeUserV2\x12\".core.v1.CreateNativeUserV2Request\x1a#.core.v1.CreateNativeUserV2Response\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ResourceService/CreateNativeUserV2\x88\x02\x01\x12\x87\x01\n" +
-	"\rGetNativeUser\x12\x1d.core.v1.GetNativeUserRequest\x1a\x1e.core.v1.GetNativeUserResponse\"7\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ResourceService/GetNativeUser\x88\x02\x01\x90\x02\x01\x12\x8f\x01\n" +
-	"\x0fListNativeUsers\x12\x1f.core.v1.ListNativeUsersRequest\x1a .core.v1.ListNativeUsersResponse\"9\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.ResourceService/ListNativeUsers\x88\x02\x01\x90\x02\x01\x12\x90\x01\n" +
-	"\x10DeleteNativeUser\x12 .core.v1.DeleteNativeUserRequest\x1a!.core.v1.DeleteNativeUserResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/DeleteNativeUser\x88\x02\x01\x12\x90\x01\n" +
-	"\x10UpdateNativeUser\x12 .core.v1.UpdateNativeUserRequest\x1a!.core.v1.UpdateNativeUserResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ResourceService/UpdateNativeUser\x88\x02\x01\x12\x98\x01\n" +
-	"\x12UpdateNativeUserV2\x12\".core.v1.UpdateNativeUserV2Request\x1a#.core.v1.UpdateNativeUserV2Response\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ResourceService/UpdateNativeUserV2\x88\x02\x01\x12\xc0\x01\n" +
-	"\x1cCreateNativeUserIdentityLink\x12,.core.v1.CreateNativeUserIdentityLinkRequest\x1a-.core.v1.CreateNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/CreateNativeUserIdentityLink\x88\x02\x01\x12\xb7\x01\n" +
-	"\x19GetNativeUserIdentityLink\x12).core.v1.GetNativeUserIdentityLinkRequest\x1a*.core.v1.GetNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ResourceService/GetNativeUserIdentityLink\x88\x02\x01\x90\x02\x01\x12\xbf\x01\n" +
-	"\x1bListNativeUserIdentityLinks\x12+.core.v1.ListNativeUserIdentityLinksRequest\x1a,.core.v1.ListNativeUserIdentityLinksResponse\"E\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/ListNativeUserIdentityLinks\x88\x02\x01\x90\x02\x01\x12\xc0\x01\n" +
-	"\x1cUpdateNativeUserIdentityLink\x12,.core.v1.UpdateNativeUserIdentityLinkRequest\x1a-.core.v1.UpdateNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/UpdateNativeUserIdentityLink\x88\x02\x01\x12\xc8\x01\n" +
-	"\x1eUpdateNativeUserIdentityLinkV2\x12..core.v1.UpdateNativeUserIdentityLinkV2Request\x1a/.core.v1.UpdateNativeUserIdentityLinkV2Response\"E\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/UpdateNativeUserIdentityLinkV2\x88\x02\x01\x12\xc0\x01\n" +
-	"\x1cDeleteNativeUserIdentityLink\x12,.core.v1.DeleteNativeUserIdentityLinkRequest\x1a-.core.v1.DeleteNativeUserIdentityLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/DeleteNativeUserIdentityLink\x88\x02\x01\x12\xc4\x01\n" +
-	"\x1dGetDataDiscoveryConfiguration\x12-.core.v1.GetDataDiscoveryConfigurationRequest\x1a..core.v1.GetDataDiscoveryConfigurationResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ResourceService/GetDataDiscoveryConfiguration\x90\x02\x01\x12\xcc\x01\n" +
-	"\x1fListDataDiscoveryConfigurations\x12/.core.v1.ListDataDiscoveryConfigurationsRequest\x1a0.core.v1.ListDataDiscoveryConfigurationsResponse\"F\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ResourceService/ListDataDiscoveryConfigurations\x90\x02\x01\x12\xcd\x01\n" +
-	" CreateDataDiscoveryConfiguration\x120.core.v1.CreateDataDiscoveryConfigurationRequest\x1a1.core.v1.CreateDataDiscoveryConfigurationResponse\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.ResourceService/CreateDataDiscoveryConfiguration\x12\xcd\x01\n" +
-	" UpdateDataDiscoveryConfiguration\x120.core.v1.UpdateDataDiscoveryConfigurationRequest\x1a1.core.v1.UpdateDataDiscoveryConfigurationResponse\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.ResourceService/UpdateDataDiscoveryConfiguration\x12\xd5\x01\n" +
-	"\"UpdateDataDiscoveryConfigurationV2\x122.core.v1.UpdateDataDiscoveryConfigurationV2Request\x1a3.core.v1.UpdateDataDiscoveryConfigurationV2Response\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/UpdateDataDiscoveryConfigurationV2\x12\xcd\x01\n" +
-	" DeleteDataDiscoveryConfiguration\x120.core.v1.DeleteDataDiscoveryConfigurationRequest\x1a1.core.v1.DeleteDataDiscoveryConfigurationResponse\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.ResourceService/DeleteDataDiscoveryConfiguration\x12\xb1\x01\n" +
-	"\x19CreateResourceHealthCheck\x12).core.v1.CreateResourceHealthCheckRequest\x1a*.core.v1.CreateResourceHealthCheckResponse\"=\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ResourceService/CreateResourceHealthCheck\x12\xa8\x01\n" +
-	"\x16GetResourceHealthCheck\x12&.core.v1.GetResourceHealthCheckRequest\x1a'.core.v1.GetResourceHealthCheckResponse\"=\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/GetResourceHealthCheck\x90\x02\x01\x12\xb1\x01\n" +
-	"\x19UpdateResourceHealthCheck\x12).core.v1.UpdateResourceHealthCheckRequest\x1a*.core.v1.UpdateResourceHealthCheckResponse\"=\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ResourceService/UpdateResourceHealthCheck\x12\xb9\x01\n" +
-	"\x1bUpdateResourceHealthCheckV2\x12+.core.v1.UpdateResourceHealthCheckV2Request\x1a,.core.v1.UpdateResourceHealthCheckV2Response\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/UpdateResourceHealthCheckV2\x12\xb1\x01\n" +
-	"\x19DeleteResourceHealthCheck\x12).core.v1.DeleteResourceHealthCheckRequest\x1a*.core.v1.DeleteResourceHealthCheckResponse\"=\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ResourceService/DeleteResourceHealthCheck\x12\xc5\x01\n" +
-	"\x1eCreateResourceTlsConfiguration\x12..core.v1.CreateResourceTlsConfigurationRequest\x1a/.core.v1.CreateResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/CreateResourceTlsConfiguration\x12\xbc\x01\n" +
-	"\x1bGetResourceTlsConfiguration\x12+.core.v1.GetResourceTlsConfigurationRequest\x1a,.core.v1.GetResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/GetResourceTlsConfiguration\x90\x02\x01\x12\xc5\x01\n" +
-	"\x1eUpdateResourceTlsConfiguration\x12..core.v1.UpdateResourceTlsConfigurationRequest\x1a/.core.v1.UpdateResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/UpdateResourceTlsConfiguration\x12\xcd\x01\n" +
-	" UpdateResourceTlsConfigurationV2\x120.core.v1.UpdateResourceTlsConfigurationV2Request\x1a1.core.v1.UpdateResourceTlsConfigurationV2Response\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.ResourceService/UpdateResourceTlsConfigurationV2\x12\xc5\x01\n" +
-	"\x1eDeleteResourceTlsConfiguration\x12..core.v1.DeleteResourceTlsConfigurationRequest\x1a/.core.v1.DeleteResourceTlsConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ResourceService/DeleteResourceTlsConfiguration\x12\xad\x01\n" +
-	"\x18CreateResourceSshHostKey\x12(.core.v1.CreateResourceSshHostKeyRequest\x1a).core.v1.CreateResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/CreateResourceSshHostKey\x12\xa4\x01\n" +
-	"\x15GetResourceSshHostKey\x12%.core.v1.GetResourceSshHostKeyRequest\x1a&.core.v1.GetResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ResourceService/GetResourceSshHostKey\x90\x02\x01\x12\xac\x01\n" +
-	"\x17ListResourceSshHostKeys\x12'.core.v1.ListResourceSshHostKeysRequest\x1a(.core.v1.ListResourceSshHostKeysResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ResourceService/ListResourceSshHostKeys\x90\x02\x01\x12\xad\x01\n" +
-	"\x18UpdateResourceSshHostKey\x12(.core.v1.UpdateResourceSshHostKeyRequest\x1a).core.v1.UpdateResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/UpdateResourceSshHostKey\x12\xad\x01\n" +
-	"\x18DeleteResourceSshHostKey\x12(.core.v1.DeleteResourceSshHostKeyRequest\x1a).core.v1.DeleteResourceSshHostKeyResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/DeleteResourceSshHostKey\x12\xc9\x01\n" +
-	"\x1fCreateResourceDialConfiguration\x12/.core.v1.CreateResourceDialConfigurationRequest\x1a0.core.v1.CreateResourceDialConfigurationResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ResourceService/CreateResourceDialConfiguration\x12\xc0\x01\n" +
-	"\x1cGetResourceDialConfiguration\x12,.core.v1.GetResourceDialConfigurationRequest\x1a-.core.v1.GetResourceDialConfigurationResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ResourceService/GetResourceDialConfiguration\x90\x02\x01\x12\xc9\x01\n" +
-	"\x1fUpdateResourceDialConfiguration\x12/.core.v1.UpdateResourceDialConfigurationRequest\x1a0.core.v1.UpdateResourceDialConfigurationResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ResourceService/UpdateResourceDialConfiguration\x12\xc9\x01\n" +
-	"\x1fDeleteResourceDialConfiguration\x12/.core.v1.DeleteResourceDialConfigurationRequest\x1a0.core.v1.DeleteResourceDialConfigurationResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ResourceService/DeleteResourceDialConfiguration\x12\xa5\x01\n" +
-	"\x16CreateResourceHostname\x12&.core.v1.CreateResourceHostnameRequest\x1a'.core.v1.CreateResourceHostnameResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/CreateResourceHostname\x12\x9c\x01\n" +
-	"\x13GetResourceHostname\x12#.core.v1.GetResourceHostnameRequest\x1a$.core.v1.GetResourceHostnameResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/GetResourceHostname\x90\x02\x01\x12\xa4\x01\n" +
-	"\x15ListResourceHostnames\x12%.core.v1.ListResourceHostnamesRequest\x1a&.core.v1.ListResourceHostnamesResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ResourceService/ListResourceHostnames\x90\x02\x01\x12\xa5\x01\n" +
-	"\x16UpdateResourceHostname\x12&.core.v1.UpdateResourceHostnameRequest\x1a'.core.v1.UpdateResourceHostnameResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/UpdateResourceHostname\x12\xad\x01\n" +
-	"\x18UpdateResourceHostnameV2\x12(.core.v1.UpdateResourceHostnameV2Request\x1a).core.v1.UpdateResourceHostnameV2Response\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/UpdateResourceHostnameV2\x12\xa5\x01\n" +
-	"\x16DeleteResourceHostname\x12&.core.v1.DeleteResourceHostnameRequest\x1a'.core.v1.DeleteResourceHostnameResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ResourceService/DeleteResourceHostname\x12\xe1\x01\n" +
-	"%CreateResourceClassifierConfiguration\x125.core.v1.CreateResourceClassifierConfigurationRequest\x1a6.core.v1.CreateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/CreateResourceClassifierConfiguration\x12\xe4\x01\n" +
-	"$ListResourceClassifierConfigurations\x124.core.v1.ListResourceClassifierConfigurationsRequest\x1a5.core.v1.ListResourceClassifierConfigurationsResponse\"O\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x02B:\x01*\"=/core.v1.ResourceService/ListResourceClassifierConfigurations\x90\x02\x01\x12\xd8\x01\n" +
-	"\"GetResourceClassifierConfiguration\x122.core.v1.GetResourceClassifierConfigurationRequest\x1a3.core.v1.GetResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ResourceService/GetResourceClassifierConfiguration\x90\x02\x01\x12\xe1\x01\n" +
-	"%UpdateResourceClassifierConfiguration\x125.core.v1.UpdateResourceClassifierConfigurationRequest\x1a6.core.v1.UpdateResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/UpdateResourceClassifierConfiguration\x12\xe9\x01\n" +
-	"'UpdateResourceClassifierConfigurationV2\x127.core.v1.UpdateResourceClassifierConfigurationV2Request\x1a8.core.v1.UpdateResourceClassifierConfigurationV2Response\"K\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.ResourceService/UpdateResourceClassifierConfigurationV2\x12\xe1\x01\n" +
-	"%DeleteResourceClassifierConfiguration\x125.core.v1.DeleteResourceClassifierConfigurationRequest\x1a6.core.v1.DeleteResourceClassifierConfigurationResponse\"I\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.ResourceService/DeleteResourceClassifierConfiguration\x12\x91\x01\n" +
-	"\x11CreateResourceTag\x12!.core.v1.CreateResourceTagRequest\x1a\".core.v1.CreateResourceTagResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.ResourceService/CreateResourceTag\x12\x91\x01\n" +
-	"\x11DeleteResourceTag\x12!.core.v1.DeleteResourceTagRequest\x1a\".core.v1.DeleteResourceTagResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.ResourceService/DeleteResourceTag\x12\x91\x01\n" +
-	"\x11UpdateResourceTag\x12!.core.v1.UpdateResourceTagRequest\x1a\".core.v1.UpdateResourceTagResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.ResourceService/UpdateResourceTag\x12\x99\x01\n" +
-	"\x13CreateResourceAlias\x12#.core.v1.CreateResourceAliasRequest\x1a$.core.v1.CreateResourceAliasResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/CreateResourceAlias\x12\x99\x01\n" +
-	"\x13DeleteResourceAlias\x12#.core.v1.DeleteResourceAliasRequest\x1a$.core.v1.DeleteResourceAliasResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/DeleteResourceAlias\x12\x99\x01\n" +
-	"\x13UpdateResourceAlias\x12#.core.v1.UpdateResourceAliasRequest\x1a$.core.v1.UpdateResourceAliasResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ResourceService/UpdateResourceAlias\x12\xbc\x01\n" +
-	"\x1bListResourceConnectorAccess\x12+.core.v1.ListResourceConnectorAccessRequest\x1a,.core.v1.ListResourceConnectorAccessResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/ListResourceConnectorAccess\x90\x02\x01\x12\xb9\x01\n" +
-	"\x1bCreateResourceOAuthSettings\x12+.core.v1.CreateResourceOAuthSettingsRequest\x1a,.core.v1.CreateResourceOAuthSettingsResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/CreateResourceOAuthSettings\x12\xb0\x01\n" +
-	"\x18GetResourceOAuthSettings\x12(.core.v1.GetResourceOAuthSettingsRequest\x1a).core.v1.GetResourceOAuthSettingsResponse\"?\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ResourceService/GetResourceOAuthSettings\x90\x02\x01\x12\xb9\x01\n" +
-	"\x1bUpdateResourceOAuthSettings\x12+.core.v1.UpdateResourceOAuthSettingsRequest\x1a,.core.v1.UpdateResourceOAuthSettingsResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/UpdateResourceOAuthSettings\x12\xb9\x01\n" +
-	"\x1bDeleteResourceOAuthSettings\x12+.core.v1.DeleteResourceOAuthSettingsRequest\x1a,.core.v1.DeleteResourceOAuthSettingsResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ResourceService/DeleteResourceOAuthSettingsB\x87\x01\n" +
+	"%HTTP_API_KEY_LOCATION_QUERY_PARAMETER\x10\x012\xc6@\n" +
+	"\x0fResourceService\x12M\n" +
+	"\vGetResource\x12\x1b.core.v1.GetResourceRequest\x1a\x1c.core.v1.GetResourceResponse\"\x03\x90\x02\x01\x12S\n" +
+	"\rListResources\x12\x1d.core.v1.ListResourcesRequest\x1a\x1e.core.v1.ListResourcesResponse\"\x03\x90\x02\x01\x12S\n" +
+	"\x0eCreateResource\x12\x1e.core.v1.CreateResourceRequest\x1a\x1f.core.v1.CreateResourceResponse\"\x00\x12S\n" +
+	"\x0eUpdateResource\x12\x1e.core.v1.UpdateResourceRequest\x1a\x1f.core.v1.UpdateResourceResponse\"\x00\x12Y\n" +
+	"\x10UpdateResourceV2\x12 .core.v1.UpdateResourceV2Request\x1a!.core.v1.UpdateResourceV2Response\"\x00\x12S\n" +
+	"\x0eDeleteResource\x12\x1e.core.v1.DeleteResourceRequest\x1a\x1f.core.v1.DeleteResourceResponse\"\x00\x12\x8f\x01\n" +
+	"\"UpdateResourceNativeUsersV3Enabled\x122.core.v1.UpdateResourceNativeUsersV3EnabledRequest\x1a3.core.v1.UpdateResourceNativeUsersV3EnabledResponse\"\x00\x12\x8c\x01\n" +
+	"!DeleteResourceNativeUserSelection\x121.core.v1.DeleteResourceNativeUserSelectionRequest\x1a2.core.v1.DeleteResourceNativeUserSelectionResponse\"\x00\x12\\\n" +
+	"\x10CreateNativeUser\x12 .core.v1.CreateNativeUserRequest\x1a!.core.v1.CreateNativeUserResponse\"\x03\x88\x02\x01\x12b\n" +
+	"\x12CreateNativeUserV2\x12\".core.v1.CreateNativeUserV2Request\x1a#.core.v1.CreateNativeUserV2Response\"\x03\x88\x02\x01\x12V\n" +
+	"\rGetNativeUser\x12\x1d.core.v1.GetNativeUserRequest\x1a\x1e.core.v1.GetNativeUserResponse\"\x06\x88\x02\x01\x90\x02\x01\x12\\\n" +
+	"\x0fListNativeUsers\x12\x1f.core.v1.ListNativeUsersRequest\x1a .core.v1.ListNativeUsersResponse\"\x06\x88\x02\x01\x90\x02\x01\x12\\\n" +
+	"\x10DeleteNativeUser\x12 .core.v1.DeleteNativeUserRequest\x1a!.core.v1.DeleteNativeUserResponse\"\x03\x88\x02\x01\x12\\\n" +
+	"\x10UpdateNativeUser\x12 .core.v1.UpdateNativeUserRequest\x1a!.core.v1.UpdateNativeUserResponse\"\x03\x88\x02\x01\x12b\n" +
+	"\x12UpdateNativeUserV2\x12\".core.v1.UpdateNativeUserV2Request\x1a#.core.v1.UpdateNativeUserV2Response\"\x03\x88\x02\x01\x12\x80\x01\n" +
+	"\x1cCreateNativeUserIdentityLink\x12,.core.v1.CreateNativeUserIdentityLinkRequest\x1a-.core.v1.CreateNativeUserIdentityLinkResponse\"\x03\x88\x02\x01\x12z\n" +
+	"\x19GetNativeUserIdentityLink\x12).core.v1.GetNativeUserIdentityLinkRequest\x1a*.core.v1.GetNativeUserIdentityLinkResponse\"\x06\x88\x02\x01\x90\x02\x01\x12\x80\x01\n" +
+	"\x1bListNativeUserIdentityLinks\x12+.core.v1.ListNativeUserIdentityLinksRequest\x1a,.core.v1.ListNativeUserIdentityLinksResponse\"\x06\x88\x02\x01\x90\x02\x01\x12\x80\x01\n" +
+	"\x1cUpdateNativeUserIdentityLink\x12,.core.v1.UpdateNativeUserIdentityLinkRequest\x1a-.core.v1.UpdateNativeUserIdentityLinkResponse\"\x03\x88\x02\x01\x12\x86\x01\n" +
+	"\x1eUpdateNativeUserIdentityLinkV2\x12..core.v1.UpdateNativeUserIdentityLinkV2Request\x1a/.core.v1.UpdateNativeUserIdentityLinkV2Response\"\x03\x88\x02\x01\x12\x80\x01\n" +
+	"\x1cDeleteNativeUserIdentityLink\x12,.core.v1.DeleteNativeUserIdentityLinkRequest\x1a-.core.v1.DeleteNativeUserIdentityLinkResponse\"\x03\x88\x02\x01\x12\x83\x01\n" +
+	"\x1dGetDataDiscoveryConfiguration\x12-.core.v1.GetDataDiscoveryConfigurationRequest\x1a..core.v1.GetDataDiscoveryConfigurationResponse\"\x03\x90\x02\x01\x12\x89\x01\n" +
+	"\x1fListDataDiscoveryConfigurations\x12/.core.v1.ListDataDiscoveryConfigurationsRequest\x1a0.core.v1.ListDataDiscoveryConfigurationsResponse\"\x03\x90\x02\x01\x12\x89\x01\n" +
+	" CreateDataDiscoveryConfiguration\x120.core.v1.CreateDataDiscoveryConfigurationRequest\x1a1.core.v1.CreateDataDiscoveryConfigurationResponse\"\x00\x12\x89\x01\n" +
+	" UpdateDataDiscoveryConfiguration\x120.core.v1.UpdateDataDiscoveryConfigurationRequest\x1a1.core.v1.UpdateDataDiscoveryConfigurationResponse\"\x00\x12\x8f\x01\n" +
+	"\"UpdateDataDiscoveryConfigurationV2\x122.core.v1.UpdateDataDiscoveryConfigurationV2Request\x1a3.core.v1.UpdateDataDiscoveryConfigurationV2Response\"\x00\x12\x89\x01\n" +
+	" DeleteDataDiscoveryConfiguration\x120.core.v1.DeleteDataDiscoveryConfigurationRequest\x1a1.core.v1.DeleteDataDiscoveryConfigurationResponse\"\x00\x12t\n" +
+	"\x19CreateResourceHealthCheck\x12).core.v1.CreateResourceHealthCheckRequest\x1a*.core.v1.CreateResourceHealthCheckResponse\"\x00\x12n\n" +
+	"\x16GetResourceHealthCheck\x12&.core.v1.GetResourceHealthCheckRequest\x1a'.core.v1.GetResourceHealthCheckResponse\"\x03\x90\x02\x01\x12t\n" +
+	"\x19UpdateResourceHealthCheck\x12).core.v1.UpdateResourceHealthCheckRequest\x1a*.core.v1.UpdateResourceHealthCheckResponse\"\x00\x12z\n" +
+	"\x1bUpdateResourceHealthCheckV2\x12+.core.v1.UpdateResourceHealthCheckV2Request\x1a,.core.v1.UpdateResourceHealthCheckV2Response\"\x00\x12t\n" +
+	"\x19DeleteResourceHealthCheck\x12).core.v1.DeleteResourceHealthCheckRequest\x1a*.core.v1.DeleteResourceHealthCheckResponse\"\x00\x12\x83\x01\n" +
+	"\x1eCreateResourceTlsConfiguration\x12..core.v1.CreateResourceTlsConfigurationRequest\x1a/.core.v1.CreateResourceTlsConfigurationResponse\"\x00\x12}\n" +
+	"\x1bGetResourceTlsConfiguration\x12+.core.v1.GetResourceTlsConfigurationRequest\x1a,.core.v1.GetResourceTlsConfigurationResponse\"\x03\x90\x02\x01\x12\x83\x01\n" +
+	"\x1eUpdateResourceTlsConfiguration\x12..core.v1.UpdateResourceTlsConfigurationRequest\x1a/.core.v1.UpdateResourceTlsConfigurationResponse\"\x00\x12\x89\x01\n" +
+	" UpdateResourceTlsConfigurationV2\x120.core.v1.UpdateResourceTlsConfigurationV2Request\x1a1.core.v1.UpdateResourceTlsConfigurationV2Response\"\x00\x12\x83\x01\n" +
+	"\x1eDeleteResourceTlsConfiguration\x12..core.v1.DeleteResourceTlsConfigurationRequest\x1a/.core.v1.DeleteResourceTlsConfigurationResponse\"\x00\x12q\n" +
+	"\x18CreateResourceSshHostKey\x12(.core.v1.CreateResourceSshHostKeyRequest\x1a).core.v1.CreateResourceSshHostKeyResponse\"\x00\x12k\n" +
+	"\x15GetResourceSshHostKey\x12%.core.v1.GetResourceSshHostKeyRequest\x1a&.core.v1.GetResourceSshHostKeyResponse\"\x03\x90\x02\x01\x12q\n" +
+	"\x17ListResourceSshHostKeys\x12'.core.v1.ListResourceSshHostKeysRequest\x1a(.core.v1.ListResourceSshHostKeysResponse\"\x03\x90\x02\x01\x12q\n" +
+	"\x18UpdateResourceSshHostKey\x12(.core.v1.UpdateResourceSshHostKeyRequest\x1a).core.v1.UpdateResourceSshHostKeyResponse\"\x00\x12q\n" +
+	"\x18DeleteResourceSshHostKey\x12(.core.v1.DeleteResourceSshHostKeyRequest\x1a).core.v1.DeleteResourceSshHostKeyResponse\"\x00\x12\x86\x01\n" +
+	"\x1fCreateResourceDialConfiguration\x12/.core.v1.CreateResourceDialConfigurationRequest\x1a0.core.v1.CreateResourceDialConfigurationResponse\"\x00\x12\x80\x01\n" +
+	"\x1cGetResourceDialConfiguration\x12,.core.v1.GetResourceDialConfigurationRequest\x1a-.core.v1.GetResourceDialConfigurationResponse\"\x03\x90\x02\x01\x12\x86\x01\n" +
+	"\x1fUpdateResourceDialConfiguration\x12/.core.v1.UpdateResourceDialConfigurationRequest\x1a0.core.v1.UpdateResourceDialConfigurationResponse\"\x00\x12\x86\x01\n" +
+	"\x1fDeleteResourceDialConfiguration\x12/.core.v1.DeleteResourceDialConfigurationRequest\x1a0.core.v1.DeleteResourceDialConfigurationResponse\"\x00\x12k\n" +
+	"\x16CreateResourceHostname\x12&.core.v1.CreateResourceHostnameRequest\x1a'.core.v1.CreateResourceHostnameResponse\"\x00\x12e\n" +
+	"\x13GetResourceHostname\x12#.core.v1.GetResourceHostnameRequest\x1a$.core.v1.GetResourceHostnameResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x15ListResourceHostnames\x12%.core.v1.ListResourceHostnamesRequest\x1a&.core.v1.ListResourceHostnamesResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x16UpdateResourceHostname\x12&.core.v1.UpdateResourceHostnameRequest\x1a'.core.v1.UpdateResourceHostnameResponse\"\x00\x12q\n" +
+	"\x18UpdateResourceHostnameV2\x12(.core.v1.UpdateResourceHostnameV2Request\x1a).core.v1.UpdateResourceHostnameV2Response\"\x00\x12k\n" +
+	"\x16DeleteResourceHostname\x12&.core.v1.DeleteResourceHostnameRequest\x1a'.core.v1.DeleteResourceHostnameResponse\"\x00\x12\x98\x01\n" +
+	"%CreateResourceClassifierConfiguration\x125.core.v1.CreateResourceClassifierConfigurationRequest\x1a6.core.v1.CreateResourceClassifierConfigurationResponse\"\x00\x12\x9c\x01\n" +
+	"$ListResourceClassifierConfigurations\x124.core.v1.ListResourceClassifierConfigurationsRequest\x1a5.core.v1.ListResourceClassifierConfigurationsResponse\"\a\xf0\xf9\x18\x01\x90\x02\x01\x12\x92\x01\n" +
+	"\"GetResourceClassifierConfiguration\x122.core.v1.GetResourceClassifierConfigurationRequest\x1a3.core.v1.GetResourceClassifierConfigurationResponse\"\x03\x90\x02\x01\x12\x98\x01\n" +
+	"%UpdateResourceClassifierConfiguration\x125.core.v1.UpdateResourceClassifierConfigurationRequest\x1a6.core.v1.UpdateResourceClassifierConfigurationResponse\"\x00\x12\x9e\x01\n" +
+	"'UpdateResourceClassifierConfigurationV2\x127.core.v1.UpdateResourceClassifierConfigurationV2Request\x1a8.core.v1.UpdateResourceClassifierConfigurationV2Response\"\x00\x12\x98\x01\n" +
+	"%DeleteResourceClassifierConfiguration\x125.core.v1.DeleteResourceClassifierConfigurationRequest\x1a6.core.v1.DeleteResourceClassifierConfigurationResponse\"\x00\x12\\\n" +
+	"\x11CreateResourceTag\x12!.core.v1.CreateResourceTagRequest\x1a\".core.v1.CreateResourceTagResponse\"\x00\x12\\\n" +
+	"\x11DeleteResourceTag\x12!.core.v1.DeleteResourceTagRequest\x1a\".core.v1.DeleteResourceTagResponse\"\x00\x12\\\n" +
+	"\x11UpdateResourceTag\x12!.core.v1.UpdateResourceTagRequest\x1a\".core.v1.UpdateResourceTagResponse\"\x00\x12b\n" +
+	"\x13CreateResourceAlias\x12#.core.v1.CreateResourceAliasRequest\x1a$.core.v1.CreateResourceAliasResponse\"\x00\x12b\n" +
+	"\x13DeleteResourceAlias\x12#.core.v1.DeleteResourceAliasRequest\x1a$.core.v1.DeleteResourceAliasResponse\"\x00\x12b\n" +
+	"\x13UpdateResourceAlias\x12#.core.v1.UpdateResourceAliasRequest\x1a$.core.v1.UpdateResourceAliasResponse\"\x00\x12}\n" +
+	"\x1bListResourceConnectorAccess\x12+.core.v1.ListResourceConnectorAccessRequest\x1a,.core.v1.ListResourceConnectorAccessResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1bCreateResourceOAuthSettings\x12+.core.v1.CreateResourceOAuthSettingsRequest\x1a,.core.v1.CreateResourceOAuthSettingsResponse\"\x00\x12t\n" +
+	"\x18GetResourceOAuthSettings\x12(.core.v1.GetResourceOAuthSettingsRequest\x1a).core.v1.GetResourceOAuthSettingsResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1bUpdateResourceOAuthSettings\x12+.core.v1.UpdateResourceOAuthSettingsRequest\x1a,.core.v1.UpdateResourceOAuthSettingsResponse\"\x00\x12z\n" +
+	"\x1bDeleteResourceOAuthSettings\x12+.core.v1.DeleteResourceOAuthSettingsRequest\x1a,.core.v1.DeleteResourceOAuthSettingsResponse\"\x00B\x87\x01\n" +
 	"\vcom.core.v1B\rResourceProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

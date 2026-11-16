@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/timestamppb"
@@ -644,7 +643,7 @@ var File_core_v1_spaces_proto protoreflect.FileDescriptor
 
 const file_core_v1_spaces_proto_rawDesc = "" +
 	"\n" +
-	"\x14core/v1/spaces.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
+	"\x14core/v1/spaces.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
 	"\x11ListSpacesRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -684,15 +683,15 @@ const file_core_v1_spaces_proto_rawDesc = "" +
 	"\x14UpdateSpaceV2Request\x12,\n" +
 	"\x05space\x18\x01 \x01(\v2\x0e.core.v1.SpaceB\x06\xbaH\x03\xc8\x01\x01R\x05space\"=\n" +
 	"\x15UpdateSpaceV2Response\x12$\n" +
-	"\x05space\x18\x01 \x01(\v2\x0e.core.v1.SpaceR\x05space2\xdc\x05\n" +
-	"\fSpaceService\x12v\n" +
-	"\vCreateSpace\x12\x1b.core.v1.CreateSpaceRequest\x1a\x1c.core.v1.CreateSpaceResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.SpaceService/CreateSpace\x12u\n" +
+	"\x05space\x18\x01 \x01(\v2\x0e.core.v1.SpaceR\x05space2\xd6\x03\n" +
+	"\fSpaceService\x12J\n" +
+	"\vCreateSpace\x12\x1b.core.v1.CreateSpaceRequest\x1a\x1c.core.v1.CreateSpaceResponse\"\x00\x12J\n" +
 	"\n" +
-	"ListSpaces\x12\x1a.core.v1.ListSpacesRequest\x1a\x1b.core.v1.ListSpacesResponse\".\x82\xd3\xe4\x93\x02%:\x01*\" /core.v1.SpaceService/ListSpaces\x90\x02\x01\x12m\n" +
-	"\bGetSpace\x12\x18.core.v1.GetSpaceRequest\x1a\x19.core.v1.GetSpaceResponse\",\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/core.v1.SpaceService/GetSpace\x90\x02\x01\x12v\n" +
-	"\vUpdateSpace\x12\x1b.core.v1.UpdateSpaceRequest\x1a\x1c.core.v1.UpdateSpaceResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.SpaceService/UpdateSpace\x12~\n" +
-	"\rUpdateSpaceV2\x12\x1d.core.v1.UpdateSpaceV2Request\x1a\x1e.core.v1.UpdateSpaceV2Response\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.SpaceService/UpdateSpaceV2\x12v\n" +
-	"\vDeleteSpace\x12\x1b.core.v1.DeleteSpaceRequest\x1a\x1c.core.v1.DeleteSpaceResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.SpaceService/DeleteSpaceB\x85\x01\n" +
+	"ListSpaces\x12\x1a.core.v1.ListSpacesRequest\x1a\x1b.core.v1.ListSpacesResponse\"\x03\x90\x02\x01\x12D\n" +
+	"\bGetSpace\x12\x18.core.v1.GetSpaceRequest\x1a\x19.core.v1.GetSpaceResponse\"\x03\x90\x02\x01\x12J\n" +
+	"\vUpdateSpace\x12\x1b.core.v1.UpdateSpaceRequest\x1a\x1c.core.v1.UpdateSpaceResponse\"\x00\x12P\n" +
+	"\rUpdateSpaceV2\x12\x1d.core.v1.UpdateSpaceV2Request\x1a\x1e.core.v1.UpdateSpaceV2Response\"\x00\x12J\n" +
+	"\vDeleteSpace\x12\x1b.core.v1.DeleteSpaceRequest\x1a\x1c.core.v1.DeleteSpaceResponse\"\x00B\x85\x01\n" +
 	"\vcom.core.v1B\vSpacesProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -3333,7 +3332,7 @@ var File_core_v1_user_proto protoreflect.FileDescriptor
 
 const file_core_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12core/v1/user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbd\x02\n" +
+	"\x12core/v1/user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbd\x02\n" +
 	"\n" +
 	"ExternalId\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12(\n" +
@@ -3550,40 +3549,40 @@ const file_core_v1_user_proto_rawDesc = "" +
 	"connection\"5\n" +
 	"\x1aDeleteSSOConnectionRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x1d\n" +
-	"\x1bDeleteSSOConnectionResponse2\xf9!\n" +
-	"\vUserService\x12q\n" +
+	"\x1bDeleteSSOConnectionResponse2\xb5\x16\n" +
+	"\vUserService\x12G\n" +
 	"\n" +
-	"CreateUser\x12\x1a.core.v1.CreateUserRequest\x1a\x1b.core.v1.CreateUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/CreateUser\x12q\n" +
+	"CreateUser\x12\x1a.core.v1.CreateUserRequest\x1a\x1b.core.v1.CreateUserResponse\"\x00\x12G\n" +
 	"\n" +
-	"DeleteUser\x12\x1a.core.v1.DeleteUserRequest\x1a\x1b.core.v1.DeleteUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/DeleteUser\x12q\n" +
+	"DeleteUser\x12\x1a.core.v1.DeleteUserRequest\x1a\x1b.core.v1.DeleteUserResponse\"\x00\x12G\n" +
 	"\n" +
-	"UpdateUser\x12\x1a.core.v1.UpdateUserRequest\x1a\x1b.core.v1.UpdateUserResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.UserService/UpdateUser\x12\x89\x01\n" +
-	"\x10UpdateUserExpiry\x12 .core.v1.UpdateUserExpiryRequest\x1a!.core.v1.UpdateUserExpiryResponse\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.UserService/UpdateUserExpiry\x12y\n" +
-	"\fUpdateUserV2\x12\x1c.core.v1.UpdateUserV2Request\x1a\x1d.core.v1.UpdateUserV2Response\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.UserService/UpdateUserV2\x12p\n" +
-	"\tListUsers\x12\x19.core.v1.ListUsersRequest\x1a\x1a.core.v1.ListUsersResponse\",\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/core.v1.UserService/ListUsers\x90\x02\x01\x12h\n" +
-	"\aGetUser\x12\x17.core.v1.GetUserRequest\x1a\x18.core.v1.GetUserResponse\"*\x82\xd3\xe4\x93\x02!:\x01*\"\x1c/core.v1.UserService/GetUser\x90\x02\x01\x12\x8d\x01\n" +
-	"\x11DeleteBlockedUser\x12!.core.v1.DeleteBlockedUserRequest\x1a\".core.v1.DeleteBlockedUserResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.UserService/DeleteBlockedUser\x12\x8d\x01\n" +
-	"\x11CreateBlockedUser\x12!.core.v1.CreateBlockedUserRequest\x1a\".core.v1.CreateBlockedUserResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.UserService/CreateBlockedUser\x12\x84\x01\n" +
-	"\x0eGetBlockedUser\x12\x1e.core.v1.GetBlockedUserRequest\x1a\x1f.core.v1.GetBlockedUserResponse\"1\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.UserService/GetBlockedUser\x90\x02\x01\x12\xa5\x01\n" +
-	"\x17DeleteHumanUserSessions\x12'.core.v1.DeleteHumanUserSessionsRequest\x1a(.core.v1.DeleteHumanUserSessionsResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.UserService/DeleteHumanUserSessions\x12\xb1\x01\n" +
-	"\x1aUpdateMachineUserPasswords\x12*.core.v1.UpdateMachineUserPasswordsRequest\x1a+.core.v1.UpdateMachineUserPasswordsResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.UserService/UpdateMachineUserPasswords\x12\xa4\x01\n" +
-	"\x16GetHumanSignInSettings\x12&.core.v1.GetHumanSignInSettingsRequest\x1a'.core.v1.GetHumanSignInSettingsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.UserService/GetHumanSignInSettings\x90\x02\x01\x12\xad\x01\n" +
-	"\x19UpdateHumanSignInSettings\x12).core.v1.UpdateHumanSignInSettingsRequest\x1a*.core.v1.UpdateHumanSignInSettingsResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/UpdateHumanSignInSettings\x12\x8c\x01\n" +
-	"\x10GetSignInMethods\x12 .core.v1.GetSignInMethodsRequest\x1a!.core.v1.GetSignInMethodsResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.UserService/GetSignInMethods\x90\x02\x01\x12\x95\x01\n" +
-	"\x13UpdateSignInMethods\x12#.core.v1.UpdateSignInMethodsRequest\x1a$.core.v1.UpdateSignInMethodsResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.UserService/UpdateSignInMethods\x12\x94\x01\n" +
-	"\x12ListSSOConnections\x12\".core.v1.ListSSOConnectionsRequest\x1a#.core.v1.ListSSOConnectionsResponse\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.UserService/ListSSOConnections\x90\x02\x01\x12\x8c\x01\n" +
-	"\x10GetSSOConnection\x12 .core.v1.GetSSOConnectionRequest\x1a!.core.v1.GetSSOConnectionResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.UserService/GetSSOConnection\x90\x02\x01\x12\x95\x01\n" +
-	"\x13CreateSSOConnection\x12#.core.v1.CreateSSOConnectionRequest\x1a$.core.v1.CreateSSOConnectionResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.UserService/CreateSSOConnection\x12\xc5\x01\n" +
-	"\x1fUpdateSSOConnectionClientSecret\x12/.core.v1.UpdateSSOConnectionClientSecretRequest\x1a0.core.v1.UpdateSSOConnectionClientSecretResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.UserService/UpdateSSOConnectionClientSecret\x12\xb1\x01\n" +
-	"\x1aUpdateSSOConnectionEnabled\x12*.core.v1.UpdateSSOConnectionEnabledRequest\x1a+.core.v1.UpdateSSOConnectionEnabledResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.UserService/UpdateSSOConnectionEnabled\x12\x95\x01\n" +
-	"\x13DeleteSSOConnection\x12#.core.v1.DeleteSSOConnectionRequest\x1a$.core.v1.DeleteSSOConnectionResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.UserService/DeleteSSOConnection\x12\xb0\x01\n" +
-	"\x19GetMachineUserCredentials\x12).core.v1.GetMachineUserCredentialsRequest\x1a*.core.v1.GetMachineUserCredentialsResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/GetMachineUserCredentials\x90\x02\x01\x12\xad\x01\n" +
-	"\x19CreateMachineUserPassword\x12).core.v1.CreateMachineUserPasswordRequest\x1a*.core.v1.CreateMachineUserPasswordResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.UserService/CreateMachineUserPassword\x12}\n" +
-	"\rCreateUserKey\x12\x1d.core.v1.CreateUserKeyRequest\x1a\x1e.core.v1.CreateUserKeyResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.UserService/CreateUserKey\x12\xa5\x01\n" +
-	"\x17CreateHumanUserPassword\x12'.core.v1.CreateHumanUserPasswordRequest\x1a(.core.v1.CreateHumanUserPasswordResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.UserService/CreateHumanUserPassword\x12\x98\x01\n" +
-	"\x13ListUserExternalIds\x12#.core.v1.ListUserExternalIdsRequest\x1a$.core.v1.ListUserExternalIdsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.UserService/ListUserExternalIds\x90\x02\x01\x12\x99\x01\n" +
-	"\x14CreateUserExternalId\x12$.core.v1.CreateUserExternalIdRequest\x1a%.core.v1.CreateUserExternalIdResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.UserService/CreateUserExternalId\x12\x99\x01\n" +
-	"\x14DeleteUserExternalId\x12$.core.v1.DeleteUserExternalIdRequest\x1a%.core.v1.DeleteUserExternalIdResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.UserService/DeleteUserExternalIdB\x83\x01\n" +
+	"UpdateUser\x12\x1a.core.v1.UpdateUserRequest\x1a\x1b.core.v1.UpdateUserResponse\"\x00\x12Y\n" +
+	"\x10UpdateUserExpiry\x12 .core.v1.UpdateUserExpiryRequest\x1a!.core.v1.UpdateUserExpiryResponse\"\x00\x12M\n" +
+	"\fUpdateUserV2\x12\x1c.core.v1.UpdateUserV2Request\x1a\x1d.core.v1.UpdateUserV2Response\"\x00\x12G\n" +
+	"\tListUsers\x12\x19.core.v1.ListUsersRequest\x1a\x1a.core.v1.ListUsersResponse\"\x03\x90\x02\x01\x12A\n" +
+	"\aGetUser\x12\x17.core.v1.GetUserRequest\x1a\x18.core.v1.GetUserResponse\"\x03\x90\x02\x01\x12\\\n" +
+	"\x11DeleteBlockedUser\x12!.core.v1.DeleteBlockedUserRequest\x1a\".core.v1.DeleteBlockedUserResponse\"\x00\x12\\\n" +
+	"\x11CreateBlockedUser\x12!.core.v1.CreateBlockedUserRequest\x1a\".core.v1.CreateBlockedUserResponse\"\x00\x12V\n" +
+	"\x0eGetBlockedUser\x12\x1e.core.v1.GetBlockedUserRequest\x1a\x1f.core.v1.GetBlockedUserResponse\"\x03\x90\x02\x01\x12n\n" +
+	"\x17DeleteHumanUserSessions\x12'.core.v1.DeleteHumanUserSessionsRequest\x1a(.core.v1.DeleteHumanUserSessionsResponse\"\x00\x12w\n" +
+	"\x1aUpdateMachineUserPasswords\x12*.core.v1.UpdateMachineUserPasswordsRequest\x1a+.core.v1.UpdateMachineUserPasswordsResponse\"\x00\x12n\n" +
+	"\x16GetHumanSignInSettings\x12&.core.v1.GetHumanSignInSettingsRequest\x1a'.core.v1.GetHumanSignInSettingsResponse\"\x03\x90\x02\x01\x12t\n" +
+	"\x19UpdateHumanSignInSettings\x12).core.v1.UpdateHumanSignInSettingsRequest\x1a*.core.v1.UpdateHumanSignInSettingsResponse\"\x00\x12\\\n" +
+	"\x10GetSignInMethods\x12 .core.v1.GetSignInMethodsRequest\x1a!.core.v1.GetSignInMethodsResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13UpdateSignInMethods\x12#.core.v1.UpdateSignInMethodsRequest\x1a$.core.v1.UpdateSignInMethodsResponse\"\x00\x12b\n" +
+	"\x12ListSSOConnections\x12\".core.v1.ListSSOConnectionsRequest\x1a#.core.v1.ListSSOConnectionsResponse\"\x03\x90\x02\x01\x12\\\n" +
+	"\x10GetSSOConnection\x12 .core.v1.GetSSOConnectionRequest\x1a!.core.v1.GetSSOConnectionResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13CreateSSOConnection\x12#.core.v1.CreateSSOConnectionRequest\x1a$.core.v1.CreateSSOConnectionResponse\"\x00\x12\x86\x01\n" +
+	"\x1fUpdateSSOConnectionClientSecret\x12/.core.v1.UpdateSSOConnectionClientSecretRequest\x1a0.core.v1.UpdateSSOConnectionClientSecretResponse\"\x00\x12w\n" +
+	"\x1aUpdateSSOConnectionEnabled\x12*.core.v1.UpdateSSOConnectionEnabledRequest\x1a+.core.v1.UpdateSSOConnectionEnabledResponse\"\x00\x12b\n" +
+	"\x13DeleteSSOConnection\x12#.core.v1.DeleteSSOConnectionRequest\x1a$.core.v1.DeleteSSOConnectionResponse\"\x00\x12w\n" +
+	"\x19GetMachineUserCredentials\x12).core.v1.GetMachineUserCredentialsRequest\x1a*.core.v1.GetMachineUserCredentialsResponse\"\x03\x90\x02\x01\x12t\n" +
+	"\x19CreateMachineUserPassword\x12).core.v1.CreateMachineUserPasswordRequest\x1a*.core.v1.CreateMachineUserPasswordResponse\"\x00\x12P\n" +
+	"\rCreateUserKey\x12\x1d.core.v1.CreateUserKeyRequest\x1a\x1e.core.v1.CreateUserKeyResponse\"\x00\x12n\n" +
+	"\x17CreateHumanUserPassword\x12'.core.v1.CreateHumanUserPasswordRequest\x1a(.core.v1.CreateHumanUserPasswordResponse\"\x00\x12e\n" +
+	"\x13ListUserExternalIds\x12#.core.v1.ListUserExternalIdsRequest\x1a$.core.v1.ListUserExternalIdsResponse\"\x03\x90\x02\x01\x12e\n" +
+	"\x14CreateUserExternalId\x12$.core.v1.CreateUserExternalIdRequest\x1a%.core.v1.CreateUserExternalIdResponse\"\x00\x12e\n" +
+	"\x14DeleteUserExternalId\x12$.core.v1.DeleteUserExternalIdRequest\x1a%.core.v1.DeleteUserExternalIdResponse\"\x00B\x83\x01\n" +
 	"\vcom.core.v1B\tUserProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

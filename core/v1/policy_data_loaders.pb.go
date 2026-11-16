@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -848,7 +847,7 @@ var File_core_v1_policy_data_loaders_proto protoreflect.FileDescriptor
 
 const file_core_v1_policy_data_loaders_proto_rawDesc = "" +
 	"\n" +
-	"!core/v1/policy_data_loaders.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x96\x04\n" +
+	"!core/v1/policy_data_loaders.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x96\x04\n" +
 	"\x10PolicyDataLoader\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
@@ -927,14 +926,14 @@ const file_core_v1_policy_data_loaders_proto_rawDesc = "" +
 	"\x1fUpdatePolicyDataLoaderV2Request\x12O\n" +
 	"\x12policy_data_loader\x18\x01 \x01(\v2\x19.core.v1.PolicyDataLoaderB\x06\xbaH\x03\xc8\x01\x01R\x10policyDataLoader\"k\n" +
 	" UpdatePolicyDataLoaderV2Response\x12G\n" +
-	"\x12policy_data_loader\x18\x01 \x01(\v2\x19.core.v1.PolicyDataLoaderR\x10policyDataLoader2\xb7\b\n" +
-	"\x17PolicyDataLoaderService\x12\xad\x01\n" +
-	"\x16CreatePolicyDataLoader\x12&.core.v1.CreatePolicyDataLoaderRequest\x1a'.core.v1.CreatePolicyDataLoaderResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.PolicyDataLoaderService/CreatePolicyDataLoader\x12\xac\x01\n" +
-	"\x15ListPolicyDataLoaders\x12%.core.v1.ListPolicyDataLoadersRequest\x1a&.core.v1.ListPolicyDataLoadersResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.PolicyDataLoaderService/ListPolicyDataLoaders\x90\x02\x01\x12\xa4\x01\n" +
-	"\x13GetPolicyDataLoader\x12#.core.v1.GetPolicyDataLoaderRequest\x1a$.core.v1.GetPolicyDataLoaderResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.PolicyDataLoaderService/GetPolicyDataLoader\x90\x02\x01\x12\xad\x01\n" +
-	"\x16UpdatePolicyDataLoader\x12&.core.v1.UpdatePolicyDataLoaderRequest\x1a'.core.v1.UpdatePolicyDataLoaderResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.PolicyDataLoaderService/UpdatePolicyDataLoader\x12\xb5\x01\n" +
-	"\x18UpdatePolicyDataLoaderV2\x12(.core.v1.UpdatePolicyDataLoaderV2Request\x1a).core.v1.UpdatePolicyDataLoaderV2Response\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.PolicyDataLoaderService/UpdatePolicyDataLoaderV2\x12\xad\x01\n" +
-	"\x16DeletePolicyDataLoader\x12&.core.v1.DeletePolicyDataLoaderRequest\x1a'.core.v1.DeletePolicyDataLoaderResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.PolicyDataLoaderService/DeletePolicyDataLoaderB\x90\x01\n" +
+	"\x12policy_data_loader\x18\x01 \x01(\v2\x19.core.v1.PolicyDataLoaderR\x10policyDataLoader2\xa7\x05\n" +
+	"\x17PolicyDataLoaderService\x12k\n" +
+	"\x16CreatePolicyDataLoader\x12&.core.v1.CreatePolicyDataLoaderRequest\x1a'.core.v1.CreatePolicyDataLoaderResponse\"\x00\x12k\n" +
+	"\x15ListPolicyDataLoaders\x12%.core.v1.ListPolicyDataLoadersRequest\x1a&.core.v1.ListPolicyDataLoadersResponse\"\x03\x90\x02\x01\x12e\n" +
+	"\x13GetPolicyDataLoader\x12#.core.v1.GetPolicyDataLoaderRequest\x1a$.core.v1.GetPolicyDataLoaderResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x16UpdatePolicyDataLoader\x12&.core.v1.UpdatePolicyDataLoaderRequest\x1a'.core.v1.UpdatePolicyDataLoaderResponse\"\x00\x12q\n" +
+	"\x18UpdatePolicyDataLoaderV2\x12(.core.v1.UpdatePolicyDataLoaderV2Request\x1a).core.v1.UpdatePolicyDataLoaderV2Response\"\x00\x12k\n" +
+	"\x16DeletePolicyDataLoader\x12&.core.v1.DeletePolicyDataLoaderRequest\x1a'.core.v1.DeletePolicyDataLoaderResponse\"\x00B\x90\x01\n" +
 	"\vcom.core.v1B\x16PolicyDataLoadersProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

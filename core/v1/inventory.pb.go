@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -3238,7 +3237,7 @@ var File_core_v1_inventory_proto protoreflect.FileDescriptor
 
 const file_core_v1_inventory_proto_rawDesc = "" +
 	"\n" +
-	"\x17core/v1/inventory.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x93\x02\n" +
+	"\x17core/v1/inventory.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x93\x02\n" +
 	"\tDatastore\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12'\n" +
@@ -3518,25 +3517,25 @@ const file_core_v1_inventory_proto_rawDesc = "" +
 	"\x16DeleteDataLabelRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"2\n" +
 	"\x17DeleteDataLabelResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xd1\x14\n" +
-	"\x10InventoryService\x12~\n" +
-	"\fUpdateColumn\x12\x1c.core.v1.UpdateColumnRequest\x1a\x1d.core.v1.UpdateColumnResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.InventoryService/UpdateColumn\x12\xa2\x01\n" +
-	"\x15CreateInventoryObject\x12%.core.v1.CreateInventoryObjectRequest\x1a&.core.v1.CreateInventoryObjectResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.InventoryService/CreateInventoryObject\x12\xb2\x01\n" +
-	"\x19UpdateInventoryObjectTags\x12).core.v1.UpdateInventoryObjectTagsRequest\x1a*.core.v1.UpdateInventoryObjectTagsResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.InventoryService/UpdateInventoryObjectTags\x12\xa2\x01\n" +
-	"\x15DeleteInventoryObject\x12%.core.v1.DeleteInventoryObjectRequest\x1a&.core.v1.DeleteInventoryObjectResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.InventoryService/DeleteInventoryObject\x12\xce\x01\n" +
-	" DeleteInventoryObjectsByResource\x120.core.v1.DeleteInventoryObjectsByResourceRequest\x1a1.core.v1.DeleteInventoryObjectsByResourceResponse\"E\x82\xd3\xe4\x93\x02?:\x01*\":/core.v1.InventoryService/DeleteInventoryObjectsByResource\x12\x99\x01\n" +
-	"\x12GetInventoryObject\x12\".core.v1.GetInventoryObjectRequest\x1a#.core.v1.GetInventoryObjectResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InventoryService/GetInventoryObject\x90\x02\x01\x12\xa1\x01\n" +
-	"\x14ListInventoryObjects\x12$.core.v1.ListInventoryObjectsRequest\x1a%.core.v1.ListInventoryObjectsResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.InventoryService/ListInventoryObjects\x90\x02\x01\x12\x96\x01\n" +
-	"\x12CreateInventoryTag\x12\".core.v1.CreateInventoryTagRequest\x1a#.core.v1.CreateInventoryTagResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InventoryService/CreateInventoryTag\x12\x95\x01\n" +
-	"\x11ListInventoryTags\x12!.core.v1.ListInventoryTagsRequest\x1a\".core.v1.ListInventoryTagsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.InventoryService/ListInventoryTags\x90\x02\x01\x12\x96\x01\n" +
-	"\x12DeleteInventoryTag\x12\".core.v1.DeleteInventoryTagRequest\x1a#.core.v1.DeleteInventoryTagResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InventoryService/DeleteInventoryTag\x12\x96\x01\n" +
-	"\x12UpdateInventoryTag\x12\".core.v1.UpdateInventoryTagRequest\x1a#.core.v1.UpdateInventoryTagResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InventoryService/UpdateInventoryTag\x12\x8a\x01\n" +
-	"\x0fCreateDataLabel\x12\x1f.core.v1.CreateDataLabelRequest\x1a .core.v1.CreateDataLabelResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.InventoryService/CreateDataLabel\x12\x81\x01\n" +
-	"\fGetDataLabel\x12\x1c.core.v1.GetDataLabelRequest\x1a\x1d.core.v1.GetDataLabelResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.InventoryService/GetDataLabel\x90\x02\x01\x12\x89\x01\n" +
-	"\x0eListDataLabels\x12\x1e.core.v1.ListDataLabelsRequest\x1a\x1f.core.v1.ListDataLabelsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.InventoryService/ListDataLabels\x90\x02\x01\x12\x8a\x01\n" +
-	"\x0fUpdateDataLabel\x12\x1f.core.v1.UpdateDataLabelRequest\x1a .core.v1.UpdateDataLabelResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.InventoryService/UpdateDataLabel\x12\x92\x01\n" +
-	"\x11UpdateDataLabelV2\x12!.core.v1.UpdateDataLabelV2Request\x1a\".core.v1.UpdateDataLabelV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.InventoryService/UpdateDataLabelV2\x12\x8a\x01\n" +
-	"\x0fDeleteDataLabel\x12\x1f.core.v1.DeleteDataLabelRequest\x1a .core.v1.DeleteDataLabelResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.InventoryService/DeleteDataLabelB\x88\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x99\r\n" +
+	"\x10InventoryService\x12M\n" +
+	"\fUpdateColumn\x12\x1c.core.v1.UpdateColumnRequest\x1a\x1d.core.v1.UpdateColumnResponse\"\x00\x12h\n" +
+	"\x15CreateInventoryObject\x12%.core.v1.CreateInventoryObjectRequest\x1a&.core.v1.CreateInventoryObjectResponse\"\x00\x12t\n" +
+	"\x19UpdateInventoryObjectTags\x12).core.v1.UpdateInventoryObjectTagsRequest\x1a*.core.v1.UpdateInventoryObjectTagsResponse\"\x00\x12h\n" +
+	"\x15DeleteInventoryObject\x12%.core.v1.DeleteInventoryObjectRequest\x1a&.core.v1.DeleteInventoryObjectResponse\"\x00\x12\x89\x01\n" +
+	" DeleteInventoryObjectsByResource\x120.core.v1.DeleteInventoryObjectsByResourceRequest\x1a1.core.v1.DeleteInventoryObjectsByResourceResponse\"\x00\x12b\n" +
+	"\x12GetInventoryObject\x12\".core.v1.GetInventoryObjectRequest\x1a#.core.v1.GetInventoryObjectResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x14ListInventoryObjects\x12$.core.v1.ListInventoryObjectsRequest\x1a%.core.v1.ListInventoryObjectsResponse\"\x03\x90\x02\x01\x12_\n" +
+	"\x12CreateInventoryTag\x12\".core.v1.CreateInventoryTagRequest\x1a#.core.v1.CreateInventoryTagResponse\"\x00\x12_\n" +
+	"\x11ListInventoryTags\x12!.core.v1.ListInventoryTagsRequest\x1a\".core.v1.ListInventoryTagsResponse\"\x03\x90\x02\x01\x12_\n" +
+	"\x12DeleteInventoryTag\x12\".core.v1.DeleteInventoryTagRequest\x1a#.core.v1.DeleteInventoryTagResponse\"\x00\x12_\n" +
+	"\x12UpdateInventoryTag\x12\".core.v1.UpdateInventoryTagRequest\x1a#.core.v1.UpdateInventoryTagResponse\"\x00\x12V\n" +
+	"\x0fCreateDataLabel\x12\x1f.core.v1.CreateDataLabelRequest\x1a .core.v1.CreateDataLabelResponse\"\x00\x12P\n" +
+	"\fGetDataLabel\x12\x1c.core.v1.GetDataLabelRequest\x1a\x1d.core.v1.GetDataLabelResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0eListDataLabels\x12\x1e.core.v1.ListDataLabelsRequest\x1a\x1f.core.v1.ListDataLabelsResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0fUpdateDataLabel\x12\x1f.core.v1.UpdateDataLabelRequest\x1a .core.v1.UpdateDataLabelResponse\"\x00\x12\\\n" +
+	"\x11UpdateDataLabelV2\x12!.core.v1.UpdateDataLabelV2Request\x1a\".core.v1.UpdateDataLabelV2Response\"\x00\x12V\n" +
+	"\x0fDeleteDataLabel\x12\x1f.core.v1.DeleteDataLabelRequest\x1a .core.v1.DeleteDataLabelResponse\"\x00B\x88\x01\n" +
 	"\vcom.core.v1B\x0eInventoryProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

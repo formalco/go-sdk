@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -680,7 +679,7 @@ var File_core_v1_hooks_proto protoreflect.FileDescriptor
 
 const file_core_v1_hooks_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/hooks.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb7\x04\n" +
+	"\x13core/v1/hooks.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb7\x04\n" +
 	"\x04Hook\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x125\n" +
 	"\x04name\x18\x02 \x01(\tB!\xbaH\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x04name\x12 \n" +
@@ -730,16 +729,16 @@ const file_core_v1_hooks_proto_rawDesc = "" +
 	"\x11DeleteHookRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"-\n" +
 	"\x12DeleteHookResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xc2\x04\n" +
-	"\vHookService\x12q\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xf4\x02\n" +
+	"\vHookService\x12G\n" +
 	"\n" +
-	"CreateHook\x12\x1a.core.v1.CreateHookRequest\x1a\x1b.core.v1.CreateHookResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.HookService/CreateHook\x12p\n" +
-	"\tListHooks\x12\x19.core.v1.ListHooksRequest\x1a\x1a.core.v1.ListHooksResponse\",\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/core.v1.HookService/ListHooks\x90\x02\x01\x12h\n" +
-	"\aGetHook\x12\x17.core.v1.GetHookRequest\x1a\x18.core.v1.GetHookResponse\"*\x82\xd3\xe4\x93\x02!:\x01*\"\x1c/core.v1.HookService/GetHook\x90\x02\x01\x12q\n" +
+	"CreateHook\x12\x1a.core.v1.CreateHookRequest\x1a\x1b.core.v1.CreateHookResponse\"\x00\x12G\n" +
+	"\tListHooks\x12\x19.core.v1.ListHooksRequest\x1a\x1a.core.v1.ListHooksResponse\"\x03\x90\x02\x01\x12A\n" +
+	"\aGetHook\x12\x17.core.v1.GetHookRequest\x1a\x18.core.v1.GetHookResponse\"\x03\x90\x02\x01\x12G\n" +
 	"\n" +
-	"UpdateHook\x12\x1a.core.v1.UpdateHookRequest\x1a\x1b.core.v1.UpdateHookResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.HookService/UpdateHook\x12q\n" +
+	"UpdateHook\x12\x1a.core.v1.UpdateHookRequest\x1a\x1b.core.v1.UpdateHookResponse\"\x00\x12G\n" +
 	"\n" +
-	"DeleteHook\x12\x1a.core.v1.DeleteHookRequest\x1a\x1b.core.v1.DeleteHookResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.HookService/DeleteHookB\x84\x01\n" +
+	"DeleteHook\x12\x1a.core.v1.DeleteHookRequest\x1a\x1b.core.v1.DeleteHookResponse\"\x00B\x84\x01\n" +
 	"\vcom.core.v1B\n" +
 	"HooksProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 

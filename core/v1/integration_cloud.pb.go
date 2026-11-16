@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -2609,7 +2608,7 @@ var File_core_v1_integration_cloud_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\n" +
-	"\x1fcore/v1/integration_cloud.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdf\x02\n" +
+	"\x1fcore/v1/integration_cloud.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdf\x02\n" +
 	"\x10CloudIntegration\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x16\n" +
@@ -2864,18 +2863,18 @@ const file_core_v1_integration_cloud_proto_rawDesc = "" +
 	"\x10role_definitions\x18\x06 \x03(\tB\x02\x18\x01R\x0froleDefinitions\x122\n" +
 	"\x15blob_storage_accounts\x18\a \x03(\tR\x13blobStorageAccounts\x12\x18\n" +
 	"\aactions\x18\b \x03(\tR\aactions\x12!\n" +
-	"\fdata_actions\x18\t \x03(\tR\vdataActions2\x85\x0f\n" +
-	"\x17IntegrationCloudService\x12\xa4\x01\n" +
-	"\x13GetIntegrationCloud\x12#.core.v1.GetIntegrationCloudRequest\x1a$.core.v1.GetIntegrationCloudResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.IntegrationCloudService/GetIntegrationCloud\x90\x02\x01\x12\xac\x01\n" +
-	"\x15ListIntegrationClouds\x12%.core.v1.ListIntegrationCloudsRequest\x1a&.core.v1.ListIntegrationCloudsResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.IntegrationCloudService/ListIntegrationClouds\x90\x02\x01\x12\xad\x01\n" +
-	"\x16CreateCloudIntegration\x12&.core.v1.CreateCloudIntegrationRequest\x1a'.core.v1.CreateCloudIntegrationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.IntegrationCloudService/CreateCloudIntegration\x12\xad\x01\n" +
-	"\x16UpdateCloudIntegration\x12&.core.v1.UpdateCloudIntegrationRequest\x1a'.core.v1.UpdateCloudIntegrationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.IntegrationCloudService/UpdateCloudIntegration\x12\xb5\x01\n" +
-	"\x18UpdateCloudIntegrationV2\x12(.core.v1.UpdateCloudIntegrationV2Request\x1a).core.v1.UpdateCloudIntegrationV2Response\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.IntegrationCloudService/UpdateCloudIntegrationV2\x12\xad\x01\n" +
-	"\x16DeleteCloudIntegration\x12&.core.v1.DeleteCloudIntegrationRequest\x1a'.core.v1.DeleteCloudIntegrationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.IntegrationCloudService/DeleteCloudIntegration\x12\xc4\x01\n" +
-	"\x1bGetGCPCloudIntegrationSetup\x12+.core.v1.GetGCPCloudIntegrationSetupRequest\x1a,.core.v1.GetGCPCloudIntegrationSetupResponse\"J\x82\xd3\xe4\x93\x02A:\x01*\"</core.v1.IntegrationCloudService/GetGCPCloudIntegrationSetup\x90\x02\x01\x12\xd5\x01\n" +
-	" SetGCPCloudIntegrationActivation\x120.core.v1.SetGCPCloudIntegrationActivationRequest\x1a1.core.v1.SetGCPCloudIntegrationActivationResponse\"L\x82\xd3\xe4\x93\x02F:\x01*\"A/core.v1.IntegrationCloudService/SetGCPCloudIntegrationActivation\x12\xcc\x01\n" +
-	"\x1dGetAzureCloudIntegrationSetup\x12-.core.v1.GetAzureCloudIntegrationSetupRequest\x1a..core.v1.GetAzureCloudIntegrationSetupResponse\"L\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.IntegrationCloudService/GetAzureCloudIntegrationSetup\x90\x02\x01\x12\xdd\x01\n" +
-	"\"SetAzureCloudIntegrationActivation\x122.core.v1.SetAzureCloudIntegrationActivationRequest\x1a3.core.v1.SetAzureCloudIntegrationActivationResponse\"N\x82\xd3\xe4\x93\x02H:\x01*\"C/core.v1.IntegrationCloudService/SetAzureCloudIntegrationActivationB\x8f\x01\n" +
+	"\fdata_actions\x18\t \x03(\tR\vdataActions2\xca\t\n" +
+	"\x17IntegrationCloudService\x12e\n" +
+	"\x13GetIntegrationCloud\x12#.core.v1.GetIntegrationCloudRequest\x1a$.core.v1.GetIntegrationCloudResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x15ListIntegrationClouds\x12%.core.v1.ListIntegrationCloudsRequest\x1a&.core.v1.ListIntegrationCloudsResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x16CreateCloudIntegration\x12&.core.v1.CreateCloudIntegrationRequest\x1a'.core.v1.CreateCloudIntegrationResponse\"\x00\x12k\n" +
+	"\x16UpdateCloudIntegration\x12&.core.v1.UpdateCloudIntegrationRequest\x1a'.core.v1.UpdateCloudIntegrationResponse\"\x00\x12q\n" +
+	"\x18UpdateCloudIntegrationV2\x12(.core.v1.UpdateCloudIntegrationV2Request\x1a).core.v1.UpdateCloudIntegrationV2Response\"\x00\x12k\n" +
+	"\x16DeleteCloudIntegration\x12&.core.v1.DeleteCloudIntegrationRequest\x1a'.core.v1.DeleteCloudIntegrationResponse\"\x00\x12}\n" +
+	"\x1bGetGCPCloudIntegrationSetup\x12+.core.v1.GetGCPCloudIntegrationSetupRequest\x1a,.core.v1.GetGCPCloudIntegrationSetupResponse\"\x03\x90\x02\x01\x12\x89\x01\n" +
+	" SetGCPCloudIntegrationActivation\x120.core.v1.SetGCPCloudIntegrationActivationRequest\x1a1.core.v1.SetGCPCloudIntegrationActivationResponse\"\x00\x12\x83\x01\n" +
+	"\x1dGetAzureCloudIntegrationSetup\x12-.core.v1.GetAzureCloudIntegrationSetupRequest\x1a..core.v1.GetAzureCloudIntegrationSetupResponse\"\x03\x90\x02\x01\x12\x8f\x01\n" +
+	"\"SetAzureCloudIntegrationActivation\x122.core.v1.SetAzureCloudIntegrationActivationRequest\x1a3.core.v1.SetAzureCloudIntegrationActivationResponse\"\x00B\x8f\x01\n" +
 	"\vcom.core.v1B\x15IntegrationCloudProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

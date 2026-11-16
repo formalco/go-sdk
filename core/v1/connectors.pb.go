@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
@@ -6090,7 +6089,7 @@ var File_core_v1_connectors_proto protoreflect.FileDescriptor
 
 const file_core_v1_connectors_proto_rawDesc = "" +
 	"\n" +
-	"\x18core/v1/connectors.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa6\x02\n" +
+	"\x18core/v1/connectors.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x13core/v1/types.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa6\x02\n" +
 	"\x15ListConnectorsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -6489,66 +6488,66 @@ const file_core_v1_connectors_proto_rawDesc = "" +
 	"\"UpdateConnectorAiProviderV2Request\x12X\n" +
 	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderB\x06\xbaH\x03\xc8\x01\x01R\x13connectorAiProvider\"w\n" +
 	"#UpdateConnectorAiProviderV2Response\x12P\n" +
-	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\x99R\n" +
-	"\x10ConnectorService\x12\x89\x01\n" +
-	"\x0eListConnectors\x12\x1e.core.v1.ListConnectorsRequest\x1a\x1f.core.v1.ListConnectorsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.ConnectorService/ListConnectors\x90\x02\x01\x12\x81\x01\n" +
-	"\fGetConnector\x12\x1c.core.v1.GetConnectorRequest\x1a\x1d.core.v1.GetConnectorResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.ConnectorService/GetConnector\x90\x02\x01\x12\x99\x01\n" +
-	"\x12GetConnectorApiKey\x12\".core.v1.GetConnectorApiKeyRequest\x1a#.core.v1.GetConnectorApiKeyResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ConnectorService/GetConnectorApiKey\x90\x02\x01\x12\xa9\x01\n" +
-	"\x16ListConnectorInstances\x12&.core.v1.ListConnectorInstancesRequest\x1a'.core.v1.ListConnectorInstancesResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ConnectorService/ListConnectorInstances\x90\x02\x01\x12\xe6\x01\n" +
-	"&CreateConnectorInstanceShutdownRequest\x126.core.v1.CreateConnectorInstanceShutdownRequestRequest\x1a7.core.v1.CreateConnectorInstanceShutdownRequestResponse\"K\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.ConnectorService/CreateConnectorInstanceShutdownRequest\x12\x8a\x01\n" +
-	"\x0fCreateConnector\x12\x1f.core.v1.CreateConnectorRequest\x1a .core.v1.CreateConnectorResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ConnectorService/CreateConnector\x12\x8a\x01\n" +
-	"\x0fUpdateConnector\x12\x1f.core.v1.UpdateConnectorRequest\x1a .core.v1.UpdateConnectorResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ConnectorService/UpdateConnector\x12\x92\x01\n" +
-	"\x11UpdateConnectorV2\x12!.core.v1.UpdateConnectorV2Request\x1a\".core.v1.UpdateConnectorV2Response\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ConnectorService/UpdateConnectorV2\x12\x8a\x01\n" +
-	"\x0fDeleteConnector\x12\x1f.core.v1.DeleteConnectorRequest\x1a .core.v1.DeleteConnectorResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ConnectorService/DeleteConnector\x12\xaa\x01\n" +
-	"\x17CreateConnectorListener\x12'.core.v1.CreateConnectorListenerRequest\x1a(.core.v1.CreateConnectorListenerResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/CreateConnectorListener\x12\xa1\x01\n" +
-	"\x14GetConnectorListener\x12$.core.v1.GetConnectorListenerRequest\x1a%.core.v1.GetConnectorListenerResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ConnectorService/GetConnectorListener\x90\x02\x01\x12\xad\x01\n" +
-	"\x16ListConnectorListeners\x12&.core.v1.ListConnectorListenersRequest\x1a'.core.v1.ListConnectorListenersResponse\"B\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ConnectorService/ListConnectorListeners\x90\x02\x01\x12\xaa\x01\n" +
-	"\x17UpdateConnectorListener\x12'.core.v1.UpdateConnectorListenerRequest\x1a(.core.v1.UpdateConnectorListenerResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/UpdateConnectorListener\x12\xaa\x01\n" +
-	"\x17DeleteConnectorListener\x12'.core.v1.DeleteConnectorListenerRequest\x1a(.core.v1.DeleteConnectorListenerResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/DeleteConnectorListener\x12\xba\x01\n" +
-	"\x1bCreateConnectorListenerRule\x12+.core.v1.CreateConnectorListenerRuleRequest\x1a,.core.v1.CreateConnectorListenerRuleResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/CreateConnectorListenerRule\x12\xb1\x01\n" +
-	"\x18GetConnectorListenerRule\x12(.core.v1.GetConnectorListenerRuleRequest\x1a).core.v1.GetConnectorListenerRuleResponse\"@\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ConnectorService/GetConnectorListenerRule\x90\x02\x01\x12\xb9\x01\n" +
-	"\x1aListConnectorListenerRules\x12*.core.v1.ListConnectorListenerRulesRequest\x1a+.core.v1.ListConnectorListenerRulesResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ConnectorService/ListConnectorListenerRules\x90\x02\x01\x12\xba\x01\n" +
-	"\x1bUpdateConnectorListenerRule\x12+.core.v1.UpdateConnectorListenerRuleRequest\x1a,.core.v1.UpdateConnectorListenerRuleResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/UpdateConnectorListenerRule\x12\xba\x01\n" +
-	"\x1bDeleteConnectorListenerRule\x12+.core.v1.DeleteConnectorListenerRuleRequest\x1a,.core.v1.DeleteConnectorListenerRuleResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/DeleteConnectorListenerRule\x12\xbd\x01\n" +
-	"\x1bCreateConnectorListenerLink\x12+.core.v1.CreateConnectorListenerLinkRequest\x1a,.core.v1.CreateConnectorListenerLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/CreateConnectorListenerLink\x88\x02\x01\x12\xb4\x01\n" +
-	"\x18GetConnectorListenerLink\x12(.core.v1.GetConnectorListenerLinkRequest\x1a).core.v1.GetConnectorListenerLinkResponse\"C\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.ConnectorService/GetConnectorListenerLink\x88\x02\x01\x90\x02\x01\x12\xbc\x01\n" +
-	"\x1aListConnectorListenerLinks\x12*.core.v1.ListConnectorListenerLinksRequest\x1a+.core.v1.ListConnectorListenerLinksResponse\"E\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ConnectorService/ListConnectorListenerLinks\x88\x02\x01\x90\x02\x01\x12\xbd\x01\n" +
-	"\x1bUpdateConnectorListenerLink\x12+.core.v1.UpdateConnectorListenerLinkRequest\x1a,.core.v1.UpdateConnectorListenerLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/UpdateConnectorListenerLink\x88\x02\x01\x12\xbd\x01\n" +
-	"\x1bDeleteConnectorListenerLink\x12+.core.v1.DeleteConnectorListenerLinkRequest\x1a,.core.v1.DeleteConnectorListenerLinkResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/DeleteConnectorListenerLink\x88\x02\x01\x12\xaa\x01\n" +
-	"\x17CreateConnectorHostname\x12'.core.v1.CreateConnectorHostnameRequest\x1a(.core.v1.CreateConnectorHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/CreateConnectorHostname\x12\xa1\x01\n" +
-	"\x14GetConnectorHostname\x12$.core.v1.GetConnectorHostnameRequest\x1a%.core.v1.GetConnectorHostnameResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ConnectorService/GetConnectorHostname\x90\x02\x01\x12\xb9\x01\n" +
-	"\x1aGetConnectorTLSCertificate\x12*.core.v1.GetConnectorTLSCertificateRequest\x1a+.core.v1.GetConnectorTLSCertificateResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ConnectorService/GetConnectorTLSCertificate\x90\x02\x01\x12\xaa\x01\n" +
-	"\x17UpdateConnectorHostname\x12'.core.v1.UpdateConnectorHostnameRequest\x1a(.core.v1.UpdateConnectorHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/UpdateConnectorHostname\x12\xaa\x01\n" +
-	"\x17DeleteConnectorHostname\x12'.core.v1.DeleteConnectorHostnameRequest\x1a(.core.v1.DeleteConnectorHostnameResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/DeleteConnectorHostname\x12\xbe\x01\n" +
-	"\x1cCreateConnectorConfiguration\x12,.core.v1.CreateConnectorConfigurationRequest\x1a-.core.v1.CreateConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/CreateConnectorConfiguration\x12\xb5\x01\n" +
-	"\x19GetConnectorConfiguration\x12).core.v1.GetConnectorConfigurationRequest\x1a*.core.v1.GetConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/GetConnectorConfiguration\x90\x02\x01\x12\xe9\x01\n" +
-	"&GetConnectorConfigurationByConnectorId\x126.core.v1.GetConnectorConfigurationByConnectorIdRequest\x1a7.core.v1.GetConnectorConfigurationByConnectorIdResponse\"N\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.ConnectorService/GetConnectorConfigurationByConnectorId\x90\x02\x01\x12\xbe\x01\n" +
-	"\x1cUpdateConnectorConfiguration\x12,.core.v1.UpdateConnectorConfigurationRequest\x1a-.core.v1.UpdateConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/UpdateConnectorConfiguration\x12\xbe\x01\n" +
-	"\x1cDeleteConnectorConfiguration\x12,.core.v1.DeleteConnectorConfigurationRequest\x1a-.core.v1.DeleteConnectorConfigurationResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/DeleteConnectorConfiguration\x12\xbe\x01\n" +
-	"\x1cCreateConnectorSatelliteLink\x12,.core.v1.CreateConnectorSatelliteLinkRequest\x1a-.core.v1.CreateConnectorSatelliteLinkResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/CreateConnectorSatelliteLink\x12\xe2\x01\n" +
-	"%CreateConnectorCloudformationTemplate\x125.core.v1.CreateConnectorCloudformationTemplateRequest\x1a6.core.v1.CreateConnectorCloudformationTemplateResponse\"J\x82\xd3\xe4\x93\x02D:\x01*\"?/core.v1.ConnectorService/CreateConnectorCloudformationTemplate\x12\xb2\x01\n" +
-	"\x19CreateConnectorHelmValues\x12).core.v1.CreateConnectorHelmValuesRequest\x1a*.core.v1.CreateConnectorHelmValuesResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/CreateConnectorHelmValues\x12\xb5\x01\n" +
-	"\x19GetConnectorSatelliteLink\x12).core.v1.GetConnectorSatelliteLinkRequest\x1a*.core.v1.GetConnectorSatelliteLinkResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/GetConnectorSatelliteLink\x90\x02\x01\x12\xbd\x01\n" +
-	"\x1bListConnectorSatelliteLinks\x12+.core.v1.ListConnectorSatelliteLinksRequest\x1a,.core.v1.ListConnectorSatelliteLinksResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/ListConnectorSatelliteLinks\x90\x02\x01\x12\xbe\x01\n" +
-	"\x1cDeleteConnectorSatelliteLink\x12,.core.v1.DeleteConnectorSatelliteLinkRequest\x1a-.core.v1.DeleteConnectorSatelliteLinkResponse\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ConnectorService/DeleteConnectorSatelliteLink\x12\xa9\x01\n" +
-	"\x16GetConnectorSSHHostKey\x12&.core.v1.GetConnectorSSHHostKeyRequest\x1a'.core.v1.GetConnectorSSHHostKeyResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ConnectorService/GetConnectorSSHHostKey\x90\x02\x01\x12\xb2\x01\n" +
-	"\x19CreateConnectorAiProvider\x12).core.v1.CreateConnectorAiProviderRequest\x1a*.core.v1.CreateConnectorAiProviderResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/CreateConnectorAiProvider\x12\xa9\x01\n" +
-	"\x16GetConnectorAiProvider\x12&.core.v1.GetConnectorAiProviderRequest\x1a'.core.v1.GetConnectorAiProviderResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.ConnectorService/GetConnectorAiProvider\x90\x02\x01\x12\xb2\x01\n" +
-	"\x19UpdateConnectorAiProvider\x12).core.v1.UpdateConnectorAiProviderRequest\x1a*.core.v1.UpdateConnectorAiProviderResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/UpdateConnectorAiProvider\x12\xb2\x01\n" +
-	"\x19DeleteConnectorAiProvider\x12).core.v1.DeleteConnectorAiProviderRequest\x1a*.core.v1.DeleteConnectorAiProviderResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/DeleteConnectorAiProvider\x12\xd2\x01\n" +
-	"!CreateConnectorTokenEncryptionKey\x121.core.v1.CreateConnectorTokenEncryptionKeyRequest\x1a2.core.v1.CreateConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ConnectorService/CreateConnectorTokenEncryptionKey\x12\xc9\x01\n" +
-	"\x1eGetConnectorTokenEncryptionKey\x12..core.v1.GetConnectorTokenEncryptionKeyRequest\x1a/.core.v1.GetConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ConnectorService/GetConnectorTokenEncryptionKey\x90\x02\x01\x12\xd2\x01\n" +
-	"!DeleteConnectorTokenEncryptionKey\x121.core.v1.DeleteConnectorTokenEncryptionKeyRequest\x1a2.core.v1.DeleteConnectorTokenEncryptionKeyResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.ConnectorService/DeleteConnectorTokenEncryptionKey\x12\x8d\x01\n" +
-	"\x0fGetConnectorVpn\x12\x1f.core.v1.GetConnectorVpnRequest\x1a .core.v1.GetConnectorVpnResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.ConnectorService/GetConnectorVpn\x90\x02\x01\x12\x96\x01\n" +
-	"\x12UpdateConnectorVpn\x12\".core.v1.UpdateConnectorVpnRequest\x1a#.core.v1.UpdateConnectorVpnResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ConnectorService/UpdateConnectorVpn\x12\xb1\x01\n" +
-	"\x17ListConnectorVpnRegions\x12'.core.v1.ListConnectorVpnRegionsRequest\x1a(.core.v1.ListConnectorVpnRegionsResponse\"C\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.ConnectorService/ListConnectorVpnRegions\x90\x02\x01\x12\xa6\x01\n" +
-	"\x15CreateFederationToken\x12%.core.v1.CreateFederationTokenRequest\x1a&.core.v1.CreateFederationTokenResponse\">\xf0\xf9\x18\x01\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.ConnectorService/CreateFederationToken\x12\xb2\x01\n" +
-	"\x19UpdateConnectorListenerV2\x12).core.v1.UpdateConnectorListenerV2Request\x1a*.core.v1.UpdateConnectorListenerV2Response\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/UpdateConnectorListenerV2\x12\xc2\x01\n" +
-	"\x1dUpdateConnectorListenerRuleV2\x12-.core.v1.UpdateConnectorListenerRuleV2Request\x1a..core.v1.UpdateConnectorListenerRuleV2Response\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ConnectorService/UpdateConnectorListenerRuleV2\x12\xc5\x01\n" +
-	"\x1dUpdateConnectorListenerLinkV2\x12-.core.v1.UpdateConnectorListenerLinkV2Request\x1a..core.v1.UpdateConnectorListenerLinkV2Response\"E\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ConnectorService/UpdateConnectorListenerLinkV2\x88\x02\x01\x12\xb2\x01\n" +
-	"\x19UpdateConnectorHostnameV2\x12).core.v1.UpdateConnectorHostnameV2Request\x1a*.core.v1.UpdateConnectorHostnameV2Response\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ConnectorService/UpdateConnectorHostnameV2\x12\xc6\x01\n" +
-	"\x1eUpdateConnectorConfigurationV2\x12..core.v1.UpdateConnectorConfigurationV2Request\x1a/.core.v1.UpdateConnectorConfigurationV2Response\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ConnectorService/UpdateConnectorConfigurationV2\x12\xba\x01\n" +
-	"\x1bUpdateConnectorAiProviderV2\x12+.core.v1.UpdateConnectorAiProviderV2Request\x1a,.core.v1.UpdateConnectorAiProviderV2Response\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ConnectorService/UpdateConnectorAiProviderV2B\x89\x01\n" +
+	"\x15connector_ai_provider\x18\x01 \x01(\v2\x1c.core.v1.ConnectorAiProviderR\x13connectorAiProvider2\xf25\n" +
+	"\x10ConnectorService\x12V\n" +
+	"\x0eListConnectors\x12\x1e.core.v1.ListConnectorsRequest\x1a\x1f.core.v1.ListConnectorsResponse\"\x03\x90\x02\x01\x12P\n" +
+	"\fGetConnector\x12\x1c.core.v1.GetConnectorRequest\x1a\x1d.core.v1.GetConnectorResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x12GetConnectorApiKey\x12\".core.v1.GetConnectorApiKeyRequest\x1a#.core.v1.GetConnectorApiKeyResponse\"\x03\x90\x02\x01\x12n\n" +
+	"\x16ListConnectorInstances\x12&.core.v1.ListConnectorInstancesRequest\x1a'.core.v1.ListConnectorInstancesResponse\"\x03\x90\x02\x01\x12\x9b\x01\n" +
+	"&CreateConnectorInstanceShutdownRequest\x126.core.v1.CreateConnectorInstanceShutdownRequestRequest\x1a7.core.v1.CreateConnectorInstanceShutdownRequestResponse\"\x00\x12V\n" +
+	"\x0fCreateConnector\x12\x1f.core.v1.CreateConnectorRequest\x1a .core.v1.CreateConnectorResponse\"\x00\x12V\n" +
+	"\x0fUpdateConnector\x12\x1f.core.v1.UpdateConnectorRequest\x1a .core.v1.UpdateConnectorResponse\"\x00\x12\\\n" +
+	"\x11UpdateConnectorV2\x12!.core.v1.UpdateConnectorV2Request\x1a\".core.v1.UpdateConnectorV2Response\"\x00\x12V\n" +
+	"\x0fDeleteConnector\x12\x1f.core.v1.DeleteConnectorRequest\x1a .core.v1.DeleteConnectorResponse\"\x00\x12n\n" +
+	"\x17CreateConnectorListener\x12'.core.v1.CreateConnectorListenerRequest\x1a(.core.v1.CreateConnectorListenerResponse\"\x00\x12h\n" +
+	"\x14GetConnectorListener\x12$.core.v1.GetConnectorListenerRequest\x1a%.core.v1.GetConnectorListenerResponse\"\x03\x90\x02\x01\x12r\n" +
+	"\x16ListConnectorListeners\x12&.core.v1.ListConnectorListenersRequest\x1a'.core.v1.ListConnectorListenersResponse\"\a\xf0\xf9\x18\x01\x90\x02\x01\x12n\n" +
+	"\x17UpdateConnectorListener\x12'.core.v1.UpdateConnectorListenerRequest\x1a(.core.v1.UpdateConnectorListenerResponse\"\x00\x12n\n" +
+	"\x17DeleteConnectorListener\x12'.core.v1.DeleteConnectorListenerRequest\x1a(.core.v1.DeleteConnectorListenerResponse\"\x00\x12z\n" +
+	"\x1bCreateConnectorListenerRule\x12+.core.v1.CreateConnectorListenerRuleRequest\x1a,.core.v1.CreateConnectorListenerRuleResponse\"\x00\x12t\n" +
+	"\x18GetConnectorListenerRule\x12(.core.v1.GetConnectorListenerRuleRequest\x1a).core.v1.GetConnectorListenerRuleResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1aListConnectorListenerRules\x12*.core.v1.ListConnectorListenerRulesRequest\x1a+.core.v1.ListConnectorListenerRulesResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1bUpdateConnectorListenerRule\x12+.core.v1.UpdateConnectorListenerRuleRequest\x1a,.core.v1.UpdateConnectorListenerRuleResponse\"\x00\x12z\n" +
+	"\x1bDeleteConnectorListenerRule\x12+.core.v1.DeleteConnectorListenerRuleRequest\x1a,.core.v1.DeleteConnectorListenerRuleResponse\"\x00\x12}\n" +
+	"\x1bCreateConnectorListenerLink\x12+.core.v1.CreateConnectorListenerLinkRequest\x1a,.core.v1.CreateConnectorListenerLinkResponse\"\x03\x88\x02\x01\x12w\n" +
+	"\x18GetConnectorListenerLink\x12(.core.v1.GetConnectorListenerLinkRequest\x1a).core.v1.GetConnectorListenerLinkResponse\"\x06\x88\x02\x01\x90\x02\x01\x12}\n" +
+	"\x1aListConnectorListenerLinks\x12*.core.v1.ListConnectorListenerLinksRequest\x1a+.core.v1.ListConnectorListenerLinksResponse\"\x06\x88\x02\x01\x90\x02\x01\x12}\n" +
+	"\x1bUpdateConnectorListenerLink\x12+.core.v1.UpdateConnectorListenerLinkRequest\x1a,.core.v1.UpdateConnectorListenerLinkResponse\"\x03\x88\x02\x01\x12}\n" +
+	"\x1bDeleteConnectorListenerLink\x12+.core.v1.DeleteConnectorListenerLinkRequest\x1a,.core.v1.DeleteConnectorListenerLinkResponse\"\x03\x88\x02\x01\x12n\n" +
+	"\x17CreateConnectorHostname\x12'.core.v1.CreateConnectorHostnameRequest\x1a(.core.v1.CreateConnectorHostnameResponse\"\x00\x12h\n" +
+	"\x14GetConnectorHostname\x12$.core.v1.GetConnectorHostnameRequest\x1a%.core.v1.GetConnectorHostnameResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1aGetConnectorTLSCertificate\x12*.core.v1.GetConnectorTLSCertificateRequest\x1a+.core.v1.GetConnectorTLSCertificateResponse\"\x03\x90\x02\x01\x12n\n" +
+	"\x17UpdateConnectorHostname\x12'.core.v1.UpdateConnectorHostnameRequest\x1a(.core.v1.UpdateConnectorHostnameResponse\"\x00\x12n\n" +
+	"\x17DeleteConnectorHostname\x12'.core.v1.DeleteConnectorHostnameRequest\x1a(.core.v1.DeleteConnectorHostnameResponse\"\x00\x12}\n" +
+	"\x1cCreateConnectorConfiguration\x12,.core.v1.CreateConnectorConfigurationRequest\x1a-.core.v1.CreateConnectorConfigurationResponse\"\x00\x12w\n" +
+	"\x19GetConnectorConfiguration\x12).core.v1.GetConnectorConfigurationRequest\x1a*.core.v1.GetConnectorConfigurationResponse\"\x03\x90\x02\x01\x12\x9e\x01\n" +
+	"&GetConnectorConfigurationByConnectorId\x126.core.v1.GetConnectorConfigurationByConnectorIdRequest\x1a7.core.v1.GetConnectorConfigurationByConnectorIdResponse\"\x03\x90\x02\x01\x12}\n" +
+	"\x1cUpdateConnectorConfiguration\x12,.core.v1.UpdateConnectorConfigurationRequest\x1a-.core.v1.UpdateConnectorConfigurationResponse\"\x00\x12}\n" +
+	"\x1cDeleteConnectorConfiguration\x12,.core.v1.DeleteConnectorConfigurationRequest\x1a-.core.v1.DeleteConnectorConfigurationResponse\"\x00\x12}\n" +
+	"\x1cCreateConnectorSatelliteLink\x12,.core.v1.CreateConnectorSatelliteLinkRequest\x1a-.core.v1.CreateConnectorSatelliteLinkResponse\"\x00\x12\x98\x01\n" +
+	"%CreateConnectorCloudformationTemplate\x125.core.v1.CreateConnectorCloudformationTemplateRequest\x1a6.core.v1.CreateConnectorCloudformationTemplateResponse\"\x00\x12t\n" +
+	"\x19CreateConnectorHelmValues\x12).core.v1.CreateConnectorHelmValuesRequest\x1a*.core.v1.CreateConnectorHelmValuesResponse\"\x00\x12w\n" +
+	"\x19GetConnectorSatelliteLink\x12).core.v1.GetConnectorSatelliteLinkRequest\x1a*.core.v1.GetConnectorSatelliteLinkResponse\"\x03\x90\x02\x01\x12}\n" +
+	"\x1bListConnectorSatelliteLinks\x12+.core.v1.ListConnectorSatelliteLinksRequest\x1a,.core.v1.ListConnectorSatelliteLinksResponse\"\x03\x90\x02\x01\x12}\n" +
+	"\x1cDeleteConnectorSatelliteLink\x12,.core.v1.DeleteConnectorSatelliteLinkRequest\x1a-.core.v1.DeleteConnectorSatelliteLinkResponse\"\x00\x12n\n" +
+	"\x16GetConnectorSSHHostKey\x12&.core.v1.GetConnectorSSHHostKeyRequest\x1a'.core.v1.GetConnectorSSHHostKeyResponse\"\x03\x90\x02\x01\x12t\n" +
+	"\x19CreateConnectorAiProvider\x12).core.v1.CreateConnectorAiProviderRequest\x1a*.core.v1.CreateConnectorAiProviderResponse\"\x00\x12n\n" +
+	"\x16GetConnectorAiProvider\x12&.core.v1.GetConnectorAiProviderRequest\x1a'.core.v1.GetConnectorAiProviderResponse\"\x03\x90\x02\x01\x12t\n" +
+	"\x19UpdateConnectorAiProvider\x12).core.v1.UpdateConnectorAiProviderRequest\x1a*.core.v1.UpdateConnectorAiProviderResponse\"\x00\x12t\n" +
+	"\x19DeleteConnectorAiProvider\x12).core.v1.DeleteConnectorAiProviderRequest\x1a*.core.v1.DeleteConnectorAiProviderResponse\"\x00\x12\x8c\x01\n" +
+	"!CreateConnectorTokenEncryptionKey\x121.core.v1.CreateConnectorTokenEncryptionKeyRequest\x1a2.core.v1.CreateConnectorTokenEncryptionKeyResponse\"\x00\x12\x86\x01\n" +
+	"\x1eGetConnectorTokenEncryptionKey\x12..core.v1.GetConnectorTokenEncryptionKeyRequest\x1a/.core.v1.GetConnectorTokenEncryptionKeyResponse\"\x03\x90\x02\x01\x12\x8c\x01\n" +
+	"!DeleteConnectorTokenEncryptionKey\x121.core.v1.DeleteConnectorTokenEncryptionKeyRequest\x1a2.core.v1.DeleteConnectorTokenEncryptionKeyResponse\"\x00\x12Y\n" +
+	"\x0fGetConnectorVpn\x12\x1f.core.v1.GetConnectorVpnRequest\x1a .core.v1.GetConnectorVpnResponse\"\x03\x90\x02\x01\x12_\n" +
+	"\x12UpdateConnectorVpn\x12\".core.v1.UpdateConnectorVpnRequest\x1a#.core.v1.UpdateConnectorVpnResponse\"\x00\x12u\n" +
+	"\x17ListConnectorVpnRegions\x12'.core.v1.ListConnectorVpnRegionsRequest\x1a(.core.v1.ListConnectorVpnRegionsResponse\"\a\xf0\xf9\x18\x01\x90\x02\x01\x12l\n" +
+	"\x15CreateFederationToken\x12%.core.v1.CreateFederationTokenRequest\x1a&.core.v1.CreateFederationTokenResponse\"\x04\xf0\xf9\x18\x01\x12t\n" +
+	"\x19UpdateConnectorListenerV2\x12).core.v1.UpdateConnectorListenerV2Request\x1a*.core.v1.UpdateConnectorListenerV2Response\"\x00\x12\x80\x01\n" +
+	"\x1dUpdateConnectorListenerRuleV2\x12-.core.v1.UpdateConnectorListenerRuleV2Request\x1a..core.v1.UpdateConnectorListenerRuleV2Response\"\x00\x12\x83\x01\n" +
+	"\x1dUpdateConnectorListenerLinkV2\x12-.core.v1.UpdateConnectorListenerLinkV2Request\x1a..core.v1.UpdateConnectorListenerLinkV2Response\"\x03\x88\x02\x01\x12t\n" +
+	"\x19UpdateConnectorHostnameV2\x12).core.v1.UpdateConnectorHostnameV2Request\x1a*.core.v1.UpdateConnectorHostnameV2Response\"\x00\x12\x83\x01\n" +
+	"\x1eUpdateConnectorConfigurationV2\x12..core.v1.UpdateConnectorConfigurationV2Request\x1a/.core.v1.UpdateConnectorConfigurationV2Response\"\x00\x12z\n" +
+	"\x1bUpdateConnectorAiProviderV2\x12+.core.v1.UpdateConnectorAiProviderV2Request\x1a,.core.v1.UpdateConnectorAiProviderV2Response\"\x00B\x89\x01\n" +
 	"\vcom.core.v1B\x0fConnectorsProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

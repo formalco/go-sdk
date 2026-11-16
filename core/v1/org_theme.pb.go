@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -481,7 +480,7 @@ var File_core_v1_org_theme_proto protoreflect.FileDescriptor
 
 const file_core_v1_org_theme_proto_rawDesc = "" +
 	"\n" +
-	"\x17core/v1/org_theme.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf3\x01\n" +
+	"\x17core/v1/org_theme.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf3\x01\n" +
 	"\bOrgTheme\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
 	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12\x12\n" +
@@ -511,12 +510,12 @@ const file_core_v1_org_theme_proto_rawDesc = "" +
 	"\x16UpdateOrgThemeResponse\x12'\n" +
 	"\x05theme\x18\x01 \x01(\v2\x11.core.v1.OrgThemeR\x05theme\"\x17\n" +
 	"\x15DeleteOrgThemeRequest\"\x18\n" +
-	"\x16DeleteOrgThemeResponse2\xa7\x04\n" +
-	"\x0fOrgThemeService\x12|\n" +
-	"\vGetOrgTheme\x12\x1b.core.v1.GetOrgThemeRequest\x1a\x1c.core.v1.GetOrgThemeResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.OrgThemeService/GetOrgTheme\x90\x02\x01\x12\x85\x01\n" +
-	"\x0eCreateOrgTheme\x12\x1e.core.v1.CreateOrgThemeRequest\x1a\x1f.core.v1.CreateOrgThemeResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OrgThemeService/CreateOrgTheme\x12\x85\x01\n" +
-	"\x0eUpdateOrgTheme\x12\x1e.core.v1.UpdateOrgThemeRequest\x1a\x1f.core.v1.UpdateOrgThemeResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OrgThemeService/UpdateOrgTheme\x12\x85\x01\n" +
-	"\x0eDeleteOrgTheme\x12\x1e.core.v1.DeleteOrgThemeRequest\x1a\x1f.core.v1.DeleteOrgThemeResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OrgThemeService/DeleteOrgThemeB\x87\x01\n" +
+	"\x16DeleteOrgThemeResponse2\xdf\x02\n" +
+	"\x0fOrgThemeService\x12M\n" +
+	"\vGetOrgTheme\x12\x1b.core.v1.GetOrgThemeRequest\x1a\x1c.core.v1.GetOrgThemeResponse\"\x03\x90\x02\x01\x12S\n" +
+	"\x0eCreateOrgTheme\x12\x1e.core.v1.CreateOrgThemeRequest\x1a\x1f.core.v1.CreateOrgThemeResponse\"\x00\x12S\n" +
+	"\x0eUpdateOrgTheme\x12\x1e.core.v1.UpdateOrgThemeRequest\x1a\x1f.core.v1.UpdateOrgThemeResponse\"\x00\x12S\n" +
+	"\x0eDeleteOrgTheme\x12\x1e.core.v1.DeleteOrgThemeRequest\x1a\x1f.core.v1.DeleteOrgThemeResponse\"\x00B\x87\x01\n" +
 	"\vcom.core.v1B\rOrgThemeProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

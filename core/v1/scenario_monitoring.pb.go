@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -699,7 +698,7 @@ var File_core_v1_scenario_monitoring_proto protoreflect.FileDescriptor
 
 const file_core_v1_scenario_monitoring_proto_rawDesc = "" +
 	"\n" +
-	"!core/v1/scenario_monitoring.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x01\n" +
+	"!core/v1/scenario_monitoring.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x01\n" +
 	"\x1cCreateScenarioMonitorRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x1a\n" +
 	"\bscenario\x18\x02 \x01(\tR\bscenario\x12,\n" +
@@ -742,14 +741,14 @@ const file_core_v1_scenario_monitoring_proto_rawDesc = "" +
 	"\x1eUpdateScenarioMonitorV2Request\x12K\n" +
 	"\x10scenario_monitor\x18\x01 \x01(\v2\x18.core.v1.ScenarioMonitorB\x06\xbaH\x03\xc8\x01\x01R\x0fscenarioMonitor\"f\n" +
 	"\x1fUpdateScenarioMonitorV2Response\x12C\n" +
-	"\x10scenario_monitor\x18\x01 \x01(\v2\x18.core.v1.ScenarioMonitorR\x0fscenarioMonitor2\xad\b\n" +
-	"\x19ScenarioMonitoringService\x12\xab\x01\n" +
-	"\x15CreateScenarioMonitor\x12%.core.v1.CreateScenarioMonitorRequest\x1a&.core.v1.CreateScenarioMonitorResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ScenarioMonitoringService/CreateScenarioMonitor\x12\xab\x01\n" +
-	"\x15DeleteScenarioMonitor\x12%.core.v1.DeleteScenarioMonitorRequest\x1a&.core.v1.DeleteScenarioMonitorResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ScenarioMonitoringService/DeleteScenarioMonitor\x12\xa2\x01\n" +
-	"\x12GetScenarioMonitor\x12\".core.v1.GetScenarioMonitorRequest\x1a#.core.v1.GetScenarioMonitorResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.ScenarioMonitoringService/GetScenarioMonitor\x90\x02\x01\x12\xaa\x01\n" +
-	"\x14ListScenarioMonitors\x12$.core.v1.ListScenarioMonitorsRequest\x1a%.core.v1.ListScenarioMonitorsResponse\"E\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.ScenarioMonitoringService/ListScenarioMonitors\x90\x02\x01\x12\xab\x01\n" +
-	"\x15UpdateScenarioMonitor\x12%.core.v1.UpdateScenarioMonitorRequest\x1a&.core.v1.UpdateScenarioMonitorResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.ScenarioMonitoringService/UpdateScenarioMonitor\x12\xb3\x01\n" +
-	"\x17UpdateScenarioMonitorV2\x12'.core.v1.UpdateScenarioMonitorV2Request\x1a(.core.v1.UpdateScenarioMonitorV2Response\"E\x82\xd3\xe4\x93\x02?:\x01*\":/core.v1.ScenarioMonitoringService/UpdateScenarioMonitorV2B\x91\x01\n" +
+	"\x10scenario_monitor\x18\x01 \x01(\v2\x18.core.v1.ScenarioMonitorR\x0fscenarioMonitor2\x97\x05\n" +
+	"\x19ScenarioMonitoringService\x12h\n" +
+	"\x15CreateScenarioMonitor\x12%.core.v1.CreateScenarioMonitorRequest\x1a&.core.v1.CreateScenarioMonitorResponse\"\x00\x12h\n" +
+	"\x15DeleteScenarioMonitor\x12%.core.v1.DeleteScenarioMonitorRequest\x1a&.core.v1.DeleteScenarioMonitorResponse\"\x00\x12b\n" +
+	"\x12GetScenarioMonitor\x12\".core.v1.GetScenarioMonitorRequest\x1a#.core.v1.GetScenarioMonitorResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x14ListScenarioMonitors\x12$.core.v1.ListScenarioMonitorsRequest\x1a%.core.v1.ListScenarioMonitorsResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x15UpdateScenarioMonitor\x12%.core.v1.UpdateScenarioMonitorRequest\x1a&.core.v1.UpdateScenarioMonitorResponse\"\x00\x12n\n" +
+	"\x17UpdateScenarioMonitorV2\x12'.core.v1.UpdateScenarioMonitorV2Request\x1a(.core.v1.UpdateScenarioMonitorV2Response\"\x00B\x91\x01\n" +
 	"\vcom.core.v1B\x17ScenarioMonitoringProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

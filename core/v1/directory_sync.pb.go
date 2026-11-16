@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -583,7 +582,7 @@ var File_core_v1_directory_sync_proto protoreflect.FileDescriptor
 
 const file_core_v1_directory_sync_proto_rawDesc = "" +
 	"\n" +
-	"\x1ccore/v1/directory_sync.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe1\x01\n" +
+	"\x1ccore/v1/directory_sync.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe1\x01\n" +
 	"\tDirectory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\"\n" +
 	"\rscim_base_url\x18\x02 \x01(\tR\vscimBaseUrl\x12*\n" +
@@ -614,13 +613,13 @@ const file_core_v1_directory_sync_proto_rawDesc = "" +
 	"\x06secret\x18\x02 \x01(\tB\x03\x80\x01\x01R\x06secret\"1\n" +
 	"\x16DeleteSCIMTokenRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x19\n" +
-	"\x17DeleteSCIMTokenResponse2\xe2\x05\n" +
-	"\x14DirectorySyncService\x12\x85\x01\n" +
-	"\fGetDirectory\x12\x1c.core.v1.GetDirectoryRequest\x1a\x1d.core.v1.GetDirectoryResponse\"8\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.DirectorySyncService/GetDirectory\x90\x02\x01\x12\x8e\x01\n" +
-	"\x0fCreateDirectory\x12\x1f.core.v1.CreateDirectoryRequest\x1a .core.v1.CreateDirectoryResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.DirectorySyncService/CreateDirectory\x12\x8e\x01\n" +
-	"\x0fDeleteDirectory\x12\x1f.core.v1.DeleteDirectoryRequest\x1a .core.v1.DeleteDirectoryResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.DirectorySyncService/DeleteDirectory\x12\x8e\x01\n" +
-	"\x0fCreateSCIMToken\x12\x1f.core.v1.CreateSCIMTokenRequest\x1a .core.v1.CreateSCIMTokenResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.DirectorySyncService/CreateSCIMToken\x12\x8e\x01\n" +
-	"\x0fDeleteSCIMToken\x12\x1f.core.v1.DeleteSCIMTokenRequest\x1a .core.v1.DeleteSCIMTokenResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.DirectorySyncService/DeleteSCIMTokenB\x8c\x01\n" +
+	"\x17DeleteSCIMTokenResponse2\xc8\x03\n" +
+	"\x14DirectorySyncService\x12P\n" +
+	"\fGetDirectory\x12\x1c.core.v1.GetDirectoryRequest\x1a\x1d.core.v1.GetDirectoryResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0fCreateDirectory\x12\x1f.core.v1.CreateDirectoryRequest\x1a .core.v1.CreateDirectoryResponse\"\x00\x12V\n" +
+	"\x0fDeleteDirectory\x12\x1f.core.v1.DeleteDirectoryRequest\x1a .core.v1.DeleteDirectoryResponse\"\x00\x12V\n" +
+	"\x0fCreateSCIMToken\x12\x1f.core.v1.CreateSCIMTokenRequest\x1a .core.v1.CreateSCIMTokenResponse\"\x00\x12V\n" +
+	"\x0fDeleteSCIMToken\x12\x1f.core.v1.DeleteSCIMTokenRequest\x1a .core.v1.DeleteSCIMTokenResponse\"\x00B\x8c\x01\n" +
 	"\vcom.core.v1B\x12DirectorySyncProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

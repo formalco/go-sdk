@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
@@ -5655,7 +5654,7 @@ var File_core_v1_logs_proto protoreflect.FileDescriptor
 
 const file_core_v1_logs_proto_rawDesc = "" +
 	"\n" +
-	"\x12core/v1/logs.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"A\n" +
+	"\x12core/v1/logs.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"A\n" +
 	"\x13SavedLogQueryFilter\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n" +
 	"\x06values\x18\x02 \x03(\tR\x06values\"\x93\x02\n" +
@@ -6146,40 +6145,40 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x16LogConfigurationSource\x12(\n" +
 	"$LOG_CONFIGURATION_SOURCE_UNSPECIFIED\x10\x00\x12&\n" +
 	"\"LOG_CONFIGURATION_SOURCE_CONNECTOR\x10\x01\x12%\n" +
-	"!LOG_CONFIGURATION_SOURCE_ENDPOINT\x10\x022\x89$\n" +
-	"\vLogsService\x12d\n" +
-	"\x06GetLog\x12\x16.core.v1.GetLogRequest\x1a\x17.core.v1.GetLogResponse\")\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/core.v1.LogsService/GetLog\x90\x02\x01\x12\xa0\x01\n" +
-	"\x15GetGroupByAggregation\x12%.core.v1.GetGroupByAggregationRequest\x1a&.core.v1.GetGroupByAggregationResponse\"8\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.LogsService/GetGroupByAggregation\x90\x02\x01\x12\x9c\x01\n" +
-	"\x14GetMetricAggregation\x12$.core.v1.GetMetricAggregationRequest\x1a%.core.v1.GetMetricAggregationResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.LogsService/GetMetricAggregation\x90\x02\x01\x12t\n" +
+	"!LOG_CONFIGURATION_SOURCE_ENDPOINT\x10\x022\xe8\x17\n" +
+	"\vLogsService\x12>\n" +
+	"\x06GetLog\x12\x16.core.v1.GetLogRequest\x1a\x17.core.v1.GetLogResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x15GetGroupByAggregation\x12%.core.v1.GetGroupByAggregationRequest\x1a&.core.v1.GetGroupByAggregationResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x14GetMetricAggregation\x12$.core.v1.GetMetricAggregationRequest\x1a%.core.v1.GetMetricAggregationResponse\"\x03\x90\x02\x01\x12J\n" +
 	"\n" +
-	"ListLogsV2\x12\x1a.core.v1.ListLogsV2Request\x1a\x1b.core.v1.ListLogsV2Response\"-\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/core.v1.LogsService/ListLogsV2\x90\x02\x01\x12\x98\x01\n" +
-	"\x13ListLogAggregations\x12#.core.v1.ListLogAggregationsRequest\x1a$.core.v1.ListLogAggregationsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.LogsService/ListLogAggregations\x90\x02\x01\x12\xc0\x01\n" +
-	"\x1dListLogPolicyEvaluationInputs\x12-.core.v1.ListLogPolicyEvaluationInputsRequest\x1a..core.v1.ListLogPolicyEvaluationInputsResponse\"@\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.LogsService/ListLogPolicyEvaluationInputs\x90\x02\x01\x12\xb4\x01\n" +
-	"\x1aGetLogsFromNaturalLanguage\x12*.core.v1.GetLogsFromNaturalLanguageRequest\x1a+.core.v1.GetLogsFromNaturalLanguageResponse\"=\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.LogsService/GetLogsFromNaturalLanguage\x90\x02\x01\x12\x81\x01\n" +
-	"\x0eCreateLogQuery\x12\x1e.core.v1.CreateLogQueryRequest\x1a\x1f.core.v1.CreateLogQueryResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.LogsService/CreateLogQuery\x12\x81\x01\n" +
-	"\x0eUpdateLogQuery\x12\x1e.core.v1.UpdateLogQueryRequest\x1a\x1f.core.v1.UpdateLogQueryResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.LogsService/UpdateLogQuery\x12\x89\x01\n" +
-	"\x10UpdateLogQueryV2\x12 .core.v1.UpdateLogQueryV2Request\x1a!.core.v1.UpdateLogQueryV2Response\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.LogsService/UpdateLogQueryV2\x12\x84\x01\n" +
-	"\x0eListLogQueries\x12\x1e.core.v1.ListLogQueriesRequest\x1a\x1f.core.v1.ListLogQueriesResponse\"1\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.LogsService/ListLogQueries\x90\x02\x01\x12x\n" +
-	"\vGetLogQuery\x12\x1b.core.v1.GetLogQueryRequest\x1a\x1c.core.v1.GetLogQueryResponse\".\x82\xd3\xe4\x93\x02%:\x01*\" /core.v1.LogsService/GetLogQuery\x90\x02\x01\x12\x81\x01\n" +
-	"\x0eDeleteLogQuery\x12\x1e.core.v1.DeleteLogQueryRequest\x1a\x1f.core.v1.DeleteLogQueryResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.LogsService/DeleteLogQuery\x12\xa1\x01\n" +
-	"\x16CreateLogConfiguration\x12&.core.v1.CreateLogConfigurationRequest\x1a'.core.v1.CreateLogConfigurationResponse\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.LogsService/CreateLogConfiguration\x12\x98\x01\n" +
-	"\x13GetLogConfiguration\x12#.core.v1.GetLogConfigurationRequest\x1a$.core.v1.GetLogConfigurationResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.LogsService/GetLogConfiguration\x90\x02\x01\x12\xa0\x01\n" +
-	"\x15ListLogConfigurations\x12%.core.v1.ListLogConfigurationsRequest\x1a&.core.v1.ListLogConfigurationsResponse\"8\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.LogsService/ListLogConfigurations\x90\x02\x01\x12\xa1\x01\n" +
-	"\x16UpdateLogConfiguration\x12&.core.v1.UpdateLogConfigurationRequest\x1a'.core.v1.UpdateLogConfigurationResponse\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.LogsService/UpdateLogConfiguration\x12\xa9\x01\n" +
-	"\x18UpdateLogConfigurationV2\x12(.core.v1.UpdateLogConfigurationV2Request\x1a).core.v1.UpdateLogConfigurationV2Response\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.LogsService/UpdateLogConfigurationV2\x12\xa1\x01\n" +
-	"\x16DeleteLogConfiguration\x12&.core.v1.DeleteLogConfigurationRequest\x1a'.core.v1.DeleteLogConfigurationResponse\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.LogsService/DeleteLogConfiguration\x12\x85\x01\n" +
-	"\x0fCreateLogSchema\x12\x1f.core.v1.CreateLogSchemaRequest\x1a .core.v1.CreateLogSchemaResponse\"/\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.LogsService/CreateLogSchema\x12|\n" +
-	"\fGetLogSchema\x12\x1c.core.v1.GetLogSchemaRequest\x1a\x1d.core.v1.GetLogSchemaResponse\"/\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.LogsService/GetLogSchema\x90\x02\x01\x12\x84\x01\n" +
-	"\x0eListLogSchemas\x12\x1e.core.v1.ListLogSchemasRequest\x1a\x1f.core.v1.ListLogSchemasResponse\"1\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.LogsService/ListLogSchemas\x90\x02\x01\x12\x85\x01\n" +
-	"\x0fUpdateLogSchema\x12\x1f.core.v1.UpdateLogSchemaRequest\x1a .core.v1.UpdateLogSchemaResponse\"/\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.LogsService/UpdateLogSchema\x12\x85\x01\n" +
-	"\x0fDeleteLogSchema\x12\x1f.core.v1.DeleteLogSchemaRequest\x1a .core.v1.DeleteLogSchemaResponse\"/\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.LogsService/DeleteLogSchema\x12\x95\x01\n" +
-	"\x13CreateEncryptionKey\x12#.core.v1.CreateEncryptionKeyRequest\x1a$.core.v1.CreateEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.LogsService/CreateEncryptionKey\x12\x8c\x01\n" +
-	"\x10GetEncryptionKey\x12 .core.v1.GetEncryptionKeyRequest\x1a!.core.v1.GetEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.LogsService/GetEncryptionKey\x90\x02\x01\x12\xac\x01\n" +
-	"\x18GetEncryptionKeysByKeyId\x12(.core.v1.GetEncryptionKeysByKeyIdRequest\x1a).core.v1.GetEncryptionKeysByKeyIdResponse\";\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.LogsService/GetEncryptionKeysByKeyId\x90\x02\x01\x12\x94\x01\n" +
-	"\x12ListEncryptionKeys\x12\".core.v1.ListEncryptionKeysRequest\x1a#.core.v1.ListEncryptionKeysResponse\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.LogsService/ListEncryptionKeys\x90\x02\x01\x12\x95\x01\n" +
-	"\x13UpdateEncryptionKey\x12#.core.v1.UpdateEncryptionKeyRequest\x1a$.core.v1.UpdateEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.LogsService/UpdateEncryptionKey\x12\x9d\x01\n" +
-	"\x15UpdateEncryptionKeyV2\x12%.core.v1.UpdateEncryptionKeyV2Request\x1a&.core.v1.UpdateEncryptionKeyV2Response\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.LogsService/UpdateEncryptionKeyV2\x12\x95\x01\n" +
-	"\x13DeleteEncryptionKey\x12#.core.v1.DeleteEncryptionKeyRequest\x1a$.core.v1.DeleteEncryptionKeyResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.LogsService/DeleteEncryptionKeyB\x83\x01\n" +
+	"ListLogsV2\x12\x1a.core.v1.ListLogsV2Request\x1a\x1b.core.v1.ListLogsV2Response\"\x03\x90\x02\x01\x12e\n" +
+	"\x13ListLogAggregations\x12#.core.v1.ListLogAggregationsRequest\x1a$.core.v1.ListLogAggregationsResponse\"\x03\x90\x02\x01\x12\x83\x01\n" +
+	"\x1dListLogPolicyEvaluationInputs\x12-.core.v1.ListLogPolicyEvaluationInputsRequest\x1a..core.v1.ListLogPolicyEvaluationInputsResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1aGetLogsFromNaturalLanguage\x12*.core.v1.GetLogsFromNaturalLanguageRequest\x1a+.core.v1.GetLogsFromNaturalLanguageResponse\"\x03\x90\x02\x01\x12S\n" +
+	"\x0eCreateLogQuery\x12\x1e.core.v1.CreateLogQueryRequest\x1a\x1f.core.v1.CreateLogQueryResponse\"\x00\x12S\n" +
+	"\x0eUpdateLogQuery\x12\x1e.core.v1.UpdateLogQueryRequest\x1a\x1f.core.v1.UpdateLogQueryResponse\"\x00\x12Y\n" +
+	"\x10UpdateLogQueryV2\x12 .core.v1.UpdateLogQueryV2Request\x1a!.core.v1.UpdateLogQueryV2Response\"\x00\x12V\n" +
+	"\x0eListLogQueries\x12\x1e.core.v1.ListLogQueriesRequest\x1a\x1f.core.v1.ListLogQueriesResponse\"\x03\x90\x02\x01\x12M\n" +
+	"\vGetLogQuery\x12\x1b.core.v1.GetLogQueryRequest\x1a\x1c.core.v1.GetLogQueryResponse\"\x03\x90\x02\x01\x12S\n" +
+	"\x0eDeleteLogQuery\x12\x1e.core.v1.DeleteLogQueryRequest\x1a\x1f.core.v1.DeleteLogQueryResponse\"\x00\x12k\n" +
+	"\x16CreateLogConfiguration\x12&.core.v1.CreateLogConfigurationRequest\x1a'.core.v1.CreateLogConfigurationResponse\"\x00\x12e\n" +
+	"\x13GetLogConfiguration\x12#.core.v1.GetLogConfigurationRequest\x1a$.core.v1.GetLogConfigurationResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x15ListLogConfigurations\x12%.core.v1.ListLogConfigurationsRequest\x1a&.core.v1.ListLogConfigurationsResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x16UpdateLogConfiguration\x12&.core.v1.UpdateLogConfigurationRequest\x1a'.core.v1.UpdateLogConfigurationResponse\"\x00\x12q\n" +
+	"\x18UpdateLogConfigurationV2\x12(.core.v1.UpdateLogConfigurationV2Request\x1a).core.v1.UpdateLogConfigurationV2Response\"\x00\x12k\n" +
+	"\x16DeleteLogConfiguration\x12&.core.v1.DeleteLogConfigurationRequest\x1a'.core.v1.DeleteLogConfigurationResponse\"\x00\x12V\n" +
+	"\x0fCreateLogSchema\x12\x1f.core.v1.CreateLogSchemaRequest\x1a .core.v1.CreateLogSchemaResponse\"\x00\x12P\n" +
+	"\fGetLogSchema\x12\x1c.core.v1.GetLogSchemaRequest\x1a\x1d.core.v1.GetLogSchemaResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0eListLogSchemas\x12\x1e.core.v1.ListLogSchemasRequest\x1a\x1f.core.v1.ListLogSchemasResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0fUpdateLogSchema\x12\x1f.core.v1.UpdateLogSchemaRequest\x1a .core.v1.UpdateLogSchemaResponse\"\x00\x12V\n" +
+	"\x0fDeleteLogSchema\x12\x1f.core.v1.DeleteLogSchemaRequest\x1a .core.v1.DeleteLogSchemaResponse\"\x00\x12b\n" +
+	"\x13CreateEncryptionKey\x12#.core.v1.CreateEncryptionKeyRequest\x1a$.core.v1.CreateEncryptionKeyResponse\"\x00\x12\\\n" +
+	"\x10GetEncryptionKey\x12 .core.v1.GetEncryptionKeyRequest\x1a!.core.v1.GetEncryptionKeyResponse\"\x03\x90\x02\x01\x12t\n" +
+	"\x18GetEncryptionKeysByKeyId\x12(.core.v1.GetEncryptionKeysByKeyIdRequest\x1a).core.v1.GetEncryptionKeysByKeyIdResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x12ListEncryptionKeys\x12\".core.v1.ListEncryptionKeysRequest\x1a#.core.v1.ListEncryptionKeysResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13UpdateEncryptionKey\x12#.core.v1.UpdateEncryptionKeyRequest\x1a$.core.v1.UpdateEncryptionKeyResponse\"\x00\x12h\n" +
+	"\x15UpdateEncryptionKeyV2\x12%.core.v1.UpdateEncryptionKeyV2Request\x1a&.core.v1.UpdateEncryptionKeyV2Response\"\x00\x12b\n" +
+	"\x13DeleteEncryptionKey\x12#.core.v1.DeleteEncryptionKeyRequest\x1a$.core.v1.DeleteEncryptionKeyResponse\"\x00B\x83\x01\n" +
 	"\vcom.core.v1B\tLogsProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

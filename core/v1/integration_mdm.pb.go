@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1555,7 +1554,7 @@ var File_core_v1_integration_mdm_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_mdm_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcore/v1/integration_mdm.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x99\x06\n" +
+	"\x1dcore/v1/integration_mdm.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x99\x06\n" +
 	"\x0eIntegrationMDM\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12C\n" +
@@ -1659,14 +1658,14 @@ const file_core_v1_integration_mdm_proto_rawDesc = "" +
 	"user_emailR\fsearchFields\"\x8d\x01\n" +
 	"!ListIntegrationMDMDevicesResponse\x12,\n" +
 	"\adevices\x18\x01 \x03(\v2\x12.core.v1.MDMDeviceR\adevices\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata2\x88\b\n" +
-	"\x15IntegrationMDMService\x12\xa3\x01\n" +
-	"\x14CreateIntegrationMDM\x12$.core.v1.CreateIntegrationMDMRequest\x1a%.core.v1.CreateIntegrationMDMResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.IntegrationMDMService/CreateIntegrationMDM\x12\x9a\x01\n" +
-	"\x11GetIntegrationMDM\x12!.core.v1.GetIntegrationMDMRequest\x1a\".core.v1.GetIntegrationMDMResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.IntegrationMDMService/GetIntegrationMDM\x90\x02\x01\x12\xa2\x01\n" +
-	"\x13ListIntegrationsMDM\x12#.core.v1.ListIntegrationsMDMRequest\x1a$.core.v1.ListIntegrationsMDMResponse\"@\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.IntegrationMDMService/ListIntegrationsMDM\x90\x02\x01\x12\xa3\x01\n" +
-	"\x14UpdateIntegrationMDM\x12$.core.v1.UpdateIntegrationMDMRequest\x1a%.core.v1.UpdateIntegrationMDMResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.IntegrationMDMService/UpdateIntegrationMDM\x12\xa3\x01\n" +
-	"\x14DeleteIntegrationMDM\x12$.core.v1.DeleteIntegrationMDMRequest\x1a%.core.v1.DeleteIntegrationMDMResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.IntegrationMDMService/DeleteIntegrationMDM\x12\xba\x01\n" +
-	"\x19ListIntegrationMDMDevices\x12).core.v1.ListIntegrationMDMDevicesRequest\x1a*.core.v1.ListIntegrationMDMDevicesResponse\"F\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.IntegrationMDMService/ListIntegrationMDMDevices\x90\x02\x01B\x8d\x01\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata2\x8d\x05\n" +
+	"\x15IntegrationMDMService\x12e\n" +
+	"\x14CreateIntegrationMDM\x12$.core.v1.CreateIntegrationMDMRequest\x1a%.core.v1.CreateIntegrationMDMResponse\"\x00\x12_\n" +
+	"\x11GetIntegrationMDM\x12!.core.v1.GetIntegrationMDMRequest\x1a\".core.v1.GetIntegrationMDMResponse\"\x03\x90\x02\x01\x12e\n" +
+	"\x13ListIntegrationsMDM\x12#.core.v1.ListIntegrationsMDMRequest\x1a$.core.v1.ListIntegrationsMDMResponse\"\x03\x90\x02\x01\x12e\n" +
+	"\x14UpdateIntegrationMDM\x12$.core.v1.UpdateIntegrationMDMRequest\x1a%.core.v1.UpdateIntegrationMDMResponse\"\x00\x12e\n" +
+	"\x14DeleteIntegrationMDM\x12$.core.v1.DeleteIntegrationMDMRequest\x1a%.core.v1.DeleteIntegrationMDMResponse\"\x00\x12w\n" +
+	"\x19ListIntegrationMDMDevices\x12).core.v1.ListIntegrationMDMDevicesRequest\x1a*.core.v1.ListIntegrationMDMDevicesResponse\"\x03\x90\x02\x01B\x8d\x01\n" +
 	"\vcom.core.v1B\x13IntegrationMdmProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

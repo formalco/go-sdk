@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/structpb"
@@ -2055,7 +2054,7 @@ var File_core_v1_graph_proto protoreflect.FileDescriptor
 
 const file_core_v1_graph_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/graph.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"E\n" +
+	"\x13core/v1/graph.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"E\n" +
 	"\rConnectorNode\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"m\n" +
@@ -2231,10 +2230,10 @@ const file_core_v1_graph_proto_rawDesc = "" +
 	"\tnode_type\x18\x02 \x01(\tR\bnodeType\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x1b\n" +
 	"\tlog_count\x18\x04 \x01(\x03R\blogCount\x124\n" +
-	"\x16triggered_policy_count\x18\x05 \x01(\x03R\x14triggeredPolicyCount2\xca\x02\n" +
-	"\fGraphService\x12\x85\x01\n" +
-	"\x0eGetAccessGraph\x12\x1e.core.v1.GetAccessGraphRequest\x1a\x1f.core.v1.GetAccessGraphResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.GraphService/GetAccessGraph\x90\x02\x01\x12\xb1\x01\n" +
-	"\x19GetAccessGraphNodeDetails\x12).core.v1.GetAccessGraphNodeDetailsRequest\x1a*.core.v1.GetAccessGraphNodeDetailsResponse\"=\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.GraphService/GetAccessGraphNodeDetails\x90\x02\x01B\x84\x01\n" +
+	"\x16triggered_policy_count\x18\x05 \x01(\x03R\x14triggeredPolicyCount2\xdf\x01\n" +
+	"\fGraphService\x12V\n" +
+	"\x0eGetAccessGraph\x12\x1e.core.v1.GetAccessGraphRequest\x1a\x1f.core.v1.GetAccessGraphResponse\"\x03\x90\x02\x01\x12w\n" +
+	"\x19GetAccessGraphNodeDetails\x12).core.v1.GetAccessGraphNodeDetailsRequest\x1a*.core.v1.GetAccessGraphNodeDetailsResponse\"\x03\x90\x02\x01B\x84\x01\n" +
 	"\vcom.core.v1B\n" +
 	"GraphProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 

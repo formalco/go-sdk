@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/structpb"
@@ -794,7 +793,7 @@ var File_core_v1_permissions_proto protoreflect.FileDescriptor
 
 const file_core_v1_permissions_proto_rawDesc = "" +
 	"\n" +
-	"\x19core/v1/permissions.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf0\x02\n" +
+	"\x19core/v1/permissions.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf0\x02\n" +
 	"\n" +
 	"Permission\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
@@ -859,13 +858,13 @@ const file_core_v1_permissions_proto_rawDesc = "" +
 	"\x17DeletePermissionRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"3\n" +
 	"\x18DeletePermissionResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xf0\x04\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xb6\x04\n" +
 	"\x12PermissionsService\x12Y\n" +
 	"\x0fListPermissions\x12\x1f.core.v1.ListPermissionsRequest\x1a .core.v1.ListPermissionsResponse\"\x03\x90\x02\x01\x12S\n" +
 	"\rGetPermission\x12\x1d.core.v1.GetPermissionRequest\x1a\x1e.core.v1.GetPermissionResponse\"\x03\x90\x02\x01\x12Y\n" +
 	"\x10CreatePermission\x12 .core.v1.CreatePermissionRequest\x1a!.core.v1.CreatePermissionResponse\"\x00\x12Y\n" +
-	"\x10UpdatePermission\x12 .core.v1.UpdatePermissionRequest\x1a!.core.v1.UpdatePermissionResponse\"\x00\x12\x98\x01\n" +
-	"\x12UpdatePermissionV2\x12\".core.v1.UpdatePermissionV2Request\x1a#.core.v1.UpdatePermissionV2Response\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.PermissionsService/UpdatePermissionV2\x12Y\n" +
+	"\x10UpdatePermission\x12 .core.v1.UpdatePermissionRequest\x1a!.core.v1.UpdatePermissionResponse\"\x00\x12_\n" +
+	"\x12UpdatePermissionV2\x12\".core.v1.UpdatePermissionV2Request\x1a#.core.v1.UpdatePermissionV2Response\"\x00\x12Y\n" +
 	"\x10DeletePermission\x12 .core.v1.DeletePermissionRequest\x1a!.core.v1.DeletePermissionResponse\"\x00B\x8a\x01\n" +
 	"\vcom.core.v1B\x10PermissionsProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 

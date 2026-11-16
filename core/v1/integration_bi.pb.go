@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -940,7 +939,7 @@ var File_core_v1_integration_bi_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_bi_proto_rawDesc = "" +
 	"\n" +
-	"\x1ccore/v1/integration_bi.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xcb\x04\n" +
+	"\x1ccore/v1/integration_bi.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xcb\x04\n" +
 	"\rBIIntegration\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12=\n" +
@@ -1002,12 +1001,12 @@ const file_core_v1_integration_bi_proto_rawDesc = "" +
 	"\x1aDeleteBIIntegrationRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"6\n" +
 	"\x1bDeleteBIIntegrationResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x90\x05\n" +
-	"\x14IntegrationBIService\x12\x9d\x01\n" +
-	"\x12ListBIIntegrations\x12\".core.v1.ListBIIntegrationsRequest\x1a#.core.v1.ListBIIntegrationsResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.IntegrationBIService/ListBIIntegrations\x90\x02\x01\x12\x95\x01\n" +
-	"\x10GetBIIntegration\x12 .core.v1.GetBIIntegrationRequest\x1a!.core.v1.GetBIIntegrationResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.IntegrationBIService/GetBIIntegration\x90\x02\x01\x12\x9e\x01\n" +
-	"\x13CreateBIIntegration\x12#.core.v1.CreateBIIntegrationRequest\x1a$.core.v1.CreateBIIntegrationResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.IntegrationBIService/CreateBIIntegration\x12\x9e\x01\n" +
-	"\x13DeleteBIIntegration\x12#.core.v1.DeleteBIIntegrationRequest\x1a$.core.v1.DeleteBIIntegrationResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.IntegrationBIService/DeleteBIIntegrationB\x8c\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xa0\x03\n" +
+	"\x14IntegrationBIService\x12b\n" +
+	"\x12ListBIIntegrations\x12\".core.v1.ListBIIntegrationsRequest\x1a#.core.v1.ListBIIntegrationsResponse\"\x03\x90\x02\x01\x12\\\n" +
+	"\x10GetBIIntegration\x12 .core.v1.GetBIIntegrationRequest\x1a!.core.v1.GetBIIntegrationResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13CreateBIIntegration\x12#.core.v1.CreateBIIntegrationRequest\x1a$.core.v1.CreateBIIntegrationResponse\"\x00\x12b\n" +
+	"\x13DeleteBIIntegration\x12#.core.v1.DeleteBIIntegrationRequest\x1a$.core.v1.DeleteBIIntegrationResponse\"\x00B\x8c\x01\n" +
 	"\vcom.core.v1B\x12IntegrationBiProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1759,7 +1758,7 @@ var File_core_v1_oauth_proto protoreflect.FileDescriptor
 
 const file_core_v1_oauth_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/oauth.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
+	"\x13core/v1/oauth.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
 	"\vOAuthClient\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
@@ -1893,20 +1892,20 @@ const file_core_v1_oauth_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"T\n" +
 	"\x17DeleteOAuthLinkResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12)\n" +
-	"\x10provider_revoked\x18\x02 \x01(\bR\x0fproviderRevoked2\xc7\r\n" +
-	"\fOAuthService\x12\x8e\x01\n" +
-	"\x11CreateOAuthClient\x12!.core.v1.CreateOAuthClientRequest\x1a\".core.v1.CreateOAuthClientResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/CreateOAuthClient\x12\x85\x01\n" +
-	"\x0eGetOAuthClient\x12\x1e.core.v1.GetOAuthClientRequest\x1a\x1f.core.v1.GetOAuthClientResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.OAuthService/GetOAuthClient\x90\x02\x01\x12\x8d\x01\n" +
-	"\x10ListOAuthClients\x12 .core.v1.ListOAuthClientsRequest\x1a!.core.v1.ListOAuthClientsResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.OAuthService/ListOAuthClients\x90\x02\x01\x12\x8e\x01\n" +
-	"\x11UpdateOAuthClient\x12!.core.v1.UpdateOAuthClientRequest\x1a\".core.v1.UpdateOAuthClientResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/UpdateOAuthClient\x12\xa6\x01\n" +
-	"\x17CreateOAuthClientSecret\x12'.core.v1.CreateOAuthClientSecretRequest\x1a(.core.v1.CreateOAuthClientSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.OAuthService/CreateOAuthClientSecret\x12\x8e\x01\n" +
-	"\x11DeleteOAuthClient\x12!.core.v1.DeleteOAuthClientRequest\x1a\".core.v1.DeleteOAuthClientResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/DeleteOAuthClient\x12\x91\x01\n" +
-	"\x11ListOAuthConsents\x12!.core.v1.ListOAuthConsentsRequest\x1a\".core.v1.ListOAuthConsentsResponse\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.OAuthService/ListOAuthConsents\x90\x02\x01\x12\x89\x01\n" +
-	"\x0fGetOAuthConsent\x12\x1f.core.v1.GetOAuthConsentRequest\x1a .core.v1.GetOAuthConsentResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.OAuthService/GetOAuthConsent\x90\x02\x01\x12\x92\x01\n" +
-	"\x12DeleteOAuthConsent\x12\".core.v1.DeleteOAuthConsentRequest\x1a#.core.v1.DeleteOAuthConsentResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.OAuthService/DeleteOAuthConsent\x12\x85\x01\n" +
-	"\x0eListOAuthLinks\x12\x1e.core.v1.ListOAuthLinksRequest\x1a\x1f.core.v1.ListOAuthLinksResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.OAuthService/ListOAuthLinks\x90\x02\x01\x12}\n" +
-	"\fGetOAuthLink\x12\x1c.core.v1.GetOAuthLinkRequest\x1a\x1d.core.v1.GetOAuthLinkResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.OAuthService/GetOAuthLink\x90\x02\x01\x12\x86\x01\n" +
-	"\x0fDeleteOAuthLink\x12\x1f.core.v1.DeleteOAuthLinkRequest\x1a .core.v1.DeleteOAuthLinkResponse\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.OAuthService/DeleteOAuthLinkB\x84\x01\n" +
+	"\x10provider_revoked\x18\x02 \x01(\bR\x0fproviderRevoked2\xed\b\n" +
+	"\fOAuthService\x12\\\n" +
+	"\x11CreateOAuthClient\x12!.core.v1.CreateOAuthClientRequest\x1a\".core.v1.CreateOAuthClientResponse\"\x00\x12V\n" +
+	"\x0eGetOAuthClient\x12\x1e.core.v1.GetOAuthClientRequest\x1a\x1f.core.v1.GetOAuthClientResponse\"\x03\x90\x02\x01\x12\\\n" +
+	"\x10ListOAuthClients\x12 .core.v1.ListOAuthClientsRequest\x1a!.core.v1.ListOAuthClientsResponse\"\x03\x90\x02\x01\x12\\\n" +
+	"\x11UpdateOAuthClient\x12!.core.v1.UpdateOAuthClientRequest\x1a\".core.v1.UpdateOAuthClientResponse\"\x00\x12n\n" +
+	"\x17CreateOAuthClientSecret\x12'.core.v1.CreateOAuthClientSecretRequest\x1a(.core.v1.CreateOAuthClientSecretResponse\"\x00\x12\\\n" +
+	"\x11DeleteOAuthClient\x12!.core.v1.DeleteOAuthClientRequest\x1a\".core.v1.DeleteOAuthClientResponse\"\x00\x12_\n" +
+	"\x11ListOAuthConsents\x12!.core.v1.ListOAuthConsentsRequest\x1a\".core.v1.ListOAuthConsentsResponse\"\x03\x90\x02\x01\x12Y\n" +
+	"\x0fGetOAuthConsent\x12\x1f.core.v1.GetOAuthConsentRequest\x1a .core.v1.GetOAuthConsentResponse\"\x03\x90\x02\x01\x12_\n" +
+	"\x12DeleteOAuthConsent\x12\".core.v1.DeleteOAuthConsentRequest\x1a#.core.v1.DeleteOAuthConsentResponse\"\x00\x12V\n" +
+	"\x0eListOAuthLinks\x12\x1e.core.v1.ListOAuthLinksRequest\x1a\x1f.core.v1.ListOAuthLinksResponse\"\x03\x90\x02\x01\x12P\n" +
+	"\fGetOAuthLink\x12\x1c.core.v1.GetOAuthLinkRequest\x1a\x1d.core.v1.GetOAuthLinkResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0fDeleteOAuthLink\x12\x1f.core.v1.DeleteOAuthLinkRequest\x1a .core.v1.DeleteOAuthLinkResponse\"\x00B\x84\x01\n" +
 	"\vcom.core.v1B\n" +
 	"OauthProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 

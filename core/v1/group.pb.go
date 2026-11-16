@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/timestamppb"
@@ -1194,7 +1193,7 @@ var File_core_v1_group_proto protoreflect.FileDescriptor
 
 const file_core_v1_group_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/group.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfc\x01\n" +
+	"\x13core/v1/group.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfc\x01\n" +
 	"\x11ListGroupsRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -1266,20 +1265,20 @@ const file_core_v1_group_proto_rawDesc = "" +
 	"\bgroup_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\agroupId\"c\n" +
 	"-DeleteUserGroupLinkByUserIdAndGroupIdResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x19\n" +
-	"\bgroup_id\x18\x02 \x01(\tR\agroupId2\x97\f\n" +
-	"\fGroupService\x12v\n" +
-	"\vCreateGroup\x12\x1b.core.v1.CreateGroupRequest\x1a\x1c.core.v1.CreateGroupResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.GroupService/CreateGroup\x12u\n" +
+	"\bgroup_id\x18\x02 \x01(\tR\agroupId2\xfb\a\n" +
+	"\fGroupService\x12J\n" +
+	"\vCreateGroup\x12\x1b.core.v1.CreateGroupRequest\x1a\x1c.core.v1.CreateGroupResponse\"\x00\x12J\n" +
 	"\n" +
-	"ListGroups\x12\x1a.core.v1.ListGroupsRequest\x1a\x1b.core.v1.ListGroupsResponse\".\x82\xd3\xe4\x93\x02%:\x01*\" /core.v1.GroupService/ListGroups\x90\x02\x01\x12m\n" +
-	"\bGetGroup\x12\x18.core.v1.GetGroupRequest\x1a\x19.core.v1.GetGroupResponse\",\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/core.v1.GroupService/GetGroup\x90\x02\x01\x12v\n" +
-	"\vUpdateGroup\x12\x1b.core.v1.UpdateGroupRequest\x1a\x1c.core.v1.UpdateGroupResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.GroupService/UpdateGroup\x12~\n" +
-	"\rUpdateGroupV2\x12\x1d.core.v1.UpdateGroupV2Request\x1a\x1e.core.v1.UpdateGroupV2Response\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.GroupService/UpdateGroupV2\x12v\n" +
-	"\vDeleteGroup\x12\x1b.core.v1.DeleteGroupRequest\x1a\x1c.core.v1.DeleteGroupResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/core.v1.GroupService/DeleteGroup\x12\x95\x01\n" +
-	"\x12ListUserGroupLinks\x12\".core.v1.ListUserGroupLinksRequest\x1a#.core.v1.ListUserGroupLinksResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.GroupService/ListUserGroupLinks\x90\x02\x01\x12\x8d\x01\n" +
-	"\x10GetUserGroupLink\x12 .core.v1.GetUserGroupLinkRequest\x1a!.core.v1.GetUserGroupLinkResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.GroupService/GetUserGroupLink\x90\x02\x01\x12\x96\x01\n" +
-	"\x13CreateUserGroupLink\x12#.core.v1.CreateUserGroupLinkRequest\x1a$.core.v1.CreateUserGroupLinkResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.GroupService/CreateUserGroupLink\x12\x96\x01\n" +
-	"\x13DeleteUserGroupLink\x12#.core.v1.DeleteUserGroupLinkRequest\x1a$.core.v1.DeleteUserGroupLinkResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.GroupService/DeleteUserGroupLink\x12\xde\x01\n" +
-	"%DeleteUserGroupLinkByUserIdAndGroupId\x125.core.v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest\x1a6.core.v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse\"F\x82\xd3\xe4\x93\x02@:\x01*\";/core.v1.GroupService/DeleteUserGroupLinkByUserIdAndGroupIdB\x84\x01\n" +
+	"ListGroups\x12\x1a.core.v1.ListGroupsRequest\x1a\x1b.core.v1.ListGroupsResponse\"\x03\x90\x02\x01\x12D\n" +
+	"\bGetGroup\x12\x18.core.v1.GetGroupRequest\x1a\x19.core.v1.GetGroupResponse\"\x03\x90\x02\x01\x12J\n" +
+	"\vUpdateGroup\x12\x1b.core.v1.UpdateGroupRequest\x1a\x1c.core.v1.UpdateGroupResponse\"\x00\x12P\n" +
+	"\rUpdateGroupV2\x12\x1d.core.v1.UpdateGroupV2Request\x1a\x1e.core.v1.UpdateGroupV2Response\"\x00\x12J\n" +
+	"\vDeleteGroup\x12\x1b.core.v1.DeleteGroupRequest\x1a\x1c.core.v1.DeleteGroupResponse\"\x00\x12b\n" +
+	"\x12ListUserGroupLinks\x12\".core.v1.ListUserGroupLinksRequest\x1a#.core.v1.ListUserGroupLinksResponse\"\x03\x90\x02\x01\x12\\\n" +
+	"\x10GetUserGroupLink\x12 .core.v1.GetUserGroupLinkRequest\x1a!.core.v1.GetUserGroupLinkResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13CreateUserGroupLink\x12#.core.v1.CreateUserGroupLinkRequest\x1a$.core.v1.CreateUserGroupLinkResponse\"\x00\x12b\n" +
+	"\x13DeleteUserGroupLink\x12#.core.v1.DeleteUserGroupLinkRequest\x1a$.core.v1.DeleteUserGroupLinkResponse\"\x00\x12\x98\x01\n" +
+	"%DeleteUserGroupLinkByUserIdAndGroupId\x125.core.v1.DeleteUserGroupLinkByUserIdAndGroupIdRequest\x1a6.core.v1.DeleteUserGroupLinkByUserIdAndGroupIdResponse\"\x00B\x84\x01\n" +
 	"\vcom.core.v1B\n" +
 	"GroupProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 

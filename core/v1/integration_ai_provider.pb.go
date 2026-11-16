@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -626,7 +625,7 @@ var File_core_v1_integration_ai_provider_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_ai_provider_proto_rawDesc = "" +
 	"\n" +
-	"%core/v1/integration_ai_provider.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe8\x03\n" +
+	"%core/v1/integration_ai_provider.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe8\x03\n" +
 	"\x15IntegrationAIProvider\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\"\n" +
@@ -676,12 +675,12 @@ const file_core_v1_integration_ai_provider_proto_rawDesc = "" +
 	"\x1dAI_PROVIDER_CURSOR_ENTERPRISE\x10\x02\x12#\n" +
 	"\x1fAI_PROVIDER_OPENAI_API_PLATFORM\x10\x03\x12$\n" +
 	" AI_PROVIDER_ANTHROPIC_ENTERPRISE\x10\x04\x12\x1e\n" +
-	"\x1aAI_PROVIDER_OPENAI_CHATGPT\x10\x052\xb8\x06\n" +
-	"\x1cIntegrationAIProviderService\x12\xc6\x01\n" +
-	"\x1bCreateIntegrationAIProvider\x12+.core.v1.CreateIntegrationAIProviderRequest\x1a,.core.v1.CreateIntegrationAIProviderResponse\"L\x82\xd3\xe4\x93\x02F:\x01*\"A/core.v1.IntegrationAIProviderService/CreateIntegrationAIProvider\x12\xbd\x01\n" +
-	"\x18GetIntegrationAIProvider\x12(.core.v1.GetIntegrationAIProviderRequest\x1a).core.v1.GetIntegrationAIProviderResponse\"L\x82\xd3\xe4\x93\x02C:\x01*\">/core.v1.IntegrationAIProviderService/GetIntegrationAIProvider\x90\x02\x01\x12\xc5\x01\n" +
-	"\x1aListIntegrationsAIProvider\x12*.core.v1.ListIntegrationsAIProviderRequest\x1a+.core.v1.ListIntegrationsAIProviderResponse\"N\x82\xd3\xe4\x93\x02E:\x01*\"@/core.v1.IntegrationAIProviderService/ListIntegrationsAIProvider\x90\x02\x01\x12\xc6\x01\n" +
-	"\x1bDeleteIntegrationAIProvider\x12+.core.v1.DeleteIntegrationAIProviderRequest\x1a,.core.v1.DeleteIntegrationAIProviderResponse\"L\x82\xd3\xe4\x93\x02F:\x01*\"A/core.v1.IntegrationAIProviderService/DeleteIntegrationAIProviderB\x94\x01\n" +
+	"\x1aAI_PROVIDER_OPENAI_CHATGPT\x10\x052\x88\x04\n" +
+	"\x1cIntegrationAIProviderService\x12z\n" +
+	"\x1bCreateIntegrationAIProvider\x12+.core.v1.CreateIntegrationAIProviderRequest\x1a,.core.v1.CreateIntegrationAIProviderResponse\"\x00\x12t\n" +
+	"\x18GetIntegrationAIProvider\x12(.core.v1.GetIntegrationAIProviderRequest\x1a).core.v1.GetIntegrationAIProviderResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1aListIntegrationsAIProvider\x12*.core.v1.ListIntegrationsAIProviderRequest\x1a+.core.v1.ListIntegrationsAIProviderResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1bDeleteIntegrationAIProvider\x12+.core.v1.DeleteIntegrationAIProviderRequest\x1a,.core.v1.DeleteIntegrationAIProviderResponse\"\x00B\x94\x01\n" +
 	"\vcom.core.v1B\x1aIntegrationAiProviderProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

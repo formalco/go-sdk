@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -283,7 +282,7 @@ var File_core_v1_search_proto protoreflect.FileDescriptor
 
 const file_core_v1_search_proto_rawDesc = "" +
 	"\n" +
-	"\x14core/v1/search.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"9\n" +
+	"\x14core/v1/search.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"9\n" +
 	"\x18ListSearchResultsRequest\x12\x1d\n" +
 	"\x05query\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05query\"p\n" +
 	"\x19ListSearchResultsResponse\x122\n" +
@@ -309,9 +308,9 @@ const file_core_v1_search_proto_rawDesc = "" +
 	"\bmetadata\x18\x05 \x03(\v2#.core.v1.SearchResult.MetadataEntryR\bmetadata\x1a;\n" +
 	"\rMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x012\xa4\x01\n" +
-	"\rSearchService\x12\x92\x01\n" +
-	"\x11ListSearchResults\x12!.core.v1.ListSearchResultsRequest\x1a\".core.v1.ListSearchResultsResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.SearchService/ListSearchResults\x90\x02\x01B\x85\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x012p\n" +
+	"\rSearchService\x12_\n" +
+	"\x11ListSearchResults\x12!.core.v1.ListSearchResultsRequest\x1a\".core.v1.ListSearchResultsResponse\"\x03\x90\x02\x01B\x85\x01\n" +
 	"\vcom.core.v1B\vSearchProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

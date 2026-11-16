@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1397,7 +1396,7 @@ var File_core_v1_integration_log_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_log_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcore/v1/integration_log.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf5\n" +
+	"\x1dcore/v1/integration_log.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf5\n" +
 	"\n" +
 	"\x0eIntegrationLog\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
@@ -1509,12 +1508,12 @@ const file_core_v1_integration_log_proto_rawDesc = "" +
 	"\x0eLogCompression\x12\x18\n" +
 	"\x14LOG_COMPRESSION_NONE\x10\x00\x12\x18\n" +
 	"\x14LOG_COMPRESSION_GZIP\x10\x01\x12\x18\n" +
-	"\x14LOG_COMPRESSION_ZSTD\x10\x022\xaa\x05\n" +
-	"\x16IntegrationsLogService\x12\xa3\x01\n" +
-	"\x13ListIntegrationLogs\x12#.core.v1.ListIntegrationLogsRequest\x1a$.core.v1.ListIntegrationLogsResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.IntegrationsLogService/ListIntegrationLogs\x90\x02\x01\x12\x9b\x01\n" +
-	"\x11GetIntegrationLog\x12!.core.v1.GetIntegrationLogRequest\x1a\".core.v1.GetIntegrationLogResponse\"?\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.IntegrationsLogService/GetIntegrationLog\x90\x02\x01\x12\xa4\x01\n" +
-	"\x14CreateIntegrationLog\x12$.core.v1.CreateIntegrationLogRequest\x1a%.core.v1.CreateIntegrationLogResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.IntegrationsLogService/CreateIntegrationLog\x12\xa4\x01\n" +
-	"\x14DeleteIntegrationLog\x12$.core.v1.DeleteIntegrationLogRequest\x1a%.core.v1.DeleteIntegrationLogResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.IntegrationsLogService/DeleteIntegrationLogB\x8d\x01\n" +
+	"\x14LOG_COMPRESSION_ZSTD\x10\x022\xae\x03\n" +
+	"\x16IntegrationsLogService\x12e\n" +
+	"\x13ListIntegrationLogs\x12#.core.v1.ListIntegrationLogsRequest\x1a$.core.v1.ListIntegrationLogsResponse\"\x03\x90\x02\x01\x12_\n" +
+	"\x11GetIntegrationLog\x12!.core.v1.GetIntegrationLogRequest\x1a\".core.v1.GetIntegrationLogResponse\"\x03\x90\x02\x01\x12e\n" +
+	"\x14CreateIntegrationLog\x12$.core.v1.CreateIntegrationLogRequest\x1a%.core.v1.CreateIntegrationLogResponse\"\x00\x12e\n" +
+	"\x14DeleteIntegrationLog\x12$.core.v1.DeleteIntegrationLogRequest\x1a%.core.v1.DeleteIntegrationLogResponse\"\x00B\x8d\x01\n" +
 	"\vcom.core.v1B\x13IntegrationLogProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

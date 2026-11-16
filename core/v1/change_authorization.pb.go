@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -632,7 +631,7 @@ var File_core_v1_change_authorization_proto protoreflect.FileDescriptor
 
 const file_core_v1_change_authorization_proto_rawDesc = "" +
 	"\n" +
-	"\"core/v1/change_authorization.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xae\x03\n" +
+	"\"core/v1/change_authorization.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xae\x03\n" +
 	"\n" +
 	"SigningKey\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
@@ -682,13 +681,13 @@ const file_core_v1_change_authorization_proto_rawDesc = "" +
 	"\x17DeleteSigningKeyRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"3\n" +
 	"\x18DeleteSigningKeyResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xaa\x06\n" +
-	"\x1aChangeAuthorizationService\x12\x98\x01\n" +
-	"\x10CreateSigningKey\x12 .core.v1.CreateSigningKeyRequest\x1a!.core.v1.CreateSigningKeyResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ChangeAuthorizationService/CreateSigningKey\x12\x97\x01\n" +
-	"\x0fListSigningKeys\x12\x1f.core.v1.ListSigningKeysRequest\x1a .core.v1.ListSigningKeysResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.ChangeAuthorizationService/ListSigningKeys\x90\x02\x01\x12\x98\x01\n" +
-	"\x10UpdateSigningKey\x12 .core.v1.UpdateSigningKeyRequest\x1a!.core.v1.UpdateSigningKeyResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ChangeAuthorizationService/UpdateSigningKey\x12\xa0\x01\n" +
-	"\x12UpdateSigningKeyV2\x12\".core.v1.UpdateSigningKeyV2Request\x1a#.core.v1.UpdateSigningKeyV2Response\"A\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.ChangeAuthorizationService/UpdateSigningKeyV2\x12\x98\x01\n" +
-	"\x10DeleteSigningKey\x12 .core.v1.DeleteSigningKeyRequest\x1a!.core.v1.DeleteSigningKeyResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.ChangeAuthorizationService/DeleteSigningKeyB\x92\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xe9\x03\n" +
+	"\x1aChangeAuthorizationService\x12Y\n" +
+	"\x10CreateSigningKey\x12 .core.v1.CreateSigningKeyRequest\x1a!.core.v1.CreateSigningKeyResponse\"\x00\x12Y\n" +
+	"\x0fListSigningKeys\x12\x1f.core.v1.ListSigningKeysRequest\x1a .core.v1.ListSigningKeysResponse\"\x03\x90\x02\x01\x12Y\n" +
+	"\x10UpdateSigningKey\x12 .core.v1.UpdateSigningKeyRequest\x1a!.core.v1.UpdateSigningKeyResponse\"\x00\x12_\n" +
+	"\x12UpdateSigningKeyV2\x12\".core.v1.UpdateSigningKeyV2Request\x1a#.core.v1.UpdateSigningKeyV2Response\"\x00\x12Y\n" +
+	"\x10DeleteSigningKey\x12 .core.v1.DeleteSigningKeyRequest\x1a!.core.v1.DeleteSigningKeyResponse\"\x00B\x92\x01\n" +
 	"\vcom.core.v1B\x18ChangeAuthorizationProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

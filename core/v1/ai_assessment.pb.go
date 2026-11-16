@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1437,7 +1436,7 @@ var File_core_v1_ai_assessment_proto protoreflect.FileDescriptor
 
 const file_core_v1_ai_assessment_proto_rawDesc = "" +
 	"\n" +
-	"\x1bcore/v1/ai_assessment.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa6\x01\n" +
+	"\x1bcore/v1/ai_assessment.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa6\x01\n" +
 	"\x14AIAssessmentSettings\x12\x18\n" +
 	"\aenabled\x18\x01 \x01(\bR\aenabled\x129\n" +
 	"\n" +
@@ -1528,20 +1527,20 @@ const file_core_v1_ai_assessment_proto_rawDesc = "" +
 	"\"DeleteAIAssessmentCriterionRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\">\n" +
 	"#DeleteAIAssessmentCriterionResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x98\x11\n" +
-	"\x13AIAssessmentService\x12\xb0\x01\n" +
-	"\x17GetAIAssessmentSettings\x12'.core.v1.GetAIAssessmentSettingsRequest\x1a(.core.v1.GetAIAssessmentSettingsResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/GetAIAssessmentSettings\x90\x02\x01\x12\xb9\x01\n" +
-	"\x1aUpdateAIAssessmentSettings\x12*.core.v1.UpdateAIAssessmentSettingsRequest\x1a+.core.v1.UpdateAIAssessmentSettingsResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.AIAssessmentService/UpdateAIAssessmentSettings\x12\xad\x01\n" +
-	"\x17CreateAIAssessmentLabel\x12'.core.v1.CreateAIAssessmentLabelRequest\x1a(.core.v1.CreateAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/CreateAIAssessmentLabel\x12\xac\x01\n" +
-	"\x16ListAIAssessmentLabels\x12&.core.v1.ListAIAssessmentLabelsRequest\x1a'.core.v1.ListAIAssessmentLabelsResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.AIAssessmentService/ListAIAssessmentLabels\x90\x02\x01\x12\xa4\x01\n" +
-	"\x14GetAIAssessmentLabel\x12$.core.v1.GetAIAssessmentLabelRequest\x1a%.core.v1.GetAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.AIAssessmentService/GetAIAssessmentLabel\x90\x02\x01\x12\xad\x01\n" +
-	"\x17UpdateAIAssessmentLabel\x12'.core.v1.UpdateAIAssessmentLabelRequest\x1a(.core.v1.UpdateAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/UpdateAIAssessmentLabel\x12\xad\x01\n" +
-	"\x17DeleteAIAssessmentLabel\x12'.core.v1.DeleteAIAssessmentLabelRequest\x1a(.core.v1.DeleteAIAssessmentLabelResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.AIAssessmentService/DeleteAIAssessmentLabel\x12\xbd\x01\n" +
-	"\x1bCreateAIAssessmentCriterion\x12+.core.v1.CreateAIAssessmentCriterionRequest\x1a,.core.v1.CreateAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.AIAssessmentService/CreateAIAssessmentCriterion\x12\xb4\x01\n" +
-	"\x18ListAIAssessmentCriteria\x12(.core.v1.ListAIAssessmentCriteriaRequest\x1a).core.v1.ListAIAssessmentCriteriaResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.AIAssessmentService/ListAIAssessmentCriteria\x90\x02\x01\x12\xb4\x01\n" +
-	"\x18GetAIAssessmentCriterion\x12(.core.v1.GetAIAssessmentCriterionRequest\x1a).core.v1.GetAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.AIAssessmentService/GetAIAssessmentCriterion\x90\x02\x01\x12\xbd\x01\n" +
-	"\x1bUpdateAIAssessmentCriterion\x12+.core.v1.UpdateAIAssessmentCriterionRequest\x1a,.core.v1.UpdateAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.AIAssessmentService/UpdateAIAssessmentCriterion\x12\xbd\x01\n" +
-	"\x1bDeleteAIAssessmentCriterion\x12+.core.v1.DeleteAIAssessmentCriterionRequest\x1a,.core.v1.DeleteAIAssessmentCriterionResponse\"C\x82\xd3\xe4\x93\x02=:\x01*\"8/core.v1.AIAssessmentService/DeleteAIAssessmentCriterionB\x8b\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x8b\v\n" +
+	"\x13AIAssessmentService\x12q\n" +
+	"\x17GetAIAssessmentSettings\x12'.core.v1.GetAIAssessmentSettingsRequest\x1a(.core.v1.GetAIAssessmentSettingsResponse\"\x03\x90\x02\x01\x12w\n" +
+	"\x1aUpdateAIAssessmentSettings\x12*.core.v1.UpdateAIAssessmentSettingsRequest\x1a+.core.v1.UpdateAIAssessmentSettingsResponse\"\x00\x12n\n" +
+	"\x17CreateAIAssessmentLabel\x12'.core.v1.CreateAIAssessmentLabelRequest\x1a(.core.v1.CreateAIAssessmentLabelResponse\"\x00\x12n\n" +
+	"\x16ListAIAssessmentLabels\x12&.core.v1.ListAIAssessmentLabelsRequest\x1a'.core.v1.ListAIAssessmentLabelsResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x14GetAIAssessmentLabel\x12$.core.v1.GetAIAssessmentLabelRequest\x1a%.core.v1.GetAIAssessmentLabelResponse\"\x03\x90\x02\x01\x12n\n" +
+	"\x17UpdateAIAssessmentLabel\x12'.core.v1.UpdateAIAssessmentLabelRequest\x1a(.core.v1.UpdateAIAssessmentLabelResponse\"\x00\x12n\n" +
+	"\x17DeleteAIAssessmentLabel\x12'.core.v1.DeleteAIAssessmentLabelRequest\x1a(.core.v1.DeleteAIAssessmentLabelResponse\"\x00\x12z\n" +
+	"\x1bCreateAIAssessmentCriterion\x12+.core.v1.CreateAIAssessmentCriterionRequest\x1a,.core.v1.CreateAIAssessmentCriterionResponse\"\x00\x12t\n" +
+	"\x18ListAIAssessmentCriteria\x12(.core.v1.ListAIAssessmentCriteriaRequest\x1a).core.v1.ListAIAssessmentCriteriaResponse\"\x03\x90\x02\x01\x12t\n" +
+	"\x18GetAIAssessmentCriterion\x12(.core.v1.GetAIAssessmentCriterionRequest\x1a).core.v1.GetAIAssessmentCriterionResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1bUpdateAIAssessmentCriterion\x12+.core.v1.UpdateAIAssessmentCriterionRequest\x1a,.core.v1.UpdateAIAssessmentCriterionResponse\"\x00\x12z\n" +
+	"\x1bDeleteAIAssessmentCriterion\x12+.core.v1.DeleteAIAssessmentCriterionRequest\x1a,.core.v1.DeleteAIAssessmentCriterionResponse\"\x00B\x8b\x01\n" +
 	"\vcom.core.v1B\x11AiAssessmentProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

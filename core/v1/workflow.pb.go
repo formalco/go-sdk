@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
@@ -2423,7 +2422,7 @@ var File_core_v1_workflow_proto protoreflect.FileDescriptor
 
 const file_core_v1_workflow_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/workflow.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x02\n" +
+	"\x16core/v1/workflow.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x02\n" +
 	"\bWorkflow\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12\x12\n" +
@@ -2591,28 +2590,28 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\x1bDeleteWorkflowSecretRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"7\n" +
 	"\x1cDeleteWorkflowSecretResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xa9\x12\n" +
-	"\x0fWorkflowService\x12\x85\x01\n" +
-	"\x0eCreateWorkflow\x12\x1e.core.v1.CreateWorkflowRequest\x1a\x1f.core.v1.CreateWorkflowResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.WorkflowService/CreateWorkflow\x12|\n" +
-	"\vGetWorkflow\x12\x1b.core.v1.GetWorkflowRequest\x1a\x1c.core.v1.GetWorkflowResponse\"2\x82\xd3\xe4\x93\x02):\x01*\"$/core.v1.WorkflowService/GetWorkflow\x90\x02\x01\x12\x84\x01\n" +
-	"\rListWorkflows\x12\x1d.core.v1.ListWorkflowsRequest\x1a\x1e.core.v1.ListWorkflowsResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.WorkflowService/ListWorkflows\x90\x02\x01\x12\x85\x01\n" +
-	"\x0eUpdateWorkflow\x12\x1e.core.v1.UpdateWorkflowRequest\x1a\x1f.core.v1.UpdateWorkflowResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.WorkflowService/UpdateWorkflow\x12\x8d\x01\n" +
-	"\x10UpdateWorkflowV2\x12 .core.v1.UpdateWorkflowV2Request\x1a!.core.v1.UpdateWorkflowV2Response\"4\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.WorkflowService/UpdateWorkflowV2\x12\x85\x01\n" +
-	"\x0eDeleteWorkflow\x12\x1e.core.v1.DeleteWorkflowRequest\x1a\x1f.core.v1.DeleteWorkflowResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.WorkflowService/DeleteWorkflow\x12\xa1\x01\n" +
-	"\x15CreateWorkflowTrigger\x12%.core.v1.CreateWorkflowTriggerRequest\x1a&.core.v1.CreateWorkflowTriggerResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.WorkflowService/CreateWorkflowTrigger\x12u\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xcb\v\n" +
+	"\x0fWorkflowService\x12S\n" +
+	"\x0eCreateWorkflow\x12\x1e.core.v1.CreateWorkflowRequest\x1a\x1f.core.v1.CreateWorkflowResponse\"\x00\x12M\n" +
+	"\vGetWorkflow\x12\x1b.core.v1.GetWorkflowRequest\x1a\x1c.core.v1.GetWorkflowResponse\"\x03\x90\x02\x01\x12S\n" +
+	"\rListWorkflows\x12\x1d.core.v1.ListWorkflowsRequest\x1a\x1e.core.v1.ListWorkflowsResponse\"\x03\x90\x02\x01\x12S\n" +
+	"\x0eUpdateWorkflow\x12\x1e.core.v1.UpdateWorkflowRequest\x1a\x1f.core.v1.UpdateWorkflowResponse\"\x00\x12Y\n" +
+	"\x10UpdateWorkflowV2\x12 .core.v1.UpdateWorkflowV2Request\x1a!.core.v1.UpdateWorkflowV2Response\"\x00\x12S\n" +
+	"\x0eDeleteWorkflow\x12\x1e.core.v1.DeleteWorkflowRequest\x1a\x1f.core.v1.DeleteWorkflowResponse\"\x00\x12h\n" +
+	"\x15CreateWorkflowTrigger\x12%.core.v1.CreateWorkflowTriggerRequest\x1a&.core.v1.CreateWorkflowTriggerResponse\"\x00\x12G\n" +
 	"\n" +
-	"CreateForm\x12\x1a.core.v1.CreateFormRequest\x1a\x1b.core.v1.CreateFormResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.WorkflowService/CreateForm\x12l\n" +
-	"\aGetForm\x12\x17.core.v1.GetFormRequest\x1a\x18.core.v1.GetFormResponse\".\x82\xd3\xe4\x93\x02%:\x01*\" /core.v1.WorkflowService/GetForm\x90\x02\x01\x12t\n" +
-	"\tListForms\x12\x19.core.v1.ListFormsRequest\x1a\x1a.core.v1.ListFormsResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.WorkflowService/ListForms\x90\x02\x01\x12u\n" +
+	"CreateForm\x12\x1a.core.v1.CreateFormRequest\x1a\x1b.core.v1.CreateFormResponse\"\x00\x12A\n" +
+	"\aGetForm\x12\x17.core.v1.GetFormRequest\x1a\x18.core.v1.GetFormResponse\"\x03\x90\x02\x01\x12G\n" +
+	"\tListForms\x12\x19.core.v1.ListFormsRequest\x1a\x1a.core.v1.ListFormsResponse\"\x03\x90\x02\x01\x12G\n" +
 	"\n" +
-	"UpdateForm\x12\x1a.core.v1.UpdateFormRequest\x1a\x1b.core.v1.UpdateFormResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.WorkflowService/UpdateForm\x12}\n" +
-	"\fUpdateFormV2\x12\x1c.core.v1.UpdateFormV2Request\x1a\x1d.core.v1.UpdateFormV2Response\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.WorkflowService/UpdateFormV2\x12u\n" +
+	"UpdateForm\x12\x1a.core.v1.UpdateFormRequest\x1a\x1b.core.v1.UpdateFormResponse\"\x00\x12M\n" +
+	"\fUpdateFormV2\x12\x1c.core.v1.UpdateFormV2Request\x1a\x1d.core.v1.UpdateFormV2Response\"\x00\x12G\n" +
 	"\n" +
-	"DeleteForm\x12\x1a.core.v1.DeleteFormRequest\x1a\x1b.core.v1.DeleteFormResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.WorkflowService/DeleteForm\x12\x9c\x01\n" +
-	"\x13ListWorkflowSecrets\x12#.core.v1.ListWorkflowSecretsRequest\x1a$.core.v1.ListWorkflowSecretsResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.WorkflowService/ListWorkflowSecrets\x90\x02\x01\x12\x9d\x01\n" +
-	"\x14CreateWorkflowSecret\x12$.core.v1.CreateWorkflowSecretRequest\x1a%.core.v1.CreateWorkflowSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.WorkflowService/CreateWorkflowSecret\x12\x9d\x01\n" +
-	"\x14UpdateWorkflowSecret\x12$.core.v1.UpdateWorkflowSecretRequest\x1a%.core.v1.UpdateWorkflowSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.WorkflowService/UpdateWorkflowSecret\x12\x9d\x01\n" +
-	"\x14DeleteWorkflowSecret\x12$.core.v1.DeleteWorkflowSecretRequest\x1a%.core.v1.DeleteWorkflowSecretResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.WorkflowService/DeleteWorkflowSecretB\x87\x01\n" +
+	"DeleteForm\x12\x1a.core.v1.DeleteFormRequest\x1a\x1b.core.v1.DeleteFormResponse\"\x00\x12e\n" +
+	"\x13ListWorkflowSecrets\x12#.core.v1.ListWorkflowSecretsRequest\x1a$.core.v1.ListWorkflowSecretsResponse\"\x03\x90\x02\x01\x12e\n" +
+	"\x14CreateWorkflowSecret\x12$.core.v1.CreateWorkflowSecretRequest\x1a%.core.v1.CreateWorkflowSecretResponse\"\x00\x12e\n" +
+	"\x14UpdateWorkflowSecret\x12$.core.v1.UpdateWorkflowSecretRequest\x1a%.core.v1.UpdateWorkflowSecretResponse\"\x00\x12e\n" +
+	"\x14DeleteWorkflowSecret\x12$.core.v1.DeleteWorkflowSecretRequest\x1a%.core.v1.DeleteWorkflowSecretResponse\"\x00B\x87\x01\n" +
 	"\vcom.core.v1B\rWorkflowProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -766,7 +765,7 @@ var File_core_v1_mcp_proto protoreflect.FileDescriptor
 
 const file_core_v1_mcp_proto_rawDesc = "" +
 	"\n" +
-	"\x11core/v1/mcp.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x01\n" +
+	"\x11core/v1/mcp.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x01\n" +
 	"\x15ListMcpServersRequest\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xf4\x03 \x00R\x05limit\x12\x16\n" +
@@ -819,15 +818,15 @@ const file_core_v1_mcp_proto_rawDesc = "" +
 	"\r_server_label\"M\n" +
 	"\x16ListShadowMcpsResponse\x123\n" +
 	"\vshadow_mcps\x18\x01 \x03(\v2\x12.core.v1.ShadowMcpR\n" +
-	"shadowMcps2\xaa\x06\n" +
+	"shadowMcps2\x96\x04\n" +
 	"\n" +
-	"McpService\x12\x83\x01\n" +
-	"\x0eListMcpServers\x12\x1e.core.v1.ListMcpServersRequest\x1a\x1f.core.v1.ListMcpServersResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.McpService/ListMcpServers\x90\x02\x01\x12{\n" +
-	"\fGetMcpServer\x12\x1c.core.v1.GetMcpServerRequest\x1a\x1d.core.v1.GetMcpServerResponse\".\x82\xd3\xe4\x93\x02%:\x01*\" /core.v1.McpService/GetMcpServer\x90\x02\x01\x12\x84\x01\n" +
-	"\x0fCreateMcpServer\x12\x1f.core.v1.CreateMcpServerRequest\x1a .core.v1.CreateMcpServerResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.McpService/CreateMcpServer\x12\x84\x01\n" +
-	"\x0fUpdateMcpServer\x12\x1f.core.v1.UpdateMcpServerRequest\x1a .core.v1.UpdateMcpServerResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.McpService/UpdateMcpServer\x12\x84\x01\n" +
-	"\x0fDeleteMcpServer\x12\x1f.core.v1.DeleteMcpServerRequest\x1a .core.v1.DeleteMcpServerResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.McpService/DeleteMcpServer\x12\x83\x01\n" +
-	"\x0eListShadowMcps\x12\x1e.core.v1.ListShadowMcpsRequest\x1a\x1f.core.v1.ListShadowMcpsResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.McpService/ListShadowMcps\x90\x02\x01B\x82\x01\n" +
+	"McpService\x12V\n" +
+	"\x0eListMcpServers\x12\x1e.core.v1.ListMcpServersRequest\x1a\x1f.core.v1.ListMcpServersResponse\"\x03\x90\x02\x01\x12P\n" +
+	"\fGetMcpServer\x12\x1c.core.v1.GetMcpServerRequest\x1a\x1d.core.v1.GetMcpServerResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0fCreateMcpServer\x12\x1f.core.v1.CreateMcpServerRequest\x1a .core.v1.CreateMcpServerResponse\"\x00\x12V\n" +
+	"\x0fUpdateMcpServer\x12\x1f.core.v1.UpdateMcpServerRequest\x1a .core.v1.UpdateMcpServerResponse\"\x00\x12V\n" +
+	"\x0fDeleteMcpServer\x12\x1f.core.v1.DeleteMcpServerRequest\x1a .core.v1.DeleteMcpServerResponse\"\x00\x12V\n" +
+	"\x0eListShadowMcps\x12\x1e.core.v1.ListShadowMcpsRequest\x1a\x1f.core.v1.ListShadowMcpsResponse\"\x03\x90\x02\x01B\x82\x01\n" +
 	"\vcom.core.v1B\bMcpProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

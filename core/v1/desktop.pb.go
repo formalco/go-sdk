@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1530,7 +1529,7 @@ var File_core_v1_desktop_proto protoreflect.FileDescriptor
 
 const file_core_v1_desktop_proto_rawDesc = "" +
 	"\n" +
-	"\x15core/v1/desktop.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc6\x02\n" +
+	"\x15core/v1/desktop.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc6\x02\n" +
 	"\x12DesktopRoutingRule\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -1660,15 +1659,15 @@ const file_core_v1_desktop_proto_rawDesc = "" +
 	"\x0esystem_version\x18\x01 \x01(\tR\rsystemVersion\x12%\n" +
 	"\x0ekernel_version\x18\x02 \x01(\tR\rkernelVersion\x12#\n" +
 	"\rcomputer_name\x18\x03 \x01(\tR\fcomputerName\x12\x1b\n" +
-	"\tuser_name\x18\x04 \x01(\tR\buserName2\x91\t\n" +
-	"\x0eDesktopService\x12\xa3\x01\n" +
-	"\x15GetDesktopRoutingRule\x12%.core.v1.GetDesktopRoutingRuleRequest\x1a&.core.v1.GetDesktopRoutingRuleResponse\";\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.DesktopService/GetDesktopRoutingRule\x90\x02\x01\x12\xab\x01\n" +
-	"\x17ListDesktopRoutingRules\x12'.core.v1.ListDesktopRoutingRulesRequest\x1a(.core.v1.ListDesktopRoutingRulesResponse\"=\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.DesktopService/ListDesktopRoutingRules\x90\x02\x01\x12\xac\x01\n" +
-	"\x18CreateDesktopRoutingRule\x12(.core.v1.CreateDesktopRoutingRuleRequest\x1a).core.v1.CreateDesktopRoutingRuleResponse\";\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.DesktopService/CreateDesktopRoutingRule\x12\xac\x01\n" +
-	"\x18UpdateDesktopRoutingRule\x12(.core.v1.UpdateDesktopRoutingRuleRequest\x1a).core.v1.UpdateDesktopRoutingRuleResponse\";\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.DesktopService/UpdateDesktopRoutingRule\x12\xac\x01\n" +
-	"\x18DeleteDesktopRoutingRule\x12(.core.v1.DeleteDesktopRoutingRuleRequest\x1a).core.v1.DeleteDesktopRoutingRuleResponse\";\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.DesktopService/DeleteDesktopRoutingRule\x12\x8f\x01\n" +
-	"\x10ListDesktopUsers\x12 .core.v1.ListDesktopUsersRequest\x1a!.core.v1.ListDesktopUsersResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.DesktopService/ListDesktopUsers\x90\x02\x01\x12\x8b\x01\n" +
-	"\x0fListUserDevices\x12\x1f.core.v1.ListUserDevicesRequest\x1a .core.v1.ListUserDevicesResponse\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.DesktopService/ListUserDevices\x90\x02\x01B\x86\x01\n" +
+	"\tuser_name\x18\x04 \x01(\tR\buserName2\x82\x06\n" +
+	"\x0eDesktopService\x12k\n" +
+	"\x15GetDesktopRoutingRule\x12%.core.v1.GetDesktopRoutingRuleRequest\x1a&.core.v1.GetDesktopRoutingRuleResponse\"\x03\x90\x02\x01\x12q\n" +
+	"\x17ListDesktopRoutingRules\x12'.core.v1.ListDesktopRoutingRulesRequest\x1a(.core.v1.ListDesktopRoutingRulesResponse\"\x03\x90\x02\x01\x12q\n" +
+	"\x18CreateDesktopRoutingRule\x12(.core.v1.CreateDesktopRoutingRuleRequest\x1a).core.v1.CreateDesktopRoutingRuleResponse\"\x00\x12q\n" +
+	"\x18UpdateDesktopRoutingRule\x12(.core.v1.UpdateDesktopRoutingRuleRequest\x1a).core.v1.UpdateDesktopRoutingRuleResponse\"\x00\x12q\n" +
+	"\x18DeleteDesktopRoutingRule\x12(.core.v1.DeleteDesktopRoutingRuleRequest\x1a).core.v1.DeleteDesktopRoutingRuleResponse\"\x00\x12\\\n" +
+	"\x10ListDesktopUsers\x12 .core.v1.ListDesktopUsersRequest\x1a!.core.v1.ListDesktopUsersResponse\"\x03\x90\x02\x01\x12Y\n" +
+	"\x0fListUserDevices\x12\x1f.core.v1.ListUserDevicesRequest\x1a .core.v1.ListUserDevicesResponse\"\x03\x90\x02\x01B\x86\x01\n" +
 	"\vcom.core.v1B\fDesktopProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

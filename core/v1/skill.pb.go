@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -566,7 +565,7 @@ var File_core_v1_skill_proto protoreflect.FileDescriptor
 
 const file_core_v1_skill_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/skill.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa7\x02\n" +
+	"\x13core/v1/skill.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa7\x02\n" +
 	"\fSkillVariant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -606,13 +605,13 @@ const file_core_v1_skill_proto_rawDesc = "" +
 	"\x05skill\x18\x01 \x01(\v2\x15.core.v1.SkillVariantR\x05skill\"7\n" +
 	"\x18DeleteFormalSkillRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"\x1b\n" +
-	"\x19DeleteFormalSkillResponse2\xb7\x04\n" +
-	"\fSkillService\x12\x8d\x01\n" +
-	"\x10ListShadowSkills\x12 .core.v1.ListShadowSkillsRequest\x1a!.core.v1.ListShadowSkillsResponse\"4\x82\xd3\xe4\x93\x02+:\x01*\"&/core.v1.SkillService/ListShadowSkills\x90\x02\x01\x12u\n" +
+	"\x19DeleteFormalSkillResponse2\xf4\x02\n" +
+	"\fSkillService\x12\\\n" +
+	"\x10ListShadowSkills\x12 .core.v1.ListShadowSkillsRequest\x1a!.core.v1.ListShadowSkillsResponse\"\x03\x90\x02\x01\x12J\n" +
 	"\n" +
-	"ListSkills\x12\x1a.core.v1.ListSkillsRequest\x1a\x1b.core.v1.ListSkillsResponse\".\x82\xd3\xe4\x93\x02%:\x01*\" /core.v1.SkillService/ListSkills\x90\x02\x01\x12\x8e\x01\n" +
-	"\x11CreateFormalSkill\x12!.core.v1.CreateFormalSkillRequest\x1a\".core.v1.CreateFormalSkillResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.SkillService/CreateFormalSkill\x12\x8e\x01\n" +
-	"\x11DeleteFormalSkill\x12!.core.v1.DeleteFormalSkillRequest\x1a\".core.v1.DeleteFormalSkillResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.SkillService/DeleteFormalSkillB\x84\x01\n" +
+	"ListSkills\x12\x1a.core.v1.ListSkillsRequest\x1a\x1b.core.v1.ListSkillsResponse\"\x03\x90\x02\x01\x12\\\n" +
+	"\x11CreateFormalSkill\x12!.core.v1.CreateFormalSkillRequest\x1a\".core.v1.CreateFormalSkillResponse\"\x00\x12\\\n" +
+	"\x11DeleteFormalSkill\x12!.core.v1.DeleteFormalSkillRequest\x1a\".core.v1.DeleteFormalSkillResponse\"\x00B\x84\x01\n" +
 	"\vcom.core.v1B\n" +
 	"SkillProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 

@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -2251,7 +2250,7 @@ var File_core_v1_native_user_proto protoreflect.FileDescriptor
 
 const file_core_v1_native_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19core/v1/native_user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"4\n" +
+	"\x19core/v1/native_user.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fcore/v1/permission_target.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"4\n" +
 	"\x17AWSSecretsManagerSecret\x12\x19\n" +
 	"\x03arn\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x03arn\"5\n" +
 	"\x16GCPSecretManagerSecret\x12\x1b\n" +
@@ -2400,13 +2399,13 @@ const file_core_v1_native_user_proto_rawDesc = "" +
 	"\x19DeleteNativeUserV3Request\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe0\xf9\x18\rR\x02id\"5\n" +
 	"\x1aDeleteNativeUserV3Response\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\x8b\x06\n" +
-	"\x11NativeUserService\x12\x97\x01\n" +
-	"\x12CreateNativeUserV3\x12\".core.v1.CreateNativeUserV3Request\x1a#.core.v1.CreateNativeUserV3Response\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.NativeUserService/CreateNativeUserV3\x12\x96\x01\n" +
-	"\x11ListNativeUsersV3\x12!.core.v1.ListNativeUsersV3Request\x1a\".core.v1.ListNativeUsersV3Response\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.NativeUserService/ListNativeUsersV3\x90\x02\x01\x12\x8e\x01\n" +
-	"\x0fGetNativeUserV3\x12\x1f.core.v1.GetNativeUserV3Request\x1a .core.v1.GetNativeUserV3Response\"8\x82\xd3\xe4\x93\x02/:\x01*\"*/core.v1.NativeUserService/GetNativeUserV3\x90\x02\x01\x12\x97\x01\n" +
-	"\x12UpdateNativeUserV3\x12\".core.v1.UpdateNativeUserV3Request\x1a#.core.v1.UpdateNativeUserV3Response\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.NativeUserService/UpdateNativeUserV3\x12\x97\x01\n" +
-	"\x12DeleteNativeUserV3\x12\".core.v1.DeleteNativeUserV3Request\x1a#.core.v1.DeleteNativeUserV3Response\"8\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.NativeUserService/DeleteNativeUserV3B\x89\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xf2\x03\n" +
+	"\x11NativeUserService\x12_\n" +
+	"\x12CreateNativeUserV3\x12\".core.v1.CreateNativeUserV3Request\x1a#.core.v1.CreateNativeUserV3Response\"\x00\x12_\n" +
+	"\x11ListNativeUsersV3\x12!.core.v1.ListNativeUsersV3Request\x1a\".core.v1.ListNativeUsersV3Response\"\x03\x90\x02\x01\x12Y\n" +
+	"\x0fGetNativeUserV3\x12\x1f.core.v1.GetNativeUserV3Request\x1a .core.v1.GetNativeUserV3Response\"\x03\x90\x02\x01\x12_\n" +
+	"\x12UpdateNativeUserV3\x12\".core.v1.UpdateNativeUserV3Request\x1a#.core.v1.UpdateNativeUserV3Response\"\x00\x12_\n" +
+	"\x12DeleteNativeUserV3\x12\".core.v1.DeleteNativeUserV3Request\x1a#.core.v1.DeleteNativeUserV3Response\"\x00B\x89\x01\n" +
 	"\vcom.core.v1B\x0fNativeUserProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

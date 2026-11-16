@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1675,7 +1674,7 @@ var File_core_v1_insights_proto protoreflect.FileDescriptor
 
 const file_core_v1_insights_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/insights.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xec\x01\n" +
+	"\x16core/v1/insights.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xec\x01\n" +
 	"\bEvidence\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\tR\x04type\x12\x10\n" +
 	"\x03ref\x18\x02 \x01(\tR\x03ref\x12 \n" +
@@ -1828,19 +1827,19 @@ const file_core_v1_insights_proto_rawDesc = "" +
 	"#UpdateInsightsEngineEnabledResponse\"\x1b\n" +
 	"\x19GetInsightsSummaryRequest\"6\n" +
 	"\x1aGetInsightsSummaryResponse\x12\x18\n" +
-	"\asummary\x18\x01 \x01(\tR\asummary2\xe6\f\n" +
-	"\x0fInsightsService\x12\xa9\x01\n" +
-	"\x17CreateInsightEvaluation\x12'.core.v1.CreateInsightEvaluationRequest\x1a(.core.v1.CreateInsightEvaluationResponse\";\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.InsightsService/CreateInsightEvaluation\x12\xa0\x01\n" +
-	"\x14GetInsightEvaluation\x12$.core.v1.GetInsightEvaluationRequest\x1a%.core.v1.GetInsightEvaluationResponse\";\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.InsightsService/GetInsightEvaluation\x90\x02\x01\x12\x80\x01\n" +
-	"\fListInsights\x12\x1c.core.v1.ListInsightsRequest\x1a\x1d.core.v1.ListInsightsResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.InsightsService/ListInsights\x90\x02\x01\x12x\n" +
+	"\asummary\x18\x01 \x01(\tR\asummary2\xad\b\n" +
+	"\x0fInsightsService\x12n\n" +
+	"\x17CreateInsightEvaluation\x12'.core.v1.CreateInsightEvaluationRequest\x1a(.core.v1.CreateInsightEvaluationResponse\"\x00\x12h\n" +
+	"\x14GetInsightEvaluation\x12$.core.v1.GetInsightEvaluationRequest\x1a%.core.v1.GetInsightEvaluationResponse\"\x03\x90\x02\x01\x12P\n" +
+	"\fListInsights\x12\x1c.core.v1.ListInsightsRequest\x1a\x1d.core.v1.ListInsightsResponse\"\x03\x90\x02\x01\x12J\n" +
 	"\n" +
-	"GetInsight\x12\x1a.core.v1.GetInsightRequest\x1a\x1b.core.v1.GetInsightResponse\"1\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.InsightsService/GetInsight\x90\x02\x01\x12\x99\x01\n" +
-	"\x13UpdateInsightStatus\x12#.core.v1.UpdateInsightStatusRequest\x1a$.core.v1.UpdateInsightStatusResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InsightsService/UpdateInsightStatus\x12\xa9\x01\n" +
-	"\x17UpdateBulkInsightStatus\x12'.core.v1.UpdateBulkInsightStatusRequest\x1a(.core.v1.UpdateBulkInsightStatusResponse\";\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.InsightsService/UpdateBulkInsightStatus\x12\x9c\x01\n" +
-	"\x13GetInsightsOverview\x12#.core.v1.GetInsightsOverviewRequest\x1a$.core.v1.GetInsightsOverviewResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.InsightsService/GetInsightsOverview\x90\x02\x01\x12\xc8\x01\n" +
-	"\x1eListInsightCategoryDefinitions\x12..core.v1.ListInsightCategoryDefinitionsRequest\x1a/.core.v1.ListInsightCategoryDefinitionsResponse\"E\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.InsightsService/ListInsightCategoryDefinitions\x90\x02\x01\x12\xb9\x01\n" +
-	"\x1bUpdateInsightsEngineEnabled\x12+.core.v1.UpdateInsightsEngineEnabledRequest\x1a,.core.v1.UpdateInsightsEngineEnabledResponse\"?\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.InsightsService/UpdateInsightsEngineEnabled\x12\x98\x01\n" +
-	"\x12GetInsightsSummary\x12\".core.v1.GetInsightsSummaryRequest\x1a#.core.v1.GetInsightsSummaryResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.InsightsService/GetInsightsSummary\x90\x02\x01B\x87\x01\n" +
+	"GetInsight\x12\x1a.core.v1.GetInsightRequest\x1a\x1b.core.v1.GetInsightResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13UpdateInsightStatus\x12#.core.v1.UpdateInsightStatusRequest\x1a$.core.v1.UpdateInsightStatusResponse\"\x00\x12n\n" +
+	"\x17UpdateBulkInsightStatus\x12'.core.v1.UpdateBulkInsightStatusRequest\x1a(.core.v1.UpdateBulkInsightStatusResponse\"\x00\x12e\n" +
+	"\x13GetInsightsOverview\x12#.core.v1.GetInsightsOverviewRequest\x1a$.core.v1.GetInsightsOverviewResponse\"\x03\x90\x02\x01\x12\x86\x01\n" +
+	"\x1eListInsightCategoryDefinitions\x12..core.v1.ListInsightCategoryDefinitionsRequest\x1a/.core.v1.ListInsightCategoryDefinitionsResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1bUpdateInsightsEngineEnabled\x12+.core.v1.UpdateInsightsEngineEnabledRequest\x1a,.core.v1.UpdateInsightsEngineEnabledResponse\"\x00\x12b\n" +
+	"\x12GetInsightsSummary\x12\".core.v1.GetInsightsSummaryRequest\x1a#.core.v1.GetInsightsSummaryResponse\"\x03\x90\x02\x01B\x87\x01\n" +
 	"\vcom.core.v1B\rInsightsProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

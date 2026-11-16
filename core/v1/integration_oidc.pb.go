@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -684,7 +683,7 @@ var File_core_v1_integration_oidc_proto protoreflect.FileDescriptor
 
 const file_core_v1_integration_oidc_proto_rawDesc = "" +
 	"\n" +
-	"\x1ecore/v1/integration_oidc.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x91\x04\n" +
+	"\x1ecore/v1/integration_oidc.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x91\x04\n" +
 	"\x0fIntegrationOIDC\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -738,13 +737,13 @@ const file_core_v1_integration_oidc_proto_rawDesc = "" +
 	"\x1cDeleteIntegrationOIDCRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"8\n" +
 	"\x1dDeleteIntegrationOIDCResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xe5\x06\n" +
-	"\x16IntegrationOIDCService\x12\xa8\x01\n" +
-	"\x15CreateIntegrationOIDC\x12%.core.v1.CreateIntegrationOIDCRequest\x1a&.core.v1.CreateIntegrationOIDCResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.IntegrationOIDCService/CreateIntegrationOIDC\x12\x9f\x01\n" +
-	"\x12GetIntegrationOIDC\x12\".core.v1.GetIntegrationOIDCRequest\x1a#.core.v1.GetIntegrationOIDCResponse\"@\x82\xd3\xe4\x93\x027:\x01*\"2/core.v1.IntegrationOIDCService/GetIntegrationOIDC\x90\x02\x01\x12\xa7\x01\n" +
-	"\x14ListIntegrationsOIDC\x12$.core.v1.ListIntegrationsOIDCRequest\x1a%.core.v1.ListIntegrationsOIDCResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.IntegrationOIDCService/ListIntegrationsOIDC\x90\x02\x01\x12\xa8\x01\n" +
-	"\x15UpdateIntegrationOIDC\x12%.core.v1.UpdateIntegrationOIDCRequest\x1a&.core.v1.UpdateIntegrationOIDCResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.IntegrationOIDCService/UpdateIntegrationOIDC\x12\xa8\x01\n" +
-	"\x15DeleteIntegrationOIDC\x12%.core.v1.DeleteIntegrationOIDCRequest\x1a&.core.v1.DeleteIntegrationOIDCResponse\"@\x82\xd3\xe4\x93\x02::\x01*\"5/core.v1.IntegrationOIDCService/DeleteIntegrationOIDCB\x8e\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id2\xa4\x04\n" +
+	"\x16IntegrationOIDCService\x12h\n" +
+	"\x15CreateIntegrationOIDC\x12%.core.v1.CreateIntegrationOIDCRequest\x1a&.core.v1.CreateIntegrationOIDCResponse\"\x00\x12b\n" +
+	"\x12GetIntegrationOIDC\x12\".core.v1.GetIntegrationOIDCRequest\x1a#.core.v1.GetIntegrationOIDCResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x14ListIntegrationsOIDC\x12$.core.v1.ListIntegrationsOIDCRequest\x1a%.core.v1.ListIntegrationsOIDCResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x15UpdateIntegrationOIDC\x12%.core.v1.UpdateIntegrationOIDCRequest\x1a&.core.v1.UpdateIntegrationOIDCResponse\"\x00\x12h\n" +
+	"\x15DeleteIntegrationOIDC\x12%.core.v1.DeleteIntegrationOIDCRequest\x1a&.core.v1.DeleteIntegrationOIDCResponse\"\x00B\x8e\x01\n" +
 	"\vcom.core.v1B\x14IntegrationOidcProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

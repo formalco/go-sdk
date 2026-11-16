@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
@@ -3433,7 +3432,7 @@ var File_core_v1_policies_proto protoreflect.FileDescriptor
 
 const file_core_v1_policies_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x86\x05\n" +
+	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x86\x05\n" +
 	"\x06Policy\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12)\n" +
@@ -3716,31 +3715,31 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"'UpdatePolicyStageConfigurationV2Request\x12g\n" +
 	"\x1apolicy_stage_configuration\x18\x01 \x01(\v2!.core.v1.PolicyStageConfigurationB\x06\xbaH\x03\xc8\x01\x01R\x18policyStageConfiguration\"\x8b\x01\n" +
 	"(UpdatePolicyStageConfigurationV2Response\x12_\n" +
-	"\x1apolicy_stage_configuration\x18\x01 \x01(\v2!.core.v1.PolicyStageConfigurationR\x18policyStageConfiguration2\xc5\x1d\n" +
-	"\x0fPoliciesService\x12\x80\x01\n" +
-	"\fListPolicies\x12\x1c.core.v1.ListPoliciesRequest\x1a\x1d.core.v1.ListPoliciesResponse\"3\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.PoliciesService/ListPolicies\x90\x02\x01\x12t\n" +
-	"\tGetPolicy\x12\x19.core.v1.GetPolicyRequest\x1a\x1a.core.v1.GetPolicyResponse\"0\x82\xd3\xe4\x93\x02':\x01*\"\"/core.v1.PoliciesService/GetPolicy\x90\x02\x01\x12\xa4\x01\n" +
-	"\x15GetPolicyCodeValidity\x12%.core.v1.GetPolicyCodeValidityRequest\x1a&.core.v1.GetPolicyCodeValidityResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.PoliciesService/GetPolicyCodeValidity\x90\x02\x01\x12}\n" +
-	"\fCreatePolicy\x12\x1c.core.v1.CreatePolicyRequest\x1a\x1d.core.v1.CreatePolicyResponse\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.PoliciesService/CreatePolicy\x12}\n" +
-	"\fUpdatePolicy\x12\x1c.core.v1.UpdatePolicyRequest\x1a\x1d.core.v1.UpdatePolicyResponse\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.PoliciesService/UpdatePolicy\x12\x85\x01\n" +
-	"\x0eUpdatePolicyV2\x12\x1e.core.v1.UpdatePolicyV2Request\x1a\x1f.core.v1.UpdatePolicyV2Response\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.PoliciesService/UpdatePolicyV2\x12}\n" +
-	"\fDeletePolicy\x12\x1c.core.v1.DeletePolicyRequest\x1a\x1d.core.v1.DeletePolicyResponse\"0\x82\xd3\xe4\x93\x02*:\x01*\"%/core.v1.PoliciesService/DeletePolicy\x12\x95\x01\n" +
-	"\x12CreatePolicyReport\x12\".core.v1.CreatePolicyReportRequest\x1a#.core.v1.CreatePolicyReportResponse\"6\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.PoliciesService/CreatePolicyReport\x12\x8c\x01\n" +
-	"\x0fGetPolicyReport\x12\x1f.core.v1.GetPolicyReportRequest\x1a .core.v1.GetPolicyReportResponse\"6\x82\xd3\xe4\x93\x02-:\x01*\"(/core.v1.PoliciesService/GetPolicyReport\x90\x02\x01\x12\xb8\x01\n" +
-	"\x1aGetPolicyImpactReportGraph\x12*.core.v1.GetPolicyImpactReportGraphRequest\x1a+.core.v1.GetPolicyImpactReportGraphResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.PoliciesService/GetPolicyImpactReportGraph\x90\x02\x01\x12\xb8\x01\n" +
-	"\x1aListPolicyImpactReportLogs\x12*.core.v1.ListPolicyImpactReportLogsRequest\x1a+.core.v1.ListPolicyImpactReportLogsResponse\"A\x82\xd3\xe4\x93\x028:\x01*\"3/core.v1.PoliciesService/ListPolicyImpactReportLogs\x90\x02\x01\x12\xc5\x01\n" +
-	"\x1eCreatePolicyStageConfiguration\x12..core.v1.CreatePolicyStageConfigurationRequest\x1a/.core.v1.CreatePolicyStageConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.PoliciesService/CreatePolicyStageConfiguration\x12\xbc\x01\n" +
-	"\x1bGetPolicyStageConfiguration\x12+.core.v1.GetPolicyStageConfigurationRequest\x1a,.core.v1.GetPolicyStageConfigurationResponse\"B\x82\xd3\xe4\x93\x029:\x01*\"4/core.v1.PoliciesService/GetPolicyStageConfiguration\x90\x02\x01\x12\xc4\x01\n" +
-	"\x1dListPolicyStageConfigurations\x12-.core.v1.ListPolicyStageConfigurationsRequest\x1a..core.v1.ListPolicyStageConfigurationsResponse\"D\x82\xd3\xe4\x93\x02;:\x01*\"6/core.v1.PoliciesService/ListPolicyStageConfigurations\x90\x02\x01\x12\xc5\x01\n" +
-	"\x1eUpdatePolicyStageConfiguration\x12..core.v1.UpdatePolicyStageConfigurationRequest\x1a/.core.v1.UpdatePolicyStageConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.PoliciesService/UpdatePolicyStageConfiguration\x12\xcd\x01\n" +
-	" UpdatePolicyStageConfigurationV2\x120.core.v1.UpdatePolicyStageConfigurationV2Request\x1a1.core.v1.UpdatePolicyStageConfigurationV2Response\"D\x82\xd3\xe4\x93\x02>:\x01*\"9/core.v1.PoliciesService/UpdatePolicyStageConfigurationV2\x12\xc5\x01\n" +
-	"\x1eDeletePolicyStageConfiguration\x12..core.v1.DeletePolicyStageConfigurationRequest\x1a/.core.v1.DeletePolicyStageConfigurationResponse\"B\x82\xd3\xe4\x93\x02<:\x01*\"7/core.v1.PoliciesService/DeletePolicyStageConfiguration\x12\x90\x01\n" +
-	"\x10GetPolicyVersion\x12 .core.v1.GetPolicyVersionRequest\x1a!.core.v1.GetPolicyVersionResponse\"7\x82\xd3\xe4\x93\x02.:\x01*\")/core.v1.PoliciesService/GetPolicyVersion\x90\x02\x01\x12\x98\x01\n" +
-	"\x12ListPolicyVersions\x12\".core.v1.ListPolicyVersionsRequest\x1a#.core.v1.ListPolicyVersionsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.PoliciesService/ListPolicyVersions\x90\x02\x01\x12\xa5\x01\n" +
-	"\x16CreatePolicySuspension\x12&.core.v1.CreatePolicySuspensionRequest\x1a'.core.v1.CreatePolicySuspensionResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.PoliciesService/CreatePolicySuspension\x12\x9c\x01\n" +
-	"\x13GetPolicySuspension\x12#.core.v1.GetPolicySuspensionRequest\x1a$.core.v1.GetPolicySuspensionResponse\":\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.PoliciesService/GetPolicySuspension\x90\x02\x01\x12\xa4\x01\n" +
-	"\x15ListPolicySuspensions\x12%.core.v1.ListPolicySuspensionsRequest\x1a&.core.v1.ListPolicySuspensionsResponse\"<\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.PoliciesService/ListPolicySuspensions\x90\x02\x01\x12\xa5\x01\n" +
-	"\x16DeletePolicySuspension\x12&.core.v1.DeletePolicySuspensionRequest\x1a'.core.v1.DeletePolicySuspensionResponse\":\x82\xd3\xe4\x93\x024:\x01*\"//core.v1.PoliciesService/DeletePolicySuspensionB\x87\x01\n" +
+	"\x1apolicy_stage_configuration\x18\x01 \x01(\v2!.core.v1.PolicyStageConfigurationR\x18policyStageConfiguration2\xa2\x13\n" +
+	"\x0fPoliciesService\x12P\n" +
+	"\fListPolicies\x12\x1c.core.v1.ListPoliciesRequest\x1a\x1d.core.v1.ListPoliciesResponse\"\x03\x90\x02\x01\x12G\n" +
+	"\tGetPolicy\x12\x19.core.v1.GetPolicyRequest\x1a\x1a.core.v1.GetPolicyResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x15GetPolicyCodeValidity\x12%.core.v1.GetPolicyCodeValidityRequest\x1a&.core.v1.GetPolicyCodeValidityResponse\"\x03\x90\x02\x01\x12M\n" +
+	"\fCreatePolicy\x12\x1c.core.v1.CreatePolicyRequest\x1a\x1d.core.v1.CreatePolicyResponse\"\x00\x12M\n" +
+	"\fUpdatePolicy\x12\x1c.core.v1.UpdatePolicyRequest\x1a\x1d.core.v1.UpdatePolicyResponse\"\x00\x12S\n" +
+	"\x0eUpdatePolicyV2\x12\x1e.core.v1.UpdatePolicyV2Request\x1a\x1f.core.v1.UpdatePolicyV2Response\"\x00\x12M\n" +
+	"\fDeletePolicy\x12\x1c.core.v1.DeletePolicyRequest\x1a\x1d.core.v1.DeletePolicyResponse\"\x00\x12_\n" +
+	"\x12CreatePolicyReport\x12\".core.v1.CreatePolicyReportRequest\x1a#.core.v1.CreatePolicyReportResponse\"\x00\x12Y\n" +
+	"\x0fGetPolicyReport\x12\x1f.core.v1.GetPolicyReportRequest\x1a .core.v1.GetPolicyReportResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1aGetPolicyImpactReportGraph\x12*.core.v1.GetPolicyImpactReportGraphRequest\x1a+.core.v1.GetPolicyImpactReportGraphResponse\"\x03\x90\x02\x01\x12z\n" +
+	"\x1aListPolicyImpactReportLogs\x12*.core.v1.ListPolicyImpactReportLogsRequest\x1a+.core.v1.ListPolicyImpactReportLogsResponse\"\x03\x90\x02\x01\x12\x83\x01\n" +
+	"\x1eCreatePolicyStageConfiguration\x12..core.v1.CreatePolicyStageConfigurationRequest\x1a/.core.v1.CreatePolicyStageConfigurationResponse\"\x00\x12}\n" +
+	"\x1bGetPolicyStageConfiguration\x12+.core.v1.GetPolicyStageConfigurationRequest\x1a,.core.v1.GetPolicyStageConfigurationResponse\"\x03\x90\x02\x01\x12\x83\x01\n" +
+	"\x1dListPolicyStageConfigurations\x12-.core.v1.ListPolicyStageConfigurationsRequest\x1a..core.v1.ListPolicyStageConfigurationsResponse\"\x03\x90\x02\x01\x12\x83\x01\n" +
+	"\x1eUpdatePolicyStageConfiguration\x12..core.v1.UpdatePolicyStageConfigurationRequest\x1a/.core.v1.UpdatePolicyStageConfigurationResponse\"\x00\x12\x89\x01\n" +
+	" UpdatePolicyStageConfigurationV2\x120.core.v1.UpdatePolicyStageConfigurationV2Request\x1a1.core.v1.UpdatePolicyStageConfigurationV2Response\"\x00\x12\x83\x01\n" +
+	"\x1eDeletePolicyStageConfiguration\x12..core.v1.DeletePolicyStageConfigurationRequest\x1a/.core.v1.DeletePolicyStageConfigurationResponse\"\x00\x12\\\n" +
+	"\x10GetPolicyVersion\x12 .core.v1.GetPolicyVersionRequest\x1a!.core.v1.GetPolicyVersionResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x12ListPolicyVersions\x12\".core.v1.ListPolicyVersionsRequest\x1a#.core.v1.ListPolicyVersionsResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x16CreatePolicySuspension\x12&.core.v1.CreatePolicySuspensionRequest\x1a'.core.v1.CreatePolicySuspensionResponse\"\x00\x12e\n" +
+	"\x13GetPolicySuspension\x12#.core.v1.GetPolicySuspensionRequest\x1a$.core.v1.GetPolicySuspensionResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x15ListPolicySuspensions\x12%.core.v1.ListPolicySuspensionsRequest\x1a&.core.v1.ListPolicySuspensionsResponse\"\x03\x90\x02\x01\x12k\n" +
+	"\x16DeletePolicySuspension\x12&.core.v1.DeletePolicySuspensionRequest\x1a'.core.v1.DeletePolicySuspensionResponse\"\x00B\x87\x01\n" +
 	"\vcom.core.v1B\rPoliciesProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

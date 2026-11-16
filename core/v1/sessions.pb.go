@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
@@ -1645,7 +1644,7 @@ var File_core_v1_sessions_proto protoreflect.FileDescriptor
 
 const file_core_v1_sessions_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/sessions.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xeb\v\n" +
+	"\x16core/v1/sessions.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xeb\v\n" +
 	"\rSessionObject\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
@@ -1787,13 +1786,13 @@ const file_core_v1_sessions_proto_rawDesc = "" +
 	"\x05_mode\"\x8c\x01\n" +
 	"\x1fListSessionAggregationsResponse\x12N\n" +
 	"\faggregations\x18\x01 \x01(\v2*.core.v1.ListSessionsResponse.AggregationsR\faggregations\x12\x19\n" +
-	"\bnum_hits\x18\x02 \x01(\x03R\anumHits2\xf5\x04\n" +
-	"\x0fSessionsService\x12x\n" +
+	"\bnum_hits\x18\x02 \x01(\x03R\anumHits2\x9b\x03\n" +
+	"\x0fSessionsService\x12J\n" +
 	"\n" +
-	"GetSession\x12\x1a.core.v1.GetSessionRequest\x1a\x1b.core.v1.GetSessionResponse\"1\x82\xd3\xe4\x93\x02(:\x01*\"#/core.v1.SessionsService/GetSession\x90\x02\x01\x12\x88\x01\n" +
-	"\x0eListSessionsV2\x12\x1e.core.v1.ListSessionsV2Request\x1a\x1f.core.v1.ListSessionsV2Response\"5\x82\xd3\xe4\x93\x02,:\x01*\"'/core.v1.SessionsService/ListSessionsV2\x90\x02\x01\x12\xac\x01\n" +
-	"\x17ListSessionAggregations\x12'.core.v1.ListSessionAggregationsRequest\x1a(.core.v1.ListSessionAggregationsResponse\">\x82\xd3\xe4\x93\x025:\x01*\"0/core.v1.SessionsService/ListSessionAggregations\x90\x02\x01\x12\xad\x01\n" +
-	"\x18CreateSessionTermination\x12(.core.v1.CreateSessionTerminationRequest\x1a).core.v1.CreateSessionTerminationResponse\"<\x82\xd3\xe4\x93\x026:\x01*\"1/core.v1.SessionsService/CreateSessionTerminationB\x87\x01\n" +
+	"GetSession\x12\x1a.core.v1.GetSessionRequest\x1a\x1b.core.v1.GetSessionResponse\"\x03\x90\x02\x01\x12V\n" +
+	"\x0eListSessionsV2\x12\x1e.core.v1.ListSessionsV2Request\x1a\x1f.core.v1.ListSessionsV2Response\"\x03\x90\x02\x01\x12q\n" +
+	"\x17ListSessionAggregations\x12'.core.v1.ListSessionAggregationsRequest\x1a(.core.v1.ListSessionAggregationsResponse\"\x03\x90\x02\x01\x12q\n" +
+	"\x18CreateSessionTermination\x12(.core.v1.CreateSessionTerminationRequest\x1a).core.v1.CreateSessionTerminationResponse\"\x00B\x87\x01\n" +
 	"\vcom.core.v1B\rSessionsProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (

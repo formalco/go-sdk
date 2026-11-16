@@ -8,7 +8,6 @@ package corev1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
@@ -2135,7 +2134,7 @@ var File_core_v1_approval_proto protoreflect.FileDescriptor
 
 const file_core_v1_approval_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/approval.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x11core/v1/mcp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf7\x03\n" +
+	"\x16core/v1/approval.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x11core/v1/mcp.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf7\x03\n" +
 	"\x0fApprovalRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12*\n" +
 	"\x11requester_user_id\x18\x02 \x01(\tR\x0frequesterUserId\x12'\n" +
@@ -2275,12 +2274,12 @@ const file_core_v1_approval_proto_rawDesc = "" +
 	"\x1bUpdateApprovalRequestAction\x12.\n" +
 	"*UPDATE_APPROVAL_REQUEST_ACTION_UNSPECIFIED\x10\x00\x12*\n" +
 	"&UPDATE_APPROVAL_REQUEST_ACTION_APPROVE\x10\x01\x12)\n" +
-	"%UPDATE_APPROVAL_REQUEST_ACTION_REJECT\x10\x022\x8f\x05\n" +
-	"\x0fApprovalService\x12\xa0\x01\n" +
-	"\x14ListApprovalRequests\x12$.core.v1.ListApprovalRequestsRequest\x1a%.core.v1.ListApprovalRequestsResponse\";\x82\xd3\xe4\x93\x022:\x01*\"-/core.v1.ApprovalService/ListApprovalRequests\x90\x02\x01\x12\xa1\x01\n" +
-	"\x15UpdateApprovalRequest\x12%.core.v1.UpdateApprovalRequestRequest\x1a&.core.v1.UpdateApprovalRequestResponse\"9\x82\xd3\xe4\x93\x023:\x01*\"./core.v1.ApprovalService/UpdateApprovalRequest\x12\x98\x01\n" +
-	"\x12ListAccessRequests\x12\".core.v1.ListAccessRequestsRequest\x1a#.core.v1.ListAccessRequestsResponse\"9\x82\xd3\xe4\x93\x020:\x01*\"+/core.v1.ApprovalService/ListAccessRequests\x90\x02\x01\x12\x99\x01\n" +
-	"\x13CreateAccessRequest\x12#.core.v1.CreateAccessRequestRequest\x1a$.core.v1.CreateAccessRequestResponse\"7\x82\xd3\xe4\x93\x021:\x01*\",/core.v1.ApprovalService/CreateAccessRequestB\x87\x01\n" +
+	"%UPDATE_APPROVAL_REQUEST_ACTION_REJECT\x10\x022\xad\x03\n" +
+	"\x0fApprovalService\x12h\n" +
+	"\x14ListApprovalRequests\x12$.core.v1.ListApprovalRequestsRequest\x1a%.core.v1.ListApprovalRequestsResponse\"\x03\x90\x02\x01\x12h\n" +
+	"\x15UpdateApprovalRequest\x12%.core.v1.UpdateApprovalRequestRequest\x1a&.core.v1.UpdateApprovalRequestResponse\"\x00\x12b\n" +
+	"\x12ListAccessRequests\x12\".core.v1.ListAccessRequestsRequest\x1a#.core.v1.ListAccessRequestsResponse\"\x03\x90\x02\x01\x12b\n" +
+	"\x13CreateAccessRequest\x12#.core.v1.CreateAccessRequestRequest\x1a$.core.v1.CreateAccessRequestResponse\"\x00B\x87\x01\n" +
 	"\vcom.core.v1B\rApprovalProtoP\x01Z,github.com/formalco/go-sdk/v3/core/v1;corev1\xa2\x02\x03CXX\xaa\x02\aCore.V1\xca\x02\aCore\\V1\xe2\x02\x13Core\\V1\\GPBMetadata\xea\x02\bCore::V1b\x06proto3"
 
 var (
