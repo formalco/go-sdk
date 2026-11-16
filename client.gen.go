@@ -18,6 +18,7 @@ type Client struct {
 	ConnectorServiceClient             *ConnectorServiceClient
 	DashboardServiceClient             *DashboardServiceClient
 	DesktopServiceClient               *DesktopServiceClient
+	DirectorySyncServiceClient         *DirectorySyncServiceClient
 	GraphServiceClient                 *GraphServiceClient
 	GroupServiceClient                 *GroupServiceClient
 	HookServiceClient                  *HookServiceClient
@@ -59,6 +60,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		ConnectorServiceClient:             &ConnectorServiceClient{inner: corev1connect.NewConnectorServiceClient(httpClient, baseURL)},
 		DashboardServiceClient:             &DashboardServiceClient{inner: corev1connect.NewDashboardServiceClient(httpClient, baseURL)},
 		DesktopServiceClient:               &DesktopServiceClient{inner: corev1connect.NewDesktopServiceClient(httpClient, baseURL)},
+		DirectorySyncServiceClient:         &DirectorySyncServiceClient{inner: corev1connect.NewDirectorySyncServiceClient(httpClient, baseURL)},
 		GraphServiceClient:                 &GraphServiceClient{inner: corev1connect.NewGraphServiceClient(httpClient, baseURL)},
 		GroupServiceClient:                 &GroupServiceClient{inner: corev1connect.NewGroupServiceClient(httpClient, baseURL)},
 		HookServiceClient:                  &HookServiceClient{inner: corev1connect.NewHookServiceClient(httpClient, baseURL)},
@@ -1102,6 +1104,71 @@ func (c *DesktopServiceClient) ListUserDevices(ctx context.Context, req *corev1.
 // Update an existing desktop routing rule.
 func (c *DesktopServiceClient) UpdateDesktopRoutingRule(ctx context.Context, req *corev1.UpdateDesktopRoutingRuleRequest) (*corev1.UpdateDesktopRoutingRuleResponse, error) {
 	res, err := c.inner.UpdateDesktopRoutingRule(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// DirectorySyncServiceClient is a client for the core.v1.DirectorySyncService service.
+type DirectorySyncServiceClient struct {
+	inner corev1connect.DirectorySyncServiceClient
+}
+
+// Create the directory
+//
+// Create the organization's directory. Fails with already exists if the
+// organization has one.
+func (c *DirectorySyncServiceClient) CreateDirectory(ctx context.Context, req *corev1.CreateDirectoryRequest) (*corev1.CreateDirectoryResponse, error) {
+	res, err := c.inner.CreateDirectory(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Create a SCIM token
+//
+// Create a bearer token for the identity provider. The token is returned only
+// once. A directory has at most two, so one can be rotated without downtime.
+func (c *DirectorySyncServiceClient) CreateSCIMToken(ctx context.Context, req *corev1.CreateSCIMTokenRequest) (*corev1.CreateSCIMTokenResponse, error) {
+	res, err := c.inner.CreateSCIMToken(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete the directory
+//
+// Delete the organization's directory and revoke its tokens. The users and
+// groups it provisioned stay in Formal, and can be edited there again.
+func (c *DirectorySyncServiceClient) DeleteDirectory(ctx context.Context, req *corev1.DeleteDirectoryRequest) (*corev1.DeleteDirectoryResponse, error) {
+	res, err := c.inner.DeleteDirectory(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Delete a SCIM token
+//
+// Delete a token, revoking it: the identity provider's requests with it fail
+// from then on.
+func (c *DirectorySyncServiceClient) DeleteSCIMToken(ctx context.Context, req *corev1.DeleteSCIMTokenRequest) (*corev1.DeleteSCIMTokenResponse, error) {
+	res, err := c.inner.DeleteSCIMToken(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// Get the directory
+//
+// Get the organization's directory and its tokens. Not found when the
+// organization has none.
+func (c *DirectorySyncServiceClient) GetDirectory(ctx context.Context, req *corev1.GetDirectoryRequest) (*corev1.GetDirectoryResponse, error) {
+	res, err := c.inner.GetDirectory(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
