@@ -39,8 +39,10 @@ type Policy struct {
 	UpdatedAt             *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	Version               int32                  `protobuf:"varint,12,opt,name=version,proto3" json:"version,omitempty"`
 	Tags                  map[string]string      `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	// Output only. Set by ListPolicies and GetPolicy, ignored on writes. Empty when the policy is in no folder.
+	FolderPath    string `protobuf:"bytes,14,opt,name=folder_path,json=folderPath,proto3" json:"folder_path,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Policy) Reset() {
@@ -155,6 +157,13 @@ func (x *Policy) GetTags() map[string]string {
 		return x.Tags
 	}
 	return nil
+}
+
+func (x *Policy) GetFolderPath() string {
+	if x != nil {
+		return x.FolderPath
+	}
+	return ""
 }
 
 type PolicyTags struct {
@@ -3432,7 +3441,7 @@ var File_core_v1_policies_proto protoreflect.FileDescriptor
 
 const file_core_v1_policies_proto_rawDesc = "" +
 	"\n" +
-	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x86\x05\n" +
+	"\x16core/v1/policies.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x13core/v1/graph.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x13core/v1/types.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa7\x05\n" +
 	"\x06Policy\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12)\n" +
@@ -3448,7 +3457,9 @@ const file_core_v1_policies_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12!\n" +
 	"\aversion\x18\f \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\aversion\x128\n" +
-	"\x04tags\x18\r \x03(\v2\x19.core.v1.Policy.TagsEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x04tags\x1a7\n" +
+	"\x04tags\x18\r \x03(\v2\x19.core.v1.Policy.TagsEntryB\t\xbaH\x06\x9a\x01\x03\x10\xf4\x03R\x04tags\x12\x1f\n" +
+	"\vfolder_path\x18\x0e \x01(\tR\n" +
+	"folderPath\x1a7\n" +
 	"\tTagsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01J\x04\b\x05\x10\x06R\x03ast\"\x8b\x01\n" +
