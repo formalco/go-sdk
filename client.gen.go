@@ -28,6 +28,7 @@ type Client struct {
 	IntegrationCloudServiceClient      *IntegrationCloudServiceClient
 	IntegrationMDMServiceClient        *IntegrationMDMServiceClient
 	IntegrationOIDCServiceClient       *IntegrationOIDCServiceClient
+	IntegrationSocketServiceClient     *IntegrationSocketServiceClient
 	IntegrationsLogServiceClient       *IntegrationsLogServiceClient
 	InventoryServiceClient             *InventoryServiceClient
 	LLMPricingServiceClient            *LLMPricingServiceClient
@@ -70,6 +71,7 @@ func newClient(httpClient connect.HTTPClient, baseURL string) *Client {
 		IntegrationCloudServiceClient:      &IntegrationCloudServiceClient{inner: corev1connect.NewIntegrationCloudServiceClient(httpClient, baseURL)},
 		IntegrationMDMServiceClient:        &IntegrationMDMServiceClient{inner: corev1connect.NewIntegrationMDMServiceClient(httpClient, baseURL)},
 		IntegrationOIDCServiceClient:       &IntegrationOIDCServiceClient{inner: corev1connect.NewIntegrationOIDCServiceClient(httpClient, baseURL)},
+		IntegrationSocketServiceClient:     &IntegrationSocketServiceClient{inner: corev1connect.NewIntegrationSocketServiceClient(httpClient, baseURL)},
 		IntegrationsLogServiceClient:       &IntegrationsLogServiceClient{inner: corev1connect.NewIntegrationsLogServiceClient(httpClient, baseURL)},
 		InventoryServiceClient:             &InventoryServiceClient{inner: corev1connect.NewInventoryServiceClient(httpClient, baseURL)},
 		LLMPricingServiceClient:            &LLMPricingServiceClient{inner: corev1connect.NewLLMPricingServiceClient(httpClient, baseURL)},
@@ -1802,6 +1804,35 @@ func (c *IntegrationOIDCServiceClient) ListIntegrationsOIDC(ctx context.Context,
 // Update an OIDC trust configuration by sending the full object. All mutable fields are replaced.
 func (c *IntegrationOIDCServiceClient) UpdateIntegrationOIDC(ctx context.Context, req *corev1.UpdateIntegrationOIDCRequest) (*corev1.UpdateIntegrationOIDCResponse, error) {
 	res, err := c.inner.UpdateIntegrationOIDC(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+// IntegrationSocketServiceClient is a client for the core.v1.IntegrationSocketService service.
+type IntegrationSocketServiceClient struct {
+	inner corev1connect.IntegrationSocketServiceClient
+}
+
+func (c *IntegrationSocketServiceClient) CreateIntegrationSocket(ctx context.Context, req *corev1.CreateIntegrationSocketRequest) (*corev1.CreateIntegrationSocketResponse, error) {
+	res, err := c.inner.CreateIntegrationSocket(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *IntegrationSocketServiceClient) DeleteIntegrationSocket(ctx context.Context, req *corev1.DeleteIntegrationSocketRequest) (*corev1.DeleteIntegrationSocketResponse, error) {
+	res, err := c.inner.DeleteIntegrationSocket(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c *IntegrationSocketServiceClient) GetIntegrationSocket(ctx context.Context, req *corev1.GetIntegrationSocketRequest) (*corev1.GetIntegrationSocketResponse, error) {
+	res, err := c.inner.GetIntegrationSocket(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}
