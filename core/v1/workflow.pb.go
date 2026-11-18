@@ -1232,6 +1232,7 @@ type Form struct {
 	Fields        []*FormField           `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Status        string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1308,11 +1309,19 @@ func (x *Form) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Form) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
 type CreateFormRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	Fields        []*FormField           `protobuf:"bytes,3,rep,name=fields,proto3" json:"fields,omitempty"`
+	Status        *string                `protobuf:"bytes,4,opt,name=status,proto3,oneof" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1366,6 +1375,13 @@ func (x *CreateFormRequest) GetFields() []*FormField {
 		return x.Fields
 	}
 	return nil
+}
+
+func (x *CreateFormRequest) GetStatus() string {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return ""
 }
 
 type CreateFormResponse struct {
@@ -1634,6 +1650,7 @@ type UpdateFormRequest struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Fields        []*FormField           `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
+	Status        *string                `protobuf:"bytes,5,opt,name=status,proto3,oneof" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1694,6 +1711,13 @@ func (x *UpdateFormRequest) GetFields() []*FormField {
 		return x.Fields
 	}
 	return nil
+}
+
+func (x *UpdateFormRequest) GetStatus() string {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return ""
 }
 
 type UpdateFormResponse struct {
@@ -2506,7 +2530,7 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"validation\x18\x06 \x01(\v2\x1c.core.v1.FormFieldValidationR\n" +
 	"validation\x12\x1d\n" +
 	"\n" +
-	"visible_if\x18\a \x01(\tR\tvisibleIf\"\x94\x02\n" +
+	"visible_if\x18\a \x01(\tR\tvisibleIf\"\xc4\x02\n" +
 	"\x04Form\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
@@ -2515,11 +2539,14 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"~\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12.\n" +
+	"\x06status\x18\a \x01(\tB\x16\xbaH\x13r\x11R\x00R\x06activeR\x05draftR\x06status\"\xbc\x01\n" +
 	"\x11CreateFormRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12*\n" +
-	"\x06fields\x18\x03 \x03(\v2\x12.core.v1.FormFieldR\x06fields\"7\n" +
+	"\x06fields\x18\x03 \x03(\v2\x12.core.v1.FormFieldR\x06fields\x121\n" +
+	"\x06status\x18\x04 \x01(\tB\x14\xbaH\x11r\x0fR\x06activeR\x05draftH\x00R\x06status\x88\x01\x01B\t\n" +
+	"\a_status\"7\n" +
 	"\x12CreateFormResponse\x12!\n" +
 	"\x04form\x18\x01 \x01(\v2\r.core.v1.FormR\x04form\")\n" +
 	"\x0eGetFormRequest\x12\x17\n" +
@@ -2535,12 +2562,14 @@ const file_core_v1_workflow_proto_rawDesc = "" +
 	"\rsearch_fields\x18\x05 \x03(\tB\x1d\xbaH\x1a\x92\x01\x17\"\x15r\x13R\x04nameR\vdescriptionR\fsearchFields\"t\n" +
 	"\x11ListFormsResponse\x12#\n" +
 	"\x05forms\x18\x01 \x03(\v2\r.core.v1.FormR\x05forms\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\x8e\x01\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xcc\x01\n" +
 	"\x11UpdateFormRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12*\n" +
-	"\x06fields\x18\x04 \x03(\v2\x12.core.v1.FormFieldR\x06fields\"7\n" +
+	"\x06fields\x18\x04 \x03(\v2\x12.core.v1.FormFieldR\x06fields\x121\n" +
+	"\x06status\x18\x05 \x01(\tB\x14\xbaH\x11r\x0fR\x06activeR\x05draftH\x00R\x06status\x88\x01\x01B\t\n" +
+	"\a_status\"7\n" +
 	"\x12UpdateFormResponse\x12!\n" +
 	"\x04form\x18\x01 \x01(\v2\r.core.v1.FormR\x04form\"@\n" +
 	"\x13UpdateFormV2Request\x12)\n" +
@@ -2759,6 +2788,8 @@ func file_core_v1_workflow_proto_init() {
 	file_core_v1_list_metadata_proto_init()
 	file_core_v1_workflow_proto_msgTypes[1].OneofWrappers = []any{}
 	file_core_v1_workflow_proto_msgTypes[7].OneofWrappers = []any{}
+	file_core_v1_workflow_proto_msgTypes[22].OneofWrappers = []any{}
+	file_core_v1_workflow_proto_msgTypes[28].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
