@@ -5006,84 +5006,12 @@ func (x *GetLogsFromNaturalLanguageResponse) GetRelativeTime() string {
 }
 
 type ListLogsResponse_Aggregations struct {
-	state                            protoimpl.MessageState         `protogen:"open.v1"`
-	LogsOverTime                     []*ListLogsResponse_DateBucket `protobuf:"bytes,1,rep,name=logs_over_time,json=logsOverTime,proto3" json:"logs_over_time,omitempty"`
-	SessionTypes                     []*ListLogsResponse_Bucket     `protobuf:"bytes,2,rep,name=session_types,json=sessionTypes,proto3" json:"session_types,omitempty"`
-	SessionIds                       []*ListLogsResponse_Bucket     `protobuf:"bytes,3,rep,name=session_ids,json=sessionIds,proto3" json:"session_ids,omitempty"`
-	SessionApplicationNames          []*ListLogsResponse_Bucket     `protobuf:"bytes,35,rep,name=session_application_names,json=sessionApplicationNames,proto3" json:"session_application_names,omitempty"`
-	SessionClientIpAddresses         []*ListLogsResponse_Bucket     `protobuf:"bytes,4,rep,name=session_client_ip_addresses,json=sessionClientIpAddresses,proto3" json:"session_client_ip_addresses,omitempty"`
-	SessionServerIpAddresses         []*ListLogsResponse_Bucket     `protobuf:"bytes,5,rep,name=session_server_ip_addresses,json=sessionServerIpAddresses,proto3" json:"session_server_ip_addresses,omitempty"`
-	QueryFingerprints                []*ListLogsResponse_Bucket     `protobuf:"bytes,6,rep,name=query_fingerprints,json=queryFingerprints,proto3" json:"query_fingerprints,omitempty"`
-	QueryNormalized                  []*ListLogsResponse_Bucket     `protobuf:"bytes,48,rep,name=query_normalized,json=queryNormalized,proto3" json:"query_normalized,omitempty"`
-	QueryReceived                    []*ListLogsResponse_Bucket     `protobuf:"bytes,7,rep,name=query_received,json=queryReceived,proto3" json:"query_received,omitempty"`
-	QuerySent                        []*ListLogsResponse_Bucket     `protobuf:"bytes,8,rep,name=query_sent,json=querySent,proto3" json:"query_sent,omitempty"`
-	ResourceIds                      []*ListLogsResponse_Bucket     `protobuf:"bytes,9,rep,name=resource_ids,json=resourceIds,proto3" json:"resource_ids,omitempty"`
-	ResourceNames                    []*ListLogsResponse_Bucket     `protobuf:"bytes,10,rep,name=resource_names,json=resourceNames,proto3" json:"resource_names,omitempty"`
-	ResourceTypes                    []*ListLogsResponse_Bucket     `protobuf:"bytes,11,rep,name=resource_types,json=resourceTypes,proto3" json:"resource_types,omitempty"`
-	ResourceHostnames                []*ListLogsResponse_Bucket     `protobuf:"bytes,12,rep,name=resource_hostnames,json=resourceHostnames,proto3" json:"resource_hostnames,omitempty"`
-	ResourceTechnologies             []*ListLogsResponse_Bucket     `protobuf:"bytes,13,rep,name=resource_technologies,json=resourceTechnologies,proto3" json:"resource_technologies,omitempty"`
-	ConnectorNames                   []*ListLogsResponse_Bucket     `protobuf:"bytes,14,rep,name=connector_names,json=connectorNames,proto3" json:"connector_names,omitempty"`
-	ConnectorIds                     []*ListLogsResponse_Bucket     `protobuf:"bytes,15,rep,name=connector_ids,json=connectorIds,proto3" json:"connector_ids,omitempty"`
-	SpaceNames                       []*ListLogsResponse_Bucket     `protobuf:"bytes,44,rep,name=space_names,json=spaceNames,proto3" json:"space_names,omitempty"`
-	SpaceIds                         []*ListLogsResponse_Bucket     `protobuf:"bytes,45,rep,name=space_ids,json=spaceIds,proto3" json:"space_ids,omitempty"`
-	UserTypes                        []*ListLogsResponse_Bucket     `protobuf:"bytes,17,rep,name=user_types,json=userTypes,proto3" json:"user_types,omitempty"`
-	UserSubTypes                     []*ListLogsResponse_Bucket     `protobuf:"bytes,18,rep,name=user_sub_types,json=userSubTypes,proto3" json:"user_sub_types,omitempty"`
-	UserEmails                       []*ListLogsResponse_Bucket     `protobuf:"bytes,19,rep,name=user_emails,json=userEmails,proto3" json:"user_emails,omitempty"`
-	UserUsernames                    []*ListLogsResponse_Bucket     `protobuf:"bytes,20,rep,name=user_usernames,json=userUsernames,proto3" json:"user_usernames,omitempty"`
-	UserIds                          []*ListLogsResponse_Bucket     `protobuf:"bytes,21,rep,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
-	EndUserTypes                     []*ListLogsResponse_Bucket     `protobuf:"bytes,22,rep,name=end_user_types,json=endUserTypes,proto3" json:"end_user_types,omitempty"`
-	EndUserNames                     []*ListLogsResponse_Bucket     `protobuf:"bytes,23,rep,name=end_user_names,json=endUserNames,proto3" json:"end_user_names,omitempty"`
-	EndUserEmails                    []*ListLogsResponse_Bucket     `protobuf:"bytes,24,rep,name=end_user_emails,json=endUserEmails,proto3" json:"end_user_emails,omitempty"`
-	TriggeredPolicyIds               []*ListLogsResponse_Bucket     `protobuf:"bytes,25,rep,name=triggered_policy_ids,json=triggeredPolicyIds,proto3" json:"triggered_policy_ids,omitempty"`
-	TriggeredPolicyNames             []*ListLogsResponse_Bucket     `protobuf:"bytes,26,rep,name=triggered_policy_names,json=triggeredPolicyNames,proto3" json:"triggered_policy_names,omitempty"`
-	TriggeredPolicyStatuses          []*ListLogsResponse_Bucket     `protobuf:"bytes,27,rep,name=triggered_policy_statuses,json=triggeredPolicyStatuses,proto3" json:"triggered_policy_statuses,omitempty"`
-	TriggeredPolicyTypes             []*ListLogsResponse_Bucket     `protobuf:"bytes,28,rep,name=triggered_policy_types,json=triggeredPolicyTypes,proto3" json:"triggered_policy_types,omitempty"`
-	ResponseDataVolumes              []*ListLogsResponse_Bucket     `protobuf:"bytes,29,rep,name=response_data_volumes,json=responseDataVolumes,proto3" json:"response_data_volumes,omitempty"`
-	ResponseReturnedColumnNames      []*ListLogsResponse_Bucket     `protobuf:"bytes,30,rep,name=response_returned_column_names,json=responseReturnedColumnNames,proto3" json:"response_returned_column_names,omitempty"`
-	ResponseReturnedColumnPaths      []*ListLogsResponse_Bucket     `protobuf:"bytes,31,rep,name=response_returned_column_paths,json=responseReturnedColumnPaths,proto3" json:"response_returned_column_paths,omitempty"`
-	ResponseReturnedColumnDataLabels []*ListLogsResponse_Bucket     `protobuf:"bytes,32,rep,name=response_returned_column_data_labels,json=responseReturnedColumnDataLabels,proto3" json:"response_returned_column_data_labels,omitempty"`
-	ResponseRowsSent                 []*ListLogsResponse_Bucket     `protobuf:"bytes,33,rep,name=response_rows_sent,json=responseRowsSent,proto3" json:"response_rows_sent,omitempty"`
-	ResponseRowsReceived             []*ListLogsResponse_Bucket     `protobuf:"bytes,34,rep,name=response_rows_received,json=responseRowsReceived,proto3" json:"response_rows_received,omitempty"`
-	DeviceSystemVersions             []*ListLogsResponse_Bucket     `protobuf:"bytes,36,rep,name=device_system_versions,json=deviceSystemVersions,proto3" json:"device_system_versions,omitempty"`
-	DeviceKernelVersions             []*ListLogsResponse_Bucket     `protobuf:"bytes,37,rep,name=device_kernel_versions,json=deviceKernelVersions,proto3" json:"device_kernel_versions,omitempty"`
-	DeviceComputerNames              []*ListLogsResponse_Bucket     `protobuf:"bytes,38,rep,name=device_computer_names,json=deviceComputerNames,proto3" json:"device_computer_names,omitempty"`
-	DeviceUserNames                  []*ListLogsResponse_Bucket     `protobuf:"bytes,39,rep,name=device_user_names,json=deviceUserNames,proto3" json:"device_user_names,omitempty"`
-	DeviceModelNames                 []*ListLogsResponse_Bucket     `protobuf:"bytes,40,rep,name=device_model_names,json=deviceModelNames,proto3" json:"device_model_names,omitempty"`
-	DeviceModelIdentifiers           []*ListLogsResponse_Bucket     `protobuf:"bytes,41,rep,name=device_model_identifiers,json=deviceModelIdentifiers,proto3" json:"device_model_identifiers,omitempty"`
-	DeviceModelNumbers               []*ListLogsResponse_Bucket     `protobuf:"bytes,42,rep,name=device_model_numbers,json=deviceModelNumbers,proto3" json:"device_model_numbers,omitempty"`
-	DeviceSerialNumbers              []*ListLogsResponse_Bucket     `protobuf:"bytes,43,rep,name=device_serial_numbers,json=deviceSerialNumbers,proto3" json:"device_serial_numbers,omitempty"`
-	UserGroups                       []*ListLogsResponse_Bucket     `protobuf:"bytes,46,rep,name=user_groups,json=userGroups,proto3" json:"user_groups,omitempty"`
-	EndUserGroups                    []*ListLogsResponse_Bucket     `protobuf:"bytes,47,rep,name=end_user_groups,json=endUserGroups,proto3" json:"end_user_groups,omitempty"`
-	ControlPlaneCommandNames         []*ListLogsResponse_Bucket     `protobuf:"bytes,49,rep,name=control_plane_command_names,json=controlPlaneCommandNames,proto3" json:"control_plane_command_names,omitempty"`
-	ControlPlaneCommandTypes         []*ListLogsResponse_Bucket     `protobuf:"bytes,50,rep,name=control_plane_command_types,json=controlPlaneCommandTypes,proto3" json:"control_plane_command_types,omitempty"`
-	ControlPlanePolicyActions        []*ListLogsResponse_Bucket     `protobuf:"bytes,51,rep,name=control_plane_policy_actions,json=controlPlanePolicyActions,proto3" json:"control_plane_policy_actions,omitempty"`
-	ControlPlaneServices             []*ListLogsResponse_Bucket     `protobuf:"bytes,52,rep,name=control_plane_services,json=controlPlaneServices,proto3" json:"control_plane_services,omitempty"`
-	ControlPlaneMethods              []*ListLogsResponse_Bucket     `protobuf:"bytes,53,rep,name=control_plane_methods,json=controlPlaneMethods,proto3" json:"control_plane_methods,omitempty"`
-	ControlPlaneUserEmails           []*ListLogsResponse_Bucket     `protobuf:"bytes,54,rep,name=control_plane_user_emails,json=controlPlaneUserEmails,proto3" json:"control_plane_user_emails,omitempty"`
-	ControlPlaneUserTypes            []*ListLogsResponse_Bucket     `protobuf:"bytes,55,rep,name=control_plane_user_types,json=controlPlaneUserTypes,proto3" json:"control_plane_user_types,omitempty"`
-	ControlPlaneUserIds              []*ListLogsResponse_Bucket     `protobuf:"bytes,56,rep,name=control_plane_user_ids,json=controlPlaneUserIds,proto3" json:"control_plane_user_ids,omitempty"`
-	ControlPlaneUserAwsPrincipalArns []*ListLogsResponse_Bucket     `protobuf:"bytes,70,rep,name=control_plane_user_aws_principal_arns,json=controlPlaneUserAwsPrincipalArns,proto3" json:"control_plane_user_aws_principal_arns,omitempty"`
-	ControlPlaneUserAwsAccountIds    []*ListLogsResponse_Bucket     `protobuf:"bytes,71,rep,name=control_plane_user_aws_account_ids,json=controlPlaneUserAwsAccountIds,proto3" json:"control_plane_user_aws_account_ids,omitempty"`
-	// Workflow fields
-	WorkflowIds       []*ListLogsResponse_Bucket `protobuf:"bytes,57,rep,name=workflow_ids,json=workflowIds,proto3" json:"workflow_ids,omitempty"`
-	WorkflowNames     []*ListLogsResponse_Bucket `protobuf:"bytes,58,rep,name=workflow_names,json=workflowNames,proto3" json:"workflow_names,omitempty"`
-	StepNames         []*ListLogsResponse_Bucket `protobuf:"bytes,59,rep,name=step_names,json=stepNames,proto3" json:"step_names,omitempty"`
-	StepTypes         []*ListLogsResponse_Bucket `protobuf:"bytes,60,rep,name=step_types,json=stepTypes,proto3" json:"step_types,omitempty"`
-	TriggerTypes      []*ListLogsResponse_Bucket `protobuf:"bytes,61,rep,name=trigger_types,json=triggerTypes,proto3" json:"trigger_types,omitempty"`
-	TriggerNames      []*ListLogsResponse_Bucket `protobuf:"bytes,62,rep,name=trigger_names,json=triggerNames,proto3" json:"trigger_names,omitempty"`
-	TriggerUserEmails []*ListLogsResponse_Bucket `protobuf:"bytes,63,rep,name=trigger_user_emails,json=triggerUserEmails,proto3" json:"trigger_user_emails,omitempty"`
-	TriggerUserTypes  []*ListLogsResponse_Bucket `protobuf:"bytes,64,rep,name=trigger_user_types,json=triggerUserTypes,proto3" json:"trigger_user_types,omitempty"`
-	TriggerUserIds    []*ListLogsResponse_Bucket `protobuf:"bytes,65,rep,name=trigger_user_ids,json=triggerUserIds,proto3" json:"trigger_user_ids,omitempty"`
-	// LLM / Agent fields
-	LlmToolCallNames []*ListLogsResponse_Bucket `protobuf:"bytes,66,rep,name=llm_tool_call_names,json=llmToolCallNames,proto3" json:"llm_tool_call_names,omitempty"`
-	LlmModels        []*ListLogsResponse_Bucket `protobuf:"bytes,67,rep,name=llm_models,json=llmModels,proto3" json:"llm_models,omitempty"`
-	LlmProviders     []*ListLogsResponse_Bucket `protobuf:"bytes,68,rep,name=llm_providers,json=llmProviders,proto3" json:"llm_providers,omitempty"`
-	LlmStopReasons   []*ListLogsResponse_Bucket `protobuf:"bytes,69,rep,name=llm_stop_reasons,json=llmStopReasons,proto3" json:"llm_stop_reasons,omitempty"`
-	AgentTypes       []*ListLogsResponse_Bucket `protobuf:"bytes,72,rep,name=agent_types,json=agentTypes,proto3" json:"agent_types,omitempty"`
-	AgentProviders   []*ListLogsResponse_Bucket `protobuf:"bytes,73,rep,name=agent_providers,json=agentProviders,proto3" json:"agent_providers,omitempty"`
-	AssessmentLabels []*ListLogsResponse_Bucket `protobuf:"bytes,74,rep,name=assessment_labels,json=assessmentLabels,proto3" json:"assessment_labels,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state        protoimpl.MessageState         `protogen:"open.v1"`
+	LogsOverTime []*ListLogsResponse_DateBucket `protobuf:"bytes,1,rep,name=logs_over_time,json=logsOverTime,proto3" json:"logs_over_time,omitempty"`
+	// Keyed by Quickwit field path, e.g. "resource.technology".
+	Terms         map[string]*ListLogsResponse_Buckets `protobuf:"bytes,75,rep,name=terms,proto3" json:"terms,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListLogsResponse_Aggregations) Reset() {
@@ -5123,506 +5051,53 @@ func (x *ListLogsResponse_Aggregations) GetLogsOverTime() []*ListLogsResponse_Da
 	return nil
 }
 
-func (x *ListLogsResponse_Aggregations) GetSessionTypes() []*ListLogsResponse_Bucket {
+func (x *ListLogsResponse_Aggregations) GetTerms() map[string]*ListLogsResponse_Buckets {
 	if x != nil {
-		return x.SessionTypes
+		return x.Terms
 	}
 	return nil
 }
 
-func (x *ListLogsResponse_Aggregations) GetSessionIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.SessionIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetSessionApplicationNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.SessionApplicationNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetSessionClientIpAddresses() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.SessionClientIpAddresses
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetSessionServerIpAddresses() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.SessionServerIpAddresses
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetQueryFingerprints() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.QueryFingerprints
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetQueryNormalized() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.QueryNormalized
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetQueryReceived() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.QueryReceived
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetQuerySent() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.QuerySent
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResourceIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResourceIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResourceNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResourceNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResourceTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResourceTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResourceHostnames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResourceHostnames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResourceTechnologies() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResourceTechnologies
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetConnectorNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ConnectorNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetConnectorIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ConnectorIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetSpaceNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.SpaceNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetSpaceIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.SpaceIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetUserTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.UserTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetUserSubTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.UserSubTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetUserEmails() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.UserEmails
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetUserUsernames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.UserUsernames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetUserIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.UserIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetEndUserTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.EndUserTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetEndUserNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.EndUserNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetEndUserEmails() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.EndUserEmails
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggeredPolicyIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggeredPolicyIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggeredPolicyNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggeredPolicyNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggeredPolicyStatuses() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggeredPolicyStatuses
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggeredPolicyTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggeredPolicyTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResponseDataVolumes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResponseDataVolumes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResponseReturnedColumnNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResponseReturnedColumnNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResponseReturnedColumnPaths() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResponseReturnedColumnPaths
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResponseReturnedColumnDataLabels() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResponseReturnedColumnDataLabels
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetResponseRowsSent() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResponseRowsSent
-	}
-	return nil
+type ListLogsResponse_Buckets struct {
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	Buckets       []*ListLogsResponse_Bucket `protobuf:"bytes,1,rep,name=buckets,proto3" json:"buckets,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListLogsResponse_Aggregations) GetResponseRowsReceived() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ResponseRowsReceived
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceSystemVersions() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceSystemVersions
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceKernelVersions() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceKernelVersions
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceComputerNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceComputerNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceUserNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceUserNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceModelNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceModelNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceModelIdentifiers() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceModelIdentifiers
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceModelNumbers() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceModelNumbers
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetDeviceSerialNumbers() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.DeviceSerialNumbers
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetUserGroups() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.UserGroups
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetEndUserGroups() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.EndUserGroups
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneCommandNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneCommandNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneCommandTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneCommandTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlanePolicyActions() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlanePolicyActions
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneServices() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneServices
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneMethods() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneMethods
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneUserEmails() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneUserEmails
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneUserTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneUserTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneUserIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneUserIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneUserAwsPrincipalArns() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneUserAwsPrincipalArns
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetControlPlaneUserAwsAccountIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.ControlPlaneUserAwsAccountIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetWorkflowIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.WorkflowIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetWorkflowNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.WorkflowNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetStepNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.StepNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetStepTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.StepTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggerTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggerTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggerNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggerNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggerUserEmails() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggerUserEmails
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggerUserTypes() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggerUserTypes
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetTriggerUserIds() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.TriggerUserIds
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetLlmToolCallNames() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.LlmToolCallNames
-	}
-	return nil
-}
-
-func (x *ListLogsResponse_Aggregations) GetLlmModels() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.LlmModels
-	}
-	return nil
+func (x *ListLogsResponse_Buckets) Reset() {
+	*x = ListLogsResponse_Buckets{}
+	mi := &file_core_v1_logs_proto_msgTypes[83]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListLogsResponse_Aggregations) GetLlmProviders() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.LlmProviders
-	}
-	return nil
+func (x *ListLogsResponse_Buckets) String() string {
+	return protoimpl.X.MessageStringOf(x)
 }
 
-func (x *ListLogsResponse_Aggregations) GetLlmStopReasons() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.LlmStopReasons
-	}
-	return nil
-}
+func (*ListLogsResponse_Buckets) ProtoMessage() {}
 
-func (x *ListLogsResponse_Aggregations) GetAgentTypes() []*ListLogsResponse_Bucket {
+func (x *ListLogsResponse_Buckets) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[83]
 	if x != nil {
-		return x.AgentTypes
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
 	}
-	return nil
+	return mi.MessageOf(x)
 }
 
-func (x *ListLogsResponse_Aggregations) GetAgentProviders() []*ListLogsResponse_Bucket {
-	if x != nil {
-		return x.AgentProviders
-	}
-	return nil
+// Deprecated: Use ListLogsResponse_Buckets.ProtoReflect.Descriptor instead.
+func (*ListLogsResponse_Buckets) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{20, 1}
 }
 
-func (x *ListLogsResponse_Aggregations) GetAssessmentLabels() []*ListLogsResponse_Bucket {
+func (x *ListLogsResponse_Buckets) GetBuckets() []*ListLogsResponse_Bucket {
 	if x != nil {
-		return x.AssessmentLabels
+		return x.Buckets
 	}
 	return nil
 }
@@ -5637,7 +5112,7 @@ type ListLogsResponse_Bucket struct {
 
 func (x *ListLogsResponse_Bucket) Reset() {
 	*x = ListLogsResponse_Bucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[83]
+	mi := &file_core_v1_logs_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5649,7 +5124,7 @@ func (x *ListLogsResponse_Bucket) String() string {
 func (*ListLogsResponse_Bucket) ProtoMessage() {}
 
 func (x *ListLogsResponse_Bucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[83]
+	mi := &file_core_v1_logs_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5662,7 +5137,7 @@ func (x *ListLogsResponse_Bucket) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLogsResponse_Bucket.ProtoReflect.Descriptor instead.
 func (*ListLogsResponse_Bucket) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{20, 1}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{20, 2}
 }
 
 func (x *ListLogsResponse_Bucket) GetKey() string {
@@ -5690,7 +5165,7 @@ type ListLogsResponse_GroupByBucket struct {
 
 func (x *ListLogsResponse_GroupByBucket) Reset() {
 	*x = ListLogsResponse_GroupByBucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[84]
+	mi := &file_core_v1_logs_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5702,7 +5177,7 @@ func (x *ListLogsResponse_GroupByBucket) String() string {
 func (*ListLogsResponse_GroupByBucket) ProtoMessage() {}
 
 func (x *ListLogsResponse_GroupByBucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[84]
+	mi := &file_core_v1_logs_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5715,7 +5190,7 @@ func (x *ListLogsResponse_GroupByBucket) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLogsResponse_GroupByBucket.ProtoReflect.Descriptor instead.
 func (*ListLogsResponse_GroupByBucket) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{20, 2}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{20, 3}
 }
 
 func (x *ListLogsResponse_GroupByBucket) GetKey() string {
@@ -5750,7 +5225,7 @@ type ListLogsResponse_DateBucket struct {
 
 func (x *ListLogsResponse_DateBucket) Reset() {
 	*x = ListLogsResponse_DateBucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[85]
+	mi := &file_core_v1_logs_proto_msgTypes[86]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5762,7 +5237,7 @@ func (x *ListLogsResponse_DateBucket) String() string {
 func (*ListLogsResponse_DateBucket) ProtoMessage() {}
 
 func (x *ListLogsResponse_DateBucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[85]
+	mi := &file_core_v1_logs_proto_msgTypes[86]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5775,7 +5250,7 @@ func (x *ListLogsResponse_DateBucket) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLogsResponse_DateBucket.ProtoReflect.Descriptor instead.
 func (*ListLogsResponse_DateBucket) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{20, 3}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{20, 4}
 }
 
 func (x *ListLogsResponse_DateBucket) GetDatetime() string {
@@ -5809,7 +5284,7 @@ type GroupByFieldOptions_Order struct {
 
 func (x *GroupByFieldOptions_Order) Reset() {
 	*x = GroupByFieldOptions_Order{}
-	mi := &file_core_v1_logs_proto_msgTypes[86]
+	mi := &file_core_v1_logs_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5821,7 +5296,7 @@ func (x *GroupByFieldOptions_Order) String() string {
 func (*GroupByFieldOptions_Order) ProtoMessage() {}
 
 func (x *GroupByFieldOptions_Order) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[86]
+	mi := &file_core_v1_logs_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5861,7 +5336,7 @@ type GroupByFieldOptions_Bounds struct {
 
 func (x *GroupByFieldOptions_Bounds) Reset() {
 	*x = GroupByFieldOptions_Bounds{}
-	mi := &file_core_v1_logs_proto_msgTypes[87]
+	mi := &file_core_v1_logs_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5873,7 +5348,7 @@ func (x *GroupByFieldOptions_Bounds) String() string {
 func (*GroupByFieldOptions_Bounds) ProtoMessage() {}
 
 func (x *GroupByFieldOptions_Bounds) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[87]
+	mi := &file_core_v1_logs_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5916,7 +5391,7 @@ type GroupByFieldOptions_Histogram struct {
 
 func (x *GroupByFieldOptions_Histogram) Reset() {
 	*x = GroupByFieldOptions_Histogram{}
-	mi := &file_core_v1_logs_proto_msgTypes[88]
+	mi := &file_core_v1_logs_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5928,7 +5403,7 @@ func (x *GroupByFieldOptions_Histogram) String() string {
 func (*GroupByFieldOptions_Histogram) ProtoMessage() {}
 
 func (x *GroupByFieldOptions_Histogram) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[88]
+	mi := &file_core_v1_logs_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5993,7 +5468,7 @@ type GroupByFieldOptions_DateHistogram struct {
 
 func (x *GroupByFieldOptions_DateHistogram) Reset() {
 	*x = GroupByFieldOptions_DateHistogram{}
-	mi := &file_core_v1_logs_proto_msgTypes[89]
+	mi := &file_core_v1_logs_proto_msgTypes[91]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6005,7 +5480,7 @@ func (x *GroupByFieldOptions_DateHistogram) String() string {
 func (*GroupByFieldOptions_DateHistogram) ProtoMessage() {}
 
 func (x *GroupByFieldOptions_DateHistogram) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[89]
+	mi := &file_core_v1_logs_proto_msgTypes[91]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6065,7 +5540,7 @@ type GroupByFieldOptions_Range struct {
 
 func (x *GroupByFieldOptions_Range) Reset() {
 	*x = GroupByFieldOptions_Range{}
-	mi := &file_core_v1_logs_proto_msgTypes[90]
+	mi := &file_core_v1_logs_proto_msgTypes[92]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6077,7 +5552,7 @@ func (x *GroupByFieldOptions_Range) String() string {
 func (*GroupByFieldOptions_Range) ProtoMessage() {}
 
 func (x *GroupByFieldOptions_Range) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[90]
+	mi := &file_core_v1_logs_proto_msgTypes[92]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6111,7 +5586,7 @@ type GroupByFieldOptions_Range_Entry struct {
 
 func (x *GroupByFieldOptions_Range_Entry) Reset() {
 	*x = GroupByFieldOptions_Range_Entry{}
-	mi := &file_core_v1_logs_proto_msgTypes[91]
+	mi := &file_core_v1_logs_proto_msgTypes[93]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6123,7 +5598,7 @@ func (x *GroupByFieldOptions_Range_Entry) String() string {
 func (*GroupByFieldOptions_Range_Entry) ProtoMessage() {}
 
 func (x *GroupByFieldOptions_Range_Entry) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[91]
+	mi := &file_core_v1_logs_proto_msgTypes[93]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6179,7 +5654,7 @@ type GetGroupByAggregationResponse_Bucket struct {
 
 func (x *GetGroupByAggregationResponse_Bucket) Reset() {
 	*x = GetGroupByAggregationResponse_Bucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[94]
+	mi := &file_core_v1_logs_proto_msgTypes[96]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6191,7 +5666,7 @@ func (x *GetGroupByAggregationResponse_Bucket) String() string {
 func (*GetGroupByAggregationResponse_Bucket) ProtoMessage() {}
 
 func (x *GetGroupByAggregationResponse_Bucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[94]
+	mi := &file_core_v1_logs_proto_msgTypes[96]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6344,97 +5819,21 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"2\b^[0-9]+$R\fendTimestamp\"r\n" +
 	"\x1cGetMetricAggregationResponse\x12<\n" +
 	"\vaggregation\x18\x01 \x01(\v2\x1a.core.v1.MetricAggregationR\vaggregation\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value\"\xa92\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value\"\xe4\x06\n" +
 	"\x10ListLogsResponse\x12+\n" +
 	"\x04logs\x18\x01 \x03(\v2\x17.google.protobuf.StructR\x04logs\x12\x19\n" +
 	"\bnum_hits\x18\x02 \x01(\x03R\anumHits\x12J\n" +
 	"\faggregations\x18\x03 \x01(\v2&.core.v1.ListLogsResponse.AggregationsR\faggregations\x12:\n" +
-	"\rlist_metadata\x18\x04 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\x1a\x92.\n" +
+	"\rlist_metadata\x18\x04 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\x1a\x86\x02\n" +
 	"\fAggregations\x12J\n" +
-	"\x0elogs_over_time\x18\x01 \x03(\v2$.core.v1.ListLogsResponse.DateBucketR\flogsOverTime\x12E\n" +
-	"\rsession_types\x18\x02 \x03(\v2 .core.v1.ListLogsResponse.BucketR\fsessionTypes\x12A\n" +
-	"\vsession_ids\x18\x03 \x03(\v2 .core.v1.ListLogsResponse.BucketR\n" +
-	"sessionIds\x12\\\n" +
-	"\x19session_application_names\x18# \x03(\v2 .core.v1.ListLogsResponse.BucketR\x17sessionApplicationNames\x12_\n" +
-	"\x1bsession_client_ip_addresses\x18\x04 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x18sessionClientIpAddresses\x12_\n" +
-	"\x1bsession_server_ip_addresses\x18\x05 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x18sessionServerIpAddresses\x12O\n" +
-	"\x12query_fingerprints\x18\x06 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x11queryFingerprints\x12K\n" +
-	"\x10query_normalized\x180 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0fqueryNormalized\x12G\n" +
-	"\x0equery_received\x18\a \x03(\v2 .core.v1.ListLogsResponse.BucketR\rqueryReceived\x12?\n" +
+	"\x0elogs_over_time\x18\x01 \x03(\v2$.core.v1.ListLogsResponse.DateBucketR\flogsOverTime\x12G\n" +
+	"\x05terms\x18K \x03(\v21.core.v1.ListLogsResponse.Aggregations.TermsEntryR\x05terms\x1a[\n" +
 	"\n" +
-	"query_sent\x18\b \x03(\v2 .core.v1.ListLogsResponse.BucketR\tquerySent\x12C\n" +
-	"\fresource_ids\x18\t \x03(\v2 .core.v1.ListLogsResponse.BucketR\vresourceIds\x12G\n" +
-	"\x0eresource_names\x18\n" +
-	" \x03(\v2 .core.v1.ListLogsResponse.BucketR\rresourceNames\x12G\n" +
-	"\x0eresource_types\x18\v \x03(\v2 .core.v1.ListLogsResponse.BucketR\rresourceTypes\x12O\n" +
-	"\x12resource_hostnames\x18\f \x03(\v2 .core.v1.ListLogsResponse.BucketR\x11resourceHostnames\x12U\n" +
-	"\x15resource_technologies\x18\r \x03(\v2 .core.v1.ListLogsResponse.BucketR\x14resourceTechnologies\x12I\n" +
-	"\x0fconnector_names\x18\x0e \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0econnectorNames\x12E\n" +
-	"\rconnector_ids\x18\x0f \x03(\v2 .core.v1.ListLogsResponse.BucketR\fconnectorIds\x12A\n" +
-	"\vspace_names\x18, \x03(\v2 .core.v1.ListLogsResponse.BucketR\n" +
-	"spaceNames\x12=\n" +
-	"\tspace_ids\x18- \x03(\v2 .core.v1.ListLogsResponse.BucketR\bspaceIds\x12?\n" +
-	"\n" +
-	"user_types\x18\x11 \x03(\v2 .core.v1.ListLogsResponse.BucketR\tuserTypes\x12F\n" +
-	"\x0euser_sub_types\x18\x12 \x03(\v2 .core.v1.ListLogsResponse.BucketR\fuserSubTypes\x12A\n" +
-	"\vuser_emails\x18\x13 \x03(\v2 .core.v1.ListLogsResponse.BucketR\n" +
-	"userEmails\x12G\n" +
-	"\x0euser_usernames\x18\x14 \x03(\v2 .core.v1.ListLogsResponse.BucketR\ruserUsernames\x12;\n" +
-	"\buser_ids\x18\x15 \x03(\v2 .core.v1.ListLogsResponse.BucketR\auserIds\x12F\n" +
-	"\x0eend_user_types\x18\x16 \x03(\v2 .core.v1.ListLogsResponse.BucketR\fendUserTypes\x12F\n" +
-	"\x0eend_user_names\x18\x17 \x03(\v2 .core.v1.ListLogsResponse.BucketR\fendUserNames\x12H\n" +
-	"\x0fend_user_emails\x18\x18 \x03(\v2 .core.v1.ListLogsResponse.BucketR\rendUserEmails\x12R\n" +
-	"\x14triggered_policy_ids\x18\x19 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x12triggeredPolicyIds\x12V\n" +
-	"\x16triggered_policy_names\x18\x1a \x03(\v2 .core.v1.ListLogsResponse.BucketR\x14triggeredPolicyNames\x12\\\n" +
-	"\x19triggered_policy_statuses\x18\x1b \x03(\v2 .core.v1.ListLogsResponse.BucketR\x17triggeredPolicyStatuses\x12V\n" +
-	"\x16triggered_policy_types\x18\x1c \x03(\v2 .core.v1.ListLogsResponse.BucketR\x14triggeredPolicyTypes\x12T\n" +
-	"\x15response_data_volumes\x18\x1d \x03(\v2 .core.v1.ListLogsResponse.BucketR\x13responseDataVolumes\x12e\n" +
-	"\x1eresponse_returned_column_names\x18\x1e \x03(\v2 .core.v1.ListLogsResponse.BucketR\x1bresponseReturnedColumnNames\x12e\n" +
-	"\x1eresponse_returned_column_paths\x18\x1f \x03(\v2 .core.v1.ListLogsResponse.BucketR\x1bresponseReturnedColumnPaths\x12p\n" +
-	"$response_returned_column_data_labels\x18  \x03(\v2 .core.v1.ListLogsResponse.BucketR responseReturnedColumnDataLabels\x12N\n" +
-	"\x12response_rows_sent\x18! \x03(\v2 .core.v1.ListLogsResponse.BucketR\x10responseRowsSent\x12V\n" +
-	"\x16response_rows_received\x18\" \x03(\v2 .core.v1.ListLogsResponse.BucketR\x14responseRowsReceived\x12V\n" +
-	"\x16device_system_versions\x18$ \x03(\v2 .core.v1.ListLogsResponse.BucketR\x14deviceSystemVersions\x12V\n" +
-	"\x16device_kernel_versions\x18% \x03(\v2 .core.v1.ListLogsResponse.BucketR\x14deviceKernelVersions\x12T\n" +
-	"\x15device_computer_names\x18& \x03(\v2 .core.v1.ListLogsResponse.BucketR\x13deviceComputerNames\x12L\n" +
-	"\x11device_user_names\x18' \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0fdeviceUserNames\x12N\n" +
-	"\x12device_model_names\x18( \x03(\v2 .core.v1.ListLogsResponse.BucketR\x10deviceModelNames\x12Z\n" +
-	"\x18device_model_identifiers\x18) \x03(\v2 .core.v1.ListLogsResponse.BucketR\x16deviceModelIdentifiers\x12R\n" +
-	"\x14device_model_numbers\x18* \x03(\v2 .core.v1.ListLogsResponse.BucketR\x12deviceModelNumbers\x12T\n" +
-	"\x15device_serial_numbers\x18+ \x03(\v2 .core.v1.ListLogsResponse.BucketR\x13deviceSerialNumbers\x12A\n" +
-	"\vuser_groups\x18. \x03(\v2 .core.v1.ListLogsResponse.BucketR\n" +
-	"userGroups\x12H\n" +
-	"\x0fend_user_groups\x18/ \x03(\v2 .core.v1.ListLogsResponse.BucketR\rendUserGroups\x12_\n" +
-	"\x1bcontrol_plane_command_names\x181 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x18controlPlaneCommandNames\x12_\n" +
-	"\x1bcontrol_plane_command_types\x182 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x18controlPlaneCommandTypes\x12a\n" +
-	"\x1ccontrol_plane_policy_actions\x183 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x19controlPlanePolicyActions\x12V\n" +
-	"\x16control_plane_services\x184 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x14controlPlaneServices\x12T\n" +
-	"\x15control_plane_methods\x185 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x13controlPlaneMethods\x12[\n" +
-	"\x19control_plane_user_emails\x186 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x16controlPlaneUserEmails\x12Y\n" +
-	"\x18control_plane_user_types\x187 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x15controlPlaneUserTypes\x12U\n" +
-	"\x16control_plane_user_ids\x188 \x03(\v2 .core.v1.ListLogsResponse.BucketR\x13controlPlaneUserIds\x12q\n" +
-	"%control_plane_user_aws_principal_arns\x18F \x03(\v2 .core.v1.ListLogsResponse.BucketR controlPlaneUserAwsPrincipalArns\x12k\n" +
-	"\"control_plane_user_aws_account_ids\x18G \x03(\v2 .core.v1.ListLogsResponse.BucketR\x1dcontrolPlaneUserAwsAccountIds\x12C\n" +
-	"\fworkflow_ids\x189 \x03(\v2 .core.v1.ListLogsResponse.BucketR\vworkflowIds\x12G\n" +
-	"\x0eworkflow_names\x18: \x03(\v2 .core.v1.ListLogsResponse.BucketR\rworkflowNames\x12?\n" +
-	"\n" +
-	"step_names\x18; \x03(\v2 .core.v1.ListLogsResponse.BucketR\tstepNames\x12?\n" +
-	"\n" +
-	"step_types\x18< \x03(\v2 .core.v1.ListLogsResponse.BucketR\tstepTypes\x12E\n" +
-	"\rtrigger_types\x18= \x03(\v2 .core.v1.ListLogsResponse.BucketR\ftriggerTypes\x12E\n" +
-	"\rtrigger_names\x18> \x03(\v2 .core.v1.ListLogsResponse.BucketR\ftriggerNames\x12P\n" +
-	"\x13trigger_user_emails\x18? \x03(\v2 .core.v1.ListLogsResponse.BucketR\x11triggerUserEmails\x12N\n" +
-	"\x12trigger_user_types\x18@ \x03(\v2 .core.v1.ListLogsResponse.BucketR\x10triggerUserTypes\x12J\n" +
-	"\x10trigger_user_ids\x18A \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0etriggerUserIds\x12O\n" +
-	"\x13llm_tool_call_names\x18B \x03(\v2 .core.v1.ListLogsResponse.BucketR\x10llmToolCallNames\x12?\n" +
-	"\n" +
-	"llm_models\x18C \x03(\v2 .core.v1.ListLogsResponse.BucketR\tllmModels\x12E\n" +
-	"\rllm_providers\x18D \x03(\v2 .core.v1.ListLogsResponse.BucketR\fllmProviders\x12J\n" +
-	"\x10llm_stop_reasons\x18E \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0ellmStopReasons\x12A\n" +
-	"\vagent_types\x18H \x03(\v2 .core.v1.ListLogsResponse.BucketR\n" +
-	"agentTypes\x12I\n" +
-	"\x0fagent_providers\x18I \x03(\v2 .core.v1.ListLogsResponse.BucketR\x0eagentProviders\x12M\n" +
-	"\x11assessment_labels\x18J \x03(\v2 .core.v1.ListLogsResponse.BucketR\x10assessmentLabels\x1a0\n" +
+	"TermsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x127\n" +
+	"\x05value\x18\x02 \x01(\v2!.core.v1.ListLogsResponse.BucketsR\x05value:\x028\x01J\x04\b\x02\x10K\x1aE\n" +
+	"\aBuckets\x12:\n" +
+	"\abuckets\x18\x01 \x03(\v2 .core.v1.ListLogsResponse.BucketR\abuckets\x1a0\n" +
 	"\x06Bucket\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05count\x18\x02 \x01(\x05R\x05count\x1az\n" +
@@ -6905,7 +6304,7 @@ func file_core_v1_logs_proto_rawDescGZIP() []byte {
 }
 
 var file_core_v1_logs_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_core_v1_logs_proto_msgTypes = make([]protoimpl.MessageInfo, 97)
+var file_core_v1_logs_proto_msgTypes = make([]protoimpl.MessageInfo, 99)
 var file_core_v1_logs_proto_goTypes = []any{
 	(PolicyEvaluationStage)(0),                    // 0: core.v1.PolicyEvaluationStage
 	(LogConfigurationScopeType)(0),                // 1: core.v1.LogConfigurationScopeType
@@ -6993,25 +6392,27 @@ var file_core_v1_logs_proto_goTypes = []any{
 	(*GetLogsFromNaturalLanguageRequest)(nil),     // 83: core.v1.GetLogsFromNaturalLanguageRequest
 	(*GetLogsFromNaturalLanguageResponse)(nil),    // 84: core.v1.GetLogsFromNaturalLanguageResponse
 	(*ListLogsResponse_Aggregations)(nil),         // 85: core.v1.ListLogsResponse.Aggregations
-	(*ListLogsResponse_Bucket)(nil),               // 86: core.v1.ListLogsResponse.Bucket
-	(*ListLogsResponse_GroupByBucket)(nil),        // 87: core.v1.ListLogsResponse.GroupByBucket
-	(*ListLogsResponse_DateBucket)(nil),           // 88: core.v1.ListLogsResponse.DateBucket
-	(*GroupByFieldOptions_Order)(nil),             // 89: core.v1.GroupByFieldOptions.Order
-	(*GroupByFieldOptions_Bounds)(nil),            // 90: core.v1.GroupByFieldOptions.Bounds
-	(*GroupByFieldOptions_Histogram)(nil),         // 91: core.v1.GroupByFieldOptions.Histogram
-	(*GroupByFieldOptions_DateHistogram)(nil),     // 92: core.v1.GroupByFieldOptions.DateHistogram
-	(*GroupByFieldOptions_Range)(nil),             // 93: core.v1.GroupByFieldOptions.Range
-	(*GroupByFieldOptions_Range_Entry)(nil),       // 94: core.v1.GroupByFieldOptions.Range.Entry
-	nil,                                           // 95: core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry
-	nil,                                           // 96: core.v1.GetGroupByAggregationResponse.MetricsEntry
-	(*GetGroupByAggregationResponse_Bucket)(nil),  // 97: core.v1.GetGroupByAggregationResponse.Bucket
-	nil,                           // 98: core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
-	nil,                           // 99: core.v1.LogSchemaPaths.PathsEntry
-	(*ListMetadata)(nil),          // 100: core.v1.ListMetadata
-	(*structpb.Struct)(nil),       // 101: google.protobuf.Struct
-	(*durationpb.Duration)(nil),   // 102: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil), // 103: google.protobuf.Timestamp
-	(*Filter)(nil),                // 104: core.v1.Filter
+	(*ListLogsResponse_Buckets)(nil),              // 86: core.v1.ListLogsResponse.Buckets
+	(*ListLogsResponse_Bucket)(nil),               // 87: core.v1.ListLogsResponse.Bucket
+	(*ListLogsResponse_GroupByBucket)(nil),        // 88: core.v1.ListLogsResponse.GroupByBucket
+	(*ListLogsResponse_DateBucket)(nil),           // 89: core.v1.ListLogsResponse.DateBucket
+	nil,                                           // 90: core.v1.ListLogsResponse.Aggregations.TermsEntry
+	(*GroupByFieldOptions_Order)(nil),             // 91: core.v1.GroupByFieldOptions.Order
+	(*GroupByFieldOptions_Bounds)(nil),            // 92: core.v1.GroupByFieldOptions.Bounds
+	(*GroupByFieldOptions_Histogram)(nil),         // 93: core.v1.GroupByFieldOptions.Histogram
+	(*GroupByFieldOptions_DateHistogram)(nil),     // 94: core.v1.GroupByFieldOptions.DateHistogram
+	(*GroupByFieldOptions_Range)(nil),             // 95: core.v1.GroupByFieldOptions.Range
+	(*GroupByFieldOptions_Range_Entry)(nil),       // 96: core.v1.GroupByFieldOptions.Range.Entry
+	nil,                                           // 97: core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry
+	nil,                                           // 98: core.v1.GetGroupByAggregationResponse.MetricsEntry
+	(*GetGroupByAggregationResponse_Bucket)(nil),  // 99: core.v1.GetGroupByAggregationResponse.Bucket
+	nil,                           // 100: core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
+	nil,                           // 101: core.v1.LogSchemaPaths.PathsEntry
+	(*ListMetadata)(nil),          // 102: core.v1.ListMetadata
+	(*structpb.Struct)(nil),       // 103: google.protobuf.Struct
+	(*durationpb.Duration)(nil),   // 104: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil), // 105: google.protobuf.Timestamp
+	(*Filter)(nil),                // 106: core.v1.Filter
 }
 var file_core_v1_logs_proto_depIdxs = []int32{
 	3,   // 0: core.v1.SavedLogQuery.filters:type_name -> core.v1.SavedLogQueryFilter
@@ -7023,45 +6424,45 @@ var file_core_v1_logs_proto_depIdxs = []int32{
 	5,   // 6: core.v1.UpdateLogQueryV2Request.metadata:type_name -> core.v1.LogQueryMetadata
 	5,   // 7: core.v1.UpdateLogQueryV2Response.metadata:type_name -> core.v1.LogQueryMetadata
 	5,   // 8: core.v1.ListLogQueriesResponse.saved_queries:type_name -> core.v1.LogQueryMetadata
-	100, // 9: core.v1.ListLogQueriesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	102, // 9: core.v1.ListLogQueriesResponse.list_metadata:type_name -> core.v1.ListMetadata
 	5,   // 10: core.v1.GetLogQueryResponse.metadata:type_name -> core.v1.LogQueryMetadata
-	101, // 11: core.v1.GetLogResponse.log:type_name -> google.protobuf.Struct
+	103, // 11: core.v1.GetLogResponse.log:type_name -> google.protobuf.Struct
 	18,  // 12: core.v1.GetMetricAggregationRequest.metric_aggregation:type_name -> core.v1.MetricAggregation
 	18,  // 13: core.v1.GetMetricAggregationResponse.aggregation:type_name -> core.v1.MetricAggregation
-	101, // 14: core.v1.ListLogsResponse.logs:type_name -> google.protobuf.Struct
+	103, // 14: core.v1.ListLogsResponse.logs:type_name -> google.protobuf.Struct
 	85,  // 15: core.v1.ListLogsResponse.aggregations:type_name -> core.v1.ListLogsResponse.Aggregations
-	100, // 16: core.v1.ListLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	101, // 17: core.v1.ListLogsV2Response.logs:type_name -> google.protobuf.Struct
-	100, // 18: core.v1.ListLogsV2Response.list_metadata:type_name -> core.v1.ListMetadata
+	102, // 16: core.v1.ListLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	103, // 17: core.v1.ListLogsV2Response.logs:type_name -> google.protobuf.Struct
+	102, // 18: core.v1.ListLogsV2Response.list_metadata:type_name -> core.v1.ListMetadata
 	85,  // 19: core.v1.ListLogAggregationsResponse.aggregations:type_name -> core.v1.ListLogsResponse.Aggregations
 	0,   // 20: core.v1.ListLogPolicyEvaluationInputsRequest.stage:type_name -> core.v1.PolicyEvaluationStage
-	101, // 21: core.v1.PolicyEvaluationRow.columns:type_name -> google.protobuf.Struct
-	101, // 22: core.v1.ListLogPolicyEvaluationInputsResponse.policy_evaluation_inputs:type_name -> google.protobuf.Struct
+	103, // 21: core.v1.PolicyEvaluationRow.columns:type_name -> google.protobuf.Struct
+	103, // 22: core.v1.ListLogPolicyEvaluationInputsResponse.policy_evaluation_inputs:type_name -> google.protobuf.Struct
 	29,  // 23: core.v1.ListLogPolicyEvaluationInputsResponse.policy_evaluation_rows:type_name -> core.v1.PolicyEvaluationRow
-	100, // 24: core.v1.ListLogPolicyEvaluationInputsResponse.row_list_metadata:type_name -> core.v1.ListMetadata
-	89,  // 25: core.v1.GroupByFieldOptions.order:type_name -> core.v1.GroupByFieldOptions.Order
-	91,  // 26: core.v1.GroupByFieldOptions.histogram:type_name -> core.v1.GroupByFieldOptions.Histogram
-	92,  // 27: core.v1.GroupByFieldOptions.date_histogram:type_name -> core.v1.GroupByFieldOptions.DateHistogram
-	93,  // 28: core.v1.GroupByFieldOptions.range:type_name -> core.v1.GroupByFieldOptions.Range
+	102, // 24: core.v1.ListLogPolicyEvaluationInputsResponse.row_list_metadata:type_name -> core.v1.ListMetadata
+	91,  // 25: core.v1.GroupByFieldOptions.order:type_name -> core.v1.GroupByFieldOptions.Order
+	93,  // 26: core.v1.GroupByFieldOptions.histogram:type_name -> core.v1.GroupByFieldOptions.Histogram
+	94,  // 27: core.v1.GroupByFieldOptions.date_histogram:type_name -> core.v1.GroupByFieldOptions.DateHistogram
+	95,  // 28: core.v1.GroupByFieldOptions.range:type_name -> core.v1.GroupByFieldOptions.Range
 	31,  // 29: core.v1.GetGroupByAggregationRequest.metrics:type_name -> core.v1.GroupByMetric
-	95,  // 30: core.v1.GetGroupByAggregationRequest.group_by_options:type_name -> core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry
-	97,  // 31: core.v1.GetGroupByAggregationResponse.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
-	96,  // 32: core.v1.GetGroupByAggregationResponse.metrics:type_name -> core.v1.GetGroupByAggregationResponse.MetricsEntry
+	97,  // 30: core.v1.GetGroupByAggregationRequest.group_by_options:type_name -> core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry
+	99,  // 31: core.v1.GetGroupByAggregationResponse.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
+	98,  // 32: core.v1.GetGroupByAggregationResponse.metrics:type_name -> core.v1.GetGroupByAggregationResponse.MetricsEntry
 	1,   // 33: core.v1.LogConfigurationScope.scope:type_name -> core.v1.LogConfigurationScopeType
 	36,  // 34: core.v1.LogConfigurationRequest.sql:type_name -> core.v1.LogConfigurationSql
-	102, // 35: core.v1.LogConfigurationRequest.policy_eval_input_retention:type_name -> google.protobuf.Duration
-	102, // 36: core.v1.LogConfigurationResponse.policy_eval_input_retention:type_name -> google.protobuf.Duration
-	102, // 37: core.v1.LogConfigurationSession.policy_eval_input_retention:type_name -> google.protobuf.Duration
+	104, // 35: core.v1.LogConfigurationRequest.policy_eval_input_retention:type_name -> google.protobuf.Duration
+	104, // 36: core.v1.LogConfigurationResponse.policy_eval_input_retention:type_name -> google.protobuf.Duration
+	104, // 37: core.v1.LogConfigurationSession.policy_eval_input_retention:type_name -> google.protobuf.Duration
 	35,  // 38: core.v1.LogConfiguration.scope:type_name -> core.v1.LogConfigurationScope
 	37,  // 39: core.v1.LogConfiguration.request:type_name -> core.v1.LogConfigurationRequest
 	38,  // 40: core.v1.LogConfiguration.response:type_name -> core.v1.LogConfigurationResponse
 	40,  // 41: core.v1.LogConfiguration.stream:type_name -> core.v1.LogConfigurationStream
-	103, // 42: core.v1.LogConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	103, // 43: core.v1.LogConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	105, // 42: core.v1.LogConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	105, // 43: core.v1.LogConfiguration.updated_at:type_name -> google.protobuf.Timestamp
 	39,  // 44: core.v1.LogConfiguration.session:type_name -> core.v1.LogConfigurationSession
 	2,   // 45: core.v1.LogConfiguration.source:type_name -> core.v1.LogConfigurationSource
-	103, // 46: core.v1.EncryptionKey.created_at:type_name -> google.protobuf.Timestamp
-	103, // 47: core.v1.EncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
+	105, // 46: core.v1.EncryptionKey.created_at:type_name -> google.protobuf.Timestamp
+	105, // 47: core.v1.EncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
 	35,  // 48: core.v1.CreateLogConfigurationRequest.scope:type_name -> core.v1.LogConfigurationScope
 	37,  // 49: core.v1.CreateLogConfigurationRequest.request:type_name -> core.v1.LogConfigurationRequest
 	38,  // 50: core.v1.CreateLogConfigurationRequest.response:type_name -> core.v1.LogConfigurationResponse
@@ -7071,7 +6472,7 @@ var file_core_v1_logs_proto_depIdxs = []int32{
 	41,  // 54: core.v1.CreateLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
 	41,  // 55: core.v1.GetLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
 	41,  // 56: core.v1.ListLogConfigurationsResponse.log_configurations:type_name -> core.v1.LogConfiguration
-	100, // 57: core.v1.ListLogConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	102, // 57: core.v1.ListLogConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
 	37,  // 58: core.v1.UpdateLogConfigurationRequest.request:type_name -> core.v1.LogConfigurationRequest
 	38,  // 59: core.v1.UpdateLogConfigurationRequest.response:type_name -> core.v1.LogConfigurationResponse
 	40,  // 60: core.v1.UpdateLogConfigurationRequest.stream:type_name -> core.v1.LogConfigurationStream
@@ -7080,15 +6481,15 @@ var file_core_v1_logs_proto_depIdxs = []int32{
 	41,  // 63: core.v1.UpdateLogConfigurationV2Request.log_configuration:type_name -> core.v1.LogConfiguration
 	41,  // 64: core.v1.UpdateLogConfigurationV2Response.log_configuration:type_name -> core.v1.LogConfiguration
 	56,  // 65: core.v1.LogSchema.paths:type_name -> core.v1.LogSchemaPaths
-	103, // 66: core.v1.LogSchema.created_at:type_name -> google.protobuf.Timestamp
-	103, // 67: core.v1.LogSchema.updated_at:type_name -> google.protobuf.Timestamp
-	99,  // 68: core.v1.LogSchemaPaths.paths:type_name -> core.v1.LogSchemaPaths.PathsEntry
+	105, // 66: core.v1.LogSchema.created_at:type_name -> google.protobuf.Timestamp
+	105, // 67: core.v1.LogSchema.updated_at:type_name -> google.protobuf.Timestamp
+	101, // 68: core.v1.LogSchemaPaths.paths:type_name -> core.v1.LogSchemaPaths.PathsEntry
 	58,  // 69: core.v1.LogSchemaPath.truncate:type_name -> core.v1.TruncateOperation
 	56,  // 70: core.v1.CreateLogSchemaRequest.paths:type_name -> core.v1.LogSchemaPaths
 	55,  // 71: core.v1.CreateLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
 	55,  // 72: core.v1.GetLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
 	55,  // 73: core.v1.ListLogSchemasResponse.log_schemas:type_name -> core.v1.LogSchema
-	100, // 74: core.v1.ListLogSchemasResponse.list_metadata:type_name -> core.v1.ListMetadata
+	102, // 74: core.v1.ListLogSchemasResponse.list_metadata:type_name -> core.v1.ListMetadata
 	56,  // 75: core.v1.UpdateLogSchemaRequest.paths:type_name -> core.v1.LogSchemaPaths
 	55,  // 76: core.v1.UpdateLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
 	42,  // 77: core.v1.CreateEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
@@ -7097,161 +6498,92 @@ var file_core_v1_logs_proto_depIdxs = []int32{
 	42,  // 80: core.v1.UpdateEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
 	42,  // 81: core.v1.UpdateEncryptionKeyV2Request.encryption_key:type_name -> core.v1.EncryptionKey
 	42,  // 82: core.v1.UpdateEncryptionKeyV2Response.encryption_key:type_name -> core.v1.EncryptionKey
-	104, // 83: core.v1.ListEncryptionKeysRequest.filter:type_name -> core.v1.Filter
+	106, // 83: core.v1.ListEncryptionKeysRequest.filter:type_name -> core.v1.Filter
 	42,  // 84: core.v1.ListEncryptionKeysResponse.encryption_keys:type_name -> core.v1.EncryptionKey
-	100, // 85: core.v1.ListEncryptionKeysResponse.list_metadata:type_name -> core.v1.ListMetadata
-	101, // 86: core.v1.GetLogsFromNaturalLanguageResponse.logs:type_name -> google.protobuf.Struct
-	88,  // 87: core.v1.ListLogsResponse.Aggregations.logs_over_time:type_name -> core.v1.ListLogsResponse.DateBucket
-	86,  // 88: core.v1.ListLogsResponse.Aggregations.session_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 89: core.v1.ListLogsResponse.Aggregations.session_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 90: core.v1.ListLogsResponse.Aggregations.session_application_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 91: core.v1.ListLogsResponse.Aggregations.session_client_ip_addresses:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 92: core.v1.ListLogsResponse.Aggregations.session_server_ip_addresses:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 93: core.v1.ListLogsResponse.Aggregations.query_fingerprints:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 94: core.v1.ListLogsResponse.Aggregations.query_normalized:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 95: core.v1.ListLogsResponse.Aggregations.query_received:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 96: core.v1.ListLogsResponse.Aggregations.query_sent:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 97: core.v1.ListLogsResponse.Aggregations.resource_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 98: core.v1.ListLogsResponse.Aggregations.resource_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 99: core.v1.ListLogsResponse.Aggregations.resource_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 100: core.v1.ListLogsResponse.Aggregations.resource_hostnames:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 101: core.v1.ListLogsResponse.Aggregations.resource_technologies:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 102: core.v1.ListLogsResponse.Aggregations.connector_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 103: core.v1.ListLogsResponse.Aggregations.connector_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 104: core.v1.ListLogsResponse.Aggregations.space_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 105: core.v1.ListLogsResponse.Aggregations.space_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 106: core.v1.ListLogsResponse.Aggregations.user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 107: core.v1.ListLogsResponse.Aggregations.user_sub_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 108: core.v1.ListLogsResponse.Aggregations.user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 109: core.v1.ListLogsResponse.Aggregations.user_usernames:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 110: core.v1.ListLogsResponse.Aggregations.user_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 111: core.v1.ListLogsResponse.Aggregations.end_user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 112: core.v1.ListLogsResponse.Aggregations.end_user_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 113: core.v1.ListLogsResponse.Aggregations.end_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 114: core.v1.ListLogsResponse.Aggregations.triggered_policy_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 115: core.v1.ListLogsResponse.Aggregations.triggered_policy_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 116: core.v1.ListLogsResponse.Aggregations.triggered_policy_statuses:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 117: core.v1.ListLogsResponse.Aggregations.triggered_policy_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 118: core.v1.ListLogsResponse.Aggregations.response_data_volumes:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 119: core.v1.ListLogsResponse.Aggregations.response_returned_column_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 120: core.v1.ListLogsResponse.Aggregations.response_returned_column_paths:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 121: core.v1.ListLogsResponse.Aggregations.response_returned_column_data_labels:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 122: core.v1.ListLogsResponse.Aggregations.response_rows_sent:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 123: core.v1.ListLogsResponse.Aggregations.response_rows_received:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 124: core.v1.ListLogsResponse.Aggregations.device_system_versions:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 125: core.v1.ListLogsResponse.Aggregations.device_kernel_versions:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 126: core.v1.ListLogsResponse.Aggregations.device_computer_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 127: core.v1.ListLogsResponse.Aggregations.device_user_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 128: core.v1.ListLogsResponse.Aggregations.device_model_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 129: core.v1.ListLogsResponse.Aggregations.device_model_identifiers:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 130: core.v1.ListLogsResponse.Aggregations.device_model_numbers:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 131: core.v1.ListLogsResponse.Aggregations.device_serial_numbers:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 132: core.v1.ListLogsResponse.Aggregations.user_groups:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 133: core.v1.ListLogsResponse.Aggregations.end_user_groups:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 134: core.v1.ListLogsResponse.Aggregations.control_plane_command_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 135: core.v1.ListLogsResponse.Aggregations.control_plane_command_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 136: core.v1.ListLogsResponse.Aggregations.control_plane_policy_actions:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 137: core.v1.ListLogsResponse.Aggregations.control_plane_services:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 138: core.v1.ListLogsResponse.Aggregations.control_plane_methods:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 139: core.v1.ListLogsResponse.Aggregations.control_plane_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 140: core.v1.ListLogsResponse.Aggregations.control_plane_user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 141: core.v1.ListLogsResponse.Aggregations.control_plane_user_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 142: core.v1.ListLogsResponse.Aggregations.control_plane_user_aws_principal_arns:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 143: core.v1.ListLogsResponse.Aggregations.control_plane_user_aws_account_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 144: core.v1.ListLogsResponse.Aggregations.workflow_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 145: core.v1.ListLogsResponse.Aggregations.workflow_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 146: core.v1.ListLogsResponse.Aggregations.step_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 147: core.v1.ListLogsResponse.Aggregations.step_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 148: core.v1.ListLogsResponse.Aggregations.trigger_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 149: core.v1.ListLogsResponse.Aggregations.trigger_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 150: core.v1.ListLogsResponse.Aggregations.trigger_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 151: core.v1.ListLogsResponse.Aggregations.trigger_user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 152: core.v1.ListLogsResponse.Aggregations.trigger_user_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 153: core.v1.ListLogsResponse.Aggregations.llm_tool_call_names:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 154: core.v1.ListLogsResponse.Aggregations.llm_models:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 155: core.v1.ListLogsResponse.Aggregations.llm_providers:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 156: core.v1.ListLogsResponse.Aggregations.llm_stop_reasons:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 157: core.v1.ListLogsResponse.Aggregations.agent_types:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 158: core.v1.ListLogsResponse.Aggregations.agent_providers:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 159: core.v1.ListLogsResponse.Aggregations.assessment_labels:type_name -> core.v1.ListLogsResponse.Bucket
-	87,  // 160: core.v1.ListLogsResponse.GroupByBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
-	87,  // 161: core.v1.ListLogsResponse.DateBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
-	90,  // 162: core.v1.GroupByFieldOptions.Histogram.hard_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
-	90,  // 163: core.v1.GroupByFieldOptions.Histogram.extended_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
-	90,  // 164: core.v1.GroupByFieldOptions.DateHistogram.hard_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
-	90,  // 165: core.v1.GroupByFieldOptions.DateHistogram.extended_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
-	94,  // 166: core.v1.GroupByFieldOptions.Range.ranges:type_name -> core.v1.GroupByFieldOptions.Range.Entry
-	32,  // 167: core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry.value:type_name -> core.v1.GroupByFieldOptions
-	97,  // 168: core.v1.GetGroupByAggregationResponse.Bucket.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
-	98,  // 169: core.v1.GetGroupByAggregationResponse.Bucket.metrics:type_name -> core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
-	57,  // 170: core.v1.LogSchemaPaths.PathsEntry.value:type_name -> core.v1.LogSchemaPath
-	19,  // 171: core.v1.LogsService.GetLog:input_type -> core.v1.GetLogRequest
-	33,  // 172: core.v1.LogsService.GetGroupByAggregation:input_type -> core.v1.GetGroupByAggregationRequest
-	21,  // 173: core.v1.LogsService.GetMetricAggregation:input_type -> core.v1.GetMetricAggregationRequest
-	24,  // 174: core.v1.LogsService.ListLogsV2:input_type -> core.v1.ListLogsV2Request
-	26,  // 175: core.v1.LogsService.ListLogAggregations:input_type -> core.v1.ListLogAggregationsRequest
-	28,  // 176: core.v1.LogsService.ListLogPolicyEvaluationInputs:input_type -> core.v1.ListLogPolicyEvaluationInputsRequest
-	83,  // 177: core.v1.LogsService.GetLogsFromNaturalLanguage:input_type -> core.v1.GetLogsFromNaturalLanguageRequest
-	6,   // 178: core.v1.LogsService.CreateLogQuery:input_type -> core.v1.CreateLogQueryRequest
-	8,   // 179: core.v1.LogsService.UpdateLogQuery:input_type -> core.v1.UpdateLogQueryRequest
-	10,  // 180: core.v1.LogsService.UpdateLogQueryV2:input_type -> core.v1.UpdateLogQueryV2Request
-	12,  // 181: core.v1.LogsService.ListLogQueries:input_type -> core.v1.ListLogQueriesRequest
-	14,  // 182: core.v1.LogsService.GetLogQuery:input_type -> core.v1.GetLogQueryRequest
-	16,  // 183: core.v1.LogsService.DeleteLogQuery:input_type -> core.v1.DeleteLogQueryRequest
-	43,  // 184: core.v1.LogsService.CreateLogConfiguration:input_type -> core.v1.CreateLogConfigurationRequest
-	45,  // 185: core.v1.LogsService.GetLogConfiguration:input_type -> core.v1.GetLogConfigurationRequest
-	47,  // 186: core.v1.LogsService.ListLogConfigurations:input_type -> core.v1.ListLogConfigurationsRequest
-	49,  // 187: core.v1.LogsService.UpdateLogConfiguration:input_type -> core.v1.UpdateLogConfigurationRequest
-	51,  // 188: core.v1.LogsService.UpdateLogConfigurationV2:input_type -> core.v1.UpdateLogConfigurationV2Request
-	53,  // 189: core.v1.LogsService.DeleteLogConfiguration:input_type -> core.v1.DeleteLogConfigurationRequest
-	59,  // 190: core.v1.LogsService.CreateLogSchema:input_type -> core.v1.CreateLogSchemaRequest
-	61,  // 191: core.v1.LogsService.GetLogSchema:input_type -> core.v1.GetLogSchemaRequest
-	63,  // 192: core.v1.LogsService.ListLogSchemas:input_type -> core.v1.ListLogSchemasRequest
-	65,  // 193: core.v1.LogsService.UpdateLogSchema:input_type -> core.v1.UpdateLogSchemaRequest
-	67,  // 194: core.v1.LogsService.DeleteLogSchema:input_type -> core.v1.DeleteLogSchemaRequest
-	69,  // 195: core.v1.LogsService.CreateEncryptionKey:input_type -> core.v1.CreateEncryptionKeyRequest
-	71,  // 196: core.v1.LogsService.GetEncryptionKey:input_type -> core.v1.GetEncryptionKeyRequest
-	73,  // 197: core.v1.LogsService.GetEncryptionKeysByKeyId:input_type -> core.v1.GetEncryptionKeysByKeyIdRequest
-	81,  // 198: core.v1.LogsService.ListEncryptionKeys:input_type -> core.v1.ListEncryptionKeysRequest
-	75,  // 199: core.v1.LogsService.UpdateEncryptionKey:input_type -> core.v1.UpdateEncryptionKeyRequest
-	77,  // 200: core.v1.LogsService.UpdateEncryptionKeyV2:input_type -> core.v1.UpdateEncryptionKeyV2Request
-	79,  // 201: core.v1.LogsService.DeleteEncryptionKey:input_type -> core.v1.DeleteEncryptionKeyRequest
-	20,  // 202: core.v1.LogsService.GetLog:output_type -> core.v1.GetLogResponse
-	34,  // 203: core.v1.LogsService.GetGroupByAggregation:output_type -> core.v1.GetGroupByAggregationResponse
-	22,  // 204: core.v1.LogsService.GetMetricAggregation:output_type -> core.v1.GetMetricAggregationResponse
-	25,  // 205: core.v1.LogsService.ListLogsV2:output_type -> core.v1.ListLogsV2Response
-	27,  // 206: core.v1.LogsService.ListLogAggregations:output_type -> core.v1.ListLogAggregationsResponse
-	30,  // 207: core.v1.LogsService.ListLogPolicyEvaluationInputs:output_type -> core.v1.ListLogPolicyEvaluationInputsResponse
-	84,  // 208: core.v1.LogsService.GetLogsFromNaturalLanguage:output_type -> core.v1.GetLogsFromNaturalLanguageResponse
-	7,   // 209: core.v1.LogsService.CreateLogQuery:output_type -> core.v1.CreateLogQueryResponse
-	9,   // 210: core.v1.LogsService.UpdateLogQuery:output_type -> core.v1.UpdateLogQueryResponse
-	11,  // 211: core.v1.LogsService.UpdateLogQueryV2:output_type -> core.v1.UpdateLogQueryV2Response
-	13,  // 212: core.v1.LogsService.ListLogQueries:output_type -> core.v1.ListLogQueriesResponse
-	15,  // 213: core.v1.LogsService.GetLogQuery:output_type -> core.v1.GetLogQueryResponse
-	17,  // 214: core.v1.LogsService.DeleteLogQuery:output_type -> core.v1.DeleteLogQueryResponse
-	44,  // 215: core.v1.LogsService.CreateLogConfiguration:output_type -> core.v1.CreateLogConfigurationResponse
-	46,  // 216: core.v1.LogsService.GetLogConfiguration:output_type -> core.v1.GetLogConfigurationResponse
-	48,  // 217: core.v1.LogsService.ListLogConfigurations:output_type -> core.v1.ListLogConfigurationsResponse
-	50,  // 218: core.v1.LogsService.UpdateLogConfiguration:output_type -> core.v1.UpdateLogConfigurationResponse
-	52,  // 219: core.v1.LogsService.UpdateLogConfigurationV2:output_type -> core.v1.UpdateLogConfigurationV2Response
-	54,  // 220: core.v1.LogsService.DeleteLogConfiguration:output_type -> core.v1.DeleteLogConfigurationResponse
-	60,  // 221: core.v1.LogsService.CreateLogSchema:output_type -> core.v1.CreateLogSchemaResponse
-	62,  // 222: core.v1.LogsService.GetLogSchema:output_type -> core.v1.GetLogSchemaResponse
-	64,  // 223: core.v1.LogsService.ListLogSchemas:output_type -> core.v1.ListLogSchemasResponse
-	66,  // 224: core.v1.LogsService.UpdateLogSchema:output_type -> core.v1.UpdateLogSchemaResponse
-	68,  // 225: core.v1.LogsService.DeleteLogSchema:output_type -> core.v1.DeleteLogSchemaResponse
-	70,  // 226: core.v1.LogsService.CreateEncryptionKey:output_type -> core.v1.CreateEncryptionKeyResponse
-	72,  // 227: core.v1.LogsService.GetEncryptionKey:output_type -> core.v1.GetEncryptionKeyResponse
-	74,  // 228: core.v1.LogsService.GetEncryptionKeysByKeyId:output_type -> core.v1.GetEncryptionKeysByKeyIdResponse
-	82,  // 229: core.v1.LogsService.ListEncryptionKeys:output_type -> core.v1.ListEncryptionKeysResponse
-	76,  // 230: core.v1.LogsService.UpdateEncryptionKey:output_type -> core.v1.UpdateEncryptionKeyResponse
-	78,  // 231: core.v1.LogsService.UpdateEncryptionKeyV2:output_type -> core.v1.UpdateEncryptionKeyV2Response
-	80,  // 232: core.v1.LogsService.DeleteEncryptionKey:output_type -> core.v1.DeleteEncryptionKeyResponse
-	202, // [202:233] is the sub-list for method output_type
-	171, // [171:202] is the sub-list for method input_type
-	171, // [171:171] is the sub-list for extension type_name
-	171, // [171:171] is the sub-list for extension extendee
-	0,   // [0:171] is the sub-list for field type_name
+	102, // 85: core.v1.ListEncryptionKeysResponse.list_metadata:type_name -> core.v1.ListMetadata
+	103, // 86: core.v1.GetLogsFromNaturalLanguageResponse.logs:type_name -> google.protobuf.Struct
+	89,  // 87: core.v1.ListLogsResponse.Aggregations.logs_over_time:type_name -> core.v1.ListLogsResponse.DateBucket
+	90,  // 88: core.v1.ListLogsResponse.Aggregations.terms:type_name -> core.v1.ListLogsResponse.Aggregations.TermsEntry
+	87,  // 89: core.v1.ListLogsResponse.Buckets.buckets:type_name -> core.v1.ListLogsResponse.Bucket
+	88,  // 90: core.v1.ListLogsResponse.GroupByBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
+	88,  // 91: core.v1.ListLogsResponse.DateBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
+	86,  // 92: core.v1.ListLogsResponse.Aggregations.TermsEntry.value:type_name -> core.v1.ListLogsResponse.Buckets
+	92,  // 93: core.v1.GroupByFieldOptions.Histogram.hard_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	92,  // 94: core.v1.GroupByFieldOptions.Histogram.extended_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	92,  // 95: core.v1.GroupByFieldOptions.DateHistogram.hard_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	92,  // 96: core.v1.GroupByFieldOptions.DateHistogram.extended_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	96,  // 97: core.v1.GroupByFieldOptions.Range.ranges:type_name -> core.v1.GroupByFieldOptions.Range.Entry
+	32,  // 98: core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry.value:type_name -> core.v1.GroupByFieldOptions
+	99,  // 99: core.v1.GetGroupByAggregationResponse.Bucket.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
+	100, // 100: core.v1.GetGroupByAggregationResponse.Bucket.metrics:type_name -> core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
+	57,  // 101: core.v1.LogSchemaPaths.PathsEntry.value:type_name -> core.v1.LogSchemaPath
+	19,  // 102: core.v1.LogsService.GetLog:input_type -> core.v1.GetLogRequest
+	33,  // 103: core.v1.LogsService.GetGroupByAggregation:input_type -> core.v1.GetGroupByAggregationRequest
+	21,  // 104: core.v1.LogsService.GetMetricAggregation:input_type -> core.v1.GetMetricAggregationRequest
+	24,  // 105: core.v1.LogsService.ListLogsV2:input_type -> core.v1.ListLogsV2Request
+	26,  // 106: core.v1.LogsService.ListLogAggregations:input_type -> core.v1.ListLogAggregationsRequest
+	28,  // 107: core.v1.LogsService.ListLogPolicyEvaluationInputs:input_type -> core.v1.ListLogPolicyEvaluationInputsRequest
+	83,  // 108: core.v1.LogsService.GetLogsFromNaturalLanguage:input_type -> core.v1.GetLogsFromNaturalLanguageRequest
+	6,   // 109: core.v1.LogsService.CreateLogQuery:input_type -> core.v1.CreateLogQueryRequest
+	8,   // 110: core.v1.LogsService.UpdateLogQuery:input_type -> core.v1.UpdateLogQueryRequest
+	10,  // 111: core.v1.LogsService.UpdateLogQueryV2:input_type -> core.v1.UpdateLogQueryV2Request
+	12,  // 112: core.v1.LogsService.ListLogQueries:input_type -> core.v1.ListLogQueriesRequest
+	14,  // 113: core.v1.LogsService.GetLogQuery:input_type -> core.v1.GetLogQueryRequest
+	16,  // 114: core.v1.LogsService.DeleteLogQuery:input_type -> core.v1.DeleteLogQueryRequest
+	43,  // 115: core.v1.LogsService.CreateLogConfiguration:input_type -> core.v1.CreateLogConfigurationRequest
+	45,  // 116: core.v1.LogsService.GetLogConfiguration:input_type -> core.v1.GetLogConfigurationRequest
+	47,  // 117: core.v1.LogsService.ListLogConfigurations:input_type -> core.v1.ListLogConfigurationsRequest
+	49,  // 118: core.v1.LogsService.UpdateLogConfiguration:input_type -> core.v1.UpdateLogConfigurationRequest
+	51,  // 119: core.v1.LogsService.UpdateLogConfigurationV2:input_type -> core.v1.UpdateLogConfigurationV2Request
+	53,  // 120: core.v1.LogsService.DeleteLogConfiguration:input_type -> core.v1.DeleteLogConfigurationRequest
+	59,  // 121: core.v1.LogsService.CreateLogSchema:input_type -> core.v1.CreateLogSchemaRequest
+	61,  // 122: core.v1.LogsService.GetLogSchema:input_type -> core.v1.GetLogSchemaRequest
+	63,  // 123: core.v1.LogsService.ListLogSchemas:input_type -> core.v1.ListLogSchemasRequest
+	65,  // 124: core.v1.LogsService.UpdateLogSchema:input_type -> core.v1.UpdateLogSchemaRequest
+	67,  // 125: core.v1.LogsService.DeleteLogSchema:input_type -> core.v1.DeleteLogSchemaRequest
+	69,  // 126: core.v1.LogsService.CreateEncryptionKey:input_type -> core.v1.CreateEncryptionKeyRequest
+	71,  // 127: core.v1.LogsService.GetEncryptionKey:input_type -> core.v1.GetEncryptionKeyRequest
+	73,  // 128: core.v1.LogsService.GetEncryptionKeysByKeyId:input_type -> core.v1.GetEncryptionKeysByKeyIdRequest
+	81,  // 129: core.v1.LogsService.ListEncryptionKeys:input_type -> core.v1.ListEncryptionKeysRequest
+	75,  // 130: core.v1.LogsService.UpdateEncryptionKey:input_type -> core.v1.UpdateEncryptionKeyRequest
+	77,  // 131: core.v1.LogsService.UpdateEncryptionKeyV2:input_type -> core.v1.UpdateEncryptionKeyV2Request
+	79,  // 132: core.v1.LogsService.DeleteEncryptionKey:input_type -> core.v1.DeleteEncryptionKeyRequest
+	20,  // 133: core.v1.LogsService.GetLog:output_type -> core.v1.GetLogResponse
+	34,  // 134: core.v1.LogsService.GetGroupByAggregation:output_type -> core.v1.GetGroupByAggregationResponse
+	22,  // 135: core.v1.LogsService.GetMetricAggregation:output_type -> core.v1.GetMetricAggregationResponse
+	25,  // 136: core.v1.LogsService.ListLogsV2:output_type -> core.v1.ListLogsV2Response
+	27,  // 137: core.v1.LogsService.ListLogAggregations:output_type -> core.v1.ListLogAggregationsResponse
+	30,  // 138: core.v1.LogsService.ListLogPolicyEvaluationInputs:output_type -> core.v1.ListLogPolicyEvaluationInputsResponse
+	84,  // 139: core.v1.LogsService.GetLogsFromNaturalLanguage:output_type -> core.v1.GetLogsFromNaturalLanguageResponse
+	7,   // 140: core.v1.LogsService.CreateLogQuery:output_type -> core.v1.CreateLogQueryResponse
+	9,   // 141: core.v1.LogsService.UpdateLogQuery:output_type -> core.v1.UpdateLogQueryResponse
+	11,  // 142: core.v1.LogsService.UpdateLogQueryV2:output_type -> core.v1.UpdateLogQueryV2Response
+	13,  // 143: core.v1.LogsService.ListLogQueries:output_type -> core.v1.ListLogQueriesResponse
+	15,  // 144: core.v1.LogsService.GetLogQuery:output_type -> core.v1.GetLogQueryResponse
+	17,  // 145: core.v1.LogsService.DeleteLogQuery:output_type -> core.v1.DeleteLogQueryResponse
+	44,  // 146: core.v1.LogsService.CreateLogConfiguration:output_type -> core.v1.CreateLogConfigurationResponse
+	46,  // 147: core.v1.LogsService.GetLogConfiguration:output_type -> core.v1.GetLogConfigurationResponse
+	48,  // 148: core.v1.LogsService.ListLogConfigurations:output_type -> core.v1.ListLogConfigurationsResponse
+	50,  // 149: core.v1.LogsService.UpdateLogConfiguration:output_type -> core.v1.UpdateLogConfigurationResponse
+	52,  // 150: core.v1.LogsService.UpdateLogConfigurationV2:output_type -> core.v1.UpdateLogConfigurationV2Response
+	54,  // 151: core.v1.LogsService.DeleteLogConfiguration:output_type -> core.v1.DeleteLogConfigurationResponse
+	60,  // 152: core.v1.LogsService.CreateLogSchema:output_type -> core.v1.CreateLogSchemaResponse
+	62,  // 153: core.v1.LogsService.GetLogSchema:output_type -> core.v1.GetLogSchemaResponse
+	64,  // 154: core.v1.LogsService.ListLogSchemas:output_type -> core.v1.ListLogSchemasResponse
+	66,  // 155: core.v1.LogsService.UpdateLogSchema:output_type -> core.v1.UpdateLogSchemaResponse
+	68,  // 156: core.v1.LogsService.DeleteLogSchema:output_type -> core.v1.DeleteLogSchemaResponse
+	70,  // 157: core.v1.LogsService.CreateEncryptionKey:output_type -> core.v1.CreateEncryptionKeyResponse
+	72,  // 158: core.v1.LogsService.GetEncryptionKey:output_type -> core.v1.GetEncryptionKeyResponse
+	74,  // 159: core.v1.LogsService.GetEncryptionKeysByKeyId:output_type -> core.v1.GetEncryptionKeysByKeyIdResponse
+	82,  // 160: core.v1.LogsService.ListEncryptionKeys:output_type -> core.v1.ListEncryptionKeysResponse
+	76,  // 161: core.v1.LogsService.UpdateEncryptionKey:output_type -> core.v1.UpdateEncryptionKeyResponse
+	78,  // 162: core.v1.LogsService.UpdateEncryptionKeyV2:output_type -> core.v1.UpdateEncryptionKeyV2Response
+	80,  // 163: core.v1.LogsService.DeleteEncryptionKey:output_type -> core.v1.DeleteEncryptionKeyResponse
+	133, // [133:164] is the sub-list for method output_type
+	102, // [102:133] is the sub-list for method input_type
+	102, // [102:102] is the sub-list for extension type_name
+	102, // [102:102] is the sub-list for extension extendee
+	0,   // [0:102] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_logs_proto_init() }
@@ -7286,15 +6618,15 @@ func file_core_v1_logs_proto_init() {
 	file_core_v1_logs_proto_msgTypes[72].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[78].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[80].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[91].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[94].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[93].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[96].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_logs_proto_rawDesc), len(file_core_v1_logs_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   97,
+			NumMessages:   99,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
