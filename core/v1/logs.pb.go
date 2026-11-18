@@ -1730,13 +1730,16 @@ func (x *ListLogPolicyEvaluationInputsResponse) GetRowListMetadata() *ListMetada
 	return nil
 }
 
-// GroupByMetric adds one metric to every leaf bucket of a group-by aggregation.
+// GroupByMetric adds one metric to every level of a group-by aggregation.
 // "distinct" is a HyperLogLog++ estimate of the field's unique values.
 type GroupByMetric struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	Field         string                 `protobuf:"bytes,3,opt,name=field,proto3" json:"field,omitempty"`
+	Missing       *float64               `protobuf:"fixed64,5,opt,name=missing,proto3,oneof" json:"missing,omitempty"`
+	Sigma         *float64               `protobuf:"fixed64,6,opt,name=sigma,proto3,oneof" json:"sigma,omitempty"`
+	Percents      []float64              `protobuf:"fixed64,7,rep,packed,name=percents,proto3" json:"percents,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1792,6 +1795,173 @@ func (x *GroupByMetric) GetField() string {
 	return ""
 }
 
+func (x *GroupByMetric) GetMissing() float64 {
+	if x != nil && x.Missing != nil {
+		return *x.Missing
+	}
+	return 0
+}
+
+func (x *GroupByMetric) GetSigma() float64 {
+	if x != nil && x.Sigma != nil {
+		return *x.Sigma
+	}
+	return 0
+}
+
+func (x *GroupByMetric) GetPercents() []float64 {
+	if x != nil {
+		return x.Percents
+	}
+	return nil
+}
+
+type GroupByFieldOptions struct {
+	state                 protoimpl.MessageState     `protogen:"open.v1"`
+	Size                  *uint64                    `protobuf:"varint,1,opt,name=size,proto3,oneof" json:"size,omitempty"`
+	ShardSize             *uint64                    `protobuf:"varint,2,opt,name=shard_size,json=shardSize,proto3,oneof" json:"shard_size,omitempty"`
+	MinDocCount           *uint64                    `protobuf:"varint,3,opt,name=min_doc_count,json=minDocCount,proto3,oneof" json:"min_doc_count,omitempty"`
+	Missing               *string                    `protobuf:"bytes,4,opt,name=missing,proto3,oneof" json:"missing,omitempty"`
+	ShowTermDocCountError *bool                      `protobuf:"varint,5,opt,name=show_term_doc_count_error,json=showTermDocCountError,proto3,oneof" json:"show_term_doc_count_error,omitempty"`
+	Order                 *GroupByFieldOptions_Order `protobuf:"bytes,6,opt,name=order,proto3" json:"order,omitempty"`
+	// Types that are valid to be assigned to Bucket:
+	//
+	//	*GroupByFieldOptions_Histogram_
+	//	*GroupByFieldOptions_DateHistogram_
+	//	*GroupByFieldOptions_Range_
+	Bucket        isGroupByFieldOptions_Bucket `protobuf_oneof:"bucket"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GroupByFieldOptions) Reset() {
+	*x = GroupByFieldOptions{}
+	mi := &file_core_v1_logs_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupByFieldOptions) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupByFieldOptions) ProtoMessage() {}
+
+func (x *GroupByFieldOptions) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupByFieldOptions.ProtoReflect.Descriptor instead.
+func (*GroupByFieldOptions) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *GroupByFieldOptions) GetSize() uint64 {
+	if x != nil && x.Size != nil {
+		return *x.Size
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions) GetShardSize() uint64 {
+	if x != nil && x.ShardSize != nil {
+		return *x.ShardSize
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions) GetMinDocCount() uint64 {
+	if x != nil && x.MinDocCount != nil {
+		return *x.MinDocCount
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions) GetMissing() string {
+	if x != nil && x.Missing != nil {
+		return *x.Missing
+	}
+	return ""
+}
+
+func (x *GroupByFieldOptions) GetShowTermDocCountError() bool {
+	if x != nil && x.ShowTermDocCountError != nil {
+		return *x.ShowTermDocCountError
+	}
+	return false
+}
+
+func (x *GroupByFieldOptions) GetOrder() *GroupByFieldOptions_Order {
+	if x != nil {
+		return x.Order
+	}
+	return nil
+}
+
+func (x *GroupByFieldOptions) GetBucket() isGroupByFieldOptions_Bucket {
+	if x != nil {
+		return x.Bucket
+	}
+	return nil
+}
+
+func (x *GroupByFieldOptions) GetHistogram() *GroupByFieldOptions_Histogram {
+	if x != nil {
+		if x, ok := x.Bucket.(*GroupByFieldOptions_Histogram_); ok {
+			return x.Histogram
+		}
+	}
+	return nil
+}
+
+func (x *GroupByFieldOptions) GetDateHistogram() *GroupByFieldOptions_DateHistogram {
+	if x != nil {
+		if x, ok := x.Bucket.(*GroupByFieldOptions_DateHistogram_); ok {
+			return x.DateHistogram
+		}
+	}
+	return nil
+}
+
+func (x *GroupByFieldOptions) GetRange() *GroupByFieldOptions_Range {
+	if x != nil {
+		if x, ok := x.Bucket.(*GroupByFieldOptions_Range_); ok {
+			return x.Range
+		}
+	}
+	return nil
+}
+
+type isGroupByFieldOptions_Bucket interface {
+	isGroupByFieldOptions_Bucket()
+}
+
+type GroupByFieldOptions_Histogram_ struct {
+	Histogram *GroupByFieldOptions_Histogram `protobuf:"bytes,7,opt,name=histogram,proto3,oneof"`
+}
+
+type GroupByFieldOptions_DateHistogram_ struct {
+	DateHistogram *GroupByFieldOptions_DateHistogram `protobuf:"bytes,8,opt,name=date_histogram,json=dateHistogram,proto3,oneof"`
+}
+
+type GroupByFieldOptions_Range_ struct {
+	Range *GroupByFieldOptions_Range `protobuf:"bytes,9,opt,name=range,proto3,oneof"`
+}
+
+func (*GroupByFieldOptions_Histogram_) isGroupByFieldOptions_Bucket() {}
+
+func (*GroupByFieldOptions_DateHistogram_) isGroupByFieldOptions_Bucket() {}
+
+func (*GroupByFieldOptions_Range_) isGroupByFieldOptions_Bucket() {}
+
 type GetGroupByAggregationRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Query          string                 `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
@@ -1800,14 +1970,16 @@ type GetGroupByAggregationRequest struct {
 	GroupByFields  []string               `protobuf:"bytes,4,rep,name=group_by_fields,json=groupByFields,proto3" json:"group_by_fields,omitempty"`
 	Metrics        []*GroupByMetric       `protobuf:"bytes,5,rep,name=metrics,proto3" json:"metrics,omitempty"`
 	// Buckets per group-by level. Defaults to 10000 when unset.
-	Limit         *int32 `protobuf:"varint,6,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Limit             *int32                          `protobuf:"varint,6,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	HistogramInterval *string                         `protobuf:"bytes,7,opt,name=histogram_interval,json=histogramInterval,proto3,oneof" json:"histogram_interval,omitempty"`
+	GroupByOptions    map[string]*GroupByFieldOptions `protobuf:"bytes,8,rep,name=group_by_options,json=groupByOptions,proto3" json:"group_by_options,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *GetGroupByAggregationRequest) Reset() {
 	*x = GetGroupByAggregationRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[29]
+	mi := &file_core_v1_logs_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1819,7 +1991,7 @@ func (x *GetGroupByAggregationRequest) String() string {
 func (*GetGroupByAggregationRequest) ProtoMessage() {}
 
 func (x *GetGroupByAggregationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[29]
+	mi := &file_core_v1_logs_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1832,7 +2004,7 @@ func (x *GetGroupByAggregationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupByAggregationRequest.ProtoReflect.Descriptor instead.
 func (*GetGroupByAggregationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{29}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GetGroupByAggregationRequest) GetQuery() string {
@@ -1877,16 +2049,34 @@ func (x *GetGroupByAggregationRequest) GetLimit() int32 {
 	return 0
 }
 
+func (x *GetGroupByAggregationRequest) GetHistogramInterval() string {
+	if x != nil && x.HistogramInterval != nil {
+		return *x.HistogramInterval
+	}
+	return ""
+}
+
+func (x *GetGroupByAggregationRequest) GetGroupByOptions() map[string]*GroupByFieldOptions {
+	if x != nil {
+		return x.GroupByOptions
+	}
+	return nil
+}
+
 type GetGroupByAggregationResponse struct {
-	state         protoimpl.MessageState                  `protogen:"open.v1"`
-	Buckets       []*GetGroupByAggregationResponse_Bucket `protobuf:"bytes,1,rep,name=buckets,proto3" json:"buckets,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                   protoimpl.MessageState                  `protogen:"open.v1"`
+	Buckets                 []*GetGroupByAggregationResponse_Bucket `protobuf:"bytes,1,rep,name=buckets,proto3" json:"buckets,omitempty"`
+	DocCount                *uint64                                 `protobuf:"varint,2,opt,name=doc_count,json=docCount,proto3,oneof" json:"doc_count,omitempty"`
+	Metrics                 map[string]float64                      `protobuf:"bytes,3,rep,name=metrics,proto3" json:"metrics,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	SumOtherDocCount        *int64                                  `protobuf:"varint,4,opt,name=sum_other_doc_count,json=sumOtherDocCount,proto3,oneof" json:"sum_other_doc_count,omitempty"`
+	DocCountErrorUpperBound *int64                                  `protobuf:"varint,5,opt,name=doc_count_error_upper_bound,json=docCountErrorUpperBound,proto3,oneof" json:"doc_count_error_upper_bound,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *GetGroupByAggregationResponse) Reset() {
 	*x = GetGroupByAggregationResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[30]
+	mi := &file_core_v1_logs_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1898,7 +2088,7 @@ func (x *GetGroupByAggregationResponse) String() string {
 func (*GetGroupByAggregationResponse) ProtoMessage() {}
 
 func (x *GetGroupByAggregationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[30]
+	mi := &file_core_v1_logs_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1911,7 +2101,7 @@ func (x *GetGroupByAggregationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupByAggregationResponse.ProtoReflect.Descriptor instead.
 func (*GetGroupByAggregationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{30}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetGroupByAggregationResponse) GetBuckets() []*GetGroupByAggregationResponse_Bucket {
@@ -1919,6 +2109,34 @@ func (x *GetGroupByAggregationResponse) GetBuckets() []*GetGroupByAggregationRes
 		return x.Buckets
 	}
 	return nil
+}
+
+func (x *GetGroupByAggregationResponse) GetDocCount() uint64 {
+	if x != nil && x.DocCount != nil {
+		return *x.DocCount
+	}
+	return 0
+}
+
+func (x *GetGroupByAggregationResponse) GetMetrics() map[string]float64 {
+	if x != nil {
+		return x.Metrics
+	}
+	return nil
+}
+
+func (x *GetGroupByAggregationResponse) GetSumOtherDocCount() int64 {
+	if x != nil && x.SumOtherDocCount != nil {
+		return *x.SumOtherDocCount
+	}
+	return 0
+}
+
+func (x *GetGroupByAggregationResponse) GetDocCountErrorUpperBound() int64 {
+	if x != nil && x.DocCountErrorUpperBound != nil {
+		return *x.DocCountErrorUpperBound
+	}
+	return 0
 }
 
 type LogConfigurationScope struct {
@@ -1933,7 +2151,7 @@ type LogConfigurationScope struct {
 
 func (x *LogConfigurationScope) Reset() {
 	*x = LogConfigurationScope{}
-	mi := &file_core_v1_logs_proto_msgTypes[31]
+	mi := &file_core_v1_logs_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1945,7 +2163,7 @@ func (x *LogConfigurationScope) String() string {
 func (*LogConfigurationScope) ProtoMessage() {}
 
 func (x *LogConfigurationScope) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[31]
+	mi := &file_core_v1_logs_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1958,7 +2176,7 @@ func (x *LogConfigurationScope) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogConfigurationScope.ProtoReflect.Descriptor instead.
 func (*LogConfigurationScope) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{31}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *LogConfigurationScope) GetScope() LogConfigurationScopeType {
@@ -1999,7 +2217,7 @@ type LogConfigurationSql struct {
 
 func (x *LogConfigurationSql) Reset() {
 	*x = LogConfigurationSql{}
-	mi := &file_core_v1_logs_proto_msgTypes[32]
+	mi := &file_core_v1_logs_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2011,7 +2229,7 @@ func (x *LogConfigurationSql) String() string {
 func (*LogConfigurationSql) ProtoMessage() {}
 
 func (x *LogConfigurationSql) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[32]
+	mi := &file_core_v1_logs_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2024,7 +2242,7 @@ func (x *LogConfigurationSql) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogConfigurationSql.ProtoReflect.Descriptor instead.
 func (*LogConfigurationSql) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{32}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *LogConfigurationSql) GetStripValues() bool {
@@ -2053,7 +2271,7 @@ type LogConfigurationRequest struct {
 
 func (x *LogConfigurationRequest) Reset() {
 	*x = LogConfigurationRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[33]
+	mi := &file_core_v1_logs_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2065,7 +2283,7 @@ func (x *LogConfigurationRequest) String() string {
 func (*LogConfigurationRequest) ProtoMessage() {}
 
 func (x *LogConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[33]
+	mi := &file_core_v1_logs_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2078,7 +2296,7 @@ func (x *LogConfigurationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*LogConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{33}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *LogConfigurationRequest) GetSql() *LogConfigurationSql {
@@ -2120,7 +2338,7 @@ type LogConfigurationResponse struct {
 
 func (x *LogConfigurationResponse) Reset() {
 	*x = LogConfigurationResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[34]
+	mi := &file_core_v1_logs_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2132,7 +2350,7 @@ func (x *LogConfigurationResponse) String() string {
 func (*LogConfigurationResponse) ProtoMessage() {}
 
 func (x *LogConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[34]
+	mi := &file_core_v1_logs_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2145,7 +2363,7 @@ func (x *LogConfigurationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*LogConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{34}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *LogConfigurationResponse) GetEncrypt() bool {
@@ -2178,7 +2396,7 @@ type LogConfigurationSession struct {
 
 func (x *LogConfigurationSession) Reset() {
 	*x = LogConfigurationSession{}
-	mi := &file_core_v1_logs_proto_msgTypes[35]
+	mi := &file_core_v1_logs_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2190,7 +2408,7 @@ func (x *LogConfigurationSession) String() string {
 func (*LogConfigurationSession) ProtoMessage() {}
 
 func (x *LogConfigurationSession) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[35]
+	mi := &file_core_v1_logs_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2203,7 +2421,7 @@ func (x *LogConfigurationSession) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogConfigurationSession.ProtoReflect.Descriptor instead.
 func (*LogConfigurationSession) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{35}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *LogConfigurationSession) GetPolicyEvalInputRetention() *durationpb.Duration {
@@ -2222,7 +2440,7 @@ type LogConfigurationStream struct {
 
 func (x *LogConfigurationStream) Reset() {
 	*x = LogConfigurationStream{}
-	mi := &file_core_v1_logs_proto_msgTypes[36]
+	mi := &file_core_v1_logs_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2234,7 +2452,7 @@ func (x *LogConfigurationStream) String() string {
 func (*LogConfigurationStream) ProtoMessage() {}
 
 func (x *LogConfigurationStream) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[36]
+	mi := &file_core_v1_logs_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2247,7 +2465,7 @@ func (x *LogConfigurationStream) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogConfigurationStream.ProtoReflect.Descriptor instead.
 func (*LogConfigurationStream) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{36}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *LogConfigurationStream) GetEncrypt() bool {
@@ -2276,7 +2494,7 @@ type LogConfiguration struct {
 
 func (x *LogConfiguration) Reset() {
 	*x = LogConfiguration{}
-	mi := &file_core_v1_logs_proto_msgTypes[37]
+	mi := &file_core_v1_logs_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2288,7 +2506,7 @@ func (x *LogConfiguration) String() string {
 func (*LogConfiguration) ProtoMessage() {}
 
 func (x *LogConfiguration) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[37]
+	mi := &file_core_v1_logs_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2301,7 +2519,7 @@ func (x *LogConfiguration) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogConfiguration.ProtoReflect.Descriptor instead.
 func (*LogConfiguration) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{37}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *LogConfiguration) GetId() string {
@@ -2399,7 +2617,7 @@ type EncryptionKey struct {
 
 func (x *EncryptionKey) Reset() {
 	*x = EncryptionKey{}
-	mi := &file_core_v1_logs_proto_msgTypes[38]
+	mi := &file_core_v1_logs_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2411,7 +2629,7 @@ func (x *EncryptionKey) String() string {
 func (*EncryptionKey) ProtoMessage() {}
 
 func (x *EncryptionKey) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[38]
+	mi := &file_core_v1_logs_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2424,7 +2642,7 @@ func (x *EncryptionKey) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EncryptionKey.ProtoReflect.Descriptor instead.
 func (*EncryptionKey) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{38}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *EncryptionKey) GetId() string {
@@ -2499,7 +2717,7 @@ type CreateLogConfigurationRequest struct {
 
 func (x *CreateLogConfigurationRequest) Reset() {
 	*x = CreateLogConfigurationRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[39]
+	mi := &file_core_v1_logs_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2511,7 +2729,7 @@ func (x *CreateLogConfigurationRequest) String() string {
 func (*CreateLogConfigurationRequest) ProtoMessage() {}
 
 func (x *CreateLogConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[39]
+	mi := &file_core_v1_logs_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2524,7 +2742,7 @@ func (x *CreateLogConfigurationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLogConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*CreateLogConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{39}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *CreateLogConfigurationRequest) GetName() string {
@@ -2592,7 +2810,7 @@ type CreateLogConfigurationResponse struct {
 
 func (x *CreateLogConfigurationResponse) Reset() {
 	*x = CreateLogConfigurationResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[40]
+	mi := &file_core_v1_logs_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2604,7 +2822,7 @@ func (x *CreateLogConfigurationResponse) String() string {
 func (*CreateLogConfigurationResponse) ProtoMessage() {}
 
 func (x *CreateLogConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[40]
+	mi := &file_core_v1_logs_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2617,7 +2835,7 @@ func (x *CreateLogConfigurationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLogConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*CreateLogConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{40}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *CreateLogConfigurationResponse) GetLogConfiguration() *LogConfiguration {
@@ -2636,7 +2854,7 @@ type GetLogConfigurationRequest struct {
 
 func (x *GetLogConfigurationRequest) Reset() {
 	*x = GetLogConfigurationRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[41]
+	mi := &file_core_v1_logs_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2648,7 +2866,7 @@ func (x *GetLogConfigurationRequest) String() string {
 func (*GetLogConfigurationRequest) ProtoMessage() {}
 
 func (x *GetLogConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[41]
+	mi := &file_core_v1_logs_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2661,7 +2879,7 @@ func (x *GetLogConfigurationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLogConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*GetLogConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{41}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *GetLogConfigurationRequest) GetId() string {
@@ -2680,7 +2898,7 @@ type GetLogConfigurationResponse struct {
 
 func (x *GetLogConfigurationResponse) Reset() {
 	*x = GetLogConfigurationResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[42]
+	mi := &file_core_v1_logs_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2692,7 +2910,7 @@ func (x *GetLogConfigurationResponse) String() string {
 func (*GetLogConfigurationResponse) ProtoMessage() {}
 
 func (x *GetLogConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[42]
+	mi := &file_core_v1_logs_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2705,7 +2923,7 @@ func (x *GetLogConfigurationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLogConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*GetLogConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{42}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *GetLogConfigurationResponse) GetLogConfiguration() *LogConfiguration {
@@ -2726,7 +2944,7 @@ type ListLogConfigurationsRequest struct {
 
 func (x *ListLogConfigurationsRequest) Reset() {
 	*x = ListLogConfigurationsRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[43]
+	mi := &file_core_v1_logs_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2738,7 +2956,7 @@ func (x *ListLogConfigurationsRequest) String() string {
 func (*ListLogConfigurationsRequest) ProtoMessage() {}
 
 func (x *ListLogConfigurationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[43]
+	mi := &file_core_v1_logs_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2751,7 +2969,7 @@ func (x *ListLogConfigurationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLogConfigurationsRequest.ProtoReflect.Descriptor instead.
 func (*ListLogConfigurationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{43}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *ListLogConfigurationsRequest) GetLimit() int32 {
@@ -2785,7 +3003,7 @@ type ListLogConfigurationsResponse struct {
 
 func (x *ListLogConfigurationsResponse) Reset() {
 	*x = ListLogConfigurationsResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[44]
+	mi := &file_core_v1_logs_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2797,7 +3015,7 @@ func (x *ListLogConfigurationsResponse) String() string {
 func (*ListLogConfigurationsResponse) ProtoMessage() {}
 
 func (x *ListLogConfigurationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[44]
+	mi := &file_core_v1_logs_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2810,7 +3028,7 @@ func (x *ListLogConfigurationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLogConfigurationsResponse.ProtoReflect.Descriptor instead.
 func (*ListLogConfigurationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{44}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ListLogConfigurationsResponse) GetLogConfigurations() []*LogConfiguration {
@@ -2842,7 +3060,7 @@ type UpdateLogConfigurationRequest struct {
 
 func (x *UpdateLogConfigurationRequest) Reset() {
 	*x = UpdateLogConfigurationRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[45]
+	mi := &file_core_v1_logs_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2854,7 +3072,7 @@ func (x *UpdateLogConfigurationRequest) String() string {
 func (*UpdateLogConfigurationRequest) ProtoMessage() {}
 
 func (x *UpdateLogConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[45]
+	mi := &file_core_v1_logs_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2867,7 +3085,7 @@ func (x *UpdateLogConfigurationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLogConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateLogConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{45}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *UpdateLogConfigurationRequest) GetId() string {
@@ -2928,7 +3146,7 @@ type UpdateLogConfigurationResponse struct {
 
 func (x *UpdateLogConfigurationResponse) Reset() {
 	*x = UpdateLogConfigurationResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[46]
+	mi := &file_core_v1_logs_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2940,7 +3158,7 @@ func (x *UpdateLogConfigurationResponse) String() string {
 func (*UpdateLogConfigurationResponse) ProtoMessage() {}
 
 func (x *UpdateLogConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[46]
+	mi := &file_core_v1_logs_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2953,7 +3171,7 @@ func (x *UpdateLogConfigurationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLogConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateLogConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{46}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *UpdateLogConfigurationResponse) GetLogConfiguration() *LogConfiguration {
@@ -2972,7 +3190,7 @@ type UpdateLogConfigurationV2Request struct {
 
 func (x *UpdateLogConfigurationV2Request) Reset() {
 	*x = UpdateLogConfigurationV2Request{}
-	mi := &file_core_v1_logs_proto_msgTypes[47]
+	mi := &file_core_v1_logs_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2984,7 +3202,7 @@ func (x *UpdateLogConfigurationV2Request) String() string {
 func (*UpdateLogConfigurationV2Request) ProtoMessage() {}
 
 func (x *UpdateLogConfigurationV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[47]
+	mi := &file_core_v1_logs_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2997,7 +3215,7 @@ func (x *UpdateLogConfigurationV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLogConfigurationV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateLogConfigurationV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{47}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *UpdateLogConfigurationV2Request) GetLogConfiguration() *LogConfiguration {
@@ -3016,7 +3234,7 @@ type UpdateLogConfigurationV2Response struct {
 
 func (x *UpdateLogConfigurationV2Response) Reset() {
 	*x = UpdateLogConfigurationV2Response{}
-	mi := &file_core_v1_logs_proto_msgTypes[48]
+	mi := &file_core_v1_logs_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3028,7 +3246,7 @@ func (x *UpdateLogConfigurationV2Response) String() string {
 func (*UpdateLogConfigurationV2Response) ProtoMessage() {}
 
 func (x *UpdateLogConfigurationV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[48]
+	mi := &file_core_v1_logs_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3041,7 +3259,7 @@ func (x *UpdateLogConfigurationV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLogConfigurationV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateLogConfigurationV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{48}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *UpdateLogConfigurationV2Response) GetLogConfiguration() *LogConfiguration {
@@ -3060,7 +3278,7 @@ type DeleteLogConfigurationRequest struct {
 
 func (x *DeleteLogConfigurationRequest) Reset() {
 	*x = DeleteLogConfigurationRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[49]
+	mi := &file_core_v1_logs_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3072,7 +3290,7 @@ func (x *DeleteLogConfigurationRequest) String() string {
 func (*DeleteLogConfigurationRequest) ProtoMessage() {}
 
 func (x *DeleteLogConfigurationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[49]
+	mi := &file_core_v1_logs_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3085,7 +3303,7 @@ func (x *DeleteLogConfigurationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLogConfigurationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteLogConfigurationRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{49}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *DeleteLogConfigurationRequest) GetId() string {
@@ -3103,7 +3321,7 @@ type DeleteLogConfigurationResponse struct {
 
 func (x *DeleteLogConfigurationResponse) Reset() {
 	*x = DeleteLogConfigurationResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[50]
+	mi := &file_core_v1_logs_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3115,7 +3333,7 @@ func (x *DeleteLogConfigurationResponse) String() string {
 func (*DeleteLogConfigurationResponse) ProtoMessage() {}
 
 func (x *DeleteLogConfigurationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[50]
+	mi := &file_core_v1_logs_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3128,7 +3346,7 @@ func (x *DeleteLogConfigurationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLogConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteLogConfigurationResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{50}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{51}
 }
 
 type LogSchema struct {
@@ -3146,7 +3364,7 @@ type LogSchema struct {
 
 func (x *LogSchema) Reset() {
 	*x = LogSchema{}
-	mi := &file_core_v1_logs_proto_msgTypes[51]
+	mi := &file_core_v1_logs_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3158,7 +3376,7 @@ func (x *LogSchema) String() string {
 func (*LogSchema) ProtoMessage() {}
 
 func (x *LogSchema) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[51]
+	mi := &file_core_v1_logs_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3171,7 +3389,7 @@ func (x *LogSchema) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogSchema.ProtoReflect.Descriptor instead.
 func (*LogSchema) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{51}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *LogSchema) GetId() string {
@@ -3232,7 +3450,7 @@ type LogSchemaPaths struct {
 
 func (x *LogSchemaPaths) Reset() {
 	*x = LogSchemaPaths{}
-	mi := &file_core_v1_logs_proto_msgTypes[52]
+	mi := &file_core_v1_logs_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3244,7 +3462,7 @@ func (x *LogSchemaPaths) String() string {
 func (*LogSchemaPaths) ProtoMessage() {}
 
 func (x *LogSchemaPaths) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[52]
+	mi := &file_core_v1_logs_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3257,7 +3475,7 @@ func (x *LogSchemaPaths) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogSchemaPaths.ProtoReflect.Descriptor instead.
 func (*LogSchemaPaths) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{52}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *LogSchemaPaths) GetPaths() map[string]*LogSchemaPath {
@@ -3280,7 +3498,7 @@ type LogSchemaPath struct {
 
 func (x *LogSchemaPath) Reset() {
 	*x = LogSchemaPath{}
-	mi := &file_core_v1_logs_proto_msgTypes[53]
+	mi := &file_core_v1_logs_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3292,7 +3510,7 @@ func (x *LogSchemaPath) String() string {
 func (*LogSchemaPath) ProtoMessage() {}
 
 func (x *LogSchemaPath) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[53]
+	mi := &file_core_v1_logs_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3305,7 +3523,7 @@ func (x *LogSchemaPath) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogSchemaPath.ProtoReflect.Descriptor instead.
 func (*LogSchemaPath) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{53}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *LogSchemaPath) GetDrop() bool {
@@ -3352,7 +3570,7 @@ type TruncateOperation struct {
 
 func (x *TruncateOperation) Reset() {
 	*x = TruncateOperation{}
-	mi := &file_core_v1_logs_proto_msgTypes[54]
+	mi := &file_core_v1_logs_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3364,7 +3582,7 @@ func (x *TruncateOperation) String() string {
 func (*TruncateOperation) ProtoMessage() {}
 
 func (x *TruncateOperation) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[54]
+	mi := &file_core_v1_logs_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3377,7 +3595,7 @@ func (x *TruncateOperation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TruncateOperation.ProtoReflect.Descriptor instead.
 func (*TruncateOperation) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{54}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *TruncateOperation) GetMaxSizeBytes() uint32 {
@@ -3399,7 +3617,7 @@ type CreateLogSchemaRequest struct {
 
 func (x *CreateLogSchemaRequest) Reset() {
 	*x = CreateLogSchemaRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[55]
+	mi := &file_core_v1_logs_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3411,7 +3629,7 @@ func (x *CreateLogSchemaRequest) String() string {
 func (*CreateLogSchemaRequest) ProtoMessage() {}
 
 func (x *CreateLogSchemaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[55]
+	mi := &file_core_v1_logs_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3424,7 +3642,7 @@ func (x *CreateLogSchemaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLogSchemaRequest.ProtoReflect.Descriptor instead.
 func (*CreateLogSchemaRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{55}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *CreateLogSchemaRequest) GetName() string {
@@ -3464,7 +3682,7 @@ type CreateLogSchemaResponse struct {
 
 func (x *CreateLogSchemaResponse) Reset() {
 	*x = CreateLogSchemaResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[56]
+	mi := &file_core_v1_logs_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3476,7 +3694,7 @@ func (x *CreateLogSchemaResponse) String() string {
 func (*CreateLogSchemaResponse) ProtoMessage() {}
 
 func (x *CreateLogSchemaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[56]
+	mi := &file_core_v1_logs_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3489,7 +3707,7 @@ func (x *CreateLogSchemaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLogSchemaResponse.ProtoReflect.Descriptor instead.
 func (*CreateLogSchemaResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{56}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *CreateLogSchemaResponse) GetLogSchema() *LogSchema {
@@ -3508,7 +3726,7 @@ type GetLogSchemaRequest struct {
 
 func (x *GetLogSchemaRequest) Reset() {
 	*x = GetLogSchemaRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[57]
+	mi := &file_core_v1_logs_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3520,7 +3738,7 @@ func (x *GetLogSchemaRequest) String() string {
 func (*GetLogSchemaRequest) ProtoMessage() {}
 
 func (x *GetLogSchemaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[57]
+	mi := &file_core_v1_logs_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3533,7 +3751,7 @@ func (x *GetLogSchemaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLogSchemaRequest.ProtoReflect.Descriptor instead.
 func (*GetLogSchemaRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{57}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *GetLogSchemaRequest) GetId() string {
@@ -3552,7 +3770,7 @@ type GetLogSchemaResponse struct {
 
 func (x *GetLogSchemaResponse) Reset() {
 	*x = GetLogSchemaResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[58]
+	mi := &file_core_v1_logs_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3564,7 +3782,7 @@ func (x *GetLogSchemaResponse) String() string {
 func (*GetLogSchemaResponse) ProtoMessage() {}
 
 func (x *GetLogSchemaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[58]
+	mi := &file_core_v1_logs_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3577,7 +3795,7 @@ func (x *GetLogSchemaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLogSchemaResponse.ProtoReflect.Descriptor instead.
 func (*GetLogSchemaResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{58}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *GetLogSchemaResponse) GetLogSchema() *LogSchema {
@@ -3598,7 +3816,7 @@ type ListLogSchemasRequest struct {
 
 func (x *ListLogSchemasRequest) Reset() {
 	*x = ListLogSchemasRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[59]
+	mi := &file_core_v1_logs_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3610,7 +3828,7 @@ func (x *ListLogSchemasRequest) String() string {
 func (*ListLogSchemasRequest) ProtoMessage() {}
 
 func (x *ListLogSchemasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[59]
+	mi := &file_core_v1_logs_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3623,7 +3841,7 @@ func (x *ListLogSchemasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLogSchemasRequest.ProtoReflect.Descriptor instead.
 func (*ListLogSchemasRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{59}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *ListLogSchemasRequest) GetLimit() int32 {
@@ -3657,7 +3875,7 @@ type ListLogSchemasResponse struct {
 
 func (x *ListLogSchemasResponse) Reset() {
 	*x = ListLogSchemasResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[60]
+	mi := &file_core_v1_logs_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3669,7 +3887,7 @@ func (x *ListLogSchemasResponse) String() string {
 func (*ListLogSchemasResponse) ProtoMessage() {}
 
 func (x *ListLogSchemasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[60]
+	mi := &file_core_v1_logs_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3682,7 +3900,7 @@ func (x *ListLogSchemasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLogSchemasResponse.ProtoReflect.Descriptor instead.
 func (*ListLogSchemasResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{60}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *ListLogSchemasResponse) GetLogSchemas() []*LogSchema {
@@ -3712,7 +3930,7 @@ type UpdateLogSchemaRequest struct {
 
 func (x *UpdateLogSchemaRequest) Reset() {
 	*x = UpdateLogSchemaRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[61]
+	mi := &file_core_v1_logs_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3724,7 +3942,7 @@ func (x *UpdateLogSchemaRequest) String() string {
 func (*UpdateLogSchemaRequest) ProtoMessage() {}
 
 func (x *UpdateLogSchemaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[61]
+	mi := &file_core_v1_logs_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3737,7 +3955,7 @@ func (x *UpdateLogSchemaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLogSchemaRequest.ProtoReflect.Descriptor instead.
 func (*UpdateLogSchemaRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{61}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *UpdateLogSchemaRequest) GetId() string {
@@ -3784,7 +4002,7 @@ type UpdateLogSchemaResponse struct {
 
 func (x *UpdateLogSchemaResponse) Reset() {
 	*x = UpdateLogSchemaResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[62]
+	mi := &file_core_v1_logs_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3796,7 +4014,7 @@ func (x *UpdateLogSchemaResponse) String() string {
 func (*UpdateLogSchemaResponse) ProtoMessage() {}
 
 func (x *UpdateLogSchemaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[62]
+	mi := &file_core_v1_logs_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3809,7 +4027,7 @@ func (x *UpdateLogSchemaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLogSchemaResponse.ProtoReflect.Descriptor instead.
 func (*UpdateLogSchemaResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{62}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *UpdateLogSchemaResponse) GetLogSchema() *LogSchema {
@@ -3828,7 +4046,7 @@ type DeleteLogSchemaRequest struct {
 
 func (x *DeleteLogSchemaRequest) Reset() {
 	*x = DeleteLogSchemaRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[63]
+	mi := &file_core_v1_logs_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3840,7 +4058,7 @@ func (x *DeleteLogSchemaRequest) String() string {
 func (*DeleteLogSchemaRequest) ProtoMessage() {}
 
 func (x *DeleteLogSchemaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[63]
+	mi := &file_core_v1_logs_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3853,7 +4071,7 @@ func (x *DeleteLogSchemaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLogSchemaRequest.ProtoReflect.Descriptor instead.
 func (*DeleteLogSchemaRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{63}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *DeleteLogSchemaRequest) GetId() string {
@@ -3871,7 +4089,7 @@ type DeleteLogSchemaResponse struct {
 
 func (x *DeleteLogSchemaResponse) Reset() {
 	*x = DeleteLogSchemaResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[64]
+	mi := &file_core_v1_logs_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3883,7 +4101,7 @@ func (x *DeleteLogSchemaResponse) String() string {
 func (*DeleteLogSchemaResponse) ProtoMessage() {}
 
 func (x *DeleteLogSchemaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[64]
+	mi := &file_core_v1_logs_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3896,7 +4114,7 @@ func (x *DeleteLogSchemaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLogSchemaResponse.ProtoReflect.Descriptor instead.
 func (*DeleteLogSchemaResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{64}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{65}
 }
 
 type CreateEncryptionKeyRequest struct {
@@ -3915,7 +4133,7 @@ type CreateEncryptionKeyRequest struct {
 
 func (x *CreateEncryptionKeyRequest) Reset() {
 	*x = CreateEncryptionKeyRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[65]
+	mi := &file_core_v1_logs_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3927,7 +4145,7 @@ func (x *CreateEncryptionKeyRequest) String() string {
 func (*CreateEncryptionKeyRequest) ProtoMessage() {}
 
 func (x *CreateEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[65]
+	mi := &file_core_v1_logs_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3940,7 +4158,7 @@ func (x *CreateEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateEncryptionKeyRequest.ProtoReflect.Descriptor instead.
 func (*CreateEncryptionKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{65}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *CreateEncryptionKeyRequest) GetProvider() string {
@@ -3987,7 +4205,7 @@ type CreateEncryptionKeyResponse struct {
 
 func (x *CreateEncryptionKeyResponse) Reset() {
 	*x = CreateEncryptionKeyResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[66]
+	mi := &file_core_v1_logs_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3999,7 +4217,7 @@ func (x *CreateEncryptionKeyResponse) String() string {
 func (*CreateEncryptionKeyResponse) ProtoMessage() {}
 
 func (x *CreateEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[66]
+	mi := &file_core_v1_logs_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4012,7 +4230,7 @@ func (x *CreateEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateEncryptionKeyResponse.ProtoReflect.Descriptor instead.
 func (*CreateEncryptionKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{66}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *CreateEncryptionKeyResponse) GetEncryptionKey() *EncryptionKey {
@@ -4031,7 +4249,7 @@ type GetEncryptionKeyRequest struct {
 
 func (x *GetEncryptionKeyRequest) Reset() {
 	*x = GetEncryptionKeyRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[67]
+	mi := &file_core_v1_logs_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4043,7 +4261,7 @@ func (x *GetEncryptionKeyRequest) String() string {
 func (*GetEncryptionKeyRequest) ProtoMessage() {}
 
 func (x *GetEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[67]
+	mi := &file_core_v1_logs_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4056,7 +4274,7 @@ func (x *GetEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEncryptionKeyRequest.ProtoReflect.Descriptor instead.
 func (*GetEncryptionKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{67}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *GetEncryptionKeyRequest) GetId() string {
@@ -4075,7 +4293,7 @@ type GetEncryptionKeyResponse struct {
 
 func (x *GetEncryptionKeyResponse) Reset() {
 	*x = GetEncryptionKeyResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[68]
+	mi := &file_core_v1_logs_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4087,7 +4305,7 @@ func (x *GetEncryptionKeyResponse) String() string {
 func (*GetEncryptionKeyResponse) ProtoMessage() {}
 
 func (x *GetEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[68]
+	mi := &file_core_v1_logs_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4100,7 +4318,7 @@ func (x *GetEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEncryptionKeyResponse.ProtoReflect.Descriptor instead.
 func (*GetEncryptionKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{68}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *GetEncryptionKeyResponse) GetEncryptionKey() *EncryptionKey {
@@ -4119,7 +4337,7 @@ type GetEncryptionKeysByKeyIdRequest struct {
 
 func (x *GetEncryptionKeysByKeyIdRequest) Reset() {
 	*x = GetEncryptionKeysByKeyIdRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[69]
+	mi := &file_core_v1_logs_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4131,7 +4349,7 @@ func (x *GetEncryptionKeysByKeyIdRequest) String() string {
 func (*GetEncryptionKeysByKeyIdRequest) ProtoMessage() {}
 
 func (x *GetEncryptionKeysByKeyIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[69]
+	mi := &file_core_v1_logs_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4144,7 +4362,7 @@ func (x *GetEncryptionKeysByKeyIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEncryptionKeysByKeyIdRequest.ProtoReflect.Descriptor instead.
 func (*GetEncryptionKeysByKeyIdRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{69}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *GetEncryptionKeysByKeyIdRequest) GetKeyId() string {
@@ -4163,7 +4381,7 @@ type GetEncryptionKeysByKeyIdResponse struct {
 
 func (x *GetEncryptionKeysByKeyIdResponse) Reset() {
 	*x = GetEncryptionKeysByKeyIdResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[70]
+	mi := &file_core_v1_logs_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4175,7 +4393,7 @@ func (x *GetEncryptionKeysByKeyIdResponse) String() string {
 func (*GetEncryptionKeysByKeyIdResponse) ProtoMessage() {}
 
 func (x *GetEncryptionKeysByKeyIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[70]
+	mi := &file_core_v1_logs_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4188,7 +4406,7 @@ func (x *GetEncryptionKeysByKeyIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEncryptionKeysByKeyIdResponse.ProtoReflect.Descriptor instead.
 func (*GetEncryptionKeysByKeyIdResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{70}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *GetEncryptionKeysByKeyIdResponse) GetEncryptionKeys() []*EncryptionKey {
@@ -4214,7 +4432,7 @@ type UpdateEncryptionKeyRequest struct {
 
 func (x *UpdateEncryptionKeyRequest) Reset() {
 	*x = UpdateEncryptionKeyRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[71]
+	mi := &file_core_v1_logs_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4226,7 +4444,7 @@ func (x *UpdateEncryptionKeyRequest) String() string {
 func (*UpdateEncryptionKeyRequest) ProtoMessage() {}
 
 func (x *UpdateEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[71]
+	mi := &file_core_v1_logs_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4239,7 +4457,7 @@ func (x *UpdateEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEncryptionKeyRequest.ProtoReflect.Descriptor instead.
 func (*UpdateEncryptionKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{71}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *UpdateEncryptionKeyRequest) GetId() string {
@@ -4293,7 +4511,7 @@ type UpdateEncryptionKeyResponse struct {
 
 func (x *UpdateEncryptionKeyResponse) Reset() {
 	*x = UpdateEncryptionKeyResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[72]
+	mi := &file_core_v1_logs_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4305,7 +4523,7 @@ func (x *UpdateEncryptionKeyResponse) String() string {
 func (*UpdateEncryptionKeyResponse) ProtoMessage() {}
 
 func (x *UpdateEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[72]
+	mi := &file_core_v1_logs_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4318,7 +4536,7 @@ func (x *UpdateEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEncryptionKeyResponse.ProtoReflect.Descriptor instead.
 func (*UpdateEncryptionKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{72}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *UpdateEncryptionKeyResponse) GetEncryptionKey() *EncryptionKey {
@@ -4337,7 +4555,7 @@ type UpdateEncryptionKeyV2Request struct {
 
 func (x *UpdateEncryptionKeyV2Request) Reset() {
 	*x = UpdateEncryptionKeyV2Request{}
-	mi := &file_core_v1_logs_proto_msgTypes[73]
+	mi := &file_core_v1_logs_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4349,7 +4567,7 @@ func (x *UpdateEncryptionKeyV2Request) String() string {
 func (*UpdateEncryptionKeyV2Request) ProtoMessage() {}
 
 func (x *UpdateEncryptionKeyV2Request) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[73]
+	mi := &file_core_v1_logs_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4362,7 +4580,7 @@ func (x *UpdateEncryptionKeyV2Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEncryptionKeyV2Request.ProtoReflect.Descriptor instead.
 func (*UpdateEncryptionKeyV2Request) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{73}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *UpdateEncryptionKeyV2Request) GetEncryptionKey() *EncryptionKey {
@@ -4381,7 +4599,7 @@ type UpdateEncryptionKeyV2Response struct {
 
 func (x *UpdateEncryptionKeyV2Response) Reset() {
 	*x = UpdateEncryptionKeyV2Response{}
-	mi := &file_core_v1_logs_proto_msgTypes[74]
+	mi := &file_core_v1_logs_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4393,7 +4611,7 @@ func (x *UpdateEncryptionKeyV2Response) String() string {
 func (*UpdateEncryptionKeyV2Response) ProtoMessage() {}
 
 func (x *UpdateEncryptionKeyV2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[74]
+	mi := &file_core_v1_logs_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4406,7 +4624,7 @@ func (x *UpdateEncryptionKeyV2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEncryptionKeyV2Response.ProtoReflect.Descriptor instead.
 func (*UpdateEncryptionKeyV2Response) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{74}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *UpdateEncryptionKeyV2Response) GetEncryptionKey() *EncryptionKey {
@@ -4425,7 +4643,7 @@ type DeleteEncryptionKeyRequest struct {
 
 func (x *DeleteEncryptionKeyRequest) Reset() {
 	*x = DeleteEncryptionKeyRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[75]
+	mi := &file_core_v1_logs_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4437,7 +4655,7 @@ func (x *DeleteEncryptionKeyRequest) String() string {
 func (*DeleteEncryptionKeyRequest) ProtoMessage() {}
 
 func (x *DeleteEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[75]
+	mi := &file_core_v1_logs_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4450,7 +4668,7 @@ func (x *DeleteEncryptionKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEncryptionKeyRequest.ProtoReflect.Descriptor instead.
 func (*DeleteEncryptionKeyRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{75}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *DeleteEncryptionKeyRequest) GetId() string {
@@ -4468,7 +4686,7 @@ type DeleteEncryptionKeyResponse struct {
 
 func (x *DeleteEncryptionKeyResponse) Reset() {
 	*x = DeleteEncryptionKeyResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[76]
+	mi := &file_core_v1_logs_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4480,7 +4698,7 @@ func (x *DeleteEncryptionKeyResponse) String() string {
 func (*DeleteEncryptionKeyResponse) ProtoMessage() {}
 
 func (x *DeleteEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[76]
+	mi := &file_core_v1_logs_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4493,7 +4711,7 @@ func (x *DeleteEncryptionKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEncryptionKeyResponse.ProtoReflect.Descriptor instead.
 func (*DeleteEncryptionKeyResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{76}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{77}
 }
 
 type ListEncryptionKeysRequest struct {
@@ -4510,7 +4728,7 @@ type ListEncryptionKeysRequest struct {
 
 func (x *ListEncryptionKeysRequest) Reset() {
 	*x = ListEncryptionKeysRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[77]
+	mi := &file_core_v1_logs_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4522,7 +4740,7 @@ func (x *ListEncryptionKeysRequest) String() string {
 func (*ListEncryptionKeysRequest) ProtoMessage() {}
 
 func (x *ListEncryptionKeysRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[77]
+	mi := &file_core_v1_logs_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4535,7 +4753,7 @@ func (x *ListEncryptionKeysRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListEncryptionKeysRequest.ProtoReflect.Descriptor instead.
 func (*ListEncryptionKeysRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{77}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{78}
 }
 
 func (x *ListEncryptionKeysRequest) GetLimit() int32 {
@@ -4590,7 +4808,7 @@ type ListEncryptionKeysResponse struct {
 
 func (x *ListEncryptionKeysResponse) Reset() {
 	*x = ListEncryptionKeysResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[78]
+	mi := &file_core_v1_logs_proto_msgTypes[79]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4602,7 +4820,7 @@ func (x *ListEncryptionKeysResponse) String() string {
 func (*ListEncryptionKeysResponse) ProtoMessage() {}
 
 func (x *ListEncryptionKeysResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[78]
+	mi := &file_core_v1_logs_proto_msgTypes[79]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4615,7 +4833,7 @@ func (x *ListEncryptionKeysResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListEncryptionKeysResponse.ProtoReflect.Descriptor instead.
 func (*ListEncryptionKeysResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{78}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *ListEncryptionKeysResponse) GetEncryptionKeys() []*EncryptionKey {
@@ -4644,7 +4862,7 @@ type GetLogsFromNaturalLanguageRequest struct {
 
 func (x *GetLogsFromNaturalLanguageRequest) Reset() {
 	*x = GetLogsFromNaturalLanguageRequest{}
-	mi := &file_core_v1_logs_proto_msgTypes[79]
+	mi := &file_core_v1_logs_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4656,7 +4874,7 @@ func (x *GetLogsFromNaturalLanguageRequest) String() string {
 func (*GetLogsFromNaturalLanguageRequest) ProtoMessage() {}
 
 func (x *GetLogsFromNaturalLanguageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[79]
+	mi := &file_core_v1_logs_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4669,7 +4887,7 @@ func (x *GetLogsFromNaturalLanguageRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetLogsFromNaturalLanguageRequest.ProtoReflect.Descriptor instead.
 func (*GetLogsFromNaturalLanguageRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{79}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *GetLogsFromNaturalLanguageRequest) GetNaturalLanguageQuery() string {
@@ -4710,7 +4928,7 @@ type GetLogsFromNaturalLanguageResponse struct {
 
 func (x *GetLogsFromNaturalLanguageResponse) Reset() {
 	*x = GetLogsFromNaturalLanguageResponse{}
-	mi := &file_core_v1_logs_proto_msgTypes[80]
+	mi := &file_core_v1_logs_proto_msgTypes[81]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4722,7 +4940,7 @@ func (x *GetLogsFromNaturalLanguageResponse) String() string {
 func (*GetLogsFromNaturalLanguageResponse) ProtoMessage() {}
 
 func (x *GetLogsFromNaturalLanguageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[80]
+	mi := &file_core_v1_logs_proto_msgTypes[81]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4735,7 +4953,7 @@ func (x *GetLogsFromNaturalLanguageResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetLogsFromNaturalLanguageResponse.ProtoReflect.Descriptor instead.
 func (*GetLogsFromNaturalLanguageResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{80}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *GetLogsFromNaturalLanguageResponse) GetLogs() []*structpb.Struct {
@@ -4870,7 +5088,7 @@ type ListLogsResponse_Aggregations struct {
 
 func (x *ListLogsResponse_Aggregations) Reset() {
 	*x = ListLogsResponse_Aggregations{}
-	mi := &file_core_v1_logs_proto_msgTypes[81]
+	mi := &file_core_v1_logs_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4882,7 +5100,7 @@ func (x *ListLogsResponse_Aggregations) String() string {
 func (*ListLogsResponse_Aggregations) ProtoMessage() {}
 
 func (x *ListLogsResponse_Aggregations) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[81]
+	mi := &file_core_v1_logs_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5419,7 +5637,7 @@ type ListLogsResponse_Bucket struct {
 
 func (x *ListLogsResponse_Bucket) Reset() {
 	*x = ListLogsResponse_Bucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[82]
+	mi := &file_core_v1_logs_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5431,7 +5649,7 @@ func (x *ListLogsResponse_Bucket) String() string {
 func (*ListLogsResponse_Bucket) ProtoMessage() {}
 
 func (x *ListLogsResponse_Bucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[82]
+	mi := &file_core_v1_logs_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5472,7 +5690,7 @@ type ListLogsResponse_GroupByBucket struct {
 
 func (x *ListLogsResponse_GroupByBucket) Reset() {
 	*x = ListLogsResponse_GroupByBucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[83]
+	mi := &file_core_v1_logs_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5484,7 +5702,7 @@ func (x *ListLogsResponse_GroupByBucket) String() string {
 func (*ListLogsResponse_GroupByBucket) ProtoMessage() {}
 
 func (x *ListLogsResponse_GroupByBucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[83]
+	mi := &file_core_v1_logs_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5532,7 +5750,7 @@ type ListLogsResponse_DateBucket struct {
 
 func (x *ListLogsResponse_DateBucket) Reset() {
 	*x = ListLogsResponse_DateBucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[84]
+	mi := &file_core_v1_logs_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5544,7 +5762,7 @@ func (x *ListLogsResponse_DateBucket) String() string {
 func (*ListLogsResponse_DateBucket) ProtoMessage() {}
 
 func (x *ListLogsResponse_DateBucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[84]
+	mi := &file_core_v1_logs_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5581,20 +5799,387 @@ func (x *ListLogsResponse_DateBucket) GetBuckets() []*ListLogsResponse_GroupByBu
 	return nil
 }
 
+type GroupByFieldOptions_Order struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Target        string                 `protobuf:"bytes,1,opt,name=target,proto3" json:"target,omitempty"`
+	Ascending     bool                   `protobuf:"varint,2,opt,name=ascending,proto3" json:"ascending,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GroupByFieldOptions_Order) Reset() {
+	*x = GroupByFieldOptions_Order{}
+	mi := &file_core_v1_logs_proto_msgTypes[86]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupByFieldOptions_Order) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupByFieldOptions_Order) ProtoMessage() {}
+
+func (x *GroupByFieldOptions_Order) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[86]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupByFieldOptions_Order.ProtoReflect.Descriptor instead.
+func (*GroupByFieldOptions_Order) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{29, 0}
+}
+
+func (x *GroupByFieldOptions_Order) GetTarget() string {
+	if x != nil {
+		return x.Target
+	}
+	return ""
+}
+
+func (x *GroupByFieldOptions_Order) GetAscending() bool {
+	if x != nil {
+		return x.Ascending
+	}
+	return false
+}
+
+type GroupByFieldOptions_Bounds struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Min           float64                `protobuf:"fixed64,1,opt,name=min,proto3" json:"min,omitempty"`
+	Max           float64                `protobuf:"fixed64,2,opt,name=max,proto3" json:"max,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GroupByFieldOptions_Bounds) Reset() {
+	*x = GroupByFieldOptions_Bounds{}
+	mi := &file_core_v1_logs_proto_msgTypes[87]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupByFieldOptions_Bounds) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupByFieldOptions_Bounds) ProtoMessage() {}
+
+func (x *GroupByFieldOptions_Bounds) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[87]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupByFieldOptions_Bounds.ProtoReflect.Descriptor instead.
+func (*GroupByFieldOptions_Bounds) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{29, 1}
+}
+
+func (x *GroupByFieldOptions_Bounds) GetMin() float64 {
+	if x != nil {
+		return x.Min
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions_Bounds) GetMax() float64 {
+	if x != nil {
+		return x.Max
+	}
+	return 0
+}
+
+type GroupByFieldOptions_Histogram struct {
+	state          protoimpl.MessageState      `protogen:"open.v1"`
+	Interval       float64                     `protobuf:"fixed64,2,opt,name=interval,proto3" json:"interval,omitempty"`
+	Offset         float64                     `protobuf:"fixed64,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	MinDocCount    uint64                      `protobuf:"varint,4,opt,name=min_doc_count,json=minDocCount,proto3" json:"min_doc_count,omitempty"`
+	HardBounds     *GroupByFieldOptions_Bounds `protobuf:"bytes,5,opt,name=hard_bounds,json=hardBounds,proto3" json:"hard_bounds,omitempty"`
+	ExtendedBounds *GroupByFieldOptions_Bounds `protobuf:"bytes,6,opt,name=extended_bounds,json=extendedBounds,proto3" json:"extended_bounds,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GroupByFieldOptions_Histogram) Reset() {
+	*x = GroupByFieldOptions_Histogram{}
+	mi := &file_core_v1_logs_proto_msgTypes[88]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupByFieldOptions_Histogram) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupByFieldOptions_Histogram) ProtoMessage() {}
+
+func (x *GroupByFieldOptions_Histogram) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[88]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupByFieldOptions_Histogram.ProtoReflect.Descriptor instead.
+func (*GroupByFieldOptions_Histogram) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{29, 2}
+}
+
+func (x *GroupByFieldOptions_Histogram) GetInterval() float64 {
+	if x != nil {
+		return x.Interval
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions_Histogram) GetOffset() float64 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions_Histogram) GetMinDocCount() uint64 {
+	if x != nil {
+		return x.MinDocCount
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions_Histogram) GetHardBounds() *GroupByFieldOptions_Bounds {
+	if x != nil {
+		return x.HardBounds
+	}
+	return nil
+}
+
+func (x *GroupByFieldOptions_Histogram) GetExtendedBounds() *GroupByFieldOptions_Bounds {
+	if x != nil {
+		return x.ExtendedBounds
+	}
+	return nil
+}
+
+type GroupByFieldOptions_DateHistogram struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FixedInterval string                 `protobuf:"bytes,2,opt,name=fixed_interval,json=fixedInterval,proto3" json:"fixed_interval,omitempty"`
+	Offset        string                 `protobuf:"bytes,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	MinDocCount   uint64                 `protobuf:"varint,4,opt,name=min_doc_count,json=minDocCount,proto3" json:"min_doc_count,omitempty"`
+	// Bounds are Unix timestamps in milliseconds.
+	HardBounds     *GroupByFieldOptions_Bounds `protobuf:"bytes,5,opt,name=hard_bounds,json=hardBounds,proto3" json:"hard_bounds,omitempty"`
+	ExtendedBounds *GroupByFieldOptions_Bounds `protobuf:"bytes,6,opt,name=extended_bounds,json=extendedBounds,proto3" json:"extended_bounds,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GroupByFieldOptions_DateHistogram) Reset() {
+	*x = GroupByFieldOptions_DateHistogram{}
+	mi := &file_core_v1_logs_proto_msgTypes[89]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupByFieldOptions_DateHistogram) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupByFieldOptions_DateHistogram) ProtoMessage() {}
+
+func (x *GroupByFieldOptions_DateHistogram) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[89]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupByFieldOptions_DateHistogram.ProtoReflect.Descriptor instead.
+func (*GroupByFieldOptions_DateHistogram) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{29, 3}
+}
+
+func (x *GroupByFieldOptions_DateHistogram) GetFixedInterval() string {
+	if x != nil {
+		return x.FixedInterval
+	}
+	return ""
+}
+
+func (x *GroupByFieldOptions_DateHistogram) GetOffset() string {
+	if x != nil {
+		return x.Offset
+	}
+	return ""
+}
+
+func (x *GroupByFieldOptions_DateHistogram) GetMinDocCount() uint64 {
+	if x != nil {
+		return x.MinDocCount
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions_DateHistogram) GetHardBounds() *GroupByFieldOptions_Bounds {
+	if x != nil {
+		return x.HardBounds
+	}
+	return nil
+}
+
+func (x *GroupByFieldOptions_DateHistogram) GetExtendedBounds() *GroupByFieldOptions_Bounds {
+	if x != nil {
+		return x.ExtendedBounds
+	}
+	return nil
+}
+
+type GroupByFieldOptions_Range struct {
+	state         protoimpl.MessageState             `protogen:"open.v1"`
+	Ranges        []*GroupByFieldOptions_Range_Entry `protobuf:"bytes,2,rep,name=ranges,proto3" json:"ranges,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GroupByFieldOptions_Range) Reset() {
+	*x = GroupByFieldOptions_Range{}
+	mi := &file_core_v1_logs_proto_msgTypes[90]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupByFieldOptions_Range) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupByFieldOptions_Range) ProtoMessage() {}
+
+func (x *GroupByFieldOptions_Range) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[90]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupByFieldOptions_Range.ProtoReflect.Descriptor instead.
+func (*GroupByFieldOptions_Range) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{29, 4}
+}
+
+func (x *GroupByFieldOptions_Range) GetRanges() []*GroupByFieldOptions_Range_Entry {
+	if x != nil {
+		return x.Ranges
+	}
+	return nil
+}
+
+type GroupByFieldOptions_Range_Entry struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	From          *float64               `protobuf:"fixed64,1,opt,name=from,proto3,oneof" json:"from,omitempty"`
+	To            *float64               `protobuf:"fixed64,2,opt,name=to,proto3,oneof" json:"to,omitempty"`
+	Key           *string                `protobuf:"bytes,3,opt,name=key,proto3,oneof" json:"key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GroupByFieldOptions_Range_Entry) Reset() {
+	*x = GroupByFieldOptions_Range_Entry{}
+	mi := &file_core_v1_logs_proto_msgTypes[91]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupByFieldOptions_Range_Entry) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupByFieldOptions_Range_Entry) ProtoMessage() {}
+
+func (x *GroupByFieldOptions_Range_Entry) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_logs_proto_msgTypes[91]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupByFieldOptions_Range_Entry.ProtoReflect.Descriptor instead.
+func (*GroupByFieldOptions_Range_Entry) Descriptor() ([]byte, []int) {
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{29, 4, 0}
+}
+
+func (x *GroupByFieldOptions_Range_Entry) GetFrom() float64 {
+	if x != nil && x.From != nil {
+		return *x.From
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions_Range_Entry) GetTo() float64 {
+	if x != nil && x.To != nil {
+		return *x.To
+	}
+	return 0
+}
+
+func (x *GroupByFieldOptions_Range_Entry) GetKey() string {
+	if x != nil && x.Key != nil {
+		return *x.Key
+	}
+	return ""
+}
+
 type GetGroupByAggregationResponse_Bucket struct {
 	state    protoimpl.MessageState                  `protogen:"open.v1"`
 	Key      string                                  `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	DocCount int32                                   `protobuf:"varint,2,opt,name=doc_count,json=docCount,proto3" json:"doc_count,omitempty"`
 	Buckets  []*GetGroupByAggregationResponse_Bucket `protobuf:"bytes,3,rep,name=buckets,proto3" json:"buckets,omitempty"`
 	// Metric name -> value, one entry per requested GroupByMetric.
-	Metrics       map[string]float64 `protobuf:"bytes,4,rep,name=metrics,proto3" json:"metrics,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Metrics                         map[string]float64 `protobuf:"bytes,4,rep,name=metrics,proto3" json:"metrics,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	DocCountErrorUpperBound         *int64             `protobuf:"varint,5,opt,name=doc_count_error_upper_bound,json=docCountErrorUpperBound,proto3,oneof" json:"doc_count_error_upper_bound,omitempty"`
+	ChildrenSumOtherDocCount        *int64             `protobuf:"varint,6,opt,name=children_sum_other_doc_count,json=childrenSumOtherDocCount,proto3,oneof" json:"children_sum_other_doc_count,omitempty"`
+	ChildrenDocCountErrorUpperBound *int64             `protobuf:"varint,7,opt,name=children_doc_count_error_upper_bound,json=childrenDocCountErrorUpperBound,proto3,oneof" json:"children_doc_count_error_upper_bound,omitempty"`
+	KeyAsString                     string             `protobuf:"bytes,8,opt,name=key_as_string,json=keyAsString,proto3" json:"key_as_string,omitempty"`
+	From                            *float64           `protobuf:"fixed64,9,opt,name=from,proto3,oneof" json:"from,omitempty"`
+	To                              *float64           `protobuf:"fixed64,10,opt,name=to,proto3,oneof" json:"to,omitempty"`
+	unknownFields                   protoimpl.UnknownFields
+	sizeCache                       protoimpl.SizeCache
 }
 
 func (x *GetGroupByAggregationResponse_Bucket) Reset() {
 	*x = GetGroupByAggregationResponse_Bucket{}
-	mi := &file_core_v1_logs_proto_msgTypes[85]
+	mi := &file_core_v1_logs_proto_msgTypes[94]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5606,7 +6191,7 @@ func (x *GetGroupByAggregationResponse_Bucket) String() string {
 func (*GetGroupByAggregationResponse_Bucket) ProtoMessage() {}
 
 func (x *GetGroupByAggregationResponse_Bucket) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_logs_proto_msgTypes[85]
+	mi := &file_core_v1_logs_proto_msgTypes[94]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5619,7 +6204,7 @@ func (x *GetGroupByAggregationResponse_Bucket) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetGroupByAggregationResponse_Bucket.ProtoReflect.Descriptor instead.
 func (*GetGroupByAggregationResponse_Bucket) Descriptor() ([]byte, []int) {
-	return file_core_v1_logs_proto_rawDescGZIP(), []int{30, 0}
+	return file_core_v1_logs_proto_rawDescGZIP(), []int{31, 1}
 }
 
 func (x *GetGroupByAggregationResponse_Bucket) GetKey() string {
@@ -5648,6 +6233,48 @@ func (x *GetGroupByAggregationResponse_Bucket) GetMetrics() map[string]float64 {
 		return x.Metrics
 	}
 	return nil
+}
+
+func (x *GetGroupByAggregationResponse_Bucket) GetDocCountErrorUpperBound() int64 {
+	if x != nil && x.DocCountErrorUpperBound != nil {
+		return *x.DocCountErrorUpperBound
+	}
+	return 0
+}
+
+func (x *GetGroupByAggregationResponse_Bucket) GetChildrenSumOtherDocCount() int64 {
+	if x != nil && x.ChildrenSumOtherDocCount != nil {
+		return *x.ChildrenSumOtherDocCount
+	}
+	return 0
+}
+
+func (x *GetGroupByAggregationResponse_Bucket) GetChildrenDocCountErrorUpperBound() int64 {
+	if x != nil && x.ChildrenDocCountErrorUpperBound != nil {
+		return *x.ChildrenDocCountErrorUpperBound
+	}
+	return 0
+}
+
+func (x *GetGroupByAggregationResponse_Bucket) GetKeyAsString() string {
+	if x != nil {
+		return x.KeyAsString
+	}
+	return ""
+}
+
+func (x *GetGroupByAggregationResponse_Bucket) GetFrom() float64 {
+	if x != nil && x.From != nil {
+		return *x.From
+	}
+	return 0
+}
+
+func (x *GetGroupByAggregationResponse_Bucket) GetTo() float64 {
+	if x != nil && x.To != nil {
+		return *x.To
+	}
+	return 0
 }
 
 var File_core_v1_logs_proto protoreflect.FileDescriptor
@@ -5866,33 +6493,117 @@ const file_core_v1_logs_proto_rawDesc = "" +
 	"\x18policy_evaluation_inputs\x18\x01 \x03(\v2\x17.google.protobuf.StructR\x16policyEvaluationInputs\x12R\n" +
 	"\x16policy_evaluation_rows\x18\x03 \x03(\v2\x1c.core.v1.PolicyEvaluationRowR\x14policyEvaluationRows\x12F\n" +
 	"\x11row_list_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataH\x00R\x0frowListMetadata\x88\x01\x01B\x14\n" +
-	"\x12_row_list_metadata\"\x9a\x01\n" +
+	"\x12_row_list_metadata\"\xcf\x02\n" +
 	"\rGroupByMetric\x12\x1b\n" +
-	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x127\n" +
-	"\x04type\x18\x02 \x01(\tB#\xbaH r\x1eR\x03maxR\x03minR\x03sumR\x03avgR\bdistinctR\x04type\x12\x1d\n" +
-	"\x05field\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05fieldJ\x04\b\x04\x10\x05R\x0edistinct_limit\"\xc5\x02\n" +
+	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12b\n" +
+	"\x04type\x18\x02 \x01(\tBN\xbaHKrIR\x03maxR\x03minR\x03sumR\x03avgR\bdistinctR\x05countR\x05statsR\x0eextended_statsR\vpercentilesR\x04type\x12\x1d\n" +
+	"\x05field\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05field\x12\x1d\n" +
+	"\amissing\x18\x05 \x01(\x01H\x00R\amissing\x88\x01\x01\x12\x19\n" +
+	"\x05sigma\x18\x06 \x01(\x01H\x01R\x05sigma\x88\x01\x01\x128\n" +
+	"\bpercents\x18\a \x03(\x01B\x1c\xbaH\x19\x92\x01\x16\"\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00Y@)\x00\x00\x00\x00\x00\x00\x00\x00R\bpercentsB\n" +
+	"\n" +
+	"\b_missingB\b\n" +
+	"\x06_sigmaJ\x04\b\x04\x10\x05R\x0edistinct_limit\"\x92\r\n" +
+	"\x13GroupByFieldOptions\x12 \n" +
+	"\x04size\x18\x01 \x01(\x04B\a\xbaH\x042\x02 \x00H\x01R\x04size\x88\x01\x01\x12+\n" +
+	"\n" +
+	"shard_size\x18\x02 \x01(\x04B\a\xbaH\x042\x02 \x00H\x02R\tshardSize\x88\x01\x01\x12'\n" +
+	"\rmin_doc_count\x18\x03 \x01(\x04H\x03R\vminDocCount\x88\x01\x01\x12\x1d\n" +
+	"\amissing\x18\x04 \x01(\tH\x04R\amissing\x88\x01\x01\x12=\n" +
+	"\x19show_term_doc_count_error\x18\x05 \x01(\bH\x05R\x15showTermDocCountError\x88\x01\x01\x128\n" +
+	"\x05order\x18\x06 \x01(\v2\".core.v1.GroupByFieldOptions.OrderR\x05order\x12F\n" +
+	"\thistogram\x18\a \x01(\v2&.core.v1.GroupByFieldOptions.HistogramH\x00R\thistogram\x12S\n" +
+	"\x0edate_histogram\x18\b \x01(\v2*.core.v1.GroupByFieldOptions.DateHistogramH\x00R\rdateHistogram\x12:\n" +
+	"\x05range\x18\t \x01(\v2\".core.v1.GroupByFieldOptions.RangeH\x00R\x05range\x1aF\n" +
+	"\x05Order\x12\x1f\n" +
+	"\x06target\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06target\x12\x1c\n" +
+	"\tascending\x18\x02 \x01(\bR\tascending\x1ap\n" +
+	"\x06Bounds\x12\x10\n" +
+	"\x03min\x18\x01 \x01(\x01R\x03min\x12\x10\n" +
+	"\x03max\x18\x02 \x01(\x01R\x03max:B\xbaH?\x1a=\n" +
+	"\fbounds_order\x12\x17min must not exceed max\x1a\x14this.min <= this.max\x1a\x87\x02\n" +
+	"\tHistogram\x12*\n" +
+	"\binterval\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t!\x00\x00\x00\x00\x00\x00\x00\x00R\binterval\x12\x16\n" +
+	"\x06offset\x18\x03 \x01(\x01R\x06offset\x12\"\n" +
+	"\rmin_doc_count\x18\x04 \x01(\x04R\vminDocCount\x12D\n" +
+	"\vhard_bounds\x18\x05 \x01(\v2#.core.v1.GroupByFieldOptions.BoundsR\n" +
+	"hardBounds\x12L\n" +
+	"\x0fextended_bounds\x18\x06 \x01(\v2#.core.v1.GroupByFieldOptions.BoundsR\x0eextendedBounds\x1a\xca\x02\n" +
+	"\rDateHistogram\x12G\n" +
+	"\x0efixed_interval\x18\x02 \x01(\tB \xbaH\x1dr\x1b2\x19^[1-9][0-9]*(ms|s|m|h|d)$R\rfixedInterval\x128\n" +
+	"\x06offset\x18\x03 \x01(\tB \xbaH\x1dr\x1b2\x19^(-?[0-9]+(ms|s|m|h|d))?$R\x06offset\x12\"\n" +
+	"\rmin_doc_count\x18\x04 \x01(\x04R\vminDocCount\x12D\n" +
+	"\vhard_bounds\x18\x05 \x01(\v2#.core.v1.GroupByFieldOptions.BoundsR\n" +
+	"hardBounds\x12L\n" +
+	"\x0fextended_bounds\x18\x06 \x01(\v2#.core.v1.GroupByFieldOptions.BoundsR\x0eextendedBounds\x1a\xa2\x02\n" +
+	"\x05Range\x12J\n" +
+	"\x06ranges\x18\x02 \x03(\v2(.core.v1.GroupByFieldOptions.Range.EntryB\b\xbaH\x05\x92\x01\x02\b\x01R\x06ranges\x1a\xcc\x01\n" +
+	"\x05Entry\x12\x17\n" +
+	"\x04from\x18\x01 \x01(\x01H\x00R\x04from\x88\x01\x01\x12\x13\n" +
+	"\x02to\x18\x02 \x01(\x01H\x01R\x02to\x88\x01\x01\x12\x15\n" +
+	"\x03key\x18\x03 \x01(\tH\x02R\x03key\x88\x01\x01:f\xbaHc\x1aa\n" +
+	"\vrange_order\x12\x19from must be less than to\x1a7!has(this.from) || !has(this.to) || this.from < this.toB\a\n" +
+	"\x05_fromB\x05\n" +
+	"\x03_toB\x06\n" +
+	"\x04_keyB\b\n" +
+	"\x06bucketB\a\n" +
+	"\x05_sizeB\r\n" +
+	"\v_shard_sizeB\x10\n" +
+	"\x0e_min_doc_countB\n" +
+	"\n" +
+	"\b_missingB\x1c\n" +
+	"\x1a_show_term_doc_count_error\"\xec\x05\n" +
 	"\x1cGetGroupByAggregationRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x128\n" +
 	"\x0fstart_timestamp\x18\x02 \x01(\tB\x0f\xbaH\fr\n" +
 	"2\b^[0-9]+$R\x0estartTimestamp\x124\n" +
 	"\rend_timestamp\x18\x03 \x01(\tB\x0f\xbaH\fr\n" +
-	"2\b^[0-9]+$R\fendTimestamp\x122\n" +
-	"\x0fgroup_by_fields\x18\x04 \x03(\tB\n" +
-	"\xbaH\a\x92\x01\x04\b\x01\x10\x05R\rgroupByFields\x12:\n" +
+	"2\b^[0-9]+$R\fendTimestamp\x120\n" +
+	"\x0fgroup_by_fields\x18\x04 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10\x05R\rgroupByFields\x12:\n" +
 	"\ametrics\x18\x05 \x03(\v2\x16.core.v1.GroupByMetricB\b\xbaH\x05\x92\x01\x02\x10\fR\ametrics\x12%\n" +
 	"\x05limit\x18\x06 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\x90N \x00H\x00R\x05limit\x88\x01\x01B\b\n" +
-	"\x06_limit\"\xfd\x02\n" +
+	"\xbaH\a\x1a\x05\x18\x90N \x00H\x00R\x05limit\x88\x01\x01\x122\n" +
+	"\x12histogram_interval\x18\a \x01(\tH\x01R\x11histogramInterval\x88\x01\x01\x12c\n" +
+	"\x10group_by_options\x18\b \x03(\v29.core.v1.GetGroupByAggregationRequest.GroupByOptionsEntryR\x0egroupByOptions\x1a_\n" +
+	"\x13GroupByOptionsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x122\n" +
+	"\x05value\x18\x02 \x01(\v2\x1c.core.v1.GroupByFieldOptionsR\x05value:\x028\x01:\x95\x01\xbaH\x91\x01\x1a\x8e\x01\n" +
+	"\x15group_by_options_keys\x128group_by_options keys must be present in group_by_fields\x1a;this.group_by_options.all(key, key in this.group_by_fields)B\b\n" +
+	"\x06_limitB\x15\n" +
+	"\x13_histogram_interval\"\x8f\t\n" +
 	"\x1dGetGroupByAggregationResponse\x12G\n" +
-	"\abuckets\x18\x01 \x03(\v2-.core.v1.GetGroupByAggregationResponse.BucketR\abuckets\x1a\x92\x02\n" +
+	"\abuckets\x18\x01 \x03(\v2-.core.v1.GetGroupByAggregationResponse.BucketR\abuckets\x12 \n" +
+	"\tdoc_count\x18\x02 \x01(\x04H\x00R\bdocCount\x88\x01\x01\x12M\n" +
+	"\ametrics\x18\x03 \x03(\v23.core.v1.GetGroupByAggregationResponse.MetricsEntryR\ametrics\x122\n" +
+	"\x13sum_other_doc_count\x18\x04 \x01(\x03H\x01R\x10sumOtherDocCount\x88\x01\x01\x12A\n" +
+	"\x1bdoc_count_error_upper_bound\x18\x05 \x01(\x03H\x02R\x17docCountErrorUpperBound\x88\x01\x01\x1a:\n" +
+	"\fMetricsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\x1a\xba\x05\n" +
 	"\x06Bucket\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x1b\n" +
 	"\tdoc_count\x18\x02 \x01(\x05R\bdocCount\x12G\n" +
 	"\abuckets\x18\x03 \x03(\v2-.core.v1.GetGroupByAggregationResponse.BucketR\abuckets\x12T\n" +
-	"\ametrics\x18\x04 \x03(\v2:.core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntryR\ametrics\x1a:\n" +
+	"\ametrics\x18\x04 \x03(\v2:.core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntryR\ametrics\x12A\n" +
+	"\x1bdoc_count_error_upper_bound\x18\x05 \x01(\x03H\x00R\x17docCountErrorUpperBound\x88\x01\x01\x12C\n" +
+	"\x1cchildren_sum_other_doc_count\x18\x06 \x01(\x03H\x01R\x18childrenSumOtherDocCount\x88\x01\x01\x12R\n" +
+	"$children_doc_count_error_upper_bound\x18\a \x01(\x03H\x02R\x1fchildrenDocCountErrorUpperBound\x88\x01\x01\x12\"\n" +
+	"\rkey_as_string\x18\b \x01(\tR\vkeyAsString\x12\x17\n" +
+	"\x04from\x18\t \x01(\x01H\x03R\x04from\x88\x01\x01\x12\x13\n" +
+	"\x02to\x18\n" +
+	" \x01(\x01H\x04R\x02to\x88\x01\x01\x1a:\n" +
 	"\fMetricsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xf7\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01B\x1e\n" +
+	"\x1c_doc_count_error_upper_boundB\x1f\n" +
+	"\x1d_children_sum_other_doc_countB'\n" +
+	"%_children_doc_count_error_upper_boundB\a\n" +
+	"\x05_fromB\x05\n" +
+	"\x03_toB\f\n" +
+	"\n" +
+	"_doc_countB\x16\n" +
+	"\x14_sum_other_doc_countB\x1e\n" +
+	"\x1c_doc_count_error_upper_bound\"\xf7\x01\n" +
 	"\x15LogConfigurationScope\x12B\n" +
 	"\x05scope\x18\x01 \x01(\x0e2\".core.v1.LogConfigurationScopeTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05scope\x12$\n" +
 	"\vresource_id\x18\x02 \x01(\tH\x00R\n" +
@@ -6194,7 +6905,7 @@ func file_core_v1_logs_proto_rawDescGZIP() []byte {
 }
 
 var file_core_v1_logs_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_core_v1_logs_proto_msgTypes = make([]protoimpl.MessageInfo, 88)
+var file_core_v1_logs_proto_msgTypes = make([]protoimpl.MessageInfo, 97)
 var file_core_v1_logs_proto_goTypes = []any{
 	(PolicyEvaluationStage)(0),                    // 0: core.v1.PolicyEvaluationStage
 	(LogConfigurationScopeType)(0),                // 1: core.v1.LogConfigurationScopeType
@@ -6228,70 +6939,79 @@ var file_core_v1_logs_proto_goTypes = []any{
 	(*PolicyEvaluationRow)(nil),                   // 29: core.v1.PolicyEvaluationRow
 	(*ListLogPolicyEvaluationInputsResponse)(nil), // 30: core.v1.ListLogPolicyEvaluationInputsResponse
 	(*GroupByMetric)(nil),                         // 31: core.v1.GroupByMetric
-	(*GetGroupByAggregationRequest)(nil),          // 32: core.v1.GetGroupByAggregationRequest
-	(*GetGroupByAggregationResponse)(nil),         // 33: core.v1.GetGroupByAggregationResponse
-	(*LogConfigurationScope)(nil),                 // 34: core.v1.LogConfigurationScope
-	(*LogConfigurationSql)(nil),                   // 35: core.v1.LogConfigurationSql
-	(*LogConfigurationRequest)(nil),               // 36: core.v1.LogConfigurationRequest
-	(*LogConfigurationResponse)(nil),              // 37: core.v1.LogConfigurationResponse
-	(*LogConfigurationSession)(nil),               // 38: core.v1.LogConfigurationSession
-	(*LogConfigurationStream)(nil),                // 39: core.v1.LogConfigurationStream
-	(*LogConfiguration)(nil),                      // 40: core.v1.LogConfiguration
-	(*EncryptionKey)(nil),                         // 41: core.v1.EncryptionKey
-	(*CreateLogConfigurationRequest)(nil),         // 42: core.v1.CreateLogConfigurationRequest
-	(*CreateLogConfigurationResponse)(nil),        // 43: core.v1.CreateLogConfigurationResponse
-	(*GetLogConfigurationRequest)(nil),            // 44: core.v1.GetLogConfigurationRequest
-	(*GetLogConfigurationResponse)(nil),           // 45: core.v1.GetLogConfigurationResponse
-	(*ListLogConfigurationsRequest)(nil),          // 46: core.v1.ListLogConfigurationsRequest
-	(*ListLogConfigurationsResponse)(nil),         // 47: core.v1.ListLogConfigurationsResponse
-	(*UpdateLogConfigurationRequest)(nil),         // 48: core.v1.UpdateLogConfigurationRequest
-	(*UpdateLogConfigurationResponse)(nil),        // 49: core.v1.UpdateLogConfigurationResponse
-	(*UpdateLogConfigurationV2Request)(nil),       // 50: core.v1.UpdateLogConfigurationV2Request
-	(*UpdateLogConfigurationV2Response)(nil),      // 51: core.v1.UpdateLogConfigurationV2Response
-	(*DeleteLogConfigurationRequest)(nil),         // 52: core.v1.DeleteLogConfigurationRequest
-	(*DeleteLogConfigurationResponse)(nil),        // 53: core.v1.DeleteLogConfigurationResponse
-	(*LogSchema)(nil),                             // 54: core.v1.LogSchema
-	(*LogSchemaPaths)(nil),                        // 55: core.v1.LogSchemaPaths
-	(*LogSchemaPath)(nil),                         // 56: core.v1.LogSchemaPath
-	(*TruncateOperation)(nil),                     // 57: core.v1.TruncateOperation
-	(*CreateLogSchemaRequest)(nil),                // 58: core.v1.CreateLogSchemaRequest
-	(*CreateLogSchemaResponse)(nil),               // 59: core.v1.CreateLogSchemaResponse
-	(*GetLogSchemaRequest)(nil),                   // 60: core.v1.GetLogSchemaRequest
-	(*GetLogSchemaResponse)(nil),                  // 61: core.v1.GetLogSchemaResponse
-	(*ListLogSchemasRequest)(nil),                 // 62: core.v1.ListLogSchemasRequest
-	(*ListLogSchemasResponse)(nil),                // 63: core.v1.ListLogSchemasResponse
-	(*UpdateLogSchemaRequest)(nil),                // 64: core.v1.UpdateLogSchemaRequest
-	(*UpdateLogSchemaResponse)(nil),               // 65: core.v1.UpdateLogSchemaResponse
-	(*DeleteLogSchemaRequest)(nil),                // 66: core.v1.DeleteLogSchemaRequest
-	(*DeleteLogSchemaResponse)(nil),               // 67: core.v1.DeleteLogSchemaResponse
-	(*CreateEncryptionKeyRequest)(nil),            // 68: core.v1.CreateEncryptionKeyRequest
-	(*CreateEncryptionKeyResponse)(nil),           // 69: core.v1.CreateEncryptionKeyResponse
-	(*GetEncryptionKeyRequest)(nil),               // 70: core.v1.GetEncryptionKeyRequest
-	(*GetEncryptionKeyResponse)(nil),              // 71: core.v1.GetEncryptionKeyResponse
-	(*GetEncryptionKeysByKeyIdRequest)(nil),       // 72: core.v1.GetEncryptionKeysByKeyIdRequest
-	(*GetEncryptionKeysByKeyIdResponse)(nil),      // 73: core.v1.GetEncryptionKeysByKeyIdResponse
-	(*UpdateEncryptionKeyRequest)(nil),            // 74: core.v1.UpdateEncryptionKeyRequest
-	(*UpdateEncryptionKeyResponse)(nil),           // 75: core.v1.UpdateEncryptionKeyResponse
-	(*UpdateEncryptionKeyV2Request)(nil),          // 76: core.v1.UpdateEncryptionKeyV2Request
-	(*UpdateEncryptionKeyV2Response)(nil),         // 77: core.v1.UpdateEncryptionKeyV2Response
-	(*DeleteEncryptionKeyRequest)(nil),            // 78: core.v1.DeleteEncryptionKeyRequest
-	(*DeleteEncryptionKeyResponse)(nil),           // 79: core.v1.DeleteEncryptionKeyResponse
-	(*ListEncryptionKeysRequest)(nil),             // 80: core.v1.ListEncryptionKeysRequest
-	(*ListEncryptionKeysResponse)(nil),            // 81: core.v1.ListEncryptionKeysResponse
-	(*GetLogsFromNaturalLanguageRequest)(nil),     // 82: core.v1.GetLogsFromNaturalLanguageRequest
-	(*GetLogsFromNaturalLanguageResponse)(nil),    // 83: core.v1.GetLogsFromNaturalLanguageResponse
-	(*ListLogsResponse_Aggregations)(nil),         // 84: core.v1.ListLogsResponse.Aggregations
-	(*ListLogsResponse_Bucket)(nil),               // 85: core.v1.ListLogsResponse.Bucket
-	(*ListLogsResponse_GroupByBucket)(nil),        // 86: core.v1.ListLogsResponse.GroupByBucket
-	(*ListLogsResponse_DateBucket)(nil),           // 87: core.v1.ListLogsResponse.DateBucket
-	(*GetGroupByAggregationResponse_Bucket)(nil),  // 88: core.v1.GetGroupByAggregationResponse.Bucket
-	nil,                           // 89: core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
-	nil,                           // 90: core.v1.LogSchemaPaths.PathsEntry
-	(*ListMetadata)(nil),          // 91: core.v1.ListMetadata
-	(*structpb.Struct)(nil),       // 92: google.protobuf.Struct
-	(*durationpb.Duration)(nil),   // 93: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil), // 94: google.protobuf.Timestamp
-	(*Filter)(nil),                // 95: core.v1.Filter
+	(*GroupByFieldOptions)(nil),                   // 32: core.v1.GroupByFieldOptions
+	(*GetGroupByAggregationRequest)(nil),          // 33: core.v1.GetGroupByAggregationRequest
+	(*GetGroupByAggregationResponse)(nil),         // 34: core.v1.GetGroupByAggregationResponse
+	(*LogConfigurationScope)(nil),                 // 35: core.v1.LogConfigurationScope
+	(*LogConfigurationSql)(nil),                   // 36: core.v1.LogConfigurationSql
+	(*LogConfigurationRequest)(nil),               // 37: core.v1.LogConfigurationRequest
+	(*LogConfigurationResponse)(nil),              // 38: core.v1.LogConfigurationResponse
+	(*LogConfigurationSession)(nil),               // 39: core.v1.LogConfigurationSession
+	(*LogConfigurationStream)(nil),                // 40: core.v1.LogConfigurationStream
+	(*LogConfiguration)(nil),                      // 41: core.v1.LogConfiguration
+	(*EncryptionKey)(nil),                         // 42: core.v1.EncryptionKey
+	(*CreateLogConfigurationRequest)(nil),         // 43: core.v1.CreateLogConfigurationRequest
+	(*CreateLogConfigurationResponse)(nil),        // 44: core.v1.CreateLogConfigurationResponse
+	(*GetLogConfigurationRequest)(nil),            // 45: core.v1.GetLogConfigurationRequest
+	(*GetLogConfigurationResponse)(nil),           // 46: core.v1.GetLogConfigurationResponse
+	(*ListLogConfigurationsRequest)(nil),          // 47: core.v1.ListLogConfigurationsRequest
+	(*ListLogConfigurationsResponse)(nil),         // 48: core.v1.ListLogConfigurationsResponse
+	(*UpdateLogConfigurationRequest)(nil),         // 49: core.v1.UpdateLogConfigurationRequest
+	(*UpdateLogConfigurationResponse)(nil),        // 50: core.v1.UpdateLogConfigurationResponse
+	(*UpdateLogConfigurationV2Request)(nil),       // 51: core.v1.UpdateLogConfigurationV2Request
+	(*UpdateLogConfigurationV2Response)(nil),      // 52: core.v1.UpdateLogConfigurationV2Response
+	(*DeleteLogConfigurationRequest)(nil),         // 53: core.v1.DeleteLogConfigurationRequest
+	(*DeleteLogConfigurationResponse)(nil),        // 54: core.v1.DeleteLogConfigurationResponse
+	(*LogSchema)(nil),                             // 55: core.v1.LogSchema
+	(*LogSchemaPaths)(nil),                        // 56: core.v1.LogSchemaPaths
+	(*LogSchemaPath)(nil),                         // 57: core.v1.LogSchemaPath
+	(*TruncateOperation)(nil),                     // 58: core.v1.TruncateOperation
+	(*CreateLogSchemaRequest)(nil),                // 59: core.v1.CreateLogSchemaRequest
+	(*CreateLogSchemaResponse)(nil),               // 60: core.v1.CreateLogSchemaResponse
+	(*GetLogSchemaRequest)(nil),                   // 61: core.v1.GetLogSchemaRequest
+	(*GetLogSchemaResponse)(nil),                  // 62: core.v1.GetLogSchemaResponse
+	(*ListLogSchemasRequest)(nil),                 // 63: core.v1.ListLogSchemasRequest
+	(*ListLogSchemasResponse)(nil),                // 64: core.v1.ListLogSchemasResponse
+	(*UpdateLogSchemaRequest)(nil),                // 65: core.v1.UpdateLogSchemaRequest
+	(*UpdateLogSchemaResponse)(nil),               // 66: core.v1.UpdateLogSchemaResponse
+	(*DeleteLogSchemaRequest)(nil),                // 67: core.v1.DeleteLogSchemaRequest
+	(*DeleteLogSchemaResponse)(nil),               // 68: core.v1.DeleteLogSchemaResponse
+	(*CreateEncryptionKeyRequest)(nil),            // 69: core.v1.CreateEncryptionKeyRequest
+	(*CreateEncryptionKeyResponse)(nil),           // 70: core.v1.CreateEncryptionKeyResponse
+	(*GetEncryptionKeyRequest)(nil),               // 71: core.v1.GetEncryptionKeyRequest
+	(*GetEncryptionKeyResponse)(nil),              // 72: core.v1.GetEncryptionKeyResponse
+	(*GetEncryptionKeysByKeyIdRequest)(nil),       // 73: core.v1.GetEncryptionKeysByKeyIdRequest
+	(*GetEncryptionKeysByKeyIdResponse)(nil),      // 74: core.v1.GetEncryptionKeysByKeyIdResponse
+	(*UpdateEncryptionKeyRequest)(nil),            // 75: core.v1.UpdateEncryptionKeyRequest
+	(*UpdateEncryptionKeyResponse)(nil),           // 76: core.v1.UpdateEncryptionKeyResponse
+	(*UpdateEncryptionKeyV2Request)(nil),          // 77: core.v1.UpdateEncryptionKeyV2Request
+	(*UpdateEncryptionKeyV2Response)(nil),         // 78: core.v1.UpdateEncryptionKeyV2Response
+	(*DeleteEncryptionKeyRequest)(nil),            // 79: core.v1.DeleteEncryptionKeyRequest
+	(*DeleteEncryptionKeyResponse)(nil),           // 80: core.v1.DeleteEncryptionKeyResponse
+	(*ListEncryptionKeysRequest)(nil),             // 81: core.v1.ListEncryptionKeysRequest
+	(*ListEncryptionKeysResponse)(nil),            // 82: core.v1.ListEncryptionKeysResponse
+	(*GetLogsFromNaturalLanguageRequest)(nil),     // 83: core.v1.GetLogsFromNaturalLanguageRequest
+	(*GetLogsFromNaturalLanguageResponse)(nil),    // 84: core.v1.GetLogsFromNaturalLanguageResponse
+	(*ListLogsResponse_Aggregations)(nil),         // 85: core.v1.ListLogsResponse.Aggregations
+	(*ListLogsResponse_Bucket)(nil),               // 86: core.v1.ListLogsResponse.Bucket
+	(*ListLogsResponse_GroupByBucket)(nil),        // 87: core.v1.ListLogsResponse.GroupByBucket
+	(*ListLogsResponse_DateBucket)(nil),           // 88: core.v1.ListLogsResponse.DateBucket
+	(*GroupByFieldOptions_Order)(nil),             // 89: core.v1.GroupByFieldOptions.Order
+	(*GroupByFieldOptions_Bounds)(nil),            // 90: core.v1.GroupByFieldOptions.Bounds
+	(*GroupByFieldOptions_Histogram)(nil),         // 91: core.v1.GroupByFieldOptions.Histogram
+	(*GroupByFieldOptions_DateHistogram)(nil),     // 92: core.v1.GroupByFieldOptions.DateHistogram
+	(*GroupByFieldOptions_Range)(nil),             // 93: core.v1.GroupByFieldOptions.Range
+	(*GroupByFieldOptions_Range_Entry)(nil),       // 94: core.v1.GroupByFieldOptions.Range.Entry
+	nil,                                           // 95: core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry
+	nil,                                           // 96: core.v1.GetGroupByAggregationResponse.MetricsEntry
+	(*GetGroupByAggregationResponse_Bucket)(nil),  // 97: core.v1.GetGroupByAggregationResponse.Bucket
+	nil,                           // 98: core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
+	nil,                           // 99: core.v1.LogSchemaPaths.PathsEntry
+	(*ListMetadata)(nil),          // 100: core.v1.ListMetadata
+	(*structpb.Struct)(nil),       // 101: google.protobuf.Struct
+	(*durationpb.Duration)(nil),   // 102: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil), // 103: google.protobuf.Timestamp
+	(*Filter)(nil),                // 104: core.v1.Filter
 }
 var file_core_v1_logs_proto_depIdxs = []int32{
 	3,   // 0: core.v1.SavedLogQuery.filters:type_name -> core.v1.SavedLogQueryFilter
@@ -6303,223 +7023,235 @@ var file_core_v1_logs_proto_depIdxs = []int32{
 	5,   // 6: core.v1.UpdateLogQueryV2Request.metadata:type_name -> core.v1.LogQueryMetadata
 	5,   // 7: core.v1.UpdateLogQueryV2Response.metadata:type_name -> core.v1.LogQueryMetadata
 	5,   // 8: core.v1.ListLogQueriesResponse.saved_queries:type_name -> core.v1.LogQueryMetadata
-	91,  // 9: core.v1.ListLogQueriesResponse.list_metadata:type_name -> core.v1.ListMetadata
+	100, // 9: core.v1.ListLogQueriesResponse.list_metadata:type_name -> core.v1.ListMetadata
 	5,   // 10: core.v1.GetLogQueryResponse.metadata:type_name -> core.v1.LogQueryMetadata
-	92,  // 11: core.v1.GetLogResponse.log:type_name -> google.protobuf.Struct
+	101, // 11: core.v1.GetLogResponse.log:type_name -> google.protobuf.Struct
 	18,  // 12: core.v1.GetMetricAggregationRequest.metric_aggregation:type_name -> core.v1.MetricAggregation
 	18,  // 13: core.v1.GetMetricAggregationResponse.aggregation:type_name -> core.v1.MetricAggregation
-	92,  // 14: core.v1.ListLogsResponse.logs:type_name -> google.protobuf.Struct
-	84,  // 15: core.v1.ListLogsResponse.aggregations:type_name -> core.v1.ListLogsResponse.Aggregations
-	91,  // 16: core.v1.ListLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	92,  // 17: core.v1.ListLogsV2Response.logs:type_name -> google.protobuf.Struct
-	91,  // 18: core.v1.ListLogsV2Response.list_metadata:type_name -> core.v1.ListMetadata
-	84,  // 19: core.v1.ListLogAggregationsResponse.aggregations:type_name -> core.v1.ListLogsResponse.Aggregations
+	101, // 14: core.v1.ListLogsResponse.logs:type_name -> google.protobuf.Struct
+	85,  // 15: core.v1.ListLogsResponse.aggregations:type_name -> core.v1.ListLogsResponse.Aggregations
+	100, // 16: core.v1.ListLogsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	101, // 17: core.v1.ListLogsV2Response.logs:type_name -> google.protobuf.Struct
+	100, // 18: core.v1.ListLogsV2Response.list_metadata:type_name -> core.v1.ListMetadata
+	85,  // 19: core.v1.ListLogAggregationsResponse.aggregations:type_name -> core.v1.ListLogsResponse.Aggregations
 	0,   // 20: core.v1.ListLogPolicyEvaluationInputsRequest.stage:type_name -> core.v1.PolicyEvaluationStage
-	92,  // 21: core.v1.PolicyEvaluationRow.columns:type_name -> google.protobuf.Struct
-	92,  // 22: core.v1.ListLogPolicyEvaluationInputsResponse.policy_evaluation_inputs:type_name -> google.protobuf.Struct
+	101, // 21: core.v1.PolicyEvaluationRow.columns:type_name -> google.protobuf.Struct
+	101, // 22: core.v1.ListLogPolicyEvaluationInputsResponse.policy_evaluation_inputs:type_name -> google.protobuf.Struct
 	29,  // 23: core.v1.ListLogPolicyEvaluationInputsResponse.policy_evaluation_rows:type_name -> core.v1.PolicyEvaluationRow
-	91,  // 24: core.v1.ListLogPolicyEvaluationInputsResponse.row_list_metadata:type_name -> core.v1.ListMetadata
-	31,  // 25: core.v1.GetGroupByAggregationRequest.metrics:type_name -> core.v1.GroupByMetric
-	88,  // 26: core.v1.GetGroupByAggregationResponse.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
-	1,   // 27: core.v1.LogConfigurationScope.scope:type_name -> core.v1.LogConfigurationScopeType
-	35,  // 28: core.v1.LogConfigurationRequest.sql:type_name -> core.v1.LogConfigurationSql
-	93,  // 29: core.v1.LogConfigurationRequest.policy_eval_input_retention:type_name -> google.protobuf.Duration
-	93,  // 30: core.v1.LogConfigurationResponse.policy_eval_input_retention:type_name -> google.protobuf.Duration
-	93,  // 31: core.v1.LogConfigurationSession.policy_eval_input_retention:type_name -> google.protobuf.Duration
-	34,  // 32: core.v1.LogConfiguration.scope:type_name -> core.v1.LogConfigurationScope
-	36,  // 33: core.v1.LogConfiguration.request:type_name -> core.v1.LogConfigurationRequest
-	37,  // 34: core.v1.LogConfiguration.response:type_name -> core.v1.LogConfigurationResponse
-	39,  // 35: core.v1.LogConfiguration.stream:type_name -> core.v1.LogConfigurationStream
-	94,  // 36: core.v1.LogConfiguration.created_at:type_name -> google.protobuf.Timestamp
-	94,  // 37: core.v1.LogConfiguration.updated_at:type_name -> google.protobuf.Timestamp
-	38,  // 38: core.v1.LogConfiguration.session:type_name -> core.v1.LogConfigurationSession
-	2,   // 39: core.v1.LogConfiguration.source:type_name -> core.v1.LogConfigurationSource
-	94,  // 40: core.v1.EncryptionKey.created_at:type_name -> google.protobuf.Timestamp
-	94,  // 41: core.v1.EncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
-	34,  // 42: core.v1.CreateLogConfigurationRequest.scope:type_name -> core.v1.LogConfigurationScope
-	36,  // 43: core.v1.CreateLogConfigurationRequest.request:type_name -> core.v1.LogConfigurationRequest
-	37,  // 44: core.v1.CreateLogConfigurationRequest.response:type_name -> core.v1.LogConfigurationResponse
-	39,  // 45: core.v1.CreateLogConfigurationRequest.stream:type_name -> core.v1.LogConfigurationStream
-	38,  // 46: core.v1.CreateLogConfigurationRequest.session:type_name -> core.v1.LogConfigurationSession
-	2,   // 47: core.v1.CreateLogConfigurationRequest.source:type_name -> core.v1.LogConfigurationSource
-	40,  // 48: core.v1.CreateLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
-	40,  // 49: core.v1.GetLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
-	40,  // 50: core.v1.ListLogConfigurationsResponse.log_configurations:type_name -> core.v1.LogConfiguration
-	91,  // 51: core.v1.ListLogConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	36,  // 52: core.v1.UpdateLogConfigurationRequest.request:type_name -> core.v1.LogConfigurationRequest
-	37,  // 53: core.v1.UpdateLogConfigurationRequest.response:type_name -> core.v1.LogConfigurationResponse
-	39,  // 54: core.v1.UpdateLogConfigurationRequest.stream:type_name -> core.v1.LogConfigurationStream
-	38,  // 55: core.v1.UpdateLogConfigurationRequest.session:type_name -> core.v1.LogConfigurationSession
-	40,  // 56: core.v1.UpdateLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
-	40,  // 57: core.v1.UpdateLogConfigurationV2Request.log_configuration:type_name -> core.v1.LogConfiguration
-	40,  // 58: core.v1.UpdateLogConfigurationV2Response.log_configuration:type_name -> core.v1.LogConfiguration
-	55,  // 59: core.v1.LogSchema.paths:type_name -> core.v1.LogSchemaPaths
-	94,  // 60: core.v1.LogSchema.created_at:type_name -> google.protobuf.Timestamp
-	94,  // 61: core.v1.LogSchema.updated_at:type_name -> google.protobuf.Timestamp
-	90,  // 62: core.v1.LogSchemaPaths.paths:type_name -> core.v1.LogSchemaPaths.PathsEntry
-	57,  // 63: core.v1.LogSchemaPath.truncate:type_name -> core.v1.TruncateOperation
-	55,  // 64: core.v1.CreateLogSchemaRequest.paths:type_name -> core.v1.LogSchemaPaths
-	54,  // 65: core.v1.CreateLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
-	54,  // 66: core.v1.GetLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
-	54,  // 67: core.v1.ListLogSchemasResponse.log_schemas:type_name -> core.v1.LogSchema
-	91,  // 68: core.v1.ListLogSchemasResponse.list_metadata:type_name -> core.v1.ListMetadata
-	55,  // 69: core.v1.UpdateLogSchemaRequest.paths:type_name -> core.v1.LogSchemaPaths
-	54,  // 70: core.v1.UpdateLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
-	41,  // 71: core.v1.CreateEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
-	41,  // 72: core.v1.GetEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
-	41,  // 73: core.v1.GetEncryptionKeysByKeyIdResponse.encryption_keys:type_name -> core.v1.EncryptionKey
-	41,  // 74: core.v1.UpdateEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
-	41,  // 75: core.v1.UpdateEncryptionKeyV2Request.encryption_key:type_name -> core.v1.EncryptionKey
-	41,  // 76: core.v1.UpdateEncryptionKeyV2Response.encryption_key:type_name -> core.v1.EncryptionKey
-	95,  // 77: core.v1.ListEncryptionKeysRequest.filter:type_name -> core.v1.Filter
-	41,  // 78: core.v1.ListEncryptionKeysResponse.encryption_keys:type_name -> core.v1.EncryptionKey
-	91,  // 79: core.v1.ListEncryptionKeysResponse.list_metadata:type_name -> core.v1.ListMetadata
-	92,  // 80: core.v1.GetLogsFromNaturalLanguageResponse.logs:type_name -> google.protobuf.Struct
-	87,  // 81: core.v1.ListLogsResponse.Aggregations.logs_over_time:type_name -> core.v1.ListLogsResponse.DateBucket
-	85,  // 82: core.v1.ListLogsResponse.Aggregations.session_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 83: core.v1.ListLogsResponse.Aggregations.session_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 84: core.v1.ListLogsResponse.Aggregations.session_application_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 85: core.v1.ListLogsResponse.Aggregations.session_client_ip_addresses:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 86: core.v1.ListLogsResponse.Aggregations.session_server_ip_addresses:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 87: core.v1.ListLogsResponse.Aggregations.query_fingerprints:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 88: core.v1.ListLogsResponse.Aggregations.query_normalized:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 89: core.v1.ListLogsResponse.Aggregations.query_received:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 90: core.v1.ListLogsResponse.Aggregations.query_sent:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 91: core.v1.ListLogsResponse.Aggregations.resource_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 92: core.v1.ListLogsResponse.Aggregations.resource_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 93: core.v1.ListLogsResponse.Aggregations.resource_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 94: core.v1.ListLogsResponse.Aggregations.resource_hostnames:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 95: core.v1.ListLogsResponse.Aggregations.resource_technologies:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 96: core.v1.ListLogsResponse.Aggregations.connector_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 97: core.v1.ListLogsResponse.Aggregations.connector_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 98: core.v1.ListLogsResponse.Aggregations.space_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 99: core.v1.ListLogsResponse.Aggregations.space_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 100: core.v1.ListLogsResponse.Aggregations.user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 101: core.v1.ListLogsResponse.Aggregations.user_sub_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 102: core.v1.ListLogsResponse.Aggregations.user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 103: core.v1.ListLogsResponse.Aggregations.user_usernames:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 104: core.v1.ListLogsResponse.Aggregations.user_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 105: core.v1.ListLogsResponse.Aggregations.end_user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 106: core.v1.ListLogsResponse.Aggregations.end_user_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 107: core.v1.ListLogsResponse.Aggregations.end_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 108: core.v1.ListLogsResponse.Aggregations.triggered_policy_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 109: core.v1.ListLogsResponse.Aggregations.triggered_policy_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 110: core.v1.ListLogsResponse.Aggregations.triggered_policy_statuses:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 111: core.v1.ListLogsResponse.Aggregations.triggered_policy_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 112: core.v1.ListLogsResponse.Aggregations.response_data_volumes:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 113: core.v1.ListLogsResponse.Aggregations.response_returned_column_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 114: core.v1.ListLogsResponse.Aggregations.response_returned_column_paths:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 115: core.v1.ListLogsResponse.Aggregations.response_returned_column_data_labels:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 116: core.v1.ListLogsResponse.Aggregations.response_rows_sent:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 117: core.v1.ListLogsResponse.Aggregations.response_rows_received:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 118: core.v1.ListLogsResponse.Aggregations.device_system_versions:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 119: core.v1.ListLogsResponse.Aggregations.device_kernel_versions:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 120: core.v1.ListLogsResponse.Aggregations.device_computer_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 121: core.v1.ListLogsResponse.Aggregations.device_user_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 122: core.v1.ListLogsResponse.Aggregations.device_model_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 123: core.v1.ListLogsResponse.Aggregations.device_model_identifiers:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 124: core.v1.ListLogsResponse.Aggregations.device_model_numbers:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 125: core.v1.ListLogsResponse.Aggregations.device_serial_numbers:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 126: core.v1.ListLogsResponse.Aggregations.user_groups:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 127: core.v1.ListLogsResponse.Aggregations.end_user_groups:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 128: core.v1.ListLogsResponse.Aggregations.control_plane_command_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 129: core.v1.ListLogsResponse.Aggregations.control_plane_command_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 130: core.v1.ListLogsResponse.Aggregations.control_plane_policy_actions:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 131: core.v1.ListLogsResponse.Aggregations.control_plane_services:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 132: core.v1.ListLogsResponse.Aggregations.control_plane_methods:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 133: core.v1.ListLogsResponse.Aggregations.control_plane_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 134: core.v1.ListLogsResponse.Aggregations.control_plane_user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 135: core.v1.ListLogsResponse.Aggregations.control_plane_user_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 136: core.v1.ListLogsResponse.Aggregations.control_plane_user_aws_principal_arns:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 137: core.v1.ListLogsResponse.Aggregations.control_plane_user_aws_account_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 138: core.v1.ListLogsResponse.Aggregations.workflow_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 139: core.v1.ListLogsResponse.Aggregations.workflow_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 140: core.v1.ListLogsResponse.Aggregations.step_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 141: core.v1.ListLogsResponse.Aggregations.step_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 142: core.v1.ListLogsResponse.Aggregations.trigger_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 143: core.v1.ListLogsResponse.Aggregations.trigger_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 144: core.v1.ListLogsResponse.Aggregations.trigger_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 145: core.v1.ListLogsResponse.Aggregations.trigger_user_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 146: core.v1.ListLogsResponse.Aggregations.trigger_user_ids:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 147: core.v1.ListLogsResponse.Aggregations.llm_tool_call_names:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 148: core.v1.ListLogsResponse.Aggregations.llm_models:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 149: core.v1.ListLogsResponse.Aggregations.llm_providers:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 150: core.v1.ListLogsResponse.Aggregations.llm_stop_reasons:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 151: core.v1.ListLogsResponse.Aggregations.agent_types:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 152: core.v1.ListLogsResponse.Aggregations.agent_providers:type_name -> core.v1.ListLogsResponse.Bucket
-	85,  // 153: core.v1.ListLogsResponse.Aggregations.assessment_labels:type_name -> core.v1.ListLogsResponse.Bucket
-	86,  // 154: core.v1.ListLogsResponse.GroupByBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
-	86,  // 155: core.v1.ListLogsResponse.DateBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
-	88,  // 156: core.v1.GetGroupByAggregationResponse.Bucket.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
-	89,  // 157: core.v1.GetGroupByAggregationResponse.Bucket.metrics:type_name -> core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
-	56,  // 158: core.v1.LogSchemaPaths.PathsEntry.value:type_name -> core.v1.LogSchemaPath
-	19,  // 159: core.v1.LogsService.GetLog:input_type -> core.v1.GetLogRequest
-	32,  // 160: core.v1.LogsService.GetGroupByAggregation:input_type -> core.v1.GetGroupByAggregationRequest
-	21,  // 161: core.v1.LogsService.GetMetricAggregation:input_type -> core.v1.GetMetricAggregationRequest
-	24,  // 162: core.v1.LogsService.ListLogsV2:input_type -> core.v1.ListLogsV2Request
-	26,  // 163: core.v1.LogsService.ListLogAggregations:input_type -> core.v1.ListLogAggregationsRequest
-	28,  // 164: core.v1.LogsService.ListLogPolicyEvaluationInputs:input_type -> core.v1.ListLogPolicyEvaluationInputsRequest
-	82,  // 165: core.v1.LogsService.GetLogsFromNaturalLanguage:input_type -> core.v1.GetLogsFromNaturalLanguageRequest
-	6,   // 166: core.v1.LogsService.CreateLogQuery:input_type -> core.v1.CreateLogQueryRequest
-	8,   // 167: core.v1.LogsService.UpdateLogQuery:input_type -> core.v1.UpdateLogQueryRequest
-	10,  // 168: core.v1.LogsService.UpdateLogQueryV2:input_type -> core.v1.UpdateLogQueryV2Request
-	12,  // 169: core.v1.LogsService.ListLogQueries:input_type -> core.v1.ListLogQueriesRequest
-	14,  // 170: core.v1.LogsService.GetLogQuery:input_type -> core.v1.GetLogQueryRequest
-	16,  // 171: core.v1.LogsService.DeleteLogQuery:input_type -> core.v1.DeleteLogQueryRequest
-	42,  // 172: core.v1.LogsService.CreateLogConfiguration:input_type -> core.v1.CreateLogConfigurationRequest
-	44,  // 173: core.v1.LogsService.GetLogConfiguration:input_type -> core.v1.GetLogConfigurationRequest
-	46,  // 174: core.v1.LogsService.ListLogConfigurations:input_type -> core.v1.ListLogConfigurationsRequest
-	48,  // 175: core.v1.LogsService.UpdateLogConfiguration:input_type -> core.v1.UpdateLogConfigurationRequest
-	50,  // 176: core.v1.LogsService.UpdateLogConfigurationV2:input_type -> core.v1.UpdateLogConfigurationV2Request
-	52,  // 177: core.v1.LogsService.DeleteLogConfiguration:input_type -> core.v1.DeleteLogConfigurationRequest
-	58,  // 178: core.v1.LogsService.CreateLogSchema:input_type -> core.v1.CreateLogSchemaRequest
-	60,  // 179: core.v1.LogsService.GetLogSchema:input_type -> core.v1.GetLogSchemaRequest
-	62,  // 180: core.v1.LogsService.ListLogSchemas:input_type -> core.v1.ListLogSchemasRequest
-	64,  // 181: core.v1.LogsService.UpdateLogSchema:input_type -> core.v1.UpdateLogSchemaRequest
-	66,  // 182: core.v1.LogsService.DeleteLogSchema:input_type -> core.v1.DeleteLogSchemaRequest
-	68,  // 183: core.v1.LogsService.CreateEncryptionKey:input_type -> core.v1.CreateEncryptionKeyRequest
-	70,  // 184: core.v1.LogsService.GetEncryptionKey:input_type -> core.v1.GetEncryptionKeyRequest
-	72,  // 185: core.v1.LogsService.GetEncryptionKeysByKeyId:input_type -> core.v1.GetEncryptionKeysByKeyIdRequest
-	80,  // 186: core.v1.LogsService.ListEncryptionKeys:input_type -> core.v1.ListEncryptionKeysRequest
-	74,  // 187: core.v1.LogsService.UpdateEncryptionKey:input_type -> core.v1.UpdateEncryptionKeyRequest
-	76,  // 188: core.v1.LogsService.UpdateEncryptionKeyV2:input_type -> core.v1.UpdateEncryptionKeyV2Request
-	78,  // 189: core.v1.LogsService.DeleteEncryptionKey:input_type -> core.v1.DeleteEncryptionKeyRequest
-	20,  // 190: core.v1.LogsService.GetLog:output_type -> core.v1.GetLogResponse
-	33,  // 191: core.v1.LogsService.GetGroupByAggregation:output_type -> core.v1.GetGroupByAggregationResponse
-	22,  // 192: core.v1.LogsService.GetMetricAggregation:output_type -> core.v1.GetMetricAggregationResponse
-	25,  // 193: core.v1.LogsService.ListLogsV2:output_type -> core.v1.ListLogsV2Response
-	27,  // 194: core.v1.LogsService.ListLogAggregations:output_type -> core.v1.ListLogAggregationsResponse
-	30,  // 195: core.v1.LogsService.ListLogPolicyEvaluationInputs:output_type -> core.v1.ListLogPolicyEvaluationInputsResponse
-	83,  // 196: core.v1.LogsService.GetLogsFromNaturalLanguage:output_type -> core.v1.GetLogsFromNaturalLanguageResponse
-	7,   // 197: core.v1.LogsService.CreateLogQuery:output_type -> core.v1.CreateLogQueryResponse
-	9,   // 198: core.v1.LogsService.UpdateLogQuery:output_type -> core.v1.UpdateLogQueryResponse
-	11,  // 199: core.v1.LogsService.UpdateLogQueryV2:output_type -> core.v1.UpdateLogQueryV2Response
-	13,  // 200: core.v1.LogsService.ListLogQueries:output_type -> core.v1.ListLogQueriesResponse
-	15,  // 201: core.v1.LogsService.GetLogQuery:output_type -> core.v1.GetLogQueryResponse
-	17,  // 202: core.v1.LogsService.DeleteLogQuery:output_type -> core.v1.DeleteLogQueryResponse
-	43,  // 203: core.v1.LogsService.CreateLogConfiguration:output_type -> core.v1.CreateLogConfigurationResponse
-	45,  // 204: core.v1.LogsService.GetLogConfiguration:output_type -> core.v1.GetLogConfigurationResponse
-	47,  // 205: core.v1.LogsService.ListLogConfigurations:output_type -> core.v1.ListLogConfigurationsResponse
-	49,  // 206: core.v1.LogsService.UpdateLogConfiguration:output_type -> core.v1.UpdateLogConfigurationResponse
-	51,  // 207: core.v1.LogsService.UpdateLogConfigurationV2:output_type -> core.v1.UpdateLogConfigurationV2Response
-	53,  // 208: core.v1.LogsService.DeleteLogConfiguration:output_type -> core.v1.DeleteLogConfigurationResponse
-	59,  // 209: core.v1.LogsService.CreateLogSchema:output_type -> core.v1.CreateLogSchemaResponse
-	61,  // 210: core.v1.LogsService.GetLogSchema:output_type -> core.v1.GetLogSchemaResponse
-	63,  // 211: core.v1.LogsService.ListLogSchemas:output_type -> core.v1.ListLogSchemasResponse
-	65,  // 212: core.v1.LogsService.UpdateLogSchema:output_type -> core.v1.UpdateLogSchemaResponse
-	67,  // 213: core.v1.LogsService.DeleteLogSchema:output_type -> core.v1.DeleteLogSchemaResponse
-	69,  // 214: core.v1.LogsService.CreateEncryptionKey:output_type -> core.v1.CreateEncryptionKeyResponse
-	71,  // 215: core.v1.LogsService.GetEncryptionKey:output_type -> core.v1.GetEncryptionKeyResponse
-	73,  // 216: core.v1.LogsService.GetEncryptionKeysByKeyId:output_type -> core.v1.GetEncryptionKeysByKeyIdResponse
-	81,  // 217: core.v1.LogsService.ListEncryptionKeys:output_type -> core.v1.ListEncryptionKeysResponse
-	75,  // 218: core.v1.LogsService.UpdateEncryptionKey:output_type -> core.v1.UpdateEncryptionKeyResponse
-	77,  // 219: core.v1.LogsService.UpdateEncryptionKeyV2:output_type -> core.v1.UpdateEncryptionKeyV2Response
-	79,  // 220: core.v1.LogsService.DeleteEncryptionKey:output_type -> core.v1.DeleteEncryptionKeyResponse
-	190, // [190:221] is the sub-list for method output_type
-	159, // [159:190] is the sub-list for method input_type
-	159, // [159:159] is the sub-list for extension type_name
-	159, // [159:159] is the sub-list for extension extendee
-	0,   // [0:159] is the sub-list for field type_name
+	100, // 24: core.v1.ListLogPolicyEvaluationInputsResponse.row_list_metadata:type_name -> core.v1.ListMetadata
+	89,  // 25: core.v1.GroupByFieldOptions.order:type_name -> core.v1.GroupByFieldOptions.Order
+	91,  // 26: core.v1.GroupByFieldOptions.histogram:type_name -> core.v1.GroupByFieldOptions.Histogram
+	92,  // 27: core.v1.GroupByFieldOptions.date_histogram:type_name -> core.v1.GroupByFieldOptions.DateHistogram
+	93,  // 28: core.v1.GroupByFieldOptions.range:type_name -> core.v1.GroupByFieldOptions.Range
+	31,  // 29: core.v1.GetGroupByAggregationRequest.metrics:type_name -> core.v1.GroupByMetric
+	95,  // 30: core.v1.GetGroupByAggregationRequest.group_by_options:type_name -> core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry
+	97,  // 31: core.v1.GetGroupByAggregationResponse.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
+	96,  // 32: core.v1.GetGroupByAggregationResponse.metrics:type_name -> core.v1.GetGroupByAggregationResponse.MetricsEntry
+	1,   // 33: core.v1.LogConfigurationScope.scope:type_name -> core.v1.LogConfigurationScopeType
+	36,  // 34: core.v1.LogConfigurationRequest.sql:type_name -> core.v1.LogConfigurationSql
+	102, // 35: core.v1.LogConfigurationRequest.policy_eval_input_retention:type_name -> google.protobuf.Duration
+	102, // 36: core.v1.LogConfigurationResponse.policy_eval_input_retention:type_name -> google.protobuf.Duration
+	102, // 37: core.v1.LogConfigurationSession.policy_eval_input_retention:type_name -> google.protobuf.Duration
+	35,  // 38: core.v1.LogConfiguration.scope:type_name -> core.v1.LogConfigurationScope
+	37,  // 39: core.v1.LogConfiguration.request:type_name -> core.v1.LogConfigurationRequest
+	38,  // 40: core.v1.LogConfiguration.response:type_name -> core.v1.LogConfigurationResponse
+	40,  // 41: core.v1.LogConfiguration.stream:type_name -> core.v1.LogConfigurationStream
+	103, // 42: core.v1.LogConfiguration.created_at:type_name -> google.protobuf.Timestamp
+	103, // 43: core.v1.LogConfiguration.updated_at:type_name -> google.protobuf.Timestamp
+	39,  // 44: core.v1.LogConfiguration.session:type_name -> core.v1.LogConfigurationSession
+	2,   // 45: core.v1.LogConfiguration.source:type_name -> core.v1.LogConfigurationSource
+	103, // 46: core.v1.EncryptionKey.created_at:type_name -> google.protobuf.Timestamp
+	103, // 47: core.v1.EncryptionKey.updated_at:type_name -> google.protobuf.Timestamp
+	35,  // 48: core.v1.CreateLogConfigurationRequest.scope:type_name -> core.v1.LogConfigurationScope
+	37,  // 49: core.v1.CreateLogConfigurationRequest.request:type_name -> core.v1.LogConfigurationRequest
+	38,  // 50: core.v1.CreateLogConfigurationRequest.response:type_name -> core.v1.LogConfigurationResponse
+	40,  // 51: core.v1.CreateLogConfigurationRequest.stream:type_name -> core.v1.LogConfigurationStream
+	39,  // 52: core.v1.CreateLogConfigurationRequest.session:type_name -> core.v1.LogConfigurationSession
+	2,   // 53: core.v1.CreateLogConfigurationRequest.source:type_name -> core.v1.LogConfigurationSource
+	41,  // 54: core.v1.CreateLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
+	41,  // 55: core.v1.GetLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
+	41,  // 56: core.v1.ListLogConfigurationsResponse.log_configurations:type_name -> core.v1.LogConfiguration
+	100, // 57: core.v1.ListLogConfigurationsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	37,  // 58: core.v1.UpdateLogConfigurationRequest.request:type_name -> core.v1.LogConfigurationRequest
+	38,  // 59: core.v1.UpdateLogConfigurationRequest.response:type_name -> core.v1.LogConfigurationResponse
+	40,  // 60: core.v1.UpdateLogConfigurationRequest.stream:type_name -> core.v1.LogConfigurationStream
+	39,  // 61: core.v1.UpdateLogConfigurationRequest.session:type_name -> core.v1.LogConfigurationSession
+	41,  // 62: core.v1.UpdateLogConfigurationResponse.log_configuration:type_name -> core.v1.LogConfiguration
+	41,  // 63: core.v1.UpdateLogConfigurationV2Request.log_configuration:type_name -> core.v1.LogConfiguration
+	41,  // 64: core.v1.UpdateLogConfigurationV2Response.log_configuration:type_name -> core.v1.LogConfiguration
+	56,  // 65: core.v1.LogSchema.paths:type_name -> core.v1.LogSchemaPaths
+	103, // 66: core.v1.LogSchema.created_at:type_name -> google.protobuf.Timestamp
+	103, // 67: core.v1.LogSchema.updated_at:type_name -> google.protobuf.Timestamp
+	99,  // 68: core.v1.LogSchemaPaths.paths:type_name -> core.v1.LogSchemaPaths.PathsEntry
+	58,  // 69: core.v1.LogSchemaPath.truncate:type_name -> core.v1.TruncateOperation
+	56,  // 70: core.v1.CreateLogSchemaRequest.paths:type_name -> core.v1.LogSchemaPaths
+	55,  // 71: core.v1.CreateLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
+	55,  // 72: core.v1.GetLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
+	55,  // 73: core.v1.ListLogSchemasResponse.log_schemas:type_name -> core.v1.LogSchema
+	100, // 74: core.v1.ListLogSchemasResponse.list_metadata:type_name -> core.v1.ListMetadata
+	56,  // 75: core.v1.UpdateLogSchemaRequest.paths:type_name -> core.v1.LogSchemaPaths
+	55,  // 76: core.v1.UpdateLogSchemaResponse.log_schema:type_name -> core.v1.LogSchema
+	42,  // 77: core.v1.CreateEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
+	42,  // 78: core.v1.GetEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
+	42,  // 79: core.v1.GetEncryptionKeysByKeyIdResponse.encryption_keys:type_name -> core.v1.EncryptionKey
+	42,  // 80: core.v1.UpdateEncryptionKeyResponse.encryption_key:type_name -> core.v1.EncryptionKey
+	42,  // 81: core.v1.UpdateEncryptionKeyV2Request.encryption_key:type_name -> core.v1.EncryptionKey
+	42,  // 82: core.v1.UpdateEncryptionKeyV2Response.encryption_key:type_name -> core.v1.EncryptionKey
+	104, // 83: core.v1.ListEncryptionKeysRequest.filter:type_name -> core.v1.Filter
+	42,  // 84: core.v1.ListEncryptionKeysResponse.encryption_keys:type_name -> core.v1.EncryptionKey
+	100, // 85: core.v1.ListEncryptionKeysResponse.list_metadata:type_name -> core.v1.ListMetadata
+	101, // 86: core.v1.GetLogsFromNaturalLanguageResponse.logs:type_name -> google.protobuf.Struct
+	88,  // 87: core.v1.ListLogsResponse.Aggregations.logs_over_time:type_name -> core.v1.ListLogsResponse.DateBucket
+	86,  // 88: core.v1.ListLogsResponse.Aggregations.session_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 89: core.v1.ListLogsResponse.Aggregations.session_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 90: core.v1.ListLogsResponse.Aggregations.session_application_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 91: core.v1.ListLogsResponse.Aggregations.session_client_ip_addresses:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 92: core.v1.ListLogsResponse.Aggregations.session_server_ip_addresses:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 93: core.v1.ListLogsResponse.Aggregations.query_fingerprints:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 94: core.v1.ListLogsResponse.Aggregations.query_normalized:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 95: core.v1.ListLogsResponse.Aggregations.query_received:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 96: core.v1.ListLogsResponse.Aggregations.query_sent:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 97: core.v1.ListLogsResponse.Aggregations.resource_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 98: core.v1.ListLogsResponse.Aggregations.resource_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 99: core.v1.ListLogsResponse.Aggregations.resource_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 100: core.v1.ListLogsResponse.Aggregations.resource_hostnames:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 101: core.v1.ListLogsResponse.Aggregations.resource_technologies:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 102: core.v1.ListLogsResponse.Aggregations.connector_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 103: core.v1.ListLogsResponse.Aggregations.connector_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 104: core.v1.ListLogsResponse.Aggregations.space_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 105: core.v1.ListLogsResponse.Aggregations.space_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 106: core.v1.ListLogsResponse.Aggregations.user_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 107: core.v1.ListLogsResponse.Aggregations.user_sub_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 108: core.v1.ListLogsResponse.Aggregations.user_emails:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 109: core.v1.ListLogsResponse.Aggregations.user_usernames:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 110: core.v1.ListLogsResponse.Aggregations.user_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 111: core.v1.ListLogsResponse.Aggregations.end_user_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 112: core.v1.ListLogsResponse.Aggregations.end_user_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 113: core.v1.ListLogsResponse.Aggregations.end_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 114: core.v1.ListLogsResponse.Aggregations.triggered_policy_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 115: core.v1.ListLogsResponse.Aggregations.triggered_policy_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 116: core.v1.ListLogsResponse.Aggregations.triggered_policy_statuses:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 117: core.v1.ListLogsResponse.Aggregations.triggered_policy_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 118: core.v1.ListLogsResponse.Aggregations.response_data_volumes:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 119: core.v1.ListLogsResponse.Aggregations.response_returned_column_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 120: core.v1.ListLogsResponse.Aggregations.response_returned_column_paths:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 121: core.v1.ListLogsResponse.Aggregations.response_returned_column_data_labels:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 122: core.v1.ListLogsResponse.Aggregations.response_rows_sent:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 123: core.v1.ListLogsResponse.Aggregations.response_rows_received:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 124: core.v1.ListLogsResponse.Aggregations.device_system_versions:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 125: core.v1.ListLogsResponse.Aggregations.device_kernel_versions:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 126: core.v1.ListLogsResponse.Aggregations.device_computer_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 127: core.v1.ListLogsResponse.Aggregations.device_user_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 128: core.v1.ListLogsResponse.Aggregations.device_model_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 129: core.v1.ListLogsResponse.Aggregations.device_model_identifiers:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 130: core.v1.ListLogsResponse.Aggregations.device_model_numbers:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 131: core.v1.ListLogsResponse.Aggregations.device_serial_numbers:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 132: core.v1.ListLogsResponse.Aggregations.user_groups:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 133: core.v1.ListLogsResponse.Aggregations.end_user_groups:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 134: core.v1.ListLogsResponse.Aggregations.control_plane_command_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 135: core.v1.ListLogsResponse.Aggregations.control_plane_command_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 136: core.v1.ListLogsResponse.Aggregations.control_plane_policy_actions:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 137: core.v1.ListLogsResponse.Aggregations.control_plane_services:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 138: core.v1.ListLogsResponse.Aggregations.control_plane_methods:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 139: core.v1.ListLogsResponse.Aggregations.control_plane_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 140: core.v1.ListLogsResponse.Aggregations.control_plane_user_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 141: core.v1.ListLogsResponse.Aggregations.control_plane_user_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 142: core.v1.ListLogsResponse.Aggregations.control_plane_user_aws_principal_arns:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 143: core.v1.ListLogsResponse.Aggregations.control_plane_user_aws_account_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 144: core.v1.ListLogsResponse.Aggregations.workflow_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 145: core.v1.ListLogsResponse.Aggregations.workflow_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 146: core.v1.ListLogsResponse.Aggregations.step_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 147: core.v1.ListLogsResponse.Aggregations.step_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 148: core.v1.ListLogsResponse.Aggregations.trigger_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 149: core.v1.ListLogsResponse.Aggregations.trigger_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 150: core.v1.ListLogsResponse.Aggregations.trigger_user_emails:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 151: core.v1.ListLogsResponse.Aggregations.trigger_user_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 152: core.v1.ListLogsResponse.Aggregations.trigger_user_ids:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 153: core.v1.ListLogsResponse.Aggregations.llm_tool_call_names:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 154: core.v1.ListLogsResponse.Aggregations.llm_models:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 155: core.v1.ListLogsResponse.Aggregations.llm_providers:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 156: core.v1.ListLogsResponse.Aggregations.llm_stop_reasons:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 157: core.v1.ListLogsResponse.Aggregations.agent_types:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 158: core.v1.ListLogsResponse.Aggregations.agent_providers:type_name -> core.v1.ListLogsResponse.Bucket
+	86,  // 159: core.v1.ListLogsResponse.Aggregations.assessment_labels:type_name -> core.v1.ListLogsResponse.Bucket
+	87,  // 160: core.v1.ListLogsResponse.GroupByBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
+	87,  // 161: core.v1.ListLogsResponse.DateBucket.buckets:type_name -> core.v1.ListLogsResponse.GroupByBucket
+	90,  // 162: core.v1.GroupByFieldOptions.Histogram.hard_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	90,  // 163: core.v1.GroupByFieldOptions.Histogram.extended_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	90,  // 164: core.v1.GroupByFieldOptions.DateHistogram.hard_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	90,  // 165: core.v1.GroupByFieldOptions.DateHistogram.extended_bounds:type_name -> core.v1.GroupByFieldOptions.Bounds
+	94,  // 166: core.v1.GroupByFieldOptions.Range.ranges:type_name -> core.v1.GroupByFieldOptions.Range.Entry
+	32,  // 167: core.v1.GetGroupByAggregationRequest.GroupByOptionsEntry.value:type_name -> core.v1.GroupByFieldOptions
+	97,  // 168: core.v1.GetGroupByAggregationResponse.Bucket.buckets:type_name -> core.v1.GetGroupByAggregationResponse.Bucket
+	98,  // 169: core.v1.GetGroupByAggregationResponse.Bucket.metrics:type_name -> core.v1.GetGroupByAggregationResponse.Bucket.MetricsEntry
+	57,  // 170: core.v1.LogSchemaPaths.PathsEntry.value:type_name -> core.v1.LogSchemaPath
+	19,  // 171: core.v1.LogsService.GetLog:input_type -> core.v1.GetLogRequest
+	33,  // 172: core.v1.LogsService.GetGroupByAggregation:input_type -> core.v1.GetGroupByAggregationRequest
+	21,  // 173: core.v1.LogsService.GetMetricAggregation:input_type -> core.v1.GetMetricAggregationRequest
+	24,  // 174: core.v1.LogsService.ListLogsV2:input_type -> core.v1.ListLogsV2Request
+	26,  // 175: core.v1.LogsService.ListLogAggregations:input_type -> core.v1.ListLogAggregationsRequest
+	28,  // 176: core.v1.LogsService.ListLogPolicyEvaluationInputs:input_type -> core.v1.ListLogPolicyEvaluationInputsRequest
+	83,  // 177: core.v1.LogsService.GetLogsFromNaturalLanguage:input_type -> core.v1.GetLogsFromNaturalLanguageRequest
+	6,   // 178: core.v1.LogsService.CreateLogQuery:input_type -> core.v1.CreateLogQueryRequest
+	8,   // 179: core.v1.LogsService.UpdateLogQuery:input_type -> core.v1.UpdateLogQueryRequest
+	10,  // 180: core.v1.LogsService.UpdateLogQueryV2:input_type -> core.v1.UpdateLogQueryV2Request
+	12,  // 181: core.v1.LogsService.ListLogQueries:input_type -> core.v1.ListLogQueriesRequest
+	14,  // 182: core.v1.LogsService.GetLogQuery:input_type -> core.v1.GetLogQueryRequest
+	16,  // 183: core.v1.LogsService.DeleteLogQuery:input_type -> core.v1.DeleteLogQueryRequest
+	43,  // 184: core.v1.LogsService.CreateLogConfiguration:input_type -> core.v1.CreateLogConfigurationRequest
+	45,  // 185: core.v1.LogsService.GetLogConfiguration:input_type -> core.v1.GetLogConfigurationRequest
+	47,  // 186: core.v1.LogsService.ListLogConfigurations:input_type -> core.v1.ListLogConfigurationsRequest
+	49,  // 187: core.v1.LogsService.UpdateLogConfiguration:input_type -> core.v1.UpdateLogConfigurationRequest
+	51,  // 188: core.v1.LogsService.UpdateLogConfigurationV2:input_type -> core.v1.UpdateLogConfigurationV2Request
+	53,  // 189: core.v1.LogsService.DeleteLogConfiguration:input_type -> core.v1.DeleteLogConfigurationRequest
+	59,  // 190: core.v1.LogsService.CreateLogSchema:input_type -> core.v1.CreateLogSchemaRequest
+	61,  // 191: core.v1.LogsService.GetLogSchema:input_type -> core.v1.GetLogSchemaRequest
+	63,  // 192: core.v1.LogsService.ListLogSchemas:input_type -> core.v1.ListLogSchemasRequest
+	65,  // 193: core.v1.LogsService.UpdateLogSchema:input_type -> core.v1.UpdateLogSchemaRequest
+	67,  // 194: core.v1.LogsService.DeleteLogSchema:input_type -> core.v1.DeleteLogSchemaRequest
+	69,  // 195: core.v1.LogsService.CreateEncryptionKey:input_type -> core.v1.CreateEncryptionKeyRequest
+	71,  // 196: core.v1.LogsService.GetEncryptionKey:input_type -> core.v1.GetEncryptionKeyRequest
+	73,  // 197: core.v1.LogsService.GetEncryptionKeysByKeyId:input_type -> core.v1.GetEncryptionKeysByKeyIdRequest
+	81,  // 198: core.v1.LogsService.ListEncryptionKeys:input_type -> core.v1.ListEncryptionKeysRequest
+	75,  // 199: core.v1.LogsService.UpdateEncryptionKey:input_type -> core.v1.UpdateEncryptionKeyRequest
+	77,  // 200: core.v1.LogsService.UpdateEncryptionKeyV2:input_type -> core.v1.UpdateEncryptionKeyV2Request
+	79,  // 201: core.v1.LogsService.DeleteEncryptionKey:input_type -> core.v1.DeleteEncryptionKeyRequest
+	20,  // 202: core.v1.LogsService.GetLog:output_type -> core.v1.GetLogResponse
+	34,  // 203: core.v1.LogsService.GetGroupByAggregation:output_type -> core.v1.GetGroupByAggregationResponse
+	22,  // 204: core.v1.LogsService.GetMetricAggregation:output_type -> core.v1.GetMetricAggregationResponse
+	25,  // 205: core.v1.LogsService.ListLogsV2:output_type -> core.v1.ListLogsV2Response
+	27,  // 206: core.v1.LogsService.ListLogAggregations:output_type -> core.v1.ListLogAggregationsResponse
+	30,  // 207: core.v1.LogsService.ListLogPolicyEvaluationInputs:output_type -> core.v1.ListLogPolicyEvaluationInputsResponse
+	84,  // 208: core.v1.LogsService.GetLogsFromNaturalLanguage:output_type -> core.v1.GetLogsFromNaturalLanguageResponse
+	7,   // 209: core.v1.LogsService.CreateLogQuery:output_type -> core.v1.CreateLogQueryResponse
+	9,   // 210: core.v1.LogsService.UpdateLogQuery:output_type -> core.v1.UpdateLogQueryResponse
+	11,  // 211: core.v1.LogsService.UpdateLogQueryV2:output_type -> core.v1.UpdateLogQueryV2Response
+	13,  // 212: core.v1.LogsService.ListLogQueries:output_type -> core.v1.ListLogQueriesResponse
+	15,  // 213: core.v1.LogsService.GetLogQuery:output_type -> core.v1.GetLogQueryResponse
+	17,  // 214: core.v1.LogsService.DeleteLogQuery:output_type -> core.v1.DeleteLogQueryResponse
+	44,  // 215: core.v1.LogsService.CreateLogConfiguration:output_type -> core.v1.CreateLogConfigurationResponse
+	46,  // 216: core.v1.LogsService.GetLogConfiguration:output_type -> core.v1.GetLogConfigurationResponse
+	48,  // 217: core.v1.LogsService.ListLogConfigurations:output_type -> core.v1.ListLogConfigurationsResponse
+	50,  // 218: core.v1.LogsService.UpdateLogConfiguration:output_type -> core.v1.UpdateLogConfigurationResponse
+	52,  // 219: core.v1.LogsService.UpdateLogConfigurationV2:output_type -> core.v1.UpdateLogConfigurationV2Response
+	54,  // 220: core.v1.LogsService.DeleteLogConfiguration:output_type -> core.v1.DeleteLogConfigurationResponse
+	60,  // 221: core.v1.LogsService.CreateLogSchema:output_type -> core.v1.CreateLogSchemaResponse
+	62,  // 222: core.v1.LogsService.GetLogSchema:output_type -> core.v1.GetLogSchemaResponse
+	64,  // 223: core.v1.LogsService.ListLogSchemas:output_type -> core.v1.ListLogSchemasResponse
+	66,  // 224: core.v1.LogsService.UpdateLogSchema:output_type -> core.v1.UpdateLogSchemaResponse
+	68,  // 225: core.v1.LogsService.DeleteLogSchema:output_type -> core.v1.DeleteLogSchemaResponse
+	70,  // 226: core.v1.LogsService.CreateEncryptionKey:output_type -> core.v1.CreateEncryptionKeyResponse
+	72,  // 227: core.v1.LogsService.GetEncryptionKey:output_type -> core.v1.GetEncryptionKeyResponse
+	74,  // 228: core.v1.LogsService.GetEncryptionKeysByKeyId:output_type -> core.v1.GetEncryptionKeysByKeyIdResponse
+	82,  // 229: core.v1.LogsService.ListEncryptionKeys:output_type -> core.v1.ListEncryptionKeysResponse
+	76,  // 230: core.v1.LogsService.UpdateEncryptionKey:output_type -> core.v1.UpdateEncryptionKeyResponse
+	78,  // 231: core.v1.LogsService.UpdateEncryptionKeyV2:output_type -> core.v1.UpdateEncryptionKeyV2Response
+	80,  // 232: core.v1.LogsService.DeleteEncryptionKey:output_type -> core.v1.DeleteEncryptionKeyResponse
+	202, // [202:233] is the sub-list for method output_type
+	171, // [171:202] is the sub-list for method input_type
+	171, // [171:171] is the sub-list for extension type_name
+	171, // [171:171] is the sub-list for extension extendee
+	0,   // [0:171] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_logs_proto_init() }
@@ -6533,27 +7265,36 @@ func file_core_v1_logs_proto_init() {
 	file_core_v1_logs_proto_msgTypes[23].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[25].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[27].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[29].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[28].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[29].OneofWrappers = []any{
+		(*GroupByFieldOptions_Histogram_)(nil),
+		(*GroupByFieldOptions_DateHistogram_)(nil),
+		(*GroupByFieldOptions_Range_)(nil),
+	}
+	file_core_v1_logs_proto_msgTypes[30].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[31].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[37].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[32].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[38].OneofWrappers = []any{}
 	file_core_v1_logs_proto_msgTypes[39].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[45].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[51].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[53].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[55].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[61].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[65].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[71].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[77].OneofWrappers = []any{}
-	file_core_v1_logs_proto_msgTypes[79].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[40].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[46].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[52].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[54].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[56].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[62].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[66].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[72].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[78].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[80].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[91].OneofWrappers = []any{}
+	file_core_v1_logs_proto_msgTypes[94].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_logs_proto_rawDesc), len(file_core_v1_logs_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   88,
+			NumMessages:   97,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

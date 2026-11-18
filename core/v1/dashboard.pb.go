@@ -718,6 +718,7 @@ type DashboardLogsWidget struct {
 	// Log fields to group counts by, such as "llm.model".
 	GroupBy       []string              `protobuf:"bytes,3,rep,name=group_by,json=groupBy,proto3" json:"group_by,omitempty"`
 	Display       *DashboardLogsDisplay `protobuf:"bytes,4,opt,name=display,proto3" json:"display,omitempty"`
+	Measure       *DashboardLogsMeasure `protobuf:"bytes,5,opt,name=measure,proto3" json:"measure,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -780,6 +781,81 @@ func (x *DashboardLogsWidget) GetDisplay() *DashboardLogsDisplay {
 	return nil
 }
 
+func (x *DashboardLogsWidget) GetMeasure() *DashboardLogsMeasure {
+	if x != nil {
+		return x.Measure
+	}
+	return nil
+}
+
+type DashboardLogsMeasure struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          string                 `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Field         string                 `protobuf:"bytes,2,opt,name=field,proto3" json:"field,omitempty"`
+	Percent       *float64               `protobuf:"fixed64,3,opt,name=percent,proto3,oneof" json:"percent,omitempty"`
+	Missing       *float64               `protobuf:"fixed64,4,opt,name=missing,proto3,oneof" json:"missing,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DashboardLogsMeasure) Reset() {
+	*x = DashboardLogsMeasure{}
+	mi := &file_core_v1_dashboard_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DashboardLogsMeasure) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DashboardLogsMeasure) ProtoMessage() {}
+
+func (x *DashboardLogsMeasure) ProtoReflect() protoreflect.Message {
+	mi := &file_core_v1_dashboard_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DashboardLogsMeasure.ProtoReflect.Descriptor instead.
+func (*DashboardLogsMeasure) Descriptor() ([]byte, []int) {
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DashboardLogsMeasure) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *DashboardLogsMeasure) GetField() string {
+	if x != nil {
+		return x.Field
+	}
+	return ""
+}
+
+func (x *DashboardLogsMeasure) GetPercent() float64 {
+	if x != nil && x.Percent != nil {
+		return *x.Percent
+	}
+	return 0
+}
+
+func (x *DashboardLogsMeasure) GetMissing() float64 {
+	if x != nil && x.Missing != nil {
+		return *x.Missing
+	}
+	return 0
+}
+
 // How a logs widget draws its counts.
 type DashboardLogsDisplay struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -798,7 +874,7 @@ type DashboardLogsDisplay struct {
 
 func (x *DashboardLogsDisplay) Reset() {
 	*x = DashboardLogsDisplay{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[6]
+	mi := &file_core_v1_dashboard_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -810,7 +886,7 @@ func (x *DashboardLogsDisplay) String() string {
 func (*DashboardLogsDisplay) ProtoMessage() {}
 
 func (x *DashboardLogsDisplay) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[6]
+	mi := &file_core_v1_dashboard_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -823,7 +899,7 @@ func (x *DashboardLogsDisplay) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DashboardLogsDisplay.ProtoReflect.Descriptor instead.
 func (*DashboardLogsDisplay) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{6}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DashboardLogsDisplay) GetLimit() int32 {
@@ -866,7 +942,7 @@ type DashboardAIUsageWidget struct {
 
 func (x *DashboardAIUsageWidget) Reset() {
 	*x = DashboardAIUsageWidget{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[7]
+	mi := &file_core_v1_dashboard_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -878,7 +954,7 @@ func (x *DashboardAIUsageWidget) String() string {
 func (*DashboardAIUsageWidget) ProtoMessage() {}
 
 func (x *DashboardAIUsageWidget) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[7]
+	mi := &file_core_v1_dashboard_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -891,7 +967,7 @@ func (x *DashboardAIUsageWidget) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DashboardAIUsageWidget.ProtoReflect.Descriptor instead.
 func (*DashboardAIUsageWidget) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{7}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DashboardAIUsageWidget) GetVisualization() DashboardVisualization {
@@ -924,7 +1000,7 @@ type DashboardNoteWidget struct {
 
 func (x *DashboardNoteWidget) Reset() {
 	*x = DashboardNoteWidget{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[8]
+	mi := &file_core_v1_dashboard_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -936,7 +1012,7 @@ func (x *DashboardNoteWidget) String() string {
 func (*DashboardNoteWidget) ProtoMessage() {}
 
 func (x *DashboardNoteWidget) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[8]
+	mi := &file_core_v1_dashboard_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -949,7 +1025,7 @@ func (x *DashboardNoteWidget) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DashboardNoteWidget.ProtoReflect.Descriptor instead.
 func (*DashboardNoteWidget) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{8}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DashboardNoteWidget) GetMarkdown() string {
@@ -970,7 +1046,7 @@ type CreateDashboardRequest struct {
 
 func (x *CreateDashboardRequest) Reset() {
 	*x = CreateDashboardRequest{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[9]
+	mi := &file_core_v1_dashboard_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -982,7 +1058,7 @@ func (x *CreateDashboardRequest) String() string {
 func (*CreateDashboardRequest) ProtoMessage() {}
 
 func (x *CreateDashboardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[9]
+	mi := &file_core_v1_dashboard_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -995,7 +1071,7 @@ func (x *CreateDashboardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDashboardRequest.ProtoReflect.Descriptor instead.
 func (*CreateDashboardRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{9}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateDashboardRequest) GetName() string {
@@ -1028,7 +1104,7 @@ type CreateDashboardResponse struct {
 
 func (x *CreateDashboardResponse) Reset() {
 	*x = CreateDashboardResponse{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[10]
+	mi := &file_core_v1_dashboard_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1040,7 +1116,7 @@ func (x *CreateDashboardResponse) String() string {
 func (*CreateDashboardResponse) ProtoMessage() {}
 
 func (x *CreateDashboardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[10]
+	mi := &file_core_v1_dashboard_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1053,7 +1129,7 @@ func (x *CreateDashboardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDashboardResponse.ProtoReflect.Descriptor instead.
 func (*CreateDashboardResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{10}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreateDashboardResponse) GetDashboard() *Dashboard {
@@ -1072,7 +1148,7 @@ type GetDashboardRequest struct {
 
 func (x *GetDashboardRequest) Reset() {
 	*x = GetDashboardRequest{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[11]
+	mi := &file_core_v1_dashboard_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1084,7 +1160,7 @@ func (x *GetDashboardRequest) String() string {
 func (*GetDashboardRequest) ProtoMessage() {}
 
 func (x *GetDashboardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[11]
+	mi := &file_core_v1_dashboard_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1097,7 +1173,7 @@ func (x *GetDashboardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDashboardRequest.ProtoReflect.Descriptor instead.
 func (*GetDashboardRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{11}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetDashboardRequest) GetId() string {
@@ -1116,7 +1192,7 @@ type GetDashboardResponse struct {
 
 func (x *GetDashboardResponse) Reset() {
 	*x = GetDashboardResponse{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[12]
+	mi := &file_core_v1_dashboard_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1128,7 +1204,7 @@ func (x *GetDashboardResponse) String() string {
 func (*GetDashboardResponse) ProtoMessage() {}
 
 func (x *GetDashboardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[12]
+	mi := &file_core_v1_dashboard_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1141,7 +1217,7 @@ func (x *GetDashboardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDashboardResponse.ProtoReflect.Descriptor instead.
 func (*GetDashboardResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{12}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetDashboardResponse) GetDashboard() *Dashboard {
@@ -1164,7 +1240,7 @@ type ListDashboardsRequest struct {
 
 func (x *ListDashboardsRequest) Reset() {
 	*x = ListDashboardsRequest{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[13]
+	mi := &file_core_v1_dashboard_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1176,7 +1252,7 @@ func (x *ListDashboardsRequest) String() string {
 func (*ListDashboardsRequest) ProtoMessage() {}
 
 func (x *ListDashboardsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[13]
+	mi := &file_core_v1_dashboard_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1189,7 +1265,7 @@ func (x *ListDashboardsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDashboardsRequest.ProtoReflect.Descriptor instead.
 func (*ListDashboardsRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{13}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListDashboardsRequest) GetLimit() int32 {
@@ -1237,7 +1313,7 @@ type ListDashboardsResponse struct {
 
 func (x *ListDashboardsResponse) Reset() {
 	*x = ListDashboardsResponse{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[14]
+	mi := &file_core_v1_dashboard_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1249,7 +1325,7 @@ func (x *ListDashboardsResponse) String() string {
 func (*ListDashboardsResponse) ProtoMessage() {}
 
 func (x *ListDashboardsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[14]
+	mi := &file_core_v1_dashboard_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1262,7 +1338,7 @@ func (x *ListDashboardsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDashboardsResponse.ProtoReflect.Descriptor instead.
 func (*ListDashboardsResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{14}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListDashboardsResponse) GetDashboards() []*Dashboard {
@@ -1291,7 +1367,7 @@ type UpdateDashboardRequest struct {
 
 func (x *UpdateDashboardRequest) Reset() {
 	*x = UpdateDashboardRequest{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[15]
+	mi := &file_core_v1_dashboard_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1303,7 +1379,7 @@ func (x *UpdateDashboardRequest) String() string {
 func (*UpdateDashboardRequest) ProtoMessage() {}
 
 func (x *UpdateDashboardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[15]
+	mi := &file_core_v1_dashboard_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1316,7 +1392,7 @@ func (x *UpdateDashboardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDashboardRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDashboardRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{15}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *UpdateDashboardRequest) GetId() string {
@@ -1356,7 +1432,7 @@ type UpdateDashboardResponse struct {
 
 func (x *UpdateDashboardResponse) Reset() {
 	*x = UpdateDashboardResponse{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[16]
+	mi := &file_core_v1_dashboard_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1368,7 +1444,7 @@ func (x *UpdateDashboardResponse) String() string {
 func (*UpdateDashboardResponse) ProtoMessage() {}
 
 func (x *UpdateDashboardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[16]
+	mi := &file_core_v1_dashboard_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1381,7 +1457,7 @@ func (x *UpdateDashboardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDashboardResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDashboardResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{16}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *UpdateDashboardResponse) GetDashboard() *Dashboard {
@@ -1400,7 +1476,7 @@ type DeleteDashboardRequest struct {
 
 func (x *DeleteDashboardRequest) Reset() {
 	*x = DeleteDashboardRequest{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[17]
+	mi := &file_core_v1_dashboard_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1412,7 +1488,7 @@ func (x *DeleteDashboardRequest) String() string {
 func (*DeleteDashboardRequest) ProtoMessage() {}
 
 func (x *DeleteDashboardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[17]
+	mi := &file_core_v1_dashboard_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1425,7 +1501,7 @@ func (x *DeleteDashboardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDashboardRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDashboardRequest) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{17}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DeleteDashboardRequest) GetId() string {
@@ -1443,7 +1519,7 @@ type DeleteDashboardResponse struct {
 
 func (x *DeleteDashboardResponse) Reset() {
 	*x = DeleteDashboardResponse{}
-	mi := &file_core_v1_dashboard_proto_msgTypes[18]
+	mi := &file_core_v1_dashboard_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1455,7 +1531,7 @@ func (x *DeleteDashboardResponse) String() string {
 func (*DeleteDashboardResponse) ProtoMessage() {}
 
 func (x *DeleteDashboardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_v1_dashboard_proto_msgTypes[18]
+	mi := &file_core_v1_dashboard_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1468,7 +1544,7 @@ func (x *DeleteDashboardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDashboardResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDashboardResponse) Descriptor() ([]byte, []int) {
-	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{18}
+	return file_core_v1_dashboard_proto_rawDescGZIP(), []int{19}
 }
 
 var File_core_v1_dashboard_proto protoreflect.FileDescriptor
@@ -1505,18 +1581,31 @@ const file_core_v1_dashboard_proto_rawDesc = "" +
 	"\x04note\x18\a \x01(\v2\x1c.core.v1.DashboardNoteWidgetH\x00R\x04noteB\x10\n" +
 	"\acontent\x12\x05\xbaH\x02\b\x01\"6\n" +
 	"\x15DashboardWidgetLayout\x12\x1d\n" +
-	"\x04span\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04span\"\xc8\a\n" +
+	"\x04span\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04span\"\x81\b\n" +
 	"\x13DashboardLogsWidget\x12Q\n" +
 	"\rvisualization\x18\x01 \x01(\x0e2\x1f.core.v1.DashboardVisualizationB\n" +
 	"\xbaH\a\x82\x01\x04\x10\x01 \x00R\rvisualization\x12\x1e\n" +
 	"\x05query\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\xa0\x1fR\x05query\x12,\n" +
 	"\bgroup_by\x18\x03 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x10\x02\"\ar\x05\x10\x01\x18\x80\x02R\agroupBy\x127\n" +
-	"\adisplay\x18\x04 \x01(\v2\x1d.core.v1.DashboardLogsDisplayR\adisplay:\xd6\x05\xbaH\xd2\x05\x1a\x85\x01\n" +
+	"\adisplay\x18\x04 \x01(\v2\x1d.core.v1.DashboardLogsDisplayR\adisplay\x127\n" +
+	"\ameasure\x18\x05 \x01(\v2\x1d.core.v1.DashboardLogsMeasureR\ameasure:\xd6\x05\xbaH\xd2\x05\x1a\x85\x01\n" +
 	"%dashboard_logs_widget.metric_group_by\x12'a metric counts without group-by fields\x1a3this.visualization != 1 || size(this.group_by) == 0\x1a\x93\x01\n" +
 	")dashboard_logs_widget.timeseries_group_by\x121a timeseries splits by at most one group-by field\x1a3this.visualization != 2 || size(this.group_by) <= 1\x1a\x9c\x01\n" +
 	"%dashboard_logs_widget.ranked_group_by\x126bars and distributions need exactly one group-by field\x1a;!(this.visualization in [3, 4]) || size(this.group_by) == 1\x1a\x85\x01\n" +
 	"$dashboard_logs_widget.table_group_by\x12(a table needs one or two group-by fields\x1a3this.visualization != 5 || size(this.group_by) >= 1\x1a\x8a\x01\n" +
-	"&dashboard_logs_widget.heatmap_group_by\x12+a heatmap needs exactly two group-by fields\x1a3this.visualization != 6 || size(this.group_by) == 2\"\xc8\x01\n" +
+	"&dashboard_logs_widget.heatmap_group_by\x12+a heatmap needs exactly two group-by fields\x1a3this.visualization != 6 || size(this.group_by) == 2\"\xae\x04\n" +
+	"\x14DashboardLogsMeasure\x12L\n" +
+	"\x04type\x18\x01 \x01(\tB8\xbaH5r3R\x00R\x05countR\bdistinctR\x03sumR\x03avgR\x03minR\x03maxR\n" +
+	"percentileR\x04type\x12\x14\n" +
+	"\x05field\x18\x02 \x01(\tR\x05field\x126\n" +
+	"\apercent\x18\x03 \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00Y@)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\apercent\x88\x01\x01\x12\x1d\n" +
+	"\amissing\x18\x04 \x01(\x01H\x01R\amissing\x88\x01\x01:\xc2\x02\xbaH\xbe\x02\x1a\xca\x01\n" +
+	"\x1cdashboard_logs_measure.field\x12%a measure requires a valid field path\x1a\x82\x01this.type == '' || (this.type == 'count' && this.field == '') || this.field.matches('^[A-Za-z_][A-Za-z0-9_]*([.][A-Za-z0-9_]+)*$')\x1ao\n" +
+	"\x1edashboard_logs_measure.percent\x12\x1da percentile requires percent\x1a.this.type != 'percentile' || has(this.percent)B\n" +
+	"\n" +
+	"\b_percentB\n" +
+	"\n" +
+	"\b_missing\"\xc8\x01\n" +
 	"\x14DashboardLogsDisplay\x12 \n" +
 	"\x05limit\x18\x01 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xc8\x01(\x00R\x05limit\x12#\n" +
@@ -1630,7 +1719,7 @@ func file_core_v1_dashboard_proto_rawDescGZIP() []byte {
 }
 
 var file_core_v1_dashboard_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_core_v1_dashboard_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_core_v1_dashboard_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_core_v1_dashboard_proto_goTypes = []any{
 	(DashboardTimeRange)(0),         // 0: core.v1.DashboardTimeRange
 	(DashboardVisualization)(0),     // 1: core.v1.DashboardVisualization
@@ -1643,61 +1732,63 @@ var file_core_v1_dashboard_proto_goTypes = []any{
 	(*DashboardWidget)(nil),         // 8: core.v1.DashboardWidget
 	(*DashboardWidgetLayout)(nil),   // 9: core.v1.DashboardWidgetLayout
 	(*DashboardLogsWidget)(nil),     // 10: core.v1.DashboardLogsWidget
-	(*DashboardLogsDisplay)(nil),    // 11: core.v1.DashboardLogsDisplay
-	(*DashboardAIUsageWidget)(nil),  // 12: core.v1.DashboardAIUsageWidget
-	(*DashboardNoteWidget)(nil),     // 13: core.v1.DashboardNoteWidget
-	(*CreateDashboardRequest)(nil),  // 14: core.v1.CreateDashboardRequest
-	(*CreateDashboardResponse)(nil), // 15: core.v1.CreateDashboardResponse
-	(*GetDashboardRequest)(nil),     // 16: core.v1.GetDashboardRequest
-	(*GetDashboardResponse)(nil),    // 17: core.v1.GetDashboardResponse
-	(*ListDashboardsRequest)(nil),   // 18: core.v1.ListDashboardsRequest
-	(*ListDashboardsResponse)(nil),  // 19: core.v1.ListDashboardsResponse
-	(*UpdateDashboardRequest)(nil),  // 20: core.v1.UpdateDashboardRequest
-	(*UpdateDashboardResponse)(nil), // 21: core.v1.UpdateDashboardResponse
-	(*DeleteDashboardRequest)(nil),  // 22: core.v1.DeleteDashboardRequest
-	(*DeleteDashboardResponse)(nil), // 23: core.v1.DeleteDashboardResponse
-	(*timestamppb.Timestamp)(nil),   // 24: google.protobuf.Timestamp
-	(*ListMetadata)(nil),            // 25: core.v1.ListMetadata
+	(*DashboardLogsMeasure)(nil),    // 11: core.v1.DashboardLogsMeasure
+	(*DashboardLogsDisplay)(nil),    // 12: core.v1.DashboardLogsDisplay
+	(*DashboardAIUsageWidget)(nil),  // 13: core.v1.DashboardAIUsageWidget
+	(*DashboardNoteWidget)(nil),     // 14: core.v1.DashboardNoteWidget
+	(*CreateDashboardRequest)(nil),  // 15: core.v1.CreateDashboardRequest
+	(*CreateDashboardResponse)(nil), // 16: core.v1.CreateDashboardResponse
+	(*GetDashboardRequest)(nil),     // 17: core.v1.GetDashboardRequest
+	(*GetDashboardResponse)(nil),    // 18: core.v1.GetDashboardResponse
+	(*ListDashboardsRequest)(nil),   // 19: core.v1.ListDashboardsRequest
+	(*ListDashboardsResponse)(nil),  // 20: core.v1.ListDashboardsResponse
+	(*UpdateDashboardRequest)(nil),  // 21: core.v1.UpdateDashboardRequest
+	(*UpdateDashboardResponse)(nil), // 22: core.v1.UpdateDashboardResponse
+	(*DeleteDashboardRequest)(nil),  // 23: core.v1.DeleteDashboardRequest
+	(*DeleteDashboardResponse)(nil), // 24: core.v1.DeleteDashboardResponse
+	(*timestamppb.Timestamp)(nil),   // 25: google.protobuf.Timestamp
+	(*ListMetadata)(nil),            // 26: core.v1.ListMetadata
 }
 var file_core_v1_dashboard_proto_depIdxs = []int32{
 	6,  // 0: core.v1.Dashboard.definition:type_name -> core.v1.DashboardDefinition
-	24, // 1: core.v1.Dashboard.created_at:type_name -> google.protobuf.Timestamp
-	24, // 2: core.v1.Dashboard.updated_at:type_name -> google.protobuf.Timestamp
+	25, // 1: core.v1.Dashboard.created_at:type_name -> google.protobuf.Timestamp
+	25, // 2: core.v1.Dashboard.updated_at:type_name -> google.protobuf.Timestamp
 	7,  // 3: core.v1.DashboardDefinition.layout:type_name -> core.v1.DashboardLayout
 	0,  // 4: core.v1.DashboardDefinition.default_time_range:type_name -> core.v1.DashboardTimeRange
 	8,  // 5: core.v1.DashboardDefinition.widgets:type_name -> core.v1.DashboardWidget
 	9,  // 6: core.v1.DashboardWidget.layout:type_name -> core.v1.DashboardWidgetLayout
 	10, // 7: core.v1.DashboardWidget.logs:type_name -> core.v1.DashboardLogsWidget
-	12, // 8: core.v1.DashboardWidget.ai_usage:type_name -> core.v1.DashboardAIUsageWidget
-	13, // 9: core.v1.DashboardWidget.note:type_name -> core.v1.DashboardNoteWidget
+	13, // 8: core.v1.DashboardWidget.ai_usage:type_name -> core.v1.DashboardAIUsageWidget
+	14, // 9: core.v1.DashboardWidget.note:type_name -> core.v1.DashboardNoteWidget
 	1,  // 10: core.v1.DashboardLogsWidget.visualization:type_name -> core.v1.DashboardVisualization
-	11, // 11: core.v1.DashboardLogsWidget.display:type_name -> core.v1.DashboardLogsDisplay
-	2,  // 12: core.v1.DashboardLogsDisplay.default_interval:type_name -> core.v1.DashboardInterval
-	1,  // 13: core.v1.DashboardAIUsageWidget.visualization:type_name -> core.v1.DashboardVisualization
-	3,  // 14: core.v1.DashboardAIUsageWidget.metric:type_name -> core.v1.DashboardAIMetric
-	4,  // 15: core.v1.DashboardAIUsageWidget.dimension:type_name -> core.v1.DashboardAIDimension
-	6,  // 16: core.v1.CreateDashboardRequest.definition:type_name -> core.v1.DashboardDefinition
-	5,  // 17: core.v1.CreateDashboardResponse.dashboard:type_name -> core.v1.Dashboard
-	5,  // 18: core.v1.GetDashboardResponse.dashboard:type_name -> core.v1.Dashboard
-	5,  // 19: core.v1.ListDashboardsResponse.dashboards:type_name -> core.v1.Dashboard
-	25, // 20: core.v1.ListDashboardsResponse.list_metadata:type_name -> core.v1.ListMetadata
-	6,  // 21: core.v1.UpdateDashboardRequest.definition:type_name -> core.v1.DashboardDefinition
-	5,  // 22: core.v1.UpdateDashboardResponse.dashboard:type_name -> core.v1.Dashboard
-	14, // 23: core.v1.DashboardService.CreateDashboard:input_type -> core.v1.CreateDashboardRequest
-	16, // 24: core.v1.DashboardService.GetDashboard:input_type -> core.v1.GetDashboardRequest
-	18, // 25: core.v1.DashboardService.ListDashboards:input_type -> core.v1.ListDashboardsRequest
-	20, // 26: core.v1.DashboardService.UpdateDashboard:input_type -> core.v1.UpdateDashboardRequest
-	22, // 27: core.v1.DashboardService.DeleteDashboard:input_type -> core.v1.DeleteDashboardRequest
-	15, // 28: core.v1.DashboardService.CreateDashboard:output_type -> core.v1.CreateDashboardResponse
-	17, // 29: core.v1.DashboardService.GetDashboard:output_type -> core.v1.GetDashboardResponse
-	19, // 30: core.v1.DashboardService.ListDashboards:output_type -> core.v1.ListDashboardsResponse
-	21, // 31: core.v1.DashboardService.UpdateDashboard:output_type -> core.v1.UpdateDashboardResponse
-	23, // 32: core.v1.DashboardService.DeleteDashboard:output_type -> core.v1.DeleteDashboardResponse
-	28, // [28:33] is the sub-list for method output_type
-	23, // [23:28] is the sub-list for method input_type
-	23, // [23:23] is the sub-list for extension type_name
-	23, // [23:23] is the sub-list for extension extendee
-	0,  // [0:23] is the sub-list for field type_name
+	12, // 11: core.v1.DashboardLogsWidget.display:type_name -> core.v1.DashboardLogsDisplay
+	11, // 12: core.v1.DashboardLogsWidget.measure:type_name -> core.v1.DashboardLogsMeasure
+	2,  // 13: core.v1.DashboardLogsDisplay.default_interval:type_name -> core.v1.DashboardInterval
+	1,  // 14: core.v1.DashboardAIUsageWidget.visualization:type_name -> core.v1.DashboardVisualization
+	3,  // 15: core.v1.DashboardAIUsageWidget.metric:type_name -> core.v1.DashboardAIMetric
+	4,  // 16: core.v1.DashboardAIUsageWidget.dimension:type_name -> core.v1.DashboardAIDimension
+	6,  // 17: core.v1.CreateDashboardRequest.definition:type_name -> core.v1.DashboardDefinition
+	5,  // 18: core.v1.CreateDashboardResponse.dashboard:type_name -> core.v1.Dashboard
+	5,  // 19: core.v1.GetDashboardResponse.dashboard:type_name -> core.v1.Dashboard
+	5,  // 20: core.v1.ListDashboardsResponse.dashboards:type_name -> core.v1.Dashboard
+	26, // 21: core.v1.ListDashboardsResponse.list_metadata:type_name -> core.v1.ListMetadata
+	6,  // 22: core.v1.UpdateDashboardRequest.definition:type_name -> core.v1.DashboardDefinition
+	5,  // 23: core.v1.UpdateDashboardResponse.dashboard:type_name -> core.v1.Dashboard
+	15, // 24: core.v1.DashboardService.CreateDashboard:input_type -> core.v1.CreateDashboardRequest
+	17, // 25: core.v1.DashboardService.GetDashboard:input_type -> core.v1.GetDashboardRequest
+	19, // 26: core.v1.DashboardService.ListDashboards:input_type -> core.v1.ListDashboardsRequest
+	21, // 27: core.v1.DashboardService.UpdateDashboard:input_type -> core.v1.UpdateDashboardRequest
+	23, // 28: core.v1.DashboardService.DeleteDashboard:input_type -> core.v1.DeleteDashboardRequest
+	16, // 29: core.v1.DashboardService.CreateDashboard:output_type -> core.v1.CreateDashboardResponse
+	18, // 30: core.v1.DashboardService.GetDashboard:output_type -> core.v1.GetDashboardResponse
+	20, // 31: core.v1.DashboardService.ListDashboards:output_type -> core.v1.ListDashboardsResponse
+	22, // 32: core.v1.DashboardService.UpdateDashboard:output_type -> core.v1.UpdateDashboardResponse
+	24, // 33: core.v1.DashboardService.DeleteDashboard:output_type -> core.v1.DeleteDashboardResponse
+	29, // [29:34] is the sub-list for method output_type
+	24, // [24:29] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_core_v1_dashboard_proto_init() }
@@ -1711,13 +1802,14 @@ func file_core_v1_dashboard_proto_init() {
 		(*DashboardWidget_AiUsage)(nil),
 		(*DashboardWidget_Note)(nil),
 	}
+	file_core_v1_dashboard_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_v1_dashboard_proto_rawDesc), len(file_core_v1_dashboard_proto_rawDesc)),
 			NumEnums:      5,
-			NumMessages:   19,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
