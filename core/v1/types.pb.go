@@ -1659,8 +1659,10 @@ type User struct {
 	UpdatedAt             *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	GroupIds              []string               `protobuf:"bytes,10,rep,name=group_ids,json=groupIds,proto3" json:"group_ids,omitempty"`
 	FullName              string                 `protobuf:"bytes,11,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	// The organization's directory provisions this user: its name and deletion are changed in the identity provider.
+	ManagedByDirectory bool `protobuf:"varint,12,opt,name=managed_by_directory,json=managedByDirectory,proto3" json:"managed_by_directory,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -1781,6 +1783,13 @@ func (x *User) GetFullName() string {
 	return ""
 }
 
+func (x *User) GetManagedByDirectory() bool {
+	if x != nil {
+		return x.ManagedByDirectory
+	}
+	return false
+}
+
 type isUser_Info interface {
 	isUser_Info()
 }
@@ -1806,8 +1815,10 @@ type Group struct {
 	TerminationProtection bool                   `protobuf:"varint,5,opt,name=termination_protection,json=terminationProtection,proto3" json:"termination_protection,omitempty"`
 	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt             *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	// The organization's directory provisions this group: its name, members and deletion are changed in the identity provider.
+	ManagedByDirectory bool `protobuf:"varint,8,opt,name=managed_by_directory,json=managedByDirectory,proto3" json:"managed_by_directory,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *Group) Reset() {
@@ -1887,6 +1898,13 @@ func (x *Group) GetUpdatedAt() *timestamppb.Timestamp {
 		return x.UpdatedAt
 	}
 	return nil
+}
+
+func (x *Group) GetManagedByDirectory() bool {
+	if x != nil {
+		return x.ManagedByDirectory
+	}
+	return false
 }
 
 type UserGroupLink struct {
@@ -3686,7 +3704,7 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xb2\x05\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xe4\x05\n" +
 	"\x04User\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\x02id\x12(\n" +
 	"\vdb_username\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
@@ -3702,7 +3720,8 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12\x1b\n" +
 	"\tgroup_ids\x18\n" +
 	" \x03(\tR\bgroupIds\x12\x1b\n" +
-	"\tfull_name\x18\v \x01(\tR\bfullName\x1at\n" +
+	"\tfull_name\x18\v \x01(\tR\bfullName\x120\n" +
+	"\x14managed_by_directory\x18\f \x01(\bR\x12managedByDirectory\x1at\n" +
 	"\x05Human\x12&\n" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tfirstName\x12$\n" +
@@ -3710,7 +3729,7 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x1a&\n" +
 	"\aMachine\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04nameB\x06\n" +
-	"\x04info\"\xd0\x02\n" +
+	"\x04info\"\x82\x03\n" +
 	"\x05Group\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\x12 \n" +
@@ -3720,7 +3739,8 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tcreatedAt\x12C\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\"\xb2\x02\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x120\n" +
+	"\x14managed_by_directory\x18\b \x01(\bR\x12managedByDirectory\"\xb2\x02\n" +
 	"\rUserGroupLink\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12$\n" +
 	"\x05group\x18\x02 \x01(\v2\x0e.core.v1.GroupR\x05group\x12!\n" +
