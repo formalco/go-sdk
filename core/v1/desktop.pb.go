@@ -1140,8 +1140,10 @@ type DesktopDevice struct {
 	LastSeenAt              *timestamppb.Timestamp     `protobuf:"bytes,7,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
 	TlsCertificateTrusted   bool                       `protobuf:"varint,8,opt,name=tls_certificate_trusted,json=tlsCertificateTrusted,proto3" json:"tls_certificate_trusted,omitempty"`
 	Config                  *DesktopConfig             `protobuf:"bytes,9,opt,name=config,proto3" json:"config,omitempty"`
-	unknownFields           protoimpl.UnknownFields
-	sizeCache               protoimpl.SizeCache
+	// Formal VPN status from the latest heartbeat; see telemetry.v1.CreateDesktopEventRequest.vpn_status.
+	VpnStatus     string `protobuf:"bytes,10,opt,name=vpn_status,json=vpnStatus,proto3" json:"vpn_status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DesktopDevice) Reset() {
@@ -1235,6 +1237,13 @@ func (x *DesktopDevice) GetConfig() *DesktopConfig {
 		return x.Config
 	}
 	return nil
+}
+
+func (x *DesktopDevice) GetVpnStatus() string {
+	if x != nil {
+		return x.VpnStatus
+	}
+	return ""
 }
 
 type DesktopTransparentProxyConfig struct {
@@ -1617,7 +1626,7 @@ const file_core_v1_desktop_proto_rawDesc = "" +
 	"\x06cursor\x18\x03 \x01(\tR\x06cursor\"\x87\x01\n" +
 	"\x17ListUserDevicesResponse\x120\n" +
 	"\adevices\x18\x01 \x03(\v2\x16.core.v1.DesktopDeviceR\adevices\x12:\n" +
-	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xd9\x03\n" +
+	"\rlist_metadata\x18\x02 \x01(\v2\x15.core.v1.ListMetadataR\flistMetadata\"\xf8\x03\n" +
 	"\rDesktopDevice\x12\x1b\n" +
 	"\tdevice_id\x18\x01 \x01(\tR\bdeviceId\x12\x18\n" +
 	"\aversion\x18\x02 \x01(\tR\aversion\x12\x1d\n" +
@@ -1629,7 +1638,10 @@ const file_core_v1_desktop_proto_rawDesc = "" +
 	"\flast_seen_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"lastSeenAt\x126\n" +
 	"\x17tls_certificate_trusted\x18\b \x01(\bR\x15tlsCertificateTrusted\x12.\n" +
-	"\x06config\x18\t \x01(\v2\x16.core.v1.DesktopConfigR\x06config\"\xb3\x01\n" +
+	"\x06config\x18\t \x01(\v2\x16.core.v1.DesktopConfigR\x06config\x12\x1d\n" +
+	"\n" +
+	"vpn_status\x18\n" +
+	" \x01(\tR\tvpnStatus\"\xb3\x01\n" +
 	"\x1dDesktopTransparentProxyConfig\x12\x1b\n" +
 	"\x06enable\x18\x01 \x01(\bH\x00R\x06enable\x88\x01\x01\x12\x1d\n" +
 	"\aenforce\x18\x02 \x01(\bH\x01R\aenforce\x88\x01\x01\x12\x17\n" +
