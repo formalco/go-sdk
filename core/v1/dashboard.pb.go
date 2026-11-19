@@ -81,7 +81,7 @@ const (
 	DashboardVisualization_DASHBOARD_VISUALIZATION_UNSPECIFIED DashboardVisualization = 0
 	// One number with its change from the previous period. No group-by.
 	DashboardVisualization_DASHBOARD_VISUALIZATION_METRIC DashboardVisualization = 1
-	// Counts over time, split by at most one group-by field.
+	// Counts over time, split by up to two group-by fields.
 	DashboardVisualization_DASHBOARD_VISUALIZATION_TIMESERIES DashboardVisualization = 2
 	// Ranked bars for one group-by field.
 	DashboardVisualization_DASHBOARD_VISUALIZATION_BARS DashboardVisualization = 3
@@ -91,6 +91,10 @@ const (
 	DashboardVisualization_DASHBOARD_VISUALIZATION_TABLE DashboardVisualization = 5
 	// Counts across exactly two group-by fields.
 	DashboardVisualization_DASHBOARD_VISUALIZATION_HEATMAP DashboardVisualization = 6
+	// Vertical bars for one group-by field, or grouped bars for two.
+	DashboardVisualization_DASHBOARD_VISUALIZATION_COLUMNS DashboardVisualization = 7
+	// Counts over time as a table: one row per interval, split by up to two group-by fields.
+	DashboardVisualization_DASHBOARD_VISUALIZATION_TIMESERIES_TABLE DashboardVisualization = 8
 )
 
 // Enum value maps for DashboardVisualization.
@@ -103,15 +107,19 @@ var (
 		4: "DASHBOARD_VISUALIZATION_DISTRIBUTION",
 		5: "DASHBOARD_VISUALIZATION_TABLE",
 		6: "DASHBOARD_VISUALIZATION_HEATMAP",
+		7: "DASHBOARD_VISUALIZATION_COLUMNS",
+		8: "DASHBOARD_VISUALIZATION_TIMESERIES_TABLE",
 	}
 	DashboardVisualization_value = map[string]int32{
-		"DASHBOARD_VISUALIZATION_UNSPECIFIED":  0,
-		"DASHBOARD_VISUALIZATION_METRIC":       1,
-		"DASHBOARD_VISUALIZATION_TIMESERIES":   2,
-		"DASHBOARD_VISUALIZATION_BARS":         3,
-		"DASHBOARD_VISUALIZATION_DISTRIBUTION": 4,
-		"DASHBOARD_VISUALIZATION_TABLE":        5,
-		"DASHBOARD_VISUALIZATION_HEATMAP":      6,
+		"DASHBOARD_VISUALIZATION_UNSPECIFIED":      0,
+		"DASHBOARD_VISUALIZATION_METRIC":           1,
+		"DASHBOARD_VISUALIZATION_TIMESERIES":       2,
+		"DASHBOARD_VISUALIZATION_BARS":             3,
+		"DASHBOARD_VISUALIZATION_DISTRIBUTION":     4,
+		"DASHBOARD_VISUALIZATION_TABLE":            5,
+		"DASHBOARD_VISUALIZATION_HEATMAP":          6,
+		"DASHBOARD_VISUALIZATION_COLUMNS":          7,
+		"DASHBOARD_VISUALIZATION_TIMESERIES_TABLE": 8,
 	}
 )
 
@@ -145,25 +153,49 @@ func (DashboardVisualization) EnumDescriptor() ([]byte, []int) {
 type DashboardInterval int32
 
 const (
-	DashboardInterval_DASHBOARD_INTERVAL_UNSPECIFIED DashboardInterval = 0
-	DashboardInterval_DASHBOARD_INTERVAL_HOUR        DashboardInterval = 1
-	DashboardInterval_DASHBOARD_INTERVAL_DAY         DashboardInterval = 2
-	DashboardInterval_DASHBOARD_INTERVAL_WEEK        DashboardInterval = 3
+	DashboardInterval_DASHBOARD_INTERVAL_UNSPECIFIED     DashboardInterval = 0
+	DashboardInterval_DASHBOARD_INTERVAL_HOUR            DashboardInterval = 1
+	DashboardInterval_DASHBOARD_INTERVAL_DAY             DashboardInterval = 2
+	DashboardInterval_DASHBOARD_INTERVAL_WEEK            DashboardInterval = 3
+	DashboardInterval_DASHBOARD_INTERVAL_MINUTE          DashboardInterval = 4
+	DashboardInterval_DASHBOARD_INTERVAL_FIVE_MINUTES    DashboardInterval = 5
+	DashboardInterval_DASHBOARD_INTERVAL_FIFTEEN_MINUTES DashboardInterval = 6
+	DashboardInterval_DASHBOARD_INTERVAL_THIRTY_MINUTES  DashboardInterval = 7
+	DashboardInterval_DASHBOARD_INTERVAL_THREE_HOURS     DashboardInterval = 8
+	DashboardInterval_DASHBOARD_INTERVAL_SIX_HOURS       DashboardInterval = 9
+	DashboardInterval_DASHBOARD_INTERVAL_TWELVE_HOURS    DashboardInterval = 10
+	DashboardInterval_DASHBOARD_INTERVAL_MONTH           DashboardInterval = 11
 )
 
 // Enum value maps for DashboardInterval.
 var (
 	DashboardInterval_name = map[int32]string{
-		0: "DASHBOARD_INTERVAL_UNSPECIFIED",
-		1: "DASHBOARD_INTERVAL_HOUR",
-		2: "DASHBOARD_INTERVAL_DAY",
-		3: "DASHBOARD_INTERVAL_WEEK",
+		0:  "DASHBOARD_INTERVAL_UNSPECIFIED",
+		1:  "DASHBOARD_INTERVAL_HOUR",
+		2:  "DASHBOARD_INTERVAL_DAY",
+		3:  "DASHBOARD_INTERVAL_WEEK",
+		4:  "DASHBOARD_INTERVAL_MINUTE",
+		5:  "DASHBOARD_INTERVAL_FIVE_MINUTES",
+		6:  "DASHBOARD_INTERVAL_FIFTEEN_MINUTES",
+		7:  "DASHBOARD_INTERVAL_THIRTY_MINUTES",
+		8:  "DASHBOARD_INTERVAL_THREE_HOURS",
+		9:  "DASHBOARD_INTERVAL_SIX_HOURS",
+		10: "DASHBOARD_INTERVAL_TWELVE_HOURS",
+		11: "DASHBOARD_INTERVAL_MONTH",
 	}
 	DashboardInterval_value = map[string]int32{
-		"DASHBOARD_INTERVAL_UNSPECIFIED": 0,
-		"DASHBOARD_INTERVAL_HOUR":        1,
-		"DASHBOARD_INTERVAL_DAY":         2,
-		"DASHBOARD_INTERVAL_WEEK":        3,
+		"DASHBOARD_INTERVAL_UNSPECIFIED":     0,
+		"DASHBOARD_INTERVAL_HOUR":            1,
+		"DASHBOARD_INTERVAL_DAY":             2,
+		"DASHBOARD_INTERVAL_WEEK":            3,
+		"DASHBOARD_INTERVAL_MINUTE":          4,
+		"DASHBOARD_INTERVAL_FIVE_MINUTES":    5,
+		"DASHBOARD_INTERVAL_FIFTEEN_MINUTES": 6,
+		"DASHBOARD_INTERVAL_THIRTY_MINUTES":  7,
+		"DASHBOARD_INTERVAL_THREE_HOURS":     8,
+		"DASHBOARD_INTERVAL_SIX_HOURS":       9,
+		"DASHBOARD_INTERVAL_TWELVE_HOURS":    10,
+		"DASHBOARD_INTERVAL_MONTH":           11,
 	}
 )
 
@@ -1581,19 +1613,20 @@ const file_core_v1_dashboard_proto_rawDesc = "" +
 	"\x04note\x18\a \x01(\v2\x1c.core.v1.DashboardNoteWidgetH\x00R\x04noteB\x10\n" +
 	"\acontent\x12\x05\xbaH\x02\b\x01\"6\n" +
 	"\x15DashboardWidgetLayout\x12\x1d\n" +
-	"\x04span\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04span\"\x81\b\n" +
+	"\x04span\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04span\"\x93\t\n" +
 	"\x13DashboardLogsWidget\x12Q\n" +
 	"\rvisualization\x18\x01 \x01(\x0e2\x1f.core.v1.DashboardVisualizationB\n" +
 	"\xbaH\a\x82\x01\x04\x10\x01 \x00R\rvisualization\x12\x1e\n" +
 	"\x05query\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\xa0\x1fR\x05query\x12,\n" +
 	"\bgroup_by\x18\x03 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x10\x02\"\ar\x05\x10\x01\x18\x80\x02R\agroupBy\x127\n" +
 	"\adisplay\x18\x04 \x01(\v2\x1d.core.v1.DashboardLogsDisplayR\adisplay\x127\n" +
-	"\ameasure\x18\x05 \x01(\v2\x1d.core.v1.DashboardLogsMeasureR\ameasure:\xd6\x05\xbaH\xd2\x05\x1a\x85\x01\n" +
-	"%dashboard_logs_widget.metric_group_by\x12'a metric counts without group-by fields\x1a3this.visualization != 1 || size(this.group_by) == 0\x1a\x93\x01\n" +
-	")dashboard_logs_widget.timeseries_group_by\x121a timeseries splits by at most one group-by field\x1a3this.visualization != 2 || size(this.group_by) <= 1\x1a\x9c\x01\n" +
+	"\ameasure\x18\x05 \x01(\v2\x1d.core.v1.DashboardLogsMeasureR\ameasure:\xe8\x06\xbaH\xe4\x06\x1a\x85\x01\n" +
+	"%dashboard_logs_widget.metric_group_by\x12'a metric counts without group-by fields\x1a3this.visualization != 1 || size(this.group_by) == 0\x1a\x9c\x01\n" +
+	")dashboard_logs_widget.timeseries_group_by\x122a timeseries splits by at most two group-by fields\x1a;!(this.visualization in [2, 8]) || size(this.group_by) <= 2\x1a\x9c\x01\n" +
 	"%dashboard_logs_widget.ranked_group_by\x126bars and distributions need exactly one group-by field\x1a;!(this.visualization in [3, 4]) || size(this.group_by) == 1\x1a\x85\x01\n" +
 	"$dashboard_logs_widget.table_group_by\x12(a table needs one or two group-by fields\x1a3this.visualization != 5 || size(this.group_by) >= 1\x1a\x8a\x01\n" +
-	"&dashboard_logs_widget.heatmap_group_by\x12+a heatmap needs exactly two group-by fields\x1a3this.visualization != 6 || size(this.group_by) == 2\"\xae\x04\n" +
+	"&dashboard_logs_widget.heatmap_group_by\x12+a heatmap needs exactly two group-by fields\x1a3this.visualization != 6 || size(this.group_by) == 2\x1a\x86\x01\n" +
+	"&dashboard_logs_widget.columns_group_by\x12'columns need one or two group-by fields\x1a3this.visualization != 7 || size(this.group_by) >= 1\"\xae\x04\n" +
 	"\x14DashboardLogsMeasure\x12L\n" +
 	"\x04type\x18\x01 \x01(\tB8\xbaH5r3R\x00R\x05countR\bdistinctR\x03sumR\x03avgR\x03minR\x03maxR\n" +
 	"percentileR\x04type\x12\x14\n" +
@@ -1663,7 +1696,7 @@ const file_core_v1_dashboard_proto_rawDesc = "" +
 	" DASHBOARD_TIME_RANGE_UNSPECIFIED\x10\x00\x12\x1f\n" +
 	"\x1bDASHBOARD_TIME_RANGE_7_DAYS\x10\x01\x12 \n" +
 	"\x1cDASHBOARD_TIME_RANGE_30_DAYS\x10\x02\x12 \n" +
-	"\x1cDASHBOARD_TIME_RANGE_90_DAYS\x10\x03*\xa1\x02\n" +
+	"\x1cDASHBOARD_TIME_RANGE_90_DAYS\x10\x03*\xf4\x02\n" +
 	"\x16DashboardVisualization\x12'\n" +
 	"#DASHBOARD_VISUALIZATION_UNSPECIFIED\x10\x00\x12\"\n" +
 	"\x1eDASHBOARD_VISUALIZATION_METRIC\x10\x01\x12&\n" +
@@ -1671,12 +1704,23 @@ const file_core_v1_dashboard_proto_rawDesc = "" +
 	"\x1cDASHBOARD_VISUALIZATION_BARS\x10\x03\x12(\n" +
 	"$DASHBOARD_VISUALIZATION_DISTRIBUTION\x10\x04\x12!\n" +
 	"\x1dDASHBOARD_VISUALIZATION_TABLE\x10\x05\x12#\n" +
-	"\x1fDASHBOARD_VISUALIZATION_HEATMAP\x10\x06*\x8d\x01\n" +
+	"\x1fDASHBOARD_VISUALIZATION_HEATMAP\x10\x06\x12#\n" +
+	"\x1fDASHBOARD_VISUALIZATION_COLUMNS\x10\a\x12,\n" +
+	"(DASHBOARD_VISUALIZATION_TIMESERIES_TABLE\x10\b*\xa9\x03\n" +
 	"\x11DashboardInterval\x12\"\n" +
 	"\x1eDASHBOARD_INTERVAL_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17DASHBOARD_INTERVAL_HOUR\x10\x01\x12\x1a\n" +
 	"\x16DASHBOARD_INTERVAL_DAY\x10\x02\x12\x1b\n" +
-	"\x17DASHBOARD_INTERVAL_WEEK\x10\x03*\x99\x02\n" +
+	"\x17DASHBOARD_INTERVAL_WEEK\x10\x03\x12\x1d\n" +
+	"\x19DASHBOARD_INTERVAL_MINUTE\x10\x04\x12#\n" +
+	"\x1fDASHBOARD_INTERVAL_FIVE_MINUTES\x10\x05\x12&\n" +
+	"\"DASHBOARD_INTERVAL_FIFTEEN_MINUTES\x10\x06\x12%\n" +
+	"!DASHBOARD_INTERVAL_THIRTY_MINUTES\x10\a\x12\"\n" +
+	"\x1eDASHBOARD_INTERVAL_THREE_HOURS\x10\b\x12 \n" +
+	"\x1cDASHBOARD_INTERVAL_SIX_HOURS\x10\t\x12#\n" +
+	"\x1fDASHBOARD_INTERVAL_TWELVE_HOURS\x10\n" +
+	"\x12\x1c\n" +
+	"\x18DASHBOARD_INTERVAL_MONTH\x10\v*\x99\x02\n" +
 	"\x11DashboardAIMetric\x12#\n" +
 	"\x1fDASHBOARD_AI_METRIC_UNSPECIFIED\x10\x00\x12'\n" +
 	"#DASHBOARD_AI_METRIC_ACTIVE_AI_USERS\x10\x01\x12#\n" +
