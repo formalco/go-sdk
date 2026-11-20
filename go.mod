@@ -9,12 +9,12 @@ require (
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.24.0
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.15.0
 	github.com/aws/aws-sdk-go-v2 v1.48.0
-	github.com/aws/aws-sdk-go-v2/service/sts v1.52.0
+	github.com/aws/aws-sdk-go-v2/service/sts v1.53.0
 	github.com/aws/smithy-go v1.28.9
 	github.com/samber/lo v1.53.0
 	github.com/samber/mo v1.17.0
 	github.com/spiffe/go-spiffe/v2 v2.9.0
-	github.com/tidwall/gjson v1.20.4
+	github.com/tidwall/gjson v1.20.5
 	github.com/tidwall/sjson v1.2.10
 	google.golang.org/protobuf v1.36.12
 )
