@@ -35,8 +35,10 @@ type Hook struct {
 	UpdatedAt                       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	AllowlistedEnvironmentVariables []string               `protobuf:"bytes,9,rep,name=allowlisted_environment_variables,json=allowlistedEnvironmentVariables,proto3" json:"allowlisted_environment_variables,omitempty"`
 	AllowlistedNetworkHosts         []string               `protobuf:"bytes,10,rep,name=allowlisted_network_hosts,json=allowlistedNetworkHosts,proto3" json:"allowlisted_network_hosts,omitempty"`
-	unknownFields                   protoimpl.UnknownFields
-	sizeCache                       protoimpl.SizeCache
+	// Lets the hook's fetch requests carry the requested and assigned native users' HTTP credentials.
+	AllowNativeUserCredentials bool `protobuf:"varint,11,opt,name=allow_native_user_credentials,json=allowNativeUserCredentials,proto3" json:"allow_native_user_credentials,omitempty"`
+	unknownFields              protoimpl.UnknownFields
+	sizeCache                  protoimpl.SizeCache
 }
 
 func (x *Hook) Reset() {
@@ -139,6 +141,13 @@ func (x *Hook) GetAllowlistedNetworkHosts() []string {
 	return nil
 }
 
+func (x *Hook) GetAllowNativeUserCredentials() bool {
+	if x != nil {
+		return x.AllowNativeUserCredentials
+	}
+	return false
+}
+
 type CreateHookRequest struct {
 	state                           protoimpl.MessageState `protogen:"open.v1"`
 	Name                            string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -148,6 +157,7 @@ type CreateHookRequest struct {
 	TimeoutMs                       int32                  `protobuf:"varint,5,opt,name=timeout_ms,json=timeoutMs,proto3" json:"timeout_ms,omitempty"`
 	AllowlistedEnvironmentVariables []string               `protobuf:"bytes,6,rep,name=allowlisted_environment_variables,json=allowlistedEnvironmentVariables,proto3" json:"allowlisted_environment_variables,omitempty"`
 	AllowlistedNetworkHosts         []string               `protobuf:"bytes,7,rep,name=allowlisted_network_hosts,json=allowlistedNetworkHosts,proto3" json:"allowlisted_network_hosts,omitempty"`
+	AllowNativeUserCredentials      bool                   `protobuf:"varint,8,opt,name=allow_native_user_credentials,json=allowNativeUserCredentials,proto3" json:"allow_native_user_credentials,omitempty"`
 	unknownFields                   protoimpl.UnknownFields
 	sizeCache                       protoimpl.SizeCache
 }
@@ -229,6 +239,13 @@ func (x *CreateHookRequest) GetAllowlistedNetworkHosts() []string {
 		return x.AllowlistedNetworkHosts
 	}
 	return nil
+}
+
+func (x *CreateHookRequest) GetAllowNativeUserCredentials() bool {
+	if x != nil {
+		return x.AllowNativeUserCredentials
+	}
+	return false
 }
 
 type CreateHookResponse struct {
@@ -679,7 +696,7 @@ var File_core_v1_hooks_proto protoreflect.FileDescriptor
 
 const file_core_v1_hooks_proto_rawDesc = "" +
 	"\n" +
-	"\x13core/v1/hooks.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb7\x04\n" +
+	"\x13core/v1/hooks.proto\x12\acore.v1\x1a\x1bbuf/validate/validate.proto\x1a\x14core/v1/filter.proto\x1a\x1bcore/v1/list_metadata.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfa\x04\n" +
 	"\x04Hook\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x125\n" +
 	"\x04name\x18\x02 \x01(\tB!\xbaH\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x04name\x12 \n" +
@@ -694,7 +711,8 @@ const file_core_v1_hooks_proto_rawDesc = "" +
 	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tupdatedAt\x12r\n" +
 	"!allowlisted_environment_variables\x18\t \x03(\tB&\xbaH#\x92\x01 \"\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x1fallowlistedEnvironmentVariables\x12H\n" +
 	"\x19allowlisted_network_hosts\x18\n" +
-	" \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\"\xa1\x03\n" +
+	" \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\x12A\n" +
+	"\x1dallow_native_user_credentials\x18\v \x01(\bR\x1aallowNativeUserCredentials\"\xe4\x03\n" +
 	"\x11CreateHookRequest\x125\n" +
 	"\x04name\x18\x01 \x01(\tB!\xbaH\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x04name\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1b\n" +
@@ -703,7 +721,8 @@ const file_core_v1_hooks_proto_rawDesc = "" +
 	"\n" +
 	"timeout_ms\x18\x05 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xe0\xd4\x03 \x00R\ttimeoutMs\x12r\n" +
 	"!allowlisted_environment_variables\x18\x06 \x03(\tB&\xbaH#\x92\x01 \"\x1er\x1c\x10\x012\x18^[A-Za-z_][A-Za-z0-9_]*$R\x1fallowlistedEnvironmentVariables\x12H\n" +
-	"\x19allowlisted_network_hosts\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\"7\n" +
+	"\x19allowlisted_network_hosts\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06\"\x04r\x02\x10\x01R\x17allowlistedNetworkHosts\x12A\n" +
+	"\x1dallow_native_user_credentials\x18\b \x01(\bR\x1aallowNativeUserCredentials\"7\n" +
 	"\x12CreateHookResponse\x12!\n" +
 	"\x04hook\x18\x01 \x01(\v2\r.core.v1.HookR\x04hook\"\xff\x01\n" +
 	"\x10ListHooksRequest\x12 \n" +
