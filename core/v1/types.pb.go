@@ -1661,8 +1661,10 @@ type User struct {
 	FullName              string                 `protobuf:"bytes,11,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
 	// The organization's directory provisions this user: its name and deletion are changed in the identity provider.
 	ManagedByDirectory bool `protobuf:"varint,12,opt,name=managed_by_directory,json=managedByDirectory,proto3" json:"managed_by_directory,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+	// Deactivated users can't sign in or connect to resources.
+	Deactivated   bool `protobuf:"varint,13,opt,name=deactivated,proto3" json:"deactivated,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -1786,6 +1788,13 @@ func (x *User) GetFullName() string {
 func (x *User) GetManagedByDirectory() bool {
 	if x != nil {
 		return x.ManagedByDirectory
+	}
+	return false
+}
+
+func (x *User) GetDeactivated() bool {
+	if x != nil {
+		return x.Deactivated
 	}
 	return false
 }
@@ -3704,7 +3713,7 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xe4\x05\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\x86\x06\n" +
 	"\x04User\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\x04r\x02\x10\x01\xe8\xf9\x18\x01R\x02id\x12(\n" +
 	"\vdb_username\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\n" +
@@ -3721,7 +3730,8 @@ const file_core_v1_types_proto_rawDesc = "" +
 	"\tgroup_ids\x18\n" +
 	" \x03(\tR\bgroupIds\x12\x1b\n" +
 	"\tfull_name\x18\v \x01(\tR\bfullName\x120\n" +
-	"\x14managed_by_directory\x18\f \x01(\bR\x12managedByDirectory\x1at\n" +
+	"\x14managed_by_directory\x18\f \x01(\bR\x12managedByDirectory\x12 \n" +
+	"\vdeactivated\x18\r \x01(\bR\vdeactivated\x1at\n" +
 	"\x05Human\x12&\n" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\tfirstName\x12$\n" +
