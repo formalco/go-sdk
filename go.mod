@@ -15,7 +15,7 @@ require (
 	github.com/samber/mo v1.17.0
 	github.com/spiffe/go-spiffe/v2 v2.9.0
 	github.com/tidwall/gjson v1.20.5
-	github.com/tidwall/sjson v1.2.10
+	github.com/tidwall/sjson v1.2.11
 	google.golang.org/protobuf v1.36.12
 )
 
